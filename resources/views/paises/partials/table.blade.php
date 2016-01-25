@@ -1,14 +1,14 @@
 <table class="table table-striped">
 
 	<tr>
-
+		<th>#</th>
 		<th>Nombre</th>
 		<th>Nombre continente</th>
 		<th>Acción</th>
 	</tr>
 	@foreach($paises as  $item)
 	<tr data-id="{{ $item->id }}">
-
+		<td>{{ $item->id}}</td>
 		<td>{{$item->nombre}}</td>
 		<td>{{$item->continenteR->nombre}}</td>
 

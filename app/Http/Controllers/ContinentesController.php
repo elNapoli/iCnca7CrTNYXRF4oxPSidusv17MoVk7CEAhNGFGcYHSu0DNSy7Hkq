@@ -79,6 +79,7 @@ class ContinentesController extends Controller {
 	 */
 	public function update($id,Request $request)
 	{
+	
 		$this->validate($request, [
         'nombre' => 'required|alpha|unique:continente,nombre,'.$id,
     	]);

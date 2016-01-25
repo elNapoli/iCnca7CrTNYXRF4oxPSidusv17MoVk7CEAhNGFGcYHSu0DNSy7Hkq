@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Ciudad;
+use App\Continente;
 use Illuminate\Http\Request;
 
 class CiudadesController extends Controller {
@@ -12,9 +13,18 @@ class CiudadesController extends Controller {
 	 *
 	 * @return Response
 	 */
+
+	public function getPais($idPais){
+
+		return "hola";
+	}
 	public function index()
 	{
-		
+
+		//$ciudades = Ciudad::;
+		$ciudades = Ciudad::getAllRelation();
+
+		return view('ciudades.index',compact('ciudades'));
 	}
 
 	/**
@@ -24,7 +34,9 @@ class CiudadesController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$continentes = Continente::lists('nombre','id');
+		return view('ciudades.create',compact('continentes'));
+
 	}
 
 	/**

@@ -9,7 +9,7 @@ class Ciudad extends Model
     protected $table = 'ciudad';
     public $timestamps = false;
     protected $fillable = ['nombre',
-    					   'codigo_postal'
+    					   'codigo_postal',
                            'pais']; 
 
 
@@ -32,5 +32,22 @@ class Ciudad extends Model
     public function postulante()
     {
         return $this->hasMany('App\Postulante','id'); //Campo en tabla foranea
+    }
+
+
+    public static function getAllRelation(){
+    //dd($name);
+        return Ciudad::join('pais','pais.id','=','ciudad.pais')
+                            ->join('continente','continente.id','=','pais.continente')
+                            ->select('ciudad.id as ciudadID',
+                                    'ciudad.nombre as ciudadNombre',
+                                    'pais.id as paisID',
+                                    'pais.nombre as paisNombre',
+                                    'continente.id as continenteID',
+                                    'continente.nombre as continenteNombre')
+                            ->orderby('continente.id')
+                            ->paginate();
+    //name($request->get('name'))->paginate(4)
+
     }
 }

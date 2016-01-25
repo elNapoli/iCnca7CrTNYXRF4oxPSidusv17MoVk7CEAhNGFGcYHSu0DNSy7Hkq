@@ -50,6 +50,24 @@ Route::group(['prefix'=>'paises'],function(){
 	Route::get('edit/{id}',array('uses' => 'PaisesController@edit', 'as' => 'paises.edit'));
 	Route::put('update/{id}',array('uses' => 'PaisesController@update', 'as' => 'paises.update'));
 	Route::delete('destroy({id}',array('uses' => 'PaisesController@destroy', 'as'=> 'paises.destroy'));
+		
+
+
+
+});
+
+
+
+Route::group(['prefix'=>'ciudades'],function(){
+
+	Route::get('/',array('uses' => 'CiudadesController@index', 'as'=>'ciudades.index'));
+	Route::get('create',array('uses' => 'CiudadesController@create', 'as'=>'ciudades.create'));
+	Route::post('store',array('uses' => 'CiudadesController@store', 'as'=>'ciudades.store'));
+	Route::get('edit/{id}',array('uses' => 'CiudadesController@edit', 'as' => 'ciudades.edit'));
+	Route::put('update/{id}',array('uses' => 'CiudadesController@update', 'as' => 'ciudades.update'));
+	Route::delete('destroy({id}',array('uses' => 'CiudadesController@destroy', 'as'=> 'ciudades.destroy'));
+	Route::get('getPais/{id}',array('uses' => 'CiudadesController@getPais', 'as'=> 'ciudades.getPais'));
+		
 
 
 

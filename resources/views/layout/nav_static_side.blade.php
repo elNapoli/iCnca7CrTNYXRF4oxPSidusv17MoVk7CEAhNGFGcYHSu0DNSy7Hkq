@@ -24,6 +24,10 @@
                     <li>
                         <a href="{{ route('paises.index') }}">Pises</a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('ciudades.index') }}">Ciudades</a>
+                    </li>
                 </ul>
                 <!-- /.nav-second-level -->
             </li>

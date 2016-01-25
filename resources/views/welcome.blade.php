@@ -38,4 +38,6 @@
 @section('content')
 
 				<div class="title">Laravel 5</div>
+
+							<a href="{{ route('ciudades.getPais', 10)}}" class="btn btn-warning"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
 @endsection

@@ -21,7 +21,7 @@
 
 
 		<td>
-			<a href="{{ route('continentes.edit', $item->ciudadID)}}" class="btn btn-warning"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+			<a href="{{ route('ciudades.edit', $item->ciudadID)}}" class="btn btn-warning"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
 
 			<a href="#!" class="btn btn-danger btn-delete"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span></a>
 			

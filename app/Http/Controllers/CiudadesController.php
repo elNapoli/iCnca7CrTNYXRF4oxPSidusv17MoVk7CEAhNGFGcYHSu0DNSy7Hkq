@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Ciudad;
 use App\Continente;
+use App\Pais;
 use Illuminate\Http\Request;
 
 class CiudadesController extends Controller {
@@ -14,15 +15,28 @@ class CiudadesController extends Controller {
 	 * @return Response
 	 */
 
-	public function getPais($idPais){
+	public function getPais(Request $request){
 
-		return "hola";
+
+	
+		if($request->ajax()){
+		
+
+			return  Pais::where('continente',$request->get('idContinente'))->get()->toJson();
+
+		}
+		else
+		{
+
+			return "no ajax";
+		}
 	}
 	public function index()
 	{
 
 		//$ciudades = Ciudad::;
 		$ciudades = Ciudad::getAllRelation();
+
 
 		return view('ciudades.index',compact('ciudades'));
 	}
@@ -44,10 +58,23 @@ class CiudadesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+
+
+		$this->validate($request, [
+        'pais'   => 'required',
+        'nombre' => 'required',
+
+    	]);
+		 
+		$ciudad = Ciudad::create($request->all());
+		$message    = 'El continente '.$request->get('nombre').'se almacenó correctamente';
+		\Session::flash('message', $message);
+
+		return redirect()->route('ciudades.index');
 	}
+
 
 	/**
 	 * Display the specified resource.
@@ -68,7 +95,12 @@ class CiudadesController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$ciudad = Ciudad::getAllRelation($id);
+		$continentes = Continente::lists('nombre','id');
+		//$ciudad = Ciudad::where('id', '=', $id)->first();
+	
+
+        return view('ciudades.edit',compact('ciudad','continentes'));
 	}
 
 	/**
@@ -79,7 +111,7 @@ class CiudadesController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+		dd($id);
 	}
 
 	/**
@@ -90,7 +122,7 @@ class CiudadesController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		dd("eliminado");
 	}
 
 }

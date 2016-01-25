@@ -35,7 +35,7 @@ Route::group(['prefix'=>'continentes'],function(){
 	Route::post('store',array('uses' => 'ContinentesController@store', 'as'=>'continentes.store'));
 	Route::get('edit/{id}',array('uses' => 'ContinentesController@edit', 'as' => 'continentes.edit'));
 	Route::put('update/{id}',array('uses' => 'ContinentesController@update', 'as' => 'continentes.update'));
-	Route::delete('destroy({id}',array('uses' => 'ContinentesController@destroy', 'as'=> 'continentes.destroy'));
+	Route::delete('destroy/{id}',array('uses' => 'ContinentesController@destroy', 'as'=> 'continentes.destroy'));
 
 
 
@@ -49,7 +49,7 @@ Route::group(['prefix'=>'paises'],function(){
 	Route::post('store',array('uses' => 'PaisesController@store', 'as'=>'paises.store'));
 	Route::get('edit/{id}',array('uses' => 'PaisesController@edit', 'as' => 'paises.edit'));
 	Route::put('update/{id}',array('uses' => 'PaisesController@update', 'as' => 'paises.update'));
-	Route::delete('destroy({id}',array('uses' => 'PaisesController@destroy', 'as'=> 'paises.destroy'));
+	Route::delete('destroy/{id}',array('uses' => 'PaisesController@destroy', 'as'=> 'paises.destroy'));
 		
 
 
@@ -65,8 +65,8 @@ Route::group(['prefix'=>'ciudades'],function(){
 	Route::post('store',array('uses' => 'CiudadesController@store', 'as'=>'ciudades.store'));
 	Route::get('edit/{id}',array('uses' => 'CiudadesController@edit', 'as' => 'ciudades.edit'));
 	Route::put('update/{id}',array('uses' => 'CiudadesController@update', 'as' => 'ciudades.update'));
-	Route::delete('destroy({id}',array('uses' => 'CiudadesController@destroy', 'as'=> 'ciudades.destroy'));
-	Route::get('getPais/{id}',array('uses' => 'CiudadesController@getPais', 'as'=> 'ciudades.getPais'));
+	Route::delete('destroy/{id}',array('uses' => 'CiudadesController@destroy', 'as'=> 'ciudades.destroy'));
+	Route::post('getPais',array('uses' => 'CiudadesController@getPais', 'as'=> 'ciudades.getPais'));
 		
 
 

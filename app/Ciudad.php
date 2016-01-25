@@ -35,8 +35,10 @@ class Ciudad extends Model
     }
 
 
-    public static function getAllRelation(){
+    public static function getAllRelation($id =NULL){
     //dd($name);
+
+        if(empty($id)){
         return Ciudad::join('pais','pais.id','=','ciudad.pais')
                             ->join('continente','continente.id','=','pais.continente')
                             ->select('ciudad.id as ciudadID',
@@ -47,6 +49,23 @@ class Ciudad extends Model
                                     'continente.nombre as continenteNombre')
                             ->orderby('continente.id')
                             ->paginate();
+
+
+        }
+        else{
+
+        return Ciudad::join('pais','pais.id','=','ciudad.pais')
+                            ->join('continente','continente.id','=','pais.continente')
+                            ->select(
+                                    'continente.id as continente',
+                                    'pais.id as pais',
+                                    'ciudad.nombre',
+                                    'ciudad.codigo_postal'
+                                    )
+                            ->orderby('continente.id')
+                            ->where('ciudad.id','=', $id)
+                            ->first();
+        }
     //name($request->get('name'))->paginate(4)
 
     }

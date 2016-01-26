@@ -72,10 +72,10 @@ class UniversidadesController extends Controller {
 	 */
 	public function getEdit($id)
 	{
-		//$universidades = Universidad::with('campusSedes.ciudad')->orderBy("id")->get();
-		//$arra = array('data'=>$universidades->toArray());
-		dd(Universidad::getInformacionUniversidad($id));
-		return json_encode($universidades);
+	//	$universidades = Universidad::with('campusSedes.ciudad')->orderBy("id")->get();
+	//	$arra = array('data'=>$universidades->toArray());
+//		dd(Universidad::getInformacionUniversidad($id));
+//		return json_encode($universidades);
 	}
 
 	/**

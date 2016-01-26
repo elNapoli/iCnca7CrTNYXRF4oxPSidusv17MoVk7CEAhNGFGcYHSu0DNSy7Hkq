@@ -67,7 +67,7 @@ Route::group(['prefix'=>'ciudades'],function(){
 	Route::get('edit/{id}',array('uses' => 'CiudadesController@edit', 'as' => 'ciudades.edit'));
 	Route::put('update/{id}',array('uses' => 'CiudadesController@update', 'as' => 'ciudades.update'));
 	Route::delete('destroy/{id}',array('uses' => 'CiudadesController@destroy', 'as'=> 'ciudades.destroy'));
-	Route::post('getPais',array('uses' => 'CiudadesController@getPais', 'as'=> 'ciudades.getPais'));
+	Route::get('getPais',array('uses' => 'CiudadesController@getPais', 'as'=> 'ciudades.getPais'));
 		
 
 

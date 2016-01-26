@@ -21,8 +21,5 @@ class Universidad extends Model
     }
 
 
-    public static getInformacionUniversidad($idUniversidad){
 
-        return Ciudad::join('campsus_sede','universidad.id','campsus_sede.universidad')->get();
-    }
 }

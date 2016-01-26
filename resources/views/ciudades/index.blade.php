@@ -16,7 +16,7 @@
 
 		  <!-- Table -->
 			@include('ciudades.partials.table')
-			{!! $ciudades->render() !!}
+		
 
 		</div>
     </div>

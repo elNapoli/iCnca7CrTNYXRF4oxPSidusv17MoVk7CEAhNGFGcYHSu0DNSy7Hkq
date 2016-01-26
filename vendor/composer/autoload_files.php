@@ -14,7 +14,7 @@ return array(
     $vendorDir . '/symfony/polyfill-php56/bootstrap.php',
     $vendorDir . '/psy/psysh/src/Psy/functions.php',
     $vendorDir . '/danielstjules/stringy/src/Create.php',
+    $vendorDir . '/laravelcollective/html/src/helpers.php',
     $vendorDir . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
     $vendorDir . '/laravel/framework/src/Illuminate/Support/helpers.php',
-    $vendorDir . '/laravelcollective/html/src/helpers.php',
 );

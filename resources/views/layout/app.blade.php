@@ -29,6 +29,8 @@
 
     <!-- Custom Fonts -->
     {!! Html::Style('plugins/sb-admin/bower_components/font-awesome/css/font-awesome.min.css')!!}
+    {!! Html::Style('plugins/dataTables/jquery.dataTables.css')!!}
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -103,8 +105,10 @@
 
     <!-- Custom Theme JavaScript -->
     {!! Html::Script('plugins/sb-admin/dist/js/sb-admin-2.js') !!}
+    {!! Html::Script('plugins/dataTables/jquery.dataTables.js') !!}
 
-    @yield('script')
+
+    @yield('scripts')
 
 </body>
 

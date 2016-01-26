@@ -16,7 +16,7 @@
 
 		  <!-- Table -->
 			@include('paises.partials.table')
-			{!! $paises->render() !!}
+	
 
 		</div>
     </div>

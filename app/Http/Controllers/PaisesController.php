@@ -14,7 +14,7 @@ class PaisesController extends Controller {
 	 */
 	public function index()
 	{
-		$paises = Pais::with('continenteR')->orderBy("id")->paginate(10);
+		$paises = Pais::with('continenteR')->orderBy("id")->get();
 	
 		return view('paises.index',compact('paises'));
 	}

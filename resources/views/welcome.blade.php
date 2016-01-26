@@ -39,13 +39,9 @@
 
 				<div class="title">Laravel 5</div>
 
-
-		{!! Form::open(['route'=>'ciudades.getPais', 'method'=>'POST'])!!}
-
-
-			
+	{!! Form::open(['route'=>['ciudades.update',1], 'method'=>'PUT']) !!}
 
 
-		<button type="submit" class="btn btn-default">Guardar</button>
-		{!!Form::close()!!}
-@endsection
+		<button type="submit" class="btn btn-default">Editar</button>
+
+	{!!Form::close()!!}@endsection

@@ -109,9 +109,18 @@ class CiudadesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		dd($id);
+		$this->validate($request, [
+        'nombre' => 'required|unique:ciudad,nombre,'.$id,
+        'pais' => 'required',
+    	]);
+
+		$ciudad = Ciudad::findOrFail($id);
+		$ciudad->fill($request->all());
+        $ciudad->save();
+        \Session::flash('message', 'la ciudad se Editó correctamente');
+        return redirect()->route('ciudades.index');
 	}
 
 	/**
@@ -120,9 +129,25 @@ class CiudadesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($id,Request $request)
 	{
-		dd("eliminado");
+		//abort(500);
+		$ciudad = Ciudad::findOrFail($id);
+ 		$ciudad->delete();
+ 		$message = ' El ciudad '.$ciudad->nombre.' Fue eliminada';
+ 	//	dd($request->all());
+		if($request->ajax()){
+		//	return($message);
+			return response()->json([
+				'message'=> $message
+				]);
+		}
+		
+		
+		\Session::flash('message', $message);
+
+
+		return redirect()->route('ciudades.index');
 	}
 
 }

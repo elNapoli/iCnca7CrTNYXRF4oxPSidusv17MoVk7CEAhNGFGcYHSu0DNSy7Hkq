@@ -32,7 +32,7 @@
 
 
 
-@section('script')
+@section('scripts')
 
 
 

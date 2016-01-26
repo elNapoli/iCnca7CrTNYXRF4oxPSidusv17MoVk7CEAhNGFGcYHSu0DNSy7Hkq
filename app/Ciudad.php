@@ -48,7 +48,7 @@ class Ciudad extends Model
                                     'continente.id as continenteID',
                                     'continente.nombre as continenteNombre')
                             ->orderby('continente.id')
-                            ->paginate();
+                            ->get();
 
 
         }
@@ -57,6 +57,7 @@ class Ciudad extends Model
         return Ciudad::join('pais','pais.id','=','ciudad.pais')
                             ->join('continente','continente.id','=','pais.continente')
                             ->select(
+                                    'ciudad.id',
                                     'continente.id as continente',
                                     'pais.id as pais',
                                     'ciudad.nombre',

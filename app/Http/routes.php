@@ -18,6 +18,7 @@ Route::get('home', 'HomeController@index');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
+	'universidades'=>'UniversidadesController',
 ]);
 
 Route::group(['prefix'=>'admin'],function(){

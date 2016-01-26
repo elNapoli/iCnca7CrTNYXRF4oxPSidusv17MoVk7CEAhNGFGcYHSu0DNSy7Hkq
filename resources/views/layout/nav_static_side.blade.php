@@ -13,7 +13,7 @@
                 <!-- /input-group -->
             </li>
             <li>
-                <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                <a href="{{ url('/') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
@@ -27,6 +27,10 @@
 
                     <li>
                         <a href="{{ route('ciudades.index') }}">Ciudades</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url('universidades/') }}">Universidad</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

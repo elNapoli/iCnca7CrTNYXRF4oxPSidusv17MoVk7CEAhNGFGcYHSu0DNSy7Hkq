@@ -11,6 +11,7 @@
 
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
+
     <!-- Bootstrap Core CSS -->
     {!! Html::Style('plugins/sb-admin/bower_components/bootstrap/dist/css/bootstrap.min.css')!!}
 
@@ -30,6 +31,10 @@
     <!-- Custom Fonts -->
     {!! Html::Style('plugins/sb-admin/bower_components/font-awesome/css/font-awesome.min.css')!!}
     {!! Html::Style('plugins/dataTables/css/jquery.dataTables.css')!!}
+    {!! Html::Style('plugins/jquery-ui/jquery-ui.css')!!}
+
+
+
     @yield('styles')
 
 
@@ -107,7 +112,8 @@
     <!-- Custom Theme JavaScript -->
     {!! Html::Script('plugins/sb-admin/dist/js/sb-admin-2.js') !!}
     {!! Html::Script('plugins/dataTables/js/jquery.dataTables.js') !!}
-
+    {!! Html::Script('plugins/jquery-ui/jquery-ui.js') !!}> 
+    {!! Html::Script('js/funciones.js')!!}
 
     @yield('scripts')
 

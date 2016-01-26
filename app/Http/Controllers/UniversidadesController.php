@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Universidad;
 use App\CampusSede;
 use Illuminate\Http\Request;
+use App\Continente;
 
 class UniversidadesController extends Controller {
 
@@ -36,9 +37,19 @@ class UniversidadesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function postStore()
+	public function postStore(Request $request)
 	{
-		dd('funcionadno el post ');
+		$universidad         = new Universidad();
+		$universidadID = $universidad->insertGetId(array('nombre'=> $request->get('nombre_universidad')));
+
+		$campus_sede = new CampusSede($request->all());
+		$campus_sede->universidad = $universidadID;
+		$campus_sede->ciudad = $request->get('ciudad');
+
+		$campus_sede->save();
+
+		return redirect('universidades');
+
 	}
 
 	/**
@@ -49,7 +60,8 @@ class UniversidadesController extends Controller {
 	 */
 	public function getCreate()
 	{
-		return view('universidades.create');
+		$continentes = Continente::lists('nombre','id');
+		return view('universidades.create',compact('continentes'));
 	}
 
 	/**
@@ -60,9 +72,10 @@ class UniversidadesController extends Controller {
 	 */
 	public function getEdit($id)
 	{
-		$universidades = Universidad::with('campusSedes.ciudad')->orderBy("id")->get();
-		$arra = array('data'=>$universidades->toArray());
-		return json_encode($arra);
+		//$universidades = Universidad::with('campusSedes.ciudad')->orderBy("id")->get();
+		//$arra = array('data'=>$universidades->toArray());
+		dd(Universidad::getInformacionUniversidad($id));
+		return json_encode($universidades);
 	}
 
 	/**

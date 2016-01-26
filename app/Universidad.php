@@ -19,4 +19,10 @@ class Universidad extends Model
     {
         return $this->hasMany('App\CampusSede','universidad');
     }
+
+
+    public static getInformacionUniversidad($idUniversidad){
+
+        return Ciudad::join('campsus_sede','universidad.id','campsus_sede.universidad')->get();
+    }
 }

@@ -20,9 +20,18 @@ class CiudadesController extends Controller {
 
 	
 		if($request->ajax()){
-		
+			
+			$nomTable = $request->get('nomTable');
+			switch ($nomTable) {
+			    case 'pais':
+						return  Pais::where('continente',$request->get('idBuscar'))->get()->toJson();
 
-			return  Pais::where('continente',$request->get('idContinente'))->get()->toJson();
+			        break;
+			    case 'ciudad':
+						return  Ciudad::where('pais',$request->get('idBuscar'))->get()->toJson();
+
+			        break;
+			}
 
 		}
 		else

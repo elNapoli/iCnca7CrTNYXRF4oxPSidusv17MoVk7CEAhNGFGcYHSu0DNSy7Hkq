@@ -12,7 +12,7 @@ class ContinentesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function getIndex()
 	{
 		$continentes = Continente::all();
 
@@ -24,7 +24,7 @@ class ContinentesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function getCreate()
 	{
 		return view('continentes.create');
 	}
@@ -34,7 +34,7 @@ class ContinentesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function postStore(Request $request)
 	{
 
 		 $this->validate($request, [
@@ -45,7 +45,8 @@ class ContinentesController extends Controller {
 		$message    = 'El continente '.$request->get('nombre').'se almacenó correctamente';
 		\Session::flash('message', $message);
 
-		return redirect()->route('continentes.index');
+		//return redirect()->route('continentes.index');
+		return redirect('continentes');
 	}
 
 	/**
@@ -54,10 +55,6 @@ class ContinentesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		//
-	}
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -65,7 +62,7 @@ class ContinentesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function getEdit($id)
 	{
 		$continente = Continente::findOrFail($id);
         return view('continentes.edit',compact('continente'));
@@ -77,7 +74,7 @@ class ContinentesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id,Request $request)
+	public function putUpdate($id,Request $request)
 	{
 	
 		$this->validate($request, [
@@ -88,7 +85,8 @@ class ContinentesController extends Controller {
 		$continente->fill($request->all());
         $continente->save();
         \Session::flash('message', 'El Continente se Editó correctamente');
-        return redirect()->route('continentes.index');
+		return redirect('continentes');
+        //return redirect()->route('continentes.index');
 	}
 
 	/**
@@ -97,7 +95,7 @@ class ContinentesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id,Request $request)
+	public function deleteDestroy($id,Request $request)
 	{
 		//abort(500);
 		$continente = Continente::findOrFail($id);
@@ -114,8 +112,9 @@ class ContinentesController extends Controller {
 		
 		\Session::flash('message', $message);
 
+		return redirect('continentes');
 
-		return redirect()->route('continentes.index');
+		//return redirect()->route('continentes.index');
 	}
 
 }

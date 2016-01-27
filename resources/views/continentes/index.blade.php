@@ -12,7 +12,7 @@
 		<div class="panel panel-default">
 
 			@include('partials.success')
-		  <div class="panel-heading"><a class="btn-info btn" href="{{ route('continentes.create')}}">Crear continente</a></div>
+		  <div class="panel-heading"><a class="btn-info btn" href="{{ url('continentes/create')}}">Crear continente</a></div>
 
 		  <!-- Table -->
 			@include('continentes.partials.table')

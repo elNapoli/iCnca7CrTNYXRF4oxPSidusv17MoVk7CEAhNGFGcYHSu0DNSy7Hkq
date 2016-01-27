@@ -15,7 +15,7 @@
 	@foreach($continentes as  $item)
 	<tr data-id="{{ $item->id }}">
 
-		<td><a href="{{ route('continentes.edit', $item->id)}}">{{$item->id}}</a></td>
+		<td><a href="{{ url('continentes/edit', $item->id)}}">{{$item->id}}</a></td>
 		<td>{{$item->nombre}}</td>
 
 	</tr>

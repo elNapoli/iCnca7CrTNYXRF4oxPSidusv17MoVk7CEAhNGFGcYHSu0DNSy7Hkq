@@ -10,7 +10,7 @@
 
 	@include('partials.error')
 
-	{!! Form::model($pais, ['route'=>['paises.update',$pais->id], 'method'=>'PUT']) !!}
+	{!! Form::model($pais, ['url'=>['paises/update',$pais->id], 'method'=>'PUT']) !!}
 
 	@include('paises.partials.fields')
 
@@ -19,7 +19,7 @@
 	{!!Form::close()!!}
 
 
-		{!! Form::open(['route'=>['paises.destroy',$pais->id], 'method'=>'DELETE']) !!}
+		{!! Form::open(['url'=>['paises/destroy',$pais->id], 'method'=>'DELETE']) !!}
 			<button  tye="submit" onClick="return confirm('Esta seguro de eliminar el registro?')" class="btn-danger btn"> Eliminar continente</button>
 		{!! Form::close()!!}
 </div>

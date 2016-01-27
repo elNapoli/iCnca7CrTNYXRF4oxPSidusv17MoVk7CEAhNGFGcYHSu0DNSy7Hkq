@@ -20,6 +20,7 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 	'universidades'=>'UniversidadesController',
 	'continentes'=>'ContinentesController',
+	'paises' => 'PaisesController',
 ]);
 
 Route::group(['prefix'=>'admin'],function(){
@@ -30,20 +31,6 @@ Route::group(['prefix'=>'admin'],function(){
 });
 
 
-
-Route::group(['prefix'=>'paises'],function(){
-
-	Route::get('/',array('uses' => 'PaisesController@index', 'as'=>'paises.index'));
-	Route::get('create',array('uses' => 'PaisesController@create', 'as'=>'paises.create'));
-	Route::post('store',array('uses' => 'PaisesController@store', 'as'=>'paises.store'));
-	Route::get('edit/{id}',array('uses' => 'PaisesController@edit', 'as' => 'paises.edit'));
-	Route::put('update/{id}',array('uses' => 'PaisesController@update', 'as' => 'paises.update'));
-	Route::delete('destroy/{id}',array('uses' => 'PaisesController@destroy', 'as'=> 'paises.destroy'));
-		
-
-
-
-});
 
 
 

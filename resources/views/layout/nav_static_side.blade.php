@@ -22,11 +22,11 @@
                         <a href="{{ url('continentes/') }}">Continentes</a>
                     </li>
                     <li>
-                        <a href="{{ route('paises.index') }}">Pises</a>
+                        <a href="{{ url('paises/') }}">Pises</a>
                     </li>
 
                     <li>
-                        <a href="{{ route('ciudades.index') }}">Ciudades</a>
+                        <a href="{{ url('ciudades/') }}">Ciudades</a>
                     </li>
 
                     <li>

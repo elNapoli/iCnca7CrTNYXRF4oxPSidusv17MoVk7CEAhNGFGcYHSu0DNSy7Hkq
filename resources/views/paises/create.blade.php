@@ -11,7 +11,7 @@
 
 		@include('partials.error')
 
-		{!! Form::open(['route'=>'paises.store', 'method'=>'POST'])!!}
+		{!! Form::open(['url'=>'paises/store', 'method'=>'POST'])!!}
 
 		@include('paises.partials.fields')
 

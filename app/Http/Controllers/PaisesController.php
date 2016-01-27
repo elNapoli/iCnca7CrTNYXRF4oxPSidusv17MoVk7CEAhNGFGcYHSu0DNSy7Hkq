@@ -12,7 +12,7 @@ class PaisesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function getIndex()
 	{
 		$paises = Pais::with('continenteR')->orderBy("id")->get();
 	
@@ -24,7 +24,7 @@ class PaisesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function getCreate()
 	{	
 		$continentes = Continente::lists('nombre','id');
 
@@ -38,7 +38,7 @@ class PaisesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function postStore(Request $request)
 	{
 		 $this->validate($request, [
         'nombre'     => 'required|alpha|unique:pais,nombre',
@@ -49,7 +49,9 @@ class PaisesController extends Controller {
 		$message    = 'El país '.$request->get('nombre').'se almacenó correctamente';
 		\Session::flash('message', $message);
 
-		return redirect()->route('paises.index');
+		//return redirect()->route('paises.index');
+		return redirect('paises');
+
 	}
 
 	/**
@@ -58,10 +60,6 @@ class PaisesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		//
-	}
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -69,7 +67,7 @@ class PaisesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function getEdit($id)
 	{
 		$pais = Pais::findOrFail($id);
 		$continentes = Continente::lists('nombre','id');
@@ -82,7 +80,7 @@ class PaisesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id, Request $request)
+	public function putUpdate($id, Request $request)
 	{	
 		//dd('required|unique:pais,nombre,'.$id);
 		//dd($request->all());
@@ -97,7 +95,9 @@ class PaisesController extends Controller {
 		$pais->fill($request->all());
         $pais->save();
         \Session::flash('message', 'El país se editó correctamente');
-        return redirect()->route('paises.index');
+      //  return redirect()->route('paises.index');
+		return redirect('paises');
+
 	}
 
 	/**
@@ -106,7 +106,7 @@ class PaisesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id, Request $request)
+	public function deleteDestroy($id, Request $request)
 	{
 		//abort(500);
 		$pais = Pais::findOrFail($id);
@@ -124,7 +124,9 @@ class PaisesController extends Controller {
 		\Session::flash('message', $message);
 
 
-		return redirect()->route('paises.index');
+		//return redirect()->route('paises.index');
+		return redirect('paises');
+
 	}
 
 }

@@ -14,30 +14,8 @@ class CiudadesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function hola(Request $request){
-
-		if($request->ajax()){
-			
-			$nomTable = $request->get('nomTable');
-			switch ($nomTable) {
-			    case 'pais':
-						return  Pais::where('continente',$request->get('idBuscar'))->get()->toJson();
-
-			        break;
-			    case 'ciudad':
-						return  Ciudad::where('pais',$request->get('idBuscar'))->get()->toJson();
-
-			        break;
-			}
-
-		}
-		else
-		{
-
-			return "no ajax";
-		}
-	}
-	public function getPais(Request $request){
+	
+	public function getPaisByContinente(Request $request){
 
 
 	
@@ -62,7 +40,7 @@ class CiudadesController extends Controller {
 			return "no ajax";
 		}
 	}
-	public function index()
+	public function getIndex()
 	{
 
 		//$ciudades = Ciudad::;
@@ -77,7 +55,7 @@ class CiudadesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function getCreate()
 	{
 		$continentes = Continente::lists('nombre','id');
 		return view('ciudades.create',compact('continentes'));
@@ -89,7 +67,7 @@ class CiudadesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function postStore(Request $request)
 	{
 
 
@@ -103,7 +81,8 @@ class CiudadesController extends Controller {
 		$message    = 'El continente '.$request->get('nombre').'se almacenó correctamente';
 		\Session::flash('message', $message);
 
-		return redirect()->route('ciudades.index');
+		return redirect('ciudades');
+		//return redirect()->route('ciudades.index');
 	}
 
 
@@ -113,10 +92,6 @@ class CiudadesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		//
-	}
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -124,7 +99,7 @@ class CiudadesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function getEdit($id)
 	{
 		$ciudad = Ciudad::getAllRelation($id);
 		$continentes = Continente::lists('nombre','id');
@@ -140,7 +115,7 @@ class CiudadesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id, Request $request)
+	public function putUpdate($id, Request $request)
 	{
 		$this->validate($request, [
         'nombre' => 'required|unique:ciudad,nombre,'.$id,
@@ -151,7 +126,8 @@ class CiudadesController extends Controller {
 		$ciudad->fill($request->all());
         $ciudad->save();
         \Session::flash('message', 'la ciudad se Editó correctamente');
-        return redirect()->route('ciudades.index');
+		return redirect('ciudades');
+        //return redirect()->route('ciudades.index');
 	}
 
 	/**
@@ -160,7 +136,7 @@ class CiudadesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id,Request $request)
+	public function deleteDestroy($id,Request $request)
 	{
 		//abort(500);
 		$ciudad = Ciudad::findOrFail($id);
@@ -178,7 +154,8 @@ class CiudadesController extends Controller {
 		\Session::flash('message', $message);
 
 
-		return redirect()->route('ciudades.index');
+		return redirect('ciudades');
+		//return redirect()->route('ciudades.index');
 	}
 
 }

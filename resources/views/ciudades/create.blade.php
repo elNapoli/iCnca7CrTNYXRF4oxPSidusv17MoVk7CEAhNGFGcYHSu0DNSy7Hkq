@@ -10,7 +10,7 @@
 
 		@include('partials.error')
 
-		{!! Form::open(['route'=>'ciudades.store', 'method'=>'POST'])!!}
+		{!! Form::open(['url'=>'ciudades/store', 'method'=>'POST'])!!}
 
 		@include('ciudades.partials.fields')
 

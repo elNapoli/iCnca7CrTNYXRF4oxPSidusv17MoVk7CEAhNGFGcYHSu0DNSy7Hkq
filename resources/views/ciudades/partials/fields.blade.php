@@ -27,7 +27,7 @@
 
 
 
-{!!Form::hidden('GetPais', route('ciudades.hola'),array('id'=>'GetPais'));!!}
+{!!Form::hidden('GetPais', url('ciudades/hola'),array('id'=>'GetPais'));!!}
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 
 

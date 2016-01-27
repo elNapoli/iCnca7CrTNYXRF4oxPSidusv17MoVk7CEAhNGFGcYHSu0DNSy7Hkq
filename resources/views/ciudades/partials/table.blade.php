@@ -19,7 +19,7 @@
 	@foreach($ciudades as  $item)
 	<tr data-id="{{ $item->id }}">
 
-		<td><a href="{{ route('ciudades.edit', $item->ciudadID)}}">{{$item->ciudadID}}</a></td>
+		<td><a href="{{ url('ciudades/edit', $item->ciudadID)}}">{{$item->ciudadID}}</a></td>
 		<td>{{$item->ciudadNombre}}</td>
 		<td>{{$item->paisNombre}}</td>
 		<td>{{$item->continenteNombre}}</td>

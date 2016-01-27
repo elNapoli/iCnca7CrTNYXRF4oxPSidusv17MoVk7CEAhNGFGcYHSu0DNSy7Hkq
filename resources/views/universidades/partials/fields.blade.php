@@ -28,16 +28,16 @@
         {!!  Form::label('ciudad', ' Nombre de la ciudad ')!!}
         {!!  Form::select('ciudad', [null=>'Seleccione ciudad'],null,array('class' => 'form-control miCiudad'))!!}
     </div>
+    @if(isset($infoUniversidad))
+    {!!Form::hidden('infoUniversidad', $infoUniversidad,array('id'=>'infoUniversidad'));!!}
 
-    {!!Form::hidden('getURL', route('ciudades.getPais'),array('id'=>'getURL'));!!}
+
+
+    @endif
+    {!!Form::hidden('getURL', url('ciudades/pais-by-continente'),array('id'=>'getURL'));!!}
     {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 
 </div>
-
-
-
-
-
 
 
 
@@ -45,6 +45,39 @@
  <script type="text/javascript">
   $(document).ready(function(){
 
+    var objUniversidad = JSON.parse($('#infoUniversidad').val())[0];
+    var objCampus = objUniversidad.campus_sedes;
+    var numCampus = objCampus.length;
+    console.log(objCampus);
+
+        $.each( objCampus, function ( index, obj) {
+            var nextTab = $('#tabs li').size()+1;
+            console.log(obj.nombre)
+            // create the tab
+            $('<li><a class = "tabClick" href="#tab-'+obj.id+'" data-toggle="tab">Campus: '+obj.nombre+'</a></li>').appendTo('#tabs');
+
+    
+            var content = '<div class="tab-pane" id="tab-'+obj.id+'">';
+            var input = ' <div class="form-group">'+
+                    '<label for="nombre"> Nombre del campus '+obj.id+'</label>'+
+                    '<input class="form-control" placeholder="Ej: Isla Teja" name="nombre" type="text" id="nombre">'+
+
+                '</div>';
+            // create the tab content
+
+            for (i = 0; i < 4; i++) {
+              content = content+ input;
+            }
+            content = content+' content</div>';
+
+
+            $(content).appendTo('.tab-content');
+            
+            // make the new tab active
+
+
+        });
+            $('#tabs a:last').tab('show');
         $('#btnAdd').click(function (e) {
             var nextTab = $('#tabs li').size()+1;
           

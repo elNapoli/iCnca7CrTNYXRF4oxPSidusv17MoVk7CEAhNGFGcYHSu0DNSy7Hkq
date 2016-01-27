@@ -2,9 +2,7 @@
 
 @endsection
 
-    <div class="form-group">
-        <a href="#!" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#myModal"> Agregar Campus</a>
-    </div>
+
     
     <div class="form-group">
         {!!  Form::label('continente', ' Nombre Continente ')!!}

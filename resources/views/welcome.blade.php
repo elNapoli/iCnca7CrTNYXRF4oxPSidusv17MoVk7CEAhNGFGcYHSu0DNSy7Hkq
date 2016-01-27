@@ -39,7 +39,7 @@
 
 				<div class="title">Laravel 5</div>
 
-	{!! Form::open(['route'=>['ciudades.update',1], 'method'=>'PUT']) !!}
+	{!! Form::open(['url'=>['ciudades/update',1], 'method'=>'PUT']) !!}
 
 
 		<button type="submit" class="btn btn-default">Editar</button>

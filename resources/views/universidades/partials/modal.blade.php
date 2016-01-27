@@ -33,7 +33,7 @@
         {!!  Form::select('ciudad', [null=>'Seleccione ciudad'],null,array('class' => 'form-control miCiudad'))!!}
     </div>
 
-    {!!Form::hidden('getURL', route('ciudades.getPais'),array('id'=>'getURL'));!!}
+    {!!Form::hidden('getURL', url('ciudades/pais-by-continente'),array('id'=>'getURL'));!!}
     {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
             </div>
             <div class="modal-footer">

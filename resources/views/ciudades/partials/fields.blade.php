@@ -27,7 +27,7 @@
 
 
 
-{!!Form::hidden('GetPais', url('ciudades/hola'),array('id'=>'GetPais'));!!}
+{!!Form::hidden('getUrl', url('ciudades/pais-by-continente'),array('id'=>'getUrl'));!!}
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 
 
@@ -43,7 +43,7 @@
 
 			$('#continente').on('change',function(e){
 			e.preventDefault();
- 			getListForSelect($('#GetPais').val(), $('#getToken').val(), $("#continente").val(), 'pais');	
+ 			getListForSelect($('#getUrl').val(), $('#getToken').val(), $("#continente").val(), 'pais');	
 			});
 
 
@@ -51,14 +51,15 @@
 
 
 $(window).load(function() {
-			var url  = $('#GetPais').val();
+			var url  = $('#getUrl').val();
 			var token        = $('#getToken').val();
 			var idContinente = $("#continente").val();
 			$.ajax({
 			    // En data puedes utilizar un objeto JSON, un array o un query string
 			   data: {
 					"_token": token,
-					"idContinente": idContinente
+					"idContinente": idContinente,
+					"nomTable": 'continente'
 				},
 			    //Cambiar a type: POST si necesario
 			    type: "post",

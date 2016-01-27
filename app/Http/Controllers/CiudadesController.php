@@ -15,7 +15,7 @@ class CiudadesController extends Controller {
 	 * @return Response
 	 */
 	
-	public function getPaisByContinente(Request $request){
+	public function postPaisByContinente(Request $request){
 
 
 	

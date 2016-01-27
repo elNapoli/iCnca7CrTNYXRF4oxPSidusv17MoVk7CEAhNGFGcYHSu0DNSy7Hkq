@@ -23,7 +23,7 @@ class CampusSede extends Model
     }
 
     //Un Campus o Sede se encuentra en una ciudad
-    public function Ciudad()
+    public function ciudadR()
     {
     	return $this->belongsTo('App\Ciudad','ciudad');
     }

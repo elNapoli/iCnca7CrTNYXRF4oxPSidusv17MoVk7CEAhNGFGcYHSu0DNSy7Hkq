@@ -27,3 +27,7 @@
 
 
 @endsection
+
+@section('breadcrumbs')
+{!! Breadcrumbs::render('paisesEditar',$pais) !!}
+@endsection

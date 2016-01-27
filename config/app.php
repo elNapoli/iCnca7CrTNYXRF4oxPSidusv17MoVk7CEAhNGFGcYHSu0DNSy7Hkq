@@ -146,6 +146,7 @@ return [
 		'App\Providers\RouteServiceProvider',
 		'Collective\Html\HtmlServiceProvider',
 		Yajra\Datatables\DatatablesServiceProvider::class,
+		DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
 
 	],
 
@@ -200,6 +201,7 @@ return [
 
 
 		'Datatables' => Yajra\Datatables\Datatables::class,
+		'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
 
 	],
 

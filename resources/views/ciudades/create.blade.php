@@ -25,3 +25,6 @@
 @endsection
 
 
+@section('breadcrumbs')
+{!! Breadcrumbs::render('ciudadesCrear') !!}
+@endsection

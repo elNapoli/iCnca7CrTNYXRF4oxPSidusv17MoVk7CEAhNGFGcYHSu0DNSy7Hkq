@@ -28,6 +28,8 @@
 
 @endsection
 
-
+@section('breadcrumbs')
+{!! Breadcrumbs::render('paises') !!}
+@endsection
 
 

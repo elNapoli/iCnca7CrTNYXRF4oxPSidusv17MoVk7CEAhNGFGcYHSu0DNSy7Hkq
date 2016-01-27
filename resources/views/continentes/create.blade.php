@@ -24,3 +24,7 @@
 
 
 @endsection
+
+@section('breadcrumbs')
+{!! Breadcrumbs::render('continentesCrear') !!}
+@endsection

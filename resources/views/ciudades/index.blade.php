@@ -29,5 +29,10 @@
 @endsection
 
 
+@section('breadcrumbs')
+{!! Breadcrumbs::render('ciudades') !!}
+@endsection
+
+
 
 

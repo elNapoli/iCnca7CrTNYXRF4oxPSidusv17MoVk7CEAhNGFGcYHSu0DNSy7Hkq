@@ -62,17 +62,17 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">@yield('Dashboard')</h1>
+
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
           <!--  include('layout.items')-->
+                                @yield('breadcrumbs')
             <div class="content">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">
-                                @yield('breadcrumb')
-                            </div>
+                         
                             <div class="panel-body">
                                 <div class="row">
                                      @yield('content')

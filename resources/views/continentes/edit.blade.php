@@ -30,3 +30,6 @@
 @endsection
 
 
+@section('breadcrumbs')
+{!! Breadcrumbs::render('continenteEditar',$continente) !!}
+@endsection

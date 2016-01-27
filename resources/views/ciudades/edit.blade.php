@@ -31,3 +31,7 @@
 
 
 @endsection
+
+@section('breadcrumbs')
+{!! Breadcrumbs::render('ciudadesEditar',$ciudad) !!}
+@endsection

@@ -29,5 +29,7 @@
 @endsection
 
 
-
+@section('breadcrumbs')
+{!! Breadcrumbs::render('continentes') !!}
+@endsection
 

@@ -28,7 +28,8 @@
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider",
         "Collective\\Html\\HtmlServiceProvider",
-        "Yajra\\Datatables\\DatatablesServiceProvider"
+        "Yajra\\Datatables\\DatatablesServiceProvider",
+        "DaveJamesMiller\\Breadcrumbs\\ServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -47,7 +48,8 @@
         "App\\Providers\\ConfigServiceProvider",
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider",
-        "Yajra\\Datatables\\DatatablesServiceProvider"
+        "Yajra\\Datatables\\DatatablesServiceProvider",
+        "DaveJamesMiller\\Breadcrumbs\\ServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",

@@ -91,7 +91,7 @@ function formatoTablaUniversidad( d ) {
             '<td>'+entry.telefono+'</td>'+
             '<td>'+entry.fax+'</td>'+
             '<td><a href="'+entry.sitio_web+'">'+entry.sitio_web+'</a></td>'+
-            '<td> <a href="/ciudades/edit/'+entry.ciudad.id+'">'+entry.ciudad.nombre+'</a></td>'+
+            '<td> <a href="/ciudades/edit/'+entry.ciudad.id+'">'+entry.ciudad_r.nombre+'</a></td>'+
         '</tr>';
 });
       finaln = finaln+'</table>';

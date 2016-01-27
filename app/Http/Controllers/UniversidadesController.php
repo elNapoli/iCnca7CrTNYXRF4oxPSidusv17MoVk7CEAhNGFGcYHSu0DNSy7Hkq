@@ -26,7 +26,7 @@ class UniversidadesController extends Controller {
 	 */
 	public function getUniversidadCampus()
 	{
-		$universidades = Universidad::with('campusSedes.ciudad')->orderBy("id")->get();
+		$universidades = Universidad::with('campusSedes.ciudadR')->orderBy("id")->get();
 		
 		$arra = array('data'=>$universidades->toArray());
 		return json_encode($arra);

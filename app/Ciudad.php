@@ -16,7 +16,7 @@ class Ciudad extends Model
 
     public function paisR()
     {
-    	return $this->belongsTo('App\Pais','id'); //Id local
+    	return $this->belongsTo('App\Pais','pais'); //Id local
     }
 
     public function preUach()

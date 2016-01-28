@@ -30,8 +30,8 @@
                 </div>  
 
                 <div class="form-group">
-                    {!!  Form::label('ciudad', ' Nombre de la ciudad ')!!}
-                    {!!  Form::select('ciudad', [null=>'Seleccione ciudad'],null,array('class' => 'form-control miCiudad'))!!}
+                    {!!  Form::label('ciudad_modal', ' Nombre de la ciudad ')!!}
+                    {!!  Form::select('ciudad_modal', [null=>'Seleccione ciudad'],null,array('class' => 'form-control ciudad_modal'))!!}
                 </div>
 
                 {!!Form::hidden('getURL', url('ciudades/pais-by-continente'),array('id'=>'getURL'));!!}

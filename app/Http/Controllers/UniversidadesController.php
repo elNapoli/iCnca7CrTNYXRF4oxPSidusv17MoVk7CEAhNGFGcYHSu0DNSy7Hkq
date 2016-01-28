@@ -62,7 +62,8 @@ class UniversidadesController extends Controller {
 	public function postStoreCampus(Request $request){
 		if($request->ajax()){
 				$camp  = CampusSede::create($request->all());
-			return $camp->toJson();
+				$campusByUniversidad = CampusSede::where('universidad',$request->get('universidad'))->orderBy('id','desc')->get();
+			return $campusByUniversidad->toJson();
 
 		}
 		else

@@ -16,7 +16,7 @@
 
 		{!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=> 'formUniversidadStore'])!!}
 	    <div class="form-group">
-        	<a href="#!" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#myModal"> Agregar Campus</a>
+        	<a href="#!" id="agregarCiudadModal" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#myModal"> Agregar Campus</a>
 		</div>
 		@include('universidades.partials.tabs')
 
@@ -51,15 +51,30 @@
                         $('#getUrCiudadContinente').val(),
                         $('#getToken').val());
 
+        $('#continente').on('change',function(e){
+        e.preventDefault();
+        getListForSelect($('#getUrlPaisContinente').val(), $('#getToken').val(), $("#continente").val(), 'pais');    
+        });
 
+
+        
+        $('#pais').on('change',function(e){
+        e.preventDefault();
+
+        getListForSelect($('#getUrCiudadContinente').val(), $('#getToken').val(), $("#pais").val(), 'ciudad','miCiudad');    
+        });
 
      // solo para probar 
+       $('#agregarCiudadModal').click(function (e) {
+       //   getListForSelect($('#getUrCiudadContinente').val(), $('#getToken').val(), $("#pais").val(), 'ciudad_modal');   
+
+       });
 			 $('#btnAdd').click(function (e) {
 
           var urlStoreCampus = $('#getUrlGuardarCampus').val();
           var token =  $('#getToken').val();
           var  form = $('#holamundo');
-
+           
       
           $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
@@ -71,7 +86,27 @@
                 // URL a la que se enviará la solicitud Ajax
                 url:urlStoreCampus ,
                 success : function(json) {
-                    crearTab(json,urlStoreCampus,$('#getUrCiudadContinente').val(),$('#getToken').val());
+                    //console.log(json);
+                  var i = true;
+                  $.each(json, function(index, subCatObj){
+               
+                    var campusSede = new Object();
+
+                    if(i){ // solo creo un tabs para el ultimo registro campus agregado
+                      campusSede.id = subCatObj.id;
+                      campusSede.nombre = subCatObj.nombre;
+                      campusSede.telefono = subCatObj.telefono;
+                      campusSede.fax = subCatObj.fax;
+                      campusSede.sitio_web = subCatObj.sitio_web;
+                      campusSede.pais = $('#pais').val();
+                      campusSede.ciudad = subCatObj.ciudad;
+                      crearTab(campusSede,urlStoreCampus,$('#getUrCiudadContinente').val(),$('#getToken').val());
+                      i = false;
+                    }
+
+                  //alert();
+                  getListForSelect($('#getUrCiudadContinente').val(), token, $('#pais').val(),'ciudad'+subCatObj.id,'',subCatObj.ciudad); 
+                  })
                 },
 
                 error : function(xhr, status) {

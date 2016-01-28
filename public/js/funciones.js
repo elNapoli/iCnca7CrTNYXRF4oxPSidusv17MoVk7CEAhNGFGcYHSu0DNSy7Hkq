@@ -226,7 +226,7 @@ function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
                     token, 
                     arrayCampus.pais, 
                     'ciudad'+arrayCampus.id,
-                    "miCiudad",
+                    "",
                     arrayCampus.ciudad) 
 
 }
@@ -248,8 +248,10 @@ function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
         crearTab(campusSede,urlStoreCampus,urlConsultaSelect,token)
    
     });
-
     $('#tabs a:last').tab('show');
+
+
+    
 
    // $("#rararara option[value='2']").attr("selected","selected");
 }

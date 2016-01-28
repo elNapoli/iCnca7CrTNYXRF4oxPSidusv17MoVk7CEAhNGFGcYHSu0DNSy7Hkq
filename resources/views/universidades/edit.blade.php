@@ -45,6 +45,8 @@
 
   $(document).ready(function(){
 
+
+
     traerInfoUniversidad('infoUniversidad',
                         $('#getUrlGuardarCampus').val(),
                         $('#getUrlPaisContinente').val(),
@@ -66,7 +68,7 @@
 
      // solo para probar 
        $('#agregarCiudadModal').click(function (e) {
-       //   getListForSelect($('#getUrCiudadContinente').val(), $('#getToken').val(), $("#pais").val(), 'ciudad_modal');   
+               getListForSelect($('#getUrCiudadContinente').val(), $('#getToken').val(), $("#pais").val(), 'ciudad','putaputa');   
 
        });
 			 $('#btnAdd').click(function (e) {
@@ -105,7 +107,7 @@
                     }
 
                   //alert();
-                  getListForSelect($('#getUrCiudadContinente').val(), token, $('#pais').val(),'ciudad'+subCatObj.id,'',subCatObj.ciudad); 
+              
                   })
                 },
 

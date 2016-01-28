@@ -31,9 +31,12 @@
 
 			$(idSelector).append("<option value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
 			$("select"+idSelector).find("option#2").attr("selected", "selected");	
-			});
+            
+            });
+            console.log(optionSelected+nomSelect2);
             $(idSelector).find('option').removeAttr("selected");
             //$(idSelector).val(optionSelected);
+
            $(idSelector+" option[value='"+optionSelected+"']").attr("selected","selected");
 
            // $(idSelector).val(optionSelected);

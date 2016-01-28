@@ -16,7 +16,7 @@ class Facultad extends Model
 
     public function CampusSede()
     {
-    	return $this->belongsTo('App\CampusSede','id'); //Id local
+    	return $this->belongsTo('App\CampusSede','campus_sede'); //Id local
     }
 
 }

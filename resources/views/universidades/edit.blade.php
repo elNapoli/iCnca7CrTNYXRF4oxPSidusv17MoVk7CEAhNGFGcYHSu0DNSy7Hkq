@@ -75,47 +75,11 @@
 
           var urlStoreCampus = $('#getUrlGuardarCampus').val();
           var token =  $('#getToken').val();
-          var  form = $('#holamundo');
-           
-      
-          $.ajax({
-                // En data puedes utilizar un objeto JSON, un array o un query string
-               data:form.serialize(),
-                //Cambiar a type: POST si necesario
-                type: "post",
-                // Formato de datos que se espera en la respuesta
-                dataType: "json",
-                // URL a la que se enviará la solicitud Ajax
-                url:urlStoreCampus ,
-                success : function(json) {
-                    //console.log(json);
-                  var i = true;
-                  $.each(json, function(index, subCatObj){
-               
-                    var campusSede = new Object();
+          var form = $('#holamundo');
+          var idPais = $('#pais').val();
+          var ciudadByPais = $('#getUrCiudadContinente').val()
+          CrearTabPorCampus(urlStoreCampus,token,form,idPais,ciudadByPais);
 
-                    if(i){ // solo creo un tabs para el ultimo registro campus agregado
-                      campusSede.id = subCatObj.id;
-                      campusSede.nombre = subCatObj.nombre;
-                      campusSede.telefono = subCatObj.telefono;
-                      campusSede.fax = subCatObj.fax;
-                      campusSede.sitio_web = subCatObj.sitio_web;
-                      campusSede.pais = $('#pais').val();
-                      campusSede.ciudad = subCatObj.ciudad;
-                      crearTab(campusSede,urlStoreCampus,$('#getUrCiudadContinente').val(),$('#getToken').val());
-                      i = false;
-                    }
-
-                  //alert();
-              
-                  })
-                },
-
-                error : function(xhr, status) {
-                    console.log('Disculpe, existió un problema '+token);
-                },
-
-            });
 
         });
 

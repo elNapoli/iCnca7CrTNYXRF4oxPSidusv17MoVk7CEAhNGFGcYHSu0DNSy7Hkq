@@ -28,7 +28,7 @@
 
 {!! Form::close()!!}
 	{!!Form::hidden('urlContinenteDestroy', url('continentes/destroy'),array('id'=>'urlContinenteDestroy'));!!}
-	{!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
+
 
 @endsection
 
@@ -41,6 +41,10 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 
+
+
+
+
 			$('.btn-delete').click(function(e){ //vincula la funcion del boton al ser presionado
 				e.preventDefault(); // jquery evento prevent default (e)
 				if(confirm("Press a button!\nEither OK or Cancel.")){
@@ -50,7 +54,7 @@
 					var form  = $('#form-delete'); //traigo la id
 					var url   = $('#urlContinenteDestroy').val()+'/'+id; //remplazo el placeholder USER_ID con la id
 					var data  = form.serialize();
-					var token  = $('#getToken').val();
+
 
 				
 					$.ajax({

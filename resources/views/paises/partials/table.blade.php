@@ -4,6 +4,7 @@
 				<th>#</th>
 				<th>Nombre</th>
 				<th>Nombre continente</th>
+				<th>Acción</th>
             </tr>
         </thead>
         <tfoot>
@@ -11,6 +12,8 @@
                 <th></th>
 				<th>Nombre</th>
 				<th>Nombre continente</th>
+				<th>Acción</th>
+
             </tr>
         </tfoot>
         <tbody>
@@ -20,21 +23,12 @@
 		<td><a href="{{ url('paises/edit', $item->id)}}">{{$item->id}}</a></td>
 		<td>{{$item->nombre}}</td>
 		<td>{{$item->continenteR->nombre}}</td>
-
+		<td>
+			<a href="{{ url('paises/edit', $item->id)}}">Edit</a>
+			<a href="" class="btn-delete">Del</a>
+		</td>
 	</tr>
 	@endforeach	
        </tbody>
     </table>
 
-@section('scripts')
-	<script type="text/javascript">
-		$(document).ready(function() {
-		    $('#tablePais').DataTable( {
-		        "language": {
-		            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-		        }
-		    } );
-		} );
-
-	</script>
-@endsection

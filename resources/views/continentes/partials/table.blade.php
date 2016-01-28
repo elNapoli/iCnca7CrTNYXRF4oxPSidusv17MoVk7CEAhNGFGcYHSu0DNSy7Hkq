@@ -2,13 +2,16 @@
         <thead>
             <tr>
                  <th>#</th>
-                <th>Position</th>
+                <th>Nombre</th>
+                <th>Acción</th>
+
             </tr>
         </thead>
         <tfoot>
             <tr>
                 <th></th>
-                <th>Position</th>
+                <th>Nombre</th>
+                <th>Acción</th>
             </tr>
         </tfoot>
         <tbody>
@@ -17,21 +20,12 @@
 
 		<td><a href="{{ url('continentes/edit', $item->id)}}">{{$item->id}}</a></td>
 		<td>{{$item->nombre}}</td>
-
+		<td>
+			<a href="{{ url('continentes/edit', $item->id)}}">Edit</a>
+			<a href="" class="btn-delete">Del</a>
+		</td>
 	</tr>
 	@endforeach	
        </tbody>
     </table>
 
-@section('scripts')
-	<script type="text/javascript">
-		$(document).ready(function() {
-		    $('#tableContinente').DataTable( {
-		        "language": {
-		            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-		        }
-		    } );
-		} );
-
-	</script>
-@endsection

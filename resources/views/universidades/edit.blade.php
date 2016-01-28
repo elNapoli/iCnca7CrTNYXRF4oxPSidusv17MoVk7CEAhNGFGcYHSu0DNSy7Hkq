@@ -13,24 +13,21 @@
     <div class="col-md-7" >
 
 		@include('partials.error')
+    @include('universidades.partials.botonEliminarUniversidad')
 
-		{!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=> 'formUniversidadStore'])!!}
-	    <div class="form-group">
-        	<a href="#!" id="agregarCiudadModal" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#myModal"> Agregar Campus</a>
-		</div>
+    {!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=> 'formUniversidadStore'])!!}
+      <div class="form-group">
+          <a href="#!" id="agregarCiudadModal" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#myModal"> Agregar Campus</a>
+    </div>
+
 		@include('universidades.partials.tabs')
 
-		<button type="submit" class="btn btn-default">Guardar</button>
+		<button type="submit" class="btn btn-default">Editar datos de la universidad</button>
 		{!!Form::close()!!}
 	</div>
 
 
 
-
-    <div class="form-group">
-        	<a href="#!" class="btn btn-primary btn-outline" id="holahola"> validando Campus</a>
-
-		</div>
 @endsection
 
 

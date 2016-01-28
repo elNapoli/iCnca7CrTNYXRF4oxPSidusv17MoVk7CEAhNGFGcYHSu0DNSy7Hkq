@@ -109,9 +109,8 @@ class UniversidadesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function putUpdate($id)
 	{
-		//
 	}
 
 	/**
@@ -120,9 +119,27 @@ class UniversidadesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function deleteDestroy($id, Request $request)
 	{
-		//
+		//abort(500);
+		$pais = Universidad::findOrFail($id);
+ 		$pais->delete();
+ 		$message = ' La universidad '.$pais->nombre.' Fue eliminado';
+ 	//	dd($request->all());
+		if($request->ajax()){
+		//	return($message);
+			return response()->json([
+				'message'=> $message
+				]);
+		}
+		
+		
+		\Session::flash('message', $message);
+
+
+		//return redirect()->route('paises.index');
+		return redirect('universidades');
+
 	}
 
 }

@@ -27,16 +27,8 @@
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" id="tabs">
-                        <li class="active"><a href="#casaCentral" data-toggle="tab">Casa central</a>
-                        </li>
-                    </ul>
 
-                    <!-- Tab panes -->
-                    <div class="tab-content">
                       @include('universidades.partials.fields')
-                    </div>
                 </div>
                 <!-- /.panel-body -->
             </div>

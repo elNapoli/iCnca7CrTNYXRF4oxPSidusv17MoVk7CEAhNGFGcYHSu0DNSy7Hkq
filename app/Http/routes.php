@@ -25,8 +25,18 @@ Route::controllers([
 	'facultades' => 'FacultadesController',
 ]);
 
-Route::group(['prefix'=>'admin'],function(){
+Route::group(['prefix'=>'admin', 'middleware' => ['auth','is_admin'], 'namespace' => 'Admin'],function(){
+	//Route::get('homeAdmin', 'HomeAdminController@index');
 
+	//Route::resource('users','UsersController');
+	Route::resource('usuarios','UsuariosController');
+
+});
+
+Route::group(['prefix'=>'usr', 'namespace' => 'Usuarios'],function(){
+	Route::get('register/verify/{confirmationCode}', 'RegistrationController@confirm'); // vincula el enlace de verificacion
+	Route::get('verificado','RegistrationController@getVeryfied');
+	Route::get('portaluser', 'UsuariosController@getPortaluser');
 	//Route::resource('users','UsersController');
 	Route::resource('usuarios','UsuariosController');
 

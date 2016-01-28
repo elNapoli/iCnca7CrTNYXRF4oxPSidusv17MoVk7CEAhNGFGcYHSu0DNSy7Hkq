@@ -6,5 +6,6 @@
         <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand">Movilidad Estudiantil</a>
+    <a class="navbar-brand">Portal Administrador</a>
 </div>
 <!-- /.navbar-header -->

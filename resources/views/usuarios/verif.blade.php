@@ -25,7 +25,7 @@
 			}
 
 			.title {
-				font-size: 96px;
+				font-size: 40px;
 				margin-bottom: 40px;
 			}
 
@@ -38,10 +38,10 @@
 @section('content')
 <div class="row">
 	  <!-- Default panel contents -->
-    <div class="col-md-0" ></div>
+    <div class="col-md-2" ></div>
 				<div class="title" align=middle>
-					<img src="http://i.imgur.com/3aBbMzz.png"  width="400" height="300">
-										EN CONSTRUCCION
+					<img src="http://www.geekoo.it/wp-content/uploads/2015/06/mail_icon-150x150.png"  width="150" height="150">
+										VERIFICA TU EMAIL
 					
 
 				</div>

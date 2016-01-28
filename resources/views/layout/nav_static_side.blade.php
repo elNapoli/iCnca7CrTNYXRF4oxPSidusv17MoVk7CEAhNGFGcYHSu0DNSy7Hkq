@@ -34,7 +34,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ url('facultades/') }}">Facultades</a>
+                        <a href="{{ url('admin/usuarios/') }}">Panel Administrador</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

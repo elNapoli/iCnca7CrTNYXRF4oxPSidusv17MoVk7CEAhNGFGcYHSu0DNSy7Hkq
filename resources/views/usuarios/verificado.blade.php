@@ -25,7 +25,7 @@
 			}
 
 			.title {
-				font-size: 96px;
+				font-size: 40px;
 				margin-bottom: 40px;
 			}
 
@@ -38,10 +38,11 @@
 @section('content')
 <div class="row">
 	  <!-- Default panel contents -->
-    <div class="col-md-0" ></div>
+    <div class="col-md-1" ></div>
 				<div class="title" align=middle>
-					<img src="http://i.imgur.com/3aBbMzz.png"  width="400" height="300">
-										EN CONSTRUCCION
+				<img src="http://i2.kym-cdn.com/photos/images/original/000/800/053/6eb.png">
+					Genial! has confirmado tu correo, ya puedes ingresar al portal
+					<a href="/auth/login">Click aca para Ingresar</a></li>
 					
 
 				</div>

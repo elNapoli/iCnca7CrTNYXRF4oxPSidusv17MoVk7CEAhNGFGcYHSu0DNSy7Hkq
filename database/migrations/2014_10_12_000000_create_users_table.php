@@ -16,7 +16,12 @@ class CreateUsersTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name');
-			$table->string('email')->unique();
+			$table->string('apellido_paterno');
+			$table->string('apellido_materno');
+			$table->boolean('confirmado');
+			$table->string('codigo_confirmacion',30)->nullable();
+			$table->enum('tipo_usuario',['usuario','administrador'])->default('usuario');
+			$table->string('email',50)->unique();
 			$table->string('password', 60);
 			$table->rememberToken();
 			$table->timestamps();

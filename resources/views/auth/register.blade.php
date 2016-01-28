@@ -1,11 +1,11 @@
-@extends('layout.app')
+@extends('layout.unregister.app_un')
 
 @section('content')
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
-				<div class="panel-heading">Register</div>
+				<div class="panel-heading">Registro</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
@@ -22,9 +22,23 @@
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
+							<label class="col-md-4 control-label">Nombre</label>
 							<div class="col-md-6">
 								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
+							</div>
+						</div>
+
+  						<div class="form-group">
+							<label class="col-md-4 control-label">Apellido paterno</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="apellido_paterno" value="{{ old('apellido_paterno') }}">
+							</div>
+						</div>
+
+  						<div class="form-group">
+							<label class="col-md-4 control-label">Apellido materno</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="apellido_materno" value="{{ old('apellido_materno') }}">
 							</div>
 						</div>
 
@@ -52,7 +66,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">
-									Register
+									Aceptar
 								</button>
 							</div>
 						</div>

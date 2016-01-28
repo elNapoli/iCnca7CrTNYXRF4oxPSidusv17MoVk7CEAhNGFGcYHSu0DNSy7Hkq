@@ -22,7 +22,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password'];
+	protected $fillable = ['name',
+						   'apellido_paterno',
+						   'apellido_materno',
+						   'confirmado',
+						   'codigo_confirmacion',
+						   'tiṕo_usuario',
+						   'email',
+						   'password'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -31,32 +38,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
-
-	public static function filterAndPaginate($name){
-		//dd($name);
-		return User::name($name)->paginate(4);
-		//name($request->get('name'))->paginate(4)
-
-	}
-
-
-
-	public function setPasswordAttribute($value){
-
-		if(! empty($value)){
-			$this->attributes['password'] = bcrypt($value);
-
-
-		}
-	}
-
-	public function ScopeName($query,$name){
-
-		if(trim($name) !=""){
-
-		$query->where('name','LIKE',"%$name%");
-			
-		}
+	public function setPasswordAttribute($value)
+	{
+		$this->attributes['password'] = bcrypt($value);
 	}
 
 }

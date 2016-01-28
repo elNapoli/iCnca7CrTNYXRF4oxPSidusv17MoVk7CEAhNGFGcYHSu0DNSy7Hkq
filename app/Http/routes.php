@@ -22,6 +22,7 @@ Route::controllers([
 	'continentes'=>'ContinentesController',
 	'paises' => 'PaisesController',
 	'ciudades' => 'CiudadesController',
+	'facultades' => 'FacultadesController',
 ]);
 
 Route::group(['prefix'=>'admin'],function(){

@@ -19,7 +19,7 @@ class CampusSede extends Model
 	########### N:1 ########### 					   
 
     //Un Campus o Sede pertenece a una universidad
-    public function Universidad()
+    public function universidadR()
     {
     	return $this->belongsTo('App\Universidad','universidad');
     }

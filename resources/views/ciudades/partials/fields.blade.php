@@ -50,43 +50,7 @@
 	});
 
 
-$(window).load(function() {
-			var url  = $('#getUrl').val();
-			var token        = $('#getToken').val();
-			var idContinente = $("#continente").val();
-			$.ajax({
-			    // En data puedes utilizar un objeto JSON, un array o un query string
-			   data: {
-					"_token": token,
-					"idContinente": idContinente,
-					"nomTable": 'continente'
-				},
-			    //Cambiar a type: POST si necesario
-			    type: "post",
-			    // Formato de datos que se espera en la respuesta
-			    dataType: "json",
-			    // URL a la que se enviará la solicitud Ajax
-			    url:url ,
-		        success : function(json) {
-		        	$('#pais').empty();
-		        	$('#pais').append("<option value=''>Seleccione un país</option>");
-	        		$.each(json, function(index, subCatObj){
 
-					$('#pais').append("<option value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
-	        			
-	        		});
-		            $("#pais").val($('#paisId').val());
-					$("#pais").change();
-
-
-    			},
-			    error : function(xhr, status) {
-			        console.log('Disculpe, existió un problema');
-			    },
-			});
-
-
-});
 </script>
 
 

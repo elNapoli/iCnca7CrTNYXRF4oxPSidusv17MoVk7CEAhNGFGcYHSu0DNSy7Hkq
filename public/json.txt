@@ -1,0 +1,1448 @@
+{
+  "data": [{
+    "id": 1,
+    "campus_sede": {
+      "id": 19,
+      "nombre": "Earnestine",
+      "telefono": "+51(1)1070995488",
+      "fax": "05166009976",
+      "sitio_web": "http:\/\/Zemlak.info\/",
+      "universidad": 7,
+      "ciudad": 335,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Mr. Hollis Cassin University",
+    "telefono": "1-531-127-6269"
+  }, {
+    "id": 3,
+    "campus_sede": {
+      "id": 9,
+      "nombre": "Gussie",
+      "telefono": "(056)802-7117",
+      "fax": "(819)065-7050x31781",
+      "sitio_web": "http:\/\/Hintz.com\/",
+      "universidad": 5,
+      "ciudad": 188,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Betsy VonRueden University",
+    "telefono": "1-990-187-0143x07633"
+  }, {
+    "id": 4,
+    "campus_sede": {
+      "id": 12,
+      "nombre": "Margarette",
+      "telefono": "01202268062",
+      "fax": "08644876090",
+      "sitio_web": "http:\/\/White.com\/sed-molestiae-accusamus-assumenda-maxime-quae.html",
+      "universidad": 5,
+      "ciudad": 325,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Alana Kiehn V University",
+    "telefono": "1-716-760-5731x69836"
+  }, {
+    "id": 5,
+    "campus_sede": {
+      "id": 17,
+      "nombre": "Frances",
+      "telefono": "140.114.8968",
+      "fax": "213-352-8241x980",
+      "sitio_web": "http:\/\/Bartoletti.com\/quis-fuga-pariatur-tempora-facere-maxime",
+      "universidad": 6,
+      "ciudad": 353,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Annamarie Eichmann IV University",
+    "telefono": "359-286-6845x943"
+  }, {
+    "id": 6,
+    "campus_sede": {
+      "id": 19,
+      "nombre": "Earnestine",
+      "telefono": "+51(1)1070995488",
+      "fax": "05166009976",
+      "sitio_web": "http:\/\/Zemlak.info\/",
+      "universidad": 7,
+      "ciudad": 335,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Ms. Chelsie Mertz DDS University",
+    "telefono": "481.475.6264x7708"
+  }, {
+    "id": 7,
+    "campus_sede": {
+      "id": 19,
+      "nombre": "Earnestine",
+      "telefono": "+51(1)1070995488",
+      "fax": "05166009976",
+      "sitio_web": "http:\/\/Zemlak.info\/",
+      "universidad": 7,
+      "ciudad": 335,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Hollis Jakubowski University",
+    "telefono": "(821)577-1285"
+  }, {
+    "id": 8,
+    "campus_sede": {
+      "id": 17,
+      "nombre": "Frances",
+      "telefono": "140.114.8968",
+      "fax": "213-352-8241x980",
+      "sitio_web": "http:\/\/Bartoletti.com\/quis-fuga-pariatur-tempora-facere-maxime",
+      "universidad": 6,
+      "ciudad": 353,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Elizabeth Stracke University",
+    "telefono": "08060559933"
+  }, {
+    "id": 9,
+    "campus_sede": {
+      "id": 9,
+      "nombre": "Gussie",
+      "telefono": "(056)802-7117",
+      "fax": "(819)065-7050x31781",
+      "sitio_web": "http:\/\/Hintz.com\/",
+      "universidad": 5,
+      "ciudad": 188,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Hayden McKenzie University",
+    "telefono": "+05(8)0109296026"
+  }, {
+    "id": 10,
+    "campus_sede": {
+      "id": 19,
+      "nombre": "Earnestine",
+      "telefono": "+51(1)1070995488",
+      "fax": "05166009976",
+      "sitio_web": "http:\/\/Zemlak.info\/",
+      "universidad": 7,
+      "ciudad": 335,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Kailey Schowalter University",
+    "telefono": "(858)048-6118x85916"
+  }, {
+    "id": 11,
+    "campus_sede": {
+      "id": 18,
+      "nombre": "Dylan",
+      "telefono": "(646)601-8703x74241",
+      "fax": "922-982-0517x843",
+      "sitio_web": "http:\/\/Lockman.org\/quos-magnam-eum-sunt-dolorum",
+      "universidad": 6,
+      "ciudad": 320,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Ms. Jodie Balistreri University",
+    "telefono": "(352)638-8501x2146"
+  }, {
+    "id": 12,
+    "campus_sede": {
+      "id": 10,
+      "nombre": "Abbey",
+      "telefono": "229-080-4353x778",
+      "fax": "163.942.9295x3262",
+      "sitio_web": "http:\/\/Morar.com\/perspiciatis-dicta-ullam-autem-qui-est-ea",
+      "universidad": 5,
+      "ciudad": 199,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Jeanie Padberg University",
+    "telefono": "(245)765-9779x083"
+  }, {
+    "id": 13,
+    "campus_sede": {
+      "id": 12,
+      "nombre": "Margarette",
+      "telefono": "01202268062",
+      "fax": "08644876090",
+      "sitio_web": "http:\/\/White.com\/sed-molestiae-accusamus-assumenda-maxime-quae.html",
+      "universidad": 5,
+      "ciudad": 325,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Lonzo Wunsch University",
+    "telefono": "(213)257-2059x439"
+  }, {
+    "id": 15,
+    "campus_sede": {
+      "id": 12,
+      "nombre": "Margarette",
+      "telefono": "01202268062",
+      "fax": "08644876090",
+      "sitio_web": "http:\/\/White.com\/sed-molestiae-accusamus-assumenda-maxime-quae.html",
+      "universidad": 5,
+      "ciudad": 325,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Leonardo Lubowitz University",
+    "telefono": "1-991-136-0137"
+  }, {
+    "id": 17,
+    "campus_sede": {
+      "id": 11,
+      "nombre": "Ceasar",
+      "telefono": "+09(6)1811759580",
+      "fax": "+51(0)5812042419",
+      "sitio_web": "http:\/\/www.Cruickshank.com\/perferendis-laboriosam-et-quae-voluptas-quisquam-repellat-est",
+      "universidad": 5,
+      "ciudad": 147,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Cortez Padberg University",
+    "telefono": "(031)078-9098x94219"
+  }, {
+    "id": 18,
+    "campus_sede": {
+      "id": 12,
+      "nombre": "Margarette",
+      "telefono": "01202268062",
+      "fax": "08644876090",
+      "sitio_web": "http:\/\/White.com\/sed-molestiae-accusamus-assumenda-maxime-quae.html",
+      "universidad": 5,
+      "ciudad": 325,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Dr. Johann Sauer Jr. University",
+    "telefono": "185-638-6638x1948"
+  }, {
+    "id": 19,
+    "campus_sede": {
+      "id": 14,
+      "nombre": "Eveline",
+      "telefono": "1-361-594-1274",
+      "fax": "(374)542-2942x5566",
+      "sitio_web": "https:\/\/Hilpert.net\/ut-ipsam-at-voluptates-dolore-cumque-tempore-quidem-magni.html",
+      "universidad": 6,
+      "ciudad": 390,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Mr. Franz Cormier II University",
+    "telefono": "1-953-303-8092x085"
+  }, {
+    "id": 20,
+    "campus_sede": {
+      "id": 8,
+      "nombre": "Dandre",
+      "telefono": "066.793.7916x032",
+      "fax": "+50(4)9398706435",
+      "sitio_web": "http:\/\/www.Lueilwitz.com\/tenetur-culpa-fuga-at-officiis-dolorem-ea",
+      "universidad": 4,
+      "ciudad": 119,
+      "universidad_r": {
+        "id": 4,
+        "nombre": "Sonia Hoppe University"
+      }
+    },
+    "nombre": "Mr. Roel Kilback University",
+    "telefono": "1-937-480-7563x8295"
+  }, {
+    "id": 21,
+    "campus_sede": {
+      "id": 16,
+      "nombre": "Norbert",
+      "telefono": "341-468-2545x015",
+      "fax": "+48(2)7397815187",
+      "sitio_web": "http:\/\/Beahan.com\/vel-odit-eligendi-facere-architecto-pariatur-quam-rerum",
+      "universidad": 6,
+      "ciudad": 302,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Mr. Devonte Dickens PhD University",
+    "telefono": "(926)381-9084x95770"
+  }, {
+    "id": 23,
+    "campus_sede": {
+      "id": 12,
+      "nombre": "Margarette",
+      "telefono": "01202268062",
+      "fax": "08644876090",
+      "sitio_web": "http:\/\/White.com\/sed-molestiae-accusamus-assumenda-maxime-quae.html",
+      "universidad": 5,
+      "ciudad": 325,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Mrs. Rowena Sanford III University",
+    "telefono": "08022075773"
+  }, {
+    "id": 26,
+    "campus_sede": {
+      "id": 18,
+      "nombre": "Dylan",
+      "telefono": "(646)601-8703x74241",
+      "fax": "922-982-0517x843",
+      "sitio_web": "http:\/\/Lockman.org\/quos-magnam-eum-sunt-dolorum",
+      "universidad": 6,
+      "ciudad": 320,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Pearlie Weber III University",
+    "telefono": "+89(4)7843847506"
+  }, {
+    "id": 27,
+    "campus_sede": {
+      "id": 20,
+      "nombre": "Mathew",
+      "telefono": "093.182.3568",
+      "fax": "928.115.6311x849",
+      "sitio_web": "http:\/\/Kunze.info\/ut-animi-et-et-ea",
+      "universidad": 7,
+      "ciudad": 233,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Kaela Kessler University",
+    "telefono": "+69(8)0180538650"
+  }, {
+    "id": 28,
+    "campus_sede": {
+      "id": 6,
+      "nombre": "Cara",
+      "telefono": "609.413.9332",
+      "fax": "965.545.6999",
+      "sitio_web": "http:\/\/Cummerata.com\/",
+      "universidad": 3,
+      "ciudad": 51,
+      "universidad_r": {
+        "id": 3,
+        "nombre": "Dr. Hayden Crona III University"
+      }
+    },
+    "nombre": "Pink Heller University",
+    "telefono": "127.715.1119"
+  }, {
+    "id": 29,
+    "campus_sede": {
+      "id": 18,
+      "nombre": "Dylan",
+      "telefono": "(646)601-8703x74241",
+      "fax": "922-982-0517x843",
+      "sitio_web": "http:\/\/Lockman.org\/quos-magnam-eum-sunt-dolorum",
+      "universidad": 6,
+      "ciudad": 320,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Amira Terry University",
+    "telefono": "875-883-9319"
+  }, {
+    "id": 30,
+    "campus_sede": {
+      "id": 19,
+      "nombre": "Earnestine",
+      "telefono": "+51(1)1070995488",
+      "fax": "05166009976",
+      "sitio_web": "http:\/\/Zemlak.info\/",
+      "universidad": 7,
+      "ciudad": 335,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Miss Yvonne Goodwin IV University",
+    "telefono": "953-114-5316"
+  }, {
+    "id": 31,
+    "campus_sede": {
+      "id": 19,
+      "nombre": "Earnestine",
+      "telefono": "+51(1)1070995488",
+      "fax": "05166009976",
+      "sitio_web": "http:\/\/Zemlak.info\/",
+      "universidad": 7,
+      "ciudad": 335,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Georgianna Johns University",
+    "telefono": "296-744-1048x722"
+  }, {
+    "id": 32,
+    "campus_sede": {
+      "id": 7,
+      "nombre": "Gerson",
+      "telefono": "1-897-122-7040x2905",
+      "fax": "068.991.6021",
+      "sitio_web": "https:\/\/www.Smith.com\/culpa-at-accusantium-eveniet-ratione-quos-maxime",
+      "universidad": 3,
+      "ciudad": 137,
+      "universidad_r": {
+        "id": 3,
+        "nombre": "Dr. Hayden Crona III University"
+      }
+    },
+    "nombre": "Akeem Bogisich University",
+    "telefono": "1-990-805-8943x5977"
+  }, {
+    "id": 33,
+    "campus_sede": {
+      "id": 18,
+      "nombre": "Dylan",
+      "telefono": "(646)601-8703x74241",
+      "fax": "922-982-0517x843",
+      "sitio_web": "http:\/\/Lockman.org\/quos-magnam-eum-sunt-dolorum",
+      "universidad": 6,
+      "ciudad": 320,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Royal Schneider University",
+    "telefono": "(723)213-3719x49983"
+  }, {
+    "id": 34,
+    "campus_sede": {
+      "id": 14,
+      "nombre": "Eveline",
+      "telefono": "1-361-594-1274",
+      "fax": "(374)542-2942x5566",
+      "sitio_web": "https:\/\/Hilpert.net\/ut-ipsam-at-voluptates-dolore-cumque-tempore-quidem-magni.html",
+      "universidad": 6,
+      "ciudad": 390,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Miss Kristina Hartmann Sr. University",
+    "telefono": "1-916-161-5487"
+  }, {
+    "id": 36,
+    "campus_sede": {
+      "id": 12,
+      "nombre": "Margarette",
+      "telefono": "01202268062",
+      "fax": "08644876090",
+      "sitio_web": "http:\/\/White.com\/sed-molestiae-accusamus-assumenda-maxime-quae.html",
+      "universidad": 5,
+      "ciudad": 325,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Rozella Bruen IV University",
+    "telefono": "(786)383-5715"
+  }, {
+    "id": 38,
+    "campus_sede": {
+      "id": 20,
+      "nombre": "Mathew",
+      "telefono": "093.182.3568",
+      "fax": "928.115.6311x849",
+      "sitio_web": "http:\/\/Kunze.info\/ut-animi-et-et-ea",
+      "universidad": 7,
+      "ciudad": 233,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Ms. Norene Jacobi University",
+    "telefono": "+69(3)7950122629"
+  }, {
+    "id": 39,
+    "campus_sede": {
+      "id": 7,
+      "nombre": "Gerson",
+      "telefono": "1-897-122-7040x2905",
+      "fax": "068.991.6021",
+      "sitio_web": "https:\/\/www.Smith.com\/culpa-at-accusantium-eveniet-ratione-quos-maxime",
+      "universidad": 3,
+      "ciudad": 137,
+      "universidad_r": {
+        "id": 3,
+        "nombre": "Dr. Hayden Crona III University"
+      }
+    },
+    "nombre": "Ms. Christina Hintz V University",
+    "telefono": "300-353-1842"
+  }, {
+    "id": 40,
+    "campus_sede": {
+      "id": 18,
+      "nombre": "Dylan",
+      "telefono": "(646)601-8703x74241",
+      "fax": "922-982-0517x843",
+      "sitio_web": "http:\/\/Lockman.org\/quos-magnam-eum-sunt-dolorum",
+      "universidad": 6,
+      "ciudad": 320,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Miss Graciela Prosacco University",
+    "telefono": "(634)251-6967x163"
+  }, {
+    "id": 41,
+    "campus_sede": {
+      "id": 6,
+      "nombre": "Cara",
+      "telefono": "609.413.9332",
+      "fax": "965.545.6999",
+      "sitio_web": "http:\/\/Cummerata.com\/",
+      "universidad": 3,
+      "ciudad": 51,
+      "universidad_r": {
+        "id": 3,
+        "nombre": "Dr. Hayden Crona III University"
+      }
+    },
+    "nombre": "Luciano Rowe University",
+    "telefono": "02070881402"
+  }, {
+    "id": 42,
+    "campus_sede": {
+      "id": 10,
+      "nombre": "Abbey",
+      "telefono": "229-080-4353x778",
+      "fax": "163.942.9295x3262",
+      "sitio_web": "http:\/\/Morar.com\/perspiciatis-dicta-ullam-autem-qui-est-ea",
+      "universidad": 5,
+      "ciudad": 199,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Royce Goodwin University",
+    "telefono": "(847)360-6913"
+  }, {
+    "id": 43,
+    "campus_sede": {
+      "id": 7,
+      "nombre": "Gerson",
+      "telefono": "1-897-122-7040x2905",
+      "fax": "068.991.6021",
+      "sitio_web": "https:\/\/www.Smith.com\/culpa-at-accusantium-eveniet-ratione-quos-maxime",
+      "universidad": 3,
+      "ciudad": 137,
+      "universidad_r": {
+        "id": 3,
+        "nombre": "Dr. Hayden Crona III University"
+      }
+    },
+    "nombre": "Prof. Katrine Friesen PhD University",
+    "telefono": "938.983.0129x364"
+  }, {
+    "id": 44,
+    "campus_sede": {
+      "id": 16,
+      "nombre": "Norbert",
+      "telefono": "341-468-2545x015",
+      "fax": "+48(2)7397815187",
+      "sitio_web": "http:\/\/Beahan.com\/vel-odit-eligendi-facere-architecto-pariatur-quam-rerum",
+      "universidad": 6,
+      "ciudad": 302,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Janis Nolan University",
+    "telefono": "447.622.7634x1474"
+  }, {
+    "id": 46,
+    "campus_sede": {
+      "id": 15,
+      "nombre": "Ali",
+      "telefono": "503.309.5100x25695",
+      "fax": "1-003-038-7702",
+      "sitio_web": "https:\/\/Bechtelar.info\/expedita-alias-sint-inventore-sed.html",
+      "universidad": 6,
+      "ciudad": 433,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Prof. Obie Bartoletti University",
+    "telefono": "571-054-3984"
+  }, {
+    "id": 48,
+    "campus_sede": {
+      "id": 15,
+      "nombre": "Ali",
+      "telefono": "503.309.5100x25695",
+      "fax": "1-003-038-7702",
+      "sitio_web": "https:\/\/Bechtelar.info\/expedita-alias-sint-inventore-sed.html",
+      "universidad": 6,
+      "ciudad": 433,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Art Rutherford University",
+    "telefono": "899.600.2480x922"
+  }, {
+    "id": 49,
+    "campus_sede": {
+      "id": 19,
+      "nombre": "Earnestine",
+      "telefono": "+51(1)1070995488",
+      "fax": "05166009976",
+      "sitio_web": "http:\/\/Zemlak.info\/",
+      "universidad": 7,
+      "ciudad": 335,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Annabel Bauch University",
+    "telefono": "702.178.9676"
+  }, {
+    "id": 50,
+    "campus_sede": {
+      "id": 17,
+      "nombre": "Frances",
+      "telefono": "140.114.8968",
+      "fax": "213-352-8241x980",
+      "sitio_web": "http:\/\/Bartoletti.com\/quis-fuga-pariatur-tempora-facere-maxime",
+      "universidad": 6,
+      "ciudad": 353,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Prof. Anna Kerluke I University",
+    "telefono": "870-547-3565x3470"
+  }, {
+    "id": 51,
+    "campus_sede": {
+      "id": 20,
+      "nombre": "Mathew",
+      "telefono": "093.182.3568",
+      "fax": "928.115.6311x849",
+      "sitio_web": "http:\/\/Kunze.info\/ut-animi-et-et-ea",
+      "universidad": 7,
+      "ciudad": 233,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Lurline Cole University",
+    "telefono": "(507)542-9442x03527"
+  }, {
+    "id": 52,
+    "campus_sede": {
+      "id": 12,
+      "nombre": "Margarette",
+      "telefono": "01202268062",
+      "fax": "08644876090",
+      "sitio_web": "http:\/\/White.com\/sed-molestiae-accusamus-assumenda-maxime-quae.html",
+      "universidad": 5,
+      "ciudad": 325,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Mr. Derick Mayer Sr. University",
+    "telefono": "(988)062-4866x16886"
+  }, {
+    "id": 53,
+    "campus_sede": {
+      "id": 8,
+      "nombre": "Dandre",
+      "telefono": "066.793.7916x032",
+      "fax": "+50(4)9398706435",
+      "sitio_web": "http:\/\/www.Lueilwitz.com\/tenetur-culpa-fuga-at-officiis-dolorem-ea",
+      "universidad": 4,
+      "ciudad": 119,
+      "universidad_r": {
+        "id": 4,
+        "nombre": "Sonia Hoppe University"
+      }
+    },
+    "nombre": "Prof. Javonte Baumbach II University",
+    "telefono": "1-555-833-7453x762"
+  }, {
+    "id": 55,
+    "campus_sede": {
+      "id": 13,
+      "nombre": "Leopold",
+      "telefono": "06589118811",
+      "fax": "+55(4)3158881427",
+      "sitio_web": "http:\/\/www.Gorczany.net\/necessitatibus-dicta-fugiat-sit-aut-sit-quae-quis.html",
+      "universidad": 5,
+      "ciudad": 64,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Ms. Marianna Balistreri I University",
+    "telefono": "(711)975-8302x111"
+  }, {
+    "id": 56,
+    "campus_sede": {
+      "id": 18,
+      "nombre": "Dylan",
+      "telefono": "(646)601-8703x74241",
+      "fax": "922-982-0517x843",
+      "sitio_web": "http:\/\/Lockman.org\/quos-magnam-eum-sunt-dolorum",
+      "universidad": 6,
+      "ciudad": 320,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Mr. Colton Mann University",
+    "telefono": "(510)850-0743"
+  }, {
+    "id": 57,
+    "campus_sede": {
+      "id": 17,
+      "nombre": "Frances",
+      "telefono": "140.114.8968",
+      "fax": "213-352-8241x980",
+      "sitio_web": "http:\/\/Bartoletti.com\/quis-fuga-pariatur-tempora-facere-maxime",
+      "universidad": 6,
+      "ciudad": 353,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Zora O'Conner University",
+    "telefono": "(678)222-7696x2514"
+  }, {
+    "id": 58,
+    "campus_sede": {
+      "id": 20,
+      "nombre": "Mathew",
+      "telefono": "093.182.3568",
+      "fax": "928.115.6311x849",
+      "sitio_web": "http:\/\/Kunze.info\/ut-animi-et-et-ea",
+      "universidad": 7,
+      "ciudad": 233,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Annamarie Hermann V University",
+    "telefono": "221.170.9279x06830"
+  }, {
+    "id": 60,
+    "campus_sede": {
+      "id": 9,
+      "nombre": "Gussie",
+      "telefono": "(056)802-7117",
+      "fax": "(819)065-7050x31781",
+      "sitio_web": "http:\/\/Hintz.com\/",
+      "universidad": 5,
+      "ciudad": 188,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Erick Walker University",
+    "telefono": "093-560-7069x1414"
+  }, {
+    "id": 61,
+    "campus_sede": {
+      "id": 9,
+      "nombre": "Gussie",
+      "telefono": "(056)802-7117",
+      "fax": "(819)065-7050x31781",
+      "sitio_web": "http:\/\/Hintz.com\/",
+      "universidad": 5,
+      "ciudad": 188,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Shanon Pollich University",
+    "telefono": "(092)679-6883"
+  }, {
+    "id": 62,
+    "campus_sede": {
+      "id": 20,
+      "nombre": "Mathew",
+      "telefono": "093.182.3568",
+      "fax": "928.115.6311x849",
+      "sitio_web": "http:\/\/Kunze.info\/ut-animi-et-et-ea",
+      "universidad": 7,
+      "ciudad": 233,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Dr. Phyllis Berge University",
+    "telefono": "+67(7)8581838171"
+  }, {
+    "id": 63,
+    "campus_sede": {
+      "id": 16,
+      "nombre": "Norbert",
+      "telefono": "341-468-2545x015",
+      "fax": "+48(2)7397815187",
+      "sitio_web": "http:\/\/Beahan.com\/vel-odit-eligendi-facere-architecto-pariatur-quam-rerum",
+      "universidad": 6,
+      "ciudad": 302,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Maryam McCullough University",
+    "telefono": "496.545.8934x3020"
+  }, {
+    "id": 64,
+    "campus_sede": {
+      "id": 13,
+      "nombre": "Leopold",
+      "telefono": "06589118811",
+      "fax": "+55(4)3158881427",
+      "sitio_web": "http:\/\/www.Gorczany.net\/necessitatibus-dicta-fugiat-sit-aut-sit-quae-quis.html",
+      "universidad": 5,
+      "ciudad": 64,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Prof. Rosalee Miller MD University",
+    "telefono": "1-805-090-0958"
+  }, {
+    "id": 65,
+    "campus_sede": {
+      "id": 15,
+      "nombre": "Ali",
+      "telefono": "503.309.5100x25695",
+      "fax": "1-003-038-7702",
+      "sitio_web": "https:\/\/Bechtelar.info\/expedita-alias-sint-inventore-sed.html",
+      "universidad": 6,
+      "ciudad": 433,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Ms. Jeanne DuBuque V University",
+    "telefono": "945-110-1468"
+  }, {
+    "id": 66,
+    "campus_sede": {
+      "id": 19,
+      "nombre": "Earnestine",
+      "telefono": "+51(1)1070995488",
+      "fax": "05166009976",
+      "sitio_web": "http:\/\/Zemlak.info\/",
+      "universidad": 7,
+      "ciudad": 335,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Donato Kohler PhD University",
+    "telefono": "334.189.1735x3683"
+  }, {
+    "id": 67,
+    "campus_sede": {
+      "id": 18,
+      "nombre": "Dylan",
+      "telefono": "(646)601-8703x74241",
+      "fax": "922-982-0517x843",
+      "sitio_web": "http:\/\/Lockman.org\/quos-magnam-eum-sunt-dolorum",
+      "universidad": 6,
+      "ciudad": 320,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Miss Selena Boyer University",
+    "telefono": "1-163-744-4794"
+  }, {
+    "id": 69,
+    "campus_sede": {
+      "id": 13,
+      "nombre": "Leopold",
+      "telefono": "06589118811",
+      "fax": "+55(4)3158881427",
+      "sitio_web": "http:\/\/www.Gorczany.net\/necessitatibus-dicta-fugiat-sit-aut-sit-quae-quis.html",
+      "universidad": 5,
+      "ciudad": 64,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Ms. Rowena Kiehn University",
+    "telefono": "1-237-152-4855"
+  }, {
+    "id": 70,
+    "campus_sede": {
+      "id": 15,
+      "nombre": "Ali",
+      "telefono": "503.309.5100x25695",
+      "fax": "1-003-038-7702",
+      "sitio_web": "https:\/\/Bechtelar.info\/expedita-alias-sint-inventore-sed.html",
+      "universidad": 6,
+      "ciudad": 433,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Phoebe Kuvalis University",
+    "telefono": "1-631-224-2428x910"
+  }, {
+    "id": 71,
+    "campus_sede": {
+      "id": 11,
+      "nombre": "Ceasar",
+      "telefono": "+09(6)1811759580",
+      "fax": "+51(0)5812042419",
+      "sitio_web": "http:\/\/www.Cruickshank.com\/perferendis-laboriosam-et-quae-voluptas-quisquam-repellat-est",
+      "universidad": 5,
+      "ciudad": 147,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Dr. Gavin Batz DVM University",
+    "telefono": "705-123-0623"
+  }, {
+    "id": 72,
+    "campus_sede": {
+      "id": 17,
+      "nombre": "Frances",
+      "telefono": "140.114.8968",
+      "fax": "213-352-8241x980",
+      "sitio_web": "http:\/\/Bartoletti.com\/quis-fuga-pariatur-tempora-facere-maxime",
+      "universidad": 6,
+      "ciudad": 353,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Kali Predovic II University",
+    "telefono": "(045)539-2350x600"
+  }, {
+    "id": 73,
+    "campus_sede": {
+      "id": 17,
+      "nombre": "Frances",
+      "telefono": "140.114.8968",
+      "fax": "213-352-8241x980",
+      "sitio_web": "http:\/\/Bartoletti.com\/quis-fuga-pariatur-tempora-facere-maxime",
+      "universidad": 6,
+      "ciudad": 353,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Mandy Romaguera University",
+    "telefono": "03232103435"
+  }, {
+    "id": 74,
+    "campus_sede": {
+      "id": 14,
+      "nombre": "Eveline",
+      "telefono": "1-361-594-1274",
+      "fax": "(374)542-2942x5566",
+      "sitio_web": "https:\/\/Hilpert.net\/ut-ipsam-at-voluptates-dolore-cumque-tempore-quidem-magni.html",
+      "universidad": 6,
+      "ciudad": 390,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Mr. Darrin Weimann PhD University",
+    "telefono": "980.066.5087x493"
+  }, {
+    "id": 76,
+    "campus_sede": {
+      "id": 12,
+      "nombre": "Margarette",
+      "telefono": "01202268062",
+      "fax": "08644876090",
+      "sitio_web": "http:\/\/White.com\/sed-molestiae-accusamus-assumenda-maxime-quae.html",
+      "universidad": 5,
+      "ciudad": 325,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Dr. Lora Howell IV University",
+    "telefono": "1-794-065-1637x98422"
+  }, {
+    "id": 78,
+    "campus_sede": {
+      "id": 20,
+      "nombre": "Mathew",
+      "telefono": "093.182.3568",
+      "fax": "928.115.6311x849",
+      "sitio_web": "http:\/\/Kunze.info\/ut-animi-et-et-ea",
+      "universidad": 7,
+      "ciudad": 233,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Dr. Mariane Dibbert III University",
+    "telefono": "1-245-565-8105"
+  }, {
+    "id": 79,
+    "campus_sede": {
+      "id": 20,
+      "nombre": "Mathew",
+      "telefono": "093.182.3568",
+      "fax": "928.115.6311x849",
+      "sitio_web": "http:\/\/Kunze.info\/ut-animi-et-et-ea",
+      "universidad": 7,
+      "ciudad": 233,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Birdie Huels University",
+    "telefono": "+12(2)0116190498"
+  }, {
+    "id": 80,
+    "campus_sede": {
+      "id": 7,
+      "nombre": "Gerson",
+      "telefono": "1-897-122-7040x2905",
+      "fax": "068.991.6021",
+      "sitio_web": "https:\/\/www.Smith.com\/culpa-at-accusantium-eveniet-ratione-quos-maxime",
+      "universidad": 3,
+      "ciudad": 137,
+      "universidad_r": {
+        "id": 3,
+        "nombre": "Dr. Hayden Crona III University"
+      }
+    },
+    "nombre": "Prof. Mohammad Upton University",
+    "telefono": "+29(8)2560896091"
+  }, {
+    "id": 81,
+    "campus_sede": {
+      "id": 13,
+      "nombre": "Leopold",
+      "telefono": "06589118811",
+      "fax": "+55(4)3158881427",
+      "sitio_web": "http:\/\/www.Gorczany.net\/necessitatibus-dicta-fugiat-sit-aut-sit-quae-quis.html",
+      "universidad": 5,
+      "ciudad": 64,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Brendon Fritsch University",
+    "telefono": "773-164-9446x14737"
+  }, {
+    "id": 82,
+    "campus_sede": {
+      "id": 6,
+      "nombre": "Cara",
+      "telefono": "609.413.9332",
+      "fax": "965.545.6999",
+      "sitio_web": "http:\/\/Cummerata.com\/",
+      "universidad": 3,
+      "ciudad": 51,
+      "universidad_r": {
+        "id": 3,
+        "nombre": "Dr. Hayden Crona III University"
+      }
+    },
+    "nombre": "Leon Jast University",
+    "telefono": "05957730446"
+  }, {
+    "id": 83,
+    "campus_sede": {
+      "id": 19,
+      "nombre": "Earnestine",
+      "telefono": "+51(1)1070995488",
+      "fax": "05166009976",
+      "sitio_web": "http:\/\/Zemlak.info\/",
+      "universidad": 7,
+      "ciudad": 335,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Hiram Heathcote University",
+    "telefono": "628.734.2423x16564"
+  }, {
+    "id": 84,
+    "campus_sede": {
+      "id": 9,
+      "nombre": "Gussie",
+      "telefono": "(056)802-7117",
+      "fax": "(819)065-7050x31781",
+      "sitio_web": "http:\/\/Hintz.com\/",
+      "universidad": 5,
+      "ciudad": 188,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Pattie Marquardt I University",
+    "telefono": "762.000.8001"
+  }, {
+    "id": 85,
+    "campus_sede": {
+      "id": 9,
+      "nombre": "Gussie",
+      "telefono": "(056)802-7117",
+      "fax": "(819)065-7050x31781",
+      "sitio_web": "http:\/\/Hintz.com\/",
+      "universidad": 5,
+      "ciudad": 188,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Rocio Ziemann University",
+    "telefono": "301.149.6284"
+  }, {
+    "id": 86,
+    "campus_sede": {
+      "id": 14,
+      "nombre": "Eveline",
+      "telefono": "1-361-594-1274",
+      "fax": "(374)542-2942x5566",
+      "sitio_web": "https:\/\/Hilpert.net\/ut-ipsam-at-voluptates-dolore-cumque-tempore-quidem-magni.html",
+      "universidad": 6,
+      "ciudad": 390,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Herminio Schamberger University",
+    "telefono": "(923)690-1891x36828"
+  }, {
+    "id": 87,
+    "campus_sede": {
+      "id": 13,
+      "nombre": "Leopold",
+      "telefono": "06589118811",
+      "fax": "+55(4)3158881427",
+      "sitio_web": "http:\/\/www.Gorczany.net\/necessitatibus-dicta-fugiat-sit-aut-sit-quae-quis.html",
+      "universidad": 5,
+      "ciudad": 64,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Westley Schmeler University",
+    "telefono": "724-898-4239"
+  }, {
+    "id": 88,
+    "campus_sede": {
+      "id": 7,
+      "nombre": "Gerson",
+      "telefono": "1-897-122-7040x2905",
+      "fax": "068.991.6021",
+      "sitio_web": "https:\/\/www.Smith.com\/culpa-at-accusantium-eveniet-ratione-quos-maxime",
+      "universidad": 3,
+      "ciudad": 137,
+      "universidad_r": {
+        "id": 3,
+        "nombre": "Dr. Hayden Crona III University"
+      }
+    },
+    "nombre": "Rick Lindgren University",
+    "telefono": "+23(4)6944437567"
+  }, {
+    "id": 89,
+    "campus_sede": {
+      "id": 17,
+      "nombre": "Frances",
+      "telefono": "140.114.8968",
+      "fax": "213-352-8241x980",
+      "sitio_web": "http:\/\/Bartoletti.com\/quis-fuga-pariatur-tempora-facere-maxime",
+      "universidad": 6,
+      "ciudad": 353,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Maeve Tromp University",
+    "telefono": "(480)217-1348x885"
+  }, {
+    "id": 90,
+    "campus_sede": {
+      "id": 20,
+      "nombre": "Mathew",
+      "telefono": "093.182.3568",
+      "fax": "928.115.6311x849",
+      "sitio_web": "http:\/\/Kunze.info\/ut-animi-et-et-ea",
+      "universidad": 7,
+      "ciudad": 233,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Janice Schmidt University",
+    "telefono": "344.954.5850x6206"
+  }, {
+    "id": 91,
+    "campus_sede": {
+      "id": 8,
+      "nombre": "Dandre",
+      "telefono": "066.793.7916x032",
+      "fax": "+50(4)9398706435",
+      "sitio_web": "http:\/\/www.Lueilwitz.com\/tenetur-culpa-fuga-at-officiis-dolorem-ea",
+      "universidad": 4,
+      "ciudad": 119,
+      "universidad_r": {
+        "id": 4,
+        "nombre": "Sonia Hoppe University"
+      }
+    },
+    "nombre": "Burley Watsica University",
+    "telefono": "(174)244-8326x3226"
+  }, {
+    "id": 92,
+    "campus_sede": {
+      "id": 20,
+      "nombre": "Mathew",
+      "telefono": "093.182.3568",
+      "fax": "928.115.6311x849",
+      "sitio_web": "http:\/\/Kunze.info\/ut-animi-et-et-ea",
+      "universidad": 7,
+      "ciudad": 233,
+      "universidad_r": {
+        "id": 7,
+        "nombre": "Brendon Beer University"
+      }
+    },
+    "nombre": "Ms. Joannie Glover University",
+    "telefono": "198-067-6931"
+  }, {
+    "id": 93,
+    "campus_sede": {
+      "id": 7,
+      "nombre": "Gerson",
+      "telefono": "1-897-122-7040x2905",
+      "fax": "068.991.6021",
+      "sitio_web": "https:\/\/www.Smith.com\/culpa-at-accusantium-eveniet-ratione-quos-maxime",
+      "universidad": 3,
+      "ciudad": 137,
+      "universidad_r": {
+        "id": 3,
+        "nombre": "Dr. Hayden Crona III University"
+      }
+    },
+    "nombre": "Herta Ferry University",
+    "telefono": "175.277.3106x37715"
+  }, {
+    "id": 94,
+    "campus_sede": {
+      "id": 14,
+      "nombre": "Eveline",
+      "telefono": "1-361-594-1274",
+      "fax": "(374)542-2942x5566",
+      "sitio_web": "https:\/\/Hilpert.net\/ut-ipsam-at-voluptates-dolore-cumque-tempore-quidem-magni.html",
+      "universidad": 6,
+      "ciudad": 390,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Mr. Dennis Corwin DVM University",
+    "telefono": "423-216-0391"
+  }, {
+    "id": 95,
+    "campus_sede": {
+      "id": 12,
+      "nombre": "Margarette",
+      "telefono": "01202268062",
+      "fax": "08644876090",
+      "sitio_web": "http:\/\/White.com\/sed-molestiae-accusamus-assumenda-maxime-quae.html",
+      "universidad": 5,
+      "ciudad": 325,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Maryjane Kunze University",
+    "telefono": "(173)469-4707"
+  }, {
+    "id": 96,
+    "campus_sede": {
+      "id": 11,
+      "nombre": "Ceasar",
+      "telefono": "+09(6)1811759580",
+      "fax": "+51(0)5812042419",
+      "sitio_web": "http:\/\/www.Cruickshank.com\/perferendis-laboriosam-et-quae-voluptas-quisquam-repellat-est",
+      "universidad": 5,
+      "ciudad": 147,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Gina Cormier University",
+    "telefono": "1-889-435-2495x47362"
+  }, {
+    "id": 97,
+    "campus_sede": {
+      "id": 16,
+      "nombre": "Norbert",
+      "telefono": "341-468-2545x015",
+      "fax": "+48(2)7397815187",
+      "sitio_web": "http:\/\/Beahan.com\/vel-odit-eligendi-facere-architecto-pariatur-quam-rerum",
+      "universidad": 6,
+      "ciudad": 302,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Jerome Tillman University",
+    "telefono": "+43(2)6340804057"
+  }, {
+    "id": 98,
+    "campus_sede": {
+      "id": 13,
+      "nombre": "Leopold",
+      "telefono": "06589118811",
+      "fax": "+55(4)3158881427",
+      "sitio_web": "http:\/\/www.Gorczany.net\/necessitatibus-dicta-fugiat-sit-aut-sit-quae-quis.html",
+      "universidad": 5,
+      "ciudad": 64,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Kacie Lynch University",
+    "telefono": "423-814-5833x676"
+  }, {
+    "id": 99,
+    "campus_sede": {
+      "id": 15,
+      "nombre": "Ali",
+      "telefono": "503.309.5100x25695",
+      "fax": "1-003-038-7702",
+      "sitio_web": "https:\/\/Bechtelar.info\/expedita-alias-sint-inventore-sed.html",
+      "universidad": 6,
+      "ciudad": 433,
+      "universidad_r": {
+        "id": 6,
+        "nombre": "Durward Beatty University"
+      }
+    },
+    "nombre": "Dr. Logan Tillman University",
+    "telefono": "1-616-154-5058x0891"
+  }, {
+    "id": 100,
+    "campus_sede": {
+      "id": 13,
+      "nombre": "Leopold",
+      "telefono": "06589118811",
+      "fax": "+55(4)3158881427",
+      "sitio_web": "http:\/\/www.Gorczany.net\/necessitatibus-dicta-fugiat-sit-aut-sit-quae-quis.html",
+      "universidad": 5,
+      "ciudad": 64,
+      "universidad_r": {
+        "id": 5,
+        "nombre": "Ms. Aurore Tremblay University"
+      }
+    },
+    "nombre": "Geovanny Kovacek Sr. University",
+    "telefono": "+32(8)9340115561"
+  }]
+}

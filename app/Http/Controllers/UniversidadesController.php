@@ -52,6 +52,11 @@ class UniversidadesController extends Controller {
 
 	}
 
+	public function postStoreCampus(Request $request){
+		dd('hola');
+
+	}
+
 	/**
 	 * Display the specified resource.
 	 *
@@ -75,7 +80,8 @@ class UniversidadesController extends Controller {
 
 		$continentes = Continente::lists('nombre','id');
 
-		$infoUniversidad = Universidad::where('id',$id)->with('campusSedes.ciudadR.paisR.continenteR')->orderBy("id")->get();
+		//dd(Universidad::where('id',$id)->with('campusSedes.ciudadR.paisR.continenteR')->get()->toArray());
+		$infoUniversidad = Universidad::where('id',$id)->with('campusSedes.ciudadR.paisR.continenteR')->get()->toJson();
 		//return($infoUniversidad->toJson());
 		return view('universidades.edit',compact('continentes','infoUniversidad'));
 	}

@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\CampusSede;
+use App\Universidad;
 
 class CampusSedeTableSeeder extends Seeder
 {
@@ -14,20 +15,25 @@ class CampusSedeTableSeeder extends Seeder
     public function run()
     {
          $faker = Faker::create();
+        $universidad = Universidad::all();
 
-        for($i = 0; $i < 20; $i++)
-        {
-            $CampusSede = new CampusSede();
+        foreach ($universidad as $item){
 
-            $CampusSede->nombre    		= $faker->firstName($gender = null|'male'|'female');
-            $CampusSede->telefono   	= $faker->phoneNumber;
-            $CampusSede->fax 			= $faker->phoneNumber;
-            $CampusSede->sitio_web		= $faker->url;
-            $CampusSede->universidad	= $faker->numberBetween($min = 1, $max = 20);
-            $CampusSede->ciudad			= $faker->numberBetween($min = 1, $max = 500);
-            
-            $CampusSede->save();
+            $numBeneficio = $faker->numberBetween($min = 1, $max = 5);
+            for($i = 0; $i < $numBeneficio; $i++)
+            {
+                $CampusSede = new CampusSede();
 
+                $CampusSede->nombre    		= $faker->firstName($gender = null|'male'|'female');
+                $CampusSede->telefono   	= $faker->phoneNumber;
+                $CampusSede->fax 			= $faker->phoneNumber;
+                $CampusSede->sitio_web		= $faker->url;
+                $CampusSede->universidad	= $item->id;
+                $CampusSede->ciudad			= $faker->numberBetween($min = 1, $max = 500);
+                
+                $CampusSede->save();
+
+            }
         }
 
 

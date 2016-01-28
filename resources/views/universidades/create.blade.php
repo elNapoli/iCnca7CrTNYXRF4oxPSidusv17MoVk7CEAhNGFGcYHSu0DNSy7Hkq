@@ -6,7 +6,7 @@
 
 
                       
-                            @include('universidades.partials.modal')
+                          
    
 
 <div class="col-md-1" ></div>
@@ -27,6 +27,33 @@
 
 
 
+
+@section('scripts')
+ <script type="text/javascript">
+  $(document).ready(function(){
+
+        
+
+        
+        $('#continente').on('change',function(e){
+        e.preventDefault();
+        getListForSelect($('#getUrlPaisContinente').val(), $('#getToken').val(), $("#continente").val(), 'pais');    
+        });
+
+
+        
+        $('#pais').on('change',function(e){
+        e.preventDefault();
+
+        getListForSelect($('#getUrlPaisContinente').val(), $('#getToken').val(), $("#pais").val(), 'ciudad','miCiudad');    
+        });
+
+  
+
+  });
+
+ </script>
+@endsection
 
 
 

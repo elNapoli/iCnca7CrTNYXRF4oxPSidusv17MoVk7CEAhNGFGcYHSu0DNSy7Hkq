@@ -1,5 +1,3 @@
-
-
 @section('styles')
     {!! Html::Style('plugins/dataTables/css/row_details.css')!!}
 

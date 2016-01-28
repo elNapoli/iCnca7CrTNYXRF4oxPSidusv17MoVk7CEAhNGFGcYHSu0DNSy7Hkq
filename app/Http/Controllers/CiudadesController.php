@@ -14,24 +14,30 @@ class CiudadesController extends Controller {
 	 *
 	 * @return Response
 	 */
+
+
+	public function postCiudadByPais(Request $request){
+
+
 	
+		if($request->ajax()){
+			return  Ciudad::where('pais',$request->get('idBuscar'))->get()->toJson();
+
+		}
+		else
+		{
+
+			return "no ajax";
+		}
+	}
+
+
 	public function postPaisByContinente(Request $request){
 
 
 	
 		if($request->ajax()){
-			
-			$nomTable = $request->get('nomTable');
-			switch ($nomTable) {
-			    case 'pais':
-						return  Pais::where('continente',$request->get('idBuscar'))->get()->toJson();
-
-			        break;
-			    case 'ciudad':
-						return  Ciudad::where('pais',$request->get('idBuscar'))->get()->toJson();
-
-			        break;
-			}
+			return  Pais::where('continente',$request->get('idBuscar'))->get()->toJson();
 
 		}
 		else

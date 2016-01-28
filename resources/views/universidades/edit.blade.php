@@ -25,19 +25,52 @@
 	</div>
 
 
+
+
+    <div class="form-group">
+        	<a href="#!" class="btn btn-primary btn-outline" id="holahola"> validando Campus</a>
+
+		</div>
 @endsection
 
-@section('scripts')
 
-<script type="text/javascript">
+@section('scripts')
+ <script type="text/javascript">
+
+
+
+
+
+
 
   $(document).ready(function(){
 
-alert('asdf');
+    traerInfoUniversidad('infoUniversidad',
+                        $('#getUrlGuardarCampus').val(),
+                        $('#getUrlPaisContinente').val(),
+                        $('#getUrCiudadContinente').val(),
+                        $('#getToken').val());
 
+
+
+
+
+   
+
+
+     // solo para probar 
+			 $('#holahola').click(function (e) {
+
+			alert($('#pais').val());
+
+
+			 });
   });
-</script>
+
+ </script>
 @endsection
+
+
 
 
 

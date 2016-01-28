@@ -14,6 +14,13 @@ class UniversidadesController extends Controller {
 	 *
 	 * @return Response
 	 */
+
+
+	public function getDebug(){
+
+
+
+	}
 	public function getIndex()
 	{
  		return view('universidades.index');
@@ -54,7 +61,8 @@ class UniversidadesController extends Controller {
 
 	public function postStoreCampus(Request $request){
 		if($request->ajax()){
-			return  'funcionó el ajax';
+				$camp  = CampusSede::create($request->all());
+			return $camp->toJson();
 
 		}
 		else
@@ -87,11 +95,11 @@ class UniversidadesController extends Controller {
 	{
 
 		$continentes = Continente::lists('nombre','id');
-
+		$idUniversidad = $id;
 		//dd(Universidad::where('id',$id)->with('campusSedes.ciudadR.paisR.continenteR')->get()->toArray());
 		$infoUniversidad = Universidad::where('id',$id)->with('campusSedes.ciudadR.paisR.continenteR')->get()->toJson();
 		//return($infoUniversidad->toJson());
-		return view('universidades.edit',compact('continentes','infoUniversidad'));
+		return view('universidades.edit',compact('continentes','infoUniversidad','idUniversidad'));
 	}
 
 	/**

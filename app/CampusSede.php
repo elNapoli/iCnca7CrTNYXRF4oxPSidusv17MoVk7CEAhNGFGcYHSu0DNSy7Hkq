@@ -11,7 +11,9 @@ class CampusSede extends Model
     protected $fillable = ['nombre',
                            'telefono',
                            'fax',
-                           'sitio_web']; 
+                           'sitio_web',
+                           'universidad',
+                           'ciudad']; 
 
 
 	########### N:1 ########### 					   

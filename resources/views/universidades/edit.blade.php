@@ -60,7 +60,7 @@
           var token =  $('#getToken').val();
           var  form = $('#holamundo');
 
-          alert();
+      
           $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
                data:form.serialize(),
@@ -71,7 +71,7 @@
                 // URL a la que se enviará la solicitud Ajax
                 url:urlStoreCampus ,
                 success : function(json) {
-                    alert(json);
+                    crearTab(json,urlStoreCampus,$('#getUrCiudadContinente').val(),$('#getToken').val());
                 },
 
                 error : function(xhr, status) {

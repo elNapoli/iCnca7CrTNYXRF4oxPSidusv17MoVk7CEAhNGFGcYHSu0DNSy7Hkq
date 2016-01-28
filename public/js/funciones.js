@@ -231,7 +231,7 @@ function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
 
 }
 
-  function crearTabByCampus(campusSedes,urlStoreCampus, urlConsultaSelect,token){
+  function crearTabByUniversidad(campusSedes,urlStoreCampus, urlConsultaSelect,token){
     var campusSede = new Object();
 
     $.each(campusSedes, function(index, subCatObj){
@@ -265,7 +265,7 @@ function traerInfoUniversidad(idInput,urlStoreCampus, urlConsultaSelectPais,urlC
     getListForSelect(urlConsultaSelectPais, token, idContinente, 'pais','',idPais); 
 
     $('#nombre_universidad').val( jsonUniversidad.nombre);
-    crearTabByCampus(campusSedes,urlStoreCampus,urlConsultaSelectCiudad,token);
+    crearTabByUniversidad(campusSedes,urlStoreCampus,urlConsultaSelectCiudad,token);
 
 
 }

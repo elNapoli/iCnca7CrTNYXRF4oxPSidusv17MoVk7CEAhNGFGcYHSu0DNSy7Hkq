@@ -36,6 +36,9 @@
 
                 {!!Form::hidden('getURL', url('ciudades/pais-by-continente'),array('id'=>'getURL'));!!}
                 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
+                {!!Form::hidden('universidad', $idUniversidad,array('id'=>'universidad'));!!}
+          
+
             </div>
             {!!Form::close()!!}
 

@@ -14,7 +14,7 @@
 
 		@include('partials.error')
 
-		{!! Form::open(['url'=>'universidades/store', 'method'=>'POST'])!!}
+		{!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=> 'formUniversidadStore'])!!}
 	    <div class="form-group">
         	<a href="#!" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#myModal"> Agregar Campus</a>
 		</div>
@@ -53,18 +53,37 @@
 
 
 
-
-
-   
-
-
      // solo para probar 
-			 $('#holahola').click(function (e) {
+			 $('#btnAdd').click(function (e) {
 
-			alert($('#pais').val());
+          var urlStoreCampus = $('#getUrlGuardarCampus').val();
+          var token =  $('#getToken').val();
+          var  form = $('#holamundo');
+
+          alert();
+          $.ajax({
+                // En data puedes utilizar un objeto JSON, un array o un query string
+               data:form.serialize(),
+                //Cambiar a type: POST si necesario
+                type: "post",
+                // Formato de datos que se espera en la respuesta
+                dataType: "json",
+                // URL a la que se enviará la solicitud Ajax
+                url:urlStoreCampus ,
+                success : function(json) {
+                    alert(json);
+                },
+
+                error : function(xhr, status) {
+                    console.log('Disculpe, existió un problema '+token);
+                },
+
+            });
+
+        });
 
 
-			 });
+
   });
 
  </script>

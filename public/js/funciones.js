@@ -183,25 +183,20 @@ function createInput(label,placeholder,id,value){
             '<input class="form-control" value="'+value+'" placeholder="'+placeholder+'" name="'+id+'" type="text" id="'+id+'">'+
             '</div>';
 
-    ;
+    
 }
 
-
-  function crearTabs(campusSedes,urlStoreCampus, urlConsultaSelect,token){
-
-    $.each(campusSedes, function(index, subCatObj){
-        //console.log(subCatObj);
-
-                      
+function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
+                   
     // create the tab
-    $('<li><a id ="wea" href="#tab'+subCatObj.id+'" data-toggle="tab">Campus: '+subCatObj.nombre+'</a></li>').appendTo('#tabs');
+    $('<li><a id ="wea" href="#tab'+arrayCampus.id+'" data-toggle="tab">Campus: '+arrayCampus.nombre+'</a></li>').appendTo('#tabs');
                         
     // create the tab content
-    var content ='<div class="tab-pane" id="tab'+subCatObj.id+'">';
-    var input1 = createInput('Nombre del campus','Ej: Isla Teja','nombre'+subCatObj.id,subCatObj.nombre);
-    var input2 = createInput('N° Telefónico','Ej:+560632222222','telefono'+subCatObj.id, subCatObj.telefono);
-    var input3 = createInput('Nombre N° fax ','Ej:+560632222222','fax'+subCatObj.id, subCatObj.fax);
-    var input4 = createInput('sitio web del campus','Ej: www.uach.cl','sitio_web'+subCatObj.id, subCatObj.sitio_web);
+    var content ='<div class="tab-pane" id="tab'+arrayCampus.id+'">';
+    var input1 = createInput('Nombre del campus','Ej: Isla Teja','nombre'+arrayCampus.id,arrayCampus.nombre);
+    var input2 = createInput('N° Telefónico','Ej:+560632222222','telefono'+arrayCampus.id, arrayCampus.telefono);
+    var input3 = createInput('Nombre N° fax ','Ej:+560632222222','fax'+arrayCampus.id, arrayCampus.fax);
+    var input4 = createInput('sitio web del campus','Ej: www.uach.cl','sitio_web'+arrayCampus.id, arrayCampus.sitio_web);
 
 
 
@@ -212,7 +207,7 @@ function createInput(label,placeholder,id,value){
                         input3+
                         input4+'<div class="form-group">'+
                                     '<label for="pais"> Nombre país </label>'+
-                                    '<select id="ciudad'+subCatObj.id+'" class="form-control">'+
+                                    '<select id="ciudad'+arrayCampus.id+'" class="miCiudad form-control">'+
                                     '<option selected="selected" value="">Seleccione un país</option>'+
                                     '</select>'+
                                 '</div>';
@@ -224,15 +219,34 @@ function createInput(label,placeholder,id,value){
 
     $(content).appendTo('.tab-content');
     //console.log(subCatObj.ciudad_r.pais);
-    $("#ciudad"+subCatObj.id).find('option').removeAttr("selected");
+    $("#ciudad"+arrayCampus.id).find('option').removeAttr("selected");
 
             //$("#ciudad"+subCatObj.id).val('3')
     getListForSelect(urlConsultaSelect, 
                     token, 
-                    subCatObj.ciudad_r.pais, 
-                    'ciudad'+subCatObj.id,
-                    "",
-                    subCatObj.ciudad_r.id) 
+                    arrayCampus.pais, 
+                    'ciudad'+arrayCampus.id,
+                    "miCiudad",
+                    arrayCampus.ciudad) 
+
+}
+
+  function crearTabByCampus(campusSedes,urlStoreCampus, urlConsultaSelect,token){
+    var campusSede = new Object();
+
+    $.each(campusSedes, function(index, subCatObj){
+        //console.log(subCatObj);
+        campusSede.id = subCatObj.id;
+        campusSede.nombre = subCatObj.nombre;
+        campusSede.telefono = subCatObj.telefono;
+        campusSede.fax = subCatObj.fax;
+        campusSede.sitio_web = subCatObj.sitio_web;
+        campusSede.pais = subCatObj.ciudad_r.pais;
+        campusSede.ciudad = subCatObj.ciudad_r.id;
+
+
+        crearTab(campusSede,urlStoreCampus,urlConsultaSelect,token)
+   
     });
 
     $('#tabs a:last').tab('show');
@@ -251,7 +265,7 @@ function traerInfoUniversidad(idInput,urlStoreCampus, urlConsultaSelectPais,urlC
     getListForSelect(urlConsultaSelectPais, token, idContinente, 'pais','',idPais); 
 
     $('#nombre_universidad').val( jsonUniversidad.nombre);
-    crearTabs(campusSedes,urlStoreCampus,urlConsultaSelectCiudad,token);
+    crearTabByCampus(campusSedes,urlStoreCampus,urlConsultaSelectCiudad,token);
 
 
 }

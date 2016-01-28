@@ -45,7 +45,7 @@
         $('#pais').on('change',function(e){
         e.preventDefault();
 
-        getListForSelect($('#getUrlPaisContinente').val(), $('#getToken').val(), $("#pais").val(), 'ciudad','miCiudad');    
+        getListForSelect($('#getUrCiudadContinente').val(), $('#getToken').val(), $("#pais").val(), 'ciudad','miCiudad');    
         });
 
   

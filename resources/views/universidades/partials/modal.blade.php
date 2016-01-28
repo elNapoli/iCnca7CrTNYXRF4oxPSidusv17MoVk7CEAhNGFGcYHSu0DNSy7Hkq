@@ -6,6 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
+            {!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=>'holamundo'])!!}
             <div class="modal-body">
                 <div class="form-group">
 
@@ -36,6 +37,8 @@
                 {!!Form::hidden('getURL', url('ciudades/pais-by-continente'),array('id'=>'getURL'));!!}
                 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
             </div>
+            {!!Form::close()!!}
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnAdd">Guardar Campus</button>

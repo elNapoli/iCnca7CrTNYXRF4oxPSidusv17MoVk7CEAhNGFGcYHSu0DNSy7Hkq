@@ -53,7 +53,15 @@ class UniversidadesController extends Controller {
 	}
 
 	public function postStoreCampus(Request $request){
-		dd('hola');
+		if($request->ajax()){
+			return  'funcionó el ajax';
+
+		}
+		else
+		{
+
+			return "no ajax";
+		}
 
 	}
 

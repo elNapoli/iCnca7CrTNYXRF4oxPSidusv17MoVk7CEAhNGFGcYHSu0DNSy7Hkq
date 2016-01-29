@@ -122,9 +122,32 @@ class UniversidadesController extends Controller {
 	public function deleteDestroy($id, Request $request)
 	{
 		//abort(500);
-		$pais = Universidad::findOrFail($id);
- 		$pais->delete();
- 		$message = ' La universidad '.$pais->nombre.' Fue eliminado';
+		$universidad = Universidad::findOrFail($id);
+ 		$universidad->delete();
+ 		$message = ' La universidad '.$universidad->nombre.' Fue eliminado';
+ 	//	dd($request->all());
+		if($request->ajax()){
+		//	return($message);
+			return response()->json([
+				'message'=> $message
+				]);
+		}
+		
+		
+		\Session::flash('message', $message);
+
+
+		//return redirect()->route('paises.index');
+		return redirect('universidades');
+
+	}
+
+	public function deleteDestroyCampus($id, Request $request)
+	{
+		//abort(500);
+		$universidad = CampusSede::findOrFail($id);
+ 		$universidad->delete();
+ 		$message = ' El campus '.$universidad->nombre.' Fue eliminado';
  	//	dd($request->all());
 		if($request->ajax()){
 		//	return($message);

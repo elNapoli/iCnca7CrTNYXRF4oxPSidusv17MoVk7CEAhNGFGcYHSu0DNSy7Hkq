@@ -26,7 +26,10 @@
 		{!!Form::close()!!}
 	</div>
 
+{!! Form::open(['url'=>['universidades/destroy-campus',':USER_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
 
+{!! Form::close()!!}
+  {!!Form::hidden('urlCampusDestroy', url('universidades/destroy-campus'),array('id'=>'urlCampusDestroy'));!!}
 
 @endsection
 
@@ -79,6 +82,41 @@
 
 
         });
+    $(".tab-content").on("click", ".btn-delete", function(event){
+        event.preventDefault(); // jquery evento prevent default (e)
+        if(confirm("Press a button!\nEither OK or Cancel.")){
+          var tab   = $(this).parents('li');
+          var id    = $(this).attr('id'); //captura el id de la fila seleccionada
+          var form  = $('#form-delete'); //traigo la id
+          var url   = $('#urlCampusDestroy').val()+'/'+id; //remplazo el placeholder USER_ID con la id
+          var data  = form.serialize();
+          
+
+        
+          $.ajax({
+              // En data puedes utilizar un objeto JSON, un array o un query string
+             data:data,
+              //Cambiar a type: POST si necesario
+              type: "post",
+              // Formato de datos que se espera en la respuesta
+              dataType: "json",
+              // URL a la que se enviará la solicitud Ajax
+              url:url ,
+              success : function(json) {
+                alert(json.message);  
+                $('#tabHead'+id).fadeOut();      
+                $('#tab'+id).fadeOut();      
+
+            },
+
+              error : function(xhr, status) {
+                alert('El usuario no fue eliminado');
+                //$('#tabHead'+id).fadeOut();
+                  console.log('Disculpe, existió un problema '+token);
+              },
+          });   
+        }
+    });
 
 
 

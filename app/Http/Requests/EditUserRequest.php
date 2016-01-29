@@ -28,9 +28,10 @@ class EditUserRequest extends Request {
 	 *
 	 * @return array
 	 */
-	public function rules()
+	public function rules(Request $ao)
 	{
 		//dd($this->route->getParameter('usuarios'));
+		dd($ao->get('codigo_postal'));
 		return [
 			'name' =>'required',
 			'email'=>'required|unique:users,email,'.$this->route->getParameter('usuarios'),

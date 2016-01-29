@@ -27,12 +27,13 @@ class EditCiudadRequest extends Request {
 	 */
 	public function rules()
 	{
-		dd($this->route->getParameter('codigo_postal'));
+		//dd($this->route->getParameter('one'));
+
 		return [
 			'continente' =>'required',
 			'pais'=>'required',
 			'nombre'=>'required',
-			'codigo_postal'=>'required|alpha_num|unique:ciudad,codigo_postal,'.$this->route->getParameter('codigo_postal'),
+			'codigo_postal'=>'required|alpha_num|unique:ciudad,codigo_postal,'.$this->route->getParameter('one'),
 		];
 	}
 

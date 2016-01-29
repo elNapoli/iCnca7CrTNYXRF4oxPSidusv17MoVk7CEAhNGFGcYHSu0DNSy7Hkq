@@ -6,6 +6,9 @@ use App\Ciudad;
 use App\Continente;
 use App\Pais;
 use Illuminate\Http\Request;
+use App\Http\Requests\EditCiudadRequest;
+use App\Http\Requests\CreateCiudadRequest;
+
 
 class CiudadesController extends Controller {
 
@@ -73,15 +76,10 @@ class CiudadesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function postStore(Request $request)
+	public function postStore(CreateCiudadRequest $request)
 	{
 
 
-		$this->validate($request, [
-        'pais'   => 'required',
-        'nombre' => 'required',
-
-    	]);
 		 
 		$ciudad = Ciudad::create($request->all());
 		$message    = 'El continente '.$request->get('nombre').'se almacenó correctamente';
@@ -108,6 +106,7 @@ class CiudadesController extends Controller {
 	public function getEdit($id)
 	{
 		$ciudad = Ciudad::getAllRelation($id);
+
 		$continentes = Continente::lists('nombre','id');
 		//$ciudad = Ciudad::where('id', '=', $id)->first();
 	
@@ -121,7 +120,7 @@ class CiudadesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function putUpdate($id, Request $request)
+	public function putUpdate($id, EditCiudadRequest $request)
 	{
 		$this->validate($request, [
         'nombre' => 'required|unique:ciudad,nombre,'.$id,

@@ -5,7 +5,7 @@
 
 <div class="form-group">
   	{!!  Form::label('pais', ' Nombre país ')!!}
-	{!!  Form::select('pais', [null=>'Seleccione un país'],null,array('class' => 'form-control'))!!}
+	{!!  Form::select('pais', [null=>'Seleccione país'],null,array('class' => 'form-control'))!!}
 </div>
 
 <div class="form-group">
@@ -27,9 +27,13 @@
 
 
 
-{!!Form::hidden('getUrl', url('ciudades/pais-by-continente'),array('id'=>'getUrl'));!!}
+{!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
+
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 
+@if(isset($ciudad))
+{!!Form::hidden('idPais', $ciudad->pais,array('id'=>'idPais'));!!}
+@endif
 
 
 @section('scripts')
@@ -41,10 +45,18 @@
 
 	$(document).ready(function(){
 
-			$('#continente').on('change',function(e){
-			e.preventDefault();
- 			getListForSelect($('#getUrl').val(), $('#getToken').val(), $("#continente").val(), 'pais');	
-			});
+		$('#continente').on('change',function(e){
+		e.preventDefault();
+			getListForSelect($('#getUrlPaisByContinente').val(), $('#getToken').val(), $("#continente").val(), 'pais');	
+		});
+
+		getListForSelect($('#getUrlPaisByContinente').val(),
+						 $('#getToken').val(), 
+						 $("#continente").val(), 
+						 'pais',
+						 '',
+						 $('#idPais').val());	
+	//	getListForSelect($('#getUrl').val(), $('#getToken').val(), $("#continente").val(), 'pais');	
 
 
 	});

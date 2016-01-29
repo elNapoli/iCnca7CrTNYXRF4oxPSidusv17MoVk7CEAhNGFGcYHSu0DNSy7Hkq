@@ -43,6 +43,7 @@ class Ciudad extends Model
                             ->join('continente','continente.id','=','pais.continente')
                             ->select('ciudad.id as ciudadID',
                                     'ciudad.nombre as ciudadNombre',
+                                    'ciudad.codigo_postal',
                                     'pais.id as paisID',
                                     'pais.nombre as paisNombre',
                                     'continente.id as continenteID',

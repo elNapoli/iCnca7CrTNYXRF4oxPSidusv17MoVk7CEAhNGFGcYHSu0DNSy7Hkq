@@ -119,6 +119,7 @@ function crearTablaUniversidad(idTabla,url){
 
         "ajax": url,
 
+
         "columns": [
             {
                 "class":          "details-control",
@@ -131,7 +132,15 @@ function crearTablaUniversidad(idTabla,url){
                     $(nTd).html("<a href='universidades/edit/"+oData.id+"'>"+oData.id+"</a>");
                 }
             },
-            { "data": "nombre" }
+            { "data": "nombre" },
+            { "data": null,
+                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                    $(nTd).html("<a href='universidades/edit/"+oData.id+"'> Edit</a>"+
+                                "<a href='#!' class='btn-delete' id='"+oData.id+"'> Del</a>"
+                        );
+
+                }
+            }
         ],
         "order": [[1, 'asc']]
     } );
@@ -192,7 +201,7 @@ function createInput(label,placeholder,id,value){
 function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
                    
     // create the tab
-    $('<li><a id ="wea" href="#tab'+arrayCampus.id+'" data-toggle="tab">Campus: '+arrayCampus.nombre+'</a></li>').appendTo('#tabs');
+    $('<li><a id ="tabHead'+arrayCampus.id+'" href="#tab'+arrayCampus.id+'" data-toggle="tab">Campus: '+arrayCampus.nombre+'</a></li>').appendTo('#tabs');
                         
     // create the tab content
     var content ='<div class="tab-pane" id="tab'+arrayCampus.id+'">';
@@ -216,7 +225,7 @@ function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
                                 '</div>';
 
 
-    content = content +'</form></div>';
+    content = content +'<a href="#!" class="btn-delete" id="'+arrayCampus.id+'">Eliminar campus</a></form></div>';
 
 
 

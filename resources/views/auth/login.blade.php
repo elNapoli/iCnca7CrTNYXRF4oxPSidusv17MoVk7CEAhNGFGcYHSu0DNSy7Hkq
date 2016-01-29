@@ -1,63 +1,58 @@
 @extends('layout.unregister.app_un')
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="/auth/login">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-mail</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+                    	@if (count($errors) > 0)
+							<div class="alert alert-danger">
+								<strong>Whoops!</strong> There were some problems with your input.<br><br>
+								<ul>
+									@foreach ($errors->all() as $error)
+										<li>{{ $error }}</li>
+									@endforeach
+								</ul>
 							</div>
-						</div>
+						@endif
+						<form role="form" method="POST" action="/auth/login">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Contraseña</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+                       		
+                            <fieldset>
+                                <div class="form-group">
+                                	<input type="email" placeholder="E-mail" class="form-control" name="email" autofocus value="{{ old('email') }}">
+                                </div>
+                                <div class="form-group">
+									<input type="password" placeholder="Password" class="form-control" name="password" value="">
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Recordar datos
-									</label>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember"> Recordar datos
+                                    </label>
+                                </div>
+                                <!-- Change this to a button or input when using this as a form -->
+                                <button type="submit" class="btn btn-lg btn-success btn-block">
 									Ingresar
 								</button>
-
 								<a href="/password/email">Olvidaste tu contraseña?</a>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+					
+
+
+			
+
 @endsection

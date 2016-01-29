@@ -19,23 +19,18 @@
     <!-- MetisMenu CSS -->
     {!! Html::Style('plugins/sb-admin/bower_components/metisMenu/dist/metisMenu.min.css')!!}
 
-    <!-- Timeline CSS -->
-    {!! Html::Style('plugins/sb-admin/dist/css/timeline.css')!!}
+
 
     <!-- Custom CSS -->
     {!! Html::Style('plugins/sb-admin/dist/css/sb-admin-2.css')!!}
 
-    <!-- Morris Charts CSS -->
-    {!! Html::Style('plugins/sb-admin/bower_components/morrisjs/morris.css')!!}
+
 
     <!-- Custom Fonts -->
     {!! Html::Style('plugins/sb-admin/bower_components/font-awesome/css/font-awesome.min.css')!!}
-    {!! Html::Style('plugins/dataTables/css/jquery.dataTables.css')!!}
-    {!! Html::Style('plugins/jquery-ui/jquery-ui.css')!!}
 
 
 
-    @yield('styles')
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -49,48 +44,14 @@
 
 <body>
 
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        @include('layout.nav_header')
-        @include('layout.unregister.nav_top_link_un')
-
-     
-        </nav>
 
 
-                <!-- /.col-lg-12 -->
-            </div>
-          <!--  include('layout.items')-->
-                                @yield('breadcrumbs')
-            <div class="content">
-                <div class="row">
-                    <div class="col-lg-12">
+    <div class="content">
+        @yield('content')
 
-                         
-                            <div class="panel-body">
-                                <div class="row">
-                                     @yield('content')
-                                </div>
-                                <!-- /.row (nested) -->
-                            </div>
-                            <!-- /.panel-body -->
-
-                        <!-- /.panel -->
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
-
-               
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
-
+       
     </div>
-    <!-- /#wrapper -->
+
 
     <!-- jQuery -->
     {!! Html::Script('plugins/sb-admin/bower_components/jquery/dist/jquery.min.js') !!}
@@ -101,18 +62,10 @@
     <!-- Metis Menu Plugin JavaScript -->
     {!! Html::Script('plugins/sb-admin/bower_components/metisMenu/dist/metisMenu.min.js') !!}
 
-    <!-- Morris Charts JavaScript -->
-    {!! Html::Script('plugins/sb-admin/bower_components/raphael/raphael-min.js') !!}
 
 
     <!-- Custom Theme JavaScript -->
     {!! Html::Script('plugins/sb-admin/dist/js/sb-admin-2.js') !!}
-    {!! Html::Script('plugins/dataTables/js/jquery.dataTables.js') !!}
-    {!! Html::Script('plugins/jquery-ui/jquery-ui.js') !!}
-    {!! Html::Script('js/funciones.js')!!}
-
-    @yield('scripts')
-
 </body>
 
 </html>

@@ -72,3 +72,21 @@ Breadcrumbs::register('continenteEditar', function($breadcrumbs, $continente)
     $breadcrumbs->parent('continentes');
     $breadcrumbs->push($continente->nombre, url('continentes/edit', $continente->id));
 });
+
+Breadcrumbs::register('beneficios', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Beneficios', url('beneficios/'));
+});
+
+Breadcrumbs::register('beneficiosCrear', function($breadcrumbs)
+{
+    $breadcrumbs->parent('beneficios');
+    $breadcrumbs->push('Crear', url('beneficios/create'));
+});
+
+Breadcrumbs::register('beneficiosEditar', function($breadcrumbs)
+{
+    $breadcrumbs->parent('beneficios');
+    $breadcrumbs->push($beneficio->nombre, url('beneficios/edit', $beneficio->id));
+});

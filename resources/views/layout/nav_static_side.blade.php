@@ -36,6 +36,10 @@
                     <li>
                         <a href="{{ url('admin/usuarios/') }}">Panel Administrador</a>
                     </li>
+
+                    <li>
+                        <a href="{{ url('beneficios/') }}">Beneficios</a>
+                    </li>
                 </ul>
                 <!-- /.nav-second-level -->
             </li>

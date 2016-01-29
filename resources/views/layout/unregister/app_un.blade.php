@@ -11,28 +11,17 @@
 
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
-
     <!-- Bootstrap Core CSS -->
     {!! Html::Style('plugins/sb-admin/bower_components/bootstrap/dist/css/bootstrap.min.css')!!}
-
 
     <!-- MetisMenu CSS -->
     {!! Html::Style('plugins/sb-admin/bower_components/metisMenu/dist/metisMenu.min.css')!!}
 
-
-
     <!-- Custom CSS -->
     {!! Html::Style('plugins/sb-admin/dist/css/sb-admin-2.css')!!}
 
-
-
     <!-- Custom Fonts -->
     {!! Html::Style('plugins/sb-admin/bower_components/font-awesome/css/font-awesome.min.css')!!}
-
-
-
-
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -44,14 +33,9 @@
 
 <body>
 
-
-
-    <div class="content">
-        @yield('content')
-
-       
+    <div class="container">
+ @yield('content')
     </div>
-
 
     <!-- jQuery -->
     {!! Html::Script('plugins/sb-admin/bower_components/jquery/dist/jquery.min.js') !!}
@@ -62,10 +46,9 @@
     <!-- Metis Menu Plugin JavaScript -->
     {!! Html::Script('plugins/sb-admin/bower_components/metisMenu/dist/metisMenu.min.js') !!}
 
-
-
     <!-- Custom Theme JavaScript -->
     {!! Html::Script('plugins/sb-admin/dist/js/sb-admin-2.js') !!}
+
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 @extends('layout.unregister.app_un')
 
 @section('content')
-
+@include('auth.modal_register')
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
@@ -41,6 +41,10 @@
 									Ingresar
 								</button>
 								<a href="/password/email">Olvidaste tu contraseña?</a>
+                                <a href="/auth/register">Registrar</a>
+                                <a  href='#!' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                       Registrar
+                                </a>
                             </fieldset>
                         </form>
                     </div>
@@ -50,9 +54,7 @@
 
 
 
-					
 
 
-			
 
 @endsection

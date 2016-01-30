@@ -13,7 +13,7 @@ class Pregrado extends Model
 
 
     // una postulación de  Pregrado corresponde a un postulante
-    public function postulante()
+    public function postulanteR()
     {
         return $this->belongsTo('App\Postulante','postulante');
     }

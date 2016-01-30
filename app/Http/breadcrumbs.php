@@ -85,8 +85,14 @@ Breadcrumbs::register('beneficiosCrear', function($breadcrumbs)
     $breadcrumbs->push('Crear', url('beneficios/create'));
 });
 
-Breadcrumbs::register('beneficiosEditar', function($breadcrumbs)
+Breadcrumbs::register('beneficioEditar', function($breadcrumbs, $beneficio)
 {
     $breadcrumbs->parent('beneficios');
     $breadcrumbs->push($beneficio->nombre, url('beneficios/edit', $beneficio->id));
+});
+
+Breadcrumbs::register('asistentes', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Asistentes', url('asistentes/'));
 });

@@ -12,7 +12,7 @@ class Beneficio extends Model
 
 
 
-    public function Asistente()
+    public function detalleBeneficioR()
     {
     	return $this->hasMany('App\Asistente','beneficio'); //Campo en tabla foranea
     }

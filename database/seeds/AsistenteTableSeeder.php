@@ -19,21 +19,15 @@ class AsistenteTableSeeder extends Seeder
 
         foreach ($preUach as $item){
 
-        	$numBeneficio = $faker->numberBetween($min = 1, $max = 5);
-
-        	for($i = 0; $i < $numBeneficio; $i++){
-
         		$asistente = new Asistente();
 
-
-    			$asistente->beneficio    = $faker->numberBetween($min = 1, $max = 20);
 				$asistente->postulante   = $item->postulante;
 				$asistente->nombre       = $faker->lastName.' '. $faker->firstName;
 				$asistente->indicaciones = $faker->paragraph($nbSentences = 3, $variableNbSentences = true); 
 
 				$asistente->save();
 
-        	}
+        	
         }
     }
 }

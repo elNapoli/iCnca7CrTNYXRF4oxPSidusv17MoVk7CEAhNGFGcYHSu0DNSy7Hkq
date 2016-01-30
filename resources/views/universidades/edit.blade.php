@@ -12,17 +12,17 @@
 <div class="col-md-1" ></div>
     <div class="col-md-7" >
 
-		@include('partials.error')
+    @include('partials.successAjax')
     @include('universidades.partials.botonEliminarUniversidad')
 
     {!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=> 'formUniversidadStore'])!!}
       <div class="form-group">
-          <a href="#!" id="agregarCiudadModal" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#myModal"> Agregar Campus</a>
+          <a href="#!" id="agregarCiudadModal" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#modal_campus_universidad"> Agregar Campus</a>
     </div>
 
 		@include('universidades.partials.tabs')
 
-		<button type="submit" class="btn btn-default">Editar datos de la universidad</button>
+		<a href="#!" id="editarUniversidad" class="btn btn-default">Editar datos de la universidad</a>
 		{!!Form::close()!!}
 	</div>
 
@@ -30,6 +30,8 @@
 
 {!! Form::close()!!}
   {!!Form::hidden('urlCampusDestroy', url('universidades/destroy-campus'),array('id'=>'urlCampusDestroy'));!!}
+  {!!Form::hidden('urlUniversidadUpdate', url('universidades/update'),array('id'=>'urlUniversidadUpdate'));!!}
+
 
 @endsection
 
@@ -46,7 +48,7 @@
   $(document).ready(function(){
 
 
-
+    $(".alert").hide();
     traerInfoUniversidad('infoUniversidad',
                         $('#getUrlGuardarCampus').val(),
                         $('#getUrlPaisContinente').val(),
@@ -59,7 +61,59 @@
         });
 
 
-        
+        $('#editarUniversidad').on('click',function(e){
+
+          var arrayCampus = new Array();
+          var idUniversidad = JSON.parse($('#infoUniversidad').val())[0].id;
+          var url = $('#urlUniversidadUpdate').val();
+          var token = $('#getToken').val();
+          $(".tab-pane").each(function (index) 
+          { 
+              var idTab = $(this).attr('id');
+
+                var idCampus =idTab.substr(3,idTab.length);
+                var campus = new Object();
+                campus.id_universidad = idUniversidad;
+                campus.nombre_universidad = $('#nombre_universidad').val();
+                campus.id = idCampus;
+                campus.nombre = $('#nombre'+idCampus).val();
+                campus.telefono = $('#telefono'+idCampus).val();
+                campus.fax = $('#fax'+idCampus).val();
+                campus.sitio_web = $('#sitio_web'+idCampus).val();
+                campus.ciudad = $('#ciudad'+idCampus).val();
+                arrayCampus[index] = campus;
+              
+          }) ;
+          arrayCampus.shift();
+          $.ajax({
+              // En data puedes utilizar un objeto JSON, un array o un query string
+             data: {
+                "_token": token,
+                "infoUniversidad": JSON.stringify(arrayCampus)
+              },
+
+             
+              //Cambiar a type: POST si necesario
+              type: "post",
+              // Formato de datos que se espera en la respuesta
+              dataType: "json",
+              // URL a la que se enviará la solicitud Ajax
+              url:url ,
+              success : function(json) {   
+
+            },
+
+              error : function(xhr, status) {
+                alert('El usuario no fue eliminado');
+                //$('#tabHead'+id).fadeOut();
+                  console.log('Disculpe, existió un problema '+token);
+              },
+          });  
+
+
+        });
+
+
         $('#pais').on('change',function(e){
         e.preventDefault();
 
@@ -103,9 +157,12 @@
               // URL a la que se enviará la solicitud Ajax
               url:url ,
               success : function(json) {
-                alert(json.message);  
-                $('#tabHead'+id).fadeOut();      
-                $('#tab'+id).fadeOut();      
+                $(".alert-success").html("El registro fue eliminado exitosamente").show();
+                $(".alert-danger").hide();
+                $('#tabHead'+id).remove();
+                $('#tab'+id).remove();
+                //$().fadeOut();      
+               // $('#tab'+id).fadeOut();      
 
             },
 

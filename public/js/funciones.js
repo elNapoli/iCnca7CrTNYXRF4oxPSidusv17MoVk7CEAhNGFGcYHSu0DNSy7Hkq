@@ -287,7 +287,7 @@ function traerInfoUniversidad(idInput,urlStoreCampus, urlConsultaSelectPais,urlC
 
 function CrearTabPorCampus(urlStoreCampus,token,form,idPais,ciudadByPais){
 
-
+      var html = "";
       $.ajax({
         // En data puedes utilizar un objeto JSON, un array o un query string
        data:form.serialize(),
@@ -297,6 +297,7 @@ function CrearTabPorCampus(urlStoreCampus,token,form,idPais,ciudadByPais){
         dataType: "json",
         // URL a la que se enviará la solicitud Ajax
         url:urlStoreCampus ,
+
         success : function(json) {
             //console.log(json);
           var i = true;
@@ -315,6 +316,12 @@ function CrearTabPorCampus(urlStoreCampus,token,form,idPais,ciudadByPais){
               crearTab(campusSede,urlStoreCampus,ciudadByPais,token);
               i = false;
             }
+            $(".alert-success").html("El registro fue guardado exitosamente").show();
+            $(".alert-danger").hide();
+            //reseteo el formulario
+            $('#holamundo').trigger("reset");
+
+            $('#modal_campus_universidad').modal('hide');
 
           //alert();
       
@@ -322,7 +329,13 @@ function CrearTabPorCampus(urlStoreCampus,token,form,idPais,ciudadByPais){
         },
 
         error : function(xhr, status) {
-            console.log('Disculpe, existió un problema '+token);
+            html += "<p> Porfavor corregir los siguientes errores </p>";
+            for(var key in xhr.responseJSON)
+            {
+                html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+            }
+            $(".alert-success").hide()
+            $(".alert-danger").html(html).show();
         },
 
     });

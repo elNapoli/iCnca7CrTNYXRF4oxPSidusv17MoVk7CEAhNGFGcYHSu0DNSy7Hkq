@@ -1,0 +1,35 @@
+<?php namespace App\Http\Requests;
+
+use App\Http\Requests\Request;
+
+
+class CreateUniversidadRequest extends Request {
+
+	/**
+	 * Determine if the user is authorized to make this request.
+	 *
+	 * @return bool
+	 */
+	public function authorize()
+	{
+		return true;
+	}
+
+	/**
+	 * Get the validation rules that apply to the request.
+	 *
+	 * @return array
+	 */
+	public function rules()
+	{
+
+		return [
+			'nombre_universidad' =>'required',
+			'nombre' =>'required',
+			'telefono'=>'required',
+			'sitio_web'=>'active_url',
+			'ciudad'=>'required',
+		];
+	}
+
+}

@@ -2,6 +2,9 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateUniversidadRequest;
+use App\Http\Requests\EditUniversidadRequest;
+use App\Http\Requests\CreateCampusRequest;
 use App\Universidad;
 use App\CampusSede;
 use Illuminate\Http\Request;
@@ -44,22 +47,35 @@ class UniversidadesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function postStore(Request $request)
+	public function postStore(CreateUniversidadRequest $request)
 	{
-		$universidad         = new Universidad();
-		$universidadID = $universidad->insertGetId(array('nombre'=> $request->get('nombre_universidad')));
+		if($request->ajax()){
+			$universidad         = new Universidad();
+			$universidadID = $universidad->insertGetId(array('nombre'=> $request->get('nombre_universidad')));
 
-		$campus_sede = new CampusSede($request->all());
-		$campus_sede->universidad = $universidadID;
-		$campus_sede->ciudad = $request->get('ciudad');
+			$campus_sede = new CampusSede($request->all());
+			$campus_sede->universidad = $universidadID;
+			$campus_sede->ciudad = $request->get('ciudad');
 
-		$campus_sede->save();
+			$campus_sede->save();
+			\Session::flash('message', 'se Guardó la universidad Correctamente');
+			return response()->json([
+				'message'=> 'se Guardó la universidad Correctamente'
+				]);
 
-		return redirect('universidades');
+		}
+		else
+		{
+
+			return "no ajax";
+		}
+
+
+
 
 	}
 
-	public function postStoreCampus(Request $request){
+	public function postStoreCampus(CreateCampusRequest $request){
 		if($request->ajax()){
 				$camp  = CampusSede::create($request->all());
 				$campusByUniversidad = CampusSede::where('universidad',$request->get('universidad'))->orderBy('id','desc')->get();
@@ -109,8 +125,37 @@ class UniversidadesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function putUpdate($id)
+	public function postUpdate(Request $request)
 	{
+		if($request->ajax()){
+			$json =json_decode($request->get('infoUniversidad'));
+			$id_universidad = $json[0]->id_universidad;
+			$universidad = Universidad::findOrFail($id_universidad);
+			$universidad->nombre =  $json[0]->nombre_universidad;
+			$universidad->save();
+
+			foreach ($json as $key => $value) {
+				$campus_sede = CampusSede::findOrFail($json[$key]->id);
+
+				$campus_sede->nombre    = $json[$key]->nombre;
+				$campus_sede->telefono  = $json[$key]->telefono;
+				$campus_sede->fax       = $json[$key]->fax;
+				$campus_sede->sitio_web = $json[$key]->sitio_web;
+				$campus_sede->ciudad    = $json[$key]->ciudad;
+
+				$campus_sede->save();
+
+			}
+			return response()->json([
+				'message'=> 'la Universidad se actualizó correctamente'
+				]);
+
+		}
+		else
+		{
+
+			return "no ajax";
+		}
 	}
 
 	/**

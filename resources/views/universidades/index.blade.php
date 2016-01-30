@@ -12,6 +12,7 @@
         <div class="panel panel-default">
 
             @include('partials.success')
+            @include('partials.successAjax')
           <div class="panel-heading"><a class="btn-info btn" href="{{ url('universidades/create') }}">Crear universidad</a></div>
 
           <!-- Table -->
@@ -43,6 +44,7 @@
  
 $(document).ready(function() {
 
+    $('.alert-ajax').hide();
 
     crearTablaUniversidad('#tableUniversidad',$('#getUrl').val());
 
@@ -69,7 +71,8 @@ $(document).ready(function() {
               // URL a la que se enviará la solicitud Ajax
               url:url ,
               success : function(json) {
-                alert(json.message);        
+                $(".alert-success").html("El registro fue guardado exitosamente").show();
+                $(".alert-danger").hide();
               row.fadeOut(); //solo se elimina cuando se completa transaccion
             },
 

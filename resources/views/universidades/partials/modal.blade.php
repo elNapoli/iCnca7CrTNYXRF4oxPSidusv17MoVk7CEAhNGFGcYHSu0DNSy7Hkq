@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_campus_universidad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,6 +8,7 @@
             </div>
             {!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=>'holamundo'])!!}
             <div class="modal-body">
+                @include('partials.errorAjax')
                 <div class="form-group">
 
                     {!!  Form::label('nombre', ' Nombre del campus ');!!}
@@ -44,7 +45,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnAdd">Guardar Campus</button>
+                <button type="button" class="btn btn-primary" id="btnAdd">Guardar Campus</button>
             </div>
         </div>
         <!-- /.modal-content -->

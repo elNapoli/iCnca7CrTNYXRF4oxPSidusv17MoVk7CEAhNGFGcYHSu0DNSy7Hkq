@@ -56,6 +56,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AsignaturaHomologadaTableSeeder::class);
         $this->call(BeneficioTableSeeder::class);
         $this->call(AsistenteTableSeeder::class);
+        $this->call(DetalleBeneficioTableSeeder::class);
         $this->call(CindaTableSeeder::class);
 
 

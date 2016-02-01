@@ -3,20 +3,27 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Beneficio;
+use App\Asistente;
 
-class BeneficiosController extends Controller {
+class AsistentesController extends Controller {
 
 /**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
+
+	public function getPrueba()
+	{
+		$asistentes = Asistente::with('preUachR.pregradoR.postulanteR')->get();
+		dd($asistentes->toArray());
+	}
+
 	public function getIndex()
 	{
-		$beneficios = Beneficio::all();
+		$asistentes = Asistente::all();
 
-		return view('beneficios.index', compact('beneficios'));
+		return view('asistentes.index', compact('asistentes'));
 	}
 
 	/**
@@ -41,7 +48,7 @@ class BeneficiosController extends Controller {
         'nombre' => 'required|string|unique:beneficio,nombre',
     	]);
 		 
-		$beneficio = Beneficio::create($request->all());
+		$beneficio = Asistente::create($request->all());
 		$message    = 'El beneficio '.$request->get('nombre').'se almacenó correctamente';
 		\Session::flash('message', $message);
 
@@ -64,7 +71,7 @@ class BeneficiosController extends Controller {
 	 */
 	public function getEdit($id)
 	{
-		$beneficio = Beneficio::findOrFail($id);
+		$beneficio = Asistente::findOrFail($id);
         return view('beneficios.edit',compact('beneficio'));
 	}
 
@@ -81,10 +88,10 @@ class BeneficiosController extends Controller {
         'nombre' => 'required|string|unique:beneficio,nombre,'.$id,
     	]);
 
-		$beneficio = Beneficio::findOrFail($id);
+		$beneficio = Asistente::findOrFail($id);
 		$beneficio->fill($request->all());
         $beneficio->save();
-        \Session::flash('message', 'El Beneficio se Editó correctamente');
+        \Session::flash('message', 'El Asistente se Editó correctamente');
 		return redirect('beneficios');
         //return redirect()->route('beneficios.index');
 	}
@@ -98,7 +105,7 @@ class BeneficiosController extends Controller {
 	public function deleteDestroy($id,Request $request)
 	{
 		//abort(500);
-		$beneficio = Beneficio::findOrFail($id);
+		$beneficio = Asistente::findOrFail($id);
  		$beneficio->delete();
  		$message = ' El beneficio '.$beneficio->nombre.' Fue eliminado';
  	//	dd($request->all());

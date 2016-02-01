@@ -9,16 +9,17 @@ class Asistente extends Model
     protected $table = 'asistente';
     public $timestamps = false;
     protected $fillable = ['nombre',
+                           'postulante',
     					   'indicaciones']; 
 
 
 
-    public function Beneficio()
+    public function detalleBeneficioR()
     {
-    	return $this->belongsTo('App\Beneficio','beneficio'); //Id local
+    	return $this->hasMany('App\Beneficio','id_a'); 
     }
 
-    public function PreUach()
+    public function preUachR()
     {
         return $this->belongsTo('App\PreUach','postulante'); //Id local
     }

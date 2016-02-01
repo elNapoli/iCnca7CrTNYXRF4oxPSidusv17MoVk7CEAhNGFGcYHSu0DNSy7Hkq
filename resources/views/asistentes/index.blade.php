@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('Dashboard') Beneficios @endsection
+@section('Dashboard') Asistente @endsection
 
 @section('content')
 
@@ -12,10 +12,10 @@
 		<div class="panel panel-default">
 
 			@include('partials.success')
-		  <div class="panel-heading"><a class="btn-info btn" href="{{ url('beneficios/create')}}">Crear beneficio</a></div>
+		  <div class="panel-heading"><a class="btn-info btn" href="{{ url('asistentes/create')}}">Crear asistente</a></div>
 
 		  <!-- Table -->
-			@include('beneficios.partials.table')
+			@include('asistentes.partials.table')
 
 
 		</div>
@@ -24,17 +24,17 @@
 </div>
 
 
-{!! Form::open(['url'=>['beneficios/destroy',':USER_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
+{!! Form::open(['url'=>['asistentes/destroy',':USER_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
 
 {!! Form::close()!!}
-	{!!Form::hidden('urlContinenteDestroy', url('beneficios/destroy'),array('id'=>'urlBeneficioDestroy'));!!}
+	{!!Form::hidden('urlAsistenteDestroy', url('asistentes/destroy'),array('id'=>'urlAsistenteDestroy'));!!}
 
 
 @endsection
 
 
 @section('breadcrumbs')
-{!! Breadcrumbs::render('beneficios') !!}
+{!! Breadcrumbs::render('asistentes') !!}
 @endsection
 
 @section('scripts')
@@ -52,7 +52,7 @@
 					var row   = $(this).parents('tr');
 					var id    = row.data('id'); //captura el id de la fila seleccionada
 					var form  = $('#form-delete'); //traigo la id
-					var url   = $('#urlBeneficioDestroy').val()+'/'+id; //remplazo el placeholder USER_ID con la id
+					var url   = $('#urlAsistenteDestroy').val()+'/'+id; //remplazo el placeholder USER_ID con la id
 					var data  = form.serialize();
 
 
@@ -72,7 +72,7 @@
 						},
 
 					    error : function(xhr, status) {
-					    	alert('El usuario no fue eliminado');
+					    	alert('El asistente no fue eliminado');
 							row.show();
 					        console.log('Disculpe, existió un problema '+token);
 					    },
@@ -81,7 +81,7 @@
 
 			});
 
-		    $('#tableBeneficio').DataTable( {
+		    $('#tableAsistente').DataTable( {
 		        "language": {
 		            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 		        }

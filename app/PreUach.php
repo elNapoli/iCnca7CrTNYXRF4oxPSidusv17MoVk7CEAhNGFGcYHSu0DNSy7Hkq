@@ -17,7 +17,7 @@ class PreUach extends Model
                             'direccion'];
 
     // un Postulante esta en una ciudad
-    public function pregrado()
+    public function pregradoR()
     {
         return $this->belongsTo('App\Pregrado','postulante');
     }

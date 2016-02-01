@@ -15,9 +15,6 @@ class CreateAsistenteTable extends Migration
         Schema::create('asistente', function (Blueprint $table) {
             $table->increments('id');
 
-            //Foreign Key to BENEFICIO
-            $table->integer('beneficio')->unsigned();
-
             //Foreign Key to PRE_UACH
             $table->integer('postulante')->unsigned();
 

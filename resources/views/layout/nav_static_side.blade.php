@@ -40,6 +40,10 @@
                     <li>
                         <a href="{{ url('beneficios/') }}">Beneficios</a>
                     </li>
+
+                    <li>
+                        <a href="{{ url('postulacion/') }}">postulacion</a>
+                    </li>
                 </ul>
                 <!-- /.nav-second-level -->
             </li>

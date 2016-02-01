@@ -24,6 +24,7 @@ Route::controllers([
 	'ciudades' => 'CiudadesController',
 	'facultades' => 'FacultadesController',
 	'beneficios' => 'BeneficiosController',
+	'postulacion' => 'PostulacionController',
 ]);
 
 Route::group(['prefix'=>'admin', 'middleware' => ['auth','is_admin'], 'namespace' => 'Admin'],function(){

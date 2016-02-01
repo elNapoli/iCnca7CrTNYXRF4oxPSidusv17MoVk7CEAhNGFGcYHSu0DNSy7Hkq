@@ -26,6 +26,7 @@ class PrePostulacionUniversidadTableSeeder extends Seeder
 	      
 
             $pUniversidad->postulante     = $item->postulante;
+            $pUniversidad->anio           = $faker->year($max = 'now'); 
             $pUniversidad->semestre       =	$semestre[$faker->numberBetween($min = 0, $max = 2)];
             $pUniversidad->desde          = $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now');
             $pUniversidad->hasta          = $faker->dateTimeBetween($startDate = $desde, $endDate = 'now');

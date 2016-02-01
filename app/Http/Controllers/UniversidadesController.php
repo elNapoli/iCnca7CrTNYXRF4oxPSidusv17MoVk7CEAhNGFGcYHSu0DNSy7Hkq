@@ -9,6 +9,7 @@ use App\Universidad;
 use App\CampusSede;
 use Illuminate\Http\Request;
 use App\Continente;
+use App\Pais;
 
 class UniversidadesController extends Controller {
 
@@ -20,18 +21,13 @@ class UniversidadesController extends Controller {
 
 
 	public function getDebug(){
-			return  CampusSede::join('universidad',
-									'campus_sede.universidad','=',
-									'universidad.id')
-									->join('ciudad','campus_sede.ciudad','=','ciudad.id')
-									->where('ciudad.pais',1)
-									->select('universidad.id','universidad.nombre')
-									->groupBy('idasdfasdf')
-									->get()->toJson();
+		$var = 1;
+		$reno = Universidad::where('pais',$var)->with('campusSedes')->get()->toJson();
+		return $reno;
+		/*$reno = Universidad::with(['campusSedes.ciudadR' => function ($query) use ($var) {
+    $query->where('ciudad.pais',$var);
 
-
-
-
+}])->get();*/
 	}
 	public function getIndex()
 	{
@@ -41,23 +37,18 @@ class UniversidadesController extends Controller {
 
 	public function postUniversidadByPais(Request $request){
 
-
-	
 		if($request->ajax()){
-			return  CampusSede::join('universidad',
-									'campus_sede.universidad','=',
-									'universidad.id')
-									->join('ciudad','campus_sede.ciudad','=','ciudad.id')
-									->where('ciudad.pais',$request->get('idBuscar'))
-									->select('universidad.id','universidad.nombre')
-									->get()->toJson();
 
+		 	
+
+			return Universidad::where('pais',$request->get('idBuscar'))->with('campusSedes')->get()->toJson();
+			
 		}
-		else
-		{
+		else{
 
 			return "no ajax";
 		}
+	
 	}
 	/**
 	 * Show the form for creating a new resource.

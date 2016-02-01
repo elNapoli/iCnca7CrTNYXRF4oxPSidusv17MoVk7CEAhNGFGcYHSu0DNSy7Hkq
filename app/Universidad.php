@@ -20,6 +20,12 @@ class Universidad extends Model
         return $this->hasMany('App\CampusSede','universidad');
     }
 
+    public function paisR()
+    {
+        return $this->belongsTo('App\Pais','pais');
+    }
+
+
 
 
 }

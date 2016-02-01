@@ -41,5 +41,9 @@ class PostulacionController extends Controller {
 				]);
 	}
 
+	public function getPrueba(){
+
+		return view('postulacion.prueba');
+	}
 
 }

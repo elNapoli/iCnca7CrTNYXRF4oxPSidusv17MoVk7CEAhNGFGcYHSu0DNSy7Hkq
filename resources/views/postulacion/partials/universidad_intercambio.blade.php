@@ -9,17 +9,12 @@
 
             <div class="form-group">
                 {!!  Form::label('pais', ' Nombre país ')!!}
-                {!!  Form::select('pais', [null=>'Seleccione un país'],null,array('class' => 'pais form-control'))!!}
+                {!!  Form::select('pais', [null=>'Seleccione un país'],null,array('class' => 'universidad form-control'))!!}
             </div>
 
             <div class="form-group">
-                {!!  Form::label('ciudad', ' Nombre de la ciudad ')!!}
-                {!!  Form::select('ciudad', [null=>'Seleccione ciudad'],null,array('class' => 'form-control ciudad'))!!}
-            </div>
-
-            <div class="form-group">
-                {!!  Form::label('universidad', 'Seleccione la universidad  ')!!}
-                {!!  Form::select('universidad', [null=>'Seleccione la universidad'],null,array('class' => 'form-control miCiudad'))!!}
+                {!!  Form::label('campus_sede', 'Seleccione la universidad  ')!!}
+                {!!  Form::select('campus_sede', [null=>'Selecasdfasdfcione la universidad'],null,array('class' => 'form-control'))!!}
             </div>
 
 

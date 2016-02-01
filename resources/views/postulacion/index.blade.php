@@ -74,7 +74,9 @@
 		$(document).ready(function() {
 
 			$('.continente').on('change',function(e){
+
 			e.preventDefault();
+
 				getListForSelect($('#getUrlPaisByContinente').val(), $('#getToken').val(), $(this).val(), 'pais','','','active');	
 			});
    
@@ -84,6 +86,66 @@
 	        e.preventDefault();
 
 	        getListForSelect($('#gerUrlUniversidadByPais').val(), $('#getToken').val(), $(this).val(), 'ciudad','','','active');    
+	        });
+
+	        $('.universidad').on('change',function(e){
+				$.ajax({
+				    // En data puedes utilizar un objeto JSON, un array o un query string
+				   data: {
+						"_token": $('#getToken').val(),
+						"idBuscar": $(this).val(),
+						"nomTable": 'universidad'
+					},
+				    //Cambiar a type: POST si necesario
+				    type: "post",
+				    // Formato de datos que se espera en la respuesta
+				    dataType: "json",
+				    // URL a la que se enviará la solicitud Ajax
+				    url:$('#gerUrlUniversidadByPais').val() ,
+				    success : function(json) {
+
+			            if(tabActive === ""){
+
+
+
+			                $(idSelector).empty();
+			                $(idSelector).append("<option value=''>Seleccione "+nomSelect2+"</option>");
+			                $.each(json, function(index, subCatObj){
+
+			                $(idSelector).append("<option value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
+			        
+			                
+			                });
+			                $(idSelector).find('option').removeAttr("selected");
+			                //$(idSelector).val(optionSelected);
+
+			                $(idSelector+" option[value='"+optionSelected+"']").attr("selected","selected");
+			            }
+			            else{
+
+			                $("."+tabActive).find(idSelector).empty();
+			                $("."+tabActive).find(idSelector).append("<option value=''>Seleccione "+nomSelect2+"</option>");
+			                $.each(json, function(index, subCatObj){
+
+			                $("."+tabActive).find(idSelector).append("<option value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
+			        
+			                
+			                });
+			                $("."+tabActive).find(idSelector).find('option').removeAttr("selected");
+			                //$(idSelector).val(optionSelected);
+			                $("."+tabActive).find(idSelector).val(optionSelected);
+			                //$($("."+tabActive).find(idSelector)+" option[value='"+optionSelected+"']").attr("selected","selected");
+			            }
+			           // $(idSelector).val(optionSelected);
+			            //$(idSelector).change();
+					},
+
+				    error : function(xhr, status) {
+				        console.log('Disculpe, existió un problema '+token);
+				    },
+				});
+
+	          
 	        });
 
 			$('.input-daterange input').each(function() {

@@ -42,11 +42,7 @@
                     </li>
 
                     <li>
-<<<<<<< HEAD
                         <a href="{{ url('postulacion/') }}">postulacion</a>
-=======
-                        <a href="{{ url('asistentes/') }}">Asistente</a>
->>>>>>> fbd6c7da0d180fdb3532d01b5c81f26cf7e00606
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

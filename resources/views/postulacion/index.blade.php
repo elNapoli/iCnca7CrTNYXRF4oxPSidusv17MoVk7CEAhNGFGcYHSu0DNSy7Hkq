@@ -23,14 +23,9 @@
 			<div class="tab-content">
 
 				<div class="tab-pane fade in active" id="datosPersonales">
-                    {!! Form::open(['url'=>'ciudades/store', 'method'=>'POST'])!!}
 
                     @include('postulacion.partials.datos_personales')
 
-
-
-
-                    {!!Form::close()!!}
 				</div>
 
 				<div class="tab-pane fade " id="estudios">
@@ -56,9 +51,14 @@
         </div>
         <!-- /.panel-body -->
     </div>
+                   <a href="#!" class='btn btn-outline btn-default' id='guardarPostulacion'>Guardar postulación</a>
     <!-- /.panel -->
 </div>
 
+{!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
+{!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
+{!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
+{!!Form::hidden('gerUrlUniversidadByPais', url('universidades/universidad-by-pais'),array('id'=>'gerUrlUniversidadByPais'));!!}
 
 @endsection
 
@@ -71,14 +71,75 @@
     {!! Html::Script('plugins/bootstrap/js/bootstrap-datepicker.js')!!}
     <script type="text/javascript">
 
-        	$(document).ready(function() {
+		$(document).ready(function() {
 
-				$('.input-daterange input').each(function() {
-				    $(this).datepicker("clearDates");
+			$('.continente').on('change',function(e){
+			e.preventDefault();
+				getListForSelect($('#getUrlPaisByContinente').val(), $('#getToken').val(), $(this).val(), 'pais','','','active');	
+			});
+   
+      			
+
+	        $('.pais').on('change',function(e){
+	        e.preventDefault();
+
+	        getListForSelect($('#gerUrlUniversidadByPais').val(), $('#getToken').val(), $(this).val(), 'ciudad','','','active');    
+	        });
+
+			$('.input-daterange input').each(function() {
+			    $(this).datepicker("clearDates");
+			});
+
+			$('.datePicker').datepicker({
+
+				autoclose:true,
+				format:'yyyy/mm/dd',
+
+			});
+
+			$('#guardarPostulacion').on('click',function(e){
+
+				var data = $(".active").find('input,select').serialize();
+				var url  = $(".active").find('#urlStoreInformacion').val();
+	          	$.ajax({
+		              // En data puedes utilizar un objeto JSON, un array o un query string
+             		data: data,
+
+		             
+	              	//Cambiar a type: POST si necesario
+	              	type: "post",
+	              	// Formato de datos que se espera en la respuesta
+	              	dataType: "json",
+	              	// URL a la que se enviará la solicitud Ajax
+	              	url:url ,
+              		success : function(json) {   
+              			//alert("ho");
+      			  		$('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>La postulación se guardo exitosamente</div>');
+	            	},
+
+              		error : function(xhr, status) {
+              			var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                		for(var key in xhr.responseJSON)
+			            {
+			                html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+			            }
+          			  	$('#message').html(html+'</div>');
+                  
+             		},
+						/*var id;
+						$(".active input").each(function(e){	
+						  id = this.id;
+						  // show id 
+						  console.log("#"+id);
+						  // show input value 
+						  console.log(this.value);
+						  // disable input if you want
+						  //$("#"+id).prop('disabled', true);
+						});*/
+
 				});
-
-				$('.datePicker').datepicker("clearDates");
-        	});
+			});
+		});
 
     </script>
 @endsection

@@ -15,7 +15,19 @@ class CiudadTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
+        $ciudad = new Ciudad();
 
+        $ciudad->nombre        = 'Valdivia';
+        $ciudad->pais          = '1';
+        $ciudad->codigo_postal = $faker->postcode;
+        $ciudad->save();
+
+        $ciudad = new Ciudad();
+        $ciudad->nombre        = 'Puerto Montt';
+        $ciudad->pais          = '1';
+        $ciudad->codigo_postal = $faker->postcode;
+        $ciudad->save();
+        
         for($i = 0; $i < 500; $i++)
         {
             $ciudad = new Ciudad();

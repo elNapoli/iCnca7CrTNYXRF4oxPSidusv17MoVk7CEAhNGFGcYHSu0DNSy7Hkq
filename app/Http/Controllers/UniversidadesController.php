@@ -20,6 +20,15 @@ class UniversidadesController extends Controller {
 
 
 	public function getDebug(){
+			return  CampusSede::join('universidad',
+									'campus_sede.universidad','=',
+									'universidad.id')
+									->join('ciudad','campus_sede.ciudad','=','ciudad.id')
+									->where('ciudad.pais',1)
+									->select('universidad.id','universidad.nombre')
+									->groupBy('idasdfasdf')
+									->get()->toJson();
+
 
 
 
@@ -29,6 +38,27 @@ class UniversidadesController extends Controller {
  		return view('universidades.index');
 	}
 
+
+	public function postUniversidadByPais(Request $request){
+
+
+	
+		if($request->ajax()){
+			return  CampusSede::join('universidad',
+									'campus_sede.universidad','=',
+									'universidad.id')
+									->join('ciudad','campus_sede.ciudad','=','ciudad.id')
+									->where('ciudad.pais',$request->get('idBuscar'))
+									->select('universidad.id','universidad.nombre')
+									->get()->toJson();
+
+		}
+		else
+		{
+
+			return "no ajax";
+		}
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *

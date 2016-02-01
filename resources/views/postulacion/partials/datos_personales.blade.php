@@ -1,5 +1,5 @@
 <div class="panel-body">
-    <div class="row">
+        <div id="message"></div>
         <div class="col-lg-6">
             <div class="form-group">
                 {!!  Form::label('apellido_paterno', 'Apellido paterno ')!!}
@@ -56,8 +56,8 @@
 
 
             <div class="form-group">
-                {!!  Form::label('email', 'E-mail ')!!}
-                {!! Form::text('email',null,array('class' => 'form-control','placeholder'=>'Ej: juan.perez@gmail.com'));!!}
+                {!!  Form::label('email_personal', 'E-mail ')!!}
+                {!! Form::text('email_personal',null,array('class' => 'form-control','placeholder'=>'Ej: juan.perez@gmail.com'));!!}
             </div>
 
             <div class="form-group">
@@ -72,18 +72,18 @@
         <div class="col-lg-6">
             <div class="form-group">
                 {!!  Form::label('continente', ' Nombre Continente ')!!}
-                {!!  Form::select('continente', [null=>'Seleccione un continente'],null,array('class' => 'form-control'))!!}
+                {!!  Form::select('continente', [null=>'Seleccione un continente']+$continentes,null,array('class' => 'continente form-control'))!!}
             </div>
 
 
             <div class="form-group">
                 {!!  Form::label('pais', ' Nombre país ')!!}
-                {!!  Form::select('pais', [null=>'Seleccione un país'],null,array('class' => 'form-control'))!!}
+                {!!  Form::select('pais', [null=>'Seleccione un país'],null,array('class' => 'pais form-control'))!!}
             </div>
 
             <div class="form-group">
                 {!!  Form::label('ciudad', ' Nombre de la ciudad ')!!}
-                {!!  Form::select('ciudad', [null=>'Seleccione ciudad'],null,array('class' => 'form-control miCiudad'))!!}
+                {!!  Form::select('ciudad', [null=>'Seleccione ciudad'],null,array('class' => 'form-control ciudad'))!!}
             </div>
 
             <div class="form-group">
@@ -102,6 +102,8 @@
             </div>
 
         </div>
-    </div>
     <!-- /.row (nested) -->
+{!!Form::hidden('urlStoreInformacion',url('postulacion/store'),array('id'=>'urlStoreInformacion'));!!}
+{!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
+
 </div>

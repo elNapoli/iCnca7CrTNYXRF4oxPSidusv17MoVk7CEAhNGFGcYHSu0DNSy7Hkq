@@ -1,11 +1,11 @@
 <div class="panel-body">
-    <div class="row">
+
         <div class="col-lg-6">
 
 
             <div class="form-group">
                 {!!  Form::label('campus_sede', 'Seleccione Campus/Sede ')!!}
-                {!!  Form::select('campus_sede', [null=>'Seleccione campus'],null,array('class' => 'form-control'))!!}
+                {!!  Form::select('campus_sede', [null=>'Seleccione campus']+$facultades,null,array('class' => 'form-control'))!!}
             </div>
 
             <div class="form-group">
@@ -59,6 +59,8 @@
                 {!!  Form::textarea('beneficios')!!}
             </div>
         </div>
-    </div>
+   
+    {!!Form::hidden('urlStoreInformacion',url('preuestudioactual/store'),array('id'=>'urlStoreInformacion'));!!}
+    {!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
     <!-- /.row (nested) -->
 </div>

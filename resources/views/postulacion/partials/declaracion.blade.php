@@ -68,6 +68,7 @@
 
 
 
+{!!Form::hidden('urlStoreInformacion',url('otrawea/store'),array('id'=>'urlStoreInformacion'));!!}
 
 
 

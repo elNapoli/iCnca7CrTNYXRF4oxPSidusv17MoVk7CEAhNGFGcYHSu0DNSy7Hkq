@@ -1,20 +1,20 @@
 <div class="panel-body">
-    <div class="row">
+
         <div class="col-lg-6">
         	<div class="form-group">
                 {!!  Form::label('continente', ' Nombre Continente ')!!}
-                {!!  Form::select('continente', [null=>'Seleccione un continente'],null,array('class' => 'form-control'))!!}
+                {!!  Form::select('continente', [null=>'Seleccione un continente']+$continentes,null,array('class' => 'continente form-control'))!!}
             </div>
 
 
             <div class="form-group">
                 {!!  Form::label('pais', ' Nombre país ')!!}
-                {!!  Form::select('pais', [null=>'Seleccione un país'],null,array('class' => 'form-control'))!!}
+                {!!  Form::select('pais', [null=>'Seleccione un país'],null,array('class' => 'pais form-control'))!!}
             </div>
 
             <div class="form-group">
                 {!!  Form::label('ciudad', ' Nombre de la ciudad ')!!}
-                {!!  Form::select('ciudad', [null=>'Seleccione ciudad'],null,array('class' => 'form-control miCiudad'))!!}
+                {!!  Form::select('ciudad', [null=>'Seleccione ciudad'],null,array('class' => 'form-control ciudad'))!!}
             </div>
 
             <div class="form-group">
@@ -35,6 +35,6 @@
             
 
         </div>
-    </div>
+
     <!-- /.row (nested) -->
 </div>

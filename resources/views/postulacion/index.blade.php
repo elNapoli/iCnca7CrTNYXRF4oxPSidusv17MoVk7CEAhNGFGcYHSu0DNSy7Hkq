@@ -16,7 +16,7 @@
 				<li class="active"><a href="#datosPersonales" data-toggle="tab">Datos Personales</a></li>
 				<li><a href="#estudios" data-toggle="tab">Estudios</a></li>
 				<li><a href="#intercambio" data-toggle="tab">Información de Intercambio</a></li>
-				<li><a href="#convenio" data-toggle="tab">Convenio</a></li>
+				<li><a href="#universidadIntercambio" data-toggle="tab">Universidad de intercambio</a></li>
 				<li><a href="#declaracion" data-toggle="tab">Declaración</a></li>
 			</ul>
 
@@ -41,11 +41,13 @@
                     @include('postulacion.partials.intercambio')
 					 
 				</div>
-				<div class="tab-pane fade " id="convenio">
-					haha
+				<div class="tab-pane fade " id="universidadIntercambio">
+                    @include('postulacion.partials.universidad_intercambio')
+					
 				</div>
 				<div class="tab-pane fade " id="declaracion">
-					=)
+                    @include('postulacion.partials.declaracion')
+					
 				</div>
 
 

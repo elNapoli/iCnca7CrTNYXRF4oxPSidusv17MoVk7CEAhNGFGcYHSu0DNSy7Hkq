@@ -33,7 +33,7 @@
         <td>{{$item->nombre_encargado}}</td>
         <td>{{$item->telefono}}</td>
         <td>{{$item->email}}</td>
-		<td>{{$item->campus_sede}}</td>
+		<td>{{$item->campusSedeR->nombre}}</td>
 		<td>
 			<a href="">Edit</a>
 			<a href="" class="btn-delete">Del</a>

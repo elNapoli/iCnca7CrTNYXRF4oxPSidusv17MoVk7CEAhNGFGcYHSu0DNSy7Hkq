@@ -42,9 +42,8 @@
 
 	$('#beneficio').on('change',function(e){ 
 
-		var as = $('$asistentes').val()
 		var id = $(this).val() //paso la id del select por referencia
-		alert(as)
+		alert(id)
 
 	});
 

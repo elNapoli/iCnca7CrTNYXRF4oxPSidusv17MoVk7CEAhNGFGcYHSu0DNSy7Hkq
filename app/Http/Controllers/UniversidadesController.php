@@ -9,6 +9,7 @@ use App\Universidad;
 use App\CampusSede;
 use Illuminate\Http\Request;
 use App\Continente;
+use App\Pais;
 
 class UniversidadesController extends Controller {
 
@@ -20,15 +21,35 @@ class UniversidadesController extends Controller {
 
 
 	public function getDebug(){
+		$var = 1;
+		$reno = Universidad::where('pais',$var)->with('campusSedes')->get()->toJson();
+		return $reno;
+		/*$reno = Universidad::with(['campusSedes.ciudadR' => function ($query) use ($var) {
+    $query->where('ciudad.pais',$var);
 
-
-
+}])->get();*/
 	}
 	public function getIndex()
 	{
  		return view('universidades.index');
 	}
 
+
+	public function postUniversidadByPais(Request $request){
+
+		if($request->ajax()){
+
+		 	
+
+			return Universidad::where('pais',$request->get('idBuscar'))->with('campusSedes')->get()->toJson();
+			
+		}
+		else{
+
+			return "no ajax";
+		}
+	
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *

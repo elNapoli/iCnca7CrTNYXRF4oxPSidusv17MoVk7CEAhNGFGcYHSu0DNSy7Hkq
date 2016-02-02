@@ -15,11 +15,19 @@ class UniversidadTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
+        $Universidad = new Universidad();
+
+        $Universidad->nombre     = 'Universidad Austral de Chile';
+        $Universidad->pais     = 1;
+
+
+        $Universidad->save();
         for($i = 0; $i < 20; $i++)
         {
             $Universidad = new Universidad();
 
             $Universidad->nombre     = $faker->name . ' University';
+            $Universidad->pais       = $faker->numberBetween($min = 1, $max = 199);
 
             $Universidad->save();
 

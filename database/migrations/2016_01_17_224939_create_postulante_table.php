@@ -28,6 +28,8 @@ class CreatePostulanteTable extends Migration
 
             //foreignkey to ciudad
             $table->integer('ciudad')->unsigned();;
+            $table->integer('user_id')->unsigned();
+
         });
     }
 

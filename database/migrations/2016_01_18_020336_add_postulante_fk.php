@@ -20,6 +20,14 @@ class AddPostulanteFk extends Migration
                     ->onUpdate('NO ACTION');
 
         });
+
+        Schema::table('postulante', function(Blueprint $table) {
+            $table  ->foreign('user_id','postulante_users_foreign')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('CASCADE')
+                    ->onUpdate('NO ACTION ');
+                       });
     }
 
     /**
@@ -31,6 +39,7 @@ class AddPostulanteFk extends Migration
     {
         Schema::table('postulante', function(Blueprint $table) {
             $table->dropForeign('postulante_ciudad_foreign');
+            $table->dropForeign('postulante_users_foreign');
         });
     }
 }

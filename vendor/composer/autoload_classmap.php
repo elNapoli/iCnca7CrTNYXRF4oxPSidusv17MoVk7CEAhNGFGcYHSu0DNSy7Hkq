@@ -44,6 +44,7 @@ return array(
     'AddPreUResponsableFk' => $baseDir . '/database/migrations/2016_01_18_171535_add_pre_u_responsable_fk.php',
     'AddPreUachFk' => $baseDir . '/database/migrations/2016_01_18_020339_add_pre_uach_fk.php',
     'AddPregradoFk' => $baseDir . '/database/migrations/2016_01_18_020337_add_pregrado_fk.php',
+    'AddUniversidadFk' => $baseDir . '/database/migrations/2016_02_01_215920_add_universidad_fk.php',
     'Adobe_Font_Metrics' => $vendorDir . '/phenx/php-font-lib/classes/Adobe_Font_Metrics.php',
     'AsignaturaHomologadaTableSeeder' => $baseDir . '/database/seeds/AsignaturaHomologadaTableSeeder.php',
     'AsignaturaTableSeeder' => $baseDir . '/database/seeds/AsignaturaTableSeeder.php',

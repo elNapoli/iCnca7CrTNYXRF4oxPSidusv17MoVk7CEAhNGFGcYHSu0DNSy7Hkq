@@ -23,7 +23,7 @@ class ConvenioTableSeeder extends Seeder
 
             $Convenio->nombre       = $faker->name;
             $Convenio->bilateral    = $bi[$tempBi];
-            $Convenio->universidad  = $faker->numberBetween($min = 1, $max = 20);
+            $Convenio->universidad  = $faker->numberBetween($min = 1, $max = 19);
 
             $Convenio->save();
 

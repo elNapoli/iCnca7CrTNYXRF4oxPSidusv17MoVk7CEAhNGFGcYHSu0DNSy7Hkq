@@ -24,7 +24,10 @@ Route::controllers([
 	'ciudades' => 'CiudadesController',
 	'facultades' => 'FacultadesController',
 	'beneficios' => 'BeneficiosController',
+	'postulacion' => 'PostulacionController',
 	'asistentes' => 'AsistentesController',
+	'preuestudioactual' => 'PreUEstudioActualController',
+
 
 ]);
 

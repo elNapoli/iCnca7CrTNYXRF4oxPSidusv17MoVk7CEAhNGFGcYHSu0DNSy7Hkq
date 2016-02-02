@@ -15,6 +15,7 @@ class CreatePrePostulacionUniversidadTable extends Migration
         Schema::create('pre_postulacion_universidad', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('postulante')->unsigned();
+            $table->integer('anio');
             $table->enum('semestre', ['semestre 1', 'semestre 2','ambos']);
             $table->date('desde');
             $table->date('hasta');

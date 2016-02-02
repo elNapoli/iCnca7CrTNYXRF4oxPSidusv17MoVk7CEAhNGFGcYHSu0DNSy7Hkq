@@ -19,6 +19,11 @@ class Pais extends Model
     //un País tiene muchas Ciudades
     public function ciudades()
     {
-        return $this->hasMany('App\Ciudad','pais'); // nombre del campo en la otra tabla 
+        return $this->hasMany('App\Ciudad','pais','id'); // nombre del campo en la otra tabla 
+    }
+
+     public function universidadesR()
+    {
+        return $this->hasMany('App\Universidad','id'); // nombre del campo en la otra tabla 
     }
 }

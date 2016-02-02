@@ -1,4 +1,4 @@
- function getListForSelect(url, token, idBuscar, nomSelect2,classSelect2 = "",optionSelected = "") {     
+ function getListForSelect(url, token, idBuscar, nomSelect2,classSelect2 = "",optionSelected = "",tabActive = "") {     
  	if(classSelect2 === ""){
 
 
@@ -25,20 +25,39 @@
 	    // URL a la que se enviará la solicitud Ajax
 	    url:url ,
 	    success : function(json) {
-	    	$(idSelector).empty();
-	    	$(idSelector).append("<option value=''>Seleccione "+nomSelect2+"</option>");
-			$.each(json, function(index, subCatObj){
 
-			$(idSelector).append("<option value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
-			$("select"+idSelector).find("option#2").attr("selected", "selected");	
-            
-            });
-            console.log(optionSelected+nomSelect2);
-            $(idSelector).find('option').removeAttr("selected");
-            //$(idSelector).val(optionSelected);
+            if(tabActive === ""){
 
-           $(idSelector+" option[value='"+optionSelected+"']").attr("selected","selected");
 
+
+                $(idSelector).empty();
+                $(idSelector).append("<option value=''>Seleccione "+nomSelect2+"</option>");
+                $.each(json, function(index, subCatObj){
+
+                $(idSelector).append("<option value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
+        
+                
+                });
+                $(idSelector).find('option').removeAttr("selected");
+                //$(idSelector).val(optionSelected);
+
+                $(idSelector+" option[value='"+optionSelected+"']").attr("selected","selected");
+            }
+            else{
+
+                $("."+tabActive).find(idSelector).empty();
+                $("."+tabActive).find(idSelector).append("<option value=''>Seleccione "+nomSelect2+"</option>");
+                $.each(json, function(index, subCatObj){
+
+                $("."+tabActive).find(idSelector).append("<option value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
+        
+                
+                });
+                $("."+tabActive).find(idSelector).find('option').removeAttr("selected");
+                //$(idSelector).val(optionSelected);
+                $("."+tabActive).find(idSelector).val(optionSelected);
+                //$($("."+tabActive).find(idSelector)+" option[value='"+optionSelected+"']").attr("selected","selected");
+            }
            // $(idSelector).val(optionSelected);
             //$(idSelector).change();
 		},

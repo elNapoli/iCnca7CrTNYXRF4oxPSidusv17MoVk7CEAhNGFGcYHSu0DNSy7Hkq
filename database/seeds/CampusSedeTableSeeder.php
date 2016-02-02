@@ -14,7 +14,43 @@ class CampusSedeTableSeeder extends Seeder
      */
     public function run()
     {
-         $faker = Faker::create();
+        $faker = Faker::create();
+
+        $CampusSede = new CampusSede();
+
+        $CampusSede->nombre         = 'Miraflores';
+        $CampusSede->telefono       = $faker->phoneNumber;
+        $CampusSede->fax            = $faker->phoneNumber;
+        $CampusSede->sitio_web      = $faker->url;
+        $CampusSede->universidad    = 1;
+        $CampusSede->ciudad         = 1;
+        
+        $CampusSede->save();
+
+        $CampusSede = new CampusSede();
+
+        $CampusSede->nombre         = 'Teja';
+        $CampusSede->telefono       = $faker->phoneNumber;
+        $CampusSede->fax            = $faker->phoneNumber;
+        $CampusSede->sitio_web      = $faker->url;
+        $CampusSede->universidad    = 1;
+        $CampusSede->ciudad         = 1;
+        
+        $CampusSede->save();
+
+        $CampusSede = new CampusSede();
+
+        $CampusSede->nombre         = 'Puerto Montt';
+        $CampusSede->telefono       = $faker->phoneNumber;
+        $CampusSede->fax            = $faker->phoneNumber;
+        $CampusSede->sitio_web      = $faker->url;
+        $CampusSede->universidad    = 1;
+        $CampusSede->ciudad         = 2;
+        
+        $CampusSede->save();
+
+
+        
         $universidad = Universidad::all();
 
         foreach ($universidad as $item){

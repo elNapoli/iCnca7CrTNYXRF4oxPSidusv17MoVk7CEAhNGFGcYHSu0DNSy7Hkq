@@ -16,6 +16,12 @@ class PaisTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
+        $pais = new Pais();
+
+        $pais->nombre     = 'Chile';
+        $pais->continente = 2;
+
+        $pais->save();
         for($i = 0; $i < 200; $i++)
         {
             $pais = new Pais();

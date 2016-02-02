@@ -59,9 +59,9 @@ class PreUach extends Model
     }
 
 
-    public function asistentes()
+    public function asistentesR()
     {
-        return $this->hasMany('App\Asistente','postulante');
+        return $this->belongsTo('App\Asistente','postulante');
     }
 
 

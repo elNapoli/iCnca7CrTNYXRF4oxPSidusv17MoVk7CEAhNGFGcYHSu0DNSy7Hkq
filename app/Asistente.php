@@ -16,10 +16,10 @@ class Asistente extends Model
 
     public function detalleBeneficioR()
     {
-    	return $this->hasMany('App\Beneficio','id_a'); 
+    	return $this->hasMany('App\DetalleBeneficio','id_a','id'); 
     }
 
-    public function preUachR()
+    public function preUachsR()
     {
         return $this->belongsTo('App\PreUach','postulante'); //Id local
     }

@@ -31,8 +31,8 @@ class Pregrado extends Model
         return $this->hasMany('App\PrePostulacionUniversidad','postulante');
     }
 
-    public function preUachs()
+    public function preUachsR()
     {
-        return $this->hasMany('App\PreUach','postulante');
+        return $this->belongsTo('App\PreUach','postulante');
     }
 }

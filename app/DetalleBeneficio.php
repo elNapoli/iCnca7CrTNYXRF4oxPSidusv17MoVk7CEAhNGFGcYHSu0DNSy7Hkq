@@ -6,17 +6,17 @@ class DetalleBeneficio extends Model {
 
     protected $table = 'detalle_beneficio';
     public $timestamps = false;
-    protected $fillable = ['id',
+    protected $fillable = ['id_a',
                            'beneficio'];
 
  
     public function beneficioR()
     {
-    	return $this->hasMany('App\Beneficio','id'); //Campo en tabla foranea
+    	return $this->belongsTo('App\Beneficio','beneficio'); // donde voy, con que voy
     }
 
     public function asistenteR()
     {
-    	return $this->belongsTo('\App\Asistente', 'id_a'); //id local
+    	return $this->belongsTo('\App\Asistente', 'id'); //id local
     }
 }

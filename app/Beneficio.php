@@ -14,7 +14,7 @@ class Beneficio extends Model
 
     public function detalleBeneficioR()
     {
-    	return $this->hasMany('App\Asistente','beneficio'); //Campo en tabla foranea
+    	return $this->belongsTo('App\DetalleBeneficio','id'); //Campo en tabla foranea
     }
 
 }

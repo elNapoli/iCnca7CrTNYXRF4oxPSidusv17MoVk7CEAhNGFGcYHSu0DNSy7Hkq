@@ -22,21 +22,20 @@ class Postulante extends Model
                             'direccion'];
 
     // un Postulante esta en una ciudad
-    public function ciudad()
+    public function ciudadR()
     {
         return $this->belongsTo('App\Ciudad','ciudad');
     }
 
     public function postgrados()
     {
-        return $this->hasMany('App\Postgrado','postulante');
+        return $this->belongsTo('App\Postgrado','postulante');
     }
 
-    public function pregrados()
+    public function pregradosR()
     {
-        return $this->hasMany('App\Pregrado','postulante');
+        return $this->belongsTo('App\Pregrado','id');
     }
-
 
     public function documentoIdentidades()
     {

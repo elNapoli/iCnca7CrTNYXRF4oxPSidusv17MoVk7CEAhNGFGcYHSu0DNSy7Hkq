@@ -4,6 +4,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Asistente;
+use App\PreUach;
+use App\Postulante;
+use App\Ciudad;
+use App\Beneficio;
+use App\DetalleBeneficio;
 
 class AsistentesController extends Controller {
 
@@ -15,14 +20,18 @@ class AsistentesController extends Controller {
 
 	public function getPrueba()
 	{
-		$asistentes = Asistente::with('preUachR.pregradoR.postulanteR')->get();
-		dd($asistentes->toArray());
+//		$var = Postulante::with('pregradosR.preUachsR.asistentesR.detalleBeneficioR.beneficioR')->has('pregradosR.preUachsR.asistentesR.detalleBeneficioR.beneficioR')->get();
+		//$var = Postulante::with('pregradosR')->get();
+//		$arra = array('data'=>$var->toArray());
+//		return $var->toJson();
+		//return json_encode($arra);
+		return view('asistentes.prueba');
 	}
 
 	public function getIndex()
 	{
-		$asistentes = Asistente::all();
 
+		$asistentes = Postulante::with('pregradosR.preUachsR.asistentesR.detalleBeneficioR.beneficioR')->has('pregradosR.preUachsR.asistentesR.detalleBeneficioR.beneficioR')->get();
 		return view('asistentes.index', compact('asistentes'));
 	}
 
@@ -71,8 +80,13 @@ class AsistentesController extends Controller {
 	 */
 	public function getEdit($id)
 	{
-		$beneficio = Asistente::findOrFail($id);
-        return view('beneficios.edit',compact('beneficio'));
+		$asistentes = Asistente::findOrFail($id);
+		$post = Postulante::findOrFail($asistentes->postulante);
+		//dd($asistentes->toArray());
+		$detalle = DetalleBeneficio::where('id_a','=',$asistentes->id)->get();
+		$beneficios = Beneficio::lists('nombre','id');
+		//dd($beneficios);
+        return view('asistentes.edit',compact('asistentes','detalle','post','beneficios'));
 	}
 
 	/**
@@ -83,16 +97,14 @@ class AsistentesController extends Controller {
 	 */
 	public function putUpdate($id,Request $request)
 	{
-	
 		$this->validate($request, [
-        'nombre' => 'required|string|unique:beneficio,nombre,'.$id,
+        'nombre' => 'required|string|unique:asistente,nombre,'.$id,
     	]);
-
-		$beneficio = Asistente::findOrFail($id);
-		$beneficio->fill($request->all());
-        $beneficio->save();
+		$asistentes = Asistente::findOrFail($id);
+		$asistentes->fill($request->all());
+        $asistentes->save();
         \Session::flash('message', 'El Asistente se Editó correctamente');
-		return redirect('beneficios');
+		return redirect('asistentes');
         //return redirect()->route('beneficios.index');
 	}
 

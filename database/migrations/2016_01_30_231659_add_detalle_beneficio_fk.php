@@ -13,7 +13,7 @@ class AddDetalleBeneficioFk extends Migration {
     public function up()
     {
         Schema::table('detalle_beneficio', function(Blueprint $table) {
-            $table  ->foreign('id_a','detalle_beneficio__asistente_foreign')
+            $table  ->foreign('id_a','detalle_beneficio_asistente_foreign')
                     ->references('id')
                     ->on('asistente')
                     ->onDelete('CASCADE')
@@ -36,7 +36,7 @@ class AddDetalleBeneficioFk extends Migration {
     public function down()
     {
         Schema::table('detalle_beneficio', function(Blueprint $table) {
-            $table->dropForeign('detalle_beneficio__asistente_foreign');
+            $table->dropForeign('detalle_beneficio_asistente_foreign');
             $table->dropForeign('detalle_beneficio_beneficio_foreign');
 
         });

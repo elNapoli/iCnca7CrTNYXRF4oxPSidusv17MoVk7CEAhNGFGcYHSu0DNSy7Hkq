@@ -44,6 +44,10 @@
                     <li>
                         <a href="{{ url('postulacion/') }}">postulacion</a>
                     </li>
+
+                    <li>
+                        <a href="{{ url('asistentes/') }}">Asistentes</a>
+                    </li>
                 </ul>
                 <!-- /.nav-second-level -->
             </li>

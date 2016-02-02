@@ -42,9 +42,6 @@
 		$(document).ready(function() {
 
 
-
-
-
 			$('.btn-delete').click(function(e){ //vincula la funcion del boton al ser presionado
 				e.preventDefault(); // jquery evento prevent default (e)
 				if(confirm("Press a button!\nEither OK or Cancel.")){

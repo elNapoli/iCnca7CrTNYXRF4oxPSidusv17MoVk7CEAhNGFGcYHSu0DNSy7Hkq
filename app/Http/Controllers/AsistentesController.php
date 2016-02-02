@@ -31,7 +31,7 @@ class AsistentesController extends Controller {
 	public function getIndex()
 	{
 
-		$asistentes = Postulante::with('pregradosR.preUachsR.asistentesR.detalleBeneficioR.beneficioR')->has('pregradosR.preUachsR.asistentesR.detalleBeneficioR.beneficioR')->get();
+		$asistentes = Postulante::with('pregradosR.preUachsR.asistentesR.detalleBeneficioR.beneficioR')->has('pregradosR.preUachsR.asistentesR')->get();
 		return view('asistentes.index', compact('asistentes'));
 	}
 
@@ -53,9 +53,9 @@ class AsistentesController extends Controller {
 	public function postStore(Request $request)
 	{
 
-		 $this->validate($request, [
+		/* $this->validate($request, [
         'nombre' => 'required|string|unique:beneficio,nombre',
-    	]);
+    	]);*/
 		 
 		$beneficio = Asistente::create($request->all());
 		$message    = 'El beneficio '.$request->get('nombre').'se almacenó correctamente';
@@ -97,9 +97,9 @@ class AsistentesController extends Controller {
 	 */
 	public function putUpdate($id,Request $request)
 	{
-		$this->validate($request, [
+		/*$this->validate($request, [
         'nombre' => 'required|string|unique:asistente,nombre,'.$id,
-    	]);
+    	]);*/ // el nombre del asistente no se edita. no es operable ni estadistico 
 		$asistentes = Asistente::findOrFail($id);
 		$asistentes->fill($request->all());
         $asistentes->save();
@@ -134,6 +134,11 @@ class AsistentesController extends Controller {
 		return redirect('beneficios');
 
 		//return redirect()->route('beneficios.index');
+	}
+
+	public function deleteDestroyBenef($id,Request $request)
+	{
+		dd('entre al nuevo action para eliminar beneficio');
 	}
 
 }

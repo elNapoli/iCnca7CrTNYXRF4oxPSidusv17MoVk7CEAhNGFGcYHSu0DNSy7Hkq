@@ -42,9 +42,6 @@
 		$(document).ready(function() {
 
 
-
-
-
 			$('.btn-delete').click(function(e){ //vincula la funcion del boton al ser presionado
 				e.preventDefault(); // jquery evento prevent default (e)
 				if(confirm("Press a button!\nEither OK or Cancel.")){
@@ -82,11 +79,11 @@
 			});
 
 		    $('#tableAsistente').DataTable( {
+		        "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
 		        "language": {
 		            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 		        }
 		    } );
-		} );
-
+});
 	</script>
 @endsection

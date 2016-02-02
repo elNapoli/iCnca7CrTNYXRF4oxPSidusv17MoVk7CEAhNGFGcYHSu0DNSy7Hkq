@@ -20,9 +20,6 @@
 	{!!Form::close()!!}
 
 
-		{!! Form::open(['url'=>['asistente/destroy',$asistentes->id], 'method'=>'DELETE']) !!}
-			<button  tye="submit" onClick="return confirm('Esta seguro de eliminar el registro?')" class="btn-danger btn"> Eliminar asistentes</button>
-		{!! Form::close()!!}
 </div>
 
 
@@ -39,6 +36,14 @@
 <script type="text/javascript">
 
 	$(document).ready(function(){
+
+
+				    $('#tableDtealleBeneficio').DataTable( {
+		        "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
+		        "language": {
+		            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+		        }
+		    } );
 
 	$('#beneficio').on('change',function(e){ 
 

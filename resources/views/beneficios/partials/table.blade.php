@@ -15,17 +15,16 @@
             </tr>
         </tfoot>
         <tbody>
-	@foreach($beneficios as  $item)
-	<tr data-id="{{ $item->id }}">
+    @foreach($beneficios as  $item)
+    <tr data-id="{{ $item->id }}">
 
-		<td><a href="{{ url('beneficios/edit', $item->id)}}">{{$item->id}}</a></td>
-		<td>{{$item->nombre}}</td>
-		<td>
-			<a href="{{ url('beneficios/edit', $item->id)}}">Edit</a>
-			<a href="" class="btn-delete">Del</a>
-		</td>
-	</tr>
-	@endforeach	
+        <td><a href="{{ url('beneficios/edit', $item->id)}}">{{$item->id}}</a></td>
+        <td>{{$item->nombre}}</td>
+        <td>
+            <a href="{{ url('beneficios/edit', $item->id)}}">Edit</a>
+            <a href="" class="btn-delete">Del</a>
+        </td>
+    </tr>
+    @endforeach 
        </tbody>
     </table>
-

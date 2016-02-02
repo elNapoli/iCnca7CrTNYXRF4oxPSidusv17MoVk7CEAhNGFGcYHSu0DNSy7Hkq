@@ -31,7 +31,7 @@
 
 		<td>{{$item->beneficioR->nombre}}</td>
 		<td>
-			<a href="" class="btn-delete">Del</a>
+			<a href="" class="benef btn-delete">Del</a>
 		</td>
 	</tr>
 	@endforeach	
@@ -44,5 +44,4 @@
 	</div>
 
     	<br>
-
 

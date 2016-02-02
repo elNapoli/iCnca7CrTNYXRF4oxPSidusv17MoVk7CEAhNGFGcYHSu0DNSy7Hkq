@@ -27,6 +27,7 @@ Route::controllers([
 	'postulacion' => 'PostulacionController',
 	'asistentes' => 'AsistentesController',
 	'preuestudioactual' => 'PreUEstudioActualController',
+	'departamentos' => 'DepartamentosController',
 
 
 ]);

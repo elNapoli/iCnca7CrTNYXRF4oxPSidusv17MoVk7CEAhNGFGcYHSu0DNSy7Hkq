@@ -48,6 +48,13 @@
                     <li>
                         <a href="{{ url('asistentes/') }}">Asistentes</a>
                     </li>
+                    <li>
+
+                        <a href="{{ url('departamentos/') }}">Departamentos</a>
+
+                    </li>
+
+
                 </ul>
                 <!-- /.nav-second-level -->
             </li>

@@ -1,39 +1,8 @@
 <div class="panel-body">
-
         <div class="col-lg-6">
-
-
-            <div class="form-group">
-                {!!  Form::label('campus_sede', 'Seleccione Campus/Sede ')!!}
-                {!!  Form::select('campus_sede', [null=>'Seleccione campus']+$facultades,null,array('class' => 'form-control'))!!}
-            </div>
-
-            <div class="form-group">
-                {!!  Form::label('facultad', 'Seleccione facultad')!!}
-                {!!  Form::select('facultad', [null=>'Seleccione facultad'],null,array('class' => 'form-control'))!!}
-            </div>
-
-            <div class="form-group">
-                {!!  Form::label('carrera', 'Seleccione Carrera ')!!}
-                {!!  Form::select('carrera', [null=>'Seleccione carrera'],null,array('class' => 'form-control'))!!}
-            </div>
-
-            <div class="form-group">
-                {!!  Form::label('nombre_director', 'Nombre del director de carrera')!!}
-                {!! Form::text('nombre_director',null,array('class' => 'form-control'));!!}
-            </div>
-
-            <div class="form-group">
-                {!!  Form::label('email_director', 'E-mail del director de carrera')!!}
-                {!! Form::text('email_director',null,array('class' => 'form-control'));!!}
-            </div>
-
-            
-
-
-
-
+            @include('postulacion.partials.select_universidad')
         </div>
+
         <div class="col-lg-6">
           
             <div class="row">

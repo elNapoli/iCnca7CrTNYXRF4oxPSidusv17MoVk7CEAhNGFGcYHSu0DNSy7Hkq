@@ -71,13 +71,18 @@
 		$(document).ready(function() {
 
 
-			selectByTabs("datosPersonales",'continente','getToken','getUrlPaisByContinente','pais');
-			selectByTabs("datosPersonales",'pais','getToken','getUrCiudadContinente','ciudad');
+			selectByTabs("datosPersonales",'continente','getToken','getUrlPaisByContinente','pais','div#datosPersonales div div.col-lg-6 div.form-group select');
+			selectByTabs("datosPersonales",'pais','getToken','getUrCiudadContinente','ciudad','div#datosPersonales div div.col-lg-6 div.form-group select');
       			
-			selectByTabs("intercambio",'campus_sede','getToken','getUrlFacultadesByCampus','facultad');
-			selectByTabs("intercambio",'facultad','getToken','getUrlCarreraByFacultad','carrera');
-			selectByTabs("intercambio",'continente','getToken','getUrlPaisByContinente','pais');
-			selectByTabs("intercambio",'pais','getToken','gerUrlUniversidadByPais','campus_sede');
+			selectByTabs("estudios",'campus_sede','getToken','getUrlFacultadesByCampus','facultad','div#estudios div div.col-lg-6 div.form-group select');
+			selectByTabs("estudios",'facultad','getToken','getUrlCarreraByFacultad','carrera','div#estudios div div.col-lg-6 div.form-group select');
+			selectByTabs("estudios",'continente','getToken','getUrlPaisByContinente','pais','div#estudios div div.col-lg-6 div.form-group select');
+			selectByTabs("estudios",'pais','getToken','gerUrlUniversidadByPais','campus_sede','div#estudios div div.col-lg-6 div.form-group select');
+
+			selectByTabs("intercambio",'campus_sede','getToken','getUrlFacultadesByCampus','facultad','div#intercambio div div.col-lg-6 div.form-group select');
+			selectByTabs("intercambio",'facultad','getToken','getUrlCarreraByFacultad','carrera','div#intercambio div div.col-lg-6 div.form-group select');
+			selectByTabs("intercambio",'continente','getToken','getUrlPaisByContinente','pais','div#intercambio div div.col-lg-6 div.form-group select');
+			selectByTabs("intercambio",'pais','getToken','gerUrlUniversidadByPais','campus_sede','div#intercambio div div.col-lg-6 div.form-group select');
 
 
 

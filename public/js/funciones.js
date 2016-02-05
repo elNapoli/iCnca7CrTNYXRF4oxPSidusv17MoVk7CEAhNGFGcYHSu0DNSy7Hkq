@@ -1,11 +1,14 @@
-function selectByTabs(idTab,idSelect,token,url,idSelectDestino){
+function selectByTabs(idTab,idSelect,token,url,idSelectDestino,ruta){
 var idTab = $("#"+idTab);
 var idSelect = "#"+idSelect;
 var token = $('#'+token).val();
 var urlE = $('#'+url).val();
 var idSelectDestino = '#'+idSelectDestino;
 
+var ruta = $(ruta+idSelectDestino);
+
 idTab.on('change',idSelect,function(e){   
+
 $.ajax({
     // En data puedes utilizar un objeto JSON, un array o un query string
    data: {
@@ -19,17 +22,17 @@ $.ajax({
     // URL a la que se enviará la solicitud Ajax
     url:urlE ,
     success : function(json) {
-        $(".active").find(idSelectDestino).empty();
-        $(".active").find(idSelectDestino).append("<option value=''>Seleccione la "+idSelectDestino+"</option>");
+        ruta.empty();
+        ruta.append("<option value=''>Seleccione la "+idSelectDestino+"</option>");
 
         if(url ==="gerUrlUniversidadByPais"){
             $.each(json, function(index, subCatObj){
-            $(".active").find('#campus_sede').append(" <optgroup label='"+subCatObj.nombre+"'>");
+            ruta.append(" <optgroup label='"+subCatObj.nombre+"'>");
                 
 
                 $.each(subCatObj.campus_sedes, function(index2, subCatObj2){
 
-                    $(".active").find('#campus_sede').append("<option value="+subCatObj2.id+">"+subCatObj2.nombre+"</option>");
+                    ruta.append("<option value="+subCatObj2.id+">"+subCatObj2.nombre+"</option>");
 
                 });
 
@@ -37,12 +40,13 @@ $.ajax({
              });
         }
         else{
-
             $.each(json, function(index, subCatObj){
-                $(".active").find(idSelectDestino).append("<option value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
+                 ruta.append("<option value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
              });
             
         }
+
+
 
 
 
@@ -60,6 +64,72 @@ $.ajax({
 
 
 });
+}
+
+
+
+function selectByTabsSinAccion(idTab,idSelect,token,url,idSelectDestino,ruta,option1,option2){
+var idTab = $("#"+idTab);
+var idSelect = "#"+idSelect;
+var token = $('#'+token).val();
+var urlE = $('#'+url).val();
+var idSelectDestino = '#'+idSelectDestino;
+var ruta = $(ruta+idSelectDestino);
+    $.ajax({
+        // En data puedes utilizar un objeto JSON, un array o un query string
+       data: {
+            "_token": token,
+            "idBuscar": option1,
+        },
+        //Cambiar a type: POST si necesario
+        type: "post",
+        // Formato de datos que se espera en la respuesta
+        dataType: "json",
+        // URL a la que se enviará la solicitud Ajax
+        url:urlE ,
+        success : function(json) {
+            ruta.empty();
+            ruta.append("<option value=''>Seleccione la "+idSelectDestino+"</option>");
+
+            if(url ==="gerUrlUniversidadByPais"){
+                $.each(json, function(index, subCatObj){
+                ruta.append(" <optgroup label='"+subCatObj.nombre+"'>");
+                    
+
+                    $.each(subCatObj.campus_sedes, function(index2, subCatObj2){
+
+                        ruta.append("<option value="+subCatObj2.id+">"+subCatObj2.nombre+"</option>");
+
+                    });
+
+
+                 });
+            }
+            else{
+                $.each(json, function(index, subCatObj){
+                     ruta.append("<option value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
+                 });
+                
+            }
+
+            ruta.val(option2);
+
+
+
+
+            
+
+
+
+
+    },
+
+        error : function(xhr, status) {
+            console.log('Disculpe, existió un problema '+token);
+        },
+    });
+
+
 }
 
  function getListForSelect(url, token, idBuscar, nomSelect2,classSelect2 = "",optionSelected = "",tabActive = "") {     

@@ -72,7 +72,7 @@ class UniversidadesController extends Controller {
 	{
 		if($request->ajax()){
 			$universidad         = new Universidad();
-			$universidadID = $universidad->insertGetId(array('nombre'=> $request->get('nombre_universidad')));
+			$universidadID = $universidad->insertGetId(array('nombre'=> $request->get('nombre_universidad'),'pais'=> $request->get('pais')));
 
 			$campus_sede = new CampusSede($request->all());
 			$campus_sede->universidad = $universidadID;

@@ -52,6 +52,22 @@ class FacultadesController extends Controller {
 		//return redirect()->route('continentes.index');
 		return redirect('facultades');
 	}
+
+	public function postFacultadesByCampus(Request $request){
+
+
+	
+		if($request->ajax()){
+			return  Facultad::where('campus_sede',$request->get('idBuscar'))->get()->toJson();
+
+		}
+		else
+		{
+
+			return "no ajax";
+		}
+	}
+
 	public function postCampusByUniversidad(Request $request){
 
 

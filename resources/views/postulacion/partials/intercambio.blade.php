@@ -3,15 +3,19 @@
         <div class="col-lg-6">
 
             <div class="form-group">
-                {!! Form::label('sexo', 'Sexo:') !!}
-                <label class="checkbox-inline">
-                    {!! Form::checkbox('name', 'value')!!}Semestre I(Marzo-Julio)
+                {!! Form::label('semestre', 'Semester:') !!}
+                <label class="radio-inline">
+                    {!! Form::radio('semestre', 'semestre 1',array('id'=>'semestreI'))!!} Semestre I
                 </label>
-                <label class="checkbox-inline">
-                    {!! Form::checkbox('name', 'value')!!}Semestre II(Agosto-Diciembre)
+                <label class="radio-inline">
+                    {!! Form::radio('semestre', 'semestre 2',array('id'=>'semestreII'))!!} Semestre II
                 </label>
+                <label class="radio-inline">
+                    {!! Form::radio('semestre', 'ambos',array('id'=>'semestreIII'))!!} Todo el Año
+                </label>
+
             </div>
-            
+
             <div class="form-group">
                 {!!  Form::label('anio', 'Año de intercambio ')!!}
                 {!! Form::text('anio',null,array('class' => 'form-control','placeholder'=>'Ej: 1027'));!!}
@@ -28,9 +32,12 @@
               <div class="col-xs-8">
 
                 <div class="input-group input-daterange">
-                    <input type="text" class="form-control" value="2012-04-05">
+
+                    {!! Form::text('desde',null,array('class' => 'form-control','value'=>'2012-04-05'));!!}
+
                     <span class="input-group-addon">to</span>
-                    <input type="text" class="form-control" value="2012-04-19">
+                    {!! Form::text('hasta',null,array('class' => 'form-control','value'=>'2012-04-05'));!!}
+                  
                 </div>
 
               </div>
@@ -38,7 +45,12 @@
 
 
         </div>
- 
+        <div class="col-lg-6">
+            @include('postulacion.partials.select_universidad')
+           
+        </div>
           
+{!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
+{!!Form::hidden('urlStoreInformacion',url('prepostulacionuniversidad/store'),array('id'=>'urlStoreInformacion'));!!}
 
 </div>

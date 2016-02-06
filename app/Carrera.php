@@ -10,12 +10,13 @@ class Carrera extends Model
     public $timestamps = false;
     protected $fillable = ['nombre',
                            'director',
+                           'facultad',
                            'email']; 
 
 
 
     //Una Asignatura pertenece a una unica Carrera
-    public function Facultad()
+    public function facultadR()
     {
     	return $this->belongsTo('App\Facultad','facultad'); //Id local
     }

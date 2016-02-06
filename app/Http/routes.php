@@ -28,7 +28,12 @@ Route::controllers([
 	'asistentes' => 'AsistentesController',
 	'preuestudioactual' => 'PreUEstudioActualController',
 	'departamentos' => 'DepartamentosController',
+<<<<<<< HEAD
 	'detalles' => 'DetalleBeneficioController',
+=======
+	'prepostulacionuniversidad' => 'PrePostulacionUniversidadController',
+	'carreras' => 'CarrerasController',
+>>>>>>> 7d0e16cc7d135776322b20e77200f55d7e663060
 
 
 ]);

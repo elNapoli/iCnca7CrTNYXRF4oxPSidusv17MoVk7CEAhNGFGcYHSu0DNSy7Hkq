@@ -16,7 +16,6 @@
 				<li class="active"><a href="#datosPersonales" data-toggle="tab">Datos Personales</a></li>
 				<li><a href="#estudios" data-toggle="tab">Estudios</a></li>
 				<li><a href="#intercambio" data-toggle="tab">Información de Intercambio</a></li>
-				<li><a href="#universidadIntercambio" data-toggle="tab">Universidad de intercambio</a></li>
 				<li><a href="#declaracion" data-toggle="tab">Declaración</a></li>
 			</ul>
 
@@ -36,10 +35,6 @@
                     @include('postulacion.partials.intercambio')
 					 
 				</div>
-				<div class="tab-pane fade " id="universidadIntercambio">
-                    @include('postulacion.partials.universidad_intercambio')
-					
-				</div>
 				<div class="tab-pane fade " id="declaracion">
                     @include('postulacion.partials.declaracion')
 					
@@ -51,12 +46,14 @@
         </div>
         <!-- /.panel-body -->
     </div>
-                   <a href="#!" class='btn btn-outline btn-default' id='guardarPostulacion'>Guardar postulación</a>
     <!-- /.panel -->
 </div>
+                   <a href="#!" class='btn btn-outline btn-default' id='guardarPostulacion'>Guardar postulación</a>
 
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
+{!!Form::hidden('getUrlFacultadesByCampus', url('facultades/facultades-by-campus'),array('id'=>'getUrlFacultadesByCampus'));!!}
+{!!Form::hidden('getUrlCarreraByFacultad', url('carreras/carreras-by-facultad'),array('id'=>'getUrlCarreraByFacultad'));!!}
 {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
 {!!Form::hidden('gerUrlUniversidadByPais', url('universidades/universidad-by-pais'),array('id'=>'gerUrlUniversidadByPais'));!!}
 
@@ -73,91 +70,34 @@
 
 		$(document).ready(function() {
 
-			$('.continente').on('change',function(e){
 
-			e.preventDefault();
-
-				getListForSelect($('#getUrlPaisByContinente').val(), $('#getToken').val(), $(this).val(), 'pais','','','active');	
-			});
-   
+			selectByTabs("datosPersonales",'continente','getToken','getUrlPaisByContinente','pais','div#datosPersonales div div.col-lg-6 div.form-group select');
+			selectByTabs("datosPersonales",'pais','getToken','getUrCiudadContinente','ciudad','div#datosPersonales div div.col-lg-6 div.form-group select');
       			
+			selectByTabs("estudios",'campus_sede','getToken','getUrlFacultadesByCampus','facultad','div#estudios div div.col-lg-6 div.form-group select');
+			selectByTabs("estudios",'facultad','getToken','getUrlCarreraByFacultad','carrera','div#estudios div div.col-lg-6 div.form-group select');
+			selectByTabs("estudios",'continente','getToken','getUrlPaisByContinente','pais','div#estudios div div.col-lg-6 div.form-group select');
+			selectByTabs("estudios",'pais','getToken','gerUrlUniversidadByPais','campus_sede','div#estudios div div.col-lg-6 div.form-group select');
 
-	        $('.pais').on('change',function(e){
-	        e.preventDefault();
-
-	        getListForSelect($('#gerUrlUniversidadByPais').val(), $('#getToken').val(), $(this).val(), 'ciudad','','','active');    
-	        });
-
-	        $('.universidad').on('change',function(e){
-				$.ajax({
-				    // En data puedes utilizar un objeto JSON, un array o un query string
-				   data: {
-						"_token": $('#getToken').val(),
-						"idBuscar": $(this).val(),
-						"nomTable": 'universidad'
-					},
-				    //Cambiar a type: POST si necesario
-				    type: "post",
-				    // Formato de datos que se espera en la respuesta
-				    dataType: "json",
-				    // URL a la que se enviará la solicitud Ajax
-				    url:$('#gerUrlUniversidadByPais').val() ,
-				    success : function(json) {
-
-			            if(tabActive === ""){
+			selectByTabs("intercambio",'campus_sede','getToken','getUrlFacultadesByCampus','facultad','div#intercambio div div.col-lg-6 div.form-group select');
+			selectByTabs("intercambio",'facultad','getToken','getUrlCarreraByFacultad','carrera','div#intercambio div div.col-lg-6 div.form-group select');
+			selectByTabs("intercambio",'continente','getToken','getUrlPaisByContinente','pais','div#intercambio div div.col-lg-6 div.form-group select');
+			selectByTabs("intercambio",'pais','getToken','gerUrlUniversidadByPais','campus_sede','div#intercambio div div.col-lg-6 div.form-group select');
 
 
 
-			                $(idSelector).empty();
-			                $(idSelector).append("<option value=''>Seleccione "+nomSelect2+"</option>");
-			                $.each(json, function(index, subCatObj){
 
-			                $(idSelector).append("<option value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
-			        
-			                
-			                });
-			                $(idSelector).find('option').removeAttr("selected");
-			                //$(idSelector).val(optionSelected);
-
-			                $(idSelector+" option[value='"+optionSelected+"']").attr("selected","selected");
-			            }
-			            else{
-
-			                $("."+tabActive).find(idSelector).empty();
-			                $("."+tabActive).find(idSelector).append("<option value=''>Seleccione "+nomSelect2+"</option>");
-			                $.each(json, function(index, subCatObj){
-
-			                $("."+tabActive).find(idSelector).append("<option value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
-			        
-			                
-			                });
-			                $("."+tabActive).find(idSelector).find('option').removeAttr("selected");
-			                //$(idSelector).val(optionSelected);
-			                $("."+tabActive).find(idSelector).val(optionSelected);
-			                //$($("."+tabActive).find(idSelector)+" option[value='"+optionSelected+"']").attr("selected","selected");
-			            }
-			           // $(idSelector).val(optionSelected);
-			            //$(idSelector).change();
-					},
-
-				    error : function(xhr, status) {
-				        console.log('Disculpe, existió un problema '+token);
-				    },
-				});
-
-	          
-	        });
 
 			$('.input-daterange input').each(function() {
 			    $(this).datepicker("clearDates");
-			});
+				});
 
 			$('.datePicker').datepicker({
 
 				autoclose:true,
 				format:'yyyy/mm/dd',
 
-			});
+				});
 
 			$('#guardarPostulacion').on('click',function(e){
 

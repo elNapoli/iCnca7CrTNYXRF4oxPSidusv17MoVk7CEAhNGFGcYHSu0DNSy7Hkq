@@ -8,7 +8,7 @@ class PrePostulacionUniversidad extends Model
 {
     protected $table    = 'pre_postulacion_universidad';
     public $timestamps  = false;
-    protected $fillable = ['campus_sede','celular','procedencia'];
+    protected $fillable = ['postulante','anio','semestre','desde','hasta','financiamiento','carrera'];
 
     // un País esta en un Continente
     public function pregrado()

@@ -39,6 +39,7 @@
         
         $('#continente').on('change',function(e){
         e.preventDefault();
+
         getListForSelect($('#getUrlPaisContinente').val(), $('#getToken').val(), $("#continente").val(), 'pais');    
         });
 
@@ -76,6 +77,7 @@
 
                   error : function(xhr, status) {
                     html += "<p> Porfavor corregir los siguientes errores </p>";
+                    alert($('#fax').css('class'));
                     for(var key in xhr.responseJSON)
                     {
                         html += "<li>" + xhr.responseJSON[key][0] + "</li>";

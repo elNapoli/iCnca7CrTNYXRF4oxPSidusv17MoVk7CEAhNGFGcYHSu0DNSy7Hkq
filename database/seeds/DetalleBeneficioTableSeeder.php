@@ -26,7 +26,7 @@ class DetalleBeneficioTableSeeder extends Seeder
                 $detalleBeneficio = new DetalleBeneficio();
 
 
-                $detalleBeneficio->beneficio    = $faker->numberBetween($min = 1, $max = 20);
+                $detalleBeneficio->beneficio    = $i+1;
                 $detalleBeneficio->id_a         = $item->id;
 
  

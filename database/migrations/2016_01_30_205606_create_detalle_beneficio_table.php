@@ -14,6 +14,8 @@ class CreateDetalleBeneficioTable extends Migration {
     {
         Schema::create('detalle_beneficio', function (Blueprint $table) {
             
+            $table->increments('id');
+
             //Foreing Key to Asistente
             $table->integer('id_a')->unsigned(); //id_a = id asistente
             

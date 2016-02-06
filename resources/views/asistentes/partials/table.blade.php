@@ -5,7 +5,6 @@
                 <th>Asistente</th>
                 <th>Postulante</th>
                 <th>Accion</th>
-                <th></th>
             </tr>
         </thead>
         <tfoot>
@@ -14,21 +13,21 @@
                 <th>Asistente</th>
                 <th>Postulante</th>              
                 <th>Accion</th>
-                <th></th>
             </tr>
         </tfoot>
         <tbody>
     @foreach($asistentes as  $item)
-    <tr data-id="{{ $item->id }}">
+    <tr data-id="{{ $item->pregradosR->preUachsR->asistentesR->id}}">
 
-        <td>{{$item->id}}</td>
+        <td>{{$item->pregradosR->preUachsR->asistentesR->id}}</td>
         <td>{{$item->pregradosR->preUachsR->asistentesR->nombre}}</td>
         <td>{{$item->nombre.' '.$item->apellido_paterno.' '.$item->apellido_materno}}</td>
                 <td>
-            <a href="{{ url('asistentes/edit', $item->id)}}">Edit</a>
+            <a href="{{ url('asistentes/edit', $item->pregradosR->preUachsR->asistentesR->id)}}">Edit</a>
             <a href="" class="btn-delete">Del</a>
         </td>
-
+    
+<!--
         <tr>
 
             <td colspan="5"><h4>Beneficios</h4>
@@ -40,7 +39,7 @@
                             @endforeach
             </td>
         </tr>
-        
+        <tr>
 
             <td colspan="5"><h4>Indicaciones</h4>
                             {{$item->pregradosR->preUachsR->asistentesR->indicaciones}}
@@ -49,7 +48,7 @@
 
 
 
-            </tr>
+            </tr> -->
 
     @endforeach 
        </tbody>

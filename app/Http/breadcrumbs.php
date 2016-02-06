@@ -97,6 +97,13 @@ Breadcrumbs::register('asistentes', function($breadcrumbs)
     $breadcrumbs->push('Asistentes', url('asistentes/'));
 });
 
+
+Breadcrumbs::register('asistenteEditar', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push($asistentes->indicaciones, url('asistentes/edit', $asistentes->id));
+});
+
 Breadcrumbs::register('departamentos', function($breadcrumbs)
 {
     $breadcrumbs->parent('home');

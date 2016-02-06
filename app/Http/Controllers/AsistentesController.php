@@ -42,7 +42,14 @@ class AsistentesController extends Controller {
 	 */
 	public function getCreate()
 	{
-		return view('beneficios.create');
+		$post = Postulante::has('pregradosR.preUachsR')->whereNotIn('postulante.id',function($query){
+			$query->select('postulante.id')
+                ->from('postulante')
+		->join('asistente','asistente.postulante','=','postulante.id')
+                /*->where('postulante.id', '=', '4')*/;})->get();
+		//$post_a = Postulante::has('pregradosR.preUachsR.asistentesR')->get();		
+		dd($post->toArray());
+		return view('asistentes.create');
 	}
 
 	/**
@@ -56,9 +63,9 @@ class AsistentesController extends Controller {
 		/* $this->validate($request, [
         'nombre' => 'required|string|unique:beneficio,nombre',
     	]);*/
-		 
-		$beneficio = Asistente::create($request->all());
-		$message    = 'El beneficio '.$request->get('nombre').'se almacenó correctamente';
+
+		$asisitente = Asistente::create($request->all());
+		$message    = 'El registro '.$request->get('nombre').'se almacenó correctamente';
 		\Session::flash('message', $message);
 
 		//return redirect()->route('beneficios.index');
@@ -85,7 +92,6 @@ class AsistentesController extends Controller {
 		//dd($asistentes->toArray());
 		$detalle = DetalleBeneficio::where('id_a','=',$asistentes->id)->get();
 		$beneficios = Beneficio::lists('nombre','id');
-		//dd($beneficios);
         return view('asistentes.edit',compact('asistentes','detalle','post','beneficios'));
 	}
 
@@ -136,9 +142,24 @@ class AsistentesController extends Controller {
 		//return redirect()->route('beneficios.index');
 	}
 
-	public function deleteDestroyBenef($id,Request $request)
+	public function deleteBenef($id,Request $request)
 	{
-		dd('entre al nuevo action para eliminar beneficio');
+		//abort(500);
+		$beneficio = DetalleBeneficio::findOrFail($id);
+ 		$beneficio->delete();
+ 		$message = ' El beneficio '.$beneficio->beneficio.' Fue eliminado';
+ 	//	dd($request->all());
+		if($request->ajax()){
+		//	return($message);
+			return response()->json([
+				'message'=> $message
+				]);
+		}
+		
+		
+		\Session::flash('message', $message);
+
+		return redirect('beneficios');
 	}
 
 }

@@ -28,6 +28,7 @@ Route::controllers([
 	'asistentes' => 'AsistentesController',
 	'preuestudioactual' => 'PreUEstudioActualController',
 	'departamentos' => 'DepartamentosController',
+	'detalles' => 'DetalleBeneficioController',
 
 
 ]);

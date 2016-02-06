@@ -46,8 +46,8 @@ class CarrerasController extends Controller {
 		return Carrera::where('carrera.id',$id)
 					->join('facultad','carrera.facultad','=','facultad.id')
 					->join('campus_sede','facultad.campus_sede','=','campus_sede.id')
-					->join('ciudad','campus_sede.ciudad','=','ciudad.id')
-					->join('pais','ciudad.pais','=','pais.id')
+					->join('universidad','campus_sede.universidad','=','universidad.id')
+					->join('pais','universidad.pais','=','pais.id')
 					->select('pais.continente as continente','pais.id as pais',
 						     'campus_sede.id as campus_sede','facultad.id as facultad',
 						     'carrera.id','carrera.nombre','carrera.director','carrera.email')
@@ -72,4 +72,29 @@ class CarrerasController extends Controller {
 				]);
 	}
 
+	public function putUpdate(CreateCarreraRequest $request){
+
+		$carrera = Carrera::findOrFail($request->get('id'));
+		$carrera->fill($request->all());
+        $carrera->save();
+		return response()->json([
+						'message'=> 'se Guardó la carrera Correctamente'
+						]);
+	}
+
+	public function postDestroy(Request $request)
+	{
+		//abort(500);
+		$continente = carrera::findOrFail($request->get('id'));
+ 		$continente->delete();
+ 		$message = ' El carrera '.$continente->nombre.' se ha eliminado';
+
+		return response()->json([
+			'message'=> $message
+			]);
+		
+		
+
+
+	}
 }

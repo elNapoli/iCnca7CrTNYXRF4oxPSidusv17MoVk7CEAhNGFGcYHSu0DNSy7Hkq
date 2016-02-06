@@ -35,4 +35,7 @@
     {!!  Form::label('email', 'E-mail director ');!!}
     {!! Form::text('email',null,array('class' => 'form-control','placeholder'=>'Ej: j.maturana@uach.cl'));!!}
 </div>  
+{!!Form::hidden('id','',array('id'=>'id'));!!}
 </div>  
+
+

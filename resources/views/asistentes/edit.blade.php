@@ -94,7 +94,7 @@
 					    url:url ,
 					    success : function(json) {
 					    	alert(json.message);				
-							dt.ajax.reload() //solo se elimina cuando se completa transaccion
+							row.show(); //solo se elimina cuando se completa transaccion
 						},
 
 					    error : function(xhr, status) {

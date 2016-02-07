@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Http\Requests\PreUEstudioActualRequest;
 use App\Http\Controllers\Controller;
 use App\PreUEstudioActual;
 use App\Postulante;
@@ -30,12 +31,14 @@ class PreUEstudioActualController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function postStore(Request $request){
+	public function postStore(PreUEstudioActualRequest $request){
 
 		$postulante = new PreUEstudioActual($request->all());
-		$postulante_id  = Postulante::select('id')->where('user_id',20)->first();
+		$postulante_id  = Postulante::where('user_id',13)->first();
 		$postulante->postulante = $postulante_id->id;
-		dd($postulante->toArray());
+		//$postulante->postulante = $postulante_id->id;
+		//dd($postulante->toArray());
+		$postulante->save();
 		return response()->json([
 				'message'=> 'se Guardó la universidad Correctamente '.$postulante
 				]);

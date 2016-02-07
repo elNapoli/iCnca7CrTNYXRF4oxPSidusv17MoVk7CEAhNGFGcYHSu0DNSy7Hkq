@@ -18,6 +18,8 @@
 				<li><a href="#intercambio" data-toggle="tab">Información de Intercambio</a></li>
 				<li><a href="#declaracion" data-toggle="tab">Declaración</a></li>
 			</ul>
+        <div id="message"></div>
+			
 
 			<div class="tab-content">
 
@@ -40,7 +42,7 @@
 					
 				</div>
 
-
+				@include('carreras.partials.modal_create')
 
 			</div>
         </div>
@@ -66,18 +68,20 @@
 
 @section('scripts')
     {!! Html::Script('plugins/bootstrap/js/bootstrap-datepicker.js')!!}
+    {!! Html::Script('js/function_carrera.js')!!}
+
     <script type="text/javascript">
 
 		$(document).ready(function() {
 
-
+			initCarrera();
 			selectByTabs("datosPersonales",'continente','getToken','getUrlPaisByContinente','pais','div#datosPersonales div div.col-lg-6 div.form-group select');
 			selectByTabs("datosPersonales",'pais','getToken','getUrCiudadContinente','ciudad','div#datosPersonales div div.col-lg-6 div.form-group select');
       			
-			selectByTabs("estudios",'campus_sede','getToken','getUrlFacultadesByCampus','facultad','div#estudios div div.col-lg-6 div.form-group select');
-			selectByTabs("estudios",'facultad','getToken','getUrlCarreraByFacultad','carrera','div#estudios div div.col-lg-6 div.form-group select');
-			selectByTabs("estudios",'continente','getToken','getUrlPaisByContinente','pais','div#estudios div div.col-lg-6 div.form-group select');
-			selectByTabs("estudios",'pais','getToken','gerUrlUniversidadByPais','campus_sede','div#estudios div div.col-lg-6 div.form-group select');
+			selectByTabs("estudios",'campus_sede','getToken','getUrlFacultadesByCampus','facultad','div#estudios div div.col-lg-6 div.input-group select');
+			selectByTabs("estudios",'facultad','getToken','getUrlCarreraByFacultad','carrera','div#estudios div div.col-lg-6 div.input-group select');
+			selectByTabs("estudios",'continente','getToken','getUrlPaisByContinente','pais','div#estudios div div.col-lg-6 div.input-group select');
+			selectByTabs("estudios",'pais','getToken','gerUrlUniversidadByPais','campus_sede','div#estudios div div.col-lg-6 div.input-group select');
 
 			selectByTabs("intercambio",'campus_sede','getToken','getUrlFacultadesByCampus','facultad','div#intercambio div div.col-lg-6 div.form-group select');
 			selectByTabs("intercambio",'facultad','getToken','getUrlCarreraByFacultad','carrera','div#intercambio div div.col-lg-6 div.form-group select');
@@ -86,7 +90,11 @@
 
 
 
+			$('.tab-pane').on('click','#add_carrera',function(){
 
+                    $('#modal_crear_carrera').modal('show'); 
+
+			});
 
 			$('.input-daterange input').each(function() {
 			    $(this).datepicker("clearDates");
@@ -101,7 +109,7 @@
 
 			$('#guardarPostulacion').on('click',function(e){
 
-				var data = $(".active").find('input,select').serialize();
+				var data = $(".active").find('input,select,textarea ').serialize();
 				var url  = $(".active").find('#urlStoreInformacion').val();
 	          	$.ajax({
 		              // En data puedes utilizar un objeto JSON, un array o un query string

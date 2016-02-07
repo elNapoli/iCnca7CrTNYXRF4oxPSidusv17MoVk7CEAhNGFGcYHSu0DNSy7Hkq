@@ -1,5 +1,4 @@
 <div class="panel-body">
-        <div id="message"></div>
         <div class="col-lg-6">
             <div class="form-group">
                 {!!  Form::label('apellido_paterno', 'Apellido paterno ')!!}

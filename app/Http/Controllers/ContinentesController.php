@@ -43,10 +43,9 @@ class ContinentesController extends Controller {
 		 
 		$continente = Continente::create($request->all());
 		$message    = 'El continente '.$request->get('nombre').'se almacenó correctamente';
-		\Session::flash('message', $message);
-
-		//return redirect()->route('continentes.index');
-		return redirect('continentes');
+		return response()->json([
+				'message'=> $message
+				]);
 	}
 
 	/**
@@ -62,10 +61,10 @@ class ContinentesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function getEdit($id)
+	public function postEdit($id)
 	{
 		$continente = Continente::findOrFail($id);
-        return view('continentes.edit',compact('continente'));
+        return $continente->toJson();
 	}
 
 	/**
@@ -84,9 +83,10 @@ class ContinentesController extends Controller {
 		$continente = Continente::findOrFail($id);
 		$continente->fill($request->all());
         $continente->save();
-        \Session::flash('message', 'El Continente se Editó correctamente');
-		return redirect('continentes');
-        //return redirect()->route('continentes.index');
+        $message    = 'El continente '.$request->get('nombre').'se ha actualizado correctamente';
+		return response()->json([
+				'message'=> $message
+				]);
 	}
 
 	/**

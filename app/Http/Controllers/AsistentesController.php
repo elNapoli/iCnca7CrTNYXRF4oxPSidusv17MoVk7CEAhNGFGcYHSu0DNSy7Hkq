@@ -47,9 +47,9 @@ class AsistentesController extends Controller {
                 ->from('postulante')
 		->join('asistente','asistente.postulante','=','postulante.id')
                 /*->where('postulante.id', '=', '4')*/;})->get();
-		//$post_a = Postulante::has('pregradosR.preUachsR.asistentesR')->get();		
-		dd($post->toArray());
-		return view('asistentes.create');
+		//$post_a = Postulante::has('pregradosR.preUachsR.asistentesR')->get();	
+		$post = array_pluck($post,'nombre','id'); //genera una lista para el select del arreglo de postulantes filtrados
+		return view('asistentes.create',compact('post'));
 	}
 
 	/**
@@ -59,17 +59,17 @@ class AsistentesController extends Controller {
 	 */
 	public function postStore(Request $request)
 	{
-
-		/* $this->validate($request, [
+		$beneficios = Beneficio::lists('nombre','id');
+		$this->validate($request, [
         'nombre' => 'required|string|unique:beneficio,nombre',
-    	]);*/
+    	]);
 
 		$asisitente = Asistente::create($request->all());
-		$message    = 'El registro '.$request->get('nombre').'se almacenó correctamente';
+		$message    = 'El registro '.$request->get('nombre').' se almacenó correctamente';
 		\Session::flash('message', $message);
 
 		//return redirect()->route('beneficios.index');
-		return redirect('beneficios');
+		return view('asistentes/createb',compact('beneficios'));
 	}
 
 	/**

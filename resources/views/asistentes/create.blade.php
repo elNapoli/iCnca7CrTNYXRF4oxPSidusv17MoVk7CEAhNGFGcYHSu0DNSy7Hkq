@@ -20,7 +20,7 @@
     {!! Form::text('nombre',null,array('class' => 'form-control','placeholder'=>'Ingrese nombre de El/La Asistente'));!!}
 
     {!!  Form::label('postulate', ' Postulante ');!!}
-    {!! Form::text('postulante',null,array('class' => 'form-control','placeholder'=>'Ingrese el postulante'));!!}
+    {!!  Form::select('postulante', [null=>'Seleccione un beneficio']+$post,null,array('class' => 'form-control','id'=>'post'))!!}
 
 
     {!!  Form::label('indicaciones', ' Indicaciones ');!!}
@@ -36,9 +36,65 @@
 	</div>
 
 
-
+{!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 @endsection
 
 @section('breadcrumbs')
 {!! Breadcrumbs::render('beneficiosCrear') !!}
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+    $('#post').on('change',function(e){ 
+
+        var id = $(this).val() //paso la id del select por referencia
+        alert(id)
+
+    });
+        
+$('#create_a').on('click',function(e){ //boton para añadir beneficios en edit
+        e.preventDefault(); // jquery evento prevent default (e)
+
+        if(confirm("Continuar y añador beneficios?\nAceptar y contiunar o Cancelar.")){
+                    var id_a    = $('#asistente').val();//$('#asistente').val();
+                    var post    = $('#post').val(); //captura el id del select 
+                    var form  = $('#form-edit'); //traigo la id
+                    alert(id_a)
+                    alert(post)
+                   // var url   = $('#urlBeneficioAdd').val(); //remplazo el placeholder USER_ID con la id
+                    var data  = {id_a:id_a,beneficio:beneficio,_token:$('#getToken').val()}
+
+
+
+
+                    $.ajax({
+                        // En data puedes utilizar un objeto JSON, un array o un query string
+                       data:data,
+                        //Cambiar a type: POST si necesario
+                        type: "post",
+                        // Formato de datos que se espera en la respuesta
+                        dataType: "json",
+                        // URL a la que se enviará la solicitud Ajax
+                        url:url ,
+                        success : function(json) {
+                            alert(json.message);                
+                            row.show(); //solo se elimina cuando se completa transaccion
+                        },
+
+                        error : function(xhr, status) {
+                            alert('El beneficio no fue añadido');
+                            row.fadeOut();
+                            console.log('Disculpe, existió un problema ');
+                        },
+                    });     
+                }
+
+    });
+
+    });
+
+</script>
 @endsection

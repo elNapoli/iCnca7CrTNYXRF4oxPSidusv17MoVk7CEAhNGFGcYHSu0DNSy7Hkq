@@ -1,4 +1,4 @@
-<div class="panel-body">
+    <div class="panel-body">
         <div class="col-lg-6">
             <div class="form-group">
                 {!!  Form::label('apellido_paterno', 'Apellido paterno ')!!}
@@ -64,11 +64,6 @@
                 {!! Form::text('telefono',null,array('class' => 'form-control','placeholder'=>'Ej: +89963897733'));!!}
             </div>
 
-
-
-
-        </div>
-        <div class="col-lg-6">
             <div class="form-group">
                 {!!  Form::label('continente', ' Nombre Continente ')!!}
                 {!!  Form::select('continente', [null=>'Seleccione un continente']+$continentes,null,array('class' => 'continente form-control'))!!}
@@ -89,6 +84,13 @@
                 {!!  Form::label('direccion', 'Dirección ')!!}
                 {!! Form::text('direccion',null,array('class' => 'form-control','placeholder'=>'Ej: Gral Lagos #8984'));!!}
             </div>
+
+
+
+
+        </div>
+        <div class="col-lg-6">
+            
             <div class="form-group">
                 {!!  Form::label('nacionalidad', 'Nacionalidad ')!!}
                 {!! Form::text('nacionalidad',null,array('class' => 'form-control','placeholder'=>'Ej: Chileno'));!!}
@@ -133,12 +135,12 @@
                 </div>
 
                 <div class="form-group">
-                    {!!  Form::label('telefono', 'Teléfono ')!!}
-                    {!! Form::text('telefono',null,array('class' => 'form-control','placeholder'=>'+56912345678'));!!}
+                    {!!  Form::label('telefono_2', 'Teléfono ')!!}
+                    {!! Form::text('telefono_2',null,array('class' => 'form-control','placeholder'=>'+56912345678'));!!}
                 </div>
                 <div class="form-group">
                     {!!  Form::label('ciudad_2', ' Nombre de la ciudad ')!!}
-                    {!!  Form::select('ciuda_2d', [null=>'Seleccione ciudad'],null,array('class' => 'form-control ciudad'))!!}
+                    {!!  Form::select('ciudad_2', [null=>'Seleccione ciudad'],null,array('class' => 'form-control ciudad'))!!}
                 </div>
                 <div class="form-group">
                     {!!  Form::label('direccion_2', 'Direccion actual ')!!}

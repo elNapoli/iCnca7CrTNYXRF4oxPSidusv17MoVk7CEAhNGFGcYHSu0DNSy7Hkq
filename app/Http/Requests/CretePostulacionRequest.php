@@ -19,23 +19,57 @@ class CretePostulacionRequest extends Request {
 	 *
 	 * @return array
 	 */
+
+
+	 
+
 	public function rules()
 	{
-		return [
-			'apellido_paterno' =>'required',
-			'apellido_materno'=>'required',
-			'nombre'=>'required',
-			'direccion'=>'required',
-			'email_personal'=>'required|unique:postulante,email_personal',
-			'fecha_nacimiento'=>'required',
-			'lugar_nacimiento'=>'required',
-			'nacionalidad'=>'required',
-			'ciudad'=>'required',
-			'sexo'=>'required',
-			'telefono'=>'required',
-			'tipo'=>'required',
-			'numero'=>'required|unique:documento_identidad,numero',
-		];
+
+		if($this->get('procedencia')==='UACH'){
+
+			return [
+				'apellido_paterno' =>'required',
+				'apellido_materno'=>'required',
+				'nombre'=>'required',
+				'direccion'=>'required',
+				'email_personal'=>'required|unique:postulante,email_personal',
+				'fecha_nacimiento'=>'required',
+				'lugar_nacimiento'=>'required',
+				'nacionalidad'=>'required',
+				'ciudad'=>'required',
+				'sexo'=>'required',
+				'telefono'=>'required',
+				'tipo'=>'required',
+				'numero'=>'required|unique:documento_identidad,numero',
+				'email_personal'=>'required',
+				'grupo_sanguineo'=>'required',
+				'enfermedades'=>'required',
+				'telefono_2'=>'required',
+				'ciudad_2'=>'required',
+				'direccion_2'=>'required',
+				'email_institucional'=>'required|unique:postulante,email_personal',
+
+			];
+		}
+		else{
+
+			return [
+				'apellido_paterno' =>'required',
+				'apellido_materno'=>'required',
+				'nombre'=>'required',
+				'direccion'=>'required',
+				'email_personal'=>'required|unique:postulante,email_personal',
+				'fecha_nacimiento'=>'required',
+				'lugar_nacimiento'=>'required',
+				'nacionalidad'=>'required',
+				'ciudad'=>'required',
+				'sexo'=>'required',
+				'telefono'=>'required',
+				'tipo'=>'required',
+				'numero'=>'required|unique:documento_identidad,numero',
+			];
+		}
 	}
     //funcion donde se definen los distintos mensajes del sistema
     public function messages()

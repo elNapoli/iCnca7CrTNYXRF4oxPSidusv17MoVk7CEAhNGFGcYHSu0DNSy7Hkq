@@ -62,14 +62,16 @@ class AsistentesController extends Controller {
 		$beneficios = Beneficio::lists('nombre','id');
 		$this->validate($request, [
         'nombre' => 'required|string|unique:beneficio,nombre',
+        'postulante' =>'required',
+        'indicaciones' => 'required',
     	]);
 
-		$asisitente = Asistente::create($request->all());
+		$asistente = Asistente::create($request->all());
 		$message    = 'El registro '.$request->get('nombre').' se almacenó correctamente';
 		\Session::flash('message', $message);
 
 		//return redirect()->route('beneficios.index');
-		return view('asistentes/createb',compact('beneficios'));
+		return view('asistentes/createb',compact('beneficios','asistente'));
 	}
 
 	/**
@@ -94,7 +96,14 @@ class AsistentesController extends Controller {
 		$beneficios = Beneficio::lists('nombre','id');
         return view('asistentes.edit',compact('asistentes','detalle','post','beneficios'));
 	}
-
+	public function getDetalle($id)
+	{
+		$detalle = DetalleBeneficio::with('beneficioR')->where('id_a','=',$id)->get();
+		
+		$arra = array('data'=>$detalle->toArray());
+		//dd(json_encode($arra));
+		return json_encode($arra);
+	}
 	/**
 	 * Update the specified resource in storage.
 	 *
@@ -109,7 +118,7 @@ class AsistentesController extends Controller {
 		$asistentes = Asistente::findOrFail($id);
 		$asistentes->fill($request->all());
         $asistentes->save();
-        \Session::flash('message', 'El Asistente se Editó correctamente');
+        \Session::flash('message', 'El registro se editó correctamente');
 		return redirect('asistentes');
         //return redirect()->route('beneficios.index');
 	}

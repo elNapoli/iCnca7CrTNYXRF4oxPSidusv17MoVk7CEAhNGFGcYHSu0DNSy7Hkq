@@ -60,8 +60,8 @@
 
         <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">@yield('Dashboard')</h1>
+          <!--      <div class="col-lg-12">                             //comentado el 8-feb-2016 porque quita mucho 
+                    <h1 class="page-header">@yield('Dashboard')</h1>    espacio de visualizacion
 
                 </div>
                 <!-- /.col-lg-12 -->

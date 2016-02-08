@@ -1,13 +1,11 @@
 @extends('layout.app')
 
-@section('Dashboard') Beneficios @endsection
-
 @section('content')
 
 
 
-<div class="col-md-1" ></div>
-<div class="col-md-5" >
+<div class="col-md-0" ></div>
+<div class="col-md-12" >
 
 	@include('partials.error')
 
@@ -28,6 +26,7 @@
 
 	{!!Form::hidden('urlBeneficioDestroy', url('detalles/destroy'),array('id'=>'urlBeneficioDestroy'));!!}
 	{!!Form::hidden('urlBeneficioAdd', url('detalles/add'),array('id'=>'urlBeneficioAdd'));!!}
+	{!!Form::hidden('urlBeneficioByAsistente', url('asistentes/detalle'),array('id'=>'urlBeneficioByAsistente'));!!}
 	{!!Form::close()!!}
 
 
@@ -50,20 +49,34 @@
 
 	$(document).ready(function(){
 
+		var dt = $('#tableDetalleBeneficio').DataTable( {
+ 
+ 		"lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "All"]],
+		 "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
+
+        "ajax": $('#urlBeneficioByAsistente').val()+'/'+$('#asistente').val(),
 
 
-	$('#tableDetalleBeneficio').DataTable( {
-		        "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
-		        "language": {
-		            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-		        }
-		    } );
+        "columns": [
+    
+            { "data": "beneficio_r.nombre" },
+            { "data": null,
+                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                    $(nTd).html(
+                                "<a href='#!' class='btn-delete' id='"+oData.id_a+'.'+oData.beneficio+"'> Del</a>"
+                        );
+
+                }
+            }
+       
+        ],
+        "order": [[1, 'asc']]
+    } );
 
 	$('#beneficio').on('change',function(e){ 
 
 		var id = $(this).val() //paso la id del select por referencia
 		var form  = $('#form_edit');
-		alert(form.serialize())
 
 	});
 
@@ -72,11 +85,10 @@
 		e.preventDefault(); // jquery evento prevent default (e)
 
 		if(confirm("Esta seguro que desea añador este beneficio!\nEither OK or Cancel.")){
+		
 					var id_a	= $('#asistente').val();//$('#asistente').val();
 					var beneficio    = $('#beneficio').val(); //captura el id del select 
 					var form  = $('#form-edit'); //traigo la id
-					alert(id_a)
-					alert(beneficio)
 					var url   = $('#urlBeneficioAdd').val(); //remplazo el placeholder USER_ID con la id
 					var data  = {id_a:id_a,beneficio:beneficio,_token:$('#getToken').val()}
 
@@ -94,12 +106,11 @@
 					    url:url ,
 					    success : function(json) {
 					    	alert(json.message);				
-							row.show(); //solo se elimina cuando se completa transaccion
+							dt.ajax.reload();
 						},
 
 					    error : function(xhr, status) {
 					    	alert('El beneficio no fue añadido');
-							row.fadeOut();
 					        console.log('Disculpe, existió un problema ');
 					    },
 					});		
@@ -107,20 +118,22 @@
 
 	});
 
-	$('.btn-delete').on('click',function(e){
-				e.preventDefault(); // jquery evento prevent default (e)
+    $('table').on('click','.btn-delete', function(e){
 
-				if(confirm("El boton funciona!\nEither OK or Cancel.")){
+
+				if(confirm("Esta seguro de querer eliminar este beneficio?!!\nEither OK or Cancel.")){
 					
-					var row   = $(this).parents('tr');
-					var id_a	= row.data('id')//$('#asistente').val();
-					var id_b    = /*$('#asistente').val();*/row.data('benef'); //captura el id de la fila seleccionada
+					var row   = $(this).attr('id');
+					var row_array = row.split(".");
+					var id_a	= row_array[0]//$('#asistente').val();
+					var id_b    = row_array[1]/*$('#asistente').val();*///row.data('benef'); //captura el id de la fila seleccionada
 					var form  = $('#form-delete'); //traigo la id
 					var url   = $('#urlBeneficioDestroy').val(); //remplazo el placeholder USER_ID con la id
 					var data  = {id_a:id_a,id_b:id_b,_token:$('#getToken').val()}
 
 
-
+						console.log(id_a);
+						console.log(id_b);
 
 					$.ajax({
 					    // En data puedes utilizar un objeto JSON, un array o un query string
@@ -133,18 +146,18 @@
 					    url:url ,
 					    success : function(json) {
 					    	alert(json.message);				
-							row.fadeOut(); //solo se elimina cuando se completa transaccion
+							dt.ajax.reload();
 						},
 
 					    error : function(xhr, status) {
 					    	alert('El usuario no fue eliminado');
-							row.show();
+							
 					        console.log('Disculpe, existió un problema ');
 					    },
 					});		
 				}
+    });
 
-			});
 
 	});
 

@@ -49,10 +49,7 @@
     $(document).ready(function(){
 
     $('#post').on('change',function(e){ 
-
         var id = $(this).val() //paso la id del select por referencia
-        alert(id)
-
     });
         
 $('#create_a').on('click',function(e){ //boton para añadir beneficios en edit
@@ -62,8 +59,6 @@ $('#create_a').on('click',function(e){ //boton para añadir beneficios en edit
                     var id_a    = $('#asistente').val();//$('#asistente').val();
                     var post    = $('#post').val(); //captura el id del select 
                     var form  = $('#form-edit'); //traigo la id
-                    alert(id_a)
-                    alert(post)
                    // var url   = $('#urlBeneficioAdd').val(); //remplazo el placeholder USER_ID con la id
                     var data  = {id_a:id_a,beneficio:beneficio,_token:$('#getToken').val()}
 

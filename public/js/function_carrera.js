@@ -1,10 +1,10 @@
 function initCarrera(){
 	
 	$('.modal-dialog').css('width', '750px');
-	selectByTabs("modal_crear_carrera",'continente','getToken','getUrlPaisByContinente','pais','div#boyd-modal div div select');
+	selectByTabs("modal_crear_carrera",'continente','getToken','getUrlPaisByContinente','#pais','div#boyd-modal div div select');
 
-	selectByTabs("modal_crear_carrera",'pais','getToken','gerUrlUniversidadByPais','campus_sede','div#boyd-modal div div select');
-	selectByTabs("modal_crear_carrera",'campus_sede','getToken','getUrlFacultadesByCampus','facultad','div#boyd-modal div div select');
+	selectByTabs("modal_crear_carrera",'pais','getToken','gerUrlUniversidadByPais','#campus_sede','div#boyd-modal div div select');
+	selectByTabs("modal_crear_carrera",'campus_sede','getToken','getUrlFacultadesByCampus','#facultad','div#boyd-modal div div select');
 	$('#btnAddCarrera').on('click', function(e){
 
 	    var data = $('#form-save').serialize();

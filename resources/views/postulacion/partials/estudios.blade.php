@@ -1,9 +1,5 @@
 <div class="panel-body">
         <div class="col-lg-6">
-<div class="form-group">
-    {!!  Form::label('procedencia', 'Procedencia')!!}
-    {!!  Form::select('procedencia', [null=>'Seleccione procedencia','UACH'=>'Estudiante UACh','NO UACH'=>'Estudiante Extranjeros'],null,array('class' => 'form-control'))!!}
-</div>
             @include('postulacion.partials.select_universidad')
         </div>
 

@@ -102,6 +102,32 @@
                 {!! Form::text('lugar_nacimiento',null,array('class' => 'form-control','placeholder'=>'Ej: Osorno'));!!}
             </div>
 
+
+
+            <div class="form-horizontal">
+              <div class="form-group">
+                <div class="col-lg-4">
+                    {!! Form::label('tipo_estudio', 'Tipo de postulación:') !!}
+                </div>
+                <div class="col-lg-8">
+                <div class="form-group">
+                    
+                  <label class="radio-inline">
+                        {!!  Form::radio('tipo_estudio', 'Pregrado', true,array('id'=>'tEstudio_pre'));!!} Estudiante pregrado
+                    </label>
+                </div>
+                <div class="form-group">
+                    
+                  <label class="radio-inline">
+                        {!!  Form::radio('tipo_estudio', 'Postgrado',false,array('id'=>'tEstudio_post'));!!} Estudiante postgrado
+                    </label>
+                </div>
+
+                </div>
+              </div>
+
+            </div>
+
             <div class="form-group">
 
                 <div id="procedencia">

@@ -23,6 +23,7 @@ class PreUEstudioActualRequest extends Request {
 	{
 		return [
 			'carrera'=>'required',
+			'procedencia'=>'required',
 			'anio_ingreso'=>'required',
 			'beneficios'=>'required',
 			'ranking'=>'required',

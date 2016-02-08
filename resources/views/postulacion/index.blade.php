@@ -74,19 +74,35 @@
 
 		$(document).ready(function() {
 
-			initCarrera();
-			selectByTabs("datosPersonales",'continente','getToken','getUrlPaisByContinente','pais','div#datosPersonales div div.col-lg-6 div.form-group select');
-			selectByTabs("datosPersonales",'pais','getToken','getUrCiudadContinente','ciudad','div#datosPersonales div div.col-lg-6 div.form-group select');
-      			
-			selectByTabs("estudios",'campus_sede','getToken','getUrlFacultadesByCampus','facultad','div#estudios div div.col-lg-6 div.input-group select');
-			selectByTabs("estudios",'facultad','getToken','getUrlCarreraByFacultad','carrera','div#estudios div div.col-lg-6 div.input-group select');
-			selectByTabs("estudios",'continente','getToken','getUrlPaisByContinente','pais','div#estudios div div.col-lg-6 div.input-group select');
-			selectByTabs("estudios",'pais','getToken','gerUrlUniversidadByPais','campus_sede','div#estudios div div.col-lg-6 div.input-group select');
+			  $('#procedencia input[type=radio]').change(function(){
+			  	
+			  	if($(this).val()==='UACH'){
 
-			selectByTabs("intercambio",'campus_sede','getToken','getUrlFacultadesByCampus','facultad','div#intercambio div div.col-lg-6 div.form-group select');
-			selectByTabs("intercambio",'facultad','getToken','getUrlCarreraByFacultad','carrera','div#intercambio div div.col-lg-6 div.form-group select');
-			selectByTabs("intercambio",'continente','getToken','getUrlPaisByContinente','pais','div#intercambio div div.col-lg-6 div.form-group select');
-			selectByTabs("intercambio",'pais','getToken','gerUrlUniversidadByPais','campus_sede','div#intercambio div div.col-lg-6 div.form-group select');
+			  	$( "#preUach" ).show( "slow" );
+			  		
+			  	}
+			  	else{
+
+			  	$( "#preUach" ).hide( "slow" );
+
+			  	}
+      
+      })
+
+
+			initCarrera();
+			selectByTabs("datosPersonales",'continente','getToken','getUrlPaisByContinente','#pais','div#datosPersonales div div.col-lg-6 div.form-group select');
+			selectByTabs("datosPersonales",'pais','getToken','getUrCiudadContinente','.ciudad','div#datosPersonales div div.col-lg-6 div.form-group select');
+      			
+			selectByTabs("estudios",'campus_sede','getToken','getUrlFacultadesByCampus','#facultad','div#estudios div div.col-lg-6 div.input-group select');
+			selectByTabs("estudios",'facultad','getToken','getUrlCarreraByFacultad','#carrera','div#estudios div div.col-lg-6 div.input-group select');
+			selectByTabs("estudios",'continente','getToken','getUrlPaisByContinente','#pais','div#estudios div div.col-lg-6 div.input-group select');
+			selectByTabs("estudios",'pais','getToken','gerUrlUniversidadByPais','#campus_sede','div#estudios div div.col-lg-6 div.input-group select');
+
+			selectByTabs("intercambio",'campus_sede','getToken','getUrlFacultadesByCampus','#facultad','div#intercambio div div.col-lg-6 div.form-group select');
+			selectByTabs("intercambio",'facultad','getToken','getUrlCarreraByFacultad','#carrera','div#intercambio div div.col-lg-6 div.form-group select');
+			selectByTabs("intercambio",'continente','getToken','getUrlPaisByContinente','#pais','div#intercambio div div.col-lg-6 div.form-group select');
+			selectByTabs("intercambio",'pais','getToken','gerUrlUniversidadByPais','#campus_sede','div#intercambio div div.col-lg-6 div.form-group select');
 
 
 
@@ -125,6 +141,8 @@
               		success : function(json) {   
               			//alert("ho");
       			  		$('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>La postulación se guardo exitosamente</div>');
+      			  		$("html, body").animate({ scrollTop: 0 }, 600);
+      			  		
 	            	},
 
               		error : function(xhr, status) {
@@ -134,6 +152,8 @@
 			                html += "<li>" + xhr.responseJSON[key][0] + "</li>";
 			            }
           			  	$('#message').html(html+'</div>');
+      			  		$("html, body").animate({ scrollTop: 0 }, 600);
+
                   
              		},
 						/*var id;

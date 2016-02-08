@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUniversidadRequest;
 use App\Http\Requests\EditUniversidadRequest;
 use App\Http\Requests\CreateCampusRequest;
+use Illuminate\Contracts\Auth\Guard;
 use App\Universidad;
 use App\CampusSede;
 use Illuminate\Http\Request;
@@ -20,14 +21,8 @@ class UniversidadesController extends Controller {
 	 */
 
 
-	public function getDebug(){
-		$var = 1;
-		$reno = Universidad::where('pais',$var)->with('campusSedes')->get()->toJson();
-		return $reno;
-		/*$reno = Universidad::with(['campusSedes.ciudadR' => function ($query) use ($var) {
-    $query->where('ciudad.pais',$var);
-
-}])->get();*/
+	public function getDebug(Guard $user){
+	 	dd($user->user());
 	}
 	public function getIndex()
 	{

@@ -4,6 +4,7 @@ use App\Http\Requests\CretePostulacionRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Continente;
+use Illuminate\Contracts\Auth\Guard;
 use App\Postulante;
 use App\Facultad;
 use App\DocumentoIdentidad;
@@ -25,10 +26,11 @@ class PostulacionController extends Controller {
 	}
 
 
-	public function postStore(CretePostulacionRequest $request){
+	public function postStore(CretePostulacionRequest $request,Guard $auth){
+
 
 		$postulante = new Postulante($request->all());
-		$postulante->user_id = 20; // modificar con el id del usuario autentificado
+		$postulante->user_id = $auth->id(); // modificar con el id del usuario autentificado
 
 		$postulante->save();
 		$documento = new DocumentoIdentidad();

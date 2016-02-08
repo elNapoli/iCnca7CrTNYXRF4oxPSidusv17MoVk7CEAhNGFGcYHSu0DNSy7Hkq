@@ -1,5 +1,4 @@
-<div class="panel-body">
-        <div id="message"></div>
+    <div class="panel-body">
         <div class="col-lg-6">
             <div class="form-group">
                 {!!  Form::label('apellido_paterno', 'Apellido paterno ')!!}
@@ -65,11 +64,6 @@
                 {!! Form::text('telefono',null,array('class' => 'form-control','placeholder'=>'Ej: +89963897733'));!!}
             </div>
 
-
-
-
-        </div>
-        <div class="col-lg-6">
             <div class="form-group">
                 {!!  Form::label('continente', ' Nombre Continente ')!!}
                 {!!  Form::select('continente', [null=>'Seleccione un continente']+$continentes,null,array('class' => 'continente form-control'))!!}
@@ -90,6 +84,13 @@
                 {!!  Form::label('direccion', 'Dirección ')!!}
                 {!! Form::text('direccion',null,array('class' => 'form-control','placeholder'=>'Ej: Gral Lagos #8984'));!!}
             </div>
+
+
+
+
+        </div>
+        <div class="col-lg-6">
+            
             <div class="form-group">
                 {!!  Form::label('nacionalidad', 'Nacionalidad ')!!}
                 {!! Form::text('nacionalidad',null,array('class' => 'form-control','placeholder'=>'Ej: Chileno'));!!}
@@ -99,6 +100,52 @@
             <div class="form-group">
                 {!!  Form::label('lugar_nacimiento', 'Lugar de nacimiento ')!!}
                 {!! Form::text('lugar_nacimiento',null,array('class' => 'form-control','placeholder'=>'Ej: Osorno'));!!}
+            </div>
+
+            <div class="form-group">
+
+                <div id="procedencia">
+                {!! Form::label('procedencia', 'Procedencia:') !!}
+                    
+                    <label class="radio-inline">
+                        {!!  Form::radio('procedencia', 'NO UACH', true,array('id'=>'procedencia_NU'));!!} Estudiante Extranjero
+                    </label>
+                    <label class="radio-inline">
+                        {!!  Form::radio('procedencia', 'UACH',false,array('id'=>'procedencia_U'));!!} Estudiante UACH
+                    </label>
+                </div>
+
+            </div>
+
+            <div id="preUach" style="display: none">
+                
+                <div class="form-group">
+                    {!!  Form::label('email_institucional', 'E-mail institucional ')!!}
+                    {!! Form::text('email_institucional',null,array('class' => 'form-control','placeholder'=>'Ej: javier.andrade@uach.cl'));!!}
+                </div>
+
+                <div class="form-group">
+                    {!!  Form::label('grupo_sanguineo', 'Grupo sanguíneo ')!!}
+                    {!! Form::text('grupo_sanguineo',null,array('class' => 'form-control','placeholder'=>'B+'));!!}
+                </div>
+
+                <div class="form-group">
+                    {!!  Form::label('enfermedades', 'Enfermedades ')!!}
+                    {!! Form::text('enfermedades',null,array('class' => 'form-control','placeholder'=>'Diabetes'));!!}
+                </div>
+
+                <div class="form-group">
+                    {!!  Form::label('telefono_2', 'Teléfono ')!!}
+                    {!! Form::text('telefono_2',null,array('class' => 'form-control','placeholder'=>'+56912345678'));!!}
+                </div>
+                <div class="form-group">
+                    {!!  Form::label('ciudad_2', ' Nombre de la ciudad ')!!}
+                    {!!  Form::select('ciudad_2', [null=>'Seleccione ciudad'],null,array('class' => 'form-control ciudad'))!!}
+                </div>
+                <div class="form-group">
+                    {!!  Form::label('direccion_2', 'Direccion actual ')!!}
+                    {!! Form::text('direccion_2',null,array('class' => 'form-control','placeholder'=>'+56912345678'));!!}
+                </div>
             </div>
 
         </div>

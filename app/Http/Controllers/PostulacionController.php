@@ -4,7 +4,11 @@ use App\Http\Requests\CretePostulacionRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Continente;
+use Illuminate\Contracts\Auth\Guard;
 use App\Postulante;
+use App\PreUach;
+use App\PreNoUach;
+use App\Pregrado;
 use App\Facultad;
 use App\DocumentoIdentidad;
 use Illuminate\Http\Request;
@@ -25,12 +29,39 @@ class PostulacionController extends Controller {
 	}
 
 
-	public function postStore(CretePostulacionRequest $request){
+	public function postStore(CretePostulacionRequest $request,Guard $auth){
+
 
 		$postulante = new Postulante($request->all());
-		$postulante->user_id = 20; // modificar con el id del usuario autentificado
-
+		$postulante->user_id = $auth->id(); 
 		$postulante->save();
+
+		$pregrado = new Pregrado();
+		$pregrado->postulante = $postulante->id;
+		$pregrado->procedencia = $request->get('procedencia');
+		$pregrado->save();
+
+
+
+		if($request->get('procedencia')==='UACH'){
+			$preUach = new PreUach();
+			$preUach->postulante = $postulante->id;
+			$preUach->email_institucional = $request->get('email_institucional');
+			$preUach->grupo_sanguineo = $request->get('grupo_sanguineo');
+			$preUach->enfermedades = $request->get('enfermedades');
+			$preUach->telefono = $request->get('telefono_2');
+			$preUach->ciudad = $request->get('ciudad_2');
+			$preUach->direccion = $request->get('direccion_2');
+			$preUach->save();
+
+		}
+		else{
+			$preNoUach = new PreNoUach();
+			$preNoUach->postulante = $postulante->id;
+			$preNoUach->save();
+
+		}
+
 		$documento = new DocumentoIdentidad();
 		$documento->postulante = $postulante->id;
 		$documento->tipo = $request->get('tipo');

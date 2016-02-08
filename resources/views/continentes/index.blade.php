@@ -11,8 +11,8 @@
 
 		<div class="panel panel-default">
 
-			@include('partials.success')
-		  <div class="panel-heading"><a class="btn-info btn" href="{{ url('continentes/create')}}">Crear continente</a></div>
+		<div class="message"></div>
+		  <div class="panel-heading"><a class="btn btn-primary btn-outline" data-toggle="modal" data-target="#modal_crear_continente" href="#!">Crear continente</a></div>
 
 		  <!-- Table -->
 			@include('continentes.partials.table')
@@ -28,7 +28,11 @@
 
 {!! Form::close()!!}
 	{!!Form::hidden('urlContinenteDestroy', url('continentes/destroy'),array('id'=>'urlContinenteDestroy'));!!}
+	{!!Form::hidden('urlContinenteUpdate', url('continentes/update'),array('id'=>'urlContinenteUpdate'));!!}
 
+
+@include('continentes.partials.modal_create')
+@include('continentes.partials.modal_edit')
 
 @endsection
 
@@ -37,13 +41,115 @@
 {!! Breadcrumbs::render('continentes') !!}
 @endsection
 
+
+
 @section('scripts')
 	<script type="text/javascript">
 		$(document).ready(function() {
 
+		var dt = $('#tableContinente').DataTable( {
+		        "language": {
+		            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+		        }
+		    } );
+		
 
 
+        $('table').on('click','.model-open-edit', function(e){
+            var data = $('#form-edit-continente').serialize();
+            $.ajax({
+                // En data puedes utilizar un objeto JSON, un array o un query string
+                data:data,
+                //Cambiar a type: POST si necesario
+                type: "post",
+                // Formato de datos que se espera en la respuesta
+                dataType: "json",
+                // URL a la que se enviará la solicitud Ajax
+                url:$('#form-edit-continente').attr('action')+'/'+$(this).attr('id') ,
+                success : function(json) {
 
+
+                    $('div#boyd-modal div div input#nombre').val(json.nombre);
+                    $('div#boyd-modal div div input#id').val(json.id);
+
+                    $('#modal_edit_continente').modal('show'); 
+
+
+          
+                },
+
+                error : function(xhr, status) {
+                    alert('mal conexion');
+
+
+                },
+            }); 
+            
+            
+        });
+			$('#btnUpdateContinente').on('click',function(){
+	            var data = $('#form-edit-continente').serialize();
+	            $.ajax({
+	                // En data puedes utilizar un objeto JSON, un array o un query string
+	               data:data,
+	                //Cambiar a type: POST si necesario
+	                type: "put",
+	                // Formato de datos que se espera en la respuesta
+	                dataType: "json",
+	                // URL a la que se enviará la solicitud Ajax
+	                url:$('#urlContinenteUpdate').val()+'/'+$('#id').val(),
+	                success : function(json) {
+	                    $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+                    	$('#modal_edit_continente').modal('hide'); 
+
+	                    dt.reload();            
+	          
+	                },
+
+	                error : function(xhr, status) {
+	                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+	                        for(var key in xhr.responseJSON)
+	                        {
+	                            html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+	                        }
+	                        $('#message-modal').html(html+'</div>');
+
+
+	                },
+	            }); 
+			});
+			$('#btnCreateContinente').on('click',function(){
+		    var data = $('#form-save-continente').serialize();
+
+		    $.ajax({
+		        // En data puedes utilizar un objeto JSON, un array o un query string
+		       data:data,
+		        //Cambiar a type: POST si necesario
+		        type: "post",
+		        // Formato de datos que se espera en la respuesta
+		        dataType: "json",
+		        // URL a la que se enviará la solicitud Ajax
+		        url:$('#form-save-continente').attr('action') ,
+		        success : function(json) {
+		            $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+		            $('#modal_crear_continente').modal('hide'); 
+		            dt.ajax.reload();            
+		  
+		        },
+
+		        error : function(xhr, status) {
+		            var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+		                for(var key in xhr.responseJSON)
+		                {
+		                    html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+		                }
+		                $('#message-modal').html(html+'</div>');
+
+
+		        },
+		    }); 
+
+			});
 
 			$('.btn-delete').click(function(e){ //vincula la funcion del boton al ser presionado
 				e.preventDefault(); // jquery evento prevent default (e)
@@ -81,11 +187,7 @@
 
 			});
 
-		    $('#tableContinente').DataTable( {
-		        "language": {
-		            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-		        }
-		    } );
+
 		} );
 
 	</script>

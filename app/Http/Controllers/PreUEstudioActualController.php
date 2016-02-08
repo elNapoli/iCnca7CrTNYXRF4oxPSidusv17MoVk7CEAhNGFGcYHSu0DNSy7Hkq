@@ -1,9 +1,14 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Http\Requests\PreUEstudioActualRequest;
+use Illuminate\Contracts\Auth\Guard;
 use App\Http\Controllers\Controller;
 use App\PreUEstudioActual;
 use App\Postulante;
+use App\Pregrado;
+use App\PreUach;
+use App\PreNoUach;
 
 use Illuminate\Http\Request;
 
@@ -30,12 +35,30 @@ class PreUEstudioActualController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function postStore(Request $request){
+	public function postStore(PreUEstudioActualRequest $request,Guard $auth){
 
-		$postulante = new PreUEstudioActual($request->all());
-		$postulante_id  = Postulante::select('id')->where('user_id',20)->first();
-		$postulante->postulante = $postulante_id->id;
-		dd($postulante->toArray());
+
+		$postulante  = Postulante::where('user_id',$auth->id())->first();
+		// con esta instrucción se almacena al estudiante que es de pregrado 
+		$pregrado = new Pregrado();
+		$pregrado->postulante  = $postulante->id;
+		$pregrado->procedencia = $request->get('procedencia');
+		$pregrado->save();
+
+		if($request->get('procedencia') === 'NO UACH'){
+			$preUach = new PreUach();
+			$preUach =
+
+		}
+		else{
+
+
+		}
+
+		$preEstudioActual = new PreUEstudioActual($request->all());
+		$preEstudioActual->postulante = $postulante->id;
+
+		$preEstudioActual->save();
 		return response()->json([
 				'message'=> 'se Guardó la universidad Correctamente '.$postulante
 				]);

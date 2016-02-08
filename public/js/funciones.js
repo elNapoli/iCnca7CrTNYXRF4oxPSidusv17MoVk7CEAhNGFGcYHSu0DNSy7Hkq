@@ -3,7 +3,7 @@ var idTab = $("#"+idTab);
 var idSelect = "#"+idSelect;
 var token = $('#'+token).val();
 var urlE = $('#'+url).val();
-var idSelectDestino = '#'+idSelectDestino;
+//var idSelectDestino = '#'+idSelectDestino;
 
 var ruta = $(ruta+idSelectDestino);
 

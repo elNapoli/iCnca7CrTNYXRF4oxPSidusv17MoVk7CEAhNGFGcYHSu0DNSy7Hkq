@@ -3,39 +3,36 @@
 @section('Dashboard') Postulación @endsection
 
 @section('content')
+
     <div id="wizard">
-                <h2>First Step</h2>
-                <section>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut nulla nunc. Maecenas arcu sem, hendrerit a tempor quis, 
-                        sagittis accumsan tellus. In hac habitasse platea dictumst. Donec a semper dui. Nunc eget quam libero. Nam at felis metus. 
-                        Nam tellus dolor, tristique ac tempus nec, iaculis quis nisi.</p>
-                </section>
+        <div id="message"></div>
 
-                <h2>Second Step</h2>
-                <section>
-                    <p>Donec mi sapien, hendrerit nec egestas a, rutrum vitae dolor. Nullam venenatis diam ac ligula elementum pellentesque. 
-                        In lobortis sollicitudin felis non eleifend. Morbi tristique tellus est, sed tempor elit. Morbi varius, nulla quis condimentum 
-                        dictum, nisi elit condimentum magna, nec venenatis urna quam in nisi. Integer hendrerit sapien a diam adipiscing consectetur. 
-                        In euismod augue ullamcorper leo dignissim quis elementum arcu porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Vestibulum leo velit, blandit ac tempor nec, ultrices id diam. Donec metus lacus, rhoncus sagittis iaculis nec, malesuada a diam. 
-                        Donec non pulvinar urna. Aliquam id velit lacus.</p>
-                </section>
+        <h1>Datos Personales</h1>
+        <section >
+            @include('postulacion.partials.datos_personales')
+            {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
+            {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}       
 
-                <h2>Third Step</h2>
-                <section>
-                    <p>Morbi ornare tellus at elit ultrices id dignissim lorem elementum. Sed eget nisl at justo condimentum dapibus. Fusce eros justo, 
-                        pellentesque non euismod ac, rutrum sed quam. Ut non mi tortor. Vestibulum eleifend varius ullamcorper. Aliquam erat volutpat. 
-                        Donec diam massa, porta vel dictum sit amet, iaculis ac massa. Sed elementum dui commodo lectus sollicitudin in auctor mauris 
-                        venenatis.</p>
-                </section>
+        </section>
 
-                <h2>Forth Step</h2>
-                <section>
-                    <p>Quisque at sem turpis, id sagittis diam. Suspendisse malesuada eros posuere mauris vehicula vulputate. Aliquam sed sem tortor. 
-                        Quisque sed felis ut mauris feugiat iaculis nec ac lectus. Sed consequat vestibulum purus, imperdiet varius est pellentesque vitae. 
-                        Suspendisse consequat cursus eros, vitae tempus enim euismod non. Nullam ut commodo tortor.</p>
-                </section>
-            </div>
+        <h1>Estudios</h1>
+        <section>
+            @include('postulacion.partials.estudios')
+           
+        </section>
+
+        <h1>Información de Intercambio</h1>
+        <section>
+            @include('postulacion.partials.intercambio')
+        </section>
+
+        <h1>Declaración</h1>
+        <section>
+            @include('postulacion.partials.declaracion')
+        </section>
+    </div>
+
+     {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 @endsection
 
 @section('breadcrumbs')
@@ -45,23 +42,106 @@
 
 @section('scripts')
     {!! Html::Script('plugins/jquery-steps/js/jquery.steps.js')!!}
+    {!! Html::Script('plugins/bootstrap/js/bootstrap-datepicker.js')!!}
     <script>
-                $(function ()
-                {
-                    $("#wizard").steps({
-                        headerTag: "h2",
-                        bodyTag: "section",
-                        transitionEffect: "slideLeft"
+        $(document).on('ready',function() {
+            $("#wizard").steps({
+                headerTag: "h1",
+                bodyTag: "section",
+                transitionEffect: "slideLeft",
+                onStepChanging:function (event, currentIndex, newIndex) { 
+                
+                    var data = $(".current").find('input,select,textarea,.tEstudioInput_').serialize();
+                    var url  = $(".current").find('#urlStoreInformacion').val();
+                    $.ajax({
+                          // En data puedes utilizar un objeto JSON, un array o un query string
+                        data: data,
+
+                         
+                        //Cambiar a type: POST si necesario
+                        type: "post",
+                        // Formato de datos que se espera en la respuesta
+                        dataType: "json",
+                        // URL a la que se enviará la solicitud Ajax
+                        url:url ,
+                        success : function(json) {   
+                            //alert("ho");
+                            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');
+                            $("html, body").animate({ scrollTop: 0 }, 600);
+                            return true;
+                               
+                            
+                        },
+
+                        error : function(xhr, status) {
+
+                            var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                            for(var key in xhr.responseJSON)
+                            {
+                                html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                            }
+                            $('#message').html(html+'</div>');
+                            $("html, body").animate({ scrollTop: 0 }, 600);
+                                return true; 
+
+                      
+                        },
+                            /*var id;
+                            $(".active input").each(function(e){    
+                              id = this.id;
+                              // show id 
+                              console.log("#"+id);
+                              // show input value 
+                              console.log(this.value);
+                              // disable input if you want
+                              //$("#"+id).prop('disabled', true);
+                            });*/
+
                     });
-                });
-            </script>
+                }
+
+            });
+
+
+            // pestaña 1: wizard-p-0
+            $('.datePicker').datepicker({
+
+                autoclose:true,
+                format:'yyyy/mm/dd',
+
+            });
+            selectByTabs("wizard",'continente','getToken','getUrlPaisByContinente','#pais','section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group select');
+            selectByTabs("wizard",'pais','getToken','getUrCiudadContinente','.ciudad','section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group select');
+        
+            $('#wizard').on('change','input[type=radio]',function(){
+                
+                if($(this).val()==='UACH'){
+                     var options = {};
+                    $('#preUach').show('slide',1000);
+                }
+                else{
+
+                    $('#preUach').hide('slide',1000);
+
+                }
+            });
+
+
+
+
+        }); 
+
+
+                    
+     
+    </script>
    
 @endsection
 
 
 @section('styles')
     {!! Html::Style('plugins/jquery-steps/css/jquery.steps.css')!!}
-    {!! Html::Style('plugins/jquery-steps/css/main.css')!!}
+
 
 
 @endsection

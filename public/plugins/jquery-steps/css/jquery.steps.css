@@ -133,13 +133,13 @@
 .wizard > .steps .error a:hover,
 .wizard > .steps .error a:active
 {
-    background: #ff3111;
-    color: #fff;
+    background: #f2dede;
+    color: #a94442;
 }
 
 .wizard > .content
 {
-    background: #eee;
+
     display: block;
     margin: 0.5em;
     min-height: 35em;
@@ -163,7 +163,6 @@
 .wizard > .content > .body
 {
     float: left;
-    position: absolute;
     width: 95%;
     height: 95%;
     padding: 2.5%;

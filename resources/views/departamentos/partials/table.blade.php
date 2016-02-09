@@ -29,10 +29,10 @@
 
 		<td>{{$item->id}}</td>
         <td>{{$item->tipo}}</td>
-        <td>{{$item->sitio_web}}</td>
+        <td>{{'web'/*$item->sitio_web*/}}</td>
         <td>{{$item->nombre_encargado}}</td>
         <td>{{$item->telefono}}</td>
-        <td>{{$item->email}}</td>
+        <td>{{'mail'/*$item->email*/}}</td>
 		<td>{{$item->campusSedeR->nombre}}</td>
 		<td>
 			<a href="">Edit</a>

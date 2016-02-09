@@ -24,7 +24,7 @@ class CiudadesController extends Controller {
 
 	
 		if($request->ajax()){
-			return  Ciudad::where('pais',$request->get('idBuscar'))->get()->toJson();
+			return  Ciudad::where('pais',$request->get('idBuscar'))->orderBy('nombre')->get()->toJson();
 
 		}
 		else
@@ -40,7 +40,7 @@ class CiudadesController extends Controller {
 
 	
 		if($request->ajax()){
-			return  Pais::where('continente',$request->get('idBuscar'))->get()->toJson();
+			return  Pais::where('continente',$request->get('idBuscar'))->orderBy('nombre')->get()->toJson();
 
 		}
 		else

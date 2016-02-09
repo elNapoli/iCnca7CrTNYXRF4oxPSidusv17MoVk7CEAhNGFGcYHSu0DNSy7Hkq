@@ -54,6 +54,7 @@
 
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
+{!!Form::hidden('getUrlGetFinanciamientos', url('financiamientos/financiamientos'),array('id'=>'getUrlGetFinanciamientos'));!!}
 {!!Form::hidden('getUrlFacultadesByCampus', url('facultades/facultades-by-campus'),array('id'=>'getUrlFacultadesByCampus'));!!}
 {!!Form::hidden('getUrlCarreraByFacultad', url('carreras/carreras-by-facultad'),array('id'=>'getUrlCarreraByFacultad'));!!}
 {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
@@ -69,12 +70,15 @@
 @section('scripts')
     {!! Html::Script('plugins/bootstrap/js/bootstrap-datepicker.js')!!}
     {!! Html::Script('js/function_carrera.js')!!}
+    {!! Html::Script('js/function_financiamiento.js')!!}
 
     <script type="text/javascript">
 
 		$(document).ready(function() {
 
-			  $('#procedencia input[type=radio]').change(function(){
+
+			initFinanciamiento($('#getUrlGetFinanciamientos').val(),$('#getToken').val());
+			 $('#procedencia input[type=radio]').change(function(){
 			  	
 			  	if($(this).val()==='UACH'){
 
@@ -87,7 +91,7 @@
 
 			  	}
       
-      })
+  			})
 
 
 			initCarrera();

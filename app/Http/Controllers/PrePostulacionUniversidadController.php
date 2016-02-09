@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\PrePostulacionUniversidadRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Postulante;
@@ -13,8 +14,8 @@ class PrePostulacionUniversidadController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function postStore(Request $request){
-
+	public function postStore(PrePostulacionUniversidadRequest $request){
+		dd("hola");
 		$postulante = Postulante::where('user_id',18)->first();
 		//dd($postulante->toArray());
 		$prePostulacion = new PrePostulacionUniversidad($request->all());

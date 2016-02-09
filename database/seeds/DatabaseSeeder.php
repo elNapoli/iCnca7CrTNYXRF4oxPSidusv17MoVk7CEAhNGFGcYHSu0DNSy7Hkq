@@ -11,6 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+
+
+
+
+
+
        //###########################################
        $this->call(UserTableSeeder::class);
        $this->call(ContinenteTableSeeder::class);
@@ -78,13 +85,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PreUEstudioActualTableSeeder::class);
         $this->call(PostPostulacionUniverisidadTableSeeder::class);
         
-
-
-
-
-
-
-
 
 
 

@@ -140,7 +140,7 @@
 	              	url:url ,
               		success : function(json) {   
               			//alert("ho");
-      			  		$('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>La postulación se guardo exitosamente</div>');
+      			  		$('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');
       			  		$("html, body").animate({ scrollTop: 0 }, 600);
       			  		
 	            	},

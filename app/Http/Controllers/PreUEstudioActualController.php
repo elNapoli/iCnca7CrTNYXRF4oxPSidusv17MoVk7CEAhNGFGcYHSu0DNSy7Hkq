@@ -39,29 +39,33 @@ class PreUEstudioActualController extends Controller {
 
 
 		$postulante  = Postulante::where('user_id',$auth->id())->first();
-		// con esta instrucción se almacena al estudiante que es de pregrado 
-		$pregrado = new Pregrado();
-		$pregrado->postulante  = $postulante->id;
-		$pregrado->procedencia = $request->get('procedencia');
-		$pregrado->save();
+		if($postulante->tipo_estudio === 'Pregrado'){
 
-		if($request->get('procedencia') === 'NO UACH'){
-			$preUach = new PreUach();
-			$preUach =
+			if($postulante->pregradosR->procedencia === 'UACH'){
+
+				$preEstudioActual = new PreUEstudioActual($request->all());
+				$preEstudioActual->postulante = $postulante->id;
+
+				$preEstudioActual->save();
+				return response()->json([
+					'message'=> 'Se guardó exitosamente los datos referente a estudios '
+					]);
+
+			}
+			else{ 
+
+
+			}
+			
+
 
 		}
 		else{
 
-
 		}
 
-		$preEstudioActual = new PreUEstudioActual($request->all());
-		$preEstudioActual->postulante = $postulante->id;
 
-		$preEstudioActual->save();
-		return response()->json([
-				'message'=> 'se Guardó la universidad Correctamente '.$postulante
-				]);
+
 	}
 
 

@@ -22,7 +22,7 @@ class Pregrado extends Model
     //una postulacion de pregrado  puede poseeer muchas postulaciónes externas
     public function preNoUachs()
     {
-        return $this->hasMany('App\PreNoUach','postulante');
+        return $this->hasMany('App\PreNoUach','postulante','postulante');
     }
 
 
@@ -33,6 +33,6 @@ class Pregrado extends Model
 
     public function preUachsR()
     {
-        return $this->belongsTo('App\PreUach','postulante');
+        return $this->belongsTo('App\PreUach','postulante','postulante');
     }
 }

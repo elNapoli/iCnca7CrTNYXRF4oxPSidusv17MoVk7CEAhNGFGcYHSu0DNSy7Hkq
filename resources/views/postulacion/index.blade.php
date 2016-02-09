@@ -86,6 +86,18 @@
 				$('#tEstudioInput_'+$(this).val()).removeAttr('disabled');
 
 			});
+			 $('#procedencia input[type=radio]').change(function(){
+ 			  	
+ 			  	if($(this).val()==='UACH'){
+ 			  		 var options = {};
+ 			  		$('#preUach').show('slide',1000);
+ 			  	}
+ 			  	else{
+
+ 			  		$('#preUach').hide('slide',1000);
+
+ 			  	}
+ 			  });
 
 
 			initCarrera();

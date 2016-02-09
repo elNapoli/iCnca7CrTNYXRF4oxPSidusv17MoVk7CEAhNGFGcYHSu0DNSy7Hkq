@@ -48,7 +48,7 @@
                 <div class="col-lg-4">
                     {!! Form::label('financiamiento', 'Financiamiento:') !!}
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-7">
                     <div class="form-group" id='radioButtonFinanciamiento'>
                         
                     

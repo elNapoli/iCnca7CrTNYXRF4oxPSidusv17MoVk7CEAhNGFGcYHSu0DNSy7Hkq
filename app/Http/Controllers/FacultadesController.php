@@ -58,7 +58,7 @@ class FacultadesController extends Controller {
 
 	
 		if($request->ajax()){
-			return  Facultad::where('campus_sede',$request->get('idBuscar'))->get()->toJson();
+			return  Facultad::where('campus_sede',$request->get('idBuscar'))->orderBy("nombre")->get()->toJson();
 
 		}
 		else

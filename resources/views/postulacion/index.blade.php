@@ -78,20 +78,14 @@
 
 
 			initFinanciamiento($('#getUrlGetFinanciamientos').val(),$('#getToken').val());
-			 $('#procedencia input[type=radio]').change(function(){
-			  	
-			  	if($(this).val()==='UACH'){
 
-			  	$( "#preUach" ).show( "slow" );
-			  		
-			  	}
-			  	else{
+			$('#intercambio').on('change','.radioTEstudio',function(){
 
-			  	$( "#preUach" ).hide( "slow" );
+				$('.tEstudioInput_').val('');
+				$('.tEstudioInput_').attr('disabled','');
+				$('#tEstudioInput_'+$(this).val()).removeAttr('disabled');
 
-			  	}
-      
-  			})
+			});
 
 
 			initCarrera();
@@ -103,10 +97,10 @@
 			selectByTabs("estudios",'continente','getToken','getUrlPaisByContinente','#pais','div#estudios div div.col-lg-6 div.input-group select');
 			selectByTabs("estudios",'pais','getToken','gerUrlUniversidadByPais','#campus_sede','div#estudios div div.col-lg-6 div.input-group select');
 
-			selectByTabs("intercambio",'campus_sede','getToken','getUrlFacultadesByCampus','#facultad','div#intercambio div div.col-lg-6 div.form-group select');
-			selectByTabs("intercambio",'facultad','getToken','getUrlCarreraByFacultad','#carrera','div#intercambio div div.col-lg-6 div.form-group select');
-			selectByTabs("intercambio",'continente','getToken','getUrlPaisByContinente','#pais','div#intercambio div div.col-lg-6 div.form-group select');
-			selectByTabs("intercambio",'pais','getToken','gerUrlUniversidadByPais','#campus_sede','div#intercambio div div.col-lg-6 div.form-group select');
+			selectByTabs("intercambio",'campus_sede','getToken','getUrlFacultadesByCampus','#facultad','div#intercambio div div.col-lg-6 div.input-group select');
+			selectByTabs("intercambio",'facultad','getToken','getUrlCarreraByFacultad','#carrera','div#intercambio div div.col-lg-6 div.input-group select');
+			selectByTabs("intercambio",'continente','getToken','getUrlPaisByContinente','#pais','div#intercambio div div.col-lg-6 div.input-group select');
+			selectByTabs("intercambio",'pais','getToken','gerUrlUniversidadByPais','#campus_sede','div#intercambio div div.col-lg-6 div.input-group select');
 
 
 
@@ -129,7 +123,7 @@
 
 			$('#guardarPostulacion').on('click',function(e){
 
-				var data = $(".active").find('input,select,textarea ').serialize();
+				var data = $(".active").find('input,select,textarea,.tEstudioInput_').serialize();
 				var url  = $(".active").find('#urlStoreInformacion').val();
 	          	$.ajax({
 		              // En data puedes utilizar un objeto JSON, un array o un query string

@@ -14,16 +14,33 @@ function initFinanciamiento(url,token){
 	        success : function(json) {
 	
             	$.each(json, function(index, subCatObj){
-					    $('<div class="form-group">'+
-					    		'<label class="radio-inline">'+
-					    			'<input id="tEstudio_'+subCatObj.id+'" checked="checked" name="tipo_estudio" value="Pregrado" type="radio">'+
-					    			subCatObj.nombre+
-					    		'</label>'+
-					    	'</div>').appendTo('#radioButtonFinanciamiento');
 
 
+	            		if(subCatObj.nombre === 'Beca' || subCatObj.nombre === 'Otro'){
+
+						    $('<div class="form-group">'+
+						    		'<label class="radio-inline">'+
+						    			'<input id="tEstudio_'+subCatObj.id+'" checked="checked" class="radioTEstudio" name="financiamiento" value="'+subCatObj.id+'" type="radio">'+
+						    			subCatObj.nombre+
+						    		'</label>'+
+						    		'<input type="text" name="descripcion" id="tEstudioInput_'+subCatObj.id+'" placeholder="descripción" class="tEstudioInput_ form-control" disabled>'+
+						    	'</div>').appendTo('#radioButtonFinanciamiento');
+	            		}
+	            		
+						else{
+
+						    $('<div class="form-group">'+
+						    		'<label class="radio-inline">'+
+						    			'<input id="tEstudio_'+subCatObj.id+'" checked="checked" class="radioTEstudio" name="financiamiento" value="'+subCatObj.id+'" type="radio">'+
+						    			subCatObj.nombre+
+						    		'</label>'+
+						    	'</div>').appendTo('#radioButtonFinanciamiento');
+						}
+					});
+
+        
             		
-            	});
+         
 					      
 
 	  

@@ -21,10 +21,16 @@ class PrePostulacionUniversidadRequest extends Request {
 	 */
 	public function rules()
 	{
+		$descripcion = '';
+		if($this->get('financiamiento')==='4' or $this->get('financiamiento')==='3'){
+
+		$descripcion = 'required';
+		}
 		return [
 			'anio'=>'required',
 			'semestre'=>'required',
 			'financiamiento'=>'required',
+			'descripcion'=> $descripcion,
 			'carrera'=>'required',
 		];
 	}

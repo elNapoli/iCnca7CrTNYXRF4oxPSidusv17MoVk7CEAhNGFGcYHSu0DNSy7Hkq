@@ -86,9 +86,9 @@
                 success : function(json) {
                         console.log(json);
                     $('form#form-edit div  div select#continente').val(json.continente);
-                    selectByTabsSinAccion("form#form-edit div div",'#continente','#getToken','#getUrlPaisByContinente','#pais',json.continente,json.pais);
-                    selectByTabsSinAccion("form#form-edit div div",'#pais','#getToken','#getCampusByPais','#campus_sede',json.pais,json.campus_sede);
-                    selectByTabsSinAccion("form#form-edit div div",'#campus_sede','#getToken','#getUrlFacultadesByCampus','#facultad',json.campus_sede,json.facultad);
+                    selectByTabsSinAccion("form#form-edit div div",'#getToken','#getUrlPaisByContinente','#pais',json.continente,json.pais);
+                    selectByTabsSinAccion("form#form-edit div div",'#getToken','#getCampusByPais','#campus_sede',json.pais,json.campus_sede);
+                    selectByTabsSinAccion("form#form-edit div div",'#getToken','#getUrlFacultadesByCampus','#facultad',json.campus_sede,json.facultad);
 
                     $('div#boyd-modal div div input#nombre').val(json.nombre);
                     $('div#boyd-modal div div input#director').val(json.director);

@@ -15,7 +15,7 @@ class DocumentoIdentidadTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $tipoPasaporte = array('Cédula de Identidad','Pasaporte');
+        $tipoPasaporte = array('p','ci');
         for($i = 0; $i < 80; $i++)
         {
             $documentoIdentidad = new DocumentoIdentidad();

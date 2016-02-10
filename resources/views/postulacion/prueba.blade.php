@@ -71,6 +71,21 @@
                                 $('section#wizard-p-0 div.panel-body div.col-lg-6 div.input-group input#fecha_nacimiento').val(json.postulante.fecha_nacimiento);
                                 $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#email_personal').val(json.postulante.email_personal);
                                 $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#telefono').val(json.postulante.telefono); 
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#direccion').val(json.postulante.direccion); 
+
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group select#continente').val(json.postulante.ciudad_r.pais_r.continente);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group select#tipo').val(json.documento_identidad.tipo);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#numero').val(json.documento_identidad.numero);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#nacionalidad').val(json.postulante.nacionalidad);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#lugar_nacimiento').val(json.postulante.lugar_nacimiento);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#lugar_nacimiento').val(json.postulante.lugar_nacimiento);
+                  
+                                $("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input[name=sexo][value='"+json.postulante.sexo+"']").prop("checked",true);
+                                 selectByTabsSinAccion("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group",'#getToken','#getUrlPaisByContinente','#pais',json.postulante.ciudad_r.pais_r.continente,json.postulante.ciudad_r.pais);
+
+                                 selectByTabsSinAccion("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group",'#getToken','#getUrCiudadContinente','#ciudad',json.postulante.ciudad_r.pais,json.postulante.ciudad);
+
+
 
                             };
                             

@@ -24,21 +24,4 @@
             </tr>
         </tfoot>
         <tbody>
-	@foreach($departamentos as  $item)
-	<tr data-id="{{ $item->id }}">
-
-		<td>{{$item->id}}</td>
-        <td>{{$item->tipo}}</td>
-        <td>{{'web'/*$item->sitio_web*/}}</td>
-        <td>{{$item->nombre_encargado}}</td>
-        <td>{{$item->telefono}}</td>
-        <td>{{'mail'/*$item->email*/}}</td>
-		<td>{{$item->campusSedeR->nombre}}</td>
-		<td>
-			<a href="">Edit</a>
-			<a href="" class="btn-delete">Del</a>
-		</td>
-	</tr>
-	@endforeach	
-       </tbody>
     </table>

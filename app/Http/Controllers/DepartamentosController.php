@@ -4,6 +4,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Departamento;
+use App\Pais;
+use App\Universidad;
 
 class DepartamentosController extends Controller {
 
@@ -14,9 +16,14 @@ class DepartamentosController extends Controller {
 	 */
 	public function getIndex()
 	{
-		$departamentos = Departamento::all();
+		return view('departamentos.index');
+	}
 
-		return view('departamentos.index', compact('departamentos'));
+	public function getDepartamentos()
+	{
+		$departamentos = Departamento::with('campusSedeR')->get();
+		$arra = array('data'=>$departamentos->toArray());
+		return json_encode($arra);
 	}
 
 	/**
@@ -26,7 +33,8 @@ class DepartamentosController extends Controller {
 	 */
 	public function getCreate()
 	{
-		return view('beneficios.create');
+		$pais = Pais::lists('nombre','id');
+		return view('departamentos.create',compact('pais'));
 	}
 
 	/**
@@ -36,7 +44,7 @@ class DepartamentosController extends Controller {
 	 */
 	public function postStore(Request $request)
 	{
-
+		dd('estoy en este metodo culiao de departamentos');
 		 $this->validate($request, [
         'nombre' => 'required|string|unique:beneficio,nombre',
     	]);
@@ -47,6 +55,36 @@ class DepartamentosController extends Controller {
 
 		//return redirect()->route('beneficios.index');
 		return redirect('beneficios');
+	}
+
+		public function postUniversidadByPais(Request $request){
+
+
+	
+		if($request->ajax()){
+			return  Universidad::where('pais',$request->get('idBuscar'))->get()->toJson();
+
+		}
+		else
+		{
+
+			return "no ajax";
+		}
+	}
+
+		public function postCampusSedeByUniversidad(Request $request){
+
+
+	
+		if($request->ajax()){
+			return  CampusSede::where('universidad',$request->get('idBuscar'))->get()->toJson();
+
+		}
+		else
+		{
+
+			return "no ajax";
+		}
 	}
 
 	/**
@@ -95,26 +133,16 @@ class DepartamentosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function deleteDestroy($id,Request $request)
+	public function postDestroy(Request $request)
 	{
 		//abort(500);
-		$departamento = Departamento::findOrFail($id);
+		$departamento = Departamento::findOrFail($request->get('id'));
  		$departamento->delete();
  		$message = ' El departamento '.$departamento->id.' Fue eliminado';
  	//	dd($request->all());
-		if($request->ajax()){
-		//	return($message);
-			return response()->json([
-				'message'=> $message
-				]);
-		}
-		
-		
-		\Session::flash('message', $message);
-
-		return redirect('departamentos');
-
-		//return redirect()->route('beneficios.index');
+		return response()->json([
+			'message'=> $message
+			]);
 	}
 
 }

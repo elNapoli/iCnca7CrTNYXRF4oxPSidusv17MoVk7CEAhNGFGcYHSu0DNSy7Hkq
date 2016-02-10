@@ -1,12 +1,12 @@
-function selectByTabs(idTab,idSelect,token,url,idSelectDestino,ruta=''){
+function selectByTabs(ruta,idSelect,token,url,idSelectDestino){
     //idTab: Selector padre(ej:div)- idSelect: Elemento en cuestion(Ej: pais)
-var idTab = $(idTab);
-var idSelect = "#"+idSelect;
-var token = $('#'+token).val();
-var urlE = $('#'+url).val();
+var idTab = $(ruta);
+var idSelect = idSelect;
+var token = $(token).val();
+var urlE = $(url).val();
 //var idSelectDestino = '#'+idSelectDestino;
 
-var ruta = $(ruta+idSelectDestino); //idSelectDestino: es el id del objeto donde se carga la respuesta ajax
+var ruta = $(ruta+' select'+idSelectDestino); //idSelectDestino: es el id del objeto donde se carga la respuesta ajax
                                     //Ruta: es esa mierda que hay que buscar entre los selectores <div>
                     
 idTab.on('change',idSelect,function(e){   
@@ -27,7 +27,7 @@ $.ajax({
         ruta.empty();
         ruta.append("<option value=''>Seleccione la "+idSelectDestino+"</option>");
 
-        if(url ==="gerUrlUniversidadByPais"){
+        if(url ==="#getCampusByPais"){
             $.each(json, function(index, subCatObj){
             ruta.append(" <optgroup label='"+subCatObj.nombre+"'>");
                 
@@ -42,6 +42,8 @@ $.ajax({
              });
         }
         else{
+           
+
             $.each(json, function(index, subCatObj){
                  ruta.append("<option value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
              });
@@ -70,13 +72,12 @@ $.ajax({
 
 
 
-function selectByTabsSinAccion(idTab,idSelect,token,url,idSelectDestino,ruta,option1,option2){
-var idTab = $("#"+idTab);
-var idSelect = "#"+idSelect;
-var token = $('#'+token).val();
-var urlE = $('#'+url).val();
-var idSelectDestino = '#'+idSelectDestino;
-var ruta = $(ruta+idSelectDestino);
+function selectByTabsSinAccion(ruta,idSelect,token,url,idSelectDestino,option1,option2){
+var idTab = $(ruta);
+var idSelect = idSelect;
+var token = $(token).val();
+var urlE = $(url).val();
+var ruta = $(ruta+' select'+idSelectDestino);
     $.ajax({
         // En data puedes utilizar un objeto JSON, un array o un query string
        data: {
@@ -93,7 +94,7 @@ var ruta = $(ruta+idSelectDestino);
             ruta.empty();
             ruta.append("<option value=''>Seleccione la "+idSelectDestino+"</option>");
 
-            if(url ==="gerUrlUniversidadByPais"){
+            if(url ==="#getCampusByPais"){
                 $.each(json, function(index, subCatObj){
                 ruta.append(" <optgroup label='"+subCatObj.nombre+"'>");
                     

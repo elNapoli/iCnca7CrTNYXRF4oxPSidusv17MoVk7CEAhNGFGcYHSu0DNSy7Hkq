@@ -10,8 +10,10 @@
         <h1>Datos Personales</h1>
         <section >
             @include('postulacion.partials.datos_personales')
+
             {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
-            {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}       
+            {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
+            {!!Form::hidden('getUrlPostulanteExiste', url('postulacion/postulante-by-user'),array('id'=>'getUrlPostulanteExiste'));!!}       
 
         </section>
 
@@ -49,58 +51,98 @@
                 headerTag: "h1",
                 bodyTag: "section",
                 transitionEffect: "slideLeft",
+                onInit:function (event, currentIndex) { 
+                    $.ajax({
+                      // En data puedes utilizar un objeto JSON, un array o un query string
+                        data:{_token:$('#getToken').val()},
+                        async : false,
+                         
+                        //Cambiar a type: POST si necesario
+                        type: "post",
+                        // Formato de datos que se espera en la respuesta
+                        dataType: "json",
+                        // URL a la que se enviará la solicitud Ajax
+                        url:$(".current").find('#getUrlPostulanteExiste').val(),
+                        success : function(json) {   
+                            if(json.codeError){
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#apellido_paterno').val(json.postulante.apellido_paterno);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#apellido_materno').val(json.postulante.apellido_materno);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#nombre').val(json.postulante.nombre);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.input-group input#fecha_nacimiento').val(json.postulante.fecha_nacimiento);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#email_personal').val(json.postulante.email_personal);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#telefono').val(json.postulante.telefono); 
+
+                            };
+                            
+                        },
+
+                        error : function(xhr, status) {
+                            alert(status);
+                      
+                        },
+                                
+                   
+
+                    }); 
+
+                },
                 onStepChanging:function (event, currentIndex, newIndex) { 
                 
                     var data = $(".current").find('input,select,textarea,.tEstudioInput_').serialize();
                     var url  = $(".current").find('#urlStoreInformacion').val();
+                    if (currentIndex < newIndex){
 
-                     var respuestaAjax = $.ajax({
-                          // En data puedes utilizar un objeto JSON, un array o un query string
-                            data: data,
-                            async : false,
+
+                       
+                        var respuestaAjax = $.ajax({
+                              // En data puedes utilizar un objeto JSON, un array o un query string
+                                data: data,
+                                async : false,
+                                 
+                                //Cambiar a type: POST si necesario
+                                type: "post",
+                                // Formato de datos que se espera en la respuesta
+                                dataType: "json",
+                                // URL a la que se enviará la solicitud Ajax
+                                url:url ,
+                                success : function(json) {   
+                                    //alert("ho");
+                                    $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');
+                                    $("html, body").animate({ scrollTop: 0 }, 600);
                              
-                            //Cambiar a type: POST si necesario
-                            type: "post",
-                            // Formato de datos que se espera en la respuesta
-                            dataType: "json",
-                            // URL a la que se enviará la solicitud Ajax
-                            url:url ,
-                            success : function(json) {   
-                                //alert("ho");
-                                $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');
-                                $("html, body").animate({ scrollTop: 0 }, 600);
-                         
+                                    
+                                },
+
+                                error : function(xhr, status) {
+                                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                                    for(var key in xhr.responseJSON)
+                                    {
+                                        html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                                    }
+                                    $('#message').html(html+'</div>');
+                                    $("html, body").animate({ scrollTop: 0 }, 600);
+                              
+                                },
                                 
-                            },
+                   
 
-                            error : function(xhr, status) {
-                                var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                                for(var key in xhr.responseJSON)
-                                {
-                                    html += "<li>" + xhr.responseJSON[key][0] + "</li>";
-                                }
-                                $('#message').html(html+'</div>');
-                                $("html, body").animate({ scrollTop: 0 }, 600);
-                          
-                            },
-                            
-               
+                            });
 
-                        });
-
-                if(respuestaAjax.status == 200){
-      
-
-                    return true;
-                }
-                else{
-
-                    return false;
-
-                }
+                        if(respuestaAjax.status == 200){
               
+
+                            return true;
+                        }
+                        else{
+
+                            return false;
+
+                        }
                       
-                }
+                    }
+                   
+                    else{return true;}                              
+                }   
 
             });
 
@@ -112,8 +154,8 @@
                 format:'yyyy/mm/dd',
 
             });
-            selectByTabs("wizard",'continente','getToken','getUrlPaisByContinente','#pais','section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group select');
-            selectByTabs("wizard",'pais','getToken','getUrCiudadContinente','.ciudad','section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group select');
+            selectByTabs("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group ",'#continente','#getToken','#getUrlPaisByContinente','#pais');
+            selectByTabs("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group ",'#pais','#getToken','#getUrCiudadContinente','.ciudad');
         
             $('#wizard').on('change','input[type=radio]',function(){
                 

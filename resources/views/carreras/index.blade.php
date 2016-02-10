@@ -29,7 +29,7 @@
 {!!Form::hidden('getUrlFacultadesByCampus', url('facultades/facultades-by-campus'),array('id'=>'getUrlFacultadesByCampus'));!!}
 {!!Form::hidden('getUrlCarreraByFacultad', url('carreras/carreras-by-facultad'),array('id'=>'getUrlCarreraByFacultad'));!!}
 {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
-{!!Form::hidden('gerUrlUniversidadByPais', url('universidades/universidad-by-pais'),array('id'=>'gerUrlUniversidadByPais'));!!}
+{!!Form::hidden('getCampusByPais', url('universidades/universidad-by-pais'),array('id'=>'getCampusByPais'));!!}
 {!!Form::hidden('getUrlCarreraUpdate', url('carreras/update'),array('id'=>'getUrlCarreraUpdate'));!!}
 {!!Form::hidden('getUrlCarreraDestroy', url('carreras/destroy'),array('id'=>'getUrlCarreraDestroy'));!!}
 
@@ -84,11 +84,11 @@
                 // URL a la que se enviará la solicitud Ajax
                 url:$('#form-edit').attr('action')+'/'+$(this).attr('id') ,
                 success : function(json) {
-
+                        console.log(json);
                     $('form#form-edit div  div select#continente').val(json.continente);
-                    selectByTabsSinAccion("modal_edit_carrera",'continente','getToken','getUrlPaisByContinente','pais','form#form-edit div div select',json.continente,json.pais);
-                    selectByTabsSinAccion("modal_edit_carrera",'pais','getToken','gerUrlUniversidadByPais','campus_sede','form#form-edit div div select',json.pais,json.campus_sede);
-                    selectByTabsSinAccion("modal_crear_carrera",'campus_sede','getToken','getUrlFacultadesByCampus','facultad','div#boyd-modal div div select',json.campus_sede,json.facultad);
+                    selectByTabsSinAccion("form#form-edit div div",'#continente','#getToken','#getUrlPaisByContinente','#pais',json.continente,json.pais);
+                    selectByTabsSinAccion("form#form-edit div div",'#pais','#getToken','#getCampusByPais','#campus_sede',json.pais,json.campus_sede);
+                    selectByTabsSinAccion("form#form-edit div div",'#campus_sede','#getToken','#getUrlFacultadesByCampus','#facultad',json.campus_sede,json.facultad);
 
                     $('div#boyd-modal div div input#nombre').val(json.nombre);
                     $('div#boyd-modal div div input#director').val(json.director);

@@ -28,11 +28,24 @@ class PostulacionController extends Controller {
 		return view('postulacion.index',compact('continentes','facultades'));
 	}
 
+	public function getPostulanteByUser(Guard $auth){
+		$continente = Continente::firstOrNew(array('id' => '8','nombre'=>'Aseia'));
+		
+		if(!$continente->id){dd('es nuevo');};
 
+	}
 	public function postStore(CretePostulacionRequest $request,Guard $auth){
 
 
 		$postulante = new Postulante($request->all());
+		if(!$postulante->id){
+
+			dd('usuario nuevo');
+		}
+		else{
+
+			dd('usuario ya existe');
+		}
 		$postulante->user_id = $auth->id(); 
 		$postulante->save();
 
@@ -73,7 +86,7 @@ class PostulacionController extends Controller {
 	}
 
 	public function getPrueba(){
-$continentes = Continente::lists('nombre','id');
+		$continentes = Continente::lists('nombre','id');
 		$facultades  = Facultad::lists('nombre','id');
 
 		return view('postulacion.prueba',compact('continentes','facultades'));

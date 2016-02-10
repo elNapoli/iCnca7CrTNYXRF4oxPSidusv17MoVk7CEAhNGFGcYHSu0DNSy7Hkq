@@ -1,9 +1,9 @@
 function selectByTabs(idTab,idSelect,token,url,idSelectDestino,ruta=''){
     //idTab: Selector padre(ej:div)- idSelect: Elemento en cuestion(Ej: pais)
 var idTab = $(idTab);
-var idSelect = "#"+idSelect;
-var token = $('#'+token).val();
-var urlE = $('#'+url).val();
+var idSelect = idSelect;
+var token = $(token).val();
+var urlE = $(url).val();
 //var idSelectDestino = '#'+idSelectDestino;
 
 var ruta = $(ruta+idSelectDestino); //idSelectDestino: es el id del objeto donde se carga la respuesta ajax

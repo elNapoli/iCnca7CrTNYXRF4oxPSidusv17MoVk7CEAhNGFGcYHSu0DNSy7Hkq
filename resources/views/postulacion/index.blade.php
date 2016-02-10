@@ -101,7 +101,7 @@
 
 
 			initCarrera();
-			selectByTabs("datosPersonales",'continente','getToken','getUrlPaisByContinente','#pais','div#datosPersonales div div.col-lg-6 div.form-group select');
+			selectByTabs("div#datosPersonales div div.col-lg-6 div.form-group",'#continente','#getToken','#getUrlPaisByContinente','#pais','div#datosPersonales div div.col-lg-6 div.form-group select');
 			selectByTabs("datosPersonales",'pais','getToken','getUrCiudadContinente','.ciudad','div#datosPersonales div div.col-lg-6 div.form-group select');
       			
 			selectByTabs("estudios",'campus_sede','getToken','getUrlFacultadesByCampus','#facultad','div#estudios div div.col-lg-6 div.input-group select');

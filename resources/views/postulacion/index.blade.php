@@ -54,6 +54,7 @@
 
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
+{!!Form::hidden('getUrlGetFinanciamientos', url('financiamientos/financiamientos'),array('id'=>'getUrlGetFinanciamientos'));!!}
 {!!Form::hidden('getUrlFacultadesByCampus', url('facultades/facultades-by-campus'),array('id'=>'getUrlFacultadesByCampus'));!!}
 {!!Form::hidden('getUrlCarreraByFacultad', url('carreras/carreras-by-facultad'),array('id'=>'getUrlCarreraByFacultad'));!!}
 {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
@@ -69,25 +70,34 @@
 @section('scripts')
     {!! Html::Script('plugins/bootstrap/js/bootstrap-datepicker.js')!!}
     {!! Html::Script('js/function_carrera.js')!!}
+    {!! Html::Script('js/function_financiamiento.js')!!}
 
     <script type="text/javascript">
 
 		$(document).ready(function() {
 
-			  $('#procedencia input[type=radio]').change(function(){
-			  	
-			  	if($(this).val()==='UACH'){
 
-			  	$( "#preUach" ).show( "slow" );
-			  		
-			  	}
-			  	else{
+			initFinanciamiento($('#getUrlGetFinanciamientos').val(),$('#getToken').val());
 
-			  	$( "#preUach" ).hide( "slow" );
+			$('#intercambio').on('change','.radioTEstudio',function(){
 
-			  	}
-      
-      })
+				$('.tEstudioInput_').val('');
+				$('.tEstudioInput_').attr('disabled','');
+				$('#tEstudioInput_'+$(this).val()).removeAttr('disabled');
+
+			});
+			 $('#procedencia input[type=radio]').change(function(){
+ 			  	
+ 			  	if($(this).val()==='UACH'){
+ 			  		 var options = {};
+ 			  		$('#preUach').show('slide',1000);
+ 			  	}
+ 			  	else{
+
+ 			  		$('#preUach').hide('slide',1000);
+
+ 			  	}
+ 			  });
 
 
 			initCarrera();
@@ -99,10 +109,10 @@
 			selectByTabs("estudios",'continente','getToken','getUrlPaisByContinente','#pais','div#estudios div div.col-lg-6 div.input-group select');
 			selectByTabs("estudios",'pais','getToken','gerUrlUniversidadByPais','#campus_sede','div#estudios div div.col-lg-6 div.input-group select');
 
-			selectByTabs("intercambio",'campus_sede','getToken','getUrlFacultadesByCampus','#facultad','div#intercambio div div.col-lg-6 div.form-group select');
-			selectByTabs("intercambio",'facultad','getToken','getUrlCarreraByFacultad','#carrera','div#intercambio div div.col-lg-6 div.form-group select');
-			selectByTabs("intercambio",'continente','getToken','getUrlPaisByContinente','#pais','div#intercambio div div.col-lg-6 div.form-group select');
-			selectByTabs("intercambio",'pais','getToken','gerUrlUniversidadByPais','#campus_sede','div#intercambio div div.col-lg-6 div.form-group select');
+			selectByTabs("intercambio",'campus_sede','getToken','getUrlFacultadesByCampus','#facultad','div#intercambio div div.col-lg-6 div.input-group select');
+			selectByTabs("intercambio",'facultad','getToken','getUrlCarreraByFacultad','#carrera','div#intercambio div div.col-lg-6 div.input-group select');
+			selectByTabs("intercambio",'continente','getToken','getUrlPaisByContinente','#pais','div#intercambio div div.col-lg-6 div.input-group select');
+			selectByTabs("intercambio",'pais','getToken','gerUrlUniversidadByPais','#campus_sede','div#intercambio div div.col-lg-6 div.input-group select');
 
 
 
@@ -125,7 +135,7 @@
 
 			$('#guardarPostulacion').on('click',function(e){
 
-				var data = $(".active").find('input,select,textarea ').serialize();
+				var data = $(".active").find('input,select,textarea,.tEstudioInput_').serialize();
 				var url  = $(".active").find('#urlStoreInformacion').val();
 	          	$.ajax({
 		              // En data puedes utilizar un objeto JSON, un array o un query string

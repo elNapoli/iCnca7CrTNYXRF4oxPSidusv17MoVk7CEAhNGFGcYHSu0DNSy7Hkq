@@ -42,7 +42,22 @@
 
               </div>
             </div>
+                
+            <div class="form-horizontal">
+              <div class="form-group">
+                <div class="col-lg-4">
+                    {!! Form::label('financiamiento', 'Financiamiento:') !!}
+                </div>
+                <div class="col-lg-7">
+                    <div class="form-group" id='radioButtonFinanciamiento'>
+                        
+                    
+                    </div>
 
+                </div>
+              </div>
+
+            </div>
 
         </div>
         <div class="col-lg-6">

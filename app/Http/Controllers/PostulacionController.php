@@ -73,8 +73,11 @@ class PostulacionController extends Controller {
 	}
 
 	public function getPrueba(){
+$continentes = Continente::lists('nombre','id');
+		$facultades  = Facultad::lists('nombre','id');
 
-		return view('postulacion.prueba');
+		return view('postulacion.prueba',compact('continentes','facultades'));
+	
 	}
 
 }

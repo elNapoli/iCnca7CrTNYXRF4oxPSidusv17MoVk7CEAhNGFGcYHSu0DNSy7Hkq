@@ -128,20 +128,31 @@
 
             </div>
 
-            <div class="form-group">
 
-                <div id="procedencia">
+            <div class="form-horizontal">
+              <div class="form-group">
+                <div class="col-lg-4">
                 {!! Form::label('procedencia', 'Procedencia:') !!}
+                </div>
+                <div class="col-lg-8">
+                <div class="form-group">
                     
-                    <label class="radio-inline">
+                  <label class="radio-inline">
                         {!!  Form::radio('procedencia', 'NO UACH', true,array('id'=>'procedencia_NU'));!!} Estudiante Extranjero
                     </label>
-                    <label class="radio-inline">
+                </div>
+                <div class="form-group">
+                    
+                  <label class="radio-inline">
                         {!!  Form::radio('procedencia', 'UACH',false,array('id'=>'procedencia_U'));!!} Estudiante UACH
                     </label>
                 </div>
 
+                </div>
+              </div>
+
             </div>
+
 
             <div id="preUach" style="display: none">
                 

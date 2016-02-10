@@ -1,12 +1,12 @@
-function selectByTabs(idTab,idSelect,token,url,idSelectDestino,ruta=''){
+function selectByTabs(ruta,idSelect,token,url,idSelectDestino){
     //idTab: Selector padre(ej:div)- idSelect: Elemento en cuestion(Ej: pais)
-var idTab = $(idTab);
+var idTab = $(ruta);
 var idSelect = idSelect;
 var token = $(token).val();
 var urlE = $(url).val();
 //var idSelectDestino = '#'+idSelectDestino;
 
-var ruta = $(ruta+idSelectDestino); //idSelectDestino: es el id del objeto donde se carga la respuesta ajax
+var ruta = $(ruta+' select'+idSelectDestino); //idSelectDestino: es el id del objeto donde se carga la respuesta ajax
                                     //Ruta: es esa mierda que hay que buscar entre los selectores <div>
                     
 idTab.on('change',idSelect,function(e){   

@@ -61,7 +61,7 @@
 			            { "data":"campus_sede_r.nombre" },
 			            { "data": null,
 			                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-			                    $(nTd).html(
+			                    $(nTd).html("<a href='departamentos/edit/"+oData.id+"' class='btn-edit'> Edit</a>"+
 			                                "<a href='#!' class='btn-delete' id='"+oData.id+"'> Del</a>"
 			                        );
 

@@ -18,7 +18,7 @@ class Departamento extends Model
 
     public function campusSedeR()
     {
-    	return $this->belongsTo('App\CampusSede','id'); //Id local
+    	return $this->belongsTo('App\CampusSede','campus_sede'); //Id local
     }
 
 }

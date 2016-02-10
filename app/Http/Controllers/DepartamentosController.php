@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Departamento;
 use App\Pais;
 use App\Universidad;
+use App\CampusSede;
 
 class DepartamentosController extends Controller {
 
@@ -44,17 +45,29 @@ class DepartamentosController extends Controller {
 	 */
 	public function postStore(Request $request)
 	{
-		dd('estoy en este metodo culiao de departamentos');
+
 		 $this->validate($request, [
-        'nombre' => 'required|string|unique:beneficio,nombre',
+        'tipo' => 'required|string',
+        'nombre_encargado' => 'required|string',
+        'telefono' => 'required',
+        'email' => 'required',
+        'campus_sede' => 'required',
     	]);
-		 
-		$beneficio = Beneficio::create($request->all());
-		$message    = 'El beneficio '.$request->get('nombre').'se almacenó correctamente';
+		
+		$departamento = new Departamento();
+		$departamento->tipo = $request->tipo;
+		$departamento->sitio_web = $request->sitio_web;
+		$departamento->nombre_encargado = $request->nombre_encargado;
+		$departamento->telefono = $request->telefono;
+		$departamento->email = $request->email;
+		$departamento->campus_sede = $request->campus_sede;
+		$departamento->save();
+		//$departamento = Departamento::create($request->all());
+		$message    = 'El departamento '.$request->get('tipo').' se almacenó correctamente';
 		\Session::flash('message', $message);
 
 		//return redirect()->route('beneficios.index');
-		return redirect('beneficios');
+		return redirect('departamentos');
 	}
 
 		public function postUniversidadByPais(Request $request){
@@ -102,8 +115,8 @@ class DepartamentosController extends Controller {
 	 */
 	public function getEdit($id)
 	{
-		$beneficio = Beneficio::findOrFail($id);
-        return view('beneficios.edit',compact('beneficio'));
+		$departamento = Departamento::findOrFail($id);
+        return view('departamentos.edit',compact('departamento'));
 	}
 
 	/**
@@ -114,16 +127,11 @@ class DepartamentosController extends Controller {
 	 */
 	public function putUpdate($id,Request $request)
 	{
-	
-		$this->validate($request, [
-        'nombre' => 'required|string|unique:beneficio,nombre,'.$id,
-    	]);
-
-		$beneficio = Beneficio::findOrFail($id);
-		$beneficio->fill($request->all());
-        $beneficio->save();
-        \Session::flash('message', 'El Beneficio se Editó correctamente');
-		return redirect('beneficios');
+		$departamento = Departamento::findOrFail($id);
+		$departamento->fill($request->all());
+        $departamento->save();
+        \Session::flash('message', 'El departamento se editó correctamente');
+		return redirect('departamentos');
         //return redirect()->route('beneficios.index');
 	}
 

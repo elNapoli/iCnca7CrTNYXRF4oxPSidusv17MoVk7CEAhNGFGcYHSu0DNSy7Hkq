@@ -25,7 +25,7 @@
 
             <div class="form-group">
                 {!!  Form::label('tipo', ' Tipo de departamento ');!!}
-                {!! Form::text('tipo',null,array('class' => 'form-control','placeholder'=>'Ej: Movilidad Estudiantil'));!!}
+                {!!  Form::select('tipo', [null=>'Seleccione tipo de departamento','Movilidad estudiantil'=>'Movilidad Estudiantil','Relaciones internacionales'=>'Relaciones Internacionales'],null,array('class' => 'form-control'))!!}
             </div>
 
             <div class="form-group">
@@ -59,7 +59,7 @@
 </div>
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 {!!Form::hidden('getUrlUniversidadByPais', url('departamentos/universidad-by-pais'),array('id'=>'getUrlUniversidadByPais'));!!}
-{!!Form::hidden('getUrlCampusSedeByuniversidad', url('departamentos/universidad-by-pais'),array('id'=>'getUrlCampusSedeByuniversidad'));!!}
+{!!Form::hidden('getUrlCampusSedeByuniversidad', url('departamentos/campus-sede-by-universidad'),array('id'=>'getUrlCampusSedeByuniversidad'));!!}
 
 
 
@@ -68,9 +68,8 @@
 <script type="text/javascript">
 
     $(document).on('ready',function(){
-        alert('holiwi')
-    selectByTabs("div.row div.col-md-6 div.form-group div.form-group",'pais','getToken','getUrlUniversidadByPais','#universidad');
-    selectByTabs("div.row div.col-md-6 div.form-group div.form-group",'universidad','getToken','getUrlCampusSedeByuniversidad','#campus_sede');
+    selectByTabs("div.row div.col-md-6 div.form-group div.form-group",'#pais','#getToken','#getUrlUniversidadByPais','#universidad');
+    selectByTabs("div.row div.col-md-6 div.form-group div.form-group",'#universidad','#getToken','#getUrlCampusSedeByuniversidad','#campus_sede');
 
 
     });

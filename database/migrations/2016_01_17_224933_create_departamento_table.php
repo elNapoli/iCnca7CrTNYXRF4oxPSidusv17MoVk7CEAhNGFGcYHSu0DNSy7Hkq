@@ -16,7 +16,7 @@ class CreateDepartamentoTable extends Migration
             $table->increments('id');
             $table->string('tipo',45);
             $table->string('sitio_web',100);
-            $table->string('nombre_encargado',10);
+            $table->string('nombre_encargado');
             $table->string('telefono',20);
             $table->string('email',45)->unique();
 

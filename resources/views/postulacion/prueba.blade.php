@@ -53,56 +53,58 @@
                 
                     var data = $(".current").find('input,select,textarea,.tEstudioInput_').serialize();
                     var url  = $(".current").find('#urlStoreInformacion').val();
-                    $.ajax({
+
+                     var respuestaAjax = $.ajax({
                           // En data puedes utilizar un objeto JSON, un array o un query string
-                        data: data,
-
+                            data: data,
+                            async : false,
+                             
+                            //Cambiar a type: POST si necesario
+                            type: "post",
+                            // Formato de datos que se espera en la respuesta
+                            dataType: "json",
+                            // URL a la que se enviará la solicitud Ajax
+                            url:url ,
+                            success : function(json) {   
+                                //alert("ho");
+                                $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');
+                                $("html, body").animate({ scrollTop: 0 }, 600);
                          
-                        //Cambiar a type: POST si necesario
-                        type: "post",
-                        // Formato de datos que se espera en la respuesta
-                        dataType: "json",
-                        // URL a la que se enviará la solicitud Ajax
-                        url:url ,
-                        success : function(json) {   
-                            //alert("ho");
-                            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');
-                            $("html, body").animate({ scrollTop: 0 }, 600);
-                            return true;
-                               
+                                
+                            },
+
+                            error : function(xhr, status) {
+                                var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                                for(var key in xhr.responseJSON)
+                                {
+                                    html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                                }
+                                $('#message').html(html+'</div>');
+                                $("html, body").animate({ scrollTop: 0 }, 600);
+                          
+                            },
                             
-                        },
+               
 
-                        error : function(xhr, status) {
+                        });
 
-                            var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                            for(var key in xhr.responseJSON)
-                            {
-                                html += "<li>" + xhr.responseJSON[key][0] + "</li>";
-                            }
-                            $('#message').html(html+'</div>');
-                            $("html, body").animate({ scrollTop: 0 }, 600);
-                                return true; 
+                if(respuestaAjax.status == 200){
+      
 
+                    return true;
+                }
+                else{
+
+                    return false;
+
+                }
+              
                       
-                        },
-                            /*var id;
-                            $(".active input").each(function(e){    
-                              id = this.id;
-                              // show id 
-                              console.log("#"+id);
-                              // show input value 
-                              console.log(this.value);
-                              // disable input if you want
-                              //$("#"+id).prop('disabled', true);
-                            });*/
-
-                    });
                 }
 
             });
 
-
+           
             // pestaña 1: wizard-p-0
             $('.datePicker').datepicker({
 

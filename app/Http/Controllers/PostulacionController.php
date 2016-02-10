@@ -28,10 +28,17 @@ class PostulacionController extends Controller {
 		return view('postulacion.index',compact('continentes','facultades'));
 	}
 
-	public function getPostulanteByUser(Guard $auth){
-		$continente = Continente::firstOrNew(array('id' => '8','nombre'=>'Aseia'));
-		
-		if(!$continente->id){dd('es nuevo');};
+	public function postPostulanteByUser(Guard $auth){
+		$postulante = Postulante::where('user_id',$auth->id())->first();
+
+		$status = 0;
+		if($postulante){
+			$status	 = 1;
+		}
+		return response()->json([
+				'codeError'=> $status,
+				'postulante'=> $postulante
+				]);
 
 	}
 	public function postStore(CretePostulacionRequest $request,Guard $auth){

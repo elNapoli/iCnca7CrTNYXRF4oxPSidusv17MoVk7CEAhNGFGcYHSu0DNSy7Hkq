@@ -10,6 +10,7 @@
         <h1>Datos Personales</h1>
         <section >
             @include('postulacion.partials.datos_personales')
+
             {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
             {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
             {!!Form::hidden('getUrlPostulanteExiste', url('postulacion/postulante-by-user'),array('id'=>'getUrlPostulanteExiste'));!!}       
@@ -53,17 +54,25 @@
                 onInit:function (event, currentIndex) { 
                     $.ajax({
                       // En data puedes utilizar un objeto JSON, un array o un query string
-                 
+                        data:{_token:$('#getToken').val()},
                         async : false,
                          
                         //Cambiar a type: POST si necesario
-                        type: "get",
+                        type: "post",
                         // Formato de datos que se espera en la respuesta
                         dataType: "json",
                         // URL a la que se enviará la solicitud Ajax
-                        url:$('#getUrlPostulanteExiste').val() ,
+                        url:$(".current").find('#getUrlPostulanteExiste').val(),
                         success : function(json) {   
-                            alert('existe');
+                            if(json.codeError){
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#apellido_paterno').val(json.postulante.apellido_paterno);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#apellido_materno').val(json.postulante.apellido_materno);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#nombre').val(json.postulante.nombre);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.input-group input#fecha_nacimiento').val(json.postulante.fecha_nacimiento);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#email_personal').val(json.postulante.email_personal);
+                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#telefono').val(json.postulante.telefono); 
+
+                            };
                             
                         },
 
@@ -145,8 +154,8 @@
                 format:'yyyy/mm/dd',
 
             });
-            selectByTabs("wizard",'continente','getToken','getUrlPaisByContinente','#pais','section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group select');
-            selectByTabs("wizard",'pais','getToken','getUrCiudadContinente','.ciudad','section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group select');
+            selectByTabs("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group ",'#continente','#getToken','#getUrlPaisByContinente','#pais');
+            selectByTabs("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group ",'#pais','#getToken','#getUrCiudadContinente','.ciudad');
         
             $('#wizard').on('change','input[type=radio]',function(){
                 

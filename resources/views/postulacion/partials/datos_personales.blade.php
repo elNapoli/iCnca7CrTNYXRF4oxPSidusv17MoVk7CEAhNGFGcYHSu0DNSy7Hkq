@@ -18,7 +18,7 @@
               <div class="col-xs-6">
                 <div class="form-group">
                     {!!  Form::label('tipo', 'Tipo de documento ')!!}
-                    {!!  Form::select('tipo', [null=>'Seleccione documento','Cédula nacional de identidad'=>'Cédula nacional de identidad','Pasaporte'=>'Pasaporte'],null,array('class' => 'form-control'))!!}
+                    {!!  Form::select('tipo', [null=>'Seleccione documento','ci'=>'Cédula nacional de identidad','p'=>'Pasaporte'],null,array('class' => 'form-control'))!!}
                 </div>
               </div>
               <div class="col-xs-6">
@@ -43,10 +43,10 @@
             <div class="form-group">
                 {!! Form::label('sexo', 'Sexo:') !!}
                 <label class="radio-inline">
-                    {!! Form::radio('sexo', 'f',array('id'=>'sexo_f'))!!} Femenino
+                    {!! Form::radio('sexo', 'f')!!} Femenino
                 </label>
                 <label class="radio-inline">
-                    {!! Form::radio('sexo', 'm',array('id'=>'sexo_f'))!!} Masculino
+                    {!! Form::radio('sexo', 'm')!!} Masculino
                 </label>
 
             </div>
@@ -113,13 +113,13 @@
                 <div class="form-group">
                     
                   <label class="radio-inline">
-                        {!!  Form::radio('tipo_estudio', 'Pregrado', true,array('id'=>'tEstudio_pre'));!!} Estudiante pregrado
+                        {!!  Form::radio('tipo_estudio', 'Pregrado', true);!!} Estudiante pregrado
                     </label>
                 </div>
                 <div class="form-group">
                     
                   <label class="radio-inline">
-                        {!!  Form::radio('tipo_estudio', 'Postgrado',false,array('id'=>'tEstudio_post'));!!} Estudiante postgrado
+                        {!!  Form::radio('tipo_estudio', 'Postgrado');!!} Estudiante postgrado
                     </label>
                 </div>
 
@@ -138,13 +138,13 @@
                 <div class="form-group">
                     
                   <label class="radio-inline">
-                        {!!  Form::radio('procedencia', 'NO UACH', true,array('id'=>'procedencia_NU'));!!} Estudiante Extranjero
+                        {!!  Form::radio('procedencia', 'NO UACH', true);!!} Estudiante Extranjero
                     </label>
                 </div>
                 <div class="form-group">
                     
                   <label class="radio-inline">
-                        {!!  Form::radio('procedencia', 'UACH',false,array('id'=>'procedencia_U'));!!} Estudiante UACH
+                        {!!  Form::radio('procedencia', 'UACH');!!} Estudiante UACH
                     </label>
                 </div>
 

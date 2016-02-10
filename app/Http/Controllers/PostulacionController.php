@@ -29,15 +29,20 @@ class PostulacionController extends Controller {
 	}
 
 	public function postPostulanteByUser(Guard $auth){
-		$postulante = Postulante::where('user_id',$auth->id())->first();
-
+		$postulante = Postulante::with('ciudadR.paisR')->where('user_id',$auth->id())->first();
+		//dd($postulante->toArray());
+		$documentoIdentidad = 0;
 		$status = 0;
 		if($postulante){
 			$status	 = 1;
+			// por mientras traeré solo  1 de sus documentos para facilitar programación
+			// luego se mejorar
+			$documentoIdentidad = DocumentoIdentidad::where('postulante',$postulante->id)->first();
 		}
 		return response()->json([
 				'codeError'=> $status,
-				'postulante'=> $postulante
+				'postulante'=> $postulante,
+				'documento_identidad' => $documentoIdentidad
 				]);
 
 	}
@@ -45,14 +50,7 @@ class PostulacionController extends Controller {
 
 
 		$postulante = new Postulante($request->all());
-		if(!$postulante->id){
-
-			dd('usuario nuevo');
-		}
-		else{
-
-			dd('usuario ya existe');
-		}
+		
 		$postulante->user_id = $auth->id(); 
 		$postulante->save();
 

@@ -72,9 +72,9 @@ $.ajax({
 
 
 
-function selectByTabsSinAccion(ruta,idSelect,token,url,idSelectDestino,option1,option2){
+function selectByTabsSinAccion(ruta,token,url,idSelectDestino,option1,option2){
 var idTab = $(ruta);
-var idSelect = idSelect;
+//var idSelect = idSelect;
 var token = $(token).val();
 var urlE = $(url).val();
 var ruta = $(ruta+' select'+idSelectDestino);

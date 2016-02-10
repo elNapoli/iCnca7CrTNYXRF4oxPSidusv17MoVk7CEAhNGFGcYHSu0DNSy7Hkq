@@ -38,7 +38,33 @@ class PostulacionController extends Controller {
 			// por mientras traeré solo  1 de sus documentos para facilitar programación
 			// luego se mejorar
 			$documentoIdentidad = DocumentoIdentidad::where('postulante',$postulante->id)->first();
+
+			// se verifica si el postulante que se desea cargar es
+			if($postulante->tipo_estudio ==='Pregrado'){
+
+				$postulante->pregradosR;
+				//verificar si el postulante es de la UACh o no.
+				if($postulante->pregradosR->procedencia ==='UACH'){
+
+					$postulante->pregradosR->preUachsR;
+				
+
+				}
+				else{
+
+					$postulante->pregradosR->preNoUachs;
+				}
+
+			}
+			else{
+
+				//en contrucción
+
+
+			}
 		}
+
+
 		return response()->json([
 				'codeError'=> $status,
 				'postulante'=> $postulante,
@@ -46,47 +72,70 @@ class PostulacionController extends Controller {
 				]);
 
 	}
-	public function postStore(CretePostulacionRequest $request,Guard $auth){
+	public function postStore(Request $request,Guard $auth){
 
 
-		$postulante = new Postulante($request->all());
+		$postulante = Postulante::firstOrNew(array('user_id'=> 2));
+		$mensaje = '';
+		if($postulante->exists){
+			$mensaje = 'el método esta en construcción';
+		}
+		else{ // si el postulante no existe:
+
+			//guardo el usuario en la tabla postulante.
+			$postulante->fill($request->all());
+			$postulante->user_id = $auth->id(); 
+			$postulante->save();
+
+			// se almacena el númer de documento que posee el estudiante.
+			$documento = new DocumentoIdentidad();
+			$documento->postulante = $postulante->id;
+			$documento->tipo = $request->get('tipo');
+			$documento->numero = $request->get('numero');
+			$documento->save();
+
+			// se verifica si el alumno va a postular a una carrera de pregrado o postgrado.
+			if($request->get('tipo_estudio') === 'Pregrado'){
+
+				$pregrado = new Pregrado();
+				$pregrado->postulante = $postulante->id;
+				$pregrado->procedencia = $request->get('procedencia');
+				$pregrado->save();
+
+				// se verifica si el estudiante es un alumno entrante o saliente.
+				if($request->get('procedencia')==='UACH'){
+					$preUach = new PreUach();
+					$preUach->postulante = $postulante->id;
+					$preUach->email_institucional = $request->get('email_institucional');
+					$preUach->grupo_sanguineo = $request->get('grupo_sanguineo');
+					$preUach->enfermedades = $request->get('enfermedades');
+					$preUach->telefono = $request->get('telefono_2');
+					$preUach->ciudad = $request->get('ciudad_2');
+					$preUach->direccion = $request->get('direccion_2');
+					$preUach->save();
+
+				}
+				else{
+					$preNoUach = new PreNoUach();
+					$preNoUach->postulante = $postulante->id;
+					$preNoUach->save();
+
+				}
+				$mensaje ='Su postulación se almacenó Exitosamente.';
+				
+			}
+
+			else{
+				$mensaje = 'el método esta en construcción';
+				
+
+			}
+		}
+
+
 		
-		$postulante->user_id = $auth->id(); 
-		$postulante->save();
-
-		$pregrado = new Pregrado();
-		$pregrado->postulante = $postulante->id;
-		$pregrado->procedencia = $request->get('procedencia');
-		$pregrado->save();
-
-
-
-		if($request->get('procedencia')==='UACH'){
-			$preUach = new PreUach();
-			$preUach->postulante = $postulante->id;
-			$preUach->email_institucional = $request->get('email_institucional');
-			$preUach->grupo_sanguineo = $request->get('grupo_sanguineo');
-			$preUach->enfermedades = $request->get('enfermedades');
-			$preUach->telefono = $request->get('telefono_2');
-			$preUach->ciudad = $request->get('ciudad_2');
-			$preUach->direccion = $request->get('direccion_2');
-			$preUach->save();
-
-		}
-		else{
-			$preNoUach = new PreNoUach();
-			$preNoUach->postulante = $postulante->id;
-			$preNoUach->save();
-
-		}
-
-		$documento = new DocumentoIdentidad();
-		$documento->postulante = $postulante->id;
-		$documento->tipo = $request->get('tipo');
-		$documento->numero = $request->get('numero');
-		$documento->save();
 		return response()->json([
-				'message'=> 'se Guardó la universidad Correctamente'.$postulante->id
+				'message'=> $mensaje
 				]);
 	}
 

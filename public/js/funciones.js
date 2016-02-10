@@ -19,6 +19,7 @@ $.ajax({
     },
     //Cambiar a type: POST si necesario
     type: "post",
+    async : false,
     // Formato de datos que se espera en la respuesta
     dataType: "json",
     // URL a la que se enviará la solicitud Ajax
@@ -86,6 +87,7 @@ var ruta = $(ruta+' select'+idSelectDestino);
         },
         //Cambiar a type: POST si necesario
         type: "post",
+        async : false,
         // Formato de datos que se espera en la respuesta
         dataType: "json",
         // URL a la que se enviará la solicitud Ajax

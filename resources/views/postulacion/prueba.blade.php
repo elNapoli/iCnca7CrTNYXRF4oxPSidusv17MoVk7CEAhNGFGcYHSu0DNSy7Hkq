@@ -81,9 +81,25 @@
                                 $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#lugar_nacimiento').val(json.postulante.lugar_nacimiento);
                   
                                 $("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input[name=sexo][value='"+json.postulante.sexo+"']").prop("checked",true);
-                                 selectByTabsSinAccion("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group",'#getToken','#getUrlPaisByContinente','#pais',json.postulante.ciudad_r.pais_r.continente,json.postulante.ciudad_r.pais);
+                                $("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input[name=tipo_estudio][value='"+json.postulante.tipo_estudio+"']").prop("checked",true);
 
-                                 selectByTabsSinAccion("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group",'#getToken','#getUrCiudadContinente','#ciudad',json.postulante.ciudad_r.pais,json.postulante.ciudad);
+                                 selectByTabsSinAccion("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group",'#getToken','#getUrlPaisByContinente','#pais',json.postulante.ciudad_r.pais_r.continente,json.postulante.ciudad_r.pais);
+                                 selectByTabsSinAccion("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group",'#getToken','#getUrCiudadContinente','.ciudad',json.postulante.ciudad_r.pais,json.postulante.ciudad);
+
+
+                                $("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input[name=procedencia][value='"+json.postulante.pregrados_r.procedencia+"']").prop("checked",true);
+                                if(json.postulante.pregrados_r.procedencia === 'UACH'){
+                                    $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#email_institucional').val(json.postulante.pregrados_r.pre_uachs_r.email_institucional);
+                                    $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#grupo_sanguineo').val(json.postulante.pregrados_r.pre_uachs_r.grupo_sanguineo);
+                                    $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#enfermedades').val(json.postulante.pregrados_r.pre_uachs_r.enfermedades);
+                                    $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#telefono_2').val(json.postulante.pregrados_r.pre_uachs_r.telefono);
+                                    $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group select#ciudad_2').val(json.postulante.pregrados_r.pre_uachs_r.ciudad);
+                                    $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#direccion_2').val(json.postulante.pregrados_r.pre_uachs_r.direccion);
+                                    
+                                    $('#preUach').show('slide',1000);
+
+                                }
+
 
 
 

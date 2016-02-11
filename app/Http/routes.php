@@ -29,6 +29,7 @@ Route::controllers([
 	'preuestudioactual' => 'PreUEstudioActualController',
 	'departamentos' => 'DepartamentosController',
 	'detalles' => 'DetalleBeneficioController',
+	'asignaturas' => 'AsignaturasController',
 
 	'prepostulacionuniversidad' => 'PrePostulacionUniversidadController',
 	'carreras' => 'CarrerasController',

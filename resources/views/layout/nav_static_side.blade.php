@@ -53,6 +53,11 @@
                         <a href="{{ url('departamentos/') }}">Departamentos</a>
 
                     </li>
+                    <li>
+
+                        <a href="{{ url('asignaturas/') }}">Asignaturas</a>
+
+                    </li>
 
 
                 </ul>

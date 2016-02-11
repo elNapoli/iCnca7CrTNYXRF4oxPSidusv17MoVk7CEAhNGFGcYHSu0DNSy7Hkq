@@ -1,16 +1,16 @@
-function selectByTabs(ruta,idSelect,token,url,idSelectDestino){
+function selectByTabs(ruta_input,idSelect,token_prueba,url,idSelectDestino){
+           
     //idTab: Selector padre(ej:div)- idSelect: Elemento en cuestion(Ej: pais)
-var idTab = $(ruta);
+var idTab = $(ruta_input);
 var idSelect = idSelect;
-var token = $(token).val();
-var urlE = $(url).val();
 //var idSelectDestino = '#'+idSelectDestino;
+              //Ruta: es esa mierda que hay que buscar entre los selectores <div>
+idTab.on('change',idSelect,function(e){  
 
-var ruta = $(ruta+' select'+idSelectDestino); //idSelectDestino: es el id del objeto donde se carga la respuesta ajax
-                                    //Ruta: es esa mierda que hay que buscar entre los selectores <div>
-                    
-idTab.on('change',idSelect,function(e){   
-
+var ruta = $(ruta_input+' select'+idSelectDestino); //idSelectDestino: es el id del objeto donde se carga la respuesta ajax
+var token = $(token_prueba).val();
+//alert($('div#wizard input#getToken').val());
+var urlE = $(ruta_input+' input'+url).val();
 $.ajax({
     // En data puedes utilizar un objeto JSON, un array o un query string
    data: {
@@ -19,6 +19,7 @@ $.ajax({
     },
     //Cambiar a type: POST si necesario
     type: "post",
+    async : false,
     // Formato de datos que se espera en la respuesta
     dataType: "json",
     // URL a la que se enviará la solicitud Ajax
@@ -86,6 +87,7 @@ var ruta = $(ruta+' select'+idSelectDestino);
         },
         //Cambiar a type: POST si necesario
         type: "post",
+        async : false,
         // Formato de datos que se espera en la respuesta
         dataType: "json",
         // URL a la que se enviará la solicitud Ajax

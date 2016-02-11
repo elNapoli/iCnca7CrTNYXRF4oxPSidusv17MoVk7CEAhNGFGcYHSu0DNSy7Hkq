@@ -29,7 +29,7 @@ class UserTableSeeder extends Seeder
             
         $user->save();
 
-        for($i = 0; $i < 20; $i++)
+        for($i = 0; $i < 150; $i++)
         {
             $user = new User();
 

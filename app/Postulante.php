@@ -27,9 +27,9 @@ class Postulante extends Model
         return $this->belongsTo('App\Ciudad','ciudad');
     }
 
-    public function postgrados()
+    public function postgradosR()
     {
-        return $this->belongsTo('App\Postgrado','postulante');
+        return $this->belongsTo('App\Postgrado','id','postulante');
     }
 
     public function pregradosR()

@@ -14,12 +14,13 @@ class CreatePostgradoTable extends Migration
     {
         Schema::create('postgrado', function (Blueprint $table) {
             $table->string('titulo_profesional',70);
-
+            $table->string('procedencia', 7);
+            
             //foreingkey to postulante
             $table->integer('postulante')->unsigned();
 
             //foreingkey to financiamiento
-            $table->integer('financiamiento')->unsigned();
+            $table->integer('financiamiento')->unsigned()->nullable();
 
 
             //pk

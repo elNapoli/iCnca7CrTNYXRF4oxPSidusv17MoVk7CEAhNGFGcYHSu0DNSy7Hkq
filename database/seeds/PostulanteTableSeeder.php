@@ -45,7 +45,7 @@ class PostulanteTableSeeder extends Seeder
             $postulante->ciudad           = $faker->numberBetween($min = 1, $max = 500);
           //  $postulante->tipo_estudio     = $tipoEstudio[$faker->numberBetween($min = 0, $max = 1)]; esto se llena por consula
             $postulante->direccion        = $faker->address;
-            $postulante->user_id          = $faker->numberBetween($min = 1, $max = 18);
+            $postulante->user_id          = $faker->unique->numberBetween($min = 1, $max = 150);
             $postulante->fecha_nacimiento = $faker->dateTimeBetween($startDate = '-30 years', $endDate = '-20 years');
 
 

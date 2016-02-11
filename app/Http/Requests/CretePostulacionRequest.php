@@ -1,7 +1,7 @@
 <?php namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-
+use App\Postulante;
 class CretePostulacionRequest extends Request {
 
 	/**
@@ -26,29 +26,48 @@ class CretePostulacionRequest extends Request {
 	public function rules()
 	{
 
-		if($this->get('procedencia')==='UACH'){
+	
+		$postulante = Postulante::where('user_id',\Auth::id())->first();
+		$email_personal = "";
+		$email_institucional = "";
+		$titulo_profesional = "";
+		if($postulante){
+			//dd('existe');
+			$email_personal = ",".$postulante->id;
+			$email_institucional = ",".$postulante->id.',postulante';
+
+
+		}
+		if( $this->get('tipo_estudio')==='Postgrado'){
+
+			$titulo_profesional = 'required';
+		}
+
+		if($this->get('procedencia')==='UACH' and $this->get('tipo_estudio')==='Pregrado'){
 
 			return [
 				'apellido_paterno' =>'required',
 				'apellido_materno'=>'required',
 				'nombre'=>'required',
-				'direccion'=>'required',
-				'email_personal'=>'required|unique:postulante,email_personal',
-				'fecha_nacimiento'=>'required',
-				'lugar_nacimiento'=>'required',
-				'nacionalidad'=>'required',
-				'ciudad'=>'required',
-				'sexo'=>'required',
-				'telefono'=>'required',
 				'tipo'=>'required',
-				'numero'=>'required|unique:documento_identidad,numero',
-				'email_personal'=>'required',
+				'numero'=>'required',
+				'fecha_nacimiento'=>'required',
+				'sexo'=>'required',
+				'email_personal'=>'required|unique:postulante,email_personal'.$email_personal,
+				'telefono'=>'required',
+				'ciudad'=>'required',
+				'direccion'=>'required',
+				'nacionalidad'=>'required',
+				'lugar_nacimiento'=>'required',
+				'titulo_profesional'=> $titulo_profesional,
+				'tipo_estudio'=>'required',
+				'procedencia'=>'required',
+				'email_institucional'=>'required|unique:pre_uach,email_institucional'.$email_institucional,
 				'grupo_sanguineo'=>'required',
 				'enfermedades'=>'required',
 				'telefono_2'=>'required',
 				'ciudad_2'=>'required',
 				'direccion_2'=>'required',
-				'email_institucional'=>'required|unique:postulante,email_personal',
 
 			];
 		}
@@ -58,16 +77,20 @@ class CretePostulacionRequest extends Request {
 				'apellido_paterno' =>'required',
 				'apellido_materno'=>'required',
 				'nombre'=>'required',
-				'direccion'=>'required',
-				'email_personal'=>'required|unique:postulante,email_personal',
-				'fecha_nacimiento'=>'required',
-				'lugar_nacimiento'=>'required',
-				'nacionalidad'=>'required',
-				'ciudad'=>'required',
-				'sexo'=>'required',
-				'telefono'=>'required',
 				'tipo'=>'required',
-				'numero'=>'required|unique:documento_identidad,numero',
+				'numero'=>'required',
+				'fecha_nacimiento'=>'required',
+				'sexo'=>'required',
+				'email_personal'=>'required|unique:postulante,email_personal'.$email_personal,
+				'telefono'=>'required',
+				'ciudad'=>'required',
+				'direccion'=>'required',
+				'nacionalidad'=>'required',
+				'lugar_nacimiento'=>'required',
+				'titulo_profesional'=> $titulo_profesional,
+				'tipo_estudio'=>'required',
+				'procedencia'=>'required',
+
 			];
 		}
 	}

@@ -13,14 +13,14 @@ class CreateDocumentoIdentidadTable extends Migration
 public function up()
     {
         Schema::create('documento_identidad', function (Blueprint $table) {
+            $table->increments('id');
             $table->enum('tipo', ['p', 'ci']);
             $table->string('numero',20);
 
             //foreign key
             $table->integer('postulante')->unsigned();
 
-            //primary key
-            $table->primary(['tipo','postulante']);
+        
 
         });
     }

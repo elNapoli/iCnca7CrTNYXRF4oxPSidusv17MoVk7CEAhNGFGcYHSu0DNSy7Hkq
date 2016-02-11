@@ -16,6 +16,7 @@ class PostgradoTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
+        $procedencia     = array('UACH', 'NO UACH');
 		
 
         for($i = 0; $i < 20; $i++)
@@ -29,6 +30,7 @@ class PostgradoTableSeeder extends Seeder
 
             $postulanteTemp->tipo_estudio     = 'Postgrado';
             $posgrado->postulante         = $idPostulante;
+            $posgrado->procedencia =  $procedencia[$faker->numberBetween($min = 0, $max = 1)];
             $posgrado->titulo_profesional = 'Título Profesional';
             $posgrado->financiamiento     = $faker->numberBetween($min = 1, $max = 3);
 

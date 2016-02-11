@@ -14,7 +14,6 @@ class CreatePostPostulacionUniversidadTable extends Migration
     {
         Schema::create('post_postulacion_universidad', function (Blueprint $table) {
             $table->string('celular',20);
-            $table->string('procedencia', 7);
             $table->integer('postulante')->unsigned();
             $table->integer('campus_sede')->unsigned();
 

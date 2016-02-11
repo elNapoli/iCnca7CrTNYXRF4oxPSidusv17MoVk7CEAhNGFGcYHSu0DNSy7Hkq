@@ -113,19 +113,34 @@
                 <div class="form-group">
                     
                   <label class="radio-inline">
-                        {!!  Form::radio('tipo_estudio', 'Pregrado', true);!!} Estudiante pregrado
+                        {!!  Form::radio('tipo_estudio', 'Pregrado', false,array('class'=>'','id'=>'tipo_estudio_1'));!!} Estudiante pregrado
                     </label>
                 </div>
                 <div class="form-group">
                     
                   <label class="radio-inline">
-                        {!!  Form::radio('tipo_estudio', 'Postgrado');!!} Estudiante postgrado
+                        {!!  Form::radio('tipo_estudio', 'Postgrado',false,array('id'=>'tipo_estudio_2'));!!} Estudiante postgrado
                     </label>
                 </div>
 
                 </div>
               </div>
 
+            </div>
+
+            <div class="form-horizontal" style="display: none" id="div_titulo_profesional">
+              <div class="form-group">
+                <div class="col-lg-4">
+                    {!! Form::label('titulo_profesional', 'Título profesional:') !!}
+                </div>
+                <div class="col-lg-8">
+                <div class="form-group">
+                {!! Form::text('titulo_profesional',null,array('class' => 'form-control','placeholder'=>'Ej: Ingenierio Civil en Informática'));!!}
+                    
+                </div>
+
+                </div>
+              </div>
             </div>
 
 
@@ -135,16 +150,17 @@
                 {!! Form::label('procedencia', 'Procedencia:') !!}
                 </div>
                 <div class="col-lg-8">
+
                 <div class="form-group">
                     
                   <label class="radio-inline">
-                        {!!  Form::radio('procedencia', 'NO UACH', true);!!} Estudiante Extranjero
+                        {!!  Form::radio('procedencia', 'NO UACH', false,array('id'=>'procedencia_1'));!!} Estudiante Extranjero
                     </label>
                 </div>
                 <div class="form-group">
                     
                   <label class="radio-inline">
-                        {!!  Form::radio('procedencia', 'UACH');!!} Estudiante UACH
+                        {!!  Form::radio('procedencia', 'UACH',false,array('class'=>'','id'=>'procedencia_2'));!!} Estudiante UACH
                     </label>
                 </div>
 

@@ -14,6 +14,7 @@
             {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
             {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
             {!!Form::hidden('getUrlPostulanteExiste', url('postulacion/postulante-by-user'),array('id'=>'getUrlPostulanteExiste'));!!}       
+            {!!Form::hidden('getUrlStepNumber', url('postulacion/step-number'),array('id'=>'getUrlStepNumber'));!!}       
 
         </section>
 
@@ -47,10 +48,48 @@
     {!! Html::Script('plugins/bootstrap/js/bootstrap-datepicker.js')!!}
     <script>
         $(document).on('ready',function() {
+           /* var stepNumber = $.ajax({
+                         
+                            async : false,
+                             
+                            //Cambiar a type: POST si necesario
+                            type: "get",
+                            // Formato de datos que se espera en la respuesta
+                            dataType: "json",
+                            // URL a la que se enviará la solicitud Ajax
+                            url:$('#getUrlStepNumber').val() ,
+                            success : function(json) {   
+                           
+                         
+                                
+                            },
+
+                            error : function(xhr, status) {
+                                alert(status);
+                          
+                            },
+                            
+               
+
+                        });*/
+
+
             $("#wizard").steps({
                 headerTag: "h1",
                 bodyTag: "section",
+                 
+
                 transitionEffect: "slideLeft",
+                /* Labels */
+                labels: {
+                    cancel: "Cancelar",
+                    current: "current step:",
+                    pagination: "Pagination",
+                    finish: "Finalizar",
+                    next: "Siguiente",
+                    previous: "Anterior",
+                    loading: "Cargando ..."
+                },
                 onInit:function (event, currentIndex) { 
                     $.ajax({
                       // En data puedes utilizar un objeto JSON, un array o un query string
@@ -83,6 +122,11 @@
                                 $("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input[name=sexo][value='"+json.postulante.sexo+"']").prop("checked",true);
                                 $("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input[name=tipo_estudio][value='"+json.postulante.tipo_estudio+"']").prop("checked",true);
 
+                                if(json.postulante.tipo_estudio === 'Postgrado'){
+                                    $('#div_titulo_profesional').show('slide',1000);
+
+
+                                }
                                  selectByTabsSinAccion("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group",'#getToken','#getUrlPaisByContinente','#pais',json.postulante.ciudad_r.pais_r.continente,json.postulante.ciudad_r.pais);
                                  selectByTabsSinAccion("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group",'#getToken','#getUrCiudadContinente','.ciudad',json.postulante.ciudad_r.pais,json.postulante.ciudad);
 
@@ -117,6 +161,7 @@
                     }); 
 
                 },
+
                 onStepChanging:function (event, currentIndex, newIndex) { 
                 
                     var data = $(".current").find('input,select,textarea,.tEstudioInput_').serialize();
@@ -188,15 +233,48 @@
             selectByTabs("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group ",'#continente','#getToken','#getUrlPaisByContinente','#pais');
             selectByTabs("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group ",'#pais','#getToken','#getUrCiudadContinente','.ciudad');
         
-            $('#wizard').on('change','input[type=radio]',function(){
+            $('#wizard').on('change','input[name=tipo_estudio]',function(){
                 
+                if($(this).val()==='Postgrado'){
+                    $('#div_titulo_profesional').show('slide',1000);
+                    $('#tipo_estudio_1').removeClass('1check');
+                        $('#preUach').hide('slide',1000);
+
+                   
+      
+
+                }
+                else{
+
+                    $('#div_titulo_profesional').hide('slide',1000);
+                    $('#tipo_estudio_1').addClass('1check');
+                    if($('#procedencia_2').attr('class') ==='1check'){
+
+                        $('#preUach').show('slide',1000);
+
+                    }
+
+
+
+                }
+            });
+
+            $('#wizard').on('change','input[name=procedencia]',function(){
                 if($(this).val()==='UACH'){
-                     var options = {};
-                    $('#preUach').show('slide',1000);
+
+                    $('#procedencia_2').addClass('1check');
+                    if($('#tipo_estudio_1').attr('class') ==='1check'){
+
+                        $('#preUach').show('slide',1000);
+                        
+                    }
                 }
                 else{
 
                     $('#preUach').hide('slide',1000);
+                    $('#procedencia_2').removeClass('1check');
+
+
 
                 }
             });

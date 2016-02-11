@@ -26,8 +26,6 @@ class PostPostulacionUniverisidadTableSeeder extends Seeder
             $postpostulacionuniversidad->postulante  = $item->postulante;
             $postpostulacionuniversidad->campus_sede = $faker->numberBetween($min = 1, $max = 20) ;
             $postpostulacionuniversidad->celular = $faker->phoneNumber;
-            $postpostulacionuniversidad->procedencia = 'UACH'; //FIJO POR DEBUG
-
             $postpostulacionuniversidad->save();
         }
     }

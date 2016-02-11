@@ -9,7 +9,8 @@ class DocumentoIdentidad extends Model
     protected $table = 'documento_identidad';
     public $timestamps = false;
     protected $fillable = ['tipo',
-    					   'numero'];
+    					   'numero',
+    					   'postulante'];
 
  
 

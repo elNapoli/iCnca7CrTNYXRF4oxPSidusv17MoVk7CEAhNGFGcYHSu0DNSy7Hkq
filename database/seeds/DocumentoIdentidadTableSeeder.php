@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\DocumentoIdentidad;
+use App\Postulante;
 
 
 class DocumentoIdentidadTableSeeder extends Seeder
@@ -16,17 +17,17 @@ class DocumentoIdentidadTableSeeder extends Seeder
     {
         $faker = Faker::create();
         $tipoPasaporte = array('p','ci');
-        for($i = 0; $i < 80; $i++)
-        {
+        $postulante = Postulante::all();
+        foreach ($postulante as $item) {
             $documentoIdentidad = new DocumentoIdentidad();
 
             $documentoIdentidad->tipo       = $tipoPasaporte[$faker->numberBetween($min = 0, $max = 1)];
             $documentoIdentidad->numero     = $faker->creditCardNumber;
-            $documentoIdentidad->postulante = $faker->unique->numberBetween($min = 1, $max = 100);
+            $documentoIdentidad->postulante = $item->id;
 
             $documentoIdentidad->save();
-
         }
+        
 
 
 

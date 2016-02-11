@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\Guard;
 use App\Postulante;
 use App\PreUach;
 use App\PreNoUach;
+use App\Postgrado;
 use App\Pregrado;
 use App\Facultad;
 use App\DocumentoIdentidad;
@@ -57,6 +58,8 @@ class PostulacionController extends Controller {
 
 			}
 			else{
+				$postulante->postgradosR;
+
 
 				//en contrucción
 
@@ -72,13 +75,88 @@ class PostulacionController extends Controller {
 				]);
 
 	}
-	public function postStore(Request $request,Guard $auth){
+	public function getStepNumber(Guard $auth){
+
+		$step = 0;
+		$postulante = Postulante::where('user_id',$auth->id())->first();
+
+		if($postulante){
 
 
-		$postulante = Postulante::firstOrNew(array('user_id'=> 2));
+			$step = 1;
+		}
+		return response()->json([
+			'step'=> $step
+			]);
+	}
+	public function postStore(CretePostulacionRequest $request,Guard $auth){
+
+
+		$postulante = Postulante::firstOrNew(array('user_id'=> $auth->id()));
 		$mensaje = '';
 		if($postulante->exists){
-			$mensaje = 'el método esta en construcción';
+
+			if($postulante->tipo_estudio === 'Pregrado'){
+				Pregrado::find($postulante->id)->delete();
+
+			}	
+			else{
+				Postgrado::find($postulante->id)->delete();
+				
+
+			}
+
+
+			$postulante->fill($request->all());
+			$postulante->save();
+
+			$documento = DocumentoIdentidad::where('postulante',$postulante->id)->first();
+			$documento->fill($request->all());
+			$documento->save();
+
+
+			// se verifica si el alumno va a postular a una carrera de pregrado o postgrado.
+			if($request->get('tipo_estudio') === 'Pregrado'){
+
+				$pregrado = new Pregrado();
+				$pregrado->postulante = $postulante->id;
+				$pregrado->procedencia = $request->get('procedencia');
+				$pregrado->save();
+
+				// se verifica si el estudiante es un alumno entrante o saliente.
+				if($request->get('procedencia')==='UACH'){
+					$preUach = new PreUach();
+					$preUach->postulante = $postulante->id;
+					$preUach->email_institucional = $request->get('email_institucional');
+					$preUach->grupo_sanguineo = $request->get('grupo_sanguineo');
+					$preUach->enfermedades = $request->get('enfermedades');
+					$preUach->telefono = $request->get('telefono_2');
+					$preUach->ciudad = $request->get('ciudad_2');
+					$preUach->direccion = $request->get('direccion_2');
+					$preUach->save();
+
+				}
+				else{
+					$preNoUach = new PreNoUach();
+					$preNoUach->postulante = $postulante->id;
+					$preNoUach->save();
+
+				}
+				$mensaje = 'Su postulación se actualizó correctamente('.$request->get('tipo_estudio') .')';
+				
+			}
+
+			else{
+
+				$pregrado = new Postgrado();
+				$pregrado->postulante = $postulante->id;
+				$pregrado->titulo_profesional = $request->get('titulo_profesional');
+				$pregrado->save();
+				$mensaje = 'Su postulación se actualizó correctamente('.$request->get('tipo_estudio') .')';
+				
+
+			}
+
 		}
 		else{ // si el postulante no existe:
 
@@ -113,6 +191,8 @@ class PostulacionController extends Controller {
 					$preUach->ciudad = $request->get('ciudad_2');
 					$preUach->direccion = $request->get('direccion_2');
 					$preUach->save();
+					$mensaje ='Su postulación se almacenó Exitosamente('.$request->get('procedencia').').';
+
 
 				}
 				else{
@@ -120,8 +200,8 @@ class PostulacionController extends Controller {
 					$preNoUach->postulante = $postulante->id;
 					$preNoUach->save();
 
+					$mensaje ='Su postulación se almacenó Exitosamente('.$request->get('procedencia').').';
 				}
-				$mensaje ='Su postulación se almacenó Exitosamente.';
 				
 			}
 

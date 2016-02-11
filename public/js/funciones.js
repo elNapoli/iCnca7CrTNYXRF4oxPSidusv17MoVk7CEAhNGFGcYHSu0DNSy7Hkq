@@ -10,7 +10,7 @@ idTab.on('change',idSelect,function(e){
 var ruta = $(ruta_input+' select'+idSelectDestino); //idSelectDestino: es el id del objeto donde se carga la respuesta ajax
 var token = $(token_prueba).val();
 //alert($('div#wizard input#getToken').val());
-var urlE = $(ruta_input+' input'+url).val();
+var urlE = $(url).val();
 $.ajax({
     // En data puedes utilizar un objeto JSON, un array o un query string
    data: {

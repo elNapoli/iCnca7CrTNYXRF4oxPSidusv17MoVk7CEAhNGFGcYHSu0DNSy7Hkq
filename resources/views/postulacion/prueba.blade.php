@@ -4,38 +4,38 @@
 
 @section('content')
 
+
     <div id="wizard">
         <div id="message"></div>
-
-        <h1>Datos Personales</h1>
-        <section >
-            @include('postulacion.partials.datos_personales')
-
-            {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
-            {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
-            {!!Form::hidden('getUrlPostulanteExiste', url('postulacion/postulante-by-user'),array('id'=>'getUrlPostulanteExiste'));!!}       
-            {!!Form::hidden('getUrlStepNumber', url('postulacion/step-number'),array('id'=>'getUrlStepNumber'));!!}       
+        <h3>Async @yield('nombre')</h3>
+        <section data-mode="async" data-ajax="true" data-url="{{url('postulacion/create-or-edit')}}">
 
         </section>
-
-        <h1>Estudios</h1>
+        <h3>Second Step</h3>
         <section>
-            @include('postulacion.partials.estudios')
-           
+            <p>Donec mi sapien, hendrerit nec egestas a, rutrum vitae dolor. Nullam venenatis diam ac ligula elementum pellentesque. 
+                In lobortis sollicitudin felis non eleifend. Morbi tristique tellus est, sed tempor elit. Morbi varius, nulla quis condimentum 
+                dictum, nisi elit condimentum magna, nec venenatis urna quam in nisi. Integer hendrerit sapien a diam adipiscing consectetur. 
+                In euismod augue ullamcorper leo dignissim quis elementum arcu porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Vestibulum leo velit, blandit ac tempor nec, ultrices id diam. Donec metus lacus, rhoncus sagittis iaculis nec, malesuada a diam. 
+                Donec non pulvinar urna. Aliquam id velit lacus.</p>
         </section>
-
-        <h1>Información de Intercambio</h1>
+        <h3>Third Step</h3>
         <section>
-            @include('postulacion.partials.intercambio')
+            <p>Morbi ornare tellus at elit ultrices id dignissim lorem elementum. Sed eget nisl at justo condimentum dapibus. Fusce eros justo, 
+                pellentesque non euismod ac, rutrum sed quam. Ut non mi tortor. Vestibulum eleifend varius ullamcorper. Aliquam erat volutpat. 
+                Donec diam massa, porta vel dictum sit amet, iaculis ac massa. Sed elementum dui commodo lectus sollicitudin in auctor mauris 
+                venenatis.</p>
         </section>
-
-        <h1>Declaración</h1>
+        <h3>Fourth Step</h3>
         <section>
-            @include('postulacion.partials.declaracion')
+            <p>Quisque at sem turpis, id sagittis diam. Suspendisse malesuada eros posuere mauris vehicula vulputate. Aliquam sed sem tortor. 
+                Quisque sed felis ut mauris feugiat iaculis nec ac lectus. Sed consequat vestibulum purus, imperdiet varius est pellentesque vitae. 
+                Suspendisse consequat cursus eros, vitae tempus enim euismod non. Nullam ut commodo tortor.</p>
         </section>
     </div>
 
-     {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
+
 @endsection
 
 @section('breadcrumbs')
@@ -43,39 +43,15 @@
 @endsection
 
 
+
 @section('scripts')
     {!! Html::Script('plugins/jquery-steps/js/jquery.steps.js')!!}
-    {!! Html::Script('plugins/bootstrap/js/bootstrap-datepicker.js')!!}
+
     <script>
         $(document).on('ready',function() {
-           /* var stepNumber = $.ajax({
-                         
-                            async : false,
-                             
-                            //Cambiar a type: POST si necesario
-                            type: "get",
-                            // Formato de datos que se espera en la respuesta
-                            dataType: "json",
-                            // URL a la que se enviará la solicitud Ajax
-                            url:$('#getUrlStepNumber').val() ,
-                            success : function(json) {   
-                           
-                         
-                                
-                            },
-
-                            error : function(xhr, status) {
-                                alert(status);
-                          
-                            },
-                            
-               
-
-                        });*/
-
 
             $("#wizard").steps({
-                headerTag: "h1",
+                headerTag: "h3",
                 bodyTag: "section",
                  
 
@@ -90,82 +66,13 @@
                     previous: "Anterior",
                     loading: "Cargando ..."
                 },
-                onInit:function (event, currentIndex) { 
-                    $.ajax({
-                      // En data puedes utilizar un objeto JSON, un array o un query string
-                        data:{_token:$('#getToken').val()},
-                        async : false,
-                         
-                        //Cambiar a type: POST si necesario
-                        type: "post",
-                        // Formato de datos que se espera en la respuesta
-                        dataType: "json",
-                        // URL a la que se enviará la solicitud Ajax
-                        url:$(".current").find('#getUrlPostulanteExiste').val(),
-                        success : function(json) {   
-                            if(json.codeError){
-                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#apellido_paterno').val(json.postulante.apellido_paterno);
-                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#apellido_materno').val(json.postulante.apellido_materno);
-                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#nombre').val(json.postulante.nombre);
-                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.input-group input#fecha_nacimiento').val(json.postulante.fecha_nacimiento);
-                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#email_personal').val(json.postulante.email_personal);
-                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#telefono').val(json.postulante.telefono); 
-                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#direccion').val(json.postulante.direccion); 
 
-                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group select#continente').val(json.postulante.ciudad_r.pais_r.continente);
-                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group select#tipo').val(json.documento_identidad.tipo);
-                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#numero').val(json.documento_identidad.numero);
-                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#nacionalidad').val(json.postulante.nacionalidad);
-                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#lugar_nacimiento').val(json.postulante.lugar_nacimiento);
-                                $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#lugar_nacimiento').val(json.postulante.lugar_nacimiento);
-                  
-                                $("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input[name=sexo][value='"+json.postulante.sexo+"']").prop("checked",true);
-                                $("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input[name=tipo_estudio][value='"+json.postulante.tipo_estudio+"']").prop("checked",true);
-
-                                if(json.postulante.tipo_estudio === 'Postgrado'){
-                                    $('#div_titulo_profesional').show('slide',1000);
-
-
-                                }
-                                 selectByTabsSinAccion("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group",'#getToken','#getUrlPaisByContinente','#pais',json.postulante.ciudad_r.pais_r.continente,json.postulante.ciudad_r.pais);
-                                 selectByTabsSinAccion("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group",'#getToken','#getUrCiudadContinente','.ciudad',json.postulante.ciudad_r.pais,json.postulante.ciudad);
-
-
-                                $("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input[name=procedencia][value='"+json.postulante.pregrados_r.procedencia+"']").prop("checked",true);
-                                if(json.postulante.pregrados_r.procedencia === 'UACH'){
-                                    $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#email_institucional').val(json.postulante.pregrados_r.pre_uachs_r.email_institucional);
-                                    $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#grupo_sanguineo').val(json.postulante.pregrados_r.pre_uachs_r.grupo_sanguineo);
-                                    $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#enfermedades').val(json.postulante.pregrados_r.pre_uachs_r.enfermedades);
-                                    $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#telefono_2').val(json.postulante.pregrados_r.pre_uachs_r.telefono);
-                                    $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group select#ciudad_2').val(json.postulante.pregrados_r.pre_uachs_r.ciudad);
-                                    $('section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group input#direccion_2').val(json.postulante.pregrados_r.pre_uachs_r.direccion);
-                                    
-                                    $('#preUach').show('slide',1000);
-
-                                }
-
-
-
-
-                            };
-                            
-                        },
-
-                        error : function(xhr, status) {
-                            alert(status);
-                      
-                        },
-                                
-                   
-
-                    }); 
-
-                },
 
                 onStepChanging:function (event, currentIndex, newIndex) { 
-                
+                    
+
                     var data = $(".current").find('input,select,textarea,.tEstudioInput_').serialize();
-                    var url  = $(".current").find('#urlStoreInformacion').val();
+                    var url  = $(".current").find('#form-postulacion-active').attr('action');
                     if (currentIndex < newIndex){
 
 
@@ -176,7 +83,7 @@
                                 async : false,
                                  
                                 //Cambiar a type: POST si necesario
-                                type: "post",
+                                type: $(".current").find('#form-postulacion-active').attr('method'),
                                 // Formato de datos que se espera en la respuesta
                                 dataType: "json",
                                 // URL a la que se enviará la solicitud Ajax
@@ -184,7 +91,7 @@
                                 success : function(json) {   
                                     //alert("ho");
                                     $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');
-                                    $("html, body").animate({ scrollTop: 0 }, 600);
+                                   // $("html, body").animate({ scrollTop: 0 }, 600);
                              
                                     
                                 },
@@ -196,7 +103,7 @@
                                         html += "<li>" + xhr.responseJSON[key][0] + "</li>";
                                     }
                                     $('#message').html(html+'</div>');
-                                    $("html, body").animate({ scrollTop: 0 }, 600);
+                                    //$("html, body").animate({ scrollTop: 0 }, 600);
                               
                                 },
                                 
@@ -219,22 +126,10 @@
                    
                     else{return true;}                              
                 }   
-
             });
 
-           
-            // pestaña 1: wizard-p-0
-            $('.datePicker').datepicker({
-
-                autoclose:true,
-                format:'yyyy/mm/dd',
-
-            });
-            selectByTabs("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group ",'#continente','#getToken','#getUrlPaisByContinente','#pais');
-            selectByTabs("section#wizard-p-0 div.panel-body div.col-lg-6 div.form-group ",'#pais','#getToken','#getUrCiudadContinente','.ciudad');
-        
             $('#wizard').on('change','input[name=tipo_estudio]',function(){
-                
+                        
                 if($(this).val()==='Postgrado'){
                     $('#div_titulo_profesional').show('slide',1000);
                     $('#tipo_estudio_1').removeClass('1check');
@@ -258,7 +153,6 @@
 
                 }
             });
-
             $('#wizard').on('change','input[name=procedencia]',function(){
                 if($(this).val()==='UACH'){
 
@@ -280,8 +174,11 @@
             });
 
 
+            selectByTabs("section.current",'#continente','#_token','#getUrlPaisByContinente','#pais');
+            selectByTabs("section.current",'#pais','#_token','#getUrCiudadContinente','.ciudad');
 
 
+ 
         }); 
 
 

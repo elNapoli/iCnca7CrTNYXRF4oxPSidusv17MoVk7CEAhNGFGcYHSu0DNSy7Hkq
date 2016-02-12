@@ -22,7 +22,8 @@ class UniversidadesController extends Controller {
 
 
 	public function getDebug(Guard $user){
-	 	dd($user->user());
+	 	dd(Universidad::with('campusSedesR')->get(array('campus_sede.nombre'))->toArray());
+	 
 	}
 	public function getIndex()
 	{

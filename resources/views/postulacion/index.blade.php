@@ -14,6 +14,7 @@
         <h3>Estudios actuales</h3>
        
         <section>
+         @include('postulacion.partials.formulario_items.estudios')
         </section>
         <h3>Third Step</h3>
         <section>
@@ -48,7 +49,7 @@
             $("#wizard").steps({
                 headerTag: "h3",
                 bodyTag: "section",
-                //startIndex:1,
+                startIndex:1,
                  
 
                 transitionEffect: "slideLeft",
@@ -69,9 +70,15 @@
                         $('#tipo_estudio_1').removeClass('1check');
                     }
 
-                    if($('#wizard input#tipo_estudio_1').attr('checked') === 'checked' && $('#wizard input#procedencia_2').attr('checked') == 'checked'){
+                    if($('#wizard input#procedencia_2').attr('checked') == 'checked')
+
+                    {
                         $('#procedencia_2').addClass('1check');
-                        $('#preUach').show('slide',1000);
+
+                        if($('#wizard input#tipo_estudio_1').attr('checked') === 'checked'){
+                            $('#preUach').show('slide',1000);
+                        }
+                        
                     }
                 },
 

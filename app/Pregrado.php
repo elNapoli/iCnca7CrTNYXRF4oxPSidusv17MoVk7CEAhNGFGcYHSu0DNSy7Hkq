@@ -9,7 +9,7 @@ class Pregrado extends Model
     protected $table      = 'pregrado';
     public $timestamps    = false;
     protected $primaryKey = 'postulante';
-    protected $fillable   = ['procedencia'];
+    protected $fillable   = ['postulante','procedencia'];
 
 
     // una postulación de  Pregrado corresponde a un postulante

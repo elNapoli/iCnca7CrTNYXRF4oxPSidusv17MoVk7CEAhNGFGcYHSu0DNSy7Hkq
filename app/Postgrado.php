@@ -9,7 +9,7 @@ class Postgrado extends Model
     protected $table      = 'postgrado';
     public $timestamps    = false;
     protected $primaryKey = 'postulante';
-    protected $fillable   = ['postulante','titulo_profesional','financiamiento'];
+    protected $fillable   = ['postulante','procedencia','titulo_profesional','financiamiento'];
 
 
     // una postulación de  Postgrado corresponde a un postulante

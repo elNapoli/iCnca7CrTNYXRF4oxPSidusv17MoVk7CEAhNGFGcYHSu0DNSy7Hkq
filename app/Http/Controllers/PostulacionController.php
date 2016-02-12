@@ -84,11 +84,11 @@ class PostulacionController extends Controller {
 
 
 			$postulante = array_merge($postulante->toArray(),$parametros);  
-			return view('postulacion.partials.edit',compact('postulante','continentes','paises','ciudades'));
+			return view('postulacion.datos_personales.edit',compact('postulante','continentes','paises','ciudades'));
 		}
 		else{
 
-			return view('postulacion.partials.create',compact('continentes','paises','ciudades'));
+			return view('postulacion.datos_personales.create',compact('continentes','paises','ciudades'));
 		}
 
 	}
@@ -210,8 +210,9 @@ class PostulacionController extends Controller {
 
 			}
 			else{
-				$preNoUach =  PreNoUach::firstOrNew(array('postulante'=> $postulante->id));
-				$preNoUach->save();
+		
+				$preNoUach =  PreNoUach::firstOrCreate(array('postulante'=> $postulante->id));
+				//$preNoUach->save();
 
 			}
 			$mensaje = 'Su postulación se actualizó correctamente('.$request->get('tipo_estudio') .')';

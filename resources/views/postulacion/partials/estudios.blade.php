@@ -1,6 +1,6 @@
 <div class="panel-body">
         <div class="col-lg-6">
-            @include('postulacion.partials.select_universidad')
+            @include('postulacion.partials.fields')
         </div>
 
         <div class="col-lg-6">
@@ -30,6 +30,8 @@
         </div>
    
     {!!Form::hidden('urlStoreInformacion',url('preuestudioactual/store'),array('id'=>'urlStoreInformacion'));!!}
+    {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
+
     {!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
     <!-- /.row (nested) -->
 </div>

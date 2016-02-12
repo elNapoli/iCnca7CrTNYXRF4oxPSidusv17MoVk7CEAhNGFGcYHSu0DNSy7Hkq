@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class asignatura extends Model
 {
     protected $table = 'asignatura';
+    protected $primaryKey = 'codigo';
     public $timestamps = false;
     protected $fillable = ['codigo',
                            'nivel',

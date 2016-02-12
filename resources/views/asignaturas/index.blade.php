@@ -21,8 +21,9 @@
 
 </div>
 
+{!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 {!!Form::hidden('getUrlasignaturas', url('asignaturas/asignaturas'),array('id'=>'getUrlasignaturas'));!!}
-
+{!!Form::hidden('urlAsignaturaDestroy', url('asignaturas/destroy'),array('id'=>'urlAsignaturaDestroy'));!!}
 
 @endsection
 
@@ -52,8 +53,8 @@
 			            { "data":"carrera_r.facultad_r.campus_sede_r.universidad_r.nombre" },
 			            { "data": null,
 			                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-			                    $(nTd).html("<a href='asignaturas/edit/"+oData.id+"' class='btn-edit'> Edit</a>"+
-			                                "<a href='#!' class='btn-delete' id='"+oData.id+"'> Del</a>"
+			                    $(nTd).html("<a href='asignaturas/edit/"+oData.codigo+"' class='btn-edit'> Edit</a>"+
+			                                "<a href='#!' class='btn-delete' id='"+oData.codigo+"'> Del</a>"
 			                        );
 
 			                }
@@ -68,7 +69,6 @@
         $('table').on('click','.btn-delete', function(e){
             if(confirm("Press a button!\nEither OK or Cancel."))
             {
-                alert($(this).attr('id'))
                 $.ajax({
                     // En data puedes utilizar un objeto JSON, un array o un query string
                     data:{_token :$('#getToken').val(), id: $(this).attr('id')},
@@ -77,7 +77,7 @@
                     // Formato de datos que se espera en la respuesta
                     dataType: "json",
                     // URL a la que se enviará la solicitud Ajax
-                    url:$('#urlDepartamentosDestroy').val() ,
+                    url:$('#urlAsignaturaDestroy').val() ,
 					    success : function(json) {
 					    	alert(json.message);				
 							dt.ajax.reload();

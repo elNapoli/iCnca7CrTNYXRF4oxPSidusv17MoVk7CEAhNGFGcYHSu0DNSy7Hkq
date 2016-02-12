@@ -2,26 +2,30 @@
     <div class="col-md-6">
         <div class="form-group">
 
+<fieldset disabled>
+
             <div class="form-group">
                 {!!  Form::label('universidad', ' Universidad ')!!}
-                {!!  Form::select('universidad', [null=>'Seleccione Universidad']+$universidad,null,array('class' => 'form-control'))!!}
+                {!!  Form::select('universidad', [$asignatura->carreraR->facultadR->campusSedeR->universidadR->nombre=>$asignatura->carreraR->facultadR->campusSedeR->universidadR->nombre],null,array('class' => 'form-control'))!!}
             </div>
 
 
             <div class="form-group">
                 {!!  Form::label('campus_sede', ' Campus o Sede')!!}
-                {!!  Form::select('campus_sede', [null=>'Seleccione campus o sede'],null,array('class' => 'form-control'))!!}
+                {!!  Form::select('campus_sede', [$asignatura->carreraR->facultadR->campusSedeR->nombre=>$asignatura->carreraR->facultadR->campusSedeR->nombre],null,array('class' => 'form-control'))!!}
             </div>
 
             <div class="form-group">
                 {!!  Form::label('facultad', ' Facultad')!!}
-                {!!  Form::select('facultad', [null=>'Seleccione facultad'],null,array('class' => 'form-control'))!!}
+                {!!  Form::select('facultad', [$asignatura->carreraR->facultadR->nombre=>$asignatura->carreraR->facultadR->nombre],null,array('class' => 'form-control'))!!}
             </div>
 
             <div class="form-group">
                 {!!  Form::label('carrera', ' Carrera')!!}
-                {!!  Form::select('carrera', [null=>'Seleccione carrera'],null,array('class' => 'form-control'))!!}
+                {!!  Form::select('carrera', [$asignatura->carreraR->nombre=>$asignatura->carreraR->nombre],null,array('class' => 'form-control'))!!}
             </div>
+
+</fieldset>
 
         </div> 
     </div>
@@ -71,25 +75,3 @@
     </div>
 
 </div>
-
-{!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
-{!!Form::hidden('getUrlCampusSedeByUniversidad', url('asignaturas/campus-sede-by-universidad'),array('id'=>'getUrlCampusSedeByUniversidad'));!!}
-{!!Form::hidden('getUrlFacultadByCampusSede', url('asignaturas/facultad-by-campus-sede'),array('id'=>'getUrlFacultadByCampusSede'));!!}
-{!!Form::hidden('getUrlCarreraByFacultad', url('asignaturas/carreras-by-facultad'),array('id'=>'getUrlCarreraByFacultad'));!!}
-
-@section('scripts')
-
-<script type="text/javascript">
-
-    $(document).on('ready',function(){
-    selectByTabs("div.row div.col-md-6 div.form-group div.form-group",'#universidad','#getToken','#getUrlCampusSedeByUniversidad','#campus_sede');
-    selectByTabs("div.row div.col-md-6 div.form-group div.form-group",'#campus_sede','#getToken','#getUrlFacultadByCampusSede','#facultad');
-    selectByTabs("div.row div.col-md-6 div.form-group div.form-group",'#facultad','#getToken','#getUrlCarreraByFacultad','#carrera');
-
-    });
-
-
-
-</script>
-
-@endsection

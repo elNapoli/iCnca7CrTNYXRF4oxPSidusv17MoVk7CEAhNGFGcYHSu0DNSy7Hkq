@@ -66,18 +66,18 @@
 
             <div class="form-group">
                 {!!  Form::label('continente', ' Nombre Continente ')!!}
-                {!!  Form::select('continente', [null=>'Seleccione un continente']+$continentes,null,array('class' => 'continente form-control'))!!}
+                {!!  Form::select('continente', [null=>'Seleccione un continente'],null,array('class' => 'continente form-control'))!!}
             </div>
 
 
             <div class="form-group">
                 {!!  Form::label('pais', ' Nombre país ')!!}
-                {!!  Form::select('pais', [null=>'Seleccione un país']+$paises,null,array('class' => 'pais form-control'))!!}
+                {!!  Form::select('pais', [null=>'Seleccione un país'],null,array('class' => 'pais form-control'))!!}
             </div>
 
             <div class="form-group">
                 {!!  Form::label('ciudad', ' Nombre de la ciudad ')!!}
-                {!!  Form::select('ciudad', [null=>'Seleccione ciudad']+$ciudades,null,array('class' => 'form-control ciudad'))!!}
+                {!!  Form::select('ciudad', [null=>'Seleccione ciudad'],null,array('class' => 'form-control ciudad'))!!}
             </div>
 
             <div class="form-group">
@@ -205,8 +205,5 @@
     <!-- /.row (nested) -->
 {!!Form::hidden('urlStoreInformacion',url('postulacion/store'),array('id'=>'urlStoreInformacion'));!!}
 {!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
-{!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
-{!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
-
 
 </div>

@@ -116,6 +116,7 @@
     {!! Html::Script('js/funciones.js')!!}
 
     @yield('scripts')
+    @yield('scripts1')
 
 </body>
 

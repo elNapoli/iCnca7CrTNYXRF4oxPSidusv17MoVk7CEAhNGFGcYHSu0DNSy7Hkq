@@ -15,7 +15,7 @@ class Universidad extends Model
         return $this->hasMany('App\Convenio','universidad');
     }
 
-    public function campusSedes()
+    public function campusSedesR()
     {
         return $this->hasMany('App\CampusSede','universidad');
     }

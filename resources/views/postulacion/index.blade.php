@@ -64,7 +64,10 @@
                     loading: "Cargando ..."
                 },
                 onContentLoaded:function (event, currentIndex) {
-
+                    if($('#wizard input#tipo_estudio_1').attr('checked') === 'checked'){
+                    
+                        $('#tipo_estudio_1').addClass('1check');
+                    }
                     if($('#wizard input#tipo_estudio_2').attr('checked') === 'checked'){
                         $('#div_titulo_profesional').show('slide',1000);
                         $('#tipo_estudio_1').removeClass('1check');

@@ -61,3 +61,23 @@
     </div>
 
 </div>
+
+{!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
+{!!Form::hidden('getUrlCarreraByUniversidad', url('asignaturas/carreras-by-universidad'),array('id'=>'getUrlCarreraByUniversidad'));!!}
+
+@section('scripts')
+
+<script type="text/javascript">
+
+    $(document).on('ready',function(){
+    selectByTabs("div.row div.col-md-6 div.form-group div.form-group",'#universidad','#getToken','#getUrlCarreraByUniversidad','#carrera');
+    /*selectByTabs("div.row div.col-md-6 div.form-group div.form-group",'#universidad','#getToken','#getUrlCampusSedeByuniversidad','#campus_sede');*/
+
+
+    });
+
+
+
+</script>
+
+@endsection

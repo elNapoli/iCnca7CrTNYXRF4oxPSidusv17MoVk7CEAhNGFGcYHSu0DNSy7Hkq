@@ -21,7 +21,7 @@ class CampusSede extends Model
     //Un Campus o Sede pertenece a una universidad
     public function universidadR()
     {
-    	return $this->belongsTo('App\Universidad','universidad');
+    	return $this->belongsTo('App\Universidad','universidad','id');
     }
 
     //Un Campus o Sede se encuentra en una ciudad
@@ -33,7 +33,7 @@ class CampusSede extends Model
     ########### 1:N ###########
 
     //Un Campus o Sede tiene 1 o mas facultades
-    public function Facultad()
+    public function facultadR()
     {
     	return $this->hasMany('App\Facultad','campus_sede'); //Campo en tabla foranea
     }

@@ -18,7 +18,7 @@ class Carrera extends Model
     //Una Asignatura pertenece a una unica Carrera
     public function facultadR()
     {
-    	return $this->belongsTo('App\Facultad','facultad'); //Id local
+    	return $this->belongsTo('App\Facultad','facultad','id'); //Id local
     }
 
     //Una Asignatura es requerida en muchas Solicitudes de curso

@@ -34,8 +34,8 @@ class Postulante extends Model
 
     public function pregradosR()
     {
-        return $this->belongsTo('App\Pregrado','id','postulante');
-    }
+        return $this->belongsTo('App\Pregrado','id','postulante');  //local , Remota
+    }                                            
 
     public function documentoIdentidades()
     {

@@ -29,10 +29,7 @@ class PostulacionController extends Controller {
 
 		return view('postulacion.index',compact('continentes'));
 	}
-	public function getAlgo(){
 
-		return view('postulacion.partials.algunawea');
-	}
 
 	public function getCreateOrEdit(Guard $auth){
 		$postulante = Postulante::with('ciudadR.paisR')->where('user_id',$auth->id())->first();

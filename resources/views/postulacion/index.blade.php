@@ -7,18 +7,13 @@
 
     <div id="wizard">
         <div id="message"></div>
-        <h3>Async @yield('nombre')</h3>
+        <h3>Datos personales</h3>
         <section data-mode="async" data-ajax="true" data-url="{{url('postulacion/create-or-edit')}}">
 
         </section>
-        <h3>Second Step</h3>
+        <h3>Estudios actuales</h3>
+       
         <section>
-            <p>Donec mi sapien, hendrerit nec egestas a, rutrum vitae dolor. Nullam venenatis diam ac ligula elementum pellentesque. 
-                In lobortis sollicitudin felis non eleifend. Morbi tristique tellus est, sed tempor elit. Morbi varius, nulla quis condimentum 
-                dictum, nisi elit condimentum magna, nec venenatis urna quam in nisi. Integer hendrerit sapien a diam adipiscing consectetur. 
-                In euismod augue ullamcorper leo dignissim quis elementum arcu porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Vestibulum leo velit, blandit ac tempor nec, ultrices id diam. Donec metus lacus, rhoncus sagittis iaculis nec, malesuada a diam. 
-                Donec non pulvinar urna. Aliquam id velit lacus.</p>
         </section>
         <h3>Third Step</h3>
         <section>
@@ -53,6 +48,7 @@
             $("#wizard").steps({
                 headerTag: "h3",
                 bodyTag: "section",
+                //startIndex:1,
                  
 
                 transitionEffect: "slideLeft",

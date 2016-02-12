@@ -193,7 +193,7 @@
                 </div>
                 <div class="form-group">
                     {!!  Form::label('ciudad_2', ' Nombre de la ciudad ')!!}
-                    {!!  Form::select('ciudad_2', [null=>'Seleccione ciudad'],null,array('class' => 'form-control ciudad'))!!}
+                    {!!  Form::select('ciudad_2', [null=>'Seleccione ciudad']+$ciudades,null,array('class' => 'form-control ciudad'))!!}
                 </div>
                 <div class="form-group">
                     {!!  Form::label('direccion_2', 'Direccion actual ')!!}

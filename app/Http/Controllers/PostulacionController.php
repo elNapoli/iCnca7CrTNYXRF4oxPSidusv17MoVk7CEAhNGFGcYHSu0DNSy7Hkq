@@ -67,6 +67,7 @@ class PostulacionController extends Controller {
 					$parametros['enfermedades'] = $postulante->pregradosR->preUachsR->enfermedades;
 					$parametros['telefono_2'] = $postulante->pregradosR->preUachsR->telefono;
 					$parametros['direccion_2'] = $postulante->pregradosR->preUachsR->direccion;
+					$parametros['ciudad_2'] = $postulante->pregradosR->preUachsR->ciudad;
 
 				
 

@@ -26,7 +26,7 @@ Route::controllers([
 	'beneficios' => 'BeneficiosController',
 	'postulacion' => 'PostulacionController',
 	'asistentes' => 'AsistentesController',
-	'preuestudioactual' => 'PreUEstudioActualController',
+	'estudo-actual' => 'EstudioActualController',
 	'departamentos' => 'DepartamentosController',
 	'detalles' => 'DetalleBeneficioController',
 	'asignaturas' => 'AsignaturasController',

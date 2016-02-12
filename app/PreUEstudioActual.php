@@ -9,7 +9,7 @@ class PreUEstudioActual extends Model
     protected $table      = 'pre_u_estudio_actual';
     public $timestamps    = false;
     protected $primaryKey = 'postulante';
-    protected $fillable   = ['carrera','anio_ingreso','ranking','beneficios'];
+    protected $fillable   = ['postulante','carrera','anio_ingreso','ranking','beneficios'];
 
     // un Postulante esta en una ciudad
     public function preUach()

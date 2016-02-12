@@ -13,8 +13,8 @@
         </section>
         <h3>Estudios actuales</h3>
        
-        <section>
-         @include('postulacion.partials.estudios')
+        <section data-mode="async" data-ajax="true" data-url="{{url('estudo-actual/create-or-edit')}}">
+  
         </section>
         <h3>Third Step</h3>
         <section>
@@ -64,25 +64,70 @@
                     loading: "Cargando ..."
                 },
                 onContentLoaded:function (event, currentIndex) {
-                    if($('#wizard input#tipo_estudio_1').attr('checked') === 'checked'){
+
+                    switch (currentIndex) {
+                        case 0:
+                            if($('#wizard input#tipo_estudio_1').attr('checked') === 'checked'){
+                            
+                                $('#tipo_estudio_1').addClass('1check');
+                            }
+                            if($('#wizard input#tipo_estudio_2').attr('checked') === 'checked'){
+                                $('#div_titulo_profesional').show('slide',1000);
+                                $('#tipo_estudio_1').removeClass('1check');
+                            }
+
+                            if($('#wizard input#procedencia_2').attr('checked') == 'checked')
+
+                            {
+                                $('#procedencia_2').addClass('1check');
+
+                                if($('#wizard input#tipo_estudio_1').attr('checked') === 'checked'){
+                                    $('#preUach').show('slide',1000);
+                                }
+                                
+                            }
+
+                            break;
+                        case 1:
+                            if($('#procedencia').val() === 'UACH'){
+                                $('#preUachEstudio').show('slide',1000);
+                                $('#infoExtraEstudioUACH').show('slide',1000);
+                                $('section#wizard-p-1').on('change','#carrera',function(){
+                                  
+                                var idCarrera = $(this).val();
+                                    $.ajax({
+                                      // En data puedes utilizar un objeto JSON, un array o un query string
+                                        data: {_token: $('#_token').val() , id:idCarrera},
+                                        async : false,
+                                         
+                                        //Cambiar a type: POST si necesario
+                                        type: 'get',
+                                        // Formato de datos que se espera en la respuesta
+                                        dataType: "json",
+                                        // URL a la que se enviará la solicitud Ajax
+                                        url:$('#getUrlDirectorCarrera').val() ,
+                                        success : function(json) {   
+                                            
+                                            $('section#wizard-p-1 #director').val(json.director);
+                                            $('section#wizard-p-1 #email').val(json.email);
+                                            
+                                        },
+
+                                        error : function(xhr, status) {
+                                            alert(status);
+                                      
+                                        },                   
+
+                                    });
+                                });
+
+                            }
+
+
+                    }
+          
+
                     
-                        $('#tipo_estudio_1').addClass('1check');
-                    }
-                    if($('#wizard input#tipo_estudio_2').attr('checked') === 'checked'){
-                        $('#div_titulo_profesional').show('slide',1000);
-                        $('#tipo_estudio_1').removeClass('1check');
-                    }
-
-                    if($('#wizard input#procedencia_2').attr('checked') == 'checked')
-
-                    {
-                        $('#procedencia_2').addClass('1check');
-
-                        if($('#wizard input#tipo_estudio_1').attr('checked') === 'checked'){
-                            $('#preUach').show('slide',1000);
-                        }
-                        
-                    }
                 },
 
                 onStepChanging:function (event, currentIndex, newIndex) { 
@@ -196,6 +241,9 @@
 
             //##################################### ACIONES DE LA PESTAÑA 2################################
             selectByTabs("section#wizard-p-1",'#continente','#_token','#getUrlPaisByContinente','#pais');
+            selectByTabs("section#wizard-p-1",'#pais','#_token','#getCampusByPais','#campus_sede');
+            selectByTabs("section#wizard-p-1",'#campus_sede','#_token','#getUrlFacultadByCampus','#facultad');
+            selectByTabs("section#wizard-p-1",'#facultad','#_token','#getUrlCarreraByFacultad','#carrera');
 
  
         }); 

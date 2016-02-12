@@ -37,7 +37,7 @@ class UniversidadesController extends Controller {
 
 		 	
 
-			return Universidad::where('pais',$request->get('idBuscar'))->with('campusSedes')->get()->toJson();
+			return Universidad::where('pais',$request->get('idBuscar'))->with('campusSedesR')->get()->toJson();
 			
 		}
 		else{

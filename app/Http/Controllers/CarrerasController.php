@@ -31,6 +31,11 @@ class CarrerasController extends Controller {
 		}
 	}
 
+	public function getDirector(Request $request){
+
+		return Carrera::where('id',1)->select('director','email')->first()->toJson();
+
+	}
 	public function getIndex()
 	{
 		$continentes = Continente::lists('nombre','id');

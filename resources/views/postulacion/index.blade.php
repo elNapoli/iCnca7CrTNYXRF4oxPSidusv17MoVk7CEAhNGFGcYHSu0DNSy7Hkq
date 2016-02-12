@@ -14,7 +14,7 @@
         <h3>Estudios actuales</h3>
        
         <section>
-         @include('postulacion.partials.formulario_items.estudios')
+         @include('postulacion.partials.estudios')
         </section>
         <h3>Third Step</h3>
         <section>
@@ -50,7 +50,7 @@
                 headerTag: "h3",
                 bodyTag: "section",
           
-                 
+                startIndex:1,
 
                 transitionEffect: "slideLeft",
                 /* Labels */
@@ -145,6 +145,8 @@
                 }   
             });
 
+
+            //##################################### ACIONES DE LA PESTAÑA 1################################
             $('#wizard').on('change','input[name=tipo_estudio]',function(){
                         
                 if($(this).val()==='Postgrado'){
@@ -189,11 +191,11 @@
 
                 }
             });
+            selectByTabs("section#wizard-p-0",'#continente','#_token','#getUrlPaisByContinente','#pais');
+            selectByTabs("section#wizard-p-0",'#pais','#_token','#getUrCiudadContinente','.ciudad');
 
-
-            selectByTabs("section.current",'#continente','#_token','#getUrlPaisByContinente','#pais');
-            selectByTabs("section.current",'#pais','#_token','#getUrCiudadContinente','.ciudad');
-
+            //##################################### ACIONES DE LA PESTAÑA 2################################
+            selectByTabs("section#wizard-p-1",'#continente','#_token','#getUrlPaisByContinente','#pais');
 
  
         }); 

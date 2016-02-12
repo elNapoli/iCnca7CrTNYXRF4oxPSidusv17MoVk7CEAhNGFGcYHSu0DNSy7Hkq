@@ -84,11 +84,11 @@ class PostulacionController extends Controller {
 
 
 			$postulante = array_merge($postulante->toArray(),$parametros);  
-			return view('postulacion.partials.edit',compact('postulante','continentes','paises','ciudades'));
+			return view('postulacion.datos_personales.edit',compact('postulante','continentes','paises','ciudades'));
 		}
 		else{
 
-			return view('postulacion.partials.create',compact('continentes','paises','ciudades'));
+			return view('postulacion.datos_personales.create',compact('continentes','paises','ciudades'));
 		}
 
 	}

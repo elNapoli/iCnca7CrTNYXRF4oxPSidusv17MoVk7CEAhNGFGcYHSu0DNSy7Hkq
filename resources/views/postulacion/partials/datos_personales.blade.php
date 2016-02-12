@@ -170,7 +170,7 @@
             </div>
 
 
-            @include('postulacion.partials.formulario_items.pre_uach.fields')
+            @include('postulacion.partials.pre_uach.fields')
 
         </div>
     <!-- /.row (nested) -->

@@ -49,7 +49,7 @@
             $("#wizard").steps({
                 headerTag: "h3",
                 bodyTag: "section",
-                startIndex:1,
+          
                  
 
                 transitionEffect: "slideLeft",

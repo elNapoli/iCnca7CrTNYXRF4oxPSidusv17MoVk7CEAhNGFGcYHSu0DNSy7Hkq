@@ -210,8 +210,9 @@ class PostulacionController extends Controller {
 
 			}
 			else{
-				$preNoUach =  PreNoUach::firstOrNew(array('postulante'=> $postulante->id));
-				$preNoUach->save();
+		
+				$preNoUach =  PreNoUach::firstOrCreate(array('postulante'=> $postulante->id));
+				//$preNoUach->save();
 
 			}
 			$mensaje = 'Su postulación se actualizó correctamente('.$request->get('tipo_estudio') .')';

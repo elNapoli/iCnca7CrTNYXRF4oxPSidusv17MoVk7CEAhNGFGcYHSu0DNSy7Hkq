@@ -9,7 +9,8 @@ class PreUach extends Model
     protected $table      = 'pre_uach';
     public $timestamps    = false;
     protected $primaryKey = 'postulante';
-    protected $fillable   = ['email_institucional',
+    protected $fillable   = ['postulante',
+                            'email_institucional',
                             'grupo_sanguineo',
                             'enfermedades',
                             'telefono',
@@ -27,7 +28,7 @@ class PreUach extends Model
         return $this->belongsTo('App\Ciudad','ciudad');
     }
 
-    public function cidas()
+    public function cindas()
     {
         return $this->hasMany('App\Cinda','postulante');
     }

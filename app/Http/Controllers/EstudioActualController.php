@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Requests\EstudioActualRequest;
 use Illuminate\Contracts\Auth\Guard;
 use App\Http\Controllers\Controller;
+use App\PreNuEstudioActual;
 use App\PreUEstudioActual;
 use App\Postulante;
 use App\Pregrado;
@@ -38,50 +39,73 @@ class EstudioActualController extends Controller {
 		$parametros = array(
 							'tipo_estudio' => $postulante->tipo_estudio,
 							'postulante' => $postulante->id,						   
-							'continente' => 0,						   
-							'pais' => 0,						   
-							'campus_sede' => 0,						   
-							'facultad' => 0,						   
-							'carrera' => 0,						   
-							'director' => 0,						   
-							'email' => 0,						   
-							'anio_ingreso' => 0,						   
-							'ranking' => 0,						   
-							'beneficios' => 0,						   
+							'continente' => '',						   
+							'pais' => '',						   
+							'campus_sede' => '',						   
+							'facultad' => '',						   
+							'carrera' => '',						   
+							'director' => '',						   
+							'email' => '',						   
+							'anio_ingreso' => '',						   
+							'ranking' => '',						   
+							'beneficios' => '',						   
 
 						);
 		$nuevo = 0;
+		//dd(($postulante->pregradosR->preNoUachsR));
+
 		if($postulante->tipo_estudio === 'Pregrado'){
 
 			$parametros['procedencia'] = $postulante->pregradosR->procedencia ;
-			if($postulante->pregradosR->preUachsR){
-	
-				$nuevo = 1;
-				$estudioActual = PreUEstudioActual::where('postulante',$postulante->id)->first();
 
-				$parametros['continente']   = $estudioActual->carreraR->facultadR->campusSedeR->ciudadR->paisR->continente;
-				$parametros['pais']         = $estudioActual->carreraR->facultadR->campusSedeR->ciudadR->paisR->id;
-				$parametros['campus_sede']  = $estudioActual->carreraR->facultadR->campusSedeR->id;
-				$parametros['facultad']     = $estudioActual->carreraR->facultadR->id;
-				$parametros['carrera']      = $estudioActual->carrera;
-				$parametros['director']     = $estudioActual->carreraR->director;
-				$parametros['email']        = $estudioActual->carreraR->email;
-				$parametros['anio_ingreso'] = $estudioActual->anio_ingreso;
-				$parametros['ranking']      = $estudioActual->ranking;
-				$parametros['beneficios']   = $estudioActual->beneficios;
 
+		//	dd(PreUach::with('preUEstudioActualesR')->get()->postulante);
+
+			if($postulante->pregradosR->procedencia === 'UACH'){
+
+				if($postulante->pregradosR->preUachsR->preUEstudioActualesR){
+
+					$nuevo = 1;
+					$estudioActual = PreUEstudioActual::where('postulante',$postulante->id)->first();
+
+					$parametros['continente']   = $estudioActual->carreraR->facultadR->campusSedeR->ciudadR->paisR->continente;
+					$parametros['pais']         = $estudioActual->carreraR->facultadR->campusSedeR->ciudadR->paisR->id;
+					$parametros['campus_sede']  = $estudioActual->carreraR->facultadR->campusSedeR->id;
+					$parametros['facultad']     = $estudioActual->carreraR->facultadR->id;
+					$parametros['carrera']      = $estudioActual->carrera;
+					$parametros['director']     = $estudioActual->carreraR->director;
+					$parametros['email']        = $estudioActual->carreraR->email;
+					$parametros['anio_ingreso'] = $estudioActual->anio_ingreso;
+					$parametros['ranking']      = $estudioActual->ranking;
+					$parametros['beneficios']   = $estudioActual->beneficios;
+
+				}
+						
 			}
-			elseif($postulante->pregradosR->preNoUachsR){
 
+			else{
+				//dd();
+				if($postulante->pregradosR->preNoUachsR->preNuEstudioActualesR){
+
+					$nuevo = 1;
+					$estudioActual = PreNuEstudioActual::where('postulante',$postulante->id)->first();
+			
+					$parametros['continente']     = $estudioActual->campusSedeR->ciudadR->paisR->continente;
+					$parametros['pais']           = $estudioActual->campusSedeR->ciudadR->paisR->id;
+					$parametros['campus_sede']    = $estudioActual->campusSedeR->id;
+					$parametros['area']           = $estudioActual->area;
+					$parametros['anios_cursados'] = $estudioActual->anios_cursados;
+
+
+				}
+			}
 				
-			}
 
 		}
 		else{
 			$parametros['procedencia'] = $postulante->postgradosR->procedencia ;
 
 		}
-
 
 		// se verifica si existe
 		if($nuevo){
@@ -96,7 +120,43 @@ class EstudioActualController extends Controller {
 
 	}
 
-	public function postStore(EstudioActualRequest $request){
+	public function putUpdate(Request $request){
+
+		//dd($request->get('procedencia'));
+		// verificar si es un postulante a pregrado.
+		$mensaje = '';
+
+		if($request->get('tipo_estudio') === 'Pregrado'){
+
+			//se verifica si es un alumno UACh
+			if($request->get('procedencia') === 'UACH'){
+				$estudioActual = PreUEstudioActual::findOrFail($request->get('postulante'));
+				$estudioActual->fill($request->all());
+				$estudioActual->save();
+				$mensaje = 'Su estudio actual se Actualizó correctamente.';
+			}
+
+			else{
+				$estudioActual = PreNuEstudioActual::findOrFail($request->get('postulante'));
+				
+				$estudioActual->fill($request->all());
+				$estudioActual->save();
+				$mensaje = 'Su estudio actual se Actualizó correctamente.';
+
+			}
+
+		}
+
+		else{
+
+
+		}
+
+		return response()->json([
+				'message'=> $mensaje
+				]);
+	}
+	public function postStore(Request $request){
 
 		//dd($request->get('procedencia'));
 		// verificar si es un postulante a pregrado.
@@ -111,7 +171,8 @@ class EstudioActualController extends Controller {
 			}
 
 			else{
-
+				$estudioActual =  PreNuEstudioActual::create($request->all());
+				$mensaje = 'Su estudio actual se almacenó correctamente.';
 
 			}
 

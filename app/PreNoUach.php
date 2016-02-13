@@ -23,9 +23,9 @@ class PreNoUach extends Model
         return $this->hasMany('App\PreNuSolicitudCurso','postulante');
     }
 
-    public function preNuEstudioActuales()
+    public function preNuEstudioActualesR()
     {
-        return $this->hasMany('App\PreNuEstudioActual','postulante');
+        return $this->belongsTo('App\PreNuEstudioActual','postulante','postulante');
     }
 
 

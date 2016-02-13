@@ -2,6 +2,15 @@
     <div class="row">
       <div class="col-xs-6">
         <div class="form-group">
+            {!!  Form::label('anio_ingreso', 'Año de ingreso a la carrera ')!!}
+            {!! Form::text('anio_ingreso',null,array('class' => 'form-control','placeholder'=>'Ej: 2008'));!!}
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group">
 
         {!!  Form::label('ranking', 'Ranking de su promoción');!!}
         {!! Form::text('ranking',null,array('class' => 'form-control','placeholder'=>'Ej: 60'));!!}

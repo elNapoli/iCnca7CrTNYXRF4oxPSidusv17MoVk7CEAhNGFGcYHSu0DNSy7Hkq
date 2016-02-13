@@ -89,20 +89,29 @@
 
                             break;
                         case 1:
+
+        
+                           
+                         
                             if($('#procedencia').val() === 'UACH'){
                                 $('#preUachEstudio').show('slide',1000);
                                 $('#infoExtraEstudioUACH').show('slide',1000);
+                                selectByTabs("section#wizard-p-1",'#campus_sede','#_token','#getUrlFacultadByCampus','#facultad');
+                                selectByTabs("section#wizard-p-1",'#facultad','#_token','#getUrlCarreraByFacultad','#carrera');
 
 
-                                selectByTabsSinAccion("section#wizard-p-1",'#_token','#getUrlPaisByContinente','#pais',$('section#wizard-p-1 #continente').val(),$('section#wizard-p-1 #pais_id').val());
-                                selectByTabsSinAccion("section#wizard-p-1",'#_token','#getCampusByPais','#campus_sede',$('section#wizard-p-1 #pais_id').val(),$('section#wizard-p-1 #campus_sede_id').val());
-                                selectByTabsSinAccion("section#wizard-p-1",'#_token','#getUrlFacultadByCampus','#facultad',$('section#wizard-p-1 #campus_sede').val(),$('section#wizard-p-1 #facultad_id').val());
-                                selectByTabsSinAccion("section#wizard-p-1",'#_token','#getUrlCarreraByFacultad','#carrera',$('section#wizard-p-1 #facultad').val(),$('section#wizard-p-1 #carrera_id').val());
+                                if($('section#wizard-p-1 #continente').val() != ''){
+                                    
+                                    selectByTabsSinAccion("section#wizard-p-1",'#_token','#getUrlPaisByContinente','#pais',$('section#wizard-p-1 #continente').val(),$('section#wizard-p-1 #pais_id').val());
+                                    selectByTabsSinAccion("section#wizard-p-1",'#_token','#getCampusByPais','#campus_sede',$('section#wizard-p-1 #pais_id').val(),$('section#wizard-p-1 #campus_sede_id').val());
+                                    selectByTabsSinAccion("section#wizard-p-1",'#_token','#getUrlFacultadByCampus','#facultad',$('section#wizard-p-1 #campus_sede').val(),$('section#wizard-p-1 #facultad_id').val());
+                                    selectByTabsSinAccion("section#wizard-p-1",'#_token','#getUrlCarreraByFacultad','#carrera',$('section#wizard-p-1 #facultad').val(),$('section#wizard-p-1 #carrera_id').val());
 
+                                }
 
                                 $('section#wizard-p-1').on('change','#carrera',function(){
                                   
-                                var idCarrera = $(this).val();
+                                    var idCarrera = $(this).val();
                                     $.ajax({
                                       // En data puedes utilizar un objeto JSON, un array o un query string
                                         data: {_token: $('#_token').val() , id:idCarrera},
@@ -129,6 +138,77 @@
                                     });
                                 });
 
+                            }
+                            else{
+                          
+
+                                $('#select_uach_estudio').css('display','none');
+                                $('#infoExtraEstudioNOUACH').show('slide');
+                                $('#preNoUachEstudio').show('slide');
+
+                                if($('section#wizard-p-1 #continente').val() != ''){
+                                    selectByTabsSinAccion("section#wizard-p-1",'#_token','#getUrlPaisByContinente','#pais',$('section#wizard-p-1 #continente').val(),$('section#wizard-p-1 #pais_id').val());
+                                    selectByTabsSinAccion("section#wizard-p-1",'#_token','#getCampusByPais','#campus_sede',$('section#wizard-p-1 #pais_id').val(),$('section#wizard-p-1 #campus_sede_id').val());
+                                    var idCampusSede = $('section#wizard-p-1 #campus_sede_id').val();
+                                    $.ajax({
+                                      // En data puedes utilizar un objeto JSON, un array o un query string
+                                        data: {_token: $('#_token').val() , idCampusSede:idCampusSede},
+                                        async : false,
+                                         
+                                        //Cambiar a type: POST si necesario
+                                        type: 'post',
+                                        // Formato de datos que se espera en la respuesta
+                                        dataType: "json",
+                                        // URL a la que se enviará la solicitud Ajax
+                                        url:$('#getUrlCoordinadorCampus').val() ,
+                                        success : function(json) {   
+                                            
+                                            $('div#infoExtraEstudioNOUACH #nombre_encargado').val(json.nombre_encargado);
+                                            $('div#infoExtraEstudioNOUACH #email').val(json.email);
+                                            $('div#infoExtraEstudioNOUACH #telefono').val(json.telefono);
+
+                                            
+                                        },
+
+                                        error : function(xhr, status) {
+                                            alert(status);
+                                      
+                                        },                   
+
+                                    });
+
+                            
+                                }
+                                $('section#wizard-p-1').on('change','#campus_sede',function(){
+                              
+                                    var idCampusSede = $(this).val();
+                                    $.ajax({
+                                      // En data puedes utilizar un objeto JSON, un array o un query string
+                                        data: {_token: $('#_token').val() , idCampusSede:idCampusSede},
+                                        async : false,
+                                         
+                                        //Cambiar a type: POST si necesario
+                                        type: 'post',
+                                        // Formato de datos que se espera en la respuesta
+                                        dataType: "json",
+                                        // URL a la que se enviará la solicitud Ajax
+                                        url:$('#getUrlCoordinadorCampus').val() ,
+                                        success : function(json) {   
+                                            
+                                            $('div#infoExtraEstudioNOUACH #nombre_encargado').val(json.nombre_encargado);
+                                            $('div#infoExtraEstudioNOUACH #email').val(json.email);
+                                            $('div#infoExtraEstudioNOUACH #telefono').val(json.telefono);
+
+                                            
+                                        },
+
+                                        error : function(xhr, status) {
+                                            alert(status);
+                                      
+                                        },                   
+
+                                    });
+                                });
                             }
 
 
@@ -183,6 +263,7 @@
 
                         if(respuestaAjax.status == 200){
               
+
 
                             return true;
                         }
@@ -246,12 +327,9 @@
             });
             selectByTabs("section#wizard-p-0",'#continente','#_token','#getUrlPaisByContinente','#pais');
             selectByTabs("section#wizard-p-0",'#pais','#_token','#getUrCiudadContinente','.ciudad');
-
-            //##################################### ACIONES DE LA PESTAÑA 2################################
-            selectByTabs("section#wizard-p-1",'#continente','#_token','#getUrlPaisByContinente','#pais');
+            
+            selectByTabs("section#wizard-p-1",'#continente','#_token','#getUrlPaisByContinente','#pais');   
             selectByTabs("section#wizard-p-1",'#pais','#_token','#getCampusByPais','#campus_sede');
-            selectByTabs("section#wizard-p-1",'#campus_sede','#_token','#getUrlFacultadByCampus','#facultad');
-            selectByTabs("section#wizard-p-1",'#facultad','#_token','#getUrlCarreraByFacultad','#carrera');
 
  
         }); 

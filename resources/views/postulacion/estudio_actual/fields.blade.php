@@ -8,18 +8,11 @@
 
         <div class="col-lg-6">
           
-            <div class="row">
-              <div class="col-xs-6">
-                <div class="form-group">
-                    {!!  Form::label('anio_ingreso', 'Año de ingreso a la carrera ')!!}
-                    {!! Form::text('anio_ingreso',null,array('class' => 'form-control','placeholder'=>'Ej: 2008'));!!}
-                </div>
-              </div>
-   
-            </div>
+            
 
 
             @include('postulacion.estudio_actual.pre_uach.fields')
+            @include('postulacion.estudio_actual.pre_no_uach.fields')
 
         </div>
    
@@ -38,6 +31,7 @@
     {!! Form::hidden('campus_sede_id',$parametros['campus_sede'],array('id'=>'campus_sede_id'));!!}
     {!! Form::hidden('facultad_id',$parametros['facultad'],array('id'=>'facultad_id'));!!}
     {!! Form::hidden('carrera_id',$parametros['carrera'],array('id'=>'carrera_id'));!!}
+    {!! Form::hidden('getUrlCoordinadorCampus',url('departamentos/info-coordinador'),array('id'=>'getUrlCoordinadorCampus'));!!}
 
 
     <!-- /.row (nested) -->

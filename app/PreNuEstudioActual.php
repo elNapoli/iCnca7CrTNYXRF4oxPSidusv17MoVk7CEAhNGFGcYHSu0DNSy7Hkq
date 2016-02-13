@@ -9,7 +9,7 @@ class PreNuEstudioActual extends Model
     protected $table      = 'pre_nu_estudio_actual';
     public $timestamps    = false;
     protected $primaryKey = 'postulante';
-    protected $fillable   = ['area','anios_cursados','campus_sede'];
+    protected $fillable   = ['postulante','area','anios_cursados','campus_sede'];
 
     // un Postulante esta en una ciudad
     public function preNoUach()
@@ -18,7 +18,7 @@ class PreNuEstudioActual extends Model
     }
 
 
-    public function campusSede()
+    public function campusSedeR()
     {
         return $this->belongsTo('App\CampusSede','campus_sede');
     }

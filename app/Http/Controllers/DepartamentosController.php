@@ -38,6 +38,14 @@ class DepartamentosController extends Controller {
 		return view('departamentos.create',compact('pais'));
 	}
 
+	public function postInfoCoordinador(Request $request){
+
+			return(Departamento::where('campus_sede', $request->get('idCampusSede'))
+				->where('tipo', 'Movilidad estudiantil')
+				->select('nombre_encargado','telefono','email')
+				->first()->toJson());
+	}
+
 	/**
 	 * Store a newly created resource in storage.
 	 *

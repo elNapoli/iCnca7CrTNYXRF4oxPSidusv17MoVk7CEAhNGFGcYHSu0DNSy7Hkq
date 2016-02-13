@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Universidad;
-
+use App\Ciudad;
 class UniversidadTableSeeder extends Seeder
 {
     /**
@@ -27,7 +27,15 @@ class UniversidadTableSeeder extends Seeder
             $Universidad = new Universidad();
 
             $Universidad->nombre     = $faker->name . ' University';
-            $Universidad->pais       = $faker->numberBetween($min = 1, $max = 199);
+
+            $id_pais =$faker->numberBetween($min = 1, $max = 199);
+            $ciudad = Ciudad::where('pais',$id_pais)->get();
+    
+            while($ciudad->count() == 0){
+                $id_pais =$faker->numberBetween($min = 1, $max = 199);
+                $ciudad = Ciudad::where('pais',$id_pais)->get();
+            }
+            $Universidad->pais = $id_pais ;
 
             $Universidad->save();
 

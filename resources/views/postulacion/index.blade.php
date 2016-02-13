@@ -92,6 +92,14 @@
                             if($('#procedencia').val() === 'UACH'){
                                 $('#preUachEstudio').show('slide',1000);
                                 $('#infoExtraEstudioUACH').show('slide',1000);
+
+
+                                selectByTabsSinAccion("section#wizard-p-1",'#_token','#getUrlPaisByContinente','#pais',$('section#wizard-p-1 #continente').val(),$('section#wizard-p-1 #pais_id').val());
+                                selectByTabsSinAccion("section#wizard-p-1",'#_token','#getCampusByPais','#campus_sede',$('section#wizard-p-1 #pais_id').val(),$('section#wizard-p-1 #campus_sede_id').val());
+                                selectByTabsSinAccion("section#wizard-p-1",'#_token','#getUrlFacultadByCampus','#facultad',$('section#wizard-p-1 #campus_sede').val(),$('section#wizard-p-1 #facultad_id').val());
+                                selectByTabsSinAccion("section#wizard-p-1",'#_token','#getUrlCarreraByFacultad','#carrera',$('section#wizard-p-1 #facultad').val(),$('section#wizard-p-1 #carrera_id').val());
+
+
                                 $('section#wizard-p-1').on('change','#carrera',function(){
                                   
                                 var idCarrera = $(this).val();

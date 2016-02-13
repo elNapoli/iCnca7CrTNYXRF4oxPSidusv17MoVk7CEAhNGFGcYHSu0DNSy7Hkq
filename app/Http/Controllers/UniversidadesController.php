@@ -10,7 +10,8 @@ use App\Universidad;
 use App\CampusSede;
 use Illuminate\Http\Request;
 use App\Continente;
-use App\Pais;
+use Faker\Factory as Faker;
+use App\Ciudad;
 
 class UniversidadesController extends Controller {
 
@@ -22,8 +23,39 @@ class UniversidadesController extends Controller {
 
 
 	public function getDebug(Guard $user){
-	 	dd(Universidad::with('campusSedesR')->get(array('campus_sede.nombre'))->toArray());
-	 
+	 	
+		        $universidad = Universidad::all();
+        $faker = Faker::create();
+
+
+        foreach ($universidad as $item){
+
+            $numBeneficio = $faker->numberBetween($min = 1, $max = 5);
+            for($i = 0; $i < $numBeneficio; $i++)
+            {
+                $CampusSede = new CampusSede();
+
+                $CampusSede->nombre    		= $faker->firstName($gender = null|'male'|'female');
+                $CampusSede->telefono   	= $faker->phoneNumber;
+                $CampusSede->fax 			= $faker->phoneNumber;
+                $CampusSede->sitio_web		= $faker->url;
+                $CampusSede->universidad	= $item->id;
+
+                $ciudades = Ciudad::where('pais',$item->pais)->get();
+                $id_ciudad = array();
+                foreach ($ciudades as $key ) {
+                    $id_ciudad[] =$key->id;
+             
+                }
+
+                $CampusSede->ciudad	= $id_ciudad[$faker->numberBetween($min = 0, $max = count($id_ciudad)-1)];
+
+                
+                $CampusSede->save();
+
+            }
+        }
+
 	}
 	public function getIndex()
 	{
@@ -53,7 +85,7 @@ class UniversidadesController extends Controller {
 	 */
 	public function getUniversidadCampus()
 	{
-		$universidades = Universidad::with('campusSedes.ciudadR')->orderBy("id")->get();
+		$universidades = Universidad::with('campusSedesR.ciudadR')->orderBy("id")->get();
 		
 		$arra = array('data'=>$universidades->toArray());
 		return json_encode($arra);

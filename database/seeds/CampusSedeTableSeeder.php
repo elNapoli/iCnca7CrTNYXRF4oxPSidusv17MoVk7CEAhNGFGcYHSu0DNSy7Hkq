@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\CampusSede;
 use App\Universidad;
+use App\Ciudad;
 
 class CampusSedeTableSeeder extends Seeder
 {
@@ -65,7 +66,15 @@ class CampusSedeTableSeeder extends Seeder
                 $CampusSede->fax 			= $faker->phoneNumber;
                 $CampusSede->sitio_web		= $faker->url;
                 $CampusSede->universidad	= $item->id;
-                $CampusSede->ciudad			= $faker->numberBetween($min = 1, $max = 500);
+
+                $ciudades = Ciudad::where('pais',$item->pais)->get();
+                $id_ciudad = array();
+                foreach ($ciudades as $key ) {
+                    $id_ciudad[] =$key->id;
+             
+                }
+
+                $CampusSede->ciudad = $id_ciudad[$faker->numberBetween($min = 0, $max = count($id_ciudad)-1)];
                 
                 $CampusSede->save();
 

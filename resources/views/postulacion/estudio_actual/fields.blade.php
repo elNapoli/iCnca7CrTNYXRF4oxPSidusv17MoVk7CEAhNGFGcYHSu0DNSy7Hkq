@@ -34,6 +34,11 @@
     {!! Form::hidden('tipo_estudio',$parametros['tipo_estudio'],array('id'=>'tipo_estudio'));!!}
     {!! Form::hidden('procedencia',$parametros['procedencia'],array('id'=>'procedencia'));!!}
     {!! Form::hidden('postulante',$parametros['postulante'],array('id'=>'postulante'));!!}
+    {!! Form::hidden('pais_id',$parametros['pais'],array('id'=>'pais_id'));!!}
+    {!! Form::hidden('campus_sede_id',$parametros['campus_sede'],array('id'=>'campus_sede_id'));!!}
+    {!! Form::hidden('facultad_id',$parametros['facultad'],array('id'=>'facultad_id'));!!}
+    {!! Form::hidden('carrera_id',$parametros['carrera'],array('id'=>'carrera_id'));!!}
+
 
     <!-- /.row (nested) -->
 </div>

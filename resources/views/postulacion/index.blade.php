@@ -3,12 +3,13 @@
 @section('Dashboard') Postulación @endsection
 
 @section('content')
-
-
+    @include('DocumentoIdentidad.modal_documento_identidad')
     <div id="wizard">
         <div id="message"></div>
         <h3>Datos personales</h3>
         <section data-mode="async" data-ajax="true" data-url="{{url('postulacion/create-or-edit')}}">
+
+
 
         </section>
         <h3>Estudios actuales</h3>
@@ -42,9 +43,13 @@
 
 @section('scripts')
     {!! Html::Script('plugins/jquery-steps/js/jquery.steps.js')!!}
+    {!! Html::Script('js/function_documento_identidad.js')!!}
 
     <script>
         $(document).on('ready',function() {
+            initDocumentoIdentidad();
+
+    
 
             $("#wizard").steps({
                 headerTag: "h3",
@@ -281,6 +286,11 @@
 
 
             //##################################### ACIONES DE LA PESTAÑA 1################################
+            $('section#wizard-p-0').on('click','#open_modal_documento_identidad',function(){
+                $('#modal_documento_identidad').modal('show');
+               
+
+            });
             $('#wizard').on('change','input[name=tipo_estudio]',function(){
                         
                 if($(this).val()==='Postgrado'){

@@ -22,11 +22,14 @@
                 </div>
               </div>
               <div class="col-xs-6">
-                <div class="form-group">
-
                 {!!  Form::label('numero', 'N° Documento');!!}
+                <div class="input-group">
                 {!! Form::text('numero',null,array('class' => 'form-control','placeholder'=>'Ej: 4450398-9'));!!}
+                  <span class="input-group-btn">
+                    <a href="#!" class="btn btn-default" id='open_modal_documento_identidad' type="button" tabindex="-1"><span class="fa  fa-plus-circle " aria-hidden="true"></span></a>
+                  </span>
                 </div>
+
 
               </div>
             </div>

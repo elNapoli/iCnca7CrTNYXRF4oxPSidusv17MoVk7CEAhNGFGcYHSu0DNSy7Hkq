@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Carrera;
+use App\Facultad;
 
 class CarreraTableSeeder extends Seeder
 {
@@ -14,21 +15,27 @@ class CarreraTableSeeder extends Seeder
     public function run()
     {
        $faker = Faker::create();
-       
-        for($i = 0; $i <20; $i++)
-        {
-            $carrera = new Carrera();     	
+       $facultad = Facultad::all();
+
+      
+        for($j= 1; $j< 500; $j++){
+           # code...
+            $numCarrera = $faker->numberBetween($min = 1, $max = 10);
+            for($i = 0; $i <$numCarrera; $i++)
+            {
+                $carrera = new Carrera();       
 
 
-            $carrera->facultad    			= $faker->numberBetween($min = 1, $max = 100);
-            $carrera->nombre		 		= $faker->catchPhrase;
-            $carrera->director				= $faker->firstName($gender = null|'male'|'female');
-            $carrera->email 				= $faker->email;
+                $carrera->facultad              = $j;
+                $carrera->nombre                = $faker->catchPhrase;
+                $carrera->director              = $faker->firstName($gender = null|'male'|'female');
+                $carrera->email                 = $faker->unique->email;
 
 
-            $carrera->save();
+                $carrera->save();
 
-        }
+            }
+       }
 
     }
 }

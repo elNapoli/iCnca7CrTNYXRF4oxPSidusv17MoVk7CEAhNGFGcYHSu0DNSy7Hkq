@@ -16,17 +16,17 @@ class PrePostulacionUniversidad extends Model
         return $this->belongsTo('App\Pregrado','postulante');
     }
 
-    public function carrera()
+    public function carreraR()
     {
         return $this->belongsTo('App\Carrera','carrera');
     }
 
-    public function financiamiento()
+    public function financiamientoR()
     {
         return $this->belongsTo('App\Financiamiento','financiamiento');
     }
 
-    public function preOtroFinanciamientos()
+    public function preOtroFinanciamientosR()
     {
         return $this->hasMany('App\PreOtroFinanciamiento','pre_postulacion_universidad');
     }

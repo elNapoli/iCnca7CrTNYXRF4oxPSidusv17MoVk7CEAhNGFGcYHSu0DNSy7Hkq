@@ -46,6 +46,7 @@ class PostulacionController extends Controller {
 			$status	 = 1;
 			$postulante->documentoIdentidades;
 			$parametros = array(
+								'id_postulante' => $postulante->id,
 								'pais' => $postulante->ciudadR->paisR->id,
 							    "tipo" => $postulante->documentoIdentidades->first()->tipo,
 							    'numero' =>  $postulante->documentoIdentidades->first()->numero,
@@ -171,8 +172,24 @@ class PostulacionController extends Controller {
 		$mensaje = '';
 	
 
-		if($postulante->tipo_estudio === 'Pregrado' and $request->get('Postgrado')){
-			Pregrado::find($postulante->id)->delete();
+		if($postulante->tipo_estudio === 'Pregrado'){
+			if($request->get('Postgrado')){
+
+				Pregrado::find($postulante->id)->delete();
+				
+			}
+			elseif($postulante->pregradosR->procedencia === 'UACH' and $request->get('procedencia') === 'NO UACH'){
+
+				//dd('el WN SE CAMBIO de uach a no uach');
+				PreUach::find($postulante->id)->delete();
+				
+			}
+			elseif($postulante->pregradosR->procedencia === 'NO UACH' and $request->get('procedencia') === 'UACH'){
+				
+				PreNoUach::find($postulante->id)->delete();
+
+			}
+
 
 		}	
 		elseif($postulante->tipo_estudio === 'Postgrado' and $request->get('Pregrado')){

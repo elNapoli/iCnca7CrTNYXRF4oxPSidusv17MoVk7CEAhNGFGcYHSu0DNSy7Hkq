@@ -18,7 +18,7 @@ class PreUEstudioActual extends Model
     }
 
 
-    public function carrera()
+    public function carreraR()
     {
         return $this->belongsTo('App\Carrera','carrera');
     }

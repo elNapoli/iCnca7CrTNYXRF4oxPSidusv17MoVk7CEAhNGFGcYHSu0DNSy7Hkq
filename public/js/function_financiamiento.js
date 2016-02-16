@@ -4,7 +4,7 @@ function initFinanciamiento(url,token){
 
 	    $.ajax({
 	        // En data puedes utilizar un objeto JSON, un array o un query string
-	       data:{_token:token},
+	     //  data:{_token:token},
 	        //Cambiar a type: POST si necesario
 	        type: "get",
 	        // Formato de datos que se espera en la respuesta

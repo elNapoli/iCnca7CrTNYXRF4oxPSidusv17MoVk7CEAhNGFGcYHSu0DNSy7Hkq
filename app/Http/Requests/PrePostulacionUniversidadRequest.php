@@ -22,7 +22,7 @@ class PrePostulacionUniversidadRequest extends Request {
 	public function rules()
 	{
 		$descripcion = '';
-		if($this->get('financiamiento')==='4' or $this->get('financiamiento')==='3'){
+		if($this->get('financiamiento')==='4' or $this->get('financiamiento')==='5'){
 
 		$descripcion = 'required';
 		}

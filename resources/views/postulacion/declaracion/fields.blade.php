@@ -18,8 +18,9 @@
   <div class="col-xs-8">
   	<div class="form-inline">
     <div class="form-group">
-        <p>Persona que me matriculará en mi ausenia:  </p>
-    	{!! Form::text('numero',null,array('class' => 'form-control'));!!}
+              {!!  Form::label('persona_matricula', 'Persona que me matriculará en mi ausenia:  ')!!}
+    
+    	{!! Form::text('persona_matricula',null,array('class' => 'form-control'));!!}
         
     </div>
     </div>
@@ -29,13 +30,9 @@
 
 
 
-    <p>fecha en la que me matriculará:</p> 
-<div class="input-group date datePicker">
-
-                {!! Form::text('fecha_nacimiento',null,array('class' => 'form-control'));!!}
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-th"></span>
-                </div>
+<div class="form-group">
+              {!!  Form::label('fecha_matricula', 'fecha de matrícula ')!!}
+                {!! Form::text('fecha_matricula',null,array('id'=>'fecha_matricula','class' => 'form-control'));!!}
             </div>
     </div>
 

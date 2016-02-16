@@ -19,7 +19,7 @@
 .wizard ul,
 .tabcontrol ul
 {
-    list-style: none !important;
+  
     padding: 0;
     margin: 0;
 }
@@ -168,10 +168,7 @@
     padding: 2.5%;
 }
 
-.wizard > .content > .body ul
-{
-    list-style: disc !important;
-}
+
 
 .wizard > .content > .body ul > li
 {
@@ -370,10 +367,7 @@
     padding: 2.5%;
 }
 
-.tabcontrol > .content > .body ul
-{
-    list-style: disc !important;
-}
+
 
 .tabcontrol > .content > .body ul > li
 {

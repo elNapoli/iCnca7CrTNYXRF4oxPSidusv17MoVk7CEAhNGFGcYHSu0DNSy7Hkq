@@ -17,9 +17,10 @@ class AsignaturaTableSeeder extends Seeder
         $faker = Faker::create();
         $carrara = Carrera::all();
 
-        for($i = 0; $i < 30; $i ++)
+            for($j = 1; $j < 100; $j ++){
+        for($i = 0; $i < 20; $i ++)
         {
-            foreach ($carrara as $item){
+
 
                 $asignatura = new Asignatura;
         
@@ -27,7 +28,7 @@ class AsignaturaTableSeeder extends Seeder
                 $asignatura->nombre = $faker->sentence($nbWords = 3, $variableNbWords = true);
                 $asignatura->nivel = $faker->numberBetween($min = 1, $max = 12);
                 $asignatura->anio = $faker->numberBetween($min = 1, $max = 6);
-                $asignatura->carrera = $item->id;
+                $asignatura->carrera = $j;
 
                 $asignatura->save();
 

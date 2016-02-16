@@ -9,11 +9,11 @@ class PreOtroFinanciamiento extends Model
     protected $table      = 'pre_otro_financiamiento';
     public $timestamps    = false;
     protected $primaryKey = 'pre_postulacion_universidad';
-    protected $fillable   = ['descripcion'];
+    protected $fillable   = ['pre_postulacion_universidad','descripcion'];
 
     // un Postulante esta en una ciudad
     public function prePostulacionUniversidad()
     {
-        return $this->belongsTo('App\PrePostulacionUniversidad','pre_postulacion_universidad');
+        return $this->belongsTo('App\PrePostulacionUniversidad','pre_postulacion_universidadd','id');
     }
 }

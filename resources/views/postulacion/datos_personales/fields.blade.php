@@ -1,9 +1,11 @@
     <div class="panel-body">
         <div class="col-lg-6">
+
             <div class="form-group">
                 {!!  Form::label('apellido_paterno', 'Apellido paterno ')!!}
                 {!! Form::text('apellido_paterno',null,array('class' => 'form-control','placeholder'=>'Ej: Aburto'));!!}
             </div>
+
 
             <div class="form-group">
                 {!!  Form::label('apellido_materno', 'Apellido materno ')!!}
@@ -22,22 +24,23 @@
                 </div>
               </div>
               <div class="col-xs-6">
-                <div class="form-group">
-
                 {!!  Form::label('numero', 'N° Documento');!!}
+                <div class="input-group">
                 {!! Form::text('numero',null,array('class' => 'form-control','placeholder'=>'Ej: 4450398-9'));!!}
+
+                  <span class="input-group-btn" id='spamAddDocumento' style='display:none'>
+                    <a href="#!" class="btn btn-default" id='open_modal_documento_identidad' type="button" tabindex="-1"><span class="fa  fa-plus-circle " aria-hidden="true"></span></a>
+                  </span>
                 </div>
+
 
               </div>
             </div>
 
-              {!!  Form::label('fecha_nacimiento', 'Fecha nacimiento ')!!}
-            <div class="input-group date datePicker">
 
+            <div class="form-group">
+              {!!  Form::label('fecha_nacimiento', 'Fecha nacimiento ')!!}
                 {!! Form::text('fecha_nacimiento',null,array('class' => 'form-control'));!!}
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-th"></span>
-                </div>
             </div>
 
             <div class="form-group">
@@ -176,8 +179,10 @@
     <!-- /.row (nested) -->
 {!!Form::hidden('urlStoreInformacion',url('postulacion/store'),array('id'=>'urlStoreInformacion'));!!}
 {!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
+
 {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
 {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
+{!!Form::hidden('id_postulante',null,array('id'=>'id_postulante'));!!}
 
 
 </div>

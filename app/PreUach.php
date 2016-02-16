@@ -49,9 +49,9 @@ class PreUach extends Model
         return $this->hasMany('App\Homologacion','postulante');
     }
 
-     public function preUEstudioActuales()
+     public function preUEstudioActualesR()
     {
-        return $this->hasMany('App\PreUEstudioActual','postulante');
+        return $this->belongsTo('App\PreUEstudioActual','postulante','postulante');
     }
 
     public function preURespnsables()

@@ -25,6 +25,6 @@
     </div>
     <div class="form-group">
         {!!  Form::label('direccion_2', 'Direccion actual ')!!}
-        {!! Form::text('direccion_2',null,array('class' => 'form-control','placeholder'=>'+56912345678'));!!}
+        {!! Form::text('direccion_2',null,array('class' => 'form-control','placeholder'=>'Pje. Victoria #4555'));!!}
     </div>
 </div>

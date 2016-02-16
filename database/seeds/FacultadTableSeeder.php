@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Facultad;
+use App\CampusSede;
+
 
 class FacultadTableSeeder extends Seeder
 {
@@ -14,17 +16,23 @@ class FacultadTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
+        $CampusSede =  CampusSede::all();
 
-        for($i = 0; $i < 100; $i++)
-        {
-            $facultad = new Facultad();
+        foreach ($CampusSede as $item) {
+            $numFacultad = $faker->numberBetween($min = 3, $max = 10);
 
-            $facultad->campus_sede	= $faker->numberBetween($min = 1, $max = 20);
-            $facultad->nombre     	= $faker->name . ' University';
-            $facultad->telefono		= $faker->phoneNumber;
+            # code...
+            for($i = 0; $i < $numFacultad; $i++)
+            {
+                $facultad = new Facultad();
 
-            $facultad->save();
+                $facultad->campus_sede  = $item->id;
+                $facultad->nombre       = $faker->name . ' University';
+                $facultad->telefono     = $faker->phoneNumber;
 
+                $facultad->save();
+
+            }
         }
 
     }

@@ -64,7 +64,7 @@ class CretePostulacionRequest extends Request {
 				'procedencia'=>'required',
 				'email_institucional'=>'required|unique:pre_uach,email_institucional'.$email_institucional,
 				'grupo_sanguineo'=>'required',
-				'enfermedades'=>'required',
+		
 				'telefono_2'=>'required',
 				'ciudad_2'=>'required',
 				'direccion_2'=>'required',

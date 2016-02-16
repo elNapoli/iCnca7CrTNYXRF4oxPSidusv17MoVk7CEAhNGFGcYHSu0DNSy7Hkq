@@ -61,7 +61,7 @@
 
         </div>
         <div class="col-lg-6">
-            @include('postulacion.partials.select_universidad')
+            @include('postulacion.partials.fields')
            
         </div>
           

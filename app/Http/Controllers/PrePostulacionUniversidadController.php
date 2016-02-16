@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\PreOtroFinanciamiento;
 use App\Postulante;
+use App\Continente;
 use App\PrePostulacionUniversidad;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,12 @@ class PrePostulacionUniversidadController extends Controller {
 	 *
 	 * @return Response
 	 */
+
+
+	public function getCreateOrEdit(Guard $auth){
+		$continentes = Continente::lists('nombre','id');	
+		return view('postulacion.postulacion_universidad.create',compact('continentes'));
+	}
 	public function postStore(PrePostulacionUniversidadRequest $request,Guard $auth){
 		
 		$postulante  = Postulante::where('user_id',$auth->id())->first();

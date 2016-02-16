@@ -13,7 +13,7 @@
         <div class="form-group">
 
         {!!  Form::label('anios_cursados', 'Años cursados');!!}
-        {!! Form::text('anios_cursados',null,array('class' => 'form-control','placeholder'=>'Ej: 2'));!!}
+        {!! Form::number('anios_cursados',null,array('class' => 'form-control','placeholder'=>'Ej: 2'));!!}
         </div>
 
       </div>

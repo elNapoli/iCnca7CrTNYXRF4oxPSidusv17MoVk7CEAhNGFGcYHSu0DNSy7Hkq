@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <meta charset="utf-8">
-    <title>Bootstrap Dropdown</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bootstrap Dropdown Demo">
-    <meta name="author" content="Jim Lim">
-    {!! Html::Style('plugins/sb-admin/bower_components/bootstrap/dist/css/bootstrap.min.css')!!}
+<div class="panel-body">
 
-    {!! Html::Style('plugins/bootstrap/css/bootstrap-select.css')!!}
-    {!! Html::Script('plugins/sb-admin/bower_components/jquery/dist/jquery.min.js') !!}
-    {!! Html::Script('plugins/bootstrap/js/bootstrap-select.js')!!}
-    
-    {!! Html::Script('plugins/sb-admin/bower_components/bootstrap/dist/js/bootstrap.min.js') !!}
+        <div class="col-lg-6">
 
-  </head>
-  <body>
-
-    <div class='container'>
-      <section>
+ <section>
 
         <div class='page-header'>
           <h1>Bootstrap Select</h1>
@@ -92,7 +76,73 @@
 
         </div><!-- /.row -->
       </section>
-    </div><!-- /.container -->
 
-  </body>
-</html>
+            <div class="form-group">
+                {!! Form::label('semestre', 'Semester:') !!}
+                <label class="radio-inline">
+                    {!! Form::radio('semestre', 'semestre 1',array('id'=>'semestreI'))!!} Semestre I
+                </label>
+                <label class="radio-inline">
+                    {!! Form::radio('semestre', 'semestre 2',array('id'=>'semestreII'))!!} Semestre II
+                </label>
+                <label class="radio-inline">
+                    {!! Form::radio('semestre', 'ambos',array('id'=>'semestreIII'))!!} Todo el Año
+                </label>
+
+            </div>
+
+            <div class="form-group">
+                {!!  Form::label('anio', 'Año de intercambio ')!!}
+                {!! Form::number('anio',null,array('min'=>'2015','class' => 'form-control','placeholder'=>'Ej: 2015'));!!}
+            </div>
+
+            <div class="form-group">
+                
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">Desde</span>
+                           
+                            {!! Form::text('desde',null,array('id'=>'desde','class' => 'form-control'));!!}
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">Hasta</span>
+                            {!! Form::text('hasta',null,array('id'=>'hasta','class' => 'form-control'));!!}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+                
+            <div class="form-horizontal">
+              <div class="form-group">
+                <div class="col-lg-4">
+                    {!! Form::label('financiamiento', 'Financiamiento:') !!}
+                </div>
+                <div class="col-lg-7">
+                    
+
+                </div>
+              </div>
+
+            </div>
+
+        </div>
+        <div class="col-lg-6">
+            @include('postulacion.partials.fields')
+           
+        </div>
+          
+{!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
+{!!Form::hidden('urlStoreInformacion',url('prepostulacionuniversidad/store'),array('id'=>'urlStoreInformacion'));!!}
+{!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
+{!!Form::hidden('getCampusByPais', url('universidades/universidad-by-pais'),array('id'=>'getCampusByPais'));!!}
+{!!Form::hidden('getUrlFacultadByCampus', url('facultades/facultades-by-campus'),array('id'=>'getUrlFacultadByCampus'));!!}
+
+{!!Form::hidden('getUrlFinanciamientos', url('financiamientos/financiamientos'),array('id'=>'getUrlFinanciamientos'));!!}
+{!!Form::hidden('getUrlCarreraByFacultad', url('carreras/carreras-by-facultad'),array('id'=>'getUrlCarreraByFacultad'));!!}
+</div>

@@ -120,7 +120,7 @@ class EstudioActualController extends Controller {
 
 	}
 
-	public function putUpdate(Request $request){
+	public function putUpdate(EstudioActualRequest $request){
 
 		//dd($request->get('procedencia'));
 		// verificar si es un postulante a pregrado.
@@ -156,7 +156,7 @@ class EstudioActualController extends Controller {
 				'message'=> $mensaje
 				]);
 	}
-	public function postStore(Request $request){
+	public function postStore(EstudioActualRequest $request){
 
 		//dd($request->get('procedencia'));
 		// verificar si es un postulante a pregrado.

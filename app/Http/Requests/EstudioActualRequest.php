@@ -21,12 +21,25 @@ class EstudioActualRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
-			'carrera'=>'required',
-			'anio_ingreso'=>'required',
-			'beneficios'=>'required',
-			'ranking'=>'required',
-		];
+
+		if($this->get('procedencia') === 'NO UACH'){
+
+			return [
+				'campus_sede'=>'required',
+				'area'=>'required',
+				'anios_cursados'=>'required',
+			];
+			
+		}
+		else{
+			return [
+				'carrera'=>'required',
+				'anio_ingreso'=>'required',
+				'ranking'=>'required',
+				'beneficios'=>'required',
+			];
+			
+		}
 	}
 
 }

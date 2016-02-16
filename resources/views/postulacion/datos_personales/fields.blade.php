@@ -1,9 +1,11 @@
     <div class="panel-body">
         <div class="col-lg-6">
+
             <div class="form-group">
                 {!!  Form::label('apellido_paterno', 'Apellido paterno ')!!}
                 {!! Form::text('apellido_paterno',null,array('class' => 'form-control','placeholder'=>'Ej: Aburto'));!!}
             </div>
+
 
             <div class="form-group">
                 {!!  Form::label('apellido_materno', 'Apellido materno ')!!}
@@ -34,13 +36,10 @@
               </div>
             </div>
 
-              {!!  Form::label('fecha_nacimiento', 'Fecha nacimiento ')!!}
-            <div class="input-group date datePicker">
 
+            <div class="form-group">
+              {!!  Form::label('fecha_nacimiento', 'Fecha nacimiento ')!!}
                 {!! Form::text('fecha_nacimiento',null,array('class' => 'form-control'));!!}
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-th"></span>
-                </div>
             </div>
 
             <div class="form-group">

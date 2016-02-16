@@ -17,8 +17,8 @@
         <section data-mode="async" data-ajax="true" data-url="{{url('estudo-actual/create-or-edit')}}">
   
         </section>
-        <h3>Third Step</h3>
-        <section>
+        <h3>Información de intercambio</h3>
+        <section data-mode="async" data-ajax="true" data-url="{{url('prepostulacionuniversidad/create-or-edit')}}">
             <p>Morbi ornare tellus at elit ultrices id dignissim lorem elementum. Sed eget nisl at justo condimentum dapibus. Fusce eros justo, 
                 pellentesque non euismod ac, rutrum sed quam. Ut non mi tortor. Vestibulum eleifend varius ullamcorper. Aliquam erat volutpat. 
                 Donec diam massa, porta vel dictum sit amet, iaculis ac massa. Sed elementum dui commodo lectus sollicitudin in auctor mauris 
@@ -43,19 +43,21 @@
 
 @section('scripts')
     {!! Html::Script('plugins/jquery-steps/js/jquery.steps.js')!!}
+    {!! Html::Script('plugins/bootstrap/js/bootstrap-select.js')!!}
+    {!! Html::Script('js/datepicker-es.js')!!}
+    {!! Html::Script('js/function_financiamiento.js')!!}
     {!! Html::Script('js/function_documento_identidad.js')!!}
 
     <script>
         $(document).on('ready',function() {
             initDocumentoIdentidad();
-
     
 
             $("#wizard").steps({
                 headerTag: "h3",
                 bodyTag: "section",
           
-                startIndex:1,
+                startIndex:2,
 
                 transitionEffect: "slideLeft",
                 /* Labels */
@@ -216,6 +218,9 @@
                                 });
                             }
 
+                        case 2:
+                            selectByTabs("section#wizard-p-2",'#campus_sede','#_token','#getUrlFacultadByCampus','#facultad');
+                            selectByTabs("section#wizard-p-2",'#facultad','#_token','#getUrlCarreraByFacultad','#carrera');
 
                     }
           
@@ -284,8 +289,19 @@
                 }   
             });
 
-
             //##################################### ACIONES DE LA PESTAÑA 1################################
+            $('section#wizard-p-0').on('focus','#fecha_nacimiento',function(){
+                $( this ).datepicker({
+
+                    showButtonPanel: true,
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: 'yy-mm-dd',
+                    showAnim: 'drop',
+
+                });
+
+            });
             $('section#wizard-p-0').on('click','#open_modal_documento_identidad',function(){
                 $('#modal_documento_identidad').modal('show');
                
@@ -341,11 +357,44 @@
             selectByTabs("section#wizard-p-1",'#continente','#_token','#getUrlPaisByContinente','#pais');   
             selectByTabs("section#wizard-p-1",'#pais','#_token','#getCampusByPais','#campus_sede');
 
+            selectByTabs("section#wizard-p-2",'#continente','#_token','#getUrlPaisByContinente','#pais');   
+            selectByTabs("section#wizard-p-2",'#pais','#_token','#getCampusByPais','#campus_sede');
+
+            $('section#wizard-p-2').on('focus','#desde',function(){
+
+               $( this ).datepicker({
+
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 3,
+                    onClose: function( selectedDate ) {
+                        $( "#hasta" ).datepicker( "option", "minDate", selectedDate );
+                    }
+
+                });
+            })
+
+
+            $('section#wizard-p-2').on('focus','#hasta',function(){
+
+               $( this ).datepicker({
+
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 3,
+                    onClose: function( selectedDate ) {
+                        $( "#desde" ).datepicker( "option", "maxDate", selectedDate );
+                    }
+
+                });
+            })
  
         }); 
 
 
-                    
+         
+
+       
      
     </script>
    
@@ -354,6 +403,7 @@
 
 @section('styles')
     {!! Html::Style('plugins/jquery-steps/css/jquery.steps.css')!!}
+    {!! Html::Style('plugins/bootstrap/css/bootstrap-select.css')!!}
 
 
 

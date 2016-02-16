@@ -46,6 +46,7 @@ class PostulacionController extends Controller {
 			$status	 = 1;
 			$postulante->documentoIdentidades;
 			$parametros = array(
+								'id_postulante' => $postulante->id,
 								'pais' => $postulante->ciudadR->paisR->id,
 							    "tipo" => $postulante->documentoIdentidades->first()->tipo,
 							    'numero' =>  $postulante->documentoIdentidades->first()->numero,

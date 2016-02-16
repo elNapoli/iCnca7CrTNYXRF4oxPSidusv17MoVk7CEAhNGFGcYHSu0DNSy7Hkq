@@ -22,8 +22,9 @@
             
               
         </section>
-        <h3>Fourth Step</h3>
-        <section>
+        <h3>Declaración</h3>
+        <section data-mode="async" data-ajax="true" data-url="{{url('declaracion/create-or-edit')}}">
+
 
         </section>
     </div>
@@ -53,7 +54,7 @@
                 headerTag: "h3",
                 bodyTag: "section",
           
-                startIndex:2,
+                startIndex:3,
 
                 transitionEffect: "slideLeft",
                 /* Labels */
@@ -70,6 +71,12 @@
 
                     switch (currentIndex) {
                         case 0:
+                        //alert($('#wizard #id_postulante').val() != '');
+                            if($('#wizard #id_postulante').val() != ''){
+                                $('#wizard #spamAddDocumento').show();
+
+
+                            }
                             if($('#wizard input#tipo_estudio_1').attr('checked') === 'checked'){
                             
                                 $('#tipo_estudio_1').addClass('1check');
@@ -229,7 +236,63 @@
 
                     
                 },
+                onFinishing:function (event, currentIndex) {
 
+
+                    var data = $(".current").find('input,select,textarea,.tEstudioInput_').serialize();
+                    var url  = $(".current").find('#form-postulacion-active').attr('action');
+             
+
+
+                       
+                    var respuestaAjax = $.ajax({
+                          // En data puedes utilizar un objeto JSON, un array o un query string
+                            data: data,
+                            async : false,
+                             
+                            //Cambiar a type: POST si necesario
+                            type: $(".current").find('#form-postulacion-active').attr('method'),
+                            // Formato de datos que se espera en la respuesta
+                            dataType: "json",
+                            // URL a la que se enviará la solicitud Ajax
+                            url:url ,
+                            success : function(json) {   
+                                //alert("ho");
+                                $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');
+                               // $("html, body").animate({ scrollTop: 0 }, 600);
+                         
+                                
+                            },
+
+                            error : function(xhr, status) {
+                                var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                                for(var key in xhr.responseJSON)
+                                {
+                                    html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                                }
+                                $('#message').html(html+'</div>');
+                                //$("html, body").animate({ scrollTop: 0 }, 600);
+                          
+                            },
+                            
+               
+
+                        });
+
+                    if(respuestaAjax.status == 200){
+          
+
+
+                        return true;
+                    }
+                    else{
+
+                        return false;
+
+                    }
+                      
+                    
+                },
                 onStepChanging:function (event, currentIndex, newIndex) { 
                     
 
@@ -305,6 +368,7 @@
                     changeYear: true,
                     dateFormat: 'yy-mm-dd',
                     showAnim: 'drop',
+                    yearRange: '1989:2000'
 
                 });
 
@@ -400,13 +464,29 @@
                 });
             })
  
-        }); 
+
+ 
+
+            $('section#wizard-p-3').on('focus','#fecha_matricula',function(){
+                $( this ).datepicker({
+
+                    showButtonPanel: true,
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: 'yy-mm-dd',
+                    showAnim: 'drop',
+                    yearRange: '2016:2025'
+
+                });
+
+            });
 
 
          
 
        
      
+        }); 
     </script>
    
 @endsection

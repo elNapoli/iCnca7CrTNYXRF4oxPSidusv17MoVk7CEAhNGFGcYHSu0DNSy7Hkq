@@ -49,7 +49,7 @@
             <div class="input-group input-prepend dropdown" id='FinanciamientoDDList'>
                       
               <span class="input-group-addon" data-toggle='dropdown'><a href="" class='dropdown-display'>{{$parametros['financiamiento_nombre']}}</a> <i class='caret'></i></span>
-              {!! Form::text('descripcion',$parametros['descripcion'],array('id'=>'descripcion','class' => 'form-control'));!!}
+              {!! Form::text('descripcion',$parametros['descripcion'],array('id'=>'descripcion','class' => 'form-control','placeholder'=>'descripción'));!!}
                 {!!Form::hidden('financiamiento', $parametros['financiamiento'],array('id'=>'financiamiento','class'=>'dropdown-field'));!!}
               
 

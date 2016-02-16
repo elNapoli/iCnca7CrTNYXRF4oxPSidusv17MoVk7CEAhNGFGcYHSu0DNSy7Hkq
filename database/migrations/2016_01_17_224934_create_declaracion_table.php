@@ -16,6 +16,7 @@ class CreateDeclaracionTable extends Migration
             $table->integer('postulante')->unsigned();
             
             $table->string('persona_matricula',45);
+            $table->primary('postulante');
             $table->date('fecha_matricula');
 
         });

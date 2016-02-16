@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Declaracion extends Model
 {
     protected $table = 'declaracion';
+    protected $primaryKey = 'postulante';
     public $timestamps = false;
-    protected $fillable = ['persona_matricula',
+    protected $fillable = ['postulante',
+    						'persona_matricula',
     					   'fecha_matricula'];
 
  

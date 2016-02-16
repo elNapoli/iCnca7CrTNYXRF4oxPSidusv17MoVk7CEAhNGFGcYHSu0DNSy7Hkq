@@ -32,8 +32,15 @@ class DocumentoIdentidadController extends Controller {
 	public function getDocumentosByPostulante(Guard $auth, Request $request){
 
 		$postulante = Postulante::where('user_id', $auth->id())->first();
-	
-		return json_encode(array('data'=>DocumentoIdentidad::where('postulante',$postulante->id)->get()->toArray()));
+		if($postulante){
+
+			return json_encode(array('data'=>DocumentoIdentidad::where('postulante',$postulante->id)->get()->toArray()));
+
+		}
+		else{
+			return json_encode(array('data'=>[]));
+
+		}
 	}
 
 	public function postStoreAndUpdate(Request $request,Guard $auth){

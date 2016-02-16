@@ -35,6 +35,7 @@ Route::controllers([
 	'prepostulacionuniversidad' => 'PrePostulacionUniversidadController',
 	'carreras' => 'CarrerasController',
 	'financiamientos' => 'FinanciamientoController',
+	'declaracion' => 'DeclaracionController',
 
 
 

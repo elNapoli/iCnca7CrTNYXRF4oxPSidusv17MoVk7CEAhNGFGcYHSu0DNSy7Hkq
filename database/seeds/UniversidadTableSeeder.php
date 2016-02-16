@@ -22,7 +22,7 @@ class UniversidadTableSeeder extends Seeder
 
 
         $Universidad->save();
-        for($i = 0; $i < 20; $i++)
+        for($i = 0; $i < 100; $i++)
         {
             $Universidad = new Universidad();
 

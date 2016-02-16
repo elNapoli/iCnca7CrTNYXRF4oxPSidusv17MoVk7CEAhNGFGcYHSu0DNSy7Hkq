@@ -19,16 +19,12 @@
         </section>
         <h3>Información de intercambio</h3>
         <section data-mode="async" data-ajax="true" data-url="{{url('prepostulacionuniversidad/create-or-edit')}}">
-            <p>Morbi ornare tellus at elit ultrices id dignissim lorem elementum. Sed eget nisl at justo condimentum dapibus. Fusce eros justo, 
-                pellentesque non euismod ac, rutrum sed quam. Ut non mi tortor. Vestibulum eleifend varius ullamcorper. Aliquam erat volutpat. 
-                Donec diam massa, porta vel dictum sit amet, iaculis ac massa. Sed elementum dui commodo lectus sollicitudin in auctor mauris 
-                venenatis.</p>
+            
+              
         </section>
         <h3>Fourth Step</h3>
         <section>
-            <p>Quisque at sem turpis, id sagittis diam. Suspendisse malesuada eros posuere mauris vehicula vulputate. Aliquam sed sem tortor. 
-                Quisque sed felis ut mauris feugiat iaculis nec ac lectus. Sed consequat vestibulum purus, imperdiet varius est pellentesque vitae. 
-                Suspendisse consequat cursus eros, vitae tempus enim euismod non. Nullam ut commodo tortor.</p>
+
         </section>
     </div>
 
@@ -288,6 +284,11 @@
                     else{return true;}                              
                 }   
             });
+
+    $('section#wizard-p-2').on('click',' #FinanciamientoDDList',function(){
+
+    $(this).dropSelect();
+    });
 
             //##################################### ACIONES DE LA PESTAÑA 1################################
             $('section#wizard-p-0').on('focus','#fecha_nacimiento',function(){

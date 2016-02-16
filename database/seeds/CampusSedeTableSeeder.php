@@ -56,7 +56,7 @@ class CampusSedeTableSeeder extends Seeder
 
         foreach ($universidad as $item){
 
-            $numBeneficio = $faker->numberBetween($min = 1, $max = 5);
+            $numBeneficio = $faker->numberBetween($min = 1, $max = 2);
             for($i = 0; $i < $numBeneficio; $i++)
             {
                 $CampusSede = new CampusSede();

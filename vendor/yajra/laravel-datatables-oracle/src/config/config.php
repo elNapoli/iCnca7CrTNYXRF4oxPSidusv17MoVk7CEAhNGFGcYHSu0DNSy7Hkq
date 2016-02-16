@@ -2,12 +2,14 @@
 
 return [
 
-    'search'          => [
+    'oracle_sql' => false,
+
+    'search' => [
         'case_insensitive' => true,
         'use_wildcards'    => false,
     ],
 
-    'fractal'         => [
+    'fractal' => [
         'serializer' => 'League\Fractal\Serializer\DataArraySerializer',
     ],
 

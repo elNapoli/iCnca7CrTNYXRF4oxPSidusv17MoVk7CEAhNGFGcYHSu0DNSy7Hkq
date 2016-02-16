@@ -34,6 +34,7 @@ Route::controllers([
 	'prepostulacionuniversidad' => 'PrePostulacionUniversidadController',
 	'carreras' => 'CarrerasController',
 	'financiamientos' => 'FinanciamientoController',
+	'pdf' => 'PdfController',
 
 
 

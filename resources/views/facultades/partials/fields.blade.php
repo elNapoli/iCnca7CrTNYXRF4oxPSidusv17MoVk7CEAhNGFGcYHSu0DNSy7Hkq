@@ -1,25 +1,41 @@
-<div class="form-group">
-  	{!!  Form::label('universidad', ' Seleccione Universidad ')!!}
-	{!!  Form::select('universidad', [null=>'Seleccione un continente']+$universidades,null,array('class' => 'form-control'))!!}
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+
+<fieldset disabled>
+
+            <div class="form-group">
+                {!!  Form::label('universidad', ' Universidad ')!!}
+                {!! Form::text('universidad',null,array('class' => 'form-control'));!!}
+            </div>
+
+
+            <div class="form-group">
+                {!!  Form::label('campus_sede', ' Campus o Sede')!!}
+                {!! Form::text('campus_sede',null,array('class' => 'form-control'));!!}
+            </div>
+
+</fieldset>
+
+        </div> 
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+
+            <div class="form-group">
+                {!!  Form::label('nombre', ' Nombre facultad ');!!}
+                {!! Form::text('nombre',null,array('class' => 'form-control','placeholder'=>'Ej: Facultad de ingenieria'));!!}
+            </div>
+
+            <div class="form-group">
+                {!!  Form::label('telefono', ' Telefono ');!!}
+                {!! Form::text('telefono',null,array('class' => 'form-control','placeholder'=>'Ej: +5691234567'));!!}
+            </div>
+                
+
+
+        </div>
+    </div>
+
 </div>
-
-<div class="form-group">
-  	{!!  Form::label('campus_sede', ' Seleccione Campus ')!!}
-	{!!  Form::select('campus_sede', [null=>'Seleccione un campus'],null,array('class' => 'form-control'))!!}
-</div>
-
-<div class="form-group">
-
-{!!  Form::label('nombre', 'Nombre Ciudad');!!}
-{!! Form::text('nombre',null,array('class' => 'form-control','placeholder'=>'Ej: Facultad de Ingeniería'));!!}
-</div>
-
-<div class="form-group">
-
-{!!  Form::label('telefono', 'Nombre Ciudad');!!}
-{!! Form::text('telefono',null,array('class' => 'form-control','placeholder'=>'Ej: +5622222222'));!!}
-</div>
-
-    {!!Form::hidden('urlCampusByUniversidad', url('facultades/campus-by-universidad'),array('id'=>'urlCampusByUniversidad'));!!}
-	{!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
-

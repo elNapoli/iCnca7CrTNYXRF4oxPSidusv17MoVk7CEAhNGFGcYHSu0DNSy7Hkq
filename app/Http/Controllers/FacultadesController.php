@@ -6,6 +6,7 @@ use App\Facultad;
 use App\Universidad;
 use App\CampusSede;
 use Illuminate\Http\Request;
+use App\Asignatura;
 
 class FacultadesController extends Controller {
 
@@ -17,6 +18,13 @@ class FacultadesController extends Controller {
 		return view('facultades.index');
 	}
 
+	public function getFacultades()
+	{
+		$facultades = Facultad::with('campusSedesR.universidadR')->get();
+		$arra = array('data'=>$facultades->toArray());
+		return json_encode($arra);
+	}
+
 	public function getCreate(){
 	
 		$universidades = Universidad::lists('nombre','id');
@@ -24,11 +32,10 @@ class FacultadesController extends Controller {
 		return view('facultades.create',compact('universidades'));
 	}
 
-	public function getEdit($id)
+	public function postEdit($id)
 	{
-		$facultad = Facultad::findOrFail($id);
-		$universidades = Universidad::lists('nombre','id');
-        return view('facultades.edit',compact('universidades','facultad'));
+		$facu = Facultad::where('facultad.id',$id)->with('CampusSedesR.universidadR')->first();
+		return $facu->toJson();
 	}
 
 	public function getFacultad()
@@ -82,4 +89,16 @@ class FacultadesController extends Controller {
 			return  "no Ajax";
 		}
 	}
+
+	public function postUpdate(Request $request)
+	{
+		dd($request->id);
+		$facultad = Facultad::findOrFail($request->get('id'));
+		$facultad->fill($request->all());
+        $facultad->save();
+		return response()->json([
+						'message'=> 'Se guardó la facultad Correctamente'
+						]);
+	}
+
 }

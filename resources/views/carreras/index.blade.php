@@ -144,7 +144,6 @@
         $('#btnEditCarrera').on('click', function(e){
 
             var data = $('#form-edit').serialize();
-
             $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
                data:data,

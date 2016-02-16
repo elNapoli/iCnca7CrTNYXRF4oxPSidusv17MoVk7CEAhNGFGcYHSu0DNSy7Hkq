@@ -102,18 +102,17 @@ trait ResetsPasswords {
 
 		$response = $this->passwords->reset($credentials, function($user, $password)
 		{
-			$user->password = $password;
-
-			$user->remember_token = null;
+			$user->password = bcrypt($password);
 
 			$user->save();
 
+			$this->auth->login($user);
 		});
 
 		switch ($response)
 		{
 			case PasswordBroker::PASSWORD_RESET:
-				return view('auth.login'); //falta el mensaje que le diga que esta listo 
+				return redirect($this->redirectPath());
 
 			default:
 				return redirect()->back()

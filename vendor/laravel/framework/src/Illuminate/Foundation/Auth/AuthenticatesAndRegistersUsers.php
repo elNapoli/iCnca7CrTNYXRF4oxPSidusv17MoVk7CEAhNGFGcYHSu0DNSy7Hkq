@@ -1,11 +1,8 @@
 <?php namespace Illuminate\Foundation\Auth;
 
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\EditUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
-use App\User;
 
 trait AuthenticatesAndRegistersUsers {
 
@@ -49,27 +46,10 @@ trait AuthenticatesAndRegistersUsers {
 				$request, $validator
 			);
 		}
-		//$this->auth->login($this->registrar->create($request->all()));
-		$user = new User($request->all());
-		$user->codigo_confirmacion = str_random(); //genero el codigo de confirmacion
-		$confirmation_code = $user->codigo_confirmacion; //creo variables por referencia para el Mail::
-		$dest = $user->name;
-		$user->save();
 
-        \Mail::send('emails.welcome',  array('destinatario' => $dest, 'codigo' => $confirmation_code), function($message) {
-            $message->to(\Request::get('email'), \Request::get('name'))
-                ->subject('Confirma tu acceso a Movilidad');
+		$this->auth->login($this->registrar->create($request->all()));
 
-		\Session::flash('message','Gracias por registrarte! Porfavor verifica tu correo electronico.');
-
-
-        });
-		return view('usuarios.verif');
-
-		//return redirect(property_exists($thios, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/')->with('message', $message);
-		//return redirect('/')->with('mensaje', $message);
-
-
+		return redirect($this->redirectPath());
 	}
 
 	/**
@@ -90,43 +70,22 @@ trait AuthenticatesAndRegistersUsers {
 	 */
 	public function postLogin(Request $request)
 	{
-
 		$this->validate($request, [
 			'email' => 'required|email', 'password' => 'required',
 		]);
 
 		$credentials = $request->only('email', 'password');
 
-		$user = User::where('email',$request->get('email'))->first();
-		if ($user->confirmado == '0')
+		if ($this->auth->attempt($credentials, $request->has('remember')))
 		{
-			return 'Este csm no verifico su email error! error! error! xDD';
+			return redirect()->intended($this->redirectPath());
 		}
-		elseif($user->confirmado == '1')
-		{
-			if ($this->auth->attempt($credentials, $request->has('remember')))
-			{
-				if ($user->tipo_usuario == 'administrador')
-				{
-					return redirect()->route('admin.usuarios.index');
-				}
 
-				else
-				{
-					return redirect()->route('usr.usuarios.index');
-				}
-			}
-
-				return redirect($this->loginPath())
+		return redirect($this->loginPath())
 					->withInput($request->only('email', 'remember'))
 					->withErrors([
 						'email' => $this->getFailedLoginMessage(),
 					]);
-		}
-
-		
-
-
 	}
 
 	/**
@@ -163,7 +122,7 @@ trait AuthenticatesAndRegistersUsers {
 			return $this->redirectPath;
 		}
 
-		return property_exists($this, 'redirectTo') ? $this->redirectTo : '/';
+		return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
 	}
 
 	/**

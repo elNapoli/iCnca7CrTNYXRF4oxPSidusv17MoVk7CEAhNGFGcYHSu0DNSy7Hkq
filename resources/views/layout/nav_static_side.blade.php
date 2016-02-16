@@ -59,6 +59,17 @@
 
                     </li>
 
+                    <li>
+
+                        <a href="{{ url('carreras/') }}">Carreras</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="{{ url('facultades/') }}">Facultades</a>
+
+                    </li>
 
                 </ul>
                 <!-- /.nav-second-level -->

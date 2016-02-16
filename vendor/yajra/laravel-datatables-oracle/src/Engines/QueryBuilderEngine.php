@@ -85,7 +85,7 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
         $myQuery = clone $this->query;
         // if its a normal query ( no union, having and distinct word )
         // replace the select with static text to improve performance
-        if (! Str::contains(Str::lower($myQuery->toSql()), ['union', 'having', 'distinct'])) {
+        if (! Str::contains(Str::lower($myQuery->toSql()), ['union', 'having', 'distinct', 'order by', 'group by'])) {
             $row_count = $this->connection->getQueryGrammar()->wrap('row_count');
             $myQuery->select($this->connection->raw("'1' as {$row_count}"));
         }
@@ -95,12 +95,16 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
     }
 
     /**
-     * @inheritdoc
+     * Perform global search.
+     *
+     * @return void
      */
     public function filtering()
     {
+        $eagerLoads = $this->getEagerLoads();
+
         $this->query->where(
-            function ($query) {
+            function ($query) use ($eagerLoads) {
                 $keyword = $this->setupKeyword($this->request->keyword());
                 foreach ($this->request->searchableColumnIndex() as $index) {
                     $columnName = $this->setupColumnName($index);
@@ -109,16 +113,50 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
                         $method     = Helper::getOrMethod($this->columnDef['filter'][$columnName]['method']);
                         $parameters = $this->columnDef['filter'][$columnName]['parameters'];
                         $this->compileColumnQuery(
-                            $this->getQueryBuilder($query), $method, $parameters, $columnName, $keyword
+                            $this->getQueryBuilder($query),
+                            $method,
+                            $parameters,
+                            $columnName,
+                            $keyword
                         );
                     } else {
-                        $this->compileGlobalSearch($this->getQueryBuilder($query), $columnName, $keyword);
+                        if (count(explode('.', $columnName)) > 1) {
+                            $parts          = explode('.', $columnName);
+                            $relationColumn = array_pop($parts);
+                            $relation       = implode('.', $parts);
+                            if (in_array($relation, $eagerLoads)) {
+                                $this->compileRelationSearch(
+                                    $this->getQueryBuilder($query),
+                                    $relation,
+                                    $relationColumn,
+                                    $keyword
+                                );
+                            } else {
+                                $this->compileGlobalSearch($this->getQueryBuilder($query), $columnName, $keyword);
+                            }
+                        } else {
+                            $this->compileGlobalSearch($this->getQueryBuilder($query), $columnName, $keyword);
+                        }
                     }
 
                     $this->isFilterApplied = true;
                 }
             }
         );
+    }
+
+    /**
+     * Get eager loads keys if eloquent.
+     *
+     * @return array
+     */
+    private function getEagerLoads()
+    {
+        if ($this->query_type == 'eloquent') {
+            return array_keys($this->query->getEagerLoads());
+        }
+
+        return [];
     }
 
     /**
@@ -167,6 +205,25 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
     }
 
     /**
+     * Add relation query on global search.
+     *
+     * @param mixed $query
+     * @param string $relation
+     * @param string $column
+     * @param string $keyword
+     */
+    protected function compileRelationSearch($query, $relation, $column, $keyword)
+    {
+        $myQuery = clone $this->query;
+        $myQuery->orWhereHas($relation, function ($q) use ($column, $keyword, $query) {
+            $q->where($column, 'like', $keyword);
+            $sql = $q->toSql();
+            $sql = "($sql) >= 1";
+            $query->orWhereRaw($sql, [$keyword]);
+        });
+    }
+
+    /**
      * Add a query on global search.
      *
      * @param mixed $query
@@ -186,7 +243,7 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
     }
 
     /**
-     * Wrap a column and cast in pgsql
+     * Wrap a column and cast in pgsql.
      *
      * @param  string $column
      * @return string
@@ -202,7 +259,9 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
     }
 
     /**
-     * @inheritdoc
+     * Perform column search.
+     *
+     * @return void
      */
     public function columnSearch()
     {
@@ -219,18 +278,10 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
                 } else {
                     $column = $this->castColumn($column);
                     if ($this->isCaseInsensitive()) {
-                        if ($this->request->isRegex($i)) {
-                            $this->query->whereRaw('LOWER(' . $column . ') REGEXP ?', [Str::lower($keyword)]);
-                        } else {
-                            $this->query->whereRaw('LOWER(' . $column . ') LIKE ?', [Str::lower($keyword)]);
-                        }
+                        $this->compileColumnSearch($i, $column, $keyword, true);
                     } else {
                         $col = strstr($column, '(') ? $this->connection->raw($column) : $column;
-                        if ($this->request->isRegex($i)) {
-                            $this->query->whereRaw($col . ' REGEXP ?', [$keyword]);
-                        } else {
-                            $this->query->whereRaw($col . ' LIKE ?', [$keyword]);
-                        }
+                        $this->compileColumnSearch($i, $col, $keyword, false);
                     }
                 }
 
@@ -255,7 +306,46 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
     }
 
     /**
-     * @inheritdoc
+     * Compile queries for column search.
+     *
+     * @param int $i
+     * @param mixed $column
+     * @param string $keyword
+     * @param bool $caseSensitive
+     */
+    protected function compileColumnSearch($i, $column, $keyword, $caseSensitive = true)
+    {
+        if ($this->request->isRegex($i)) {
+            $this->regexColumnSearch($column, $keyword, $caseSensitive);
+        } else {
+            $sql     = $caseSensitive ? $column . ' LIKE ?' : 'LOWER(' . $column . ') LIKE ?';
+            $keyword = $caseSensitive ? $keyword : Str::lower($keyword);
+            $this->query->whereRaw($sql, [$keyword]);
+        }
+    }
+
+    /**
+     * Compile regex query column search.
+     *
+     * @param mixed $column
+     * @param string $keyword
+     * @param bool $caseSensitive
+     */
+    protected function regexColumnSearch($column, $keyword, $caseSensitive = true)
+    {
+        if ($this->isOracleSql()) {
+            $sql = $caseSensitive ? 'REGEXP_LIKE( ' . $column . ' , ? )' : 'REGEXP_LIKE( LOWER(' . $column . ') , ?, \'i\' )';
+            $this->query->whereRaw($sql, [$keyword]);
+        } else {
+            $sql = $caseSensitive ? $column . ' REGEXP ?' : 'LOWER(' . $column . ') REGEXP ?';
+            $this->query->whereRaw($sql, [Str::lower($keyword)]);
+        }
+    }
+
+    /**
+     * Perform sorting of columns.
+     *
+     * @return void
      */
     public function ordering()
     {

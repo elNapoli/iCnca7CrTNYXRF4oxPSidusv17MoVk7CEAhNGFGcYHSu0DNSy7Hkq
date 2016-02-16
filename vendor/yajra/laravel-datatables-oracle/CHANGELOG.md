@@ -8,6 +8,30 @@
 
 ##Change Log
 
+###v6.4.4 - 2016-02-13
+    - Fix filtering in nested columns of Collections. PR #392
+    
+###v6.4.3 - 2016-02-11
+    - Random cs and doc block fix.
+    - Code refactoring to reduce complexity.
+
+###v6.4.2 - 2016-02-11
+    - Change how regex code is generated after a column search. #358
+    - Fix addColumn fails when order falls at end of array #386
+
+###v6.4.1 - 2016-02-10
+    - Fix nested eager loaded relations and column name.
+
+###v6.4.0 - 2016-02-10
+    - Add feature to support global search on eager loaded models.
+    - PR #381. Credits to @ikerasLT.
+    - Fix implementation conflicts when using builder and join statements.
+    - Fix cs and doc blocks.
+
+###v6.3.2 - 2016-02-04
+    - Add order by and group by on count sql optimization exceptions.
+    - Date will now be added on each released version using Y-m-d format.
+
 ###v6.3.1
     - Fix artisan datatables:make service stub.
 

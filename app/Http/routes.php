@@ -35,12 +35,10 @@ Route::controllers([
 	'prepostulacionuniversidad' => 'PrePostulacionUniversidadController',
 	'carreras' => 'CarrerasController',
 	'financiamientos' => 'FinanciamientoController',
-<<<<<<< HEAD
-	'pdf' => 'PdfController',
-=======
-	'declaracion' => 'DeclaracionController',
->>>>>>> 374592bcaaadfff4febf9a628e213e1530cafebc
 
+	'pdf' => 'PdfController',
+
+	'declaracion' => 'DeclaracionController',
 
 
 ]);

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Example 2</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" media="all" />
+<link rel="stylesheet" href="/bootstrap-pdf.css">
   </head>
   <body>
 
@@ -22,7 +22,7 @@
                                 <code>.col-md-*</code> grid classes, you can create a default grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns in any
                                 <code>.row</code>.</p>
                             <div class="row show-grid">
-                                <div class="col-md-1">.col-md-1</div>
+                                <div class="col-md-1 color1">.col-md-1</div>
                                 <div class="col-md-1">.col-md-1</div>
                                 <div class="col-md-1">.col-md-1</div>
                                 <div class="col-md-1">.col-md-1</div>

@@ -215,8 +215,14 @@
                             }
 
                         case 2:
-                            selectByTabs("section#wizard-p-2",'#campus_sede','#_token','#getUrlFacultadByCampus','#facultad');
-                            selectByTabs("section#wizard-p-2",'#facultad','#_token','#getUrlCarreraByFacultad','#carrera');
+                            if($('section#wizard-p-2 #continente').val() != ''){
+
+                                selectByTabsSinAccion("section#wizard-p-2",'#_token','#getUrlPaisByContinente','#pais',$('section#wizard-p-2 #continente').val(),$('section#wizard-p-2 #pais_id').val());
+                                selectByTabsSinAccion("section#wizard-p-2",'#_token','#getCampusByPais','#campus_sede',$('section#wizard-p-2 #pais_id').val(),$('section#wizard-p-2 #campus_sede_id').val());
+                                selectByTabsSinAccion("section#wizard-p-2",'#_token','#getUrlFacultadByCampus','#facultad',$('section#wizard-p-2 #campus_sede').val(),$('section#wizard-p-2 #facultad_id').val());
+                                selectByTabsSinAccion("section#wizard-p-2",'#_token','#getUrlCarreraByFacultad','#carrera',$('section#wizard-p-2 #facultad').val(),$('section#wizard-p-2 #carrera_id').val());
+                                    
+                            }
 
                     }
           
@@ -360,7 +366,8 @@
 
             selectByTabs("section#wizard-p-2",'#continente','#_token','#getUrlPaisByContinente','#pais');   
             selectByTabs("section#wizard-p-2",'#pais','#_token','#getCampusByPais','#campus_sede');
-
+            selectByTabs("section#wizard-p-2",'#campus_sede','#_token','#getUrlFacultadByCampus','#facultad');
+            selectByTabs("section#wizard-p-2",'#facultad','#_token','#getUrlCarreraByFacultad','#carrera');
             $('section#wizard-p-2').on('focus','#desde',function(){
 
                $( this ).datepicker({
@@ -368,6 +375,8 @@
                     defaultDate: "+1w",
                     changeMonth: true,
                     numberOfMonths: 3,
+                    dateFormat: 'yy-mm-dd',
+                    
                     onClose: function( selectedDate ) {
                         $( "#hasta" ).datepicker( "option", "minDate", selectedDate );
                     }
@@ -382,6 +391,7 @@
 
                     defaultDate: "+1w",
                     changeMonth: true,
+                    dateFormat: 'yy-mm-dd',
                     numberOfMonths: 3,
                     onClose: function( selectedDate ) {
                         $( "#desde" ).datepicker( "option", "maxDate", selectedDate );

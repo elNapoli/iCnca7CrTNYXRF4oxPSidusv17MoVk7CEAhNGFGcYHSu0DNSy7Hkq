@@ -7,13 +7,13 @@
             <div class="form-group">
                 {!! Form::label('semestre', 'Semester:') !!}
                 <label class="radio-inline">
-                    {!! Form::radio('semestre', 'semestre 1',array('id'=>'semestreI'))!!} Semestre I
+                    {!! Form::radio('semestre', 'semestre 1',false,array('id'=>'semestreI'))!!} Semestre I
                 </label>
                 <label class="radio-inline">
-                    {!! Form::radio('semestre', 'semestre 2',array('id'=>'semestreII'))!!} Semestre II
+                    {!! Form::radio('semestre', 'semestre 2',false,array('id'=>'semestreII'))!!} Semestre II
                 </label>
                 <label class="radio-inline">
-                    {!! Form::radio('semestre', 'ambos',array('id'=>'semestreIII'))!!} Todo el Año
+                    {!! Form::radio('semestre', 'ambos',false,array('id'=>'semestreIII'))!!} Todo el Año
                 </label>
 
             </div>
@@ -48,9 +48,9 @@
                   
             <div class="input-group input-prepend dropdown" id='FinanciamientoDDList'>
                       
-              <span class="input-group-addon" data-toggle='dropdown'><a href="" class='dropdown-display'>Padres</a> <i class='caret'></i></span>
-              {!! Form::text('descripcionFinanciamiento',null,array('id'=>'descripcionFinanciamiento','class' => 'form-control'));!!}
-                {!!Form::hidden('financiamiento', '1',array('id'=>'financiamiento','class'=>'dropdown-field'));!!}
+              <span class="input-group-addon" data-toggle='dropdown'><a href="" class='dropdown-display'>{{$parametros['financiamiento_nombre']}}</a> <i class='caret'></i></span>
+              {!! Form::text('descripcion',$parametros['descripcion'],array('id'=>'descripcion','class' => 'form-control'));!!}
+                {!!Form::hidden('financiamiento', $parametros['financiamiento'],array('id'=>'financiamiento','class'=>'dropdown-field'));!!}
               
 
               <ul class='dropdown-menu'>
@@ -86,4 +86,11 @@
 
 {!!Form::hidden('getUrlFinanciamientos', url('financiamientos/financiamientos'),array('id'=>'getUrlFinanciamientos'));!!}
 {!!Form::hidden('getUrlCarreraByFacultad', url('carreras/carreras-by-facultad'),array('id'=>'getUrlCarreraByFacultad'));!!}
+
+{!!Form::hidden('pais_id',$parametros['pais'],array('id'=>'pais_id'));!!}
+{!!Form::hidden('campus_sede_id',$parametros['campus_sede'],array('id'=>'campus_sede_id'));!!}
+{!!Form::hidden('facultad_id',$parametros['facultad'],array('id'=>'facultad_id'));!!}
+{!!Form::hidden('carrera_id',$parametros['carrera'],array('id'=>'carrera_id'));!!}
+{!!Form::hidden('id',$parametros['id'],array('id'=>'id'));!!}
+
 </div>

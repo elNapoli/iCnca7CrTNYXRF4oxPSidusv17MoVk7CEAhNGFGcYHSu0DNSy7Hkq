@@ -4,6 +4,8 @@
 
 @section('content')
     @include('DocumentoIdentidad.modal_documento_identidad')
+    {!!Form::hidden('getUrlIndexStep',url('postulacion/index-step'),array('id'=>'getUrlIndexStep'));!!}
+
     <div id="wizard">
         <div id="message"></div>
         <h3>Datos personales</h3>
@@ -48,13 +50,41 @@
     <script>
         $(document).on('ready',function() {
             initDocumentoIdentidad();
-    
+            var indexStep = $.ajax({
+                                  
+                async : false,
+                 
+                //Cambiar a type: POST si necesario
+                type: $(".current").find('#form-postulacion-active').attr('method'),
+                // Formato de datos que se espera en la respuesta
+                dataType: "json",
+                // URL a la que se enviará la solicitud Ajax
+                url:$('#getUrlIndexStep').val() ,
+                success : function(json) {   
+                   return json.indexStep;
+             
+                    
+                },
 
+                error : function(xhr, status) {
+                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                    for(var key in xhr.responseJSON)
+                    {
+                        html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                    }
+                    $('#message').html(html+'</div>');
+                    //$("html, body").animate({ scrollTop: 0 }, 600);
+              
+                },
+                
+
+
+            });
             $("#wizard").steps({
                 headerTag: "h3",
                 bodyTag: "section",
           
-                startIndex:3,
+                startIndex:indexStep.responseJSON.indexStep,
 
                 transitionEffect: "slideLeft",
                 /* Labels */

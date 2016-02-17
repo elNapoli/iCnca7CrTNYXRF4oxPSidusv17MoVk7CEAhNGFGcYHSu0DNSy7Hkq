@@ -39,6 +39,7 @@ Route::controllers([
 	'pdf' => 'PdfController',
 
 	'declaracion' => 'DeclaracionController',
+	'homologacion' => 'CursosHomologadosController',
 
 
 ]);

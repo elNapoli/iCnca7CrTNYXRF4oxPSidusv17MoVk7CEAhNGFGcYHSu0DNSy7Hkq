@@ -55,7 +55,15 @@
                     </li>
                     <li>
 
+                        
                         <a href="{{ url('asignaturas/') }}">Asignaturas</a>
+
+                    </li>
+
+                    <li>
+
+                        
+                        <a href="{{ url('homologacion/') }}">Homologación de cursos</a>
 
                     </li>
 

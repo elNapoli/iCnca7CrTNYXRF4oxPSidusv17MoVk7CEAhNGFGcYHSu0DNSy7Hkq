@@ -6,13 +6,13 @@
 
             <div class="form-group">
                 {!!  Form::label('universidad', ' Universidad ')!!}
-                {!!  Form::select('universidad', [$asignatura->carreraR->facultadR->campusSedeR->universidadR->nombre=>$asignatura->carreraR->facultadR->campusSedeR->universidadR->nombre],null,array('class' => 'form-control'))!!}
+                {!!  Form::select('universidad', [$asignatura->carreraR->facultadR->campusSedesR->universidadR->nombre=>$asignatura->carreraR->facultadR->campusSedesR->universidadR->nombre],null,array('class' => 'form-control'))!!}
             </div>
 
 
             <div class="form-group">
                 {!!  Form::label('campus_sede', ' Campus o Sede')!!}
-                {!!  Form::select('campus_sede', [$asignatura->carreraR->facultadR->campusSedeR->nombre=>$asignatura->carreraR->facultadR->campusSedeR->nombre],null,array('class' => 'form-control'))!!}
+                {!!  Form::select('campus_sede', [$asignatura->carreraR->facultadR->campusSedesR->nombre=>$asignatura->carreraR->facultadR->campusSedesR->nombre],null,array('class' => 'form-control'))!!}
             </div>
 
             <div class="form-group">

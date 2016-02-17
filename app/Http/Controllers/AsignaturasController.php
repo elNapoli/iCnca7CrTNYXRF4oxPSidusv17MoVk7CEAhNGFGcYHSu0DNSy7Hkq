@@ -23,7 +23,7 @@ class AsignaturasController extends Controller {
 
 	public function getAsignaturas()
 	{
-		$asignaturas = Asignatura::with('carreraR.facultadR.campusSedeR.universidadR')->get();
+		$asignaturas = Asignatura::with('carreraR.facultadR.campusSedesR.universidadR')->get();
 		$arra = array('data'=>$asignaturas->toArray());
 		return json_encode($arra);
 	}

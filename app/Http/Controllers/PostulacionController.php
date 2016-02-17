@@ -37,9 +37,11 @@ class PostulacionController extends Controller {
 		$indexStep = $postulante->count();
 		//dd($postulante);
 		if($indexStep != 0){
+			//dd( (bool)(PreUEstudioActual::where('postulante',$postulante->first()->id)->get()->count()));
+			$bool1 = (bool)(PreNUEstudioActual::where('postulante',$postulante->first()->id)->get()->count());
+			$bool2 = (bool)(PreUEstudioActual::where('postulante',$postulante->first()->id)->get()->count());
 			
-			$stepTwo = (bool)(PreNUEstudioActual::where('postulante',$postulante->first()->id)->get()->count()) or (bool)(PreUEstudioActual::where('postulante',$postulante->first()->id)->get()->count());
-			$indexStep = $indexStep +(int)$stepTwo;
+			$indexStep = $indexStep +(int)($bool1 or $bool2);
 		}
 
 		return response()->json([

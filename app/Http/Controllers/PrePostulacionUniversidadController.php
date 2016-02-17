@@ -51,9 +51,9 @@ class PrePostulacionUniversidadController extends Controller {
 			$parametros['financiamiento_nombre'] = $prePostulacion->financiamientoR->nombre;
 			$parametros['carrera'] = $prePostulacion->carrera;
 			$parametros['facultad'] = $prePostulacion->carreraR->facultadR->id;
-			$parametros['campus_sede'] = $prePostulacion->carreraR->facultadR->campusSedeR->id;
-			$parametros['pais'] = $prePostulacion->carreraR->facultadR->campusSedeR->ciudadR->paisR->id;
-			$parametros['continente'] = $prePostulacion->carreraR->facultadR->campusSedeR->ciudadR->paisR->continente;
+			$parametros['campus_sede'] = $prePostulacion->carreraR->facultadR->campusSedesR->id;
+			$parametros['pais'] = $prePostulacion->carreraR->facultadR->campusSedesR->ciudadR->paisR->id;
+			$parametros['continente'] = $prePostulacion->carreraR->facultadR->campusSedesR->ciudadR->paisR->continente;
 			if($prePostulacion->financiamiento == 4 or $prePostulacion->financiamiento == 5){
 				$otroFinanciamiento = PreOtroFinanciamiento::find($prePostulacion->id);
 				$parametros['descripcion'] = $otroFinanciamiento->descripcion;
@@ -100,8 +100,8 @@ class PrePostulacionUniversidadController extends Controller {
 
 		$prePostulacion = PrePostulacionUniversidad::find($request->get('id'));
 
-	
-		if($prePostulacion->preOtroFinanciamientosR){
+		//dd();
+		if($prePostulacion->preOtroFinanciamientosR->count()){
 			if ($request->get('financiamiento') != '4'){
 
 				if($request->get('financiamiento') != '5'){

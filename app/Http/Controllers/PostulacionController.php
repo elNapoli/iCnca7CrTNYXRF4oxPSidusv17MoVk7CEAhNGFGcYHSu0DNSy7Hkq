@@ -9,7 +9,7 @@ use App\Postulante;
 use App\PreUach;
 use App\PreNoUach;
 use App\PreUEstudioActual;
-use App\PreNUEstudioActual;
+use App\PreNuEstudioActual;
 use App\Postgrado;
 use App\Pais;
 use App\Ciudad;

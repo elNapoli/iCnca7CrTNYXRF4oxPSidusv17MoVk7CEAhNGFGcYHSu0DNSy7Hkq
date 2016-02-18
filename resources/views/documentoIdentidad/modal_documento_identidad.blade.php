@@ -17,7 +17,7 @@
 {!!Form::hidden('getUrlDocumentoByPostulante',url('documentos-identidad/documentos-by-postulante'),array('id'=>'getUrlDocumentoByPostulante'));!!}
 
 
-            @include('DocumentoIdentidad.table')
+            @include('documentoIdentidad.table')
                                     </div>
                                     
                              

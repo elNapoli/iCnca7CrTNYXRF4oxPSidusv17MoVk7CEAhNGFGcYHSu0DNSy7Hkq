@@ -26,6 +26,7 @@
                 
 {!!Form::hidden('getUrlAsignaturaByCodigo', url('asignaturas/asignatura-by-codigo'),array('id'=>'getUrlAsignaturaByCodigo'));!!}
 {!!Form::hidden('getUrlStoreCursoHomologado', url('homologacion/store'),array('id'=>'getUrlStoreCursoHomologado'));!!}
+{!!Form::hidden('getUrlDestroyCursoHomologado', url('homologacion/destroy'),array('id'=>'getUrlDestroyCursoHomologado'));!!}
             
 
 
@@ -116,10 +117,13 @@
                 },
                 { "data": null,
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                                          
-                        $(nTd).html("<a href='#!'  class='addCurso model-open-edit'> Agregar</a>"+
-                                "<a href='#!' class='btn-delete' > eliminar</a>"
-                        );
+                        var html = "<a href='#!'  class='addCurso model-open-edit'> Agregar</a>";
+
+                        if(sData.periodo != ''){
+
+                            html = html +"<a href='#!' id='"+oData.id+"' class='btn-delete' > eliminar</a>";
+                        }               
+                        $(nTd).html(html);
 
                     }
                 }
@@ -128,6 +132,38 @@
         });
 
 
+        $('#tableCursosHomologados').on('click','.btn-delete',function(){
+
+            $.ajax({
+                                  
+                async : false,
+                data:{
+                    _token: $('#_token').val(),
+                    id: $(this).attr('id'),
+
+                },
+                //Cambiar a type: POST si necesario
+                type: 'POST',
+                // Formato de datos que se espera en la respuesta
+                dataType: "json",
+                // URL a la que se enviará la solicitud Ajax
+                url:$('#getUrlDestroyCursoHomologado').val() ,
+                success : function(json) {   
+                    $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');  
+                    dt.ajax.reload();              
+             
+                    
+                },
+
+                error : function(xhr, status) {
+                    alert(status);
+              
+                },
+                
+
+
+            });
+        });
         $('#tableCursosHomologados').on('click','.addCurso',function(){
 
             var row = dt.row( $(this).parent().parent() ).index();

@@ -29,9 +29,14 @@ class CursosHomologadosController extends Controller {
 								'carrera' => $postulante->pregradosR->prePostulacionUniversidadesR->carreraR->nombre,						   
 								'universidad_destino' => $universidad_destino,						   
 								'rut' => '',						   
+														   
 								'telefono' => $postulante->telefono,					   
 								'pais_destino' => $postulante->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->ciudadR->paisR->nombre,					   
 							);
+		$homologacion = Homologacion::where('postulante',$postulante->id);
+		if($homologacion->get()->count() != 0){
+			$parametros['pga'] = $homologacion->first()->pga;
+		}
 		return view('homologacion.index',compact('parametros','asignaturas'));
 	}
 
@@ -48,6 +53,7 @@ class CursosHomologadosController extends Controller {
 				# code...
 				//dd($item);
 			$parametros[] = array(
+									'id' => $item->id,
 									'periodo' => $item->asignaturaR->periodo,		
 									'codigo_1' => $item->asignatura,		
 									'asignatura_1' => $item->asignaturaR->nombre,		
@@ -59,6 +65,8 @@ class CursosHomologadosController extends Controller {
 
 		}
 		$parametros[] = array(
+								'id' => '',
+
 								'periodo' => '',		
 								'codigo_1' => '',		
 								'asignatura_1' => '',		
@@ -70,7 +78,16 @@ class CursosHomologadosController extends Controller {
 
 		return json_encode($arra);
 	}
+	public function postDestroy(Request $request){
 
+		$curso_homologado = AsignaturaHomologada::find($request->get('id'));
+		$curso_homologado->delete();
+		return response()->json([
+				'message'=> 'La asignatura se ha eliminado del formulario de homologación.'
+				]);
+
+
+	}
 	public function postStore(Guard $auth,CursosHomologadosRequest $request){
 		
 		$postulante = Postulante::where('user_id',$auth->id())->first();

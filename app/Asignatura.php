@@ -37,11 +37,11 @@ class asignatura extends Model
 
     public function getPeriodoAttribute(){
 
-         $periodo = 0;
+         $periodo = 'Semestre I';
         if($this->nivel%2==0)
         {
 
-            $periodo = 1;
+            $periodo = 'Semestre II';
 
         }
 

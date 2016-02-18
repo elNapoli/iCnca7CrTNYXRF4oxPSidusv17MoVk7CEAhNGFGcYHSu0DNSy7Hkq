@@ -3,7 +3,7 @@
 @section('Dashboard') Postulación @endsection
 
 @section('content')
-    @include('DocumentoIdentidad.modal_documento_identidad')
+    @include('documentoIdentidad.modal_documento_identidad')
     {!!Form::hidden('getUrlIndexStep',url('postulacion/index-step'),array('id'=>'getUrlIndexStep'));!!}
 
     <div id="wizard">

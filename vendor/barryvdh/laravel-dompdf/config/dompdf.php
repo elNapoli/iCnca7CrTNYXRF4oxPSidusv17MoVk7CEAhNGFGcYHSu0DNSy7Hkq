@@ -87,7 +87,7 @@ return array(
         /**
          * Whether to enable font subsetting or not.
          */
-        "DOMPDF_ENABLE_FONTSUBSETTING" => false,
+        "DOMPDF_ENABLE_FONTSUBSETTING" => true,
 
         /**
          * The PDF rendering backend to use
@@ -219,7 +219,7 @@ return array(
          *
          * @var bool
          */
-        "DOMPDF_ENABLE_JAVASCRIPT" => true,
+        "DOMPDF_ENABLE_JAVASCRIPT" => false,
 
         /**
          * Enable remote file access

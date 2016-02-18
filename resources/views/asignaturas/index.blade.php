@@ -50,7 +50,7 @@
 			            { "data":"nivel" },
 			            { "data":"anio" },
 			            { "data":"carrera_r.nombre" },
-			            { "data":"carrera_r.facultad_r.campus_sede_r.universidad_r.nombre" },
+			            { "data":"carrera_r.facultad_r.campus_sedes_r.universidad_r.nombre" },
 			            { "data": null,
 			                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
 			                    $(nTd).html("<a href='asignaturas/edit/"+oData.codigo+"' class='btn-edit'> Edit</a>"+

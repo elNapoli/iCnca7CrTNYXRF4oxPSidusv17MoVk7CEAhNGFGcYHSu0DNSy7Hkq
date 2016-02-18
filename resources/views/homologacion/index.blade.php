@@ -25,6 +25,7 @@
 
                 
 {!!Form::hidden('getUrlAsignaturaByCodigo', url('asignaturas/asignatura-by-codigo'),array('id'=>'getUrlAsignaturaByCodigo'));!!}
+{!!Form::hidden('getUrlStoreCursoHomologado', url('homologacion/store'),array('id'=>'getUrlStoreCursoHomologado'));!!}
             
 
 
@@ -68,39 +69,57 @@
                 { "data": null,
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                         //$(nTd).attr('data','jojo');
-                        var html = '<option value ="">Seleccione código</option>';
+                        var html = '';
+                        $(nTd).html(sData.codigo_1);
 
-                        $.each(oData.codigo_asignatura, function(index, subCatObj){
-                       
-                            html = html + '<option value ="'+subCatObj+'">'+subCatObj+'</option>';
+                        if(sData.periodo === ''){
+                            html = '<option value ="">Seleccione código</option>';
+                            disabled = '';
+                            $.each(oData.codigo_asignatura, function(index, subCatObj){
+                           
+                                html = html + '<option value ="'+subCatObj+'">'+subCatObj+'</option>';
+                                
+                            });
+
+                            $(nTd).html('<select  id="codigo_asignatura_1-'+iRow+'" mane="codigo_asignatura_1-'+iRow+'" class=" codigo_asignatura_select form-control"> '+html+'</select>');
+
+                        }
+                        
+
                             
-                        });
-
                         
-                        $(nTd).html('<select id="codigo_1" mane="codigo_1" class="form-control"> '+html+'</select>');
+
+                      
 
                     }
                 },
-                { "data": "codigo_1" },
+                { "data": "asignatura_1" },
                 { "data": null,
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                                               
-                        $(nTd).html('<input type="text" id="codigo_asignatura_2" name="codigo_asignatura_2" class="form-control">');
+                        $(nTd).html(sData.asignatura_2);
+                        if(sData.periodo === ''){
+                            
+                            $(nTd).html('<input type="text" value="'+oData.codigo_2+'" id="codigo_asignatura_2-'+iRow+'" name="codigo_asignatura_2-'+iRow+'" class="form-control">');
+                        }       
 
                     }
                 },
                 { "data": null,
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html(sData.codigo_2);
+                        if(sData.periodo === ''){
                         
-                        $(nTd).html('<input type="text" id="nombre_asignatura_2" name="nombre_asignatura_2" class="form-control">');
+                            $(nTd).html('<input type="text" value="'+oData.asignatura_2+'" id="nombre_asignatura_2-'+iRow+'" name="nombre_asignatura_2'+iRow+'" class="form-control">');
+                        }
 
                     }
                 },
                 { "data": null,
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                                           
-                        $(nTd).html('<a  href="#!" class="btn btn-info btn-circle"><i class="fa  fa-plus-circle"></i>'+
-                            '</a>');
+                        $(nTd).html("<a href='#!'  class='addCurso model-open-edit'> Agregar</a>"+
+                                "<a href='#!' class='btn-delete' > eliminar</a>"
+                        );
 
                     }
                 }
@@ -109,13 +128,64 @@
         });
 
 
-        $('#tableCursosHomologados').on('change','#codigo_1',function(){
+        $('#tableCursosHomologados').on('click','.addCurso',function(){
+
             var row = dt.row( $(this).parent().parent() ).index();
 
+            var codigo_1 = $('#codigo_asignatura_1-'+row).val();
+            var codigo_2 = $('#codigo_asignatura_2-'+row).val();
+            var nombre_asignatura_2 = $('#nombre_asignatura_2-'+row).val();
+           // alert(nombre_asignatura_2);
+
+            $.ajax({
+                                  
+                async : false,
+                data:{
+                    _token: $('#_token').val(),
+                    codigo_1: codigo_1,
+                    codigo_2: codigo_2,
+                    nombre_asignatura_2: nombre_asignatura_2,
+                    pga: $('#pga').val(),
+
+                },
+                //Cambiar a type: POST si necesario
+                type: 'POST',
+                // Formato de datos que se espera en la respuesta
+                dataType: "json",
+                // URL a la que se enviará la solicitud Ajax
+                url:$('#getUrlStoreCursoHomologado').val() ,
+                success : function(json) {   
+       
+                        dt.ajax.reload();              
+             
+                    
+                },
+
+                error : function(xhr, status) {
+                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                        for(var key in xhr.responseJSON)
+                        {
+                            html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                        }
+                        $('.message').html(html+'</div>');
+              
+                },
+                
+
+
+            });
+
+
+
+        });
+        $('#tableCursosHomologados').on('change','.codigo_asignatura_select',function(){
+            var row = dt.row( $(this).parent().parent() ).index();
              $.ajax({
                                   
                 async : false,
-                data:{_token: $('#_token').val(),codigoAsignatura: $(this).val()},
+                data:{
+                    _token: $('#_token').val(),
+                    codigoAsignatura: $(this).val()},
                 //Cambiar a type: POST si necesario
                 type: 'POST',
                 // Formato de datos que se espera en la respuesta
@@ -123,10 +193,12 @@
                 // URL a la que se enviará la solicitud Ajax
                 url:$('#getUrlAsignaturaByCodigo').val() ,
                 success : function(json) {   
-       
-             
-                    dt.cell( row, 0 ).data( json.periodo ).draw();
-                    dt.cell( row, 2 ).data( json.nombre ).draw();
+       console.log(row);
+                    dt.cell( row, 0 ).data( json.periodo );
+
+                    dt.cell( row, 2 ).data( json.nombre );
+                
+                   // dt.ajax.reload();
                     
                 },
 

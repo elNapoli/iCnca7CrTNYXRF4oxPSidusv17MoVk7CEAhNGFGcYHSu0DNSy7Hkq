@@ -44,7 +44,7 @@ class PreUach extends Model
         return $this->hasMany('App\ContactoExtranjero','postulante');
     }
 
-    public function homologaciones()
+    public function homologacionesR()
     {
         return $this->hasMany('App\Homologacion','postulante');
     }

@@ -15,12 +15,12 @@ class AsignaturaHomologada extends Model
 
    
 
-    public function Asignatura()
+    public function asignaturaR()
     {
     	return $this->belongsTo('App\Asignatura','asignatura'); //Id local
     }
 
-    public function Homologacion()
+    public function homologacionR()
     {
         return $this->belongsTo('App\Homologacion','homologacion'); //Id local
     }

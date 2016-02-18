@@ -40,7 +40,6 @@ class AsignaturaHomologadaTableSeeder extends Seeder
                 $asigHomologada->asignatura                    = $asigCodigo[$faker->unique->numberBetween($min = 0, $max = count($asigCodigo)-1)];
                 $asigHomologada->codigo_asignatura_intercambio = $faker->bothify('???###');
                 $asigHomologada->nombre_asignatura_intercambio = $faker->sentence($nbWords = 3, $variableNbWords = true);
-                $asigHomologada->semestre                      = $semestre[$faker->numberBetween($min = 0, $max = 2)];
 
                 $asigHomologada->save();
 

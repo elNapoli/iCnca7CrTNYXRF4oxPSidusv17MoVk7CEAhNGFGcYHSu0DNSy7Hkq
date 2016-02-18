@@ -34,4 +34,27 @@ class asignatura extends Model
     {
         return $this->hasMany('App\AsignaturaHomologada','asignatura'); //Campo en tabla foranea
     }
+
+    public function getPeriodoAttribute(){
+
+         $periodo = 'Semestre I';
+        if($this->nivel%2==0)
+        {
+
+            $periodo = 'Semestre II';
+
+        }
+
+        return $periodo;
+    }
+
+    public function toArray(){
+
+        $array = parent::toArray();
+       
+        $array['periodo'] = $this->periodo;
+        
+        return $array;
+    }
+
 }

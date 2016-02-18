@@ -8,6 +8,8 @@ use Illuminate\Contracts\Auth\Guard;
 use App\Postulante;
 use App\PreUach;
 use App\PreNoUach;
+use App\PreUEstudioActual;
+use App\PreNUEstudioActual;
 use App\Postgrado;
 use App\Pais;
 use App\Ciudad;
@@ -28,6 +30,23 @@ class PostulacionController extends Controller {
 		$continentes = Continente::lists('nombre','id');
 
 		return view('postulacion.index',compact('continentes'));
+	}
+	public function getIndexStep(Guard $auth){
+		$indexStep = 0;
+		$postulante = Postulante::where('user_id',$auth->id())->get();
+		$indexStep = $postulante->count();
+		//dd($postulante);
+		if($indexStep != 0){
+			//dd( (bool)(PreUEstudioActual::where('postulante',$postulante->first()->id)->get()->count()));
+			$bool1 = (bool)(PreNUEstudioActual::where('postulante',$postulante->first()->id)->get()->count());
+			$bool2 = (bool)(PreUEstudioActual::where('postulante',$postulante->first()->id)->get()->count());
+			
+			$indexStep = $indexStep +(int)($bool1 or $bool2);
+		}
+
+		return response()->json([
+				'indexStep'=> $indexStep
+				]);
 	}
 
 

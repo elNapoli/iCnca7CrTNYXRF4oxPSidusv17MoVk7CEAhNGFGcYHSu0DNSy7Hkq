@@ -1,0 +1,1 @@
+Yo afirmo que la información y documentacio´n contenida en esta postulación es verdadera, completa y precisa.

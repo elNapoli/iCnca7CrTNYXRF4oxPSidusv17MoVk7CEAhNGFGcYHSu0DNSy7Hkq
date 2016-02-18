@@ -12,13 +12,24 @@ class DeclaracionController extends Controller {
 
 	//
 	public function getCreateOrEdit(Guard $auth){
-			$declaracion = Declaracion::find( Postulante::where('user_id',$auth->id())->first()->id);
-		if($declaracion){
-			return view('postulacion.declaracion.edit',compact('declaracion'));
+		$postulante = Postulante::where('user_id',$auth->id())->first();
+		$declaracion = Declaracion::find( $postulante->id);
+		
+		if($postulante->pregradosR->procedencia === 'UACH'){
 
+
+			if($declaracion){
+				return view('postulacion.declaracion.edit',compact('declaracion'));
+
+			}
+			else{
+				return view('postulacion.declaracion.create');
+
+			}
 		}
 		else{
-			return view('postulacion.declaracion.create');
+
+				return view('postulacion.declaracion.no_uach.step_declaracion');
 
 		}
 	}

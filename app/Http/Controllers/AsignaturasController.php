@@ -21,11 +21,17 @@ class AsignaturasController extends Controller {
 		return view('asignaturas.index');
 	}
 
-	public function getAsignaturas()
+	public function postAsignaturaByCodigo(Request $request)
 	{
+<<<<<<< HEAD
 		$asignaturas = Asignatura::with('carreraR.facultadR.campusSedesR.universidadR')->get();
+=======
+		/*$asignaturas = Asignatura::with('carreraR.facultadR.campusSedeR.universidadR')->get();
+>>>>>>> b52faf2a4842be5d29a865d32500989a213df9cc
 		$arra = array('data'=>$asignaturas->toArray());
-		return json_encode($arra);
+		return json_encode($arra);*/ // no sé si sobreescribií un método, por lo que preferí comentar lo que estaba en el cuerpo
+		$asignaturas = Asignatura::find($request->get('codigoAsignatura'))->toArray();
+		return json_encode($asignaturas);
 	}
 
 	public function getCreate()

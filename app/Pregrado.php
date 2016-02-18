@@ -26,9 +26,9 @@ class Pregrado extends Model
     }
 
 
-    public function prePostulacionUniversidades()
+    public function prePostulacionUniversidadesR()
     {
-        return $this->hasMany('App\PrePostulacionUniversidad','postulante');
+        return $this->belongsTo('App\PrePostulacionUniversidad','postulante','postulante');
     }
 
     public function preUachsR()

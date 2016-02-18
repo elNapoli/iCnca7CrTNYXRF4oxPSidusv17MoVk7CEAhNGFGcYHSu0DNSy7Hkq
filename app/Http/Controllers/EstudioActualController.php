@@ -68,9 +68,9 @@ class EstudioActualController extends Controller {
 					$nuevo = 1;
 					$estudioActual = PreUEstudioActual::where('postulante',$postulante->id)->first();
 
-					$parametros['continente']   = $estudioActual->carreraR->facultadR->campusSedeR->ciudadR->paisR->continente;
-					$parametros['pais']         = $estudioActual->carreraR->facultadR->campusSedeR->ciudadR->paisR->id;
-					$parametros['campus_sede']  = $estudioActual->carreraR->facultadR->campusSedeR->id;
+					$parametros['continente']   = $estudioActual->carreraR->facultadR->campusSedesR->ciudadR->paisR->continente;
+					$parametros['pais']         = $estudioActual->carreraR->facultadR->campusSedesR->ciudadR->paisR->id;
+					$parametros['campus_sede']  = $estudioActual->carreraR->facultadR->campusSedesR->id;
 					$parametros['facultad']     = $estudioActual->carreraR->facultadR->id;
 					$parametros['carrera']      = $estudioActual->carrera;
 					$parametros['director']     = $estudioActual->carreraR->director;

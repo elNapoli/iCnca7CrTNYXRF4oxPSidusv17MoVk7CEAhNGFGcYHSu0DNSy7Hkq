@@ -88,6 +88,9 @@
                     <li>
                         <a href="{{ url('representante-uach/') }}">Representante</a>
                     </li>
+                     <li>
+                        <a href="{{ url('confirmacion-llegada/') }}">Confirmación de llegada</a>
+                    </li>
                     
 
                 </ul>

@@ -40,6 +40,7 @@ Route::controllers([
 
 	'declaracion' => 'DeclaracionController',
 	'homologacion' => 'CursosHomologadosController',
+	'confirmacion-llegada' => 'ConfirmacionLlegadaController',
 	'representante-uach' => 'RepresentanteUachController',
 
 

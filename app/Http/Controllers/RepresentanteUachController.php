@@ -28,12 +28,42 @@ class RepresentanteUachController extends Controller {
 
 	}
 
-	public function postStore(RepressentanteRequest $request){
+	public function postStore(RepressentanteRequest $request,Guard $auth){
+		$postulante = Postulante::where('user_id',$auth->id())->first();
 
-		$representanteUach = PreUResponsable::create($request->all());
+		$representanteUach = new PreUResponsable();
+		$representanteUach->fill($request->all());
+		$representanteUach->postulante = $postulante->id;
+		$representanteUach->save();
+
+
 		return response()->json([
 						'message'=> 'se Guardó el representante Correctamente.'
 						]);
 //		dd('entre');
+	}
+
+	public function postEdit(Request $request){
+		$representanteUach =  PreUResponsable::find($request->get('id'));
+		return $representanteUach->toJson();
+	}
+	public function postDestroy(Request $request){
+
+		$representanteUach =  PreUResponsable::find($request->get('id'));
+		$representanteUach->delete();
+		return response()->json([
+						'message'=> 'El representante se ha eliminado exitosamente.'
+						]);
+
+	}
+
+	public function putUpdate(RepressentanteRequest $request){
+
+		$representanteUach =  PreUResponsable::find($request->get('id'));
+		$representanteUach->fill($request->all());
+		$representanteUach->save();
+		return response()->json([
+						'message'=> 'El representante se ha actualizado exitosamente.'
+						]);
 	}
 }

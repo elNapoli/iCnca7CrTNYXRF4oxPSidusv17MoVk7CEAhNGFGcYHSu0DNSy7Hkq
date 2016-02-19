@@ -2,8 +2,11 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Auth\Guard;
 
 use Illuminate\Http\Request;
+use App\Postulante;
+
 
 class PdfController extends Controller {
 
@@ -12,26 +15,31 @@ class PdfController extends Controller {
 	 *
 	 * @return Response
 	 */
-    public function getInvoice() 
+    public function getInvoice(Guard $auth) 
     {
-        $data = $this->getData();
+        $p = $this->getData($auth);
         $date = date('Y-m-d');
-        $invoice = "2222";
-        $view =  \View::make('pdf.invoice', compact('data', 'date', 'invoice'));
+        $view =  \View::make('pdf.invoice', compact('p', 'date'));
         $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML(utf8_decode($view));
+        $pdf->loadHTML($view);
         return $pdf->stream('invoice');
     }
 
-    public function getData() 
+    public function getInvoiceDownload(Guard $auth) 
     {
-        $data =  [
-            'quantity'      => '1' ,
-            'description'   => 'some ramdom text',
-            'price'   => '500',
-            'total'     => '500'
-        ];
-        return $data;
+        $p = $this->getData($auth);
+        $date = date('Y-m-d');
+        $view =  \View::make('pdf.invoice', compact('p', 'date'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->download('invoice');
+    }
+
+    public function getData($auth) 
+    {
+        $post = Postulante::where('user_id',$auth->id())->get(); //objeto post con informacion extra
+        $postulante = Postulante::findOrFail($post[0]->id); //individualizo al postulante
+        return $postulante;
     }
 
     public function getPrueba()

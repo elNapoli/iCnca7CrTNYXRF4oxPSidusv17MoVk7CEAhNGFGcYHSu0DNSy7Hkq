@@ -23,7 +23,7 @@ class PreUach extends Model
         return $this->belongsTo('App\Pregrado','postulante','postulante');
     }
 
-    public function ciudad()
+    public function ciudadR()
     {
         return $this->belongsTo('App\Ciudad','ciudad');
     }
@@ -54,9 +54,9 @@ class PreUach extends Model
         return $this->belongsTo('App\PreUEstudioActual','postulante','postulante');
     }
 
-    public function preURespnsables()
+    public function preURespnsablesR()
     {
-        return $this->hasMany('App\PreUResponsable','postulante');
+        return $this->hasMany('App\PreUResponsable','postulante','postulante');
     }
 
 

@@ -46,6 +46,11 @@
                     </li>
 
                     <li>
+                        <a href="{{ url('docs/') }}">Documentos</a>
+                    </li>
+
+
+                    <li>
                         <a href="{{ url('asistentes/') }}">Asistentes</a>
                     </li>
                     <li>

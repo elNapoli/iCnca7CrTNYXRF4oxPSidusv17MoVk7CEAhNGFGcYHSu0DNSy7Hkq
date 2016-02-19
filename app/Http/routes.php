@@ -37,6 +37,7 @@ Route::controllers([
 	'financiamientos' => 'FinanciamientoController',
 
 	'pdf' => 'PdfController',
+	'docs' => 'DocumentosPostulacionController',
 
 	'declaracion' => 'DeclaracionController',
 	'homologacion' => 'CursosHomologadosController',

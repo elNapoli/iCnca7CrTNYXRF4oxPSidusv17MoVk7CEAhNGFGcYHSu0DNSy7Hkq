@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Postulante extends Model
 {
     protected $table    = 'postulante';
+    protected $primaryKey = 'id';
     public $timestamps  = false;
     protected $fillable = ['apellido_paterno',
                             'apellido_materno',
@@ -37,7 +38,7 @@ class Postulante extends Model
         return $this->belongsTo('App\Pregrado','id','postulante');  //local , Remota
     }                                            
 
-    public function documentoIdentidades()
+    public function documentoIdentidadR()
     {
         return $this->hasMany('App\DocumentoIdentidad','postulante');
     }

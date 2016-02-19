@@ -12,7 +12,7 @@ class AddPreUResponsableFk extends Migration
      */
     public function up()
     {
-        Schema::table('pre_u_estudio_actual', function(Blueprint $table) {
+        Schema::table('pre_u_responsable', function(Blueprint $table) {
             $table  ->foreign('postulante','pre_u_responsable_pre_uach_foreign')
                     ->references('postulante')
                     ->on('pre_uach')
@@ -31,8 +31,8 @@ class AddPreUResponsableFk extends Migration
      */
     public function down()
     {
-        Schema::table('pre_u_estudio_actual', function(Blueprint $table) {
-          //  $table->dropForeign('pre_u_responsable_pre_uach_foreign');
+        Schema::table('pre_u_responsable', function(Blueprint $table) {
+            $table->dropForeign('pre_u_responsable_pre_uach_foreign');
             
         });
     }

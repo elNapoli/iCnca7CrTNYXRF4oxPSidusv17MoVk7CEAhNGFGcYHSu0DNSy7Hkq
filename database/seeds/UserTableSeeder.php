@@ -41,7 +41,7 @@ class UserTableSeeder extends Seeder
                 'codigo_confirmacion'=> str_random(),
                 'tipo_usuario'=> 'usuario',
                 'email'=>$faker->unique->email ,
-                'password'=>'secret' 
+                'password'=>bcrypt('secret') 
             ];
 
         }

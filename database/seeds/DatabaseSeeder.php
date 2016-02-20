@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
 
 
        //###########################################
-       $this->call(UserTableSeeder::class);
+      $this->call(UserTableSeeder::class);
        $this->call(ContinenteTableSeeder::class);
        $this->call(PaisTableSeeder::class);
        $this->call(CiudadTableSeeder::class);
@@ -31,10 +31,10 @@ class DatabaseSeeder extends Seeder
 
 
        //###########################################
-       $this->call(PostulanteTableSeeder::class);
        $this->call(DocumentoIdentidadTableSeeder::class);
+       $this->call(PostulanteTableSeeder::class);
+     
        $this->call(DocumentoAdjuntoTableSeeder::class);
-
 
       //###########################################
        $this->call(FinanciamientoTableSeeder::class);
@@ -53,7 +53,8 @@ class DatabaseSeeder extends Seeder
         $this->call(DepartamentoTableSeeder::class);
         $this->call(FacultadTableSeeder::class);
         $this->call(CarreraTableSeeder::class);
-        $this->call(AsignaturaTableSeeder::class);
+        $this->call(AsignaturaTableSeeder::class); // hasta aca optimicé! 
+
 
        //###########################################
         $this->call(OtraMaestriaTableSeeder::class);

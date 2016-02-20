@@ -17,6 +17,7 @@ class FacultadTableSeeder extends Seeder
     {
         $faker = Faker::create();
         $CampusSede =  CampusSede::all();
+        $samples_temp = [];
 
         foreach ($CampusSede as $item) {
             $numFacultad = $faker->numberBetween($min = 3, $max = 10);
@@ -24,16 +25,16 @@ class FacultadTableSeeder extends Seeder
             # code...
             for($i = 0; $i < $numFacultad; $i++)
             {
-                $facultad = new Facultad();
-
-                $facultad->campus_sede  = $item->id;
-                $facultad->nombre       = $faker->name . ' University';
-                $facultad->telefono     = $faker->phoneNumber;
-
-                $facultad->save();
+                $samples_temp[] = [
+                    'campus_sede' => $item->id,
+                    'nombre'=>  $faker->name . ' University',
+                    'telefono'=>$faker->phoneNumber
+                ];  
 
             }
         }
+        Facultad::insert($samples_temp);
+
 
     }
 }

@@ -14,6 +14,7 @@
       		<div class="panel-heading"><a class="btn-info btn" id='openModalRepresentante' href="#!">Crear representante</a></div>
       		<div class="message"></div>
 		
+  {!! Form::model($parametros, ['url'=>['paises/update'], 'method'=>'PUT']) !!}
          
         <div class="form-horizontal">
         	<div class="col-lg-6">
@@ -50,7 +51,7 @@
         		<h4>Confirmación de Arribo y Registro</h4>
           	<div class="form-group">
             	{!!  Form::label('fecha_llegada', 'Fecha de presentación en Institución de 
-				Destino: ',array('class'=>'col-lg-5 control-label'));!!}
+				        Destino: ',array('class'=>'col-lg-5 control-label'));!!}
 
 	            <div class="col-lg-6">
 		            {!! Form::text('fecha_llegada',null,array('class' => 'form-control'));!!}
@@ -78,6 +79,7 @@
           	
 
         </div>
+  {!!Form::close()!!}
 
         </div>
     </div>

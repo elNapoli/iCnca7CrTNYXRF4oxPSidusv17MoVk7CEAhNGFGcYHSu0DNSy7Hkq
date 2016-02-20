@@ -15,17 +15,18 @@ class FinanciamientoTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $financiamiento = array('Padres', 'Yo','Beca');
+        $financiamiento = array('Padres','Universidad', 'Yo','Beca','Otro');
+        $samples_temp = [];
 
 
 		foreach ($financiamiento as $item) {
 
-            $financiamientoTemp = new Financiamiento();
+            $samples_temp[] = [
+                'nombre' => $item
+            ];
 
-            $financiamientoTemp->nombre = $item;
-
-            $financiamientoTemp->save();
 		}
+        Financiamiento::insert($samples_temp);
 
     }
 }

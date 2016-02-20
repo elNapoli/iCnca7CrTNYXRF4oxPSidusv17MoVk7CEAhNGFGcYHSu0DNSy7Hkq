@@ -18,21 +18,21 @@ class DepartamentoTableSeeder extends Seeder
        $tipo = array('Movilidad estudiantil',
                                 'Relaciones internacionales');
         $campus_sede = CampusSede::all();
+        $samples_temp = [];
+
         foreach ($campus_sede as $item)
         {
-            $departamento = new Departamento();         
-
-
-            $departamento->tipo                 = $tipo[$faker->numberBetween($min = 0, $max = 1)];
-            $departamento->sitio_web            = $faker->url;  
-            $departamento->nombre_encargado     = $faker->firstName($gender = null|'male'|'female');
-            $departamento->telefono             = $faker->phoneNumber;
-            $departamento->email                = $faker->email;
-            $departamento->campus_sede          = $item->id;
-
-            $departamento->save();
-
+            $samples_temp[] = [
+                'tipo' => $tipo[$faker->numberBetween($min = 0, $max = 1)],
+                'sitio_web'=> $faker->url,
+                'nombre_encargado'=>$faker->firstName.' '.$faker->lastName ,
+                'telefono'=>$faker->phoneNumber ,
+                'email'=>$faker->email,
+                'campus_sede'=> $item->id
+            ];
         }  
+        Departamento::insert($samples_temp);
+
 
 
     }

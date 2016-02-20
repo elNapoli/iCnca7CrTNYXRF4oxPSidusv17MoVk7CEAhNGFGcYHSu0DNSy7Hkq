@@ -19,39 +19,29 @@ class PostulanteTableSeeder extends Seeder
 		    //$tipoEstudio = array('PREGRADO','POSTGRADO');
 
 	
+          $samples_temp = [];
 
         for($i = 0; $i < 100; $i++)
         {
-            $postulante = new Postulante();
-            $sexo = $faker->numberBetween($min = 0, $max = 1);
-           
-          if ( $sexo == 0) {
-            	$postulante->nombre = $faker->firstNameFemale;
-              $postulante->sexo   = 'f';
-      		}
-      		else{
-      			$postulante->nombre =$faker->firstNameMale;
-            $postulante->sexo   = 'm';
-
-      		}
-
-      		  
-            $postulante->apellido_paterno = $faker->lastName;
-            $postulante->apellido_materno = $faker->lastName;
-            $postulante->nacionalidad     = $faker->citySuffix;
-            $postulante->lugar_nacimiento = $faker->country;
-            $postulante->telefono         = $faker->phoneNumber;
-            $postulante->email_personal   = $faker->email;
-            $postulante->ciudad           = $faker->numberBetween($min = 1, $max = 500);
-          //  $postulante->tipo_estudio     = $tipoEstudio[$faker->numberBetween($min = 0, $max = 1)]; esto se llena por consula
-            $postulante->direccion        = $faker->address;
-            $postulante->user_id          = $faker->unique->numberBetween($min = 1, $max = 150);
-            $postulante->fecha_nacimiento = $faker->dateTimeBetween($startDate = '-30 years', $endDate = '-20 years');
-
-
-            $postulante->save();
+            
+           $samples_temp[] = [
+                'nombre' => $faker->firstName,
+                'apellido_paterno'=> $faker->lastName,
+                'apellido_materno'=>$faker->lastName ,
+                'nacionalidad'=>$faker->citySuffix,
+                'lugar_nacimiento'=> $faker->country,
+                'telefono'=> $faker->phoneNumber,
+                'email_personal'=>$faker->unique->email ,
+                'ciudad'=>$faker->numberBetween($min = 1, $max = 500),
+                'direccion'=>$faker->address, 
+                'user_id'=>$faker->unique->numberBetween($min = 1, $max = 150), 
+                'fecha_nacimiento'=>$faker->dateTimeBetween($startDate = '-30 years', $endDate = '-20 years'),
+                'sexo'=>$faker->randomElement($array = array ('f','m'))
+            ];
 
         }
+        Postulante::insert($samples_temp);
+        
 
 
 

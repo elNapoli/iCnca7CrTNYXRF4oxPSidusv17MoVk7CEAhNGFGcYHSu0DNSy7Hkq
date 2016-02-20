@@ -16,17 +16,16 @@ class PostOtroFinanciamientoTableSeeder extends Seeder
     {
         $faker = Faker::create();
         $postgrado = Postgrado::all();
+        $samples_temp = [];
 
         foreach ($postgrado as $item)
         {
-            $postotrofinanciamiento = new PostOtroFinanciamiento();
-
-            $postotrofinanciamiento->postulante  = $item->postulante;
-            $postotrofinanciamiento->descripcion = $faker->text($maxNbChars = 100) ;
-
-            $postotrofinanciamiento->save();
-
+            $samples_temp[] = [
+                'postulante' => $item->postulante,
+                'descripcion'=> $faker->text($maxNbChars = 100) 
+            ];
         }
 
+        PostOtroFinanciamiento::insert($samples_temp);
     }
 }

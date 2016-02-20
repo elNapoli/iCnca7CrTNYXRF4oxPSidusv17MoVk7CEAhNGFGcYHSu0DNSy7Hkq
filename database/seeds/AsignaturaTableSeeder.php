@@ -16,25 +16,28 @@ class AsignaturaTableSeeder extends Seeder
     {
         $faker = Faker::create();
         $carrara = Carrera::all();
+        $samples_temp = [];
 
-            for($j = 1; $j < 100; $j ++){
+        
+            for($j = 1; $j < 300; $j ++){
         for($i = 0; $i < 20; $i ++)
         {
 
 
-                $asignatura = new Asignatura;
-        
-                $asignatura->codigo = $faker->bothify('???###');
-                $asignatura->nombre = $faker->sentence($nbWords = 3, $variableNbWords = true);
-                $asignatura->nivel = $faker->numberBetween($min = 1, $max = 12);
-                $asignatura->anio = $faker->numberBetween($min = 1, $max = 6);
-                $asignatura->carrera = $j;
-
-                $asignatura->save();
+                $samples_temp[] = [
+                    'codigo' => $faker->bothify('??????######'),
+                    'nombre'=> $faker->sentence($nbWords = 3, $variableNbWords = true),
+                    'nivel'=>$faker->numberBetween($min = 1, $max = 12) ,
+                    'anio'=>$faker->numberBetween($min = 1, $max = 6) ,
+                    'carrera'=> $j
+                ];
 
             }
 
 
      	 }
+
+        Asignatura::insert($samples_temp);
+
     }
 }

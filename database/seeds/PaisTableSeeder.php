@@ -22,16 +22,17 @@ class PaisTableSeeder extends Seeder
         $pais->continente = 2;
 
         $pais->save();
+        $samples_temp = [];
+
         for($i = 0; $i < 200; $i++)
-        {
-            $pais = new Pais();
-
-            $pais->nombre     = $faker->country;
-            $pais->continente = $faker->numberBetween($min = 1, $max = 6);
-
-            $pais->save();
+        {  
+            $samples_temp[] = [
+                'nombre' => $faker->country,
+                'continente'=> $faker->numberBetween($min = 1, $max = 6)
+            ];
 
         }
+         Pais::insert($samples_temp);
 
     }
 }

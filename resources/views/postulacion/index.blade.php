@@ -49,7 +49,7 @@
 
     <script>
         $(document).on('ready',function() {
-            initDocumentoIdentidad();
+            
             var indexStep = $.ajax({
                                   
                 async : false,
@@ -404,6 +404,7 @@
 
             });
             $('section#wizard-p-0').on('click','#open_modal_documento_identidad',function(){
+                initDocumentoIdentidad();
                 $('#modal_documento_identidad').modal('show');
                
 

@@ -67,8 +67,8 @@ class PostulacionController extends Controller {
 			$parametros = array(
 								'id_postulante' => $postulante->id,
 								'pais' => $postulante->ciudadR->paisR->id,
-							    "tipo" => $postulante->documentoIdentidades->first()->tipo,
-							    'numero' =>  $postulante->documentoIdentidades->first()->numero,
+							    "tipo" => $postulante->documentoIdentidadR->first()->tipo,
+							    'numero' =>  $postulante->documentoIdentidadR->first()->numero,
 							    'continente' => $postulante->ciudadR->paisR->continente,							   
 							);
 			if($postulante->tipo_estudio ==='Pregrado'){

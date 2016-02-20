@@ -65,6 +65,10 @@ class PreUach extends Model
         return $this->belongsTo('App\Asistente','postulante','postulante');
     }
 
+        public function declaracionR()
+    {
+        return $this->belongsTo('App\Declaracion','postulante','postulante');
+    }
 
 
 

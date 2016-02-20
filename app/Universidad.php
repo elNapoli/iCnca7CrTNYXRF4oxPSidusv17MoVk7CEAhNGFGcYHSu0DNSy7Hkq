@@ -10,7 +10,7 @@ class Universidad extends Model
     public $timestamps   = false;
     protected $fillable = ['nombre'];
 
-    public function convenios()
+    public function conveniosR()
     {
         return $this->hasMany('App\Convenio','universidad');
     }

@@ -23,6 +23,19 @@
   border-left: 1px solid #000000;
   border-right: 1px solid #000000;
 }
+#tipos{
+} 
+
+#tipos .t1{
+  border: 1px solid #000000;
+}
+#tipos .t2{
+  background-color: white;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+
+}
+
 table {
   width: 100%;
   table-layout: fixed;
@@ -114,6 +127,16 @@ table td.total {
   <div style="left; width: 55%; background: #1A8202 no-repeat margin-right: 200px; left: 34.4607px; font-size: 18.2353px; color: #fff; font-family: sans-courier; transform: scaleX(0.983209);" data-canvas-width="131.75000000000003">Universidad Austral de Chile
     <br>Dirección de Estudios de Pregrado<br>Unidad de Movilidad Estudiantil<br>Vicerrectoria Academica</div>
     <br>
+    <br>
+      <table id="tipos" border="1" cellspacing="0" cellpadding="0">
+        <tbody>
+          <tr>
+            <th colspan="25" class="t1">Tipo de estudio: {{$p->tipo_estudio}}</th>
+            <th colspan="53" class="t2"></th>
+            <th colspan="22" class="t1">Procedencia: {{$p->pregradosR->procedencia}} </th>
+          </tr>
+        </tbody>
+      </table>
 
     <hr style="color: green;">
 
@@ -124,19 +147,27 @@ table td.total {
         <tbody>
           <tr>
             <th colspan="18" class="no">Apellido paterno</th>
-            <th colspan="17" class="desc">{{$p->apellido_paterno}}</th>
+            <th colspan="32" class="desc">{{$p->apellido_paterno}}</th>
             <th colspan="18" class="no">Aepllido materno</th>
-            <th colspan="17" class="desc">{{$p->apellido_materno}}</th>
-            <th colspan="10" class="no">Nombre</th>
-            <th colspan="20" class="desc">{{$p->nombre}}</th>
+            <th colspan="32" class="desc">{{$p->apellido_materno}}</th>
+          </tr>
+          <tr>
+            <th colspan="10" class="no">Nombres</th>
+            <th colspan="50" class="desc">{{$p->nombre}}</th>
+            <th colspan="22" class="no">Fecha de Nacimiento</th>
+            <th colspan="18" class="desc">{{$p->fecha_nacimiento}}</th>
           </tr>
           <tr>
             <th colspan="22" class="no">Documento Nacional</th>
-            <th colspan="22" class="desc">{{$p->documentoIdentidadR[0]->numero}}</th>
-            <th colspan="22" class="no">Fecha de Nacimiento</th>
-            <th colspan="20" class="desc">{{$p->fecha_nacimiento}}</th>
-            <th colspan="8" class="no">Edad</th>
+            <th colspan="46" class="desc">{{$p->documentoIdentidadR[0]->numero}}</th>
+            <th colspan="10" class="no">Edad</th>
             <th colspan="6" class="desc">{{$date-$p->fecha_nacimiento}}</th>
+            <th colspan="10" class="no">Sexo</th>
+            @if($p->sexo = 'm')
+              <th colspan="6" class="desc">M</th>
+            @elseif($p->sexo = 'f')
+              <th colspan="6" class="desc">F</th>
+              @endif
           </tr>
           <tr>
             <th colspan="17" class="no">Direccion actual</th>
@@ -166,7 +197,7 @@ table td.total {
             <th colspan="20" class="no">Enfermedades</th>
             <th colspan="45" class="desc">{{$p->pregradosR->preUachsR->enfermedades}}</th>
             <th colspan="20" class="no">Grupo sanguineo</th>
-            <th colspan="15" class="desc">{{$p->pregradosR->preUachsR->grupo_sanguineo}}+</th>
+            <th colspan="15" class="desc">{{$p->pregradosR->preUachsR->grupo_sanguineo}}</th>
           </tr>            
         </tbody>
       </table>
@@ -175,18 +206,20 @@ table td.total {
       <table border="0" cellspacing="0" cellpadding="0">
         <tbody>
           <tr>
-            <th colspan="30" class="no">Nombre y parentezco</th>
-            <th colspan="70" class="desc">1231231231</th>
+            <th colspan="15" class="no">Nombre</th>
+            <th colspan="35" class="desc">{{$p->pregradosR->preUachsR->preURespnsablesR[0]->nombre}}</th>
+            <th colspan="15" class="no">Parentesco</th>
+            <th colspan="35" class="desc">{{$p->pregradosR->preUachsR->preURespnsablesR[0]->parentesco}}</th>            
           </tr>
           <tr>
             <th colspan="20" class="no">Direccion</th>
-            <th colspan="80" class="desc">VIH+</th>
+            <th colspan="80" class="desc">{{$p->pregradosR->preUachsR->preURespnsablesR[0]->direccion}}</th>
           </tr>              
           <tr>
             <th colspan="15" class="no">E-mail</th>
-            <th colspan="35" class="desc">1231231231</th>
+            <th colspan="35" class="desc">{{$p->pregradosR->preUachsR->preURespnsablesR[0]->email}}</th>
             <th colspan="20" class="no">Telefono</th>
-            <th colspan="30" class="desc">VIH+</th>
+            <th colspan="30" class="desc">{{$p->pregradosR->preUachsR->preURespnsablesR[0]->telefono_1}}</th>
           </tr>
         </tbody>
       </table>
@@ -195,26 +228,21 @@ table td.total {
         <tbody>
           <tr>
             <th colspan="10" class="no">Carrera</th>
-            <th colspan="90" class="desc">1231231231</th>
+            <th colspan="90" class="desc">{{$p->pregradosR->preUachsR->preUEstudioActualesR->carreraR->nombre}}</th>
           </tr>
           <tr>
             <th colspan="20" class="no">Ranking</th>
-            <th colspan="45" class="desc">bla bla bla...</th>
+            <th colspan="45" class="desc">{{$p->pregradosR->preUachsR->preUEstudioActualesR->ranking}}</th>
           	<th colspan="15" class="no">Año ingreso</th>
-            <th colspan="20" class="desc">2014</th>
+            <th colspan="20" class="desc">{{$p->pregradosR->preUachsR->preUEstudioActualesR->anio_ingreso}}</th>
           </tr>
           <tr>
             <th colspan="25" class="no">Director/a de Carrera</th>
-            <th colspan="75" class="desc">Director asdasdasdasd+</th>
+            <th colspan="75" class="desc">{{$p->pregradosR->preUachsR->preUEstudioActualesR->carreraR->director}}</th>
           </tr>              
           <tr>
             <th colspan="20" class="no">Becas y beneficios vigentes</th>
-            <th colspan="80" class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</th>
+            <th colspan="80" class="desc">{{$p->pregradosR->preUachsR->preUEstudioActualesR->beneficios}}</th>
           </tr>
         </tbody>
       </table>
@@ -222,10 +250,11 @@ table td.total {
       <table border="0" cellspacing="0" cellpadding="0">
         <tbody>
           <tr>
+            <!-- agregar condiciones como a todo lo demas xD 4 casos (sem1 o sem2) (ambos) y (desde hasta)-->
             <th colspan="20" class="no">Semestre I</th>
-            <th colspan="30" class="desc"></th>
+            <th colspan="30" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->semestre.' del '.$p->pregradosR->prePostulacionUniversidadesR->anio}}</th>
             <th colspan="20" class="no">Semestre II</th>
-            <th colspan="30" class="desc"></th>
+            <th colspan="30" class="desc"> - </th>
           </tr>            
         </tbody>
       </table>
@@ -234,9 +263,9 @@ table td.total {
         <tbody>
           <tr>
             <th colspan="20" class="no">Desde</th>
-            <th colspan="30" class="desc"></th>
+            <th colspan="30" class="desc"> - </th>
             <th colspan="20" class="no">Hasta</th>
-            <th colspan="30" class="desc"></th>
+            <th colspan="30" class="desc"> - </th>
           </tr>            
         </tbody>
       </table>     
@@ -245,17 +274,22 @@ table td.total {
         <tbody>
           <tr>
             <th colspan="25" class="no">Universidad Extranjera</th>
-            <th colspan="75" class="desc"></th>
+            <th colspan="75" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->universidadR->nombre}}</th>
           </tr> 
          <tr>
             <th colspan="25" class="no">Carrera</th>
-            <th colspan="75" class="desc"></th>
+            <th colspan="75" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->nombre}}</th>
           </tr> 
           <tr>
             <th colspan="20" class="no">Financiamiento</th>
-            <th colspan="40" class="desc"></th>
+            @if($p->pregradosR->prePostulacionUniversidadesR->financiamiento <= 3)
+              <th colspan="40" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->financiamientoR->nombre}}</th>
+            @else  
+              <th colspan="40" class="desc">es menor que 3</th>
+            @endif
+                
             <th colspan="20" class="no">Convenio</th>
-            <th colspan="20" class="desc"></th>            
+            <th colspan="20" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->universidadR->conveniosR[0]->bilateral}}</th>            
           </tr>             
         </tbody>
       </table> 
@@ -275,10 +309,10 @@ table td.total {
 
           <br></br>  
           <ul>
-          <strong>Persona que me matriculará en mi ausencia: ((Valor dinamico aqui))</strong>
+          <strong>Persona que me matriculará en mi ausencia: {{$p->pregradosR->preUachsR->declaracionR->persona_matricula}}</strong>
           </ul>
           <ul>
-          <strong>Fecha en que me matriculará: {{$date}}</strong>
+          <strong>Fecha en que me matriculará: {{$p->pregradosR->preUachsR->declaracionR->fecha_matricula}}</strong>
           </ul>
           <br>
 

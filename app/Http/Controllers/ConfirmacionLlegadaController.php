@@ -13,11 +13,15 @@ class ConfirmacionLlegadaController extends Controller {
 
 		$postulante = Postulante::where('user_id',$auth->id())->first();
 		$postulacion_universidad = PrePostulacionUniversidad::where('postulante',$postulante->id)->first();
+
 		$parametros = array(
 								'nombre_universidad_destino' => $postulacion_universidad->carreraR->facultadR->campusSedesR->universidadR->nombre,
 								'nombre_coordinador' => $postulacion_universidad->carreraR->facultadR->campusSedesR->departamentosR()->first()->nombre_encargado,
 							    "nombre_estudiante" => $postulante->nombre.' '. $postulante->apellido_paterno.' '.$postulante->apellido_materno,
+								'asignaturas_homologadas' => $postulante->pregradosR->preUachsR->homologacionesR()->first()->asignaturaHomologadaR->toArray(),
 							);
+
+		
 		return view('confirmacionLlegada.index',compact('parametros'));
 	}
 

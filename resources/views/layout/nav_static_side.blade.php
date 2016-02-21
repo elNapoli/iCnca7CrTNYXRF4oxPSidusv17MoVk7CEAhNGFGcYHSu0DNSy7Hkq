@@ -96,6 +96,9 @@
                      <li>
                         <a href="{{ url('confirmacion-llegada/') }}">Confirmación de llegada</a>
                     </li>
+                    <li>
+                        <a href="{{ url('contacto-en-extranjero/') }}">Contacto en el extranjero</a>
+                    </li>
                     
 
                 </ul>

@@ -43,6 +43,7 @@ Route::controllers([
 	'homologacion' => 'CursosHomologadosController',
 	'confirmacion-llegada' => 'ConfirmacionLlegadaController',
 	'representante-uach' => 'RepresentanteUachController',
+	'contacto-en-extranjero' => 'ContactoEnExtranjeroController',
 
 
 ]);

@@ -101,7 +101,7 @@ var ruta = $(ruta+' select'+idSelectDestino);
                 ruta.append(" <optgroup label='"+subCatObj.nombre+"'>");
                     
 
-                    $.each(subCatObj.campus_sedes_r_r, function(index2, subCatObj2){
+                    $.each(subCatObj.campus_sedes_r, function(index2, subCatObj2){
 
                         ruta.append("<option value="+subCatObj2.id+">"+subCatObj2.nombre+"</option>");
 

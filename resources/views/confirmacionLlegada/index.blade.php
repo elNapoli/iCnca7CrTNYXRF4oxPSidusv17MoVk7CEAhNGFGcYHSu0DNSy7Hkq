@@ -45,7 +45,21 @@
 
 		            </div>
 	          	</div>
-	          	<h4>Cursos en la universidad de destino</h4>
+	          	
+              <div class="panel panel-green">
+                        <div class="panel-heading">
+                        <h5>Cursos en la universidad de destino</h5>
+                        </div>
+                        <div class="panel-body">
+                          <ul>
+                             @foreach ($parametros['asignaturas_homologadas'] as $asignatura)
+
+                                <li>{{$asignatura['nombre_asignatura_intercambio']}}</li>
+                             @endforeach
+                          </ul>
+                        </div>
+                   
+                    </div>
         	</div>
         	<div class="col-lg-6">
         		<h4>Confirmación de Arribo y Registro</h4>

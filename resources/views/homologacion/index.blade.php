@@ -97,7 +97,7 @@
                 { "data": "asignatura_1" },
                 { "data": null,
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html(sData.asignatura_2);
+                        $(nTd).html(sData.codigo_2);
                         if(sData.periodo === ''){
                             
                             $(nTd).html('<input type="text" value="'+oData.codigo_2+'" id="codigo_asignatura_2-'+iRow+'" name="codigo_asignatura_2-'+iRow+'" class="form-control">');
@@ -107,7 +107,7 @@
                 },
                 { "data": null,
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html(sData.codigo_2);
+                        $(nTd).html(sData.asignatura_2);
                         if(sData.periodo === ''){
                         
                             $(nTd).html('<input type="text" value="'+oData.asignatura_2+'" id="nombre_asignatura_2-'+iRow+'" name="nombre_asignatura_2'+iRow+'" class="form-control">');

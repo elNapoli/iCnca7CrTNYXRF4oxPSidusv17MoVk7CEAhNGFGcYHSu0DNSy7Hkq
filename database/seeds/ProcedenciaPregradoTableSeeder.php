@@ -42,6 +42,7 @@ class ProcedenciaPregradoTableSeeder extends Seeder
 					$uach->enfermedades        = $faker->sentence($nbWords = 3, $variableNbWords = true);
 					$uach->telefono            = $faker->phoneNumber;
 					$uach->ciudad              = $faker->numberBetween($min = 1, $max = 500);
+					$uach->direccion           = $faker->address;
 
 					$item->save();
 					$uach->save();

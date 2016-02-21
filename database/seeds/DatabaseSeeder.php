@@ -31,8 +31,8 @@ class DatabaseSeeder extends Seeder
 
 
        //###########################################
-       $this->call(DocumentoIdentidadTableSeeder::class);
        $this->call(PostulanteTableSeeder::class);
+       $this->call(DocumentoIdentidadTableSeeder::class);
      
        $this->call(DocumentoAdjuntoTableSeeder::class);
 

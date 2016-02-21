@@ -25,6 +25,7 @@ class CampusSedeTableSeeder extends Seeder
         $CampusSede->sitio_web      = $faker->url;
         $CampusSede->universidad    = 1;
         $CampusSede->ciudad         = 1;
+        $CampusSede->direccion      = $faker->address;
         
         $CampusSede->save();
 
@@ -36,6 +37,7 @@ class CampusSedeTableSeeder extends Seeder
         $CampusSede->sitio_web      = $faker->url;
         $CampusSede->universidad    = 1;
         $CampusSede->ciudad         = 1;
+        $CampusSede->direccion      = $faker->address;
         
         $CampusSede->save();
 
@@ -46,6 +48,7 @@ class CampusSedeTableSeeder extends Seeder
         $CampusSede->fax            = $faker->phoneNumber;
         $CampusSede->sitio_web      = $faker->url;
         $CampusSede->universidad    = 1;
+        $CampusSede->direccion      = $faker->address;
         $CampusSede->ciudad         = 2;
         
         $CampusSede->save();
@@ -73,7 +76,9 @@ class CampusSedeTableSeeder extends Seeder
                     'fax'=>$faker->phoneNumber ,
                     'sitio_web'=>$faker->url ,
                     'universidad'=> $item->id,
-                    'ciudad'=> $id_ciudad[$faker->numberBetween($min = 0, $max = count($id_ciudad)-1)]
+                    'ciudad'=> $id_ciudad[$faker->numberBetween($min = 0, $max = count($id_ciudad)-1)],
+                    'direccion'   => $faker->address
+
                 ];
 
             }

@@ -33,7 +33,7 @@ $.ajax({
             ruta.append(" <optgroup label='"+subCatObj.nombre+"'>");
                 
 
-                $.each(subCatObj.campus_sedes_r, function(index2, subCatObj2){
+                $.each(subCatObj.campus_sedes_r_r, function(index2, subCatObj2){
 
                     ruta.append("<option value="+subCatObj2.id+">"+subCatObj2.nombre+"</option>");
 
@@ -101,7 +101,7 @@ var ruta = $(ruta+' select'+idSelectDestino);
                 ruta.append(" <optgroup label='"+subCatObj.nombre+"'>");
                     
 
-                    $.each(subCatObj.campus_sedes_r, function(index2, subCatObj2){
+                    $.each(subCatObj.campus_sedes_r_r, function(index2, subCatObj2){
 
                         ruta.append("<option value="+subCatObj2.id+">"+subCatObj2.nombre+"</option>");
 
@@ -250,7 +250,7 @@ function formatoTablaUniversidad( d ) {
 
     var finaln = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
         '<tr><th>Nombre campus</th><th>Teléfono</th><th>fax</th><th>Sitio web</th><th>Ciudad</th></tr>';
-       (d.campus_sedes).forEach(function(entry) {
+       (d.campus_sedes_r).forEach(function(entry) {
 
         finaln =   finaln+
         '<tr>'+
@@ -367,6 +367,7 @@ function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
     var input2 = createInput('N° Telefónico','Ej:+560632222222','telefono'+arrayCampus.id, arrayCampus.telefono);
     var input3 = createInput('Nombre N° fax ','Ej:+560632222222','fax'+arrayCampus.id, arrayCampus.fax);
     var input4 = createInput('sitio web del campus','Ej: www.uach.cl','sitio_web'+arrayCampus.id, arrayCampus.sitio_web);
+    var input5 = createInput('Dirección','Ej: santiago #656','direccion'+arrayCampus.id, arrayCampus.direccion);
 
 
 
@@ -376,12 +377,11 @@ function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
                         input2+
                         input3+
                         input4+'<div class="form-group">'+
-                                    '<label for="pais"> Nombre país </label>'+
+                                    '<label for="ciudad"> Nombre ciudad </label>'+
                                     '<select id="ciudad'+arrayCampus.id+'" class="miCiudad form-control">'+
                                     '<option selected="selected" value="">Seleccione un país</option>'+
-                                    '</select>'+
+                                    '</select>'+input5+
                                 '</div>';
-
 
     content = content +'<a href="#!" class="btn-delete" id="'+arrayCampus.id+'">Eliminar campus</a></form></div>';
 
@@ -413,7 +413,7 @@ function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
         campusSede.sitio_web = subCatObj.sitio_web;
         campusSede.pais = subCatObj.ciudad_r.pais;
         campusSede.ciudad = subCatObj.ciudad_r.id;
-
+        campusSede.direccion = subCatObj.direccion;
 
         crearTab(campusSede,urlStoreCampus,urlConsultaSelect,token)
    
@@ -430,7 +430,7 @@ function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
 function traerInfoUniversidad(idInput,urlStoreCampus, urlConsultaSelectPais,urlConsultaSelectCiudad, token ){
     var idInput = '#'+idInput;
     var jsonUniversidad = JSON.parse($(idInput).val())[0];
-    var campusSedes = jsonUniversidad.campus_sedes;
+    var campusSedes = jsonUniversidad.campus_sedes_r;
     var idContinente = campusSedes[0].ciudad_r.pais_r.continente;
     var idPais = campusSedes[0].ciudad_r.pais_r.id;
     $("#continente option[value='"+idContinente+"']").attr("selected","selected");

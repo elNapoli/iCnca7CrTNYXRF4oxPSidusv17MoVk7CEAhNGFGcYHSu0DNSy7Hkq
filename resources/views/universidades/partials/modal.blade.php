@@ -34,6 +34,11 @@
                     {!!  Form::label('ciudad', ' Nombre de la ciudad ')!!}
                     {!!  Form::select('ciudad', [null=>'Seleccione ciudad'],null,array('class' => 'form-control putaputa'))!!}
                 </div>
+                <div class="form-group">
+
+                    {!!  Form::label('direccion', ' Dirección ');!!}
+                    {!! Form::text('direccion',null,array('class' => 'form-control','placeholder'=>'Ej: Esmeralda #232'));!!}
+                </div>  
 
                 {!!Form::hidden('getURL', url('ciudades/pais-by-continente'),array('id'=>'getURL'));!!}
                 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}

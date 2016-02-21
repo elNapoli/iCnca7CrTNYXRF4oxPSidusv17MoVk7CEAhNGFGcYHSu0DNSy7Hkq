@@ -18,6 +18,7 @@ class CreateCampusSedeTable extends Migration
             $table->string('telefono',20);
             $table->string('fax',20);
             $table->string('sitio_web',100);
+            $table->string('direccion',100);
 
             //Foreign Key to UNIVERSIDAD
             $table->integer('universidad')->unsigned();

@@ -39,7 +39,9 @@ class CampusSede extends Model
     }
 
     //Un Campus o Sede tiene 1 o mas departamentos
-    public function DepartamentosR()
+
+    public function departamentosR()
+
     {
     	return $this->hasMany('App\Departamento','campus_sede'); //Campo en tabla foranea
     }

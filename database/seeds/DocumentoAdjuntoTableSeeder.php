@@ -23,24 +23,19 @@ class DocumentoAdjuntoTableSeeder extends Seeder
                                 'Inscripción de cursos',
                                 'Formulario CINDA',
                                 'Biblioteca');
+        $samples_temp = [];
+
         
         for($i = 0; $i <40; $i++)
         {
-            $documentoAdjunto = new DocumentoAdjunto();
-
-            $postulanteId                 = $faker->numberBetween($min = 1, $max = 100);
-
-
-            $documentoAdjunto->nombre     =  $nombreArchivo[$faker->numberBetween($min = 0, $max = 8)];
-            
-            $documentoAdjunto->path       = '/'. $faker->bothify('???????########') . 'pdf';
-                                            //Comentado mientras porque genera tuplas repetidas
-            //$documentoAdjunto->path       =  '/' . $faker->numerify('ruta#####') . /*'/' . $postulanteId . $documentoAdjunto->nombre */. '.pdf';
-            $documentoAdjunto->postulante = $postulanteId;
-
-            $documentoAdjunto->save();
-
+            $samples_temp[] = [
+                'nombre' => $nombreArchivo[$faker->numberBetween($min = 0, $max = 8)],
+                'path'=> '/'. $faker->bothify('???????########') . 'pdf',
+                'postulante'=>$faker->numberBetween($min = 1, $max = 100)
+            ];
         }
+        DocumentoAdjunto::insert($samples_temp);
+
 
     }
 }

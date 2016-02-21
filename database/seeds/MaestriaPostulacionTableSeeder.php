@@ -18,17 +18,18 @@ class MaestriaPostulacionTableSeeder extends Seeder
 
         $tipos = array('Diploma de Postgrado','Experto Universitario','Especialista Universitario', 'Magíster','Doctorado');
         
+        $samples_temp = [];
 
         foreach ($postgrado as $item)
 		{
             $maestria = new MaestriaPostulacion();
-
-            $maestria->postulante =  $item->postulante;
-            $maestria->tipo       =  $faker->numberBetween($min = 0, $max = count($tipos)-1);
-            $maestria->duracion   = $faker->numberBetween($min = 1, $max = 3).' Años';
-
-            $maestria->save();
+            $samples_temp[] = [
+                'postulante' => $item->postulante,
+                'tipo'=> $faker->numberBetween($min = 0, $max = count($tipos)-1),
+                'duracion'=>$faker->numberBetween($min = 1, $max = 3).' Años'
+            ];
 		}
+        MaestriaPostulacion::insert($samples_temp);
 
 
     }

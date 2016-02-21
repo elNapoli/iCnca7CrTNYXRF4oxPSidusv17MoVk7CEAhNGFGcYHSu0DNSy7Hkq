@@ -26,6 +26,11 @@
         {!!  Form::label('ciudad', ' Nombre de la ciudad ')!!}
         {!!  Form::select('ciudad', [null=>'Seleccione ciudad'],null,array('class' => 'form-control miCiudad'))!!}
     </div>
+    <div class="form-group">
+        {!!  Form::label('direccion', 'Dirección')!!}
+        {!! Form::text('direccion',null,array('class' => 'form-control','placeholder'=>'Ej:Picarte $8922'));!!}
+
+    </div>
     @if(isset($infoUniversidad))
     {!!Form::hidden('infoUniversidad', $infoUniversidad,array('id'=>'infoUniversidad'));!!}
 

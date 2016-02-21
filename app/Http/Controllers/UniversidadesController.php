@@ -105,6 +105,7 @@ class UniversidadesController extends Controller {
 			$campus_sede = new CampusSede($request->all());
 			$campus_sede->universidad = $universidadID;
 			$campus_sede->ciudad = $request->get('ciudad');
+			$campus_sede->direccion = $request->get('direccion');
 
 			$campus_sede->save();
 			\Session::flash('message', 'se Guardó la universidad Correctamente');
@@ -162,8 +163,8 @@ class UniversidadesController extends Controller {
 
 		$continentes = Continente::lists('nombre','id');
 		$idUniversidad = $id;
-		//dd(Universidad::where('id',$id)->with('campusSedes.ciudadR.paisR.continenteR')->get()->toArray());
-		$infoUniversidad = Universidad::where('id',$id)->with('campusSedes.ciudadR.paisR.continenteR')->get()->toJson();
+		//dd(Universidad::where('id',$id)->with('campusSedesR.ciudadR.paisR.continenteR')->get()->toArray());
+		$infoUniversidad = Universidad::where('id',$id)->with('campusSedesR.ciudadR.paisR.continenteR')->get()->toJson();
 		//return($infoUniversidad->toJson());
 		return view('universidades.edit',compact('continentes','infoUniversidad','idUniversidad'));
 	}
@@ -191,6 +192,7 @@ class UniversidadesController extends Controller {
 				$campus_sede->fax       = $json[$key]->fax;
 				$campus_sede->sitio_web = $json[$key]->sitio_web;
 				$campus_sede->ciudad    = $json[$key]->ciudad;
+				$campus_sede->direccion = $json[$key]->direccion;
 
 				$campus_sede->save();
 

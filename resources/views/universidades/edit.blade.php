@@ -81,6 +81,7 @@
                 campus.fax = $('#fax'+idCampus).val();
                 campus.sitio_web = $('#sitio_web'+idCampus).val();
                 campus.ciudad = $('#ciudad'+idCampus).val();
+                campus.direccion = $('#direccion'+idCampus).val();
                 arrayCampus[index] = campus;
               
           }) ;

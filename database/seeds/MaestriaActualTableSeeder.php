@@ -19,25 +19,25 @@ class MaestriaActualTableSeeder extends Seeder
         $postgrado = Postgrado::all();
 
         $tipos = array('Diploma de Postgrado','Experto Universitario','Especialista Universitario', 'Magíster','Doctorado');
+        $samples_temp = [];
         
 
         foreach ($postgrado as $item)
 		{
-            $maestria = new MaestriaActual();
-
-            $maestria->postulante            = $item->postulante;
-            $maestria->nombre                = $faker->sentence($nbWords = 6, $asText = false);   
-            $maestria->tipo                  = $faker->numberBetween($min = 0, $max = count($tipos)-1);
-			$maestria->nombre_tutor_director = $faker->lastName.' '.$faker->firstName;
-			$maestria->cargo_tutor_director  = $faker->sentence($nbWords = 6, $asText = false);   
-			$maestria->email_tutor_director  = $faker->email;
-			$maestria->telefono_secretaria   = $faker->phoneNumber;
-			$maestria->nombre_secretaria	 = $faker->lastName.' '.$faker->firstNameFemale;
-			$maestria->area                  = $faker->sentence($nbWords = 6, $asText = false);   	
-
-            $maestria->save();
+            $samples_temp[] = [
+                'postulante' => $item->postulante,
+                'nombre'=> $faker->sentence($nbWords = 6, $asText = false),
+                'tipo'=>$faker->numberBetween($min = 0, $max = count($tipos)-1) ,
+                'nombre_tutor_director'=>$faker->lastName.' '.$faker->firstName,
+                'cargo_tutor_director'=> $faker->sentence($nbWords = 6, $asText = false),
+                'email_tutor_director'=> $faker->email,
+                'telefono_secretaria'=>$faker->phoneNumber,
+                'nombre_secretaria'=>$faker->lastName.' '.$faker->firstNameFemale, 
+                'area'=>$faker->sentence($nbWords = 6, $asText = false)
+            ];
 		}
 
+        MaestriaActual::insert($samples_temp);
 
     }
 }

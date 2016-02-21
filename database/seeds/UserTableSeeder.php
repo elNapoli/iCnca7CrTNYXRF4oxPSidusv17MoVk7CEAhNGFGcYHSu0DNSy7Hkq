@@ -28,23 +28,26 @@ class UserTableSeeder extends Seeder
         $user->password             = 'movilidad321';
             
         $user->save();
+        $samples_temp = [];
 
         for($i = 0; $i < 150; $i++)
         {
-            $user = new User();
-
-            $user->name                 = $faker->firstName;
-            $user->apellido_paterno     = $faker->lastName;
-            $user->apellido_materno     = $faker->lastName;
-            $user->confirmado           = $faker->numberBetween($min = 0, $max = 1);
-            $user->codigo_confirmacion  = str_random();
-            $user->tipo_usuario         = 'usuario';
-            $user->email                = $faker->unique->email;
-            $user->password             = 'secret';
             
-            $user->save();
+            $samples_temp[] = [
+                'name' => $faker->firstName,
+                'apellido_paterno'=> $faker->lastName,
+                'apellido_materno'=>$faker->lastName ,
+                'confirmado'=>$faker->numberBetween($min = 0, $max = 1) ,
+                'codigo_confirmacion'=> str_random(),
+                'tipo_usuario'=> 'usuario',
+                'email'=>$faker->unique->email ,
+                'password'=>bcrypt('secret') 
+            ];
 
         }
+
+         User::insert($samples_temp);
+
 
 
 

@@ -22,11 +22,14 @@ class UniversidadTableSeeder extends Seeder
 
 
         $Universidad->save();
+        $samples_temp = [];
+
         for($i = 0; $i < 100; $i++)
         {
-            $Universidad = new Universidad();
 
-            $Universidad->nombre     = $faker->name . ' University';
+            
+           
+
 
             $id_pais =$faker->numberBetween($min = 1, $max = 199);
             $ciudad = Ciudad::where('pais',$id_pais)->get();
@@ -35,11 +38,15 @@ class UniversidadTableSeeder extends Seeder
                 $id_pais =$faker->numberBetween($min = 1, $max = 199);
                 $ciudad = Ciudad::where('pais',$id_pais)->get();
             }
-            $Universidad->pais = $id_pais ;
 
-            $Universidad->save();
+            $samples_temp[] = [
+                'nombre' => $faker->name . ' University',
+                'pais'=> $id_pais
+            ];
 
         }
+        Universidad::insert($samples_temp);
+
 
     }
 }

@@ -16,18 +16,17 @@ class ConvenioTableSeeder extends Seeder
         $faker = Faker::create();
         $bi = array('SI','NO');
         $tempBi = array_rand($bi, 1);
+        $samples_temp = [];
 
         for($i = 0; $i < 20; $i++)
         {
-            $Convenio = new Convenio();
-
-            $Convenio->nombre       = $faker->name;
-            $Convenio->bilateral    = $bi[$tempBi];
-            $Convenio->universidad  = $faker->numberBetween($min = 1, $max = 19);
-
-            $Convenio->save();
-
+            $samples_temp[] = [
+                'nombre' => $faker->name,
+                'bilateral'=> $bi[$tempBi],
+                'universidad'=>$faker->numberBetween($min = 1, $max = 99) 
+            ];
         }
+        Convenio::insert($samples_temp);
 
     }
 }

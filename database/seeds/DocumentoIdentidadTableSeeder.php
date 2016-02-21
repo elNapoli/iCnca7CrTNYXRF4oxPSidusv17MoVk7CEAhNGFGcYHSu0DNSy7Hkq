@@ -18,20 +18,16 @@ class DocumentoIdentidadTableSeeder extends Seeder
         $faker = Faker::create();
         $tipoPasaporte = array('p','ci');
         $postulante = Postulante::all();
+        $samples_temp = [];
         foreach ($postulante as $item) {
-            $documentoIdentidad = new DocumentoIdentidad();
-
-            $documentoIdentidad->tipo       = $tipoPasaporte[$faker->numberBetween($min = 0, $max = 1)];
-            $documentoIdentidad->numero     = $faker->creditCardNumber;
-            $documentoIdentidad->postulante = $item->id;
-
-            $documentoIdentidad->save();
+            $samples_temp[] = [
+                'tipo' => $tipoPasaporte[$faker->numberBetween($min = 0, $max = 1)],
+                'numero'=> $faker->creditCardNumber,
+                'postulante'=>$item->id
+            ];
         }
+        DocumentoIdentidad::insert($samples_temp);
+
         
-
-
-
-
-
     }
 }

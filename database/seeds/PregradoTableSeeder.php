@@ -16,12 +16,10 @@ class PregradoTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
+        $samples_temp = [];
 
         for($i = 0; $i < 100; $i++)
         {
-            $pregrado       = new Pregrado();
-            $postgrado      = new Postgrado();
-            $postulanteTemp = new Postulante();
 
             $idPregrado = $faker->unique->numberBetween($min = 1, $max = 100);
 
@@ -30,13 +28,18 @@ class PregradoTableSeeder extends Seeder
             
 
             if ($postgrado === null) {
-              $pregrado->postulante         = $idPregrado;
+              $samples_temp[] = [
+                'postulante' => $idPregrado,
+            
+              ];
               $postulanteTemp->tipo_estudio = 'Pregrado';
               
               $postulanteTemp->save();
-              $pregrado->save();
             }
+            
         }
+        Pregrado::insert($samples_temp);
+
 
     }
 }

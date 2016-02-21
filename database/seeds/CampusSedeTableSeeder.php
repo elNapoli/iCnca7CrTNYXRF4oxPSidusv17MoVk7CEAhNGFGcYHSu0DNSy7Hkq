@@ -25,6 +25,7 @@ class CampusSedeTableSeeder extends Seeder
         $CampusSede->sitio_web      = $faker->url;
         $CampusSede->universidad    = 1;
         $CampusSede->ciudad         = 1;
+        $CampusSede->direccion      = $faker->address;
         
         $CampusSede->save();
 
@@ -36,6 +37,7 @@ class CampusSedeTableSeeder extends Seeder
         $CampusSede->sitio_web      = $faker->url;
         $CampusSede->universidad    = 1;
         $CampusSede->ciudad         = 1;
+        $CampusSede->direccion      = $faker->address;
         
         $CampusSede->save();
 
@@ -46,6 +48,7 @@ class CampusSedeTableSeeder extends Seeder
         $CampusSede->fax            = $faker->phoneNumber;
         $CampusSede->sitio_web      = $faker->url;
         $CampusSede->universidad    = 1;
+        $CampusSede->direccion      = $faker->address;
         $CampusSede->ciudad         = 2;
         
         $CampusSede->save();
@@ -53,20 +56,13 @@ class CampusSedeTableSeeder extends Seeder
 
         
         $universidad = Universidad::all();
+        $samples_temp = [];
 
         foreach ($universidad as $item){
 
             $numBeneficio = $faker->numberBetween($min = 1, $max = 2);
             for($i = 0; $i < $numBeneficio; $i++)
             {
-                $CampusSede = new CampusSede();
-
-                $CampusSede->nombre    		= $faker->firstName($gender = null|'male'|'female');
-                $CampusSede->telefono   	= $faker->phoneNumber;
-                $CampusSede->fax 			= $faker->phoneNumber;
-                $CampusSede->sitio_web		= $faker->url;
-                $CampusSede->universidad	= $item->id;
-
                 $ciudades = Ciudad::where('pais',$item->pais)->get();
                 $id_ciudad = array();
                 foreach ($ciudades as $key ) {
@@ -74,12 +70,21 @@ class CampusSedeTableSeeder extends Seeder
              
                 }
 
-                $CampusSede->ciudad = $id_ciudad[$faker->numberBetween($min = 0, $max = count($id_ciudad)-1)];
-                
-                $CampusSede->save();
+                 $samples_temp[] = [
+                    'nombre' => $faker->firstName($gender = null|'male'|'female'),
+                    'telefono'=> $faker->phoneNumber,
+                    'fax'=>$faker->phoneNumber ,
+                    'sitio_web'=>$faker->url ,
+                    'universidad'=> $item->id,
+                    'ciudad'=> $id_ciudad[$faker->numberBetween($min = 0, $max = count($id_ciudad)-1)],
+                    'direccion'   => $faker->address
+
+                ];
 
             }
         }
+        CampusSede::insert($samples_temp);
+
 
 
 

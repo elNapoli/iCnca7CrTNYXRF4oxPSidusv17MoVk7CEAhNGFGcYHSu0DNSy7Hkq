@@ -11,6 +11,7 @@ use App\CampusSede;
 use App\Facultad;
 use App\Carrera;
 use App\User;
+use App\Convenio;
 
 class DocumentosPostulacionController extends Controller {
 
@@ -24,12 +25,11 @@ class DocumentosPostulacionController extends Controller {
 	{
 		$post = Postulante::where('user_id',$auth->id())->get(); //objeto post con informacion extra
 		$postulante = Postulante::findOrFail($post[0]->id); //individualizo al postulante
-		dd($postulante->pregradosR->preUachsR->declaracionR->toArray());
-	
-	}
+
+		dd($postulante->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedesR);
 
 
-
+}
 	public function getIndex(Guard $auth)
 	{
 		if(!$auth->id())

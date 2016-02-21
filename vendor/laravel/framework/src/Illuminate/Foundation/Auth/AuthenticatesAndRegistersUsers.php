@@ -35,13 +35,14 @@ trait AuthenticatesAndRegistersUsers {
 	 */
 	public function postRegister(Request $request)
 	{
-		$validator = $this->registrar->validator($request->all());
-		if ($validator->fails())
-		{
-			$this->throwValidationException(
-				$request, $validator
-			);
-		}
+		$this->validate($request, [
+			'email'=>'required|unique:users,email,', 
+			'name' => 'required',
+			'apellido_paterno' => 'required',
+			'apellido_materno' => 'required',
+			'password' => 'required',
+
+		]);
 		//$this->auth->login($this->registrar->create($request->all()));
 		$user = new User($request->all());
 		$user->codigo_confirmacion = str_random(); //genero el codigo de confirmacion
@@ -79,6 +80,14 @@ trait AuthenticatesAndRegistersUsers {
 		]);
 		$credentials = $request->only('email', 'password');
 		$user = User::where('email',$request->get('email'))->first();
+		if($user == null){
+				return redirect($this->loginPath())
+					->withInput($request->only('email', 'remember'))
+					->withErrors([
+						'email' => $this->getFailedLoginMessage(),
+					]);			
+		}
+
 		if ($user->confirmado == '0')
 		{
 			return 'Este csm no verifico su email error! error! error! xDD';

@@ -16,24 +16,26 @@ class OtraMaestriaTableSeeder extends Seeder
     {
         $faker = Faker::create();
         $mPostulacion = MaestriaPostulacion::all();
+        $samples_temp = [];
         foreach ($mPostulacion as $item)
         {
             if($faker->numberBetween($min = 0, $max = 1) == 0){
-
-                $oMaestria                = new OtraMaestria();
-
-                $oMaestria->postulante    = $item->postulante;
-                $oMaestria->nombre        = $faker->sentence($nbWords = 6, $asText = false);   
-                $oMaestria->laboratorio   = $faker->sentence($nbWords = 6, $asText = false); 
-                $oMaestria->contacto_uach = $faker->lastName.' '.$faker->firstName;
-                $oMaestria->instituto     = $faker->sentence($nbWords = 6, $asText = false); 
-                $oMaestria->facultad      = $faker->numberBetween($min = 1, $max = 100);
-
-                $oMaestria->save();
+                 $samples_temp[] = [
+                    'postulante' => $item->postulante,
+                    'nombre'=> $faker->sentence($nbWords = 6, $asText = false),
+                    'laboratorio'=>$faker->sentence($nbWords = 6, $asText = false),
+                    'contacto_uach'=>$faker->lastName.' '.$faker->firstName ,
+                    'instituto'=> $faker->sentence($nbWords = 6, $asText = false),
+                    'facultad'=> $faker->numberBetween($min = 1, $max = 100)
+                ];
+         
             }
 
         }
+         OtraMaestria::insert($samples_temp);
+
 
 
     }
+
 }

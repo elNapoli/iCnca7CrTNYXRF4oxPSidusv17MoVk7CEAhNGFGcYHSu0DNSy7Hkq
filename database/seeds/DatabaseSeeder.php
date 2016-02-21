@@ -53,13 +53,14 @@ class DatabaseSeeder extends Seeder
         $this->call(DepartamentoTableSeeder::class);
         $this->call(FacultadTableSeeder::class);
         $this->call(CarreraTableSeeder::class);
-        $this->call(AsignaturaTableSeeder::class); // hasta aca optimicé! 
+        $this->call(AsignaturaTableSeeder::class); 
 
 
        //###########################################
         $this->call(OtraMaestriaTableSeeder::class);
         $this->call(ProcedenciaPregradoTableSeeder::class);
         $this->call(PreUResponsableTableSeeder::class);
+        // hasta aca optimicé! 
 
         $this->call(HomologacionTableSeeder::class);
         $this->call(AsignaturaHomologadaTableSeeder::class);

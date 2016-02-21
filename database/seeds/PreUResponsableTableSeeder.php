@@ -17,23 +17,23 @@ class PreUResponsableTableSeeder extends Seeder
         $faker           = Faker::create();
         $preUach         = PreUach::all();
         $tipoResponsable = array('Representante Legal', 'Contacto');
+        $samples_temp = [];
         foreach ($preUach as $item)
         {
 
-            $responsable             = new PreUResponsable();
-
-            $responsable->postulante = $item->postulante;
-            $responsable->nombre     = $faker->lastName.' '.$faker->firstName;
-            $responsable->tipo       = $tipoResponsable[$faker->numberBetween($min = 0, $max = 1)];
-            $responsable->telefono_1 = $faker->phoneNumber;
-            $responsable->telefono_2 = $faker->phoneNumber;
-            $responsable->parentesco = $faker->word;
-			$responsable->email      = $faker->email;
-			$responsable->direccion  = $faker->address;
-			
-            $responsable->save();
-            
+             $samples_temp[] = [
+                'postulante' => $item->postulante,
+                'nombre'=>$faker->lastName.' '.$faker->firstName,
+                'tipo'=>$tipoResponsable[$faker->numberBetween($min = 0, $max = 1)] ,
+                'telefono_1'=> $faker->phoneNumber,
+                'telefono_2'=>  $faker->phoneNumber,
+                'parentesco'=>$faker->word,
+                'email'=>$faker->unique->email ,
+                'direccion'=>$faker->address
+            ];            
 
         }
+         PreUResponsable::insert($samples_temp);
+
     }
 }

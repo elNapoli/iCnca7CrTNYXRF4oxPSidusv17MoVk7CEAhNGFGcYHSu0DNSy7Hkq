@@ -10,7 +10,7 @@ class ContactoEnExtranjeroController extends Controller {
 	
 	public function getIndex(){
 
-		dd('asdf');
+		return view('contactoExtranjero.index');
 	}
 
 }

@@ -2,15 +2,17 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Postulante;
 use Illuminate\Http\Request;
-
 class CursosNoUachController extends Controller {
 
 	//
 
 	public function getIndex(){
 
-		dd('asdf');
+
+		$postulante = Postulante::first();
+
+		return view('cursosNoUach.index');
 	}
 }

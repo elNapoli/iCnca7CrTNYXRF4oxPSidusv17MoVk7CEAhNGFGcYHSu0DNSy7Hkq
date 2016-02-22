@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Continente;
+use App\Http\Controllers\CvsToArray;
 
 class ContinenteTableSeeder extends Seeder
 {
@@ -13,19 +14,12 @@ class ContinenteTableSeeder extends Seeder
      */
     public function run()
     {
+        $csvFile = public_path().'\archivos_cvs\continentes.csv';
 
-	    $faker = Faker::create();
-        $continente = array('África', 'América','Asia','Europa','Oceanía','Antártida');
-
-
-        foreach ($continente as $item) {
-
-            $continenteTemp = new Continente();
-
-            $continenteTemp->nombre = $item;
-
-            $continenteTemp->save();
-        }
+        $continentes = new CvsToArray();
+        $continentes = $continentes->csv_to_array($csvFile);
+       // dd($continentes);
+        Continente::insert($continentes);
     }
 
 

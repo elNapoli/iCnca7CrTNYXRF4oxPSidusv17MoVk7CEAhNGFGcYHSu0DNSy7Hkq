@@ -395,6 +395,7 @@
 
                     showButtonPanel: true,
                     changeMonth: true,
+                    defaultDate: '-27y',
                     changeYear: true,
                     dateFormat: 'yy-mm-dd',
                     showAnim: 'drop',

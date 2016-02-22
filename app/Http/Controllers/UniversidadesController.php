@@ -1,5 +1,5 @@
-<?php namespace App\Http\Controllers;
-
+<?php 
+namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUniversidadRequest;
@@ -11,6 +11,7 @@ use App\CampusSede;
 use Illuminate\Http\Request;
 use App\Continente;
 use Faker\Factory as Faker;
+use App\Http\Controllers\CvsToArray;
 use App\Ciudad;
 
 class UniversidadesController extends Controller {
@@ -23,38 +24,13 @@ class UniversidadesController extends Controller {
 
 
 	public function getDebug(Guard $user){
-	 	
-		        $universidad = Universidad::all();
-        $faker = Faker::create();
+    
+        $csvFile = public_path().'\archivos_cvs\continentes.csv';
 
-
-        foreach ($universidad as $item){
-
-            $numBeneficio = $faker->numberBetween($min = 1, $max = 5);
-            for($i = 0; $i < $numBeneficio; $i++)
-            {
-                $CampusSede = new CampusSede();
-
-                $CampusSede->nombre    		= $faker->firstName($gender = null|'male'|'female');
-                $CampusSede->telefono   	= $faker->phoneNumber;
-                $CampusSede->fax 			= $faker->phoneNumber;
-                $CampusSede->sitio_web		= $faker->url;
-                $CampusSede->universidad	= $item->id;
-
-                $ciudades = Ciudad::where('pais',$item->pais)->get();
-                $id_ciudad = array();
-                foreach ($ciudades as $key ) {
-                    $id_ciudad[] =$key->id;
-             
-                }
-
-                $CampusSede->ciudad	= $id_ciudad[$faker->numberBetween($min = 0, $max = count($id_ciudad)-1)];
-
-                
-                $CampusSede->save();
-
-            }
-        }
+        $areas = new CvsToArray();
+        $areas = $areas->csv_to_array($csvFile);
+       // dd($areas);
+        Continente::insert($areas);
 
 	}
 	public function getIndex()

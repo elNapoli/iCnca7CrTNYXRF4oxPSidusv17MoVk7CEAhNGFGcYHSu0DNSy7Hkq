@@ -60,6 +60,16 @@ class CarrerasController extends Controller {
 		
 
 	}
+
+	public function getAllCarrerasUach(){
+
+		$universidades = Carrera::all();
+		
+		$arra = array('data'=>$universidades->toArray());
+		//dd(json_encode($arra));
+		return json_encode($arra);
+
+	}
 	public function getCarreras()
 	{
 		$universidades = Carrera::with('facultadR')->orderBy("id")->get();

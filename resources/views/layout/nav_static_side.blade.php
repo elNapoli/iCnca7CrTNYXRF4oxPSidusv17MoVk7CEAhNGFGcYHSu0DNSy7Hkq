@@ -99,6 +99,9 @@
                     <li>
                         <a href="{{ url('contacto-en-extranjero/') }}">Contacto en el extranjero</a>
                     </li>
+                    <li>
+                        <a href="{{ url('cursos-no-uach/') }}">Solicitud de asignaturas</a>
+                    </li>
                     
 
                 </ul>

@@ -18,7 +18,7 @@ class PreNuEstudioActual extends Model
     }
 
 
-    public function campusSedesR()
+    public function campusSedeR()
     {
         return $this->belongsTo('App\CampusSede','campus_sede');
     }

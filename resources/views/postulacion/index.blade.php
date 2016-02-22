@@ -252,6 +252,10 @@
                             }
 
                         case 2:
+                            if($('input#semestreIV').attr('checked') === 'checked'){
+                                $('#otra_fecha').show('slide',1000);
+
+                            }
                             if($('section#wizard-p-2 #continente').val() != ''){
 
                                 selectByTabsSinAccion("section#wizard-p-2",'#_token','#getUrlPaisByContinente','#pais',$('section#wizard-p-2 #continente').val(),$('section#wizard-p-2 #pais_id').val());
@@ -421,6 +425,8 @@
                 else{
 
                     $('#otra_fecha').hide('slide',1000);
+                    $('#desde').val('');
+                    $('#hasta').val('');
                  
 
 

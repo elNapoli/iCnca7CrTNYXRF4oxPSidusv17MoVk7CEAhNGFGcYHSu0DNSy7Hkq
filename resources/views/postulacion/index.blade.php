@@ -384,10 +384,10 @@
                 }   
             });
 
-    $('section#wizard-p-2').on('click',' #FinanciamientoDDList',function(){
+            $('section#wizard-p-2').on('click',' #FinanciamientoDDList',function(){
 
-    $(this).dropSelect();
-    });
+            $(this).dropSelect();
+            });
 
             //##################################### ACIONES DE LA PESTAÑA 1################################
             $('section#wizard-p-0').on('focus','#fecha_nacimiento',function(){
@@ -409,6 +409,24 @@
                
 
             });
+
+            $('#wizard').on('change','input[name=semestre]',function(){
+                     
+                if($(this).val()==='otro'){
+               
+                    $('#otra_fecha').show('slide',1000);
+
+                }
+                else{
+
+                    $('#otra_fecha').hide('slide',1000);
+                 
+
+
+                }
+            });
+
+
             $('#wizard').on('change','input[name=tipo_estudio]',function(){
                         
                 if($(this).val()==='Postgrado'){

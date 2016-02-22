@@ -14,17 +14,18 @@ class BeneficioTableSeeder extends Seeder
     public function run()
     {
          $faker = Faker::create();
+        $samples_temp = [];
 
         for($i = 0; $i < 20; $i++)
-        {
-            $beneficio = new Beneficio();
+        {   
+            $samples_temp[] = [
+                'nombre' => $faker->sentence($nbWords = 3, $variableNbWords = true)
+            ];
 
-            $beneficio->nombre    		= $faker->sentence($nbWords = 3, $variableNbWords = true);
-            
-            $beneficio->save();
 
         }
 
+         Beneficio::insert($samples_temp);
 
 
 

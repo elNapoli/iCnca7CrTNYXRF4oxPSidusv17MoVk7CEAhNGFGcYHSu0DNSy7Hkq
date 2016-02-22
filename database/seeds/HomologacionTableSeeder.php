@@ -16,33 +16,31 @@ class HomologacionTableSeeder extends Seeder
     {
         $faker = Faker::create();
         $preUach = PreUach::all();
+        $samples_temp = [];
+
         foreach ($preUach as $item){
-
-            $homologacion = new Homologacion();
-
-            $homologacion->postulante = $item->postulante;
-            $homologacion->pga        = $faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 100);
-            $homologacion->motivo     = $faker->paragraph($nbSentences = 3, $variableNbSentences = true);
-            $homologacion->fecha      = $faker->dateTimeBetween($startDate = '-30 days', $endDate = 'now');
-
-            $homologacion->save();
-
+            $samples_temp[] = [
+                'postulante' => $item->postulante,
+                'pga'=> $faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 100),
+                'motivo'=>'' ,
+                'fecha'=>$faker->dateTimeBetween($startDate = '-30 days', $endDate = 'now') ,
+            ];
         }
 
         foreach ($preUach as $item){
         	if($faker->numberBetween($min = 0, $max = 1) == 0){
-	            $homologacionM = new Homologacion();
-
-	            $homologacionM->postulante = $item->postulante;
-	            $homologacionM->pga        = $faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 100);
-	            $homologacionM->motivo     = $faker->paragraph($nbSentences = 3, $variableNbSentences = true);
-	            $homologacionM->fecha      = $faker->dateTimeBetween($startDate = '-30 days', $endDate = 'now');
-
-	            $homologacionM->save();        		
+                $samples_temp[] = [
+                    'postulante' => $item->postulante,
+                    'pga'=> '',
+                    'motivo'=>$faker->paragraph($nbSentences = 3, $variableNbSentences = true) ,
+                    'fecha'=>$faker->dateTimeBetween($startDate = '-30 days', $endDate = 'now') ,
+                ];  		
         	}
 
 
         }
+         Homologacion::insert($samples_temp);
+
 
      	 
     }

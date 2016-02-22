@@ -16,6 +16,7 @@ class DetalleBeneficioTableSeeder extends Seeder
     {
         $faker = Faker::create();
         $detalleBeneficio = Asistente::all();
+        $samples_temp = [];
 
         foreach ($detalleBeneficio as $item){
 
@@ -23,17 +24,15 @@ class DetalleBeneficioTableSeeder extends Seeder
 
             for($i = 0; $i < $numBeneficio; $i++){
 
-                $detalleBeneficio = new DetalleBeneficio();
+                $samples_temp[] = [
+                    'beneficio' => $i+1,
+                    'id_a'=> $item->id
+                ];
 
-
-                $detalleBeneficio->beneficio    = $i+1;
-                $detalleBeneficio->id_a         = $item->id;
-
- 
-
-                $detalleBeneficio->save();
 
             }
         }
+         DetalleBeneficio::insert($samples_temp);
+
     }
 }

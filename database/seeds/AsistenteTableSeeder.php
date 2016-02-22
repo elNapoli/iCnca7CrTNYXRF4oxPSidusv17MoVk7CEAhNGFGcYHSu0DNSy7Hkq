@@ -16,18 +16,18 @@ class AsistenteTableSeeder extends Seeder
     {
         $faker = Faker::create();
         $preUach = PreUach::all();
+        $samples_temp = [];
 
         foreach ($preUach as $item){
 
-        		$asistente = new Asistente();
-
-				$asistente->postulante   = $item->postulante;
-				$asistente->nombre       = $faker->lastName.' '. $faker->firstName;
-				$asistente->indicaciones = $faker->paragraph($nbSentences = 3, $variableNbSentences = true); 
-
-				$asistente->save();
-
-        	
+            $samples_temp[] = [
+                'postulante' => $item->postulante,
+                'nombre'=>$faker->lastName.' '. $faker->firstName,
+                'indicaciones'=>$faker->paragraph($nbSentences = 3, $variableNbSentences = true)
+            ];        	
         }
+
+         Asistente::insert($samples_temp);
+
     }
 }

@@ -21,6 +21,7 @@ class DetalleSolicitudCursoTableSeeder extends Seeder
         $solicitudCurso = PreNuSolicitudCurso::all();
         $asignatura     = Asignatura::all(); 
         $aceptado       = array('si','no');
+        $samples_temp = [];
 
 		foreach ($asignatura as $item){
 
@@ -30,20 +31,17 @@ class DetalleSolicitudCursoTableSeeder extends Seeder
         {
         	for($i = 0; $i < $faker->numberBetween($min = 0, $max =6); $i ++){
 
-	            $detalleCurso             = new DetalleSolicitudCurso();
-
-	            $detalleCurso->solicitud_curso  = $item->id;
-	            $detalleCurso->asignatura       = $asigCodigo[$faker->unique->numberBetween($min = 0, $max = count($asigCodigo)-1)];
-	            $detalleCurso->observaciones    = $faker->paragraph($nbSentences = 5, $variableNbSentences = true);
-	            $detalleCurso->aceptado         = $aceptado[$faker->numberBetween($min = 0, $max = 1)];
-
-				
-	            $detalleCurso->save();
-
+                $samples_temp[] = [
+                    'solicitud_curso' => $item->id,
+                    'asignatura'=> $asigCodigo[$faker->unique->numberBetween($min = 0, $max = count($asigCodigo)-1)],
+                    'observaciones'=>$faker->paragraph($nbSentences = 5, $variableNbSentences = true) ,
+                    'aceptado'=>$aceptado[$faker->numberBetween($min = 0, $max = 1)]
+                ];
         		
         	}
         	
         }
+        DetalleSolicitudCurso::insert($samples_temp);
 
         
     }

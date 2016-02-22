@@ -46,7 +46,7 @@ class UserTableSeeder extends Seeder
 
         }
 
-         User::insert($samples_temp);
+        User::insert($samples_temp);
 
 
 

@@ -15,6 +15,7 @@ class ConfirmacionLlegadaTableSeeder extends Seeder
     {
         $faker     = Faker::create();
         $preUach = PreUach::all();
+        $samples_temp = [];
 
         foreach ($preUach as $item)
         {
@@ -25,17 +26,16 @@ class ConfirmacionLlegadaTableSeeder extends Seeder
 	            $fInicioCurso                 = $faker->dateTimeBetween($startDate = $fLlegada, $endDate = 'now');
 	            $fTerminoCurso                = $faker->dateTimeBetween($startDate = $fInicioCurso, $endDate = 'now');
 
-
-
-	            $llegada->postulante          = $item->postulante;
-	            $llegada->fecha_llegada       = $fLlegada;
-	            $llegada->fecha_inicio_curso  = $fInicioCurso;
-	            $llegada->fecha_termino_curso = $fTerminoCurso;
-
-				
-	            $llegada->save();
+                $samples_temp[] = [
+                    'postulante' =>$item->postulante,
+                    'fecha_llegada'=>$fLlegada,
+                    'fecha_inicio_curso'=>$fInicioCurso ,
+                    'fecha_termino_curso'=>$fTerminoCurso
+                ];
         	}
         }
+        ConfirmacionLlegada::insert($samples_temp);
+
 
         
     }

@@ -19,7 +19,8 @@ class AsignaturaHomologadaTableSeeder extends Seeder
         $faker        = Faker::create();
         $homologacion = Homologacion::all();
         $asignatura = Asignatura::all();
-        $semestre     = array('semestre 1', 'semestre 2', 'ambos');
+        $semestre     = array('semestre 1', 'semestre 2', 'ambos','otro');
+        $samples_temp = [];
 
 
         foreach ($asignatura as $item){
@@ -33,21 +34,19 @@ class AsignaturaHomologadaTableSeeder extends Seeder
             for($i = 0; $i < 6; $i ++)
             {
          
-
-                $asigHomologada = new AsignaturaHomologada();
-        
-                $asigHomologada->homologacion                  = $item->id;
-                $asigHomologada->asignatura                    = $asigCodigo[$faker->unique->numberBetween($min = 0, $max = count($asigCodigo)-1)];
-                $asigHomologada->codigo_asignatura_intercambio = $faker->bothify('???###');
-                $asigHomologada->nombre_asignatura_intercambio = $faker->sentence($nbWords = 3, $variableNbWords = true);
-
-                $asigHomologada->save();
-
+                $samples_temp[] = [
+                    'homologacion' =>$item->id,
+                    'asignatura'=> $asigCodigo[$faker->unique->numberBetween($min = 0, $max = count($asigCodigo)-1)],
+                    'codigo_asignatura_intercambio'=>$faker->bothify('???###') ,
+                    'nombre_asignatura_intercambio'=>$faker->sentence($nbWords = 3, $variableNbWords = true)
+                ];
                 
             
             }
 
 
      	 }
+         AsignaturaHomologada::insert($samples_temp);
+
     }
 }

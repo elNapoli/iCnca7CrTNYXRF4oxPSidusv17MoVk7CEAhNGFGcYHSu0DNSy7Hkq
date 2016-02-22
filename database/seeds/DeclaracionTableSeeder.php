@@ -16,21 +16,20 @@ class DeclaracionTableSeeder extends Seeder
     {
         $faker     = Faker::create();
         $preUach = PreUach::all();
+        $samples_temp = [];
 
         foreach ($preUach as $item)
         {
 
 
-            $declaracion = new Declaracion();
-
-            $declaracion->postulante        = $item->postulante;
-            $declaracion->persona_matricula = $faker->lastName.' '. $faker->firstName;
-            $declaracion->fecha_matricula   = $faker->dateTimeBetween($startDate = '-5 months', $endDate = 'now');
-
-            $declaracion->save();
-        	
+            $samples_temp[] = [
+                'postulante' => $item->postulante,
+                'persona_matricula'=>  $faker->lastName.' '. $faker->firstName,
+                'fecha_matricula'=>$faker->dateTimeBetween($startDate = '-5 months', $endDate = 'now')
+            ];        	
         }
 
+        Declaracion::insert($samples_temp);
         
     }
 }

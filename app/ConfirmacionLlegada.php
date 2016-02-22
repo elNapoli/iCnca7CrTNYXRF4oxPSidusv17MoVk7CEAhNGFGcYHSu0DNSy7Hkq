@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class ConfirmacionLlegada extends Model
 {
     protected $table = 'confirmacion_llegada';
+    protected $primaryKey = 'postulante';
     public $timestamps = false;
-    protected $fillable = ['fecha_llegada',
+    protected $fillable = ['postulante',
+    						'fecha_llegada',
     					   'fecha_inicio_curso',
     					   'fecha_termino_curso'];
 

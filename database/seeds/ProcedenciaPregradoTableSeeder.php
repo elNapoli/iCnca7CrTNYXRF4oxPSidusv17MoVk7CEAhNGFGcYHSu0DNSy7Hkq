@@ -18,34 +18,33 @@ class ProcedenciaPregradoTableSeeder extends Seeder
     {
         $faker    = Faker::create();
 		$pregrado =  Pregrado::all();
+        $samples_temp_no_uach = [];
+        $samples_temp_uach = [];
 
         	foreach ($pregrado as $item)
         	{
 
-        		$noUach = new PreNoUach();
-        		$uach   = new PreUach();
-
 				if($faker->numberBetween($min = 0, $max = 1) == 0){
-					$noUach->postulante       = $item->postulante;
 					$item->procedencia     ='NO UACH'; 
-
+					$samples_temp_no_uach[] = [
+		                'postulante' => $item->postulante
+		            ];
 					$item->save();
-					$noUach->save();
 
 				}
 				else{
 
-					$item->procedencia     ='UACH'; 
-					$uach->postulante          = $item->postulante;
-					$uach->email_institucional = $faker->email;
-					$uach->grupo_sanguineo     = $faker->asciify('GS ***');
-					$uach->enfermedades        = $faker->sentence($nbWords = 3, $variableNbWords = true);
-					$uach->telefono            = $faker->phoneNumber;
-					$uach->ciudad              = $faker->numberBetween($min = 1, $max = 500);
-					$uach->direccion           = $faker->address;
+					$samples_temp_uach[] = [
+		                'postulante' =>$item->postulante,
+		                'email_institucional'=> $faker->email,
+		                'grupo_sanguineo'=>$faker->asciify('GS ***') ,
+		                'enfermedades'=> $faker->sentence($nbWords = 3, $variableNbWords = true) ,
+		                'telefono'=>$faker->phoneNumber,
+		                'ciudad'=> $faker->numberBetween($min = 1, $max = 500),
+		                'direccion'=>$faker->address
+		            ];
 
 					$item->save();
-					$uach->save();
 
 				}
         
@@ -53,7 +52,10 @@ class ProcedenciaPregradoTableSeeder extends Seeder
 
         	}
             
-       
+
+         PreNoUach::insert($samples_temp_no_uach);
+         PreUach::insert($samples_temp_uach);
+
         
 
     }

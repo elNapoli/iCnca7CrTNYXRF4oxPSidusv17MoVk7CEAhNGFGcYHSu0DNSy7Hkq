@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class ContactoExtranjero extends Model
 {
     protected $table = 'contacto_extranjero';
+    protected $primaryKey = 'postulante';
     public $timestamps = false;
-    protected $fillable = ['conocido_extranjero',
+    protected $fillable = ['postulante',
+                           'conocido_extranjero',
                            'direccion',
                            'telefono_1',
                            'telefono_2',

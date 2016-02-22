@@ -3,29 +3,35 @@
         <div class="col-lg-6">
 
 
-
             <div class="form-group">
-                {!! Form::label('semestre', 'Semester:') !!}
-                <label class="radio-inline">
-                    {!! Form::radio('semestre', 'semestre 1',false,array('id'=>'semestreI'))!!} Semestre I
-                </label>
-                <label class="radio-inline">
+                {!! Form::label('semestre', 'Semestre:') !!}
+                <div class="radio">
+                    <label>
+                        {!! Form::radio('semestre', 'semestre 1',false,array('id'=>'semestreI'))!!} Semestre I
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
                     {!! Form::radio('semestre', 'semestre 2',false,array('id'=>'semestreII'))!!} Semestre II
-                </label>
-                <label class="radio-inline">
-                    {!! Form::radio('semestre', 'ambos',false,array('id'=>'semestreIII'))!!} Todo el Año
-                </label>
-
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                    {!! Form::radio('semestre', 'ambos',false,array('id'=>'semestreIII'))!!} Semestre I y Semestre II
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                    {!! Form::radio('semestre', 'otro',false,array('id'=>'semestreIV'))!!} Otra fecha
+                    </label>
+                </div>
             </div>
 
-            <div class="form-group">
-                {!!  Form::label('anio', 'Año de intercambio ')!!}
-                {!! Form::number('anio',null,array('min'=>'2015','class' => 'form-control','placeholder'=>'Ej: 2015'));!!}
-            </div>
+
 
             <div class="form-group">
                 
-                <div class="row">
+                <div class="row" id='otra_fecha' style='display:none'>
                     <div class="col-lg-6">
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1">Desde</span>
@@ -42,6 +48,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="form-group">
+                {!!  Form::label('anio', 'Año de intercambio ')!!}
+                {!! Form::number('anio',null,array('min'=>'2015','class' => 'form-control','placeholder'=>'Ej: 2015'));!!}
             </div>
       
                 {!!  Form::label('financiamiento', 'Financiamiento ')!!}

@@ -16,18 +16,19 @@ class PreNuSolicitudCursoTableSeeder extends Seeder
     {
         $faker     = Faker::create();
         $preNoUach = PreNoUach::all();
+        $samples_temp = [];
 
         foreach ($preNoUach as $item)
         {
 
 
-            $solicitudCurso          = new PreNuSolicitudCurso();
+            $samples_temp[] = [
+                'postulante' => $item->postulante
+            ];
 
-            $solicitudCurso->postulante = $item->postulante;
-
-            $solicitudCurso->save();
         	
         }
+        PreNuSolicitudCurso::insert($samples_temp);
 
         
     }

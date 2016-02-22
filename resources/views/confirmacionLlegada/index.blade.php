@@ -11,88 +11,13 @@
 
         <div class="panel panel-default">
 
-      		<div class="panel-heading"><a class="btn-info btn" id='openModalRepresentante' href="#!">Crear representante</a></div>
+      		<div class="panel-heading"></div>
       		<div class="message"></div>
 		
-  {!! Form::model($parametros, ['url'=>['paises/update'], 'method'=>'PUT']) !!}
+  {!! Form::model($parametros, ['url'=>['confirmacion-llegada/store-and-update'], 'method'=>'post','id'=>'form-save-confirmacion']) !!}
          
-        <div class="form-horizontal">
-        	<div class="col-lg-6">
-        		<h4>Datos de Universidad de Destino</h4>
-	          	<div class="form-group">
-	            	{!!  Form::label('nombre_universidad_destino', 'Nombre de la institución: ',array('class'=>'col-lg-5 control-label'));!!}
-
-		            <div class="col-lg-6">
-			            {!! Form::text('nombre_universidad_destino',null,array('class' => 'form-control','disabled'=>''));!!}
-
-		            </div>
-	          	</div>
-
-	          	<div class="form-group">
-	            	{!!  Form::label('nombre_coordinador', 'Coordinador:',array('class'=>'col-lg-5 control-label'));!!}
-
-		            <div class="col-lg-6">
-			            {!! Form::text('nombre_coordinador',null,array('class' => 'form-control','disabled'=>''));!!}
-
-		            </div>
-	          	</div>
-	          	<h4>Datos personales del estudiante</h4>
-	          	<div class="form-group">
-	            	{!!  Form::label('nombre_estudiante', 'Nombre completo: ',array('class'=>'col-lg-5 control-label'));!!}
-
-		            <div class="col-lg-6">
-			            {!! Form::text('nombre_estudiante',null,array('class' => 'form-control','disabled'=>''));!!}
-
-		            </div>
-	          	</div>
-	          	
-              <div class="panel panel-green">
-                        <div class="panel-heading">
-                        <h5>Cursos en la universidad de destino</h5>
-                        </div>
-                        <div class="panel-body">
-                          <ul>
-                             @foreach ($parametros['asignaturas_homologadas'] as $asignatura)
-
-                                <li>{{$asignatura['nombre_asignatura_intercambio']}}</li>
-                             @endforeach
-                          </ul>
-                        </div>
-                   
-                    </div>
-        	</div>
-        	<div class="col-lg-6">
-        		<h4>Confirmación de Arribo y Registro</h4>
-          	<div class="form-group">
-            	{!!  Form::label('fecha_llegada', 'Fecha de presentación en Institución de 
-				        Destino: ',array('class'=>'col-lg-5 control-label'));!!}
-
-	            <div class="col-lg-6">
-		            {!! Form::text('fecha_llegada',null,array('class' => 'form-control'));!!}
-
-	            </div>
-          	</div>
-          	<div class="form-group">
-            	{!!  Form::label('fecha_inicio_curso', 'Fecha inicio de cursos: ',array('class'=>'col-lg-5 control-label'));!!}
-
-	            <div class="col-lg-6">
-		            {!! Form::text('fecha_inicio_curso',null,array('class' => 'form-control'));!!}
-
-	            </div>
-          	</div>
-          	<div class="form-group">
-            	{!!  Form::label('fecha_termino_curso', 'Fechas término de cursos: ',array('class'=>'col-lg-5 control-label'));!!}
-
-	            <div class="col-lg-6">
-		            {!! Form::text('fecha_termino_curso',null,array('class' => 'form-control'));!!}
-
-	            </div>
-          	</div>
-        	</div>
-			
-          	
-
-        </div>
+         @include('confirmacionLlegada.partials.fields')
+     
   {!!Form::close()!!}
 
         </div>
@@ -110,6 +35,39 @@
 	<script>
 		 $(document).on('ready',function(){
 
+      $('#guardarConfirmacion').on('click',function(){
+        data = $('#form-save-confirmacion').serialize();
+        $.ajax({
+                                  
+                async : false,
+                data:data,
+                //Cambiar a type: POST si necesario
+                type: 'POST',
+                // Formato de datos que se espera en la respuesta
+                dataType: "json",
+                // URL a la que se enviará la solicitud Ajax
+                url:$('#form-save-confirmacion').attr('action') ,
+                success : function(json) {   
+                    $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');  
+             
+                    
+                },
+
+                error : function(xhr, status) {
+                     var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                        for(var key in xhr.responseJSON)
+                        {
+                            html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                        }
+                        $('#message-modal').html(html+'</div>');
+              
+                },
+                
+
+
+            });
+
+      });
 		 	$('#fecha_llegada').datepicker({
 
                     defaultDate: "+1w",

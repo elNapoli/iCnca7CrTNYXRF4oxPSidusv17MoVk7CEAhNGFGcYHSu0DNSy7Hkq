@@ -252,6 +252,10 @@
                             }
 
                         case 2:
+                            if($('input#semestreIV').attr('checked') === 'checked'){
+                                $('#otra_fecha').show('slide',1000);
+
+                            }
                             if($('section#wizard-p-2 #continente').val() != ''){
 
                                 selectByTabsSinAccion("section#wizard-p-2",'#_token','#getUrlPaisByContinente','#pais',$('section#wizard-p-2 #continente').val(),$('section#wizard-p-2 #pais_id').val());
@@ -384,10 +388,10 @@
                 }   
             });
 
-    $('section#wizard-p-2').on('click',' #FinanciamientoDDList',function(){
+            $('section#wizard-p-2').on('click',' #FinanciamientoDDList',function(){
 
-    $(this).dropSelect();
-    });
+            $(this).dropSelect();
+            });
 
             //##################################### ACIONES DE LA PESTAÑA 1################################
             $('section#wizard-p-0').on('focus','#fecha_nacimiento',function(){
@@ -395,6 +399,7 @@
 
                     showButtonPanel: true,
                     changeMonth: true,
+                    defaultDate: '-27y',
                     changeYear: true,
                     dateFormat: 'yy-mm-dd',
                     showAnim: 'drop',
@@ -409,6 +414,26 @@
                
 
             });
+
+            $('#wizard').on('change','input[name=semestre]',function(){
+                     
+                if($(this).val()==='otro'){
+               
+                    $('#otra_fecha').show('slide',1000);
+
+                }
+                else{
+
+                    $('#otra_fecha').hide('slide',1000);
+                    $('#desde').val('');
+                    $('#hasta').val('');
+                 
+
+
+                }
+            });
+
+
             $('#wizard').on('change','input[name=tipo_estudio]',function(){
                         
                 if($(this).val()==='Postgrado'){

@@ -16,27 +16,43 @@ class PrePostulacionUniversidadTableSeeder extends Seeder
     {
         $faker    = Faker::create();
         $pregrado = Pregrado::all();
-        $semestre = array('semestre 1', 'semestre 2', 'ambos'); 
+        $semestre = array('semestre 1', 'semestre 2', 'ambos','otro'); 
+        $samples_temp = [];
+
         foreach ($pregrado as $item)
         {
 
 
-            $pUniversidad                 = new PrePostulacionUniversidad();
             $desde                        = $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now');
-	      
+            $semestre_temp = $semestre[$faker->numberBetween($min = 0, $max = count($semestre)-1)];
+            if($semestre_temp === 'otro'){
+                $samples_temp[] = [
+                    'postulante' =>  $item->postulante,
+                    'anio'=> $faker->year($max = 'now'),
+                    'semestre'=> $semestre_temp,
+                    'desde'=>$desde ,
+                    'hasta'=>$faker->dateTimeBetween($startDate = $desde, $endDate = 'now'),
+                    'financiamiento'=> $faker->numberBetween($min = 1, $max = 3),
+                    'carrera'=> $faker->numberBetween($min = 1, $max = 500)
+                ];
+            }
+            else{
 
-            $pUniversidad->postulante     = $item->postulante;
-            $pUniversidad->anio           = $faker->year($max = 'now'); 
-            $pUniversidad->semestre       =	$semestre[$faker->numberBetween($min = 0, $max = 2)];
-            $pUniversidad->desde          = $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now');
-            $pUniversidad->hasta          = $faker->dateTimeBetween($startDate = $desde, $endDate = 'now');
-            $pUniversidad->financiamiento = $faker->numberBetween($min = 1, $max = 3);
-            $pUniversidad->carrera        = $faker->numberBetween($min = 1, $max = 20);
+                $samples_temp[] = [
+                    'postulante' =>  $item->postulante,
+                    'anio'=> $faker->year($max = 'now'),
+                    'semestre'=> $semestre_temp,
+                    'desde'=>'' ,
+                    'hasta'=>'',
+                    'financiamiento'=> $faker->numberBetween($min = 1, $max = 3),
+                    'carrera'=> $faker->numberBetween($min = 1, $max = 500)
+                ];
+            }
+            
 
-
-            $pUniversidad->save();
-        	
+            
         }
+        PrePostulacionUniversidad::insert($samples_temp);
 
         
     }

@@ -17,24 +17,25 @@ class CindaTableSeeder extends Seeder
     {
         $faker     = Faker::create();
         $preNoUach = PreNoUach::all();
+        $samples_temp = [];
 
         foreach ($preNoUach as $item)
         {
         	if($faker->numberBetween($min = 0, $max = 2) == 0){
 
-            $cinda             = new Cinda();
+    	        $samples_temp[] = [
+                    'postulante' => $item->postulante,
+                    'codigo_universidad'=> $faker->bothify('???###'),
+                    'nombre_responsable_academico'=>$faker->lastName.' '.$faker->firstName,
+                    'telefono_responsable_academico'=>$faker->phoneNumber,
+                    'email_responsable_academico'=> $faker->email
 
-            $cinda->postulante                     = $item->postulante;
-            $cinda->codigo_universidad             = $faker->bothify('???###');
-            $cinda->nombre_responsable_academico   = $faker->lastName.' '.$faker->firstName;
-            $cinda->telefono_responsable_academico = $faker->phoneNumber;
-            $cinda->email_responsable_academico    = $faker->email;
+                ];
 
-			
-            $cinda->save();
         	}
         }
 
+         Cinda::insert($samples_temp);
         
     }
 }

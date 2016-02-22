@@ -27,14 +27,21 @@
           </tr>          
           <tr>
           	@foreach($p->documentoIdentidadR as $item)
+              {{$cont=0}} <!-- en caso de no tener mas documentos es necesario contar para rellenar el vacio-->
           		@if($item->tipo == 'p')
 		            <th colspan="15" class="no">Pasaporte</th>
 		            <th colspan="30" class="desc">{{$item->numero}}</th>
+                {{$cont=+1}}
 		         @elseif($item->tipo == 'ci')
 		            <th colspan="25" class="no">Documento Nacional (*)</th>
 		            <th colspan="30" class="desc">{{$item->numero}}</th>
+                {{$cont=+1}}
 		         @endif
             @endforeach
+             @if($cont <= 1)
+                <th colspan="15" class="no">Pasaporte</th>
+                <th colspan="30" class="desc"> No aplica</th>
+            @endif
           </tr>
           <tr>
             <th colspan="18" class="no">Pais</th>
@@ -61,7 +68,7 @@
         <tbody>
           <tr>
             <th colspan="30" class="no">Universidad procedencia</th>
-            <th colspan="70" class="desc">{{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedesR->universidadR->nombre}}</th>
+            <th colspan="70" class="desc">{{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->universidadR->nombre}}</th>
           </tr>
           <tr>
             <th colspan="25" class="no">Area de estudio</th>
@@ -70,11 +77,11 @@
           </tr>
           <tr>
             <th colspan="32" class="no">Coordinador de intercambio</th>
-            <th colspan="68" class="desc">{{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedesR->departamentosR[0]->nombre_encargado}}</th>        
+            <th colspan="68" class="desc">{{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->departamentosR[0]->nombre_encargado}}</th>        
           </tr>
            <tr>
             <th colspan="32" class="no">Datos coordinador</th>
-            <th colspan="68" class="desc">Email: {{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedesR->departamentosR[0]->email}} - Telefono: {{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedesR->departamentosR[0]->telefono}} - Direccion: Falta agregar el campo a la tabla campus<!--{{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedesR->direccion}} --></th>        
+            <th colspan="68" class="desc">Email: {{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->departamentosR[0]->email}} - Telefono: {{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->departamentosR[0]->telefono}} - Direccion: {{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->direccion}}</th>        
           </tr>
         </tbody>
       </table>
@@ -88,11 +95,17 @@
             <th colspan="20" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->nombre}}</th>
           </tr>  
           <tr>
-            <!-- agregar condiciones como a todo lo demas xD 3 casos (sem1 o sem2) (ambos) y (desde hasta)-->
-            <th colspan="20" class="no">Semestre I</th>
-            <th colspan="30" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->semestre.' del '.$p->pregradosR->prePostulacionUniversidadesR->anio}}</th>
-            <th colspan="20" class="no">Semestre II</th>
-            <th colspan="30" class="desc"> - </th>
+            <!-- agregar condiciones como a todo lo demas xD 4 casos (sem1 o sem2) (ambos) y (desde hasta)-->
+            <th colspan="20" class="no">Semestre(s)</th>
+            @if($p->pregradosR->prePostulacionUniversidadesR->semestre == 'otro')
+              <th colspan="80" class="desc">No aplica</th>
+            @else
+                @if($p->pregradosR->prePostulacionUniversidadesR->semestre == 'ambos')
+                      <th colspan="80" class="desc">{{'Semestre 1 y 2 del '.$p->pregradosR->prePostulacionUniversidadesR->anio}}</th>
+                @else
+                      <th colspan="80" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->semestre.' del '.$p->pregradosR->prePostulacionUniversidadesR->anio}}</th>
+                @endif
+            @endif
           </tr>            
         </tbody>
       </table>
@@ -100,10 +113,17 @@
       <table border="0" cellspacing="0" cellpadding="0">
         <tbody>
           <tr>
-            <th colspan="20" class="no">Desde</th>
-            <th colspan="30" class="desc"> - </th>
-            <th colspan="20" class="no">Hasta</th>
-            <th colspan="30" class="desc"> - </th>
-          </tr>            
+            @if($p->pregradosR->prePostulacionUniversidadesR->semestre != 'otro')
+                <th colspan="20" class="no">Desde</th>
+                <th colspan="30" class="desc"> No aplica </th>
+                <th colspan="20" class="no">Hasta</th>
+                <th colspan="30" class="desc"> No aplica </th>
+            @elseif($p->pregradosR->prePostulacionUniversidadesR->semestre == 'otro')
+                <th colspan="20" class="no">Desde</th>
+                <th colspan="30" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->desde}}</th>
+                <th colspan="20" class="no">Hasta</th>
+                <th colspan="30" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->hasta}}</th>
+            @endif
+          </tr>             
         </tbody>
       </table> 

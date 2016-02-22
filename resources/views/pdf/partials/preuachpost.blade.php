@@ -19,7 +19,7 @@
             <th colspan="22" class="no">Documento Nacional</th>
             <th colspan="46" class="desc">{{$p->documentoIdentidadR[0]->numero}}</th>
             <th colspan="10" class="no">Edad</th>
-            <th colspan="6" class="desc">{{$date-$p->fecha_nacimiento}}</th>
+            <th colspan="6" class="desc">{{$edad}}</th>
             <th colspan="10" class="no">Sexo</th>
             @if($p->sexo = 'm')
               <th colspan="6" class="desc">M</th>
@@ -139,9 +139,9 @@
                 <th colspan="30" class="desc"> No aplica </th>
             @elseif($p->pregradosR->prePostulacionUniversidadesR->semestre == 'otro')
                 <th colspan="20" class="no">Desde</th>
-                <th colspan="30" class="desc">{{$postulante->pregradosR->prePostulacionUniversidadesR->desde}}</th>
+                <th colspan="30" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->desde}}</th>
                 <th colspan="20" class="no">Hasta</th>
-                <th colspan="30" class="desc">{{$postulante->pregradosR->prePostulacionUniversidadesR->hasta}}</th>
+                <th colspan="30" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->hasta}}</th>
             @endif
           </tr>            
         </tbody>

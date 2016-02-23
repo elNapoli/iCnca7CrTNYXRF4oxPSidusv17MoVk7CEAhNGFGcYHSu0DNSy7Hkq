@@ -130,71 +130,23 @@
       <table border="0" cellspacing="0" cellpadding="0">
         <tbody>
           <tr>
-                <th colspan="10" class="no">Codigo</th>
+                <th colspan="12" class="no">Codigo</th>
                 <th colspan="25" class="no">Nombre</th>
                 <th colspan="25" class="no">Carrera</th>
-                <th colspan="40" class="no">Autorizacion (Uso interno UACh)</th>
+                <th colspan="38" class="no">Autorizacion (Uso interno UACh)</th>
           </tr>
+          @foreach($p->pregradosR->preNoUachsR->preNuSolicitudCursosR->detalleSolicitudCursosR as $item)
           <tr>
-                <th colspan="10" class="desc">INFO123</th>
-                <th colspan="25" class="desc">Introduccion a la programacion</th>
-                <th colspan="25" class="desc">Ingenieria civil en informática</th>
-                <th colspan="40" class="desc2">
+                <th colspan="12" class="desc">{{$item->asignatura.' nivel '.$item->asignaturaR->nivel}}</th>
+                <th colspan="25" class="desc">{{$item->asignaturaR->nombre}}</th>
+                <th colspan="25" class="desc">{{$item->asignaturaR->carreraR->nombre}}</th>
+                <th colspan="38" class="desc2">
                     <div>Acepta:____  &nbsp &nbsp &nbsp &nbsp Rechaza:____</div>
                     <div>Observacion:</div>
                     <div><br></div>
                 </th>
-          </tr>
-          <tr>
-                <th colspan="10" class="desc">INFO123</th>
-                <th colspan="25" class="desc">Introduccion a la programacion</th>
-                <th colspan="25" class="desc">Ingenieria civil en informática</th>
-                <th colspan="40" class="desc2">
-                    <div>Acepta:____  &nbsp &nbsp &nbsp &nbsp Rechaza:____</div>
-                    <div>Observacion:</div>
-                    <div><br></div>
-                </th>
-          </tr>
-          <tr>
-                <th colspan="10" class="desc">INFO123</th>
-                <th colspan="25" class="desc">Introduccion a la programacion</th>
-                <th colspan="25" class="desc">Ingenieria civil en informática</th>
-                <th colspan="40" class="desc2">
-                    <div>Acepta:____  &nbsp &nbsp &nbsp &nbsp Rechaza:____</div>
-                    <div>Observacion:</div>
-                    <div><br></div>
-                </th>
-          </tr>
-          <tr>
-                <th colspan="10" class="desc">INFO123</th>
-                <th colspan="25" class="desc">Introduccion a la programacion</th>
-                <th colspan="25" class="desc">Ingenieria civil en informática</th>
-                <th colspan="40" class="desc2">
-                    <div>Acepta:____  &nbsp &nbsp &nbsp &nbsp Rechaza:____</div>
-                    <div>Observacion:</div>
-                    <div><br></div>
-                </th>
-          </tr>
-          <tr>
-                <th colspan="10" class="desc">INFO123</th>
-                <th colspan="25" class="desc">Introduccion a la programacion</th>
-                <th colspan="25" class="desc">Ingenieria civil en informática</th>
-                <th colspan="40" class="desc2">
-                    <div>Acepta:____  &nbsp &nbsp &nbsp &nbsp Rechaza:____</div>
-                    <div>Observacion:</div>
-                    <div><br></div>
-                </th>
-          </tr> 
-          <tr>
-                <th colspan="10" class="desc">INFO123</th>
-                <th colspan="25" class="desc">Introduccion a la programacion</th>
-                <th colspan="25" class="desc">Ingenieria civil en informática</th>
-                <th colspan="40" class="desc2">
-                    <div>Acepta:____  &nbsp &nbsp &nbsp &nbsp Rechaza:____</div>
-                    <div>Observacion:</div>
-                    <div><br></div>
-                </th>
-          </tr>                                 
+          @endforeach
+          </tr>                                
         </tbody>
       </table>
     <div id="cab">4 - CONVENIO</div>
@@ -241,27 +193,27 @@
         <tbody>     
           <tr>
              <th colspan="20" class="no">Institucion</th>
-             <th colspan="40" class="desc">Universidad bla bla</th>
+             <th colspan="40" class="desc">{{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->universidadR->nombre}}</th>
              <th colspan="10" class="no">Nombre</th>
-             <th colspan="30" class="desc">Nombre del wn</th>
+             <th colspan="30" class="desc">{{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->departamentosR->first()->nombre_encargado}}</th>
           </tr>
           <tr>
              <th colspan="10" class="no">Cargo</th>
-             <th colspan="30" class="desc">Coordinador</th>
+             <th colspan="30" class="desc">Encargado</th>
              <th colspan="20" class="no">Unidad responsable</th>
-             <th colspan="40" class="desc">Movilidad y weas xd</th>
+             <th colspan="40" class="desc">{{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->departamentosR->first()->tipo}}</th>
           </tr>   
           <tr>
              <th colspan="10" class="no">Direccion</th>
-             <th colspan="40" class="desc"></th>
+             <th colspan="40" class="desc">{{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->direccion}}</th>
              <th colspan="10" class="no">Telefono</th>
-             <th colspan="40" class="desc"></th>
+             <th colspan="40" class="desc">{{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->departamentosR->first()->telefono}}</th>
           </tr> 
           <tr>
              <th colspan="10" class="no">E-mail</th>
-             <th colspan="40" class="desc"></th>
+             <th colspan="40" class="desc">{{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->departamentosR->first()->email}}</th>
              <th colspan="10" class="no">Website</th>
-             <th colspan="40" class="desc"></th>
+             <th colspan="40" class="desc">{{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->departamentosR->first()->sitio_web}}</th>
           </tr>
           <tr>
              <th colspan="10" class="no">Fecha</th>

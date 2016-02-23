@@ -37,7 +37,13 @@ class CursosNoUachController extends Controller {
 
 
 		$solicitudCurso = $postulante->pregradosR->preNoUachsR->preNuSolicitudCursosR;
-
+		$parametros[] =array(
+								'id' => '',
+								'asignatura' =>'',		
+								'observaciones' => '',		
+								'aceptado' => '',
+								'semestre' => '',
+								'carreras'=> $carreras->toArray());	
 		if($solicitudCurso){
 			
 			foreach ($solicitudCurso->detalleSolicitudCursosR()->get() as $item) {
@@ -57,13 +63,7 @@ class CursosNoUachController extends Controller {
 
 
 		}
-		$parametros[] =array(
-						'id' => '',
-						'asignatura' =>'',		
-						'observaciones' => '',		
-						'aceptado' => '',
-						'semestre' => '',
-						'carreras'=> $carreras->toArray());	
+		
 		//dd($parametros);
 		$arra = array('data'=>$parametros);
 		return json_encode($arra);

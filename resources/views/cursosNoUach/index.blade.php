@@ -12,6 +12,7 @@
 {!!Form::hidden('getUrlAsignaturasByCarrera', url('asignaturas/asignaturas-by-carrera'),array('id'=>'getUrlAsignaturasByCarrera'));!!}
 {!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
 {!!Form::hidden('getUrlSolicitudCursoStore',url('solicitud-curso/store-and-update'),array('id'=>'getUrlSolicitudCursoStore'));!!}
+{!!Form::hidden('getUrlSolicitudCursoDestroy',url('solicitud-curso/destroy'),array('id'=>'getUrlSolicitudCursoDestroy'));!!}
 
   
 @endsection
@@ -60,15 +61,11 @@
 		                        $(nTd).html(sData.asignatura_codigo+": "+sData.asignatura_nombre);
 
 		                        if(sData.id === ''){
-		                            html = '<option value ="">Seleccione código</option>';
+		                            html = '<option value ="">Seleccione asignatura</option>';
 		                            disabled = '';
-		                            $.each(oData.carreras, function(index, subCatObj){
-		                           
-		                                html = html + '<option value ="'+subCatObj.id+'">'+subCatObj.nombre+'</option>';
-		                                
-		                            });
+		              
 
-		                            $(nTd).html('<select  id="codigo_-'+iRow+'" mane="codigo_carrera-'+iRow+'" class=" codigo_asignatura_select form-control"> '+html+'</select>');
+		                            $(nTd).html('<select  id="codigo_asignatura-'+iRow+'" mane="codigo_asignatura-'+iRow+'" class=" codigo_asignatura_select form-control"> '+html+'</select>');
 
 		                        }                     
 
@@ -102,6 +99,38 @@
 
 
             selectByTabs("table#tableCursosNoUach",'#codigo_carrera-0','#_token','#getUrlAsignaturasByCarrera','#codigo_asignatura-0');
+            $('#tableCursosNoUach').on('click','.btn-delete',function(){
+
+	            $.ajax({
+	                                  
+	                async : false,
+	                data:{
+	                    _token: $('#_token').val(),
+	                    id: $(this).attr('id'),
+
+	                },
+	                //Cambiar a type: POST si necesario
+	                type: 'POST',
+	                // Formato de datos que se espera en la respuesta
+	                dataType: "json",
+	                // URL a la que se enviará la solicitud Ajax
+	                url:$('#getUrlSolicitudCursoDestroy').val() ,
+	                success : function(json) {   
+	                    $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');  
+	                    dt.ajax.reload();              
+	             
+	                    
+	                },
+
+	                error : function(xhr, status) {
+	                    alert(status);
+	              
+	                },
+	                
+
+
+	            });
+	        });
             $('#tableCursosNoUach').on('click','.addCurso',function(){
 
 	         

@@ -28,6 +28,19 @@ class SolicitudCursoController extends Controller {
 		$detalleSolicitud->asignatura = $request->get('asignatura');
 		$detalleSolicitud->save();
 
+		return response()->json([
+				'message'=> 'La asignatura se ha adjuntado a la solicitud de cursos.'
+				]);
+
+	}
+
+	public function postDestroy(Request $request){
+
+		$curso_homologado = DetalleSolicitudCurso::find($request->get('id'));
+		$curso_homologado->delete();
+		return response()->json([
+				'message'=> 'La asignatura se ha eliminado del la lista de asignaturas solicitadas.'
+				]);
 
 
 	}

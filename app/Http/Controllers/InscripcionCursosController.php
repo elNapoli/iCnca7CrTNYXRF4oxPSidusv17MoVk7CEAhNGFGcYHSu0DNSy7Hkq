@@ -40,7 +40,7 @@ class InscripcionCursosController extends Controller {
 
 							->wherehas('detalleSolicitudCursoR.preNuSolicitudCursoR', function($q) use ($postulante)
 							{
-							    $q->where('postulante', 9);
+							    $q->where('postulante', $postulante->id);
 
 							})
 							->get();
@@ -54,6 +54,33 @@ class InscripcionCursosController extends Controller {
 
 		$arra = array('data'=>$cursosAceptados->toArray());
 		return json_encode($arra);
+	}
+
+
+	public function postUpdate(Request $request,Guard $auth){
+
+		$postulante = Postulante::where('user_id',$auth->id())->first();
+		$numCursosAceptados = PreNuInscripcionCurso::
+
+							wherehas('detalleSolicitudCursoR.preNuSolicitudCursoR', function($q) use ($postulante)
+							{
+							    $q->where('postulante', $postulante->id);
+
+							})
+							->get()->count();
+
+		for ($i=0; $i < $numCursosAceptados; $i++) { 
+			
+			$curso = PreNuInscripcionCurso::findOrFail($request->get('id-inscripcion-'.$i));
+			$curso->profesor = $request->get('profesor-'.$i);
+			$curso->save();
+	
+		}
+		return response()->json([
+				'message'=> 'los datos se han alnacenado correctamente.'
+				]);
+
+
 	}
 
 }

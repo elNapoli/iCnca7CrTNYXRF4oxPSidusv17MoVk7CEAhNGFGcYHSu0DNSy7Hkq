@@ -19,7 +19,7 @@
             <th colspan="22" class="no">Documento Nacional</th>
             <th colspan="46" class="desc">{{$p->documentoIdentidadR[0]->numero}}</th>
             <th colspan="10" class="no">Edad</th>
-            <th colspan="6" class="desc">{{$date-$p->fecha_nacimiento}}</th>
+            <th colspan="6" class="desc">{{$edad}}</th>
             <th colspan="10" class="no">Sexo</th>
             @if($p->sexo = 'm')
               <th colspan="6" class="desc">M</th>
@@ -69,12 +69,7 @@
     <div id="cab">1.1 - CONTACTO EN CASO DE EMERGENCIA</div>
       <table border="0" cellspacing="0" cellpadding="0">
         <tbody>
-          <tr>
-            <th colspan="15" class="no">Nombre</th>
-            <th colspan="35" class="desc">{{$p->pregradosR->preUachsR->preURespnsablesR[0]->nombre}}</th>
-            <th colspan="15" class="no">Parentesco</th>
-            <th colspan="35" class="desc">{{$p->pregradosR->preUachsR->preURespnsablesR[0]->parentesco}}</th>            
-          </tr>
+
           <tr>
             <th colspan="20" class="no">Direccion</th>
             <th colspan="80" class="desc">{{$p->pregradosR->preUachsR->preURespnsablesR[0]->direccion}}</th>
@@ -115,10 +110,16 @@
         <tbody>
           <tr>
             <!-- agregar condiciones como a todo lo demas xD 4 casos (sem1 o sem2) (ambos) y (desde hasta)-->
-            <th colspan="20" class="no">Semestre I</th>
-            <th colspan="30" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->semestre.' del '.$p->pregradosR->prePostulacionUniversidadesR->anio}}</th>
-            <th colspan="20" class="no">Semestre II</th>
-            <th colspan="30" class="desc"> - </th>
+            <th colspan="20" class="no">Semestre(s)</th>
+            @if($p->pregradosR->prePostulacionUniversidadesR->semestre == 'otro')
+              <th colspan="80" class="desc">No aplica</th>
+            @else
+                @if($p->pregradosR->prePostulacionUniversidadesR->semestre == 'ambos')
+                      <th colspan="80" class="desc">{{'Semestre 1 y 2 del '.$p->pregradosR->prePostulacionUniversidadesR->anio}}</th>
+                @else
+                      <th colspan="80" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->semestre.' del '.$p->pregradosR->prePostulacionUniversidadesR->anio}}</th>
+                @endif
+            @endif
           </tr>            
         </tbody>
       </table>
@@ -126,10 +127,17 @@
       <table border="0" cellspacing="0" cellpadding="0">
         <tbody>
           <tr>
-            <th colspan="20" class="no">Desde</th>
-            <th colspan="30" class="desc"> - </th>
-            <th colspan="20" class="no">Hasta</th>
-            <th colspan="30" class="desc"> - </th>
+            @if($p->pregradosR->prePostulacionUniversidadesR->semestre != 'otro')
+                <th colspan="20" class="no">Desde</th>
+                <th colspan="30" class="desc"> No aplica </th>
+                <th colspan="20" class="no">Hasta</th>
+                <th colspan="30" class="desc"> No aplica </th>
+            @elseif($p->pregradosR->prePostulacionUniversidadesR->semestre == 'otro')
+                <th colspan="20" class="no">Desde</th>
+                <th colspan="30" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->desde}}</th>
+                <th colspan="20" class="no">Hasta</th>
+                <th colspan="30" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->hasta}}</th>
+            @endif
           </tr>            
         </tbody>
       </table>     
@@ -149,7 +157,7 @@
             @if($p->pregradosR->prePostulacionUniversidadesR->financiamiento <= 3)
               <th colspan="40" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->financiamientoR->nombre}}</th>
             @else  
-              <th colspan="40" class="desc">es menor que 3</th>
+              <th colspan="40" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->preOtroFinanciamientosR->first()->descripcion}}</th>
             @endif
                 
             <th colspan="20" class="no">Convenio</th>

@@ -20,7 +20,9 @@ class PreNoUach extends Model
 
     public function preNuSolicitudCursosR()
     {
+
         return $this->belongsTo('App\PreNuSolicitudCurso','postulante','postulante');
+
     }
 
     public function preNuEstudioActualesR()

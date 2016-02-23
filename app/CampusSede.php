@@ -13,7 +13,8 @@ class CampusSede extends Model
                            'fax',
                            'sitio_web',
                            'universidad',
-                           'ciudad']; 
+                           'ciudad',
+                           'direccion']; 
 
 
 	########### N:1 ########### 					   

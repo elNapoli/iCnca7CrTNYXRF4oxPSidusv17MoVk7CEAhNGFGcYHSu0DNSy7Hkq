@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\Guard;
 
 use Illuminate\Http\Request;
 use App\Postulante;
+use Carbon\Carbon;
 
 
 class PdfController extends Controller {
@@ -19,7 +20,18 @@ class PdfController extends Controller {
     {
         $p = $this->getData($auth);
         $date = date('Y-m-d');
-        $view =  \View::make('pdf.invoice', compact('p', 'date'));
+        //calculo edad correcta
+        $ma = Carbon::parse($date)->format('m'); //mes actual
+        $da = Carbon::parse($date)->format('d'); //dia actual
+        $mn = Carbon::parse($p->fecha_nacimiento)->format('m'); //mes nacimiento
+        $dn = Carbon::parse($p->fecha_nacimiento)->format('d'); //dia nacimiento
+        if($ma < $mn or ($ma == $mn and $da < $dn)){
+            $edad = $date-$p->fecha_nacimiento-1;
+        }
+        else{$edad = $date-$p->fecha_nacimiento;}
+        //fin calculo edad correcta
+
+        $view =  \View::make('pdf.invoice', compact('p', 'date','edad'));
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('invoice');
@@ -29,7 +41,18 @@ class PdfController extends Controller {
     {
         $p = $this->getData($auth);
         $date = date('Y-m-d');
-        $view =  \View::make('pdf.invoice', compact('p', 'date'));
+        //calculo edad correcta
+        $ma = Carbon::parse($date)->format('m'); //mes actual
+        $da = Carbon::parse($date)->format('d'); //dia actual
+        $mn = Carbon::parse($p->fecha_nacimiento)->format('m'); //mes nacimiento
+        $dn = Carbon::parse($p->fecha_nacimiento)->format('d'); //dia nacimiento
+        if($ma < $mn or ($ma == $mn and $da < $dn)){
+            $edad = $date-$p->fecha_nacimiento-1;
+        }
+        else{$edad = $date-$p->fecha_nacimiento;}
+        //fin calculo edad correcta
+
+        $view =  \View::make('pdf.invoice', compact('p', 'date','edad'));
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->download('invoice');

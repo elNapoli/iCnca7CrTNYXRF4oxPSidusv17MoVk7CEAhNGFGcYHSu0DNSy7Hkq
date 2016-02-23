@@ -29,7 +29,8 @@ class DetalleSolicitudCursoTableSeeder extends Seeder
         }
         foreach ($solicitudCurso as $item)
         {
-        	for($i = 0; $i < $faker->numberBetween($min = 0, $max =6); $i ++){
+            $num = $faker->numberBetween($min = 1, $max =6);
+        	for($i = 0; $i < $num; $i ++){
 
                 $samples_temp[] = [
                     'solicitud_curso' => $item->id,
@@ -41,6 +42,8 @@ class DetalleSolicitudCursoTableSeeder extends Seeder
         	}
         	
         }
+
+
         DetalleSolicitudCurso::insert($samples_temp);
 
         

@@ -17,6 +17,8 @@ class InscripcionCursosController extends Controller {
 	 */
 	public function getIndex(Guard $auth){
 
+		// esta lógica pertenece al usuario que coloca observaciones y ticks aceptados,
+		// por el momento se dejará aca.
 		$postulante = Postulante::where('user_id',$auth->id())->first();
 		$solicitud = PreNuSolicitudCurso::where('postulante',$postulante->id)->first();
 		$detalle = $solicitud->detalleSolicitudCursosR()->get();
@@ -36,9 +38,14 @@ class InscripcionCursosController extends Controller {
 		$postulante = Postulante::where('user_id',$auth->id())->first();
 		$solicitud = PreNuSolicitudCurso::where('postulante',$postulante->id)->first();
 
-		$cursosAceptados = $solicitud->with('detalleSolicitudCursosR.preNuInscripcionCursoR')->get();
+		$cursosAceptados = PreNuSolicitudCurso::
+									with('detalleSolicitudCursosR.preNuInscripcionCursoR')
+									->has('detalleSolicitudCursosR.preNuInscripcionCursoR')
+								//	->select('.pre_nu_solicitud_curso.id as id_solicitud')
+								//	->orderBy('id')
+									->get();
 
-		dd($cursosAceptados->toArray());
+		return($cursosAceptados->count());
 	}
 
 }

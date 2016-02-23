@@ -121,7 +121,7 @@
 
                         if(sData.periodo != ''){
 
-                            html = html +"<a href='#!' id='"+oData.id+"' class='btn-delete' > eliminar</a>";
+                            html = "<a href='#!' id='"+oData.id+"' class='btn-delete' > eliminar</a>";
                         }               
                         $(nTd).html(html);
 

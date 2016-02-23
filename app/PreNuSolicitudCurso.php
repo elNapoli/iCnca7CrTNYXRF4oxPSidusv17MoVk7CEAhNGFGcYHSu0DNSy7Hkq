@@ -8,6 +8,7 @@ class PreNuSolicitudCurso extends Model
 {
     protected $table   = 'pre_nu_solicitud_curso';
     public $timestamps = false;
+    protected $fillable = ['postulante'];
 
     // un Postulante esta en una ciudad
     public function preNoUach()
@@ -15,8 +16,8 @@ class PreNuSolicitudCurso extends Model
         return $this->belongsTo('App\PreNoUach','postulante');
     }
 
-    public function detalleSolicitudCursos()
+    public function detalleSolicitudCursosR()
     {
-        return $this->hasMany('App\DetalleSolicitudCursos','solicitud_curso');
+        return $this->hasMany('App\DetalleSolicitudCurso','solicitud_curso');
     }
 }

@@ -8,7 +8,11 @@
              
 			@include('cursosNoUach.partials.table')
   {!!Form::close()!!}
-{!!Form::hidden('getUrlCarreras', url('carreras/all-carreras-uach'),array('id'=>'getUrlCarreras'));!!}
+{!!Form::hidden('getUrlCursosNoUach', url('cursos-no-uach/cursos-no-uach'),array('id'=>'getUrlCursosNoUach'));!!}
+{!!Form::hidden('getUrlAsignaturasByCarrera', url('asignaturas/asignaturas-by-carrera'),array('id'=>'getUrlAsignaturasByCarrera'));!!}
+{!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
+{!!Form::hidden('getUrlSolicitudCursoStore',url('solicitud-curso/store-and-update'),array('id'=>'getUrlSolicitudCursoStore'));!!}
+
   
 @endsection
 
@@ -25,16 +29,111 @@
 
 	            'searching':false,
 	            'paging':false,
-	            "ajax": $('#getUrlCarreras').val(),
-
+	            "ajax": $('#getUrlCursosNoUach').val(),
 
 	            "columns": [
-	                { "data": "periodo" },
-	                { "data": "periodo" },
-	                { "data": "periodo" },
+	                { "data": null,
+	                    	"fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+		                        //$(nTd).attr('data','jojo');
+		                        var html = '';
+		                        $(nTd).html(sData.nom_carrera);
+
+		                        if(sData.id === ''){
+		                            html = '<option value ="">Seleccione Carrera</option>';
+		                            disabled = '';
+		                            $.each(oData.carreras, function(index, subCatObj){
+		                           
+		                                html = html + '<option value ="'+subCatObj.id+'">'+subCatObj.nombre+'</option>';
+		                                
+		                            });
+
+		                            $(nTd).html('<select  id="codigo_carrera-'+iRow+'" mane="codigo_carrera-'+iRow+'" class=" codigo_asignatura_select form-control"> '+html+'</select>');
+
+		                        }                     
+
+		                    }
+	                },
+	                { "data": null,
+	                    	"fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+		                        //$(nTd).attr('data','jojo');
+		                        var html = '';
+		                        $(nTd).html(sData.asignatura_codigo+": "+sData.asignatura_nombre);
+
+		                        if(sData.id === ''){
+		                            html = '<option value ="">Seleccione código</option>';
+		                            disabled = '';
+		                            $.each(oData.carreras, function(index, subCatObj){
+		                           
+		                                html = html + '<option value ="'+subCatObj.id+'">'+subCatObj.nombre+'</option>';
+		                                
+		                            });
+
+		                            $(nTd).html('<select  id="codigo_-'+iRow+'" mane="codigo_carrera-'+iRow+'" class=" codigo_asignatura_select form-control"> '+html+'</select>');
+
+		                        }                     
+
+		                    }
+	                },
+	                { "data": null,
+	                    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+	                        var html = sData.semestre;
+             
+	                        $(nTd).html(html);
+
+	                    }
+	                },
+	                { "data": null,
+	                    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+	                        var html = "<a href='#!'  class='addCurso'> Agregar</a>";
+
+	                        if(sData.semestre != ''){
+
+	                            html = "<a href='#!' id='"+oData.id+"' class='btn-delete' > eliminar</a>";
+	                        }              
+	                        $(nTd).html(html);
+
+	                    }
+	                }
+
+	        
 	                   
 	            ],
 	        });
+
+
+            selectByTabs("table#tableCursosNoUach",'#codigo_carrera-0','#_token','#getUrlAsignaturasByCarrera','#codigo_asignatura-0');
+            $('#tableCursosNoUach').on('click','.addCurso',function(){
+
+	         
+	            $.ajax({
+	                async : false,
+	                data:{
+	                    _token: $('#_token').val(),
+	                    asignatura: $('table#tableCursosNoUach #codigo_asignatura-0').val(),
+
+	                },
+	                //Cambiar a type: POST si necesario
+	                type: 'POST',
+	                // Formato de datos que se espera en la respuesta
+	                dataType: "json",
+	                // URL a la que se enviará la solicitud Ajax
+	                url:$('#getUrlSolicitudCursoStore').val() ,
+	                success : function(json) {   
+	                    $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');  
+	                    dt.ajax.reload();              
+	             
+	                    
+	                },
+
+	                error : function(xhr, status) {
+	                    alert(status);
+	              
+	                },
+	                
+
+
+	            });
+            })
 
 		 });
 	</script>

@@ -22,7 +22,7 @@ class CreateDetalleSolicitudCursoTable extends Migration
             $table->string('asignatura',10)->index();
 
             $table->string('observaciones');
-            $table->enum('aceptado',['si','no']);
+            $table->enum('aceptado',['si','no'])->default('no');
 
         });   
     }

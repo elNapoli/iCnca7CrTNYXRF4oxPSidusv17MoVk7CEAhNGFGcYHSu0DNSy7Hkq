@@ -8,13 +8,14 @@ class DetalleSolicitudCurso extends Model
 {
     protected $table = 'detalle_solicitud_curso';
     public $timestamps = false;
-    protected $fillable = ['observaciones',
+    protected $fillable = ['solicitud_curso',
+                           'observaciones',
                            'aceptado',
                            'nombre_encargado'];
 
  
 
-    public function Asignatura()
+    public function asignaturaR()
     {
     	return $this->belongsTo('App\Asignatura','asignatura'); //Id local
     }

@@ -44,6 +44,7 @@ Route::controllers([
 	'confirmacion-llegada' => 'ConfirmacionLlegadaController',
 	'representante-uach' => 'RepresentanteUachController',
 	'contacto-en-extranjero' => 'CursosNoUachController',
+	'solicitud-curso' => 'SolicitudCursoController',
 	'cursos-no-uach' => 'CursosNoUachController',
 
 

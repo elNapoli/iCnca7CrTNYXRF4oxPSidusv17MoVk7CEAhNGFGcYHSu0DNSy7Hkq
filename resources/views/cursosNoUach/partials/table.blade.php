@@ -1,4 +1,4 @@
-<div class="col-lg-6">
+<div class="col-lg-10">
     <div class="panel panel-green">
         <div class="panel-heading text-center">
             Cursos <br>
@@ -12,6 +12,7 @@
                             <th>Carrera</th>
                             <th>Código de asignatura</th>
                             <th>Semestre</th>
+                            <th>Acción</th>
 
                     </tr>
                 </thead>

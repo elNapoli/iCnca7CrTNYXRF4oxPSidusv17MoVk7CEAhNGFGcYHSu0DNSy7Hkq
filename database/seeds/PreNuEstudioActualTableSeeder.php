@@ -17,23 +17,24 @@ class PreNuEstudioActualTableSeeder extends Seeder
     {
         $faker     = Faker::create();
         $preNoUach = PreNoUach::all();
+        $samples_temp = [];
 
         foreach ($preNoUach as $item)
         {
 
 
-            $eActual                 = new PreNuEstudioActual();
+            $samples_temp[] = [
+                'postulante' => $item->postulante,
+                'area'=> $faker->sentence($nbWords = 6, $variableNbWords = true),
+                'anios_cursados'=>$faker->numberBetween($min = 0, $max = 7) ,
+                'campus_sede'=>$faker->numberBetween($min = 1, $max = 100)
+            ];
 
-            $eActual->postulante     = $item->postulante;
-            $eActual->area           = $faker->sentence($nbWords = 6, $variableNbWords = true);
-            $eActual->anios_cursados = $faker->numberBetween($min = 0, $max = 7);
-            $eActual->campus_sede    = $faker->numberBetween($min = 1, $max = 20);
 
 
-
-            $eActual->save();
         	
         }
+        PreNuEstudioActual::insert($samples_temp);
 
         
     }

@@ -9,7 +9,7 @@ class PreNuInscripcionCurso extends Model
     protected $table      = 'pre_nu_inscripcion_curso';
     public $timestamps    = false;
     protected $primaryKey = 'detalle_solicitud_curso';
-    protected $fillable   = ['profesor'];
+    protected $fillable   = ['profesor','detalle_solicitud_curso'];
 
     // un Postulante esta en una ciudad
     public function detalleSolicitudCurso()

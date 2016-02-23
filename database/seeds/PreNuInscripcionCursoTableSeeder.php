@@ -16,21 +16,23 @@ class PreNuInscripcionCursoTableSeeder extends Seeder
     {
         $faker     = Faker::create();
         $detalle = DetalleSolicitudCurso::all();
+        $samples_temp = [];
 
         foreach ($detalle as $item)
         {
 
+            if($item->aceptado === 'si'){
 
-            $inscripcion          = new PreNuInscripcionCurso();
+                $samples_temp[] = [
+                    'detalle_solicitud_curso' => $item->id,
+                    'profesor'=> $faker->lastName.' '.$faker->firstName
+                ];
+            }
 
-            $inscripcion->detalle_solicitud_curso = $item->id;
-            $inscripcion->profesor                =$faker->lastName.' '.$faker->firstName;
-
-
-            $inscripcion->save();
         	
         }
 
+        PreNuInscripcionCurso::insert($samples_temp);
         
     }
 }

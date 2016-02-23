@@ -46,6 +46,7 @@ Route::controllers([
 	'contacto-en-extranjero' => 'CursosNoUachController',
 	'solicitud-curso' => 'SolicitudCursoController',
 	'cursos-no-uach' => 'CursosNoUachController',
+	'inscripcion-cursos' => 'InscripcionCursosController',
 
 
 ]);

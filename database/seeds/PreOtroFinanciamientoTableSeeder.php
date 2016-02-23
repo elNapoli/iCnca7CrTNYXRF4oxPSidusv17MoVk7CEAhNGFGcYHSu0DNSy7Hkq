@@ -16,6 +16,7 @@ class PreOtroFinanciamientoTableSeeder extends Seeder
     {
         $faker     = Faker::create();
         $pUniversidad = PrePostulacionUniversidad::all();
+        $samples_temp = [];
 
         foreach ($pUniversidad as $item)
         {
@@ -23,16 +24,15 @@ class PreOtroFinanciamientoTableSeeder extends Seeder
         	if($faker->numberBetween($min = 0, $max = 2) == 0 ){
 
 
-	            $oFinanciamiento          = new PreOtroFinanciamiento();
-
-	            $oFinanciamiento->pre_postulacion_universidad = $item->id;
-	            $oFinanciamiento->descripcion                 = $faker->paragraph($nbSentences = 3, $variableNbSentences = true);
-
-
-	            $oFinanciamiento->save();
+	            $samples_temp[] = [
+                    'pre_postulacion_universidad' => $item->id,
+                    'descripcion'=>$faker->paragraph($nbSentences = 3, $variableNbSentences = true)
+                ];
         	}
         	
         }
+        PreOtroFinanciamiento::insert($samples_temp);
+
 
         
     }

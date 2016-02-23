@@ -102,6 +102,9 @@
                     <li>
                         <a href="{{ url('cursos-no-uach/') }}">Solicitud de asignaturas</a>
                     </li>
+                    <li>
+                        <a href="{{ url('inscripcion-cursos/') }}">Inscripción de cursos</a>
+                    </li>
                     
 
                 </ul>

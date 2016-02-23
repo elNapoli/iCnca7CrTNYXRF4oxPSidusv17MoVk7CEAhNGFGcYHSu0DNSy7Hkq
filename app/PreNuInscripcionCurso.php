@@ -14,7 +14,7 @@ class PreNuInscripcionCurso extends Model
     // un Postulante esta en una ciudad
     public function detalleSolicitudCursoR()
     {
-        return $this->belongsTo('App\DetalleSolicitudCurso','detalle_solicitud_curso','solicitud_curso');
+        return $this->belongsTo('App\DetalleSolicitudCurso','detalle_solicitud_curso','id');
     }
 
 }

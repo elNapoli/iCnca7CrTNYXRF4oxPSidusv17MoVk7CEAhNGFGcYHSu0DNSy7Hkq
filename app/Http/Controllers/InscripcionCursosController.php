@@ -40,20 +40,18 @@ class InscripcionCursosController extends Controller {
 
 							->wherehas('detalleSolicitudCursoR.preNuSolicitudCursoR', function($q) use ($postulante)
 							{
-							    $q->where('postulante', $postulante->id);
+							    $q->where('postulante', 9);
 
 							})
 							->get();
 
-
+//$cursosAceptados = PreNuSolicitudCurso::with('detalleSolicitudCursosR')->where('postulante',9)->get();
 
 
 	/*	$cursosAceptados = PreNuInscripcionCurso::with(array('detalleSolicitudCursoR'=>function($query){
         $query->select('solicitud_curso');
     }))->get();*/
 
-
-		dd($cursosAceptados->toArray());
 		$arra = array('data'=>$cursosAceptados->toArray());
 		return json_encode($arra);
 	}

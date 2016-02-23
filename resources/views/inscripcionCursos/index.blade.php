@@ -6,7 +6,7 @@
   {!! Form::model(['url'=>['inscripcion-cursos/store-and-update'], 'method'=>'post','id'=>'form-save-inscripcion-cursos']) !!}
       		<div class="message"></div>
 			@include('inscripcionCursos.partials.table')
-             
+             <a href="#!">guardar cambios</a>
   {!!Form::close()!!}
 
 {!!Form::hidden('gerUrlCursosInscritos',url('inscripcion-cursos/cursos-inscritos-aceptados'),array('id'=>'gerUrlCursosInscritos'));!!}
@@ -29,47 +29,22 @@
 	            "columns": [
 	                { "data": null,
 	                    	"fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-		                        //$(nTd).attr('data','jojo');
-		                        var html = '';
-		                        $(nTd).html(sData.nom_carrera);
-
-		                        if(sData.id === ''){
-		                            html = '<option value ="">Seleccione Carrera</option>';
-		                            disabled = '';
-		                            $.each(oData.carreras, function(index, subCatObj){
-		                           
-		                                html = html + '<option value ="'+subCatObj.id+'">'+subCatObj.nombre+'</option>';
-		                                
-		                            });
-
-		                            $(nTd).html('<select  id="codigo_carrera-'+iRow+'" mane="codigo_carrera-'+iRow+'" class=" codigo_asignatura_select form-control"> '+html+'</select>');
-
-		                        }                     
-
+	          
+		                        $(nTd).html(sData.detalle_solicitud_curso_r.asignatura_r.codigo);
+     
 		                    }
 	                },
 	                { "data": null,
 	                    	"fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-		                        //$(nTd).attr('data','jojo');
-		                        var html = '';
-		                        $(nTd).html(sData.asignatura_codigo+": "+sData.asignatura_nombre);
-
-		                        if(sData.id === ''){
-		                            html = '<option value ="">Seleccione asignatura</option>';
-		                            disabled = '';
-		              
-
-		                            $(nTd).html('<select  id="codigo_asignatura-'+iRow+'" mane="codigo_asignatura-'+iRow+'" class=" codigo_asignatura_select form-control"> '+html+'</select>');
-
-		                        }                     
+		                        $(nTd).html(sData.detalle_solicitud_curso_r.asignatura_r.nombre);
+		                                          
 
 		                    }
 	                },
 	                { "data": null,
 	                    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-	                        var html = sData.semestre;
-             
-	                        $(nTd).html(html);
+	                                  
+	                        $(nTd).html('<input type="text" value="'+sData.profesor+'" id="parentesco" name="parentesco" class="form-control">');
 
 	                    }
 	                }

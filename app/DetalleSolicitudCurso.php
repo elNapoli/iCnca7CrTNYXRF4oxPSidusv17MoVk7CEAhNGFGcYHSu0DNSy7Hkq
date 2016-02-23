@@ -20,9 +20,14 @@ class DetalleSolicitudCurso extends Model
     	return $this->belongsTo('App\Asignatura','asignatura'); //Id local
     }
 
-    public function PreNuSolicitudCurso()
+    public function preNuSolicitudCursoR()
     {
-    	return $this->belongsTo('App\PreNuSolicitudCurso','solicitud_curso'); //Id local
+      return $this->belongsTo('App\PreNuSolicitudCurso','solicitud_curso'); //Id local
+    }
+
+    public function preNuInscripcionCursoR()
+    {
+      return $this->belongsTo('App\PreNuInscripcionCurso','id','detalle_solicitud_curso'); //Id local
     }
 
 }

@@ -15,22 +15,21 @@ class PreUEstudioActualTableSeeder extends Seeder
     {
         $faker           = Faker::create();
         $preUach         = PreUach::all();
+        $samples_temp = [];
 
         foreach ($preUach as $item)
         {
 
-            $eActual               = new PreUEstudioActual();
-
-            $eActual->postulante   = $item->postulante;
-            $eActual->carrera      = $faker->numberBetween($min = 1, $max = 20);
-            $eActual->anio_ingreso = $faker->year( $max = 'now'); 
-            $eActual->ranking      = $faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 100);
-            $eActual->beneficios   = $faker->sentence($nbWords = 8, $variableNbWords = true) ;
-
-			
-            $eActual->save();
-            
+            $samples_temp[] = [
+                'postulante' => $item->postulante,
+                'carrera'=>$faker->numberBetween($min = 1, $max = 20),
+                'anio_ingreso'=>$faker->year( $max = 'now'),
+                'ranking'=>$faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 100) ,
+                'beneficios'=>  $faker->sentence($nbWords = 8, $variableNbWords = true)
+            ];           
 
         }
+        PreUEstudioActual::insert($samples_temp);
+
     }
 }

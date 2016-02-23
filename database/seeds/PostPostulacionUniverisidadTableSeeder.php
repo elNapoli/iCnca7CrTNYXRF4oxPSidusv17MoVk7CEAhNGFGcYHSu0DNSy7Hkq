@@ -18,15 +18,18 @@ class PostPostulacionUniverisidadTableSeeder extends Seeder
     {
         $faker     = Faker::create();
         $postgrado = Postgrado::all();
+        $samples_temp = [];
 
         foreach ($postgrado as $item){
 
-			$postpostulacionuniversidad = new PostPostulacionUniversidad();
+            $samples_temp[] = [
+                'postulante' => $item->postulante,
+                'campus_sede'=>$faker->numberBetween($min = 1, $max = 100) ,
+                'celular'=>$faker->phoneNumber
+            ];
 
-            $postpostulacionuniversidad->postulante  = $item->postulante;
-            $postpostulacionuniversidad->campus_sede = $faker->numberBetween($min = 1, $max = 20) ;
-            $postpostulacionuniversidad->celular = $faker->phoneNumber;
-            $postpostulacionuniversidad->save();
+
         }
+        PostPostulacionUniversidad::insert($samples_temp);
     }
 }

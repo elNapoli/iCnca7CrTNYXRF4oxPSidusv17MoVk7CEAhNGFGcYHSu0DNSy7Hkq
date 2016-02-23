@@ -78,7 +78,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PreNuSolicitudCursoTableSeeder::class);
         $this->call(DetalleSolicitudCursoTableSeeder::class);
         $this->call(PrePostulacionUniversidadTableSeeder::class);
-        // hasta aca optimicé! 
 
        //###########################################
         $this->call(PreOtroFinanciamientoTableSeeder::class);
@@ -86,6 +85,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PreNuInscripcionCursoTableSeeder::class);
         $this->call(PreUEstudioActualTableSeeder::class);
         $this->call(PostPostulacionUniverisidadTableSeeder::class);
+        // hasta aca optimicé! 
         
 
 

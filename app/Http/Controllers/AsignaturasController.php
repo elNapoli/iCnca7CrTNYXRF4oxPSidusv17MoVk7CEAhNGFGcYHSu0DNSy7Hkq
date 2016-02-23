@@ -20,6 +20,14 @@ class AsignaturasController extends Controller {
 	{
 		return view('asignaturas.index');
 	}
+	public function getAsignaturas()
+	{
+		$asignaturas = Asignatura::with('carreraR.facultadR.campusSedesR.universidadR')->get();
+		$arra = array('data'=>$asignaturas->toArray());
+		return json_encode($arra);
+	}
+
+
 	public function postAsignaturasByCarrera(Request $request){
 
 		$asignaturas = Asignatura::where('carrera',$request->get('idBuscar'))

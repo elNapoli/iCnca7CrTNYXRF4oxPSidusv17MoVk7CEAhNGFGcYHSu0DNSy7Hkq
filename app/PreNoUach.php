@@ -20,7 +20,7 @@ class PreNoUach extends Model
 
     public function preNuSolicitudCursos()
     {
-        return $this->hasMany('App\PreNuSolicitudCurso','postulante');
+        return $this->hasMany('App\PreNuSolicitudCurso','postulante','postulante');
     }
 
     public function preNuEstudioActualesR()

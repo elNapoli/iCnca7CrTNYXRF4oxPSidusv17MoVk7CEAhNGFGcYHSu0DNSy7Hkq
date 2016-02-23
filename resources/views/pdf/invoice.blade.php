@@ -23,6 +23,17 @@
   border-left: 1px solid #000000;
   border-right: 1px solid #000000;
 }
+#decl2{
+  font:helvetica;
+  background-color: #FFFFFF;
+  text-align: left;
+  color: #000;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+}
+
 #tipos{
 } 
 
@@ -78,6 +89,10 @@ table .no {
 
 table .desc {
   text-align: center;
+  background: #FFFFFF;
+}
+table .desc2 {
+  text-align: left;
   background: #FFFFFF;
 }
 

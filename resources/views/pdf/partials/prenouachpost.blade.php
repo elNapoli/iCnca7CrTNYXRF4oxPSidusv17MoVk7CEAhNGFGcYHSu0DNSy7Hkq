@@ -27,18 +27,17 @@
           </tr>          
           <tr>
           	@foreach($p->documentoIdentidadR as $item)
-              {{$cont=0}} <!-- en caso de no tener mas documentos es necesario contar para rellenar el vacio-->
+               
+               <!-- en caso de no tener mas documentos es necesario contar para rellenar el vacio-->
           		@if($item->tipo == 'p')
 		            <th colspan="15" class="no">Pasaporte</th>
 		            <th colspan="30" class="desc">{{$item->numero}}</th>
-                {{$cont=+1}}
 		         @elseif($item->tipo == 'ci')
 		            <th colspan="25" class="no">Documento Nacional (*)</th>
 		            <th colspan="30" class="desc">{{$item->numero}}</th>
-                {{$cont=+1}}
 		         @endif
             @endforeach
-             @if($cont <= 1)
+             @if($p->documentoIdentidadR->count() == 1)
                 <th colspan="15" class="no">Pasaporte</th>
                 <th colspan="30" class="desc"> No aplica</th>
             @endif
@@ -127,3 +126,158 @@
           </tr>             
         </tbody>
       </table> 
+      <div id="cab">4 - SOLICITUD DE CURSOS</div>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+          <tr>
+                <th colspan="10" class="no">Codigo</th>
+                <th colspan="25" class="no">Nombre</th>
+                <th colspan="25" class="no">Carrera</th>
+                <th colspan="40" class="no">Autorizacion (Uso interno UACh)</th>
+          </tr>
+          <tr>
+                <th colspan="10" class="desc">INFO123</th>
+                <th colspan="25" class="desc">Introduccion a la programacion</th>
+                <th colspan="25" class="desc">Ingenieria civil en informática</th>
+                <th colspan="40" class="desc2">
+                    <div>Acepta:____  &nbsp &nbsp &nbsp &nbsp Rechaza:____</div>
+                    <div>Observacion:</div>
+                    <div><br></div>
+                </th>
+          </tr>
+          <tr>
+                <th colspan="10" class="desc">INFO123</th>
+                <th colspan="25" class="desc">Introduccion a la programacion</th>
+                <th colspan="25" class="desc">Ingenieria civil en informática</th>
+                <th colspan="40" class="desc2">
+                    <div>Acepta:____  &nbsp &nbsp &nbsp &nbsp Rechaza:____</div>
+                    <div>Observacion:</div>
+                    <div><br></div>
+                </th>
+          </tr>
+          <tr>
+                <th colspan="10" class="desc">INFO123</th>
+                <th colspan="25" class="desc">Introduccion a la programacion</th>
+                <th colspan="25" class="desc">Ingenieria civil en informática</th>
+                <th colspan="40" class="desc2">
+                    <div>Acepta:____  &nbsp &nbsp &nbsp &nbsp Rechaza:____</div>
+                    <div>Observacion:</div>
+                    <div><br></div>
+                </th>
+          </tr>
+          <tr>
+                <th colspan="10" class="desc">INFO123</th>
+                <th colspan="25" class="desc">Introduccion a la programacion</th>
+                <th colspan="25" class="desc">Ingenieria civil en informática</th>
+                <th colspan="40" class="desc2">
+                    <div>Acepta:____  &nbsp &nbsp &nbsp &nbsp Rechaza:____</div>
+                    <div>Observacion:</div>
+                    <div><br></div>
+                </th>
+          </tr>
+          <tr>
+                <th colspan="10" class="desc">INFO123</th>
+                <th colspan="25" class="desc">Introduccion a la programacion</th>
+                <th colspan="25" class="desc">Ingenieria civil en informática</th>
+                <th colspan="40" class="desc2">
+                    <div>Acepta:____  &nbsp &nbsp &nbsp &nbsp Rechaza:____</div>
+                    <div>Observacion:</div>
+                    <div><br></div>
+                </th>
+          </tr> 
+          <tr>
+                <th colspan="10" class="desc">INFO123</th>
+                <th colspan="25" class="desc">Introduccion a la programacion</th>
+                <th colspan="25" class="desc">Ingenieria civil en informática</th>
+                <th colspan="40" class="desc2">
+                    <div>Acepta:____  &nbsp &nbsp &nbsp &nbsp Rechaza:____</div>
+                    <div>Observacion:</div>
+                    <div><br></div>
+                </th>
+          </tr>                                 
+        </tbody>
+      </table>
+    <div id="cab">4 - CONVENIO</div>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+          <tr>
+            <th colspan="20" class="no">Financiamiento</th>
+            @if($p->pregradosR->prePostulacionUniversidadesR->financiamiento <= 3)
+              <th colspan="30" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->financiamientoR->nombre}}</th>
+            @else  
+              <th colspan="30" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->preOtroFinanciamientosR->first()->descripcion}}</th>
+            @endif
+            <th colspan="20" class="no">Convenio</th>
+            @if($p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->universidadR->conveniosR->toArray() == null)
+              <th colspan="30" class="desc">No</th>
+            @else
+              <th colspan="30" class="desc">{{$p->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->universidadR->conveniosR[0]->nombre}}</th>
+            @endif
+          </tr>                                 
+        </tbody>
+      </table>
+<div id="decl2">
+        <div id="cab">5 - DECLARACION</div>
+        <ul><p>Yo  afirmo  que  la  información 
+          y  documentación  contenida 
+          en  esta  postulación
+          es  verdadera, 
+          completa y precisa</p>
+        <ul></ul>
+         
+
+          <br>
+          <ul>
+          <strong>Firma</strong>
+          <strong>__________________ &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</strong>
+          <strong>Fecha firma: </strong>
+          <strong>__________________</strong>
+          </ul>
+          <br>
+
+  </div>
+      <div id="cab">6 - UNIDAD RESPONSABLE DE MOVILIDAD ESTUDIANTIL</div>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <tbody>     
+          <tr>
+             <th colspan="20" class="no">Institucion</th>
+             <th colspan="40" class="desc">Universidad bla bla</th>
+             <th colspan="10" class="no">Nombre</th>
+             <th colspan="30" class="desc">Nombre del wn</th>
+          </tr>
+          <tr>
+             <th colspan="10" class="no">Cargo</th>
+             <th colspan="30" class="desc">Coordinador</th>
+             <th colspan="20" class="no">Unidad responsable</th>
+             <th colspan="40" class="desc">Movilidad y weas xd</th>
+          </tr>   
+          <tr>
+             <th colspan="10" class="no">Direccion</th>
+             <th colspan="40" class="desc"></th>
+             <th colspan="10" class="no">Telefono</th>
+             <th colspan="40" class="desc"></th>
+          </tr> 
+          <tr>
+             <th colspan="10" class="no">E-mail</th>
+             <th colspan="40" class="desc"></th>
+             <th colspan="10" class="no">Website</th>
+             <th colspan="40" class="desc"></th>
+          </tr>
+          <tr>
+             <th colspan="10" class="no">Fecha</th>
+             <th colspan="40" class="desc"></th>
+             <th colspan="10" class="no">Lugar</th>
+             <th colspan="40" class="desc"></th>
+          </tr> 
+          <tr>
+             <th colspan="20" class="no">Firma y timbre</th>
+             <th colspan="80" class="desc">
+                  <div><br></div>
+                  <div><br></div>
+                  <div><br></div>
+                  <div><br></div>
+              </th>
+          </tr>                                     
+        </tbody>
+      </table>
+    <div id="cab">Fecha de emision: {{ $date }}</div>

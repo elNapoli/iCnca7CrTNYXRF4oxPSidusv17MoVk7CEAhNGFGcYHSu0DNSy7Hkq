@@ -69,12 +69,7 @@
     <div id="cab">1.1 - CONTACTO EN CASO DE EMERGENCIA</div>
       <table border="0" cellspacing="0" cellpadding="0">
         <tbody>
-          <tr>
-            <th colspan="15" class="no">Nombre</th>
-            <th colspan="35" class="desc">{{$p->pregradosR->preUachsR->preURespnsablesR[0]->nombre}}</th>
-            <th colspan="15" class="no">Parentesco</th>
-            <th colspan="35" class="desc">{{$p->pregradosR->preUachsR->preURespnsablesR[0]->parentesco}}</th>            
-          </tr>
+
           <tr>
             <th colspan="20" class="no">Direccion</th>
             <th colspan="80" class="desc">{{$p->pregradosR->preUachsR->preURespnsablesR[0]->direccion}}</th>

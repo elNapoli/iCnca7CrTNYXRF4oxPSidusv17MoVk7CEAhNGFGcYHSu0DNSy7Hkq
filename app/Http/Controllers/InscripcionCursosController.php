@@ -36,16 +36,26 @@ class InscripcionCursosController extends Controller {
 	public function getCursosInscritosAceptados(Guard $auth){
 
 		$postulante = Postulante::where('user_id',$auth->id())->first();
-		$solicitud = PreNuSolicitudCurso::where('postulante',$postulante->id)->first();
+		$cursosAceptados = PreNuInscripcionCurso::with('detalleSolicitudCursoR.asignaturaR')
 
-		$cursosAceptados = PreNuSolicitudCurso::
-									with('detalleSolicitudCursosR.preNuInscripcionCursoR')
-									->has('detalleSolicitudCursosR.preNuInscripcionCursoR')
-								//	->select('.pre_nu_solicitud_curso.id as id_solicitud')
-								//	->orderBy('id')
-									->get();
+							->wherehas('detalleSolicitudCursoR.preNuSolicitudCursoR', function($q) use ($postulante)
+							{
+							    $q->where('postulante', $postulante->id);
 
-		return($cursosAceptados->count());
+							})
+							->get();
+
+
+
+
+	/*	$cursosAceptados = PreNuInscripcionCurso::with(array('detalleSolicitudCursoR'=>function($query){
+        $query->select('solicitud_curso');
+    }))->get();*/
+
+
+		dd($cursosAceptados->toArray());
+		$arra = array('data'=>$cursosAceptados->toArray());
+		return json_encode($arra);
 	}
 
 }

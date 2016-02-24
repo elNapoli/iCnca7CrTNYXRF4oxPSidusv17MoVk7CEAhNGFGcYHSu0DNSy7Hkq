@@ -26,7 +26,8 @@ class DocumentosPostulacionController extends Controller {
 		$post = Postulante::where('user_id',$auth->id())->get(); //objeto post con informacion extra
 		$postulante = Postulante::findOrFail($post[0]->id); //individualizo al postulante
 
-		dd($postulante->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->departamentosR->first());
+		dd($postulante->pregradosR->preNoUachsR->preNuSolicitudCursosR->detalleSolicitudCursosR[0]->asignaturaR);
+
 
 
 }
@@ -36,7 +37,12 @@ class DocumentosPostulacionController extends Controller {
 		{
 			dd('No esta logeado');
 		}
-		else{return view('documentospostulacion.index');}
+		else{
+			$post = Postulante::where('user_id',$auth->id())->get(); //objeto post con informacion extra
+			$postulante = Postulante::findOrFail($post[0]->id); //individualizo al postulante
+			$procedencia = $postulante->pregradosR->procedencia;
+			return view('documentospostulacion.index',compact('procedencia'));
+		}
 
 	}
 

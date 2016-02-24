@@ -37,8 +37,11 @@
 		            <th colspan="30" class="desc">{{$item->numero}}</th>
 		         @endif
             @endforeach
-             @if($p->documentoIdentidadR->count() == 1)
+             @if($p->documentoIdentidadR->count() == 1 and $p->documentoIdentidadR->first()->tipo == 'ci')
                 <th colspan="15" class="no">Pasaporte</th>
+                <th colspan="30" class="desc"> No aplica</th>
+             @elseif($p->documentoIdentidadR->count() == 1 and $p->documentoIdentidadR->first()->tipo == 'p')
+                <th colspan="25" class="no">Documento Nacional (*)</th>
                 <th colspan="30" class="desc"> No aplica</th>
             @endif
           </tr>

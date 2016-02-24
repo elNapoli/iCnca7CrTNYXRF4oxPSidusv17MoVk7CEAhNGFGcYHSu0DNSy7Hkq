@@ -12,16 +12,19 @@ class ContinenteTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        $csvFile = public_path().'\archivos_cvs\continentes.csv';
+     public function run()
+     {
 
-        $continentes = new CvsToArray();
-        $continentes = $continentes->csv_to_array($csvFile);
-       // dd($continentes);
-        Continente::insert($continentes);
-    }
+       $continente = array('África', 'América','Asia','Europa','Oceanía','Antártida');
+       foreach ($continente as $item) {
 
+            $continenteTemp = new Continente();
+
+          $continenteTemp->nombre = $item;
+         $continenteTemp->save();
+       }
+
+     }
 
 
 }

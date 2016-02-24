@@ -16,6 +16,10 @@ class PdfController extends Controller {
 	 *
 	 * @return Response
 	 */
+
+    //Nota a mi: Cuando no estemos cortos de tiempo mejorar el codigo para no repetir procedimientos xd
+
+
     public function getInvoice(Guard $auth) 
     {
         $p = $this->getData($auth);
@@ -72,5 +76,45 @@ class PdfController extends Controller {
         $invoice = "2222";
         return view('pdf.invoice', compact('data', 'date', 'invoice'));    
 
+    }
+
+    public function getHomologacion(Guard $auth)
+    {
+        $p = $this->getData($auth);
+        $date = date('Y-m-d');
+        $view =  \View::make('pdf.partials.homologacion', compact('p','date'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('homologacion');        
+    }
+
+    public function getAsistente(Guard $auth)
+    {
+        $p = $this->getData($auth);
+        $date = date('Y-m-d');
+        $view =  \View::make('pdf.partials.asistente', compact('p','date'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('homologacion');        
+    }
+
+    public function getLlegada(Guard $auth)
+    {
+        $p = $this->getData($auth);
+        $date = date('Y-m-d');
+        $view =  \View::make('pdf.partials.llegada', compact('p','date'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('homologacion');        
+    }
+
+    public function getContacto(Guard $auth)
+    {
+        $p = $this->getData($auth);
+        $date = date('Y-m-d');
+        $view =  \View::make('pdf.partials.contacto', compact('p','date'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('homologacion');        
     }
 }

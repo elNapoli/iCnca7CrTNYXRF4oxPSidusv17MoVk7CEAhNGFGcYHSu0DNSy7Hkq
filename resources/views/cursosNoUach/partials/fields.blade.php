@@ -1,1 +1,0 @@
-                @include('homologacion.partials.table')

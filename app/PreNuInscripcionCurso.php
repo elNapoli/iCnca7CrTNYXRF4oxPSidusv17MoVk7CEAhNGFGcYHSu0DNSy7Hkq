@@ -12,9 +12,9 @@ class PreNuInscripcionCurso extends Model
     protected $fillable   = ['profesor','detalle_solicitud_curso'];
 
     // un Postulante esta en una ciudad
-    public function detalleSolicitudCurso()
+    public function detalleSolicitudCursoR()
     {
-        return $this->belongsTo('App\DetalleSolicitudCurso','detalle_solicitud_curso');
+        return $this->belongsTo('App\DetalleSolicitudCurso','detalle_solicitud_curso','id');
     }
 
 }

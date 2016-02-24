@@ -47,6 +47,24 @@
   border-left: 1px solid #000000;
   border-right: 1px solid #000000;
 }
+#cab_cinda{
+  background-color: #000000;
+  text-align: center;
+  color: #fff;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+}
+#cab_biblio{
+  background-color: #616214;
+  text-align: center;
+  color: #fff;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+}
 #decl{
   page-break-before: always;
   font:helvetica;

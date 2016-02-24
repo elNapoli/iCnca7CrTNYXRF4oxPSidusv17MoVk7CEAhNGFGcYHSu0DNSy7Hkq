@@ -117,4 +117,24 @@ class PdfController extends Controller {
         $pdf->loadHTML($view);
         return $pdf->stream('homologacion');        
     }
+
+    public function getCinda(Guard $auth)
+    {
+        $p = $this->getData($auth);
+        $date = date('Y-m-d');
+        $view =  \View::make('pdf.partials.cinda', compact('p','date'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('homologacion');        
+    }
+
+    public function getBiblio(Guard $auth)
+    {
+        $p = $this->getData($auth);
+        $date = date('Y-m-d');
+        $view =  \View::make('pdf.partials.biblio', compact('p','date'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('homologacion');        
+    }
 }

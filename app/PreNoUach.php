@@ -30,6 +30,9 @@ class PreNoUach extends Model
         return $this->belongsTo('App\PreNuEstudioActual','postulante','postulante');
     }
 
-
+    public function cindaR()
+    {
+        return $this->belongsTo('App\Cinda','postulante','postulante');
+    }
 
 }

@@ -22,19 +22,19 @@
           <tbody>
             <tr>
               <th colspan="14" class="no">Institucion</th>
-              <th colspan="48" class="desc"></th>
+              <th colspan="48" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->universidadR->nombre}}</th>
               <th colspan="14" class="no">Departamento</th>
-              <th colspan="24" class="desc"></th>
+              <th colspan="24" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->departamentosR->first()->tipo}}</th>
             </tr>
             <tr>
               <th colspan="20" class="no">Nombre encargado</th>
-              <th colspan="30" class="desc"></th>
+              <th colspan="30" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->departamentosR->first()->nombre_encargado}}</th>
               <th colspan="20" class="no">Teléfono</th>
-              <th colspan="30" class="desc"></th>
+              <th colspan="30" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->departamentosR->first()->telefono}}</th>
             </tr>
             <tr>
               <th colspan="14" class="no">E-mail</th>
-              <th colspan="86" class="desc"></th>
+              <th colspan="86" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->departamentosR->first()->email}}</th>
             </tr>
           </tbody>
         </table>
@@ -44,7 +44,7 @@
           <tbody>
             <tr>
               <th colspan="20" class="no">Nombre completo</th>
-              <th colspan="80" class="desc"></th>
+              <th colspan="80" class="desc">{{$p->nombre.' '.$p->apellido_paterno.' '.$p->apellido_materno}}</th>
             </tr>
           </tbody>
         </table>
@@ -52,9 +52,14 @@
     <div id="cab_l">ASIGNATURAS EN UNIVERSIDAD DE DESTINO</div>
   <table border="0" cellspacing="0" cellpadding="0">
           <tbody>
+              @foreach($p->pregradosR->preUachsR->homologacionesR[$p->pregradosR->preUachsR->homologacionesR->count()-1]->asignaturaHomologadaR as $item)
             <tr>
-              <th colspan="100" class="desc"><br><br>duda acá<br><br><br></th>
+              <th colspan="10" class="no">Codigo</th>
+              <th colspan="20" class="desc">{{$item->codigo_asignatura_intercambio}}</th>
+              <th colspan="20" class="no">Asignatura</th>
+              <th colspan="50" class="desc">{{$item->nombre_asignatura_intercambio}}</th>
             </tr>
+              @endforeach
           </tbody>
         </table>
 
@@ -63,15 +68,15 @@
           <tbody>
             <tr>
               <th colspan="40" class="no">Fecha de presentacion a la institucion</th>
-              <th colspan="60" class="desc"></th>
+              <th colspan="60" class="desc">{{$p->pregradosR->preUachsR->confirmacionLlegadaR->fecha_llegada}}</th>
             </tr>
             <tr>
               <th colspan="40" class="no">Fecha de inicio de cursos</th>
-              <th colspan="60" class="desc"></th>
+              <th colspan="60" class="desc">{{$p->pregradosR->preUachsR->confirmacionLlegadaR->fecha_inicio_curso}}</th>
             </tr>
             <tr>
               <th colspan="40" class="no">Fecha de termino de cursos</th>
-              <th colspan="60" class="desc"></th>
+              <th colspan="60" class="desc">{{$p->pregradosR->preUachsR->confirmacionLlegadaR->fecha_termino_curso}}</th>
             </tr>
          <tr>
              <th colspan="20" class="no">Firma y timbre Facultad</th>

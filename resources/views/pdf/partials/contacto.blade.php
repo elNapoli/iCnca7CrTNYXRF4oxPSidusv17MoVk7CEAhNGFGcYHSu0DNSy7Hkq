@@ -22,13 +22,19 @@
         <tbody>
           <tr>
             <th colspan="20" class="no">Nombre Estudiante</th>
-            <th colspan="80" class="desc"></th>
+            <th colspan="80" class="desc">{{$p->nombre.' '.$p->apellido_paterno.' '.$p->apellido_materno}}</th>
           </tr>
           <tr>
             <th colspan="10" class="no">Pasaporte</th>
-            <th colspan="24" class="desc"></th>
+            <th colspan="24" class="desc">
+              @foreach($p->documentoIdentidadR as $item)
+                @if($item->tipo == 'p')
+                  {{$item->numero}}
+                @endif
+              @endforeach
+            </th>
             <th colspan="14" class="no">Dirección</th>
-            <th colspan="52" class="desc"></th>
+            <th colspan="52" class="desc">{{$p->pregradosR->preUachsR->preURespnsablesR->direccion}}</th>
           </tr>
           <tr>
             <th colspan="10" class="no">Ciudad</th>

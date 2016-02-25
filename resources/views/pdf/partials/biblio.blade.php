@@ -21,7 +21,15 @@
     <div id="cab_biblio">DOCUMENTO FINAL DE BIBLIOTECA</div>
     <div id="stmnt_h">
       <p>  El/la estudiante del Programa Especial de Pregrado de Intercambio de la Universidad Austral de 
-          Chile, Sr./Srta. <strong>[VARIABLE]</strong>, RUT <strong>[VARIABLE]</strong> se ha presentado en la Biblioteca Central y se encuentra sin ningún tipo de deudas en Biblioteca.</p>
+          Chile, Sr./Srta. <strong>{{$p->nombre.' '.$p->apellido_paterno.' '.$p->apellido_materno}}</strong>, 
+          @foreach($p->documentoIdentidadR as $item)
+                @if($item->tipo == 'ci')
+                    RUT: <strong>{{' '.$item->numero.' '}}</strong>
+                @elseif($item->tipo == 'p')
+                    Pasaporte: <strong>{{' '.$item->numero.' '}}</strong>
+                @endif
+          @endforeach
+           se ha presentado en la Biblioteca Central y se encuentra sin ningún tipo de deudas en Biblioteca.</p>
 
       <p> Cabe destacar que al estudiante mencionado se le 
           desactivará

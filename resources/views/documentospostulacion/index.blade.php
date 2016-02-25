@@ -13,28 +13,7 @@
 
 		<div class="panel panel-default">
 			@include('partials.success')
-	<table border="0" cellspacing="0" cellpadding="0">
-       <tbody>     
-         <tr>
-           	<th>
-				  <div class="panel-heading"><a class="btn-info btn" href="{{ url('pdf/invoice-download')}}">Descargar Formulario Postulante</a></div>
-           	</th>
-           	<th>
-		  			<div class="panel-heading"><a class="btn-info btn" href="">Descargar  Homologacion</a></div>
-           	</th>
-         </tr>
-         <tr>
-           	<th>
-		  			<div class="panel-heading"><a class="btn-info btn" href="{{ url('pdf/invoice')}}">Visualizar Formulario Postulante</a></div>
-           	</th>
-           	<th>
-		  			<div class="panel-heading"><a class="btn-info btn" href="">Visualizar Homologacion</a></div>
-           	</th>
-         </tr>                          
-       </tbody>
-      </table>
-
-
+      @include('documentospostulacion.partials.table')
 
 		  <!-- Table -->
 	
@@ -45,4 +24,27 @@
 </div>
 
 
+@endsection
+
+
+@section('scripts')
+<script type="text/javascript">
+$(document).ready(function (){
+
+//Opciones tablas
+        $('#tableDocumentos').DataTable( {
+        "aoColumns" : [
+              { "sWidth": "80%"},
+              { "sWidth": "10%"},
+              { "sWidth": "10%"},
+                        ],
+           "autoWidth": false,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            }
+        } );
+ });
+
+
+</script>
 @endsection

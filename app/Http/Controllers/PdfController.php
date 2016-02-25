@@ -88,7 +88,27 @@ class PdfController extends Controller {
         return $pdf->stream('homologacion');        
     }
 
+    public function getHomologacionDownload(Guard $auth)
+    {
+        $p = $this->getData($auth);
+        $date = date('Y-m-d');
+        $view =  \View::make('pdf.partials.homologacion', compact('p','date'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->download('homologacion');        
+    }
+
     public function getAsistente(Guard $auth)
+    {
+        $p = $this->getData($auth);
+        $date = date('Y-m-d');
+        $view =  \View::make('pdf.partials.asistente', compact('p','date'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('homologacion');        
+    }
+    
+    public function getAsistenteDownload(Guard $auth)
     {
         $p = $this->getData($auth);
         $date = date('Y-m-d');
@@ -108,6 +128,16 @@ class PdfController extends Controller {
         return $pdf->stream('homologacion');        
     }
 
+    public function getLlegadaDownload(Guard $auth)
+    {
+        $p = $this->getData($auth);
+        $date = date('Y-m-d');
+        $view =  \View::make('pdf.partials.llegada', compact('p','date'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->download('homologacion');        
+    }
+
     public function getContacto(Guard $auth)
     {
         $p = $this->getData($auth);
@@ -116,6 +146,16 @@ class PdfController extends Controller {
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('homologacion');        
+    }
+
+    public function getContactoDownload(Guard $auth)
+    {
+        $p = $this->getData($auth);
+        $date = date('Y-m-d');
+        $view =  \View::make('pdf.partials.contacto', compact('p','date'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->download('homologacion');        
     }
 
     public function getCinda(Guard $auth)
@@ -128,6 +168,16 @@ class PdfController extends Controller {
         return $pdf->stream('homologacion');        
     }
 
+    public function getCindaDownload(Guard $auth)
+    {
+        $p = $this->getData($auth);
+        $date = date('Y-m-d');
+        $view =  \View::make('pdf.partials.cinda', compact('p','date'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->download('homologacion');        
+    }
+
     public function getBiblio(Guard $auth)
     {
         $p = $this->getData($auth);
@@ -137,4 +187,15 @@ class PdfController extends Controller {
         $pdf->loadHTML($view);
         return $pdf->stream('homologacion');        
     }
+
+    public function getBiblioDownload(Guard $auth)
+    {
+        $p = $this->getData($auth);
+        $date = date('Y-m-d');
+        $view =  \View::make('pdf.partials.biblio', compact('p','date'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->download('homologacion');        
+    }
+
 }

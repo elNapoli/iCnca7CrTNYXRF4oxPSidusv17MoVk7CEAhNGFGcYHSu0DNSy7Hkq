@@ -33,7 +33,7 @@ class ProcedenciaPregradoTableSeeder extends Seeder
 
 				}
 				else{
-
+					$item->procedencia = 'UACH'; 
 					$samples_temp_uach[] = [
 		                'postulante' =>$item->postulante,
 		                'email_institucional'=> $faker->email,

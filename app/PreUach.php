@@ -34,14 +34,14 @@ class PreUach extends Model
     }
 
 
-    public function confirmacionLlegadas()
+    public function confirmacionLlegadaR()
     {
-        return $this->hasMany('App\ConfirmacionLlegada','postulante');
+        return $this->belongsTo('App\ConfirmacionLlegada','postulante');
     }
 
-    public function contectoExtranjeros()
+    public function contactoExtranjeroR()
     {
-        return $this->hasMany('App\ContactoExtranjero','postulante');
+        return $this->belongsTo('App\ContactoExtranjero','postulante');
     }
 
     public function homologacionesR()
@@ -56,7 +56,7 @@ class PreUach extends Model
 
     public function preURespnsablesR()
     {
-        return $this->hasMany('App\PreUResponsable','postulante','postulante');
+        return $this->belongsTo('App\PreUResponsable','postulante','postulante');
     }
 
 

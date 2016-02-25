@@ -18,7 +18,7 @@
     {!! Html::Style('plugins/theme_intranet/js/gritter/css/jquery.gritter.css')!!}
     {!! Html::Style('plugins/theme_intranet/lineicons/style.css')!!}
     {!! Html::Style('css/style_form_login.css')!!}
-    {!! Html::Style('plugins/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')!!}
+    {!! Html::Style('plugins/dataTables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')!!}
   
     
     <!-- Custom styles for this template -->
@@ -86,8 +86,8 @@
     {!! Html::Script('plugins/theme_intranet/js/sparkline-chart.js') !!}
     {!! Html::Script('plugins/theme_intranet/js/zabuto_calendar.js') !!}
 
-    {!! Html::Script('plugins/datatables/media/js/jquery.dataTables.min.js') !!}
-    {!! Html::Script('plugins/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') !!}
+    {!! Html::Script('plugins/dataTables/media/js/jquery.dataTables.min.js') !!}
+    {!! Html::Script('plugins/dataTables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') !!}
     
    
 

@@ -1,60 +1,103 @@
-@extends('layout.unregister.app_un')
+@extends('internet.app')
+
+@endsection
 
 @section('content')
-@include('auth.modal_register')
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
-                    </div>
-                    <div class="panel-body">
-                    	@if (count($errors) > 0)
-							<div class="alert alert-danger">
-								<strong>Whoops!</strong> There were some problems with your input.<br><br>
-								<ul>
-									@foreach ($errors->all() as $error)
-										<li>{{ $error }}</li>
-									@endforeach
-								</ul>
-							</div>
-						@endif
-						<form role="form" method="POST" action="/auth/login">
 
-							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-                       		
-                            <fieldset>
-                                <div class="form-group">
-                                	<input type="email" placeholder="E-mail" class="form-control" name="email" autofocus value="{{ old('email') }}">
-                                </div>
-                                <div class="form-group">
-									<input type="password" placeholder="Password" class="form-control" name="password" value="">
+<div class="row">
+    <div class="col-lg-12">
 
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Recordar datos
-                                    </label>
-                                </div>
-                                <!-- Change this to a button or input when using this as a form -->
-                                <button type="submit" class="btn btn-lg btn-success btn-block">
-									Ingresar
-								</button>
-								<a href="/password/email">Olvidaste tu contraseña?</a>
-                                <a href="/auth/register">Registrar</a>
-                                <a  href='#!' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                                       Registrar
-                                </a>
-                            </fieldset>
-                        </form>
-                    </div>
+
+    <div class="login-form">
+        <h1>Login</h1>
+        <div class="message"></div>
+        <HR width=100% align="center "> 
+        <div class="form-group ">
+            {!! Form::text('email',null,array('class' => 'form-control','id'=>'email','placeholder'=>'E-mail'));!!}
+
+            <i class="glyphicon glyphicon-user"></i>
+        </div>
+        
+        <div class="form-group log-status">
+            {!! Form::password('password',array('class' => 'form-control','id'=>'password','placeholder'=>'Contraseña'));!!}
+
+            <i class="glyphicon glyphicon-lock"></i>
+        </div>
+          
+
+
+          <div class="row miRow">
+            <div style="float: left;">
+                <div class="checkbox">
+                    <label><input type="checkbox" name="remember" id="remember">Recordar</label>
                 </div>
             </div>
-        </div>
+            <div style="float: right;"><a class="btn-primary btn" href="#" id='iniciarSesion'>iniciar sesión</a></div>
+          </div>
+        <HR width=100% align="center "> 
+
+
+        <div style="float: left;"><a class="link" href="#">Registrarse</a></div>
+        <div style="float: right;"><a class="link" href="#">Recuperar contraseña</a></div>
 
 
 
+    </div>
+        
+
+    </div>
+</div>
+
+{!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
 
 
 
+@endsection
+
+@section('styles')
+    {!! Html::Style('css/style_form_login.css')!!}
+@endsection
+@section('scripts')
+    <script>
+        $(document).on('ready',function(){
+
+            $('#iniciarSesion').on('click',function(){
+                $.ajax({
+                                  
+                    async : false,
+                    data:{
+                        _token: $('#_token').val(),
+                        email: $('#email').val(),
+                        password: $('#password').val(),
+                        remember: $('#remember:checked').val(),
+
+                    },
+                    //Cambiar a type: POST si necesario
+                    type: 'POST',
+                    // Formato de datos que se espera en la respuesta
+                    dataType: "json",
+                    // URL a la que se enviará la solicitud Ajax
+                    url:$('#getUrlDestroyCursoHomologado').val() ,
+                    success : function(json) {           
+                 
+                        
+                    },
+
+                    error : function(xhr, status) {
+                        var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                            for(var key in xhr.responseJSON)
+                            {
+                                html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                            }
+                            $('.message').html(html+'</div>');
+                  
+                    },
+                    
+
+
+                });
+
+            });
+        });
+    </script>
 @endsection

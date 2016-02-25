@@ -39,7 +39,6 @@ trait AuthenticatesAndRegistersUsers {
 			'email'=>'required|unique:users,email,', 
 			'name' => 'required',
 			'apellido_paterno' => 'required',
-			'apellido_materno' => 'required',
 			'password' => 'required',
 
 		]);
@@ -52,9 +51,11 @@ trait AuthenticatesAndRegistersUsers {
         \Mail::send('emails.welcome',  array('destinatario' => $dest, 'codigo' => $confirmation_code), function($message) {
             $message->to(\Request::get('email'), \Request::get('name'))
                 ->subject('Confirma tu acceso a Movilidad');
-		\Session::flash('message','Gracias por registrarte! Porfavor verifica tu correo electronico.');
         });
-		return view('usuarios.verif');
+		return response()->json([
+				'message'=> 'Gracias por registrarte! Porfavor verifica tu correo electronico.'
+				]);
+
 		//return redirect(property_exists($thios, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/')->with('message', $message);
 		//return redirect('/')->with('mensaje', $message);
 	}

@@ -1,28 +1,15 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('Dashboard') Universidades @endsection
 
 @section('content')
 
-<div class="row">
-      <!-- Default panel contents -->
-    <div class="col-md-1" ></div>
-    <div class="col-md-9" >
 
-        <div class="panel panel-default">
-
-            @include('partials.success')
-            @include('partials.successAjax')
           <div class="panel-heading"><a class="btn-info btn" href="{{ url('universidades/create') }}">Crear universidad</a></div>
 
           <!-- Table -->
             @include('universidades.partials.table')
-        
 
-        </div>
-    </div>
-
-</div>
 
 {!! Form::open(['url'=>['universidades/destroy',':USER_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
 
@@ -39,6 +26,7 @@
 
 
 @section('scripts')
+    {!! Html::Script('js/funciones.js') !!}
 <script type="text/javascript">
 
  

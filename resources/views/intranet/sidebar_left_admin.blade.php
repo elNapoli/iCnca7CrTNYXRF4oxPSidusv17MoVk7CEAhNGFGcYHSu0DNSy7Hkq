@@ -23,6 +23,9 @@
                     <li>
                         <a href="{{ url('paises/') }}">Pises</a>
                     </li>
+                    <li>
+                        <a href="{{ url('universidades/') }}">Universidades</a>
+                    </li>
                   <li><a  href="panels.html">Panels</a></li>
               </ul>
           </li>

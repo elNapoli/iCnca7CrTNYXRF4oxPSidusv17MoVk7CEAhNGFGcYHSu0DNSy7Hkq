@@ -248,7 +248,7 @@ var ruta = $(ruta+' select'+idSelectDestino);
 
 function formatoTablaUniversidad( d ) {
 
-    var finaln = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+    var finaln = '<table class="table table-striped table-bordered table-hover">'+
         '<tr><th>Nombre campus</th><th>Teléfono</th><th>fax</th><th>Sitio web</th><th>Ciudad</th></tr>';
        (d.campus_sedes_r).forEach(function(entry) {
 
@@ -276,7 +276,10 @@ function crearTablaUniversidad(idTabla,url){
 
 
         "ajax": url,
-
+        "bProcessing": true,
+        "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                },
 
         "columns": [
             {
@@ -293,14 +296,15 @@ function crearTablaUniversidad(idTabla,url){
             { "data": "nombre" },
             { "data": null,
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                    $(nTd).html("<a href='universidades/edit/"+oData.id+"'> Edit</a>"+
-                                "<a href='#!' class='btn-delete' id='"+oData.id+"'> Del</a>"
+                
+                    $(nTd).attr('align','center');
+                    $(nTd).html("<a class='btn btn-primary btn-xs' href='universidades/edit/"+oData.id+"'> <i class='fa fa-pencil'></i></a>"+
+                                "<a href='#!' class='btn btn-danger btn-delete btn-xs' id='"+oData.id+"'> <i class='fa fa-trash-o'></a>"
                         );
 
                 }
             }
         ],
-        "order": [[1, 'asc']]
     } );
  
     // Array to track the ids of the details displayed rows

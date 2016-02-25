@@ -1,8 +1,3 @@
-
-
-
-
-
 <div class="row mt">
     <div class="col-lg-12">
         <div class="content-panel">
@@ -23,7 +18,7 @@
 		<td><a href="{{ url('paises/edit', $item->id)}}">{{$item->id}}</a></td>
 		<td>{{$item->nombre}}</td>
 		<td>{{$item->continenteR->nombre}}</td>
-		<td>
+		<td align="center">
               <a href="{{ url('paises/edit', $item->id)}}" class="model-open-edit btn btn-primary btn-xs" id="{{ $item->id }}"><i class="fa fa-pencil"></i></a>
               <a class="btn btn-danger btn-delete btn-xs" id="{{ $item->id }}"><i class="fa fa-trash-o "></i></a>
         </td>

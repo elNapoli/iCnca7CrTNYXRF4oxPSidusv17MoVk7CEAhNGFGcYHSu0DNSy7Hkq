@@ -3067,6 +3067,7 @@ fieldset[disabled] .btn-link:focus {
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
+  margin-left: 5px;
 }
 .btn-block {
   display: block;
@@ -6200,4 +6201,4 @@ button.close {
     display: none !important;
   }
 }
-/*# sourceMappingURL=bootstrap.css.map */
+

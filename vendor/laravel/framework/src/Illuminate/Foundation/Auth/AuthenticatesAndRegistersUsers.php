@@ -81,6 +81,8 @@ trait AuthenticatesAndRegistersUsers {
 		]);
 		$credentials = $request->only('email', 'password');
 		$user = User::where('email',$request->get('email'))->first();
+		$codigo = 0;
+		$mensaje = '';
 		if($user == null){
 				return redirect($this->loginPath())
 					->withInput($request->only('email', 'remember'))
@@ -91,7 +93,8 @@ trait AuthenticatesAndRegistersUsers {
 
 		if ($user->confirmado == '0')
 		{
-			return 'Este csm no verifico su email error! error! error! xDD';
+			$codigo = 0;
+			$mensaje =  'Usted no ha validado su mail, porfavor  conrime su e-mail.';
 		}
 		elseif($user->confirmado == '1')
 		{
@@ -99,19 +102,26 @@ trait AuthenticatesAndRegistersUsers {
 			{
 				if ($user->tipo_usuario == 'administrador')
 				{
-					return redirect()->route('admin.usuarios.index');
+					$codigo = 1;
+					$mensaje =  'Administrador';
 				}
 				else
 				{
-					return redirect()->route('usr.usuarios.index');
+					$codigo = 2;
+					$mensaje =  'User';
 				}
 			}
-				return redirect($this->loginPath())
+			/*	return redirect($this->loginPath())
 					->withInput($request->only('email', 'remember'))
 					->withErrors([
 						'email' => $this->getFailedLoginMessage(),
-					]);
+					]);*/
 		}
+
+		return response()->json([
+				'codigo' => $codigo,
+				'message'=> $mensaje
+				]);
 		
 	}
 	/**

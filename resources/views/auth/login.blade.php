@@ -32,7 +32,7 @@
                     <label><input type="checkbox" name="remember" id="remember">Recordar</label>
                 </div>
             </div>
-            <div  class="der"><a class="btn-primary btn" href="#" id='iniciarSesion'>iniciar sesión</a></div>
+            <div  class="der"><a class="btn-primary btn" href="#!" id='iniciarSesion'>iniciar sesión</a></div>
           </div>
         <HR width=100% align="center "> 
 
@@ -50,6 +50,8 @@
 </div>
 
 {!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
+{!!Form::hidden('urlAdmin', url('picoIdea'),array('id'=>'urlAdmin'));!!}
+{!!Form::hidden('urlUser', url('home'),array('id'=>'urlUser'));!!}
 
 @include('auth.modal_register')
 @include('auth.modal_password')
@@ -88,7 +90,23 @@
                     url:$('#getUrlDestroyCursoHomologado').val() ,
                    
                     success : function(json) {           
-                 
+                        if(json.codigo == 0){
+                            var html = '<div class="alert alert-danger fade in">'+
+                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            json.message+'</p></div>';
+                            
+                            $('.message').html(html);
+
+
+                        }
+                        else if(json.codigo == 1){
+
+                            window.location.href = $('#urlAdmin').val();
+                        }
+                        else{
+
+                            window.location.href = $('#urlUser').val();
+                        }
                         
                     },
 

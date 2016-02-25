@@ -1,4 +1,5 @@
 <?php namespace App\Http\Controllers;
+use Illuminate\Contracts\Auth\Guard;
 
 class HomeController extends Controller {
 
@@ -28,9 +29,9 @@ class HomeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Guard $auth)
 	{
-		return view('home');
+		return view('home',compact('auth'));
 	}
 
 }

@@ -37,6 +37,7 @@
 
   <body>
 
+
   <section id="container" >
 
     @include('intranet.header')

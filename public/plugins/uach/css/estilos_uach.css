@@ -1,0 +1,415 @@
+/*=================================*/
+/* Nivo Slider Demo
+/* November 2010
+/* By: Gilbert Pellegrom
+/* http://dev7studios.com
+/*=================================*/
+
+/*====================*/
+/*=== Reset Styles ===*/
+/*====================*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-weight:inherit;
+    font-style:inherit;
+    font-size:100%;
+    font-family:inherit;
+    vertical-align:baseline;
+}
+body {
+    line-height:1;
+    color:black;
+    background:white;
+}
+table {
+    border-collapse:separate;
+    border-spacing:0;
+}
+caption, th, td {
+    font-weight:normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:"";
+}
+blockquote, q {
+    quotes:"" "";
+}
+/* HTML5 tags */
+header, section, footer,
+aside, nav, article, figure {
+    display: block;
+}
+
+/*===================*/
+/*=== Main Styles ===*/
+/*===================*/
+body {
+    font:14px/1.6 Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;
+    color:#333;
+    background:#eee;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.imagenCarrusel{
+  width: 100%;
+  height: 350px;
+  max-height: 350px;
+
+}
+rder-width: 0 0 1px;
+}
+
+
+.texto {
+    padding:4px;
+    background:#fff;
+}
+.color1{
+
+    background-color: #ff5;
+}
+a:hover, a:active {
+    color:#000;
+    text-decoration:none;
+}
+
+/*====================*/
+/*=== Other Styles ===*/
+/*====================*/
+.clear {
+    clear:both;
+}
+
+#top {
+    width: 1010px; 
+    margin: 0 auto; 
+    height: 26px; 
+    text-align: right; 
+    padding-top: 8px;
+}
+.pix_menu3{
+
+    margin: 10px 13px 0 13px;
+    float: left;
+}
+.ultimo_li{
+
+    padding-bottom: 20px; 
+    border-radius: 0 0 7px 7px;
+}
+#top #menu_1 {
+    float: right; 
+    font-size: 13px; 
+    color: #CCC; 
+    height: 21px; 
+    line-height: 21px; 
+    margin-right: 20px; 
+    margin-top: -2px;
+}
+#top #menu_1 a {
+    color: #CCC
+}
+#top #menu_1 a:hover {
+    text-decoration: underline;
+}
+#top #menu_1 img {
+    margin: 0 10px;
+}
+#barra_top {
+    width: 1010px; 
+    margin: 0 auto; 
+    height: 4px; 
+}
+#banner_top {
+    width: 1010px; 
+    margin: 0 auto; 
+    height: 105px;
+}
+#scroll {
+    background: none repeat scroll 0 0 #E8E8E8;
+    margin: 0;
+    padding: 0;
+}
+#scroll #contenedor { 
+    width: 1010px; 
+    margin: 0 auto; 
+    position: relative;
+}
+.logo{
+    margin-top: 21px;
+}
+#scroll #contenedor #logo {
+    width: 170px; 
+    height: 145px; 
+    position: absolute; 
+    background-color: #CCC; 
+    left: 18px; 
+    z-index: 1; 
+    top: -105px; 
+    text-align: center;
+}
+
+#scroll #contenedor #menu_2 {
+    width: 170px; 
+    position: absolute; 
+    left: 18px; 
+    z-index: 10; 
+    top: 40px; 
+    border-radius: 0 0 10px 10px;
+    /*opacity: 0.8;*/
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background-repeat: repeat;
+}
+#scroll #contenedor #menu_2 ul { 
+    list-style-type: none;
+}
+#scroll #contenedor #menu_2 ul li.nivel1 { 
+    width: 170px;
+}
+#scroll #contenedor #menu_2 ul li a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    position: relative;
+    width: 137px;
+    border-bottom: 1px solid #FFF;
+    font: 16px Arial, Helvetica, sans-serif;
+    margin-left: 16px;
+    height: 28px;
+    line-height: 28px;
+}
+#scroll #contenedor #menu_2 ul li:hover {
+    position: relative;
+}
+#scroll #contenedor #menu_2 ul li a:hover, #scroll #contenedor #menu_2 ul li:hover a.nivel1 {
+    position: relative;
+}
+#scroll #contenedor #menu_2 ul li a.nivel1 {
+    display: block!important;
+    display: none;
+    position: relative;
+}
+#scroll #contenedor #menu_2 ul li ul {
+    display: none;
+}
+#scroll #contenedor #menu_2 ul li a:hover ul, #scroll #contenedor #menu_2 ul li:hover ul {
+    display: block;
+    position: absolute;
+    left: 154px;
+    top:-1px!important;
+    top: -31px;
+    background-color: #666;
+    border-radius: 0 0 7px 7px;
+    margin-left: 16px;
+}
+#scroll #contenedor #menu_2 ul li ul li a {
+    width: 235px;
+    background-color: #666;
+    color: #CCC;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-right: 19px;
+    padding-left: 15px;
+    height: 20px;
+    line-height: 20px;
+    border: none;
+    border-bottom: 1px solid #666;
+}
+#scroll #contenedor #menu_2 ul li ul li a:hover {
+    position: relative;
+    color: #FFF;
+}
+#scroll #contenedor #menu_3 {
+    width: 1010px; 
+    height: 30px; 
+    background-color: #E8E8E8; 
+    margin: 0 auto; 
+    font-size: 13px; 
+    color: #999; 
+    line-height: 30px; 
+    text-align: right; 
+    position: relative;
+}
+
+#scroll #contenedor #menu_3 ul { 
+    list-style-type: none;
+}
+#scroll #contenedor #menu_3 ul li.nivel1 { 
+    float: left;
+}
+#scroll #contenedor #menu_3 ul li a {
+    display: block;
+    text-decoration: none;
+    color: #999;
+    position: relative;
+    float: left;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#scroll #contenedor #menu_3 ul li:hover {
+    position: relative;
+}
+#scroll #contenedor #menu_3 ul li a:hover, #scroll #contenedor #menu_3 ul li:hover a.nivel1 {
+    color: #333;
+    position: relative;
+}
+#scroll #contenedor #menu_3 ul li a.nivel1 {
+    display: block!important;
+    display: none;
+    position: relative;
+}
+#scroll #contenedor #menu_3 ul li ul {
+    background-color: #FFFFFF;
+    border-radius: 0 0 10px 10px;
+    display: none;
+    margin-top: 30px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    z-index: 20;
+}
+#scroll #contenedor #menu_3 ul li a:hover ul, #scroll #contenedor #menu_3 ul li:hover ul {
+    display: block;
+    position: absolute;
+    left: -45px;
+}
+#scroll #contenedor #menu_3 ul li ul li a {
+    background-color: #FFF;
+    padding-left: 35px;
+    padding-right: 25px;
+    width: 285px;
+    color: #999;
+    font: 12px Arial, Helvetica, sans-serif;
+    margin-bottom: 4px;
+}
+#scroll #contenedor #menu_3 ul li ul li a:hover {
+    border-top-color: #333;
+    position: relative;
+}
+#scroll #contenedor #menu_3 a {
+    color: #666;
+    text-decoration: none;
+}
+#scroll #contenedor #pix {
+    width: 1010px; 
+    height: 10px; 
+    margin: 0 auto;  
+    background-repeat: repeat-y;
+}
+#barra_bottom {
+    width: 1010px; 
+    height: 4px; 
+    margin: 0 auto;
+}
+#banner_bottom {
+    width: 1010px; 
+    height: 105px; 
+    margin: 0 auto;
+}
+#footer_direccion {
+    width: 1010px; 
+    height: 35px; 
+    color: #FFF; 
+    font-size: 12px; 
+    text-align: center; 
+    margin: 0 auto;
+}
+
+#footer_direccion a {
+    color: #FFF; 
+}
+
+#footer_links {
+    width: 1010px; 
+    height: 31px; 
+    border-bottom: 1px solid #999; 
+    border-top: 1px solid #999; 
+    color: #FFF; 
+    font-size: 12px; 
+    text-align: center; 
+    line-height: 31px; 
+    margin: 0 auto;
+}
+#footer_links a {
+    color: #FFF;
+}
+#footer_links a:hover {
+    color: #AB0034;
+}
+#footer_links img {
+    margin: 0 7px;
+}
+#footer_links p {
+    margin: 0;
+}
+#footer_derechos {
+    width: 1010px; 
+    height: 52px; 
+    color: #CCC; 
+    font-size: 11px; 
+    text-align: center; 
+    padding-top: 12px; 
+    margin: 0 auto;
+}
+#scroll {
+    height: auto;
+}
+#scroll #contenedor #barra_gris {
+    width: 1010px; 
+    height: 10px; 
+    background-color: #E8E8E8; 
+    margin: 0 auto;
+}
+#scroll #contenedor #informacion {
+    width: 1010px; 
+    background-repeat: repeat-y; 
+    padding-bottom: 50px;
+    margin: 0 auto;
+}
+#scroll #contenedor #informacion #cont {
+    margin-left: 210px; 
+    width: 800px;
+}
+body {
+    background-color: #666666;
+}
+#barra_top {
+    background-color: #00AA9A;
+}
+
+#barra_bottom {
+    background-color: #00AA9A;
+}
+#scroll #contenedor #pix {
+    background-image: url(pix_menu.jpg);
+}
+#scroll #contenedor #menu_2 {
+    background-image: url(transparente_menu.png);
+}
+#scroll #contenedor #menu_3 {
+    text-align: left;
+    padding-left: 210px;
+}
+#scroll #contenedor #informacion {
+    background-image: url(pix_menu.jpg);  
+}
+div.scroll {
+height: 200px;
+width: auto;
+overflow: auto;
+
+
+}

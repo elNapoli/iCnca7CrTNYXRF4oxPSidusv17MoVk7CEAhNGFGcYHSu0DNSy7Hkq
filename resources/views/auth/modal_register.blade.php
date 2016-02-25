@@ -1,45 +1,64 @@
             
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Registro</h4>
+                <h4 class="modal-title" id="myModalLabel">Registrarte</h4>
             </div>
             <div class="modal-body">
-                <div class="form-group">
 
-                    {!!  Form::label('nombre', ' Nombre del campus ');!!}
-                    {!! Form::text('nombre',null,array('class' => 'form-control','placeholder'=>'Ej: Isla Teja'));!!}
-                </div>  
-                <div class="form-group">
+               <div class="panel-body">
+                    {!! Form::open(['url'=>'auth/register', 'method'=>'POST','id'=>'form-register'])!!}
 
-                    {!!  Form::label('telefono', ' Ń° Telefónico ');!!}
-                    {!! Form::text('telefono',null,array('class' => 'form-control','placeholder'=>'Ej:+560632222222'));!!}
-                </div>  
-                <div class="form-group">
+    
+                            <div class="message_modal"> </div>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {!! Form::text('name',null,array('class' => 'form-control','id'=>'name','placeholder'=>'Nombres'));!!}
+                                  
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {!! Form::text('apellido_paterno',null,array('class' => 'form-control','id'=>'apellido_paterno','placeholder'=>'Apellidos'));!!}
 
-                    {!!  Form::label('fax', ' Nombre N° fax ');!!}
-                    {!! Form::text('fax',null,array('class' => 'form-control','placeholder'=>'Ej: +560632222222'));!!}
-                </div>  
-                <div class="form-group">
+                                    </div>
+                                </div>
+                            </div>
 
-                    {!!  Form::label('sitio_web', ' sitio web del campus ');!!}
-                    {!! Form::text('sitio_web',null,array('class' => 'form-control','placeholder'=>'Ej: www.uach.cl'));!!}
-                </div>  
+                            <div class="form-group">
+                                        {!! Form::text('email',null,array('class' => 'form-control','id'=>'email','placeholder'=>'E-mail'));!!}
 
-                <div class="form-group">
-                    {!!  Form::label('ciudad', ' Nombre de la ciudad ')!!}
-                    {!!  Form::select('ciudad', [null=>'Seleccione ciudad'],null,array('class' => 'form-control putaputa'))!!}
-                </div>
+                            </div>
 
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {!! Form::password('password',array('class' => 'form-control','id'=>'password','placeholder'=>'Contraseña'));!!}
+
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {!! Form::password('password_confirmation',array('class' => 'form-control','id'=>'password_confirmation','placeholder'=>'Repita contraseña'));!!}
+
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    {!!Form::close()!!}
+                
+                    </div>
+   
            
           
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <input type="button" value="Registrarte" id="registrarse" class="btn btn-primary btn-block">
+
             </div>
         </div>
         <!-- /.modal-content -->

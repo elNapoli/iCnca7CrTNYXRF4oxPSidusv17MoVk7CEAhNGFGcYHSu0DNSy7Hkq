@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('Dashboard') Universidad @endsection
 
@@ -7,24 +7,49 @@
 
                       
 @include('universidades.partials.modal')
-   
+<div class="row mt">
+    <div class="col-lg-12">
+        <section class="content-panel">
+            <div class="panel-heading">
+                <div class="pull-left"><h5><i class="fa fa-tasks"></i> Datos de la universidad</h5></div>
+                <br>
+            </div>
+            <hr>
+            {!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=> 'formUniversidadStore'])!!}
+                <div class="row">
+                    <div class="col-lg-6">
+                            @include('universidades.partials.tabs_head')
+                        
 
-<div class="col-md-1" ></div>
-    <div class="col-md-7" >
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9">
+                        
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <a href="#!" id="agregarCiudadModal" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#modal_campus_universidad"> Agregar Campus</a>
+                            </div>
 
-    @include('partials.successAjax')
-    @include('universidades.partials.botonEliminarUniversidad')
+                            @include('universidades.partials.tabs')
 
-    {!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=> 'formUniversidadStore'])!!}
-      <div class="form-group">
-          <a href="#!" id="agregarCiudadModal" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#modal_campus_universidad"> Agregar Campus</a>
-    </div>
+                            <div class=" add-task-row">
+                                <a class="btn btn-success btn-sm pull-left" href="#!" id="editarUniversidad">Guardar los cambios</a>
+                            </div>
+                        </div>
 
-		@include('universidades.partials.tabs')
+                    </div>
+                </div>
+            {!!Form::close()!!}
+        </section>
+    </div><!-- /col-md-12-->
+</div>
 
-		<a href="#!" id="editarUniversidad" class="btn btn-default">Editar datos de la universidad</a>
-		{!!Form::close()!!}
-	</div>
+
+
+
+
+
 
 {!! Form::open(['url'=>['universidades/destroy-campus',':USER_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
 
@@ -37,6 +62,8 @@
 
 
 @section('scripts')
+    {!! Html::Script('js/funciones.js') !!}
+
  <script type="text/javascript">
 
 

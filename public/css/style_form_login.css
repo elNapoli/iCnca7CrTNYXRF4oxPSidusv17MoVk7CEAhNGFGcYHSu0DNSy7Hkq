@@ -71,8 +71,12 @@ h1{
 .form-group{
   position: relative;
 }
-.form-control{
+.input_con_icono{
+
   height:40px;
+  
+}
+.form-control{
   border:none;
   padding:5px 7px 5px 15px;
   background:#fff;

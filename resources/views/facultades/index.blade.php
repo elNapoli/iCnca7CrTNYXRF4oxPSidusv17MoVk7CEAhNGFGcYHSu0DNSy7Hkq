@@ -1,31 +1,21 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('content')
 
-<div class="row">
-	  <!-- Default panel contents -->
-    <div class="col-md-0" ></div>
-    <div class="col-md-12" >
-
-		<div class="panel panel-default">
-
-			@include('partials.success')
 		  <div class="panel-heading"><a class="btn-info btn" href="{{ url('facultades/create')}}">Crear facultad</a></div>
 
-		  <!-- Table -->
+
+
 			@include('facultades.partials.table')
-	
 
-		</div>
-    </div>
-
-</div>
 
 @include('facultades.partials.modal_create')
 @include('facultades.partials.modal_edit')
 {!!Form::hidden('getUrlFacultades', url('facultades/facultades'),array('id'=>'getUrlFacultades'));!!}
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
-{!!Form::hidden('getUrlFacultadUpdate', url('facultades/update'),array('id'=>'getUrlFacultadUpdate'));!!}{!!Form::hidden('asistente',$facu->id,array('id'=>'asistente'));!!}
+{!!Form::hidden('getUrlFacultadUpdate', url('facultades/update'),array('id'=>'getUrlFacultadUpdate'));!!}
+
+
 
 
 @endsection
@@ -40,9 +30,9 @@
 			 
 			 		"lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
 					 "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
+                    "bProcessing": true,
 
 			        "ajax": $('#getUrlFacultades').val(),
-
 
 			        "columns": [
 			           { "data": "id",
@@ -56,8 +46,10 @@
 			            { "data":"telefono" },
 			            { "data": null,
 			                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-			                    $(nTd).html("<a href='#!' id ='"+oData.id+"' class='model-open-edit'> Edit</a>"+
-			                                "<a href='#!' class='btn-delete' id='"+oData.id+"'> Del</a>"
+                                $(nTd).attr('align','center');
+
+			                    $(nTd).html("<a href='#!' id ='"+oData.id+"' class='model-open-edit btn btn-primary btn-xs'> <i class='fa fa-pencil'></i></a>"+
+			                                "<a href='#!' class='btn btn-danger btn-delete btn-xs' id='"+oData.id+"'> <i class='fa fa-trash-o'></a>"
 			                        );
 
 			                }
@@ -69,7 +61,7 @@
 	$('table').on('click','.model-open-edit', function(e){
 			$('#modal_edit_facultad').modal('show');
             var data = $('#form-edit').serialize()
-            alert($('#id'))
+        //    alert($('#id'))
             $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
                 data:data,
@@ -80,7 +72,7 @@
                 // URL a la que se enviará la solicitud Ajax
                 url:$('#form-edit').attr('action')+'/'+$(this).attr('id') ,
                 success : function(json) {
-                        console.log(json);
+                      //  console.log(json);
                     $('div#boyd-modal div div input#nombre').val(json.nombre);
                     $('div#boyd-modal div div input#telefono').val(json.telefono);
                     $('div#boyd-modal div div input#campus_sede').val(json.campus_sedes_r.nombre);

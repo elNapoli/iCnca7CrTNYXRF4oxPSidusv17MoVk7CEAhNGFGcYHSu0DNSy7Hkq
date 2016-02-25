@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('content')
 
@@ -40,9 +40,9 @@
 			 
 			 		"lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
 					 "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
-
+                    "bProcessing": true,
+                    
 			        "ajax": $('#getUrlasignaturas').val(),
-
 
 			        "columns": [
 			            { "data":"codigo" },
@@ -53,8 +53,12 @@
 			            { "data":"carrera_r.facultad_r.campus_sedes_r.universidad_r.nombre" },
 			            { "data": null,
 			                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-			                    $(nTd).html("<a href='asignaturas/edit/"+oData.codigo+"' class='btn-edit'> Edit</a>"+
-			                                "<a href='#!' class='btn-delete' id='"+oData.codigo+"'> Del</a>"
+                                $(nTd).attr('align','center');
+                                
+			                    $(nTd).html("<a href='asignaturas/edit/"+oData.codigo+"' class='btn-edit btn btn-primary btn-xs'>"+
+                                    "<i class='fa fa-pencil'></i></a>"+
+			                                "<a href='#!' class='btn btn-danger btn-delete btn-xs' id='"+
+                                            oData.codigo+"'> <i class='fa fa-trash-o'></i></a>"
 			                        );
 
 			                }

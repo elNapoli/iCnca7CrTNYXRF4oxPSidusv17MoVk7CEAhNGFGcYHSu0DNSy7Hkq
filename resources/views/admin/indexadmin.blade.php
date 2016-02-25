@@ -1,27 +1,13 @@
-@extends('layout.register.app_ad')
+@extends('intranet.app')
 
 @section('Dashboard') Panel Administrador @endsection
 
 @section('content')
 
-<div class="row">
-	  <!-- Default panel contents -->
-    <div class="col-md-0" ></div>
-    <div class="col-md-12" >
 
-		<div class="panel panel-default">
-
-			@include('partials.success')
-		  <!--<div class="panel-heading"><a class="btn-info btn" href="{{ url('continentes/create')}}">Crear continente</a></div>-->
-
-		  <!-- Table -->
 			@include('admin.partials.table')
 
 
-		</div>
-    </div>
-
-</div>
 
 {!! Form::open(['route'=>['admin.usuarios.destroy',':USER_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
 

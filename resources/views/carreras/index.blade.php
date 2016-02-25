@@ -1,29 +1,20 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('Dashboard') Carreras @endsection
 
 @section('content')
 
-<div class="row">
-	  <!-- Default panel contents -->
-    <div class="col-md-1" ></div>
-    <div class="col-md-9" >
 
-		<div class="panel panel-default">
 
 
 		   <a href="#!" id="agregarCiudadModal" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#modal_crear_carrera"> Agregar carrera</a>
 
-		  <!-- Table -->
           <div class="message"></div>
 			@include('carreras.partials.table')
-		
 
-		</div>
-    </div>
 
-</div>
-    {!!Form::hidden('getUrlCarreras', url('carreras/carreras'),array('id'=>'getUrlCarreras'));!!}
+
+{!!Form::hidden('getUrlCarreras', url('carreras/carreras'),array('id'=>'getUrlCarreras'));!!}
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
 {!!Form::hidden('getUrlFacultadesByCampus', url('facultades/facultades-by-campus'),array('id'=>'getUrlFacultadesByCampus'));!!}
@@ -38,6 +29,7 @@
 @section('scripts')
 
     {!! Html::Script('js/function_carrera.js')!!}
+    {!! Html::Script('js/funciones.js')!!}
 
 	<script type="text/javascript">
 
@@ -49,6 +41,7 @@
 
         "ajax": $('#getUrlCarreras').val(),
 
+        "bProcessing": true,
 
         "columns": [
            

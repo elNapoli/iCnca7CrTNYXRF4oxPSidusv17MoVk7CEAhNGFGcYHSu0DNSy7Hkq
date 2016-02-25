@@ -7,7 +7,7 @@
           <h5 class="centered">{{Auth::user()->name.' '.Auth::user()->apellido_paterno}}</h5>
             
           <li class="mt">
-              <a class="active" href="index.html">
+              <a class="active" href="{{ url('/') }}">
                   <i class="fa fa-dashboard"></i>
                   <span>Dashboard</span>
               </a>
@@ -21,12 +21,29 @@
               <ul class="sub">
                   <li><a  href="{{url('continentes/')}}">Continentes</a></li>
                     <li>
-                        <a href="{{ url('paises/') }}">Pises</a>
+                        <a href="{{ url('paises/') }}">Paises</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('ciudades/') }}">Ciudades</a>
                     </li>
                     <li>
                         <a href="{{ url('universidades/') }}">Universidades</a>
                     </li>
-                  <li><a  href="panels.html">Panels</a></li>
+
+                    <li>
+                        <a href="{{ url('facultades/') }}">Facultades</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('carreras/') }}">Carreras</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url('asignaturas/') }}">Asignaturas</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('admin/usuarios/') }}">Usuarios</a>
+                    </li>
+                  
               </ul>
           </li>
 

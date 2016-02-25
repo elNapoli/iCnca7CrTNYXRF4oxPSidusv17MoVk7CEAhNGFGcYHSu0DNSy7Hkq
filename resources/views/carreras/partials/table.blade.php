@@ -1,21 +1,20 @@
-<table id="tableCarreras" class="display" width="100%" cellspacing="0">
-    <thead>
-        <tr>
-                <th>id</th>
-                <th>Nombre</th>
-                <th>Director</th>
-                <th>E-mail</th>
-                <th>Acción</th>
-        </tr>
-    </thead>
-    <tfoot>
-        <tr>
-                <th>id</th>
-                <th>Nombre</th>
-                <th>Director</th>
-                <th>E-mail</th>
-                <th>Acción</th>
-        </tr>
-    </tfoot>
-</table>
 
+
+
+<div class="row mt">
+    <div class="col-lg-12">
+        <div class="content-panel">
+            <table id="tableCarreras" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                            <th>id</th>
+                            <th>Nombre</th>
+                            <th>Director</th>
+                            <th>E-mail</th>
+                            <th>Acción</th>
+                    </tr>
+                </thead>
+            </table>
+        </div><!-- /content-panel -->
+    </div><!-- /col-md-12 -->
+</div><!-- /row -->

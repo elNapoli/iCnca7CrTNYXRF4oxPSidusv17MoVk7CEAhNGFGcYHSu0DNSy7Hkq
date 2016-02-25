@@ -72,8 +72,7 @@
         $(document).on('ready',function(){
 
             $('#iniciarSesion').on('click',function(){
-                $.ajax({
-                                  
+                $.ajax({            
                     async : false,
                     data:{
                         _token: $('#_token').val(),
@@ -89,7 +88,8 @@
                     // URL a la que se enviará la solicitud Ajax
                     url:$('#getUrlDestroyCursoHomologado').val() ,
                    
-                    success : function(json) {           
+                    success : function(json) { 
+                        //console.log(json);          
                         if(json.codigo == 0){
                             var html = '<div class="alert alert-danger fade in">'+
                             '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
@@ -99,12 +99,12 @@
 
 
                         }
-                        else if(json.codigo == 1){
+
+                        else if(json.codigo == 3){
 
                             window.location.href = $('#urlAdmin').val();
                         }
                         else{
-
                             window.location.href = $('#urlUser').val();
                         }
                         

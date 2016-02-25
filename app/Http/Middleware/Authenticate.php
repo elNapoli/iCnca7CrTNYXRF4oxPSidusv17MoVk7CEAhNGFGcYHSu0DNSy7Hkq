@@ -40,6 +40,7 @@ class Authenticate {
 			}
 			else
 			{
+				dd('que mierda pasa xD');
 				return redirect()->guest('auth/login');
 			}
 		}

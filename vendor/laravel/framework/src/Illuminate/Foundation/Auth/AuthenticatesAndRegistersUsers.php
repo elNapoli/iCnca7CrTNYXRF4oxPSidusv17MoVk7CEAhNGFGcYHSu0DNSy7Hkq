@@ -82,13 +82,13 @@ trait AuthenticatesAndRegistersUsers {
 		$credentials = $request->only('email', 'password');
 		$user = User::where('email',$request->get('email'))->first();
 		$codigo = 0;
-		$mensaje = '';
+		$mensaje = 'Contraseña incorrecta';
 		if($user == null){
-				return redirect($this->loginPath())
-					->withInput($request->only('email', 'remember'))
-					->withErrors([
-						'email' => $this->getFailedLoginMessage(),
-					]);			
+			return response()->json([
+				'codigo' => '0',
+				'message'=> 'El correo no existe en nuestros registros'
+				]);
+		
 		}
 
 		if ($user->confirmado == '0')
@@ -111,13 +111,13 @@ trait AuthenticatesAndRegistersUsers {
 					$mensaje =  'User';
 				}
 			}
+
 			/*	return redirect($this->loginPath())
 					->withInput($request->only('email', 'remember'))
 					->withErrors([
 						'email' => $this->getFailedLoginMessage(),
 					]);*/
 		}
-
 		return response()->json([
 				'codigo' => $codigo,
 				'message'=> $mensaje

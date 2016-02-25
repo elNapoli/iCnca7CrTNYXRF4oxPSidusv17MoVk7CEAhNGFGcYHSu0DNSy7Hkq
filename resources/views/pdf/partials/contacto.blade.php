@@ -34,59 +34,63 @@
               @endforeach
             </th>
             <th colspan="14" class="no">Dirección</th>
-            <th colspan="52" class="desc">{{$p->pregradosR->preUachsR->preURespnsablesR->direccion}}</th>
+            <th colspan="52" class="desc">{{$p->pregradosR->preUachsR->contactoExtranjeroR->direccion}}</th>
           </tr>
           <tr>
             <th colspan="10" class="no">Ciudad</th>
-            <th colspan="40" class="desc"></th>
+            <th colspan="40" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->ciudadR->nombre}}</th>
             <th colspan="10" class="no">País</th>
-            <th colspan="40" class="desc"></th>
+            <th colspan="40" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->ciudadR->paisR->nombre}}</th>
           </tr>
           <tr>
             <th colspan="10" class="no">Teléfono</th>
-            <th colspan="40" class="desc"></th>
+            <th colspan="40" class="desc">{{$p->pregradosR->preUachsR->contactoExtranjeroR->telefono_1}}</th>
             <th colspan="10" class="no">Celular</th>
-            <th colspan="40" class="desc"></th>
+            <th colspan="40" class="desc">{{$p->pregradosR->preUachsR->contactoExtranjeroR->telefono_2}}</th>
           </tr>
           <tr>
             <th colspan="30" class="no">Contacto de algún conocido en el extranjero para casos de emergencia</th>
-            <th colspan="70" class="desc"><br><br><br><br></th>
+            <th colspan="70" class="desc">{{$p->pregradosR->preUachsR->contactoExtranjeroR->conocido_extranjero}}</th>
           </tr>
           <tr>
             <th colspan="30" class="no">Nombre seguro internacional</th>
-            <th colspan="70" class="desc"></th>
+            <th colspan="70" class="desc">{{$p->pregradosR->preUachsR->contactoExtranjeroR->nombre_seguro}}</th>
           </tr>
           <tr>
             <th colspan="30" class="no">Número seguro internacional</th>
-            <th colspan="70" class="desc"></th>
+            <th colspan="70" class="desc">{{$p->pregradosR->preUachsR->contactoExtranjeroR->numero_seguro}}</th>
           </tr>
           <tr>
             <th colspan="30" class="no">Validez exacta del seguro</th>
-            <th colspan="70" class="desc"></th>
+            <th colspan="70" class="desc">{{$p->pregradosR->preUachsR->contactoExtranjeroR->validez_seguro}}</th>
           </tr>
           <tr>
             <th colspan="30" class="no">Nombre Hospital mas cercano</th>
-            <th colspan="70" class="desc"></th>
+            <th colspan="70" class="desc">{{$p->pregradosR->preUachsR->contactoExtranjeroR->nombre_hospital}}</th>
           </tr>
           <tr>
             <th colspan="30" class="no">Dirección Hospital mas cercano</th>
-            <th colspan="70" class="desc"></th>
+            <th colspan="70" class="desc">{{$p->pregradosR->preUachsR->contactoExtranjeroR->direccion_hospital}}</th>
           </tr>
         </tbody>
       </table>
       <div id="cab_c">CONTACTO EN CHILE</div>
     <table border="0" cellspacing="0" cellpadding="0">
         <tbody>
+          @foreach($p->pregradosR->preUachsR->preURespnsablesR as $item) <!-- nota: delimitar el insert de contactos a 1 por tipo para evitar errores acá-->
+          @if($item->tipo == 'contacto')
           <tr>
             <th colspan="30" class="no">Nombre</th>
-            <th colspan="70" class="desc"></th>
+            <th colspan="70" class="desc">{{$item->nombre}}</th>
           </tr>
           <tr>
             <th colspan="15" class="no">Parentesco</th>
-            <th colspan="35" class="desc"></th>
+            <th colspan="35" class="desc">{{$item->parentesco}}</th>
             <th colspan="15" class="no">Telefono</th>
-            <th colspan="35" class="desc"></th>
+            <th colspan="35" class="desc">{{$item->telefono_1}}</th>
           </tr>
+          @endif
+          @endforeach
         </tbody>
       </table>
             <div id="cab_c">Fecha de emision: {{ $date }}</div>

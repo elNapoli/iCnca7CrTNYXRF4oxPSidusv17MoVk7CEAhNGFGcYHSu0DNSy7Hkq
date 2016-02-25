@@ -20,7 +20,21 @@
     <div id="cab_a">PROCEDIMIENTOS PARA MANTENCION DE BENEFICIOS<br>
 Estudiantes UACh en pasantía o doble titulación fuera de Chile</div>
 <div id="stmnt_h">
-      <p>  Sr(a.) .................................................,  Asistente  Social  de  la  Dirección  de  Asuntos Estudiantiles deja constancia de haber atendido al(la) estudiante <strong>[VARIABLE]</strong> Rut: <strong>[VARIABLE]</strong> de la carrera <strong>[VARIABLE]</strong> de la Facultad de <strong>[VARIABLE]</strong>, quien realizará una pasantía en la Universidad <strong>[VARIABLE]</strong> por <strong>[VARIABLE]</strong> semestres(s) a partir de <strong>[VARIABLE]</strong> hasta <strong>[VARIABLE]</strong>, con la finalidad de informar procedimientos que debe realizar para mantener beneficios de arancel y mantención
+      <p>  Sr(a.) .................................................,  Asistente  Social  de  la  Dirección  de  Asuntos Estudiantiles deja constancia de haber atendido al(la) estudiante <strong>{{$p->nombre.' '.$p->apellido_paterno.' '.$p->apellido_materno}}</strong>,  
+        @foreach($p->documentoIdentidadR as $item)
+                @if($item->tipo == 'ci')
+                    RUT: <strong>{{' '.$item->numero.' '}}</strong>
+                @elseif($item->tipo == 'p')
+                    Pasaporte: <strong>{{' '.$item->numero.' '}}</strong>
+                @endif
+          @endforeach
+           de la carrera <strong>{{$p->pregradosR->preUachsR->preUEstudioActualesR->carreraR->nombre}}</strong> de la Facultad de <strong>{{$p->pregradosR->preUachsR->preUEstudioActualesR->carreraR->facultadR->nombre}}</strong>, quien realizará una pasantía en la <strong>{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->universidadR->nombre}}</strong> por <strong>
+           @if($p->pregradosR->prePostulacionUniversidadesR->semestre == 'semestre 1' or $p->pregradosR->prePostulacionUniversidadesR->semestre == 'semestre 2') 1
+           @elseif($p->pregradosR->prePostulacionUniversidadesR->semestre == 'ambos') 2
+           @elseif($p->pregradosR->prePostulacionUniversidadesR->semestre == 'otro')
+                  el periodo contemplado entre {{$p->pregradosR->prePostulacionUniversidadesR->desde}} y {{$p->pregradosR->prePostulacionUniversidadesR->hasta}}
+          @endif
+         </strong> semestres(s) del año <strong>{{$p->pregradosR->prePostulacionUniversidadesR->anio}}</strong> , con la finalidad de informar procedimientos que debe realizar para mantener beneficios de arancel y mantención
 	  tanto internos como Estatales</p>
   		</div>
   <div id="cab_a">BENEFICIOS QUE POSEE<br>
@@ -59,9 +73,13 @@ documentos, páginas que debe revisar periódicamente, otros)<br></div>
 
   <div id="cab_a" style="page-break-before: always;">LEGALIDAD</div>
   	<div id="stmnt_h">
-  		<p> &nbsp &nbsp &nbsp Para todos los efectos quien actuará como mi representante legal es: <strong>[VARIABLE]</strong>,  parentesco <strong>[VARIABLE]</strong> Teléfono fijo: <strong>[VARIABLE]</strong> Celular <strong>[VARIABLE]</strong>, e-mail: <strong>[VARIABLE]</strong>, a quien dejaré un poder notarial con fines generales, para que pueda gestionar trámites en mi nombre, dentro de lo que permite la Ley y las políticas públicas chilenas.</p>
-  		<p> &nbsp &nbsp &nbsp En caso de no cumplir con las indicaciones mencionadas en este documento, la UACh no se hace responsable por la pérdida de sus beneficios. Con fecha ..... de ............... de 20.... ,el(la)  estudiante <strong>[VARIABLE]</strong> ha tomado conocimiento de los trámites a realizar durante su estadía en el extranjero para efectos de renovar beneficios de arancel y/o mantención institucionales y estatales, y se compromete a cumplirlos en su cabalidad o de asumir las consecuencias en caso de no realizar lo establecido. </p>
-  		<br>
+        @foreach($p->pregradosR->preUachsR->preURespnsablesR as $item)
+          @if($item->tipo == 'Representante Legal') 
+      <p> &nbsp &nbsp &nbsp Para todos los efectos quien actuará como mi representante legal es: <strong>{{$item->nombre}}</strong>,  parentesco <strong>{{$item->parentesco}}</strong> Teléfono fijo: <strong>{{$item->telefono_1}}</strong> Celular <strong>{{$item->telefono_2}}</strong>, e-mail: <strong>{{$item->email}}</strong>, a quien dejaré un poder notarial con fines generales, para que pueda gestionar trámites en mi nombre, dentro de lo que permite la Ley y las políticas públicas chilenas.</p>
+      <p> &nbsp &nbsp &nbsp En caso de no cumplir con las indicaciones mencionadas en este documento, la UACh no se hace responsable por la pérdida de sus beneficios. Con fecha ..... de ............... de 20.... ,el(la)  estudiante <strong>{{$p->nombre.' '.$p->apellido_paterno.' '.$p->apellido_materno}}</strong> ha tomado conocimiento de los trámites a realizar durante su estadía en el extranjero para efectos de renovar beneficios de arancel y/o mantención institucionales y estatales, y se compromete a cumplirlos en su cabalidad o de asumir las consecuencias en caso de no realizar lo establecido. </p>
+          @endif
+        @endforeach
+      <br>
   		<br>
   		<br>
   		<br>

@@ -56,7 +56,7 @@ class PreUach extends Model
 
     public function preURespnsablesR()
     {
-        return $this->belongsTo('App\PreUResponsable','postulante','postulante');
+        return $this->hasMany('App\PreUResponsable','postulante','postulante');
     }
 
 

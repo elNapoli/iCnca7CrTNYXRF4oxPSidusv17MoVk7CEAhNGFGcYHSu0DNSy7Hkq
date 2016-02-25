@@ -1,27 +1,15 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('Dashboard') Departamentos @endsection
 
 @section('content')
 
-<div class="row">
-	  <!-- Default panel contents -->
-    <div class="col-md-0" ></div>
-    <div class="col-md-12" >
 
-		<div class="panel panel-default">
-
-			@include('partials.success')
 		  <div class="panel-heading"><a class="btn-info btn" href="{{ url('departamentos/create')}}">Crear departamento</a></div>
 
 		  <!-- Table -->
 			@include('departamentos.partials.table')
 
-
-		</div>
-    </div>
-
-</div>
 
 {!! Form::open(['url'=>['departamentos/destroy',':USER_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
 
@@ -47,7 +35,8 @@
 			 
 			 		"lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "All"]],
 					 "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
-
+                    "bProcessing": true,
+                    "scrollX": true,
 			        "ajax": $('#getUrlDepartamentos').val(),
 
 
@@ -61,8 +50,12 @@
 			            { "data":"campus_sede_r.nombre" },
 			            { "data": null,
 			                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-			                    $(nTd).html("<a href='departamentos/edit/"+oData.id+"' class='btn-edit'> Edit</a>"+
-			                                "<a href='#!' class='btn-delete' id='"+oData.id+"'> Del</a>"
+                                $(nTd).attr('align','center');
+
+			                    $(nTd).html("<a href='departamentos/edit/"+oData.id+"' class='btn-edit btn btn-primary btn-xs'>"+
+                                    " <i class='fa fa-pencil'></i></a>"+
+			                                "<a href='#!' class='btn btn-danger btn-delete btn-xs' id='"+
+                                            oData.id+"'> <i class='fa fa-trash-o'></i></a>"
 			                        );
 
 			                }

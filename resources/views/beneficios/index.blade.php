@@ -1,27 +1,13 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('Dashboard') Beneficios @endsection
 
 @section('content')
 
-<div class="row">
-	  <!-- Default panel contents -->
-    <div class="col-md-1" ></div>
-    <div class="col-md-8" >
-
-		<div class="panel panel-default">
-
-			@include('partials.success')
 		  <div class="panel-heading"><a class="btn-info btn" href="{{ url('beneficios/create')}}">Crear beneficio</a></div>
 
 		  <!-- Table -->
 			@include('beneficios.partials.table')
-
-
-		</div>
-    </div>
-
-</div>
 
 
 {!! Form::open(['url'=>['beneficios/destroy',':USER_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}

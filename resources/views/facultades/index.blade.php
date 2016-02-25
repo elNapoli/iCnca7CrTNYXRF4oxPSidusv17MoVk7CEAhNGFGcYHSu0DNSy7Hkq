@@ -49,7 +49,7 @@
                                 $(nTd).attr('align','center');
 
 			                    $(nTd).html("<a href='#!' id ='"+oData.id+"' class='model-open-edit btn btn-primary btn-xs'> <i class='fa fa-pencil'></i></a>"+
-			                                "<a href='#!' class='btn btn-danger btn-delete btn-xs' id='"+oData.id+"'> <i class='fa fa-trash-o'></a>"
+			                                "<a href='#!' class='btn btn-danger btn-delete btn-xs' id='"+oData.id+"'>  <i class='fa fa-trash-o'></i></a>"
 			                        );
 
 			                }

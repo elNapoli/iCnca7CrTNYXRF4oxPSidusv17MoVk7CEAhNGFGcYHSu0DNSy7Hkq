@@ -39,7 +39,7 @@ trait AuthenticatesAndRegistersUsers {
 			'email'=>'required|unique:users,email,', 
 			'name' => 'required',
 			'apellido_paterno' => 'required',
-			'password' => 'required',
+			'password' => 'required|confirmed',
 
 		]);
 		//$this->auth->login($this->registrar->create($request->all()));

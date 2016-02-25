@@ -20,7 +20,9 @@
               </a>
               <ul class="sub">
                   <li><a  href="{{url('continentes/')}}">Continentes</a></li>
-                  <li><a  href="buttons.html">Buttons</a></li>
+                    <li>
+                        <a href="{{ url('paises/') }}">Pises</a>
+                    </li>
                   <li><a  href="panels.html">Panels</a></li>
               </ul>
           </li>

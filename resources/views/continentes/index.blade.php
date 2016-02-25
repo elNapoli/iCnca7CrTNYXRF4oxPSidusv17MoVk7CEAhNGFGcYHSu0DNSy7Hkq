@@ -1,39 +1,26 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('Dashboard') Continentes @endsection
 
 @section('content')
 
-<div class="row">
-	  <!-- Default panel contents -->
-    <div class="col-md-1" ></div>
-    <div class="col-md-8" >
-
-		<div class="panel panel-default">
 
 		<div class="message"></div>
-		  <div class="panel-heading"><a class="btn btn-primary btn-outline" data-toggle="modal" data-target="#modal_crear_continente" href="#!">Crear continente</a></div>
 
-		  <!-- Table -->
+
 			@include('continentes.partials.table')
 
 
-		</div>
-    </div>
 
-</div>
+	{!! Form::open(['url'=>['continentes/destroy',':USER_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
 
-
-{!! Form::open(['url'=>['continentes/destroy',':USER_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
-
-{!! Form::close()!!}
+	{!! Form::close()!!}
 	{!!Form::hidden('urlContinenteDestroy', url('continentes/destroy'),array('id'=>'urlContinenteDestroy'));!!}
 	{!!Form::hidden('urlContinenteUpdate', url('continentes/update'),array('id'=>'urlContinenteUpdate'));!!}
 
 
 @include('continentes.partials.modal_create')
 @include('continentes.partials.modal_edit')
-
 @endsection
 
 
@@ -46,8 +33,9 @@
 @section('scripts')
 	<script type="text/javascript">
 		$(document).ready(function() {
-
 		var dt = $('#tableContinente').DataTable( {
+				'searching':false,
+				'paging':false,
 		        "language": {
 		            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 		        }
@@ -102,7 +90,7 @@
 	                    $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
                     	$('#modal_edit_continente').modal('hide'); 
 
-	                    dt.reload();            
+	                  //  dt.reload();            
 	          
 	                },
 

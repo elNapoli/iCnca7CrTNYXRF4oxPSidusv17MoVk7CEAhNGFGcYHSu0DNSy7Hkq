@@ -24,6 +24,12 @@ $.ajax({
     dataType: "json",
     // URL a la que se enviará la solicitud Ajax
     url:urlE ,
+    beforeSend:function() {
+        $('#loading').show();
+    },
+    complete: function(){
+        $('#loading').hide();
+    },
     success : function(json) {
         ruta.empty();
         ruta.append("<option value=''>Seleccione la "+idSelectDestino+"</option>");
@@ -92,6 +98,12 @@ var ruta = $(ruta+' select'+idSelectDestino);
         dataType: "json",
         // URL a la que se enviará la solicitud Ajax
         url:urlE ,
+        beforeSend:function() {
+            $('#loading').show();
+        },
+        complete: function(){
+            $('#loading').hide();
+        },
         success : function(json) {
             ruta.empty();
             ruta.append("<option value=''>Seleccione la "+idSelectDestino+"</option>");
@@ -163,6 +175,12 @@ var ruta = $(ruta+' select'+idSelectDestino);
 	    dataType: "json",
 	    // URL a la que se enviará la solicitud Ajax
 	    url:url ,
+        beforeSend:function() {
+            $('#loading').show();
+        },
+        complete: function(){
+            $('#loading').hide();
+        },
 	    success : function(json) {
 
             if(tabActive === ""){
@@ -229,6 +247,12 @@ var ruta = $(ruta+' select'+idSelectDestino);
 	    dataType: "json",
 	    // URL a la que se enviará la solicitud Ajax
 	    url:url ,
+        beforeSend:function() {
+            $('#loading').show();
+        },
+        complete: function(){
+            $('#loading').hide();
+        },
 	    success : function(json) {
 	    	$(idSelector).empty();
 	    	$(idSelector).append("<option value=''>Seleccione "+nomSelect2+"</option>");
@@ -459,7 +483,12 @@ function CrearTabPorCampus(urlStoreCampus,token,form,idPais,ciudadByPais){
         dataType: "json",
         // URL a la que se enviará la solicitud Ajax
         url:urlStoreCampus ,
-
+        beforeSend:function() {
+            $('#loading').show();
+        },
+        complete: function(){
+            $('#loading').hide();
+        },
         success : function(json) {
             //console.log(json);
           var i = true;

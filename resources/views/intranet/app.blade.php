@@ -20,6 +20,7 @@
     {!! Html::Style('css/style_form_login.css')!!}
     {!! Html::Style('plugins/dataTables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')!!}
   
+    {!! Html::Style('plugins/jquery-ui/jquery-ui.css')!!}
     
     <!-- Custom styles for this template -->
     {!! Html::Style('plugins/theme_intranet/css/style.css')!!}
@@ -42,7 +43,7 @@
 
     @include('intranet.header')
 
-    @include('intranet.sidebar_left_admin')
+    @include('intranet.sidebar_left_user')
 
     <section id="main-content">
         <section class="wrapper">
@@ -85,6 +86,7 @@
     <!--script for this page-->
     {!! Html::Script('plugins/theme_intranet/js/sparkline-chart.js') !!}
     {!! Html::Script('plugins/theme_intranet/js/zabuto_calendar.js') !!}
+    {!! Html::Script('plugins/jquery-ui/jquery-ui.js') !!}> 
 
     {!! Html::Script('plugins/dataTables/media/js/jquery.dataTables.min.js') !!}
     {!! Html::Script('plugins/dataTables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') !!}

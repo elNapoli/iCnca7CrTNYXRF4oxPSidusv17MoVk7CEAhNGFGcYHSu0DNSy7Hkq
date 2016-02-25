@@ -1,4 +1,4 @@
-<div class="panel-body">
+<div class="panel-body" id="estudios_actuales" style='display:none'>
         <div class="col-lg-6">
             @include('postulacion.partials.fields')
             @include('postulacion.estudio_actual.fields-info-procedencia')

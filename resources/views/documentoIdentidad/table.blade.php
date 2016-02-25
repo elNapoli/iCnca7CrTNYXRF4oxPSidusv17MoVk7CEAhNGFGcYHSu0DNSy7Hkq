@@ -26,7 +26,7 @@
 {!! Form::close()!!}
 <div class="row">
     <div class="col-lg-12">
-        <table id="tableDocumentoIdentidad" class="display" width="100%" cellspacing="0">
+        <table id="tableDocumentoIdentidad" class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
                         <th>tipo</th>
@@ -34,13 +34,7 @@
                         <th>Acción</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                        <th>tipo</th>
-                        <th>Número</th>
-                        <th>Acción</th>
-                </tr>
-            </tfoot>
+ 
         </table>
     </div>
 </div>

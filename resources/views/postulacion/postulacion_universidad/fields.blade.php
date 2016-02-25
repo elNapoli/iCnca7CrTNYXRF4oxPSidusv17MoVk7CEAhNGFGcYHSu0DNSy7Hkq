@@ -1,4 +1,4 @@
-<div class="panel-body">
+<div class="panel-body" id='postulacion_universidad' style='display:none'>
 
         <div class="col-lg-6">
 
@@ -63,7 +63,7 @@
                 {!!Form::hidden('financiamiento', $parametros['financiamiento'],array('id'=>'financiamiento','class'=>'dropdown-field'));!!}
               
 
-              <ul class='dropdown-menu'>
+              <ul class='dropdown-menu' style=" z-index: 1000;">
                   <li>
                     <a href="#" data-value="1">Padres</a>
                   </li>

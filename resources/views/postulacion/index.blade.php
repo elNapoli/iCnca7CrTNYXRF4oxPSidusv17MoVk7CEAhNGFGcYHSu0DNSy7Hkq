@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('Dashboard') Postulación @endsection
 
@@ -31,7 +31,7 @@
         </section>
     </div>
 
-
+@include('partials.loading')
 @endsection
 
 @section('breadcrumbs')
@@ -46,6 +46,7 @@
     {!! Html::Script('js/datepicker-es.js')!!}
     {!! Html::Script('js/function_financiamiento.js')!!}
     {!! Html::Script('js/function_documento_identidad.js')!!}
+    {!! Html::Script('js/funciones.js') !!}
 
     <script>
         $(document).on('ready',function() {
@@ -60,6 +61,12 @@
                 dataType: "json",
                 // URL a la que se enviará la solicitud Ajax
                 url:$('#getUrlIndexStep').val() ,
+                beforeSend:function() {
+                        $('#loading').show();
+                    },
+                complete: function(){
+                    $('#loading').hide();
+                },
                 success : function(json) {   
                    return json.indexStep;
              
@@ -84,7 +91,7 @@
                 headerTag: "h3",
                 bodyTag: "section",
           
-                startIndex:indexStep.responseJSON.indexStep,
+               // startIndex:indexStep.responseJSON.indexStep,
 
                 transitionEffect: "slideLeft",
                 /* Labels */
@@ -126,7 +133,7 @@
                                 }
                                 
                             }
-
+                            $('#datos_personales').show();
                             break;
                         case 1:
 
@@ -163,6 +170,12 @@
                                         dataType: "json",
                                         // URL a la que se enviará la solicitud Ajax
                                         url:$('#getUrlDirectorCarrera').val() ,
+                                        beforeSend:function() {
+                                            $('#loading').show();
+                                        },
+                                        complete: function(){
+                                            $('#loading').hide();
+                                        },
                                         success : function(json) {   
                                             
                                             $('section#wizard-p-1 #director').val(json.director);
@@ -201,6 +214,12 @@
                                         dataType: "json",
                                         // URL a la que se enviará la solicitud Ajax
                                         url:$('#getUrlCoordinadorCampus').val() ,
+                                        beforeSend:function() {
+                                            $('#loading').show();
+                                        },
+                                        complete: function(){
+                                            $('#loading').hide();
+                                        },
                                         success : function(json) {   
                                             
                                             $('div#infoExtraEstudioNOUACH #nombre_encargado').val(json.nombre_encargado);
@@ -233,6 +252,12 @@
                                         dataType: "json",
                                         // URL a la que se enviará la solicitud Ajax
                                         url:$('#getUrlCoordinadorCampus').val() ,
+                                        beforeSend:function() {
+                                            $('#loading').show();
+                                        },
+                                        complete: function(){
+                                            $('#loading').hide();
+                                        },
                                         success : function(json) {   
                                             
                                             $('div#infoExtraEstudioNOUACH #nombre_encargado').val(json.nombre_encargado);
@@ -250,6 +275,9 @@
                                     });
                                 });
                             }
+                            $('#estudios_actuales').show();
+
+                            break;
 
                         case 2:
                             if($('input#semestreIV').attr('checked') === 'checked'){
@@ -264,6 +292,8 @@
                                 selectByTabsSinAccion("section#wizard-p-2",'#_token','#getUrlCarreraByFacultad','#carrera',$('section#wizard-p-2 #facultad').val(),$('section#wizard-p-2 #carrera_id').val());
                                     
                             }
+                            $('#postulacion_universidad').show();
+                            break;
 
                     }
           
@@ -290,6 +320,12 @@
                             dataType: "json",
                             // URL a la que se enviará la solicitud Ajax
                             url:url ,
+                            beforeSend:function() {
+                                $('#loading').show();
+                            },
+                            complete: function(){
+                                $('#loading').hide();
+                            },
                             success : function(json) {   
                                 //alert("ho");
                                 $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');
@@ -347,6 +383,12 @@
                                 dataType: "json",
                                 // URL a la que se enviará la solicitud Ajax
                                 url:url ,
+                                beforeSend:function() {
+                                    $('#loading').show();
+                                },
+                                complete: function(){
+                                    $('#loading').hide();
+                                },
                                 success : function(json) {   
                                     //alert("ho");
                                     $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');

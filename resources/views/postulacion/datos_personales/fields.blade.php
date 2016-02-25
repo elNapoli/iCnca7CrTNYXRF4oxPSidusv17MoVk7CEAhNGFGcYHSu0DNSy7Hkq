@@ -1,4 +1,4 @@
-    <div class="panel-body">
+    <div class="panel-body" id='datos_personales' style="display:none">
         <div class="col-lg-6">
 
             <div class="form-group">

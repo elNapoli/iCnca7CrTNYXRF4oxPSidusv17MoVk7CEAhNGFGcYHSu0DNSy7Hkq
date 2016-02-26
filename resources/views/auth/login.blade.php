@@ -11,15 +11,30 @@
     <div class="login-form">
         <h1>Login</h1>
         <div class="message"></div>
-        <HR width=100% align="center "> 
+        <HR width=100% align="center ">
+
+            @if(Session::has('message1')) 
+            <div class="alert alert-danger fade in">
+                <button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>
+                               {{Session::get('message1')}}         </p></div>
+            @elseif(Session::has('message2'))
+            <div class="alert alert-success fade in">
+                <button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>
+                               {{Session::get('message2')}}         </p></div>
+            @elseif(Session::has('message3'))
+            <div class="alert alert-success fade in">
+                <button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>
+                               {{Session::get('message3')}}         </p></div>
+            @endif
+
         <div class="form-group ">
-            {!! Form::text('email',null,array('class' => 'form-control input_con_icono','id'=>'email','placeholder'=>'E-mail'));!!}
+            {!! Form::text('email',null,array('class' => 'form-control','id'=>'email','placeholder'=>'E-mail'));!!}
 
             <i class="glyphicon glyphicon-user"></i>
         </div>
         
         <div class="form-group log-status">
-            {!! Form::password('password',array('class' => 'form-control input_con_icono','id'=>'password','placeholder'=>'Contraseña'));!!}
+            {!! Form::password('password',array('class' => 'form-control','id'=>'password','placeholder'=>'Contraseña'));!!}
 
             <i class="glyphicon glyphicon-lock"></i>
         </div>
@@ -57,15 +72,12 @@
 @include('auth.modal_password')
 
 
+
 @endsection
 
 @section('styles')
     {!! Html::Style('css/style_form_login.css')!!}
-<style>
-    
 
-
-</style>
 @endsection
 @section('scripts')
     <script>
@@ -189,9 +201,21 @@
                     complete: function(){
                         $('#loading').hide();
                     },
-                    success : function(json) {           
-                        $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
-                            $('#modal_password').modal('hide'); 
+                    success : function(json) {
+                    if(json.codigo == 0){
+                            var html = '<div class="alert alert-danger fade in">'+
+                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            json.message+'</p></div>';
+                            
+                            $('.message_modal_password').html(html);
+                        }
+                    else if(json.codigo == 1){
+                            var html = '<div class="alert alert-success fade in">'+
+                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            json.message+'</p></div>';
+                            
+                            $('.message_modal_password').html(html);
+                        }          
                     },
 
                     error : function(xhr, status) {

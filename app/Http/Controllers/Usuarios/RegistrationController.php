@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers\Usuarios;
 
-use Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\EditUserRequest;
+use Illuminate\Http\Request;
 
 use App\User;
 
@@ -22,7 +22,9 @@ class RegistrationController extends Controller {
 
         if ( ! $user)
         {
-            throw new InvalidConfirmationCodeException;
+            $message    = 'El usuario y el codigo para la validacion de email no coinciden. Favor revisar!';
+            \Session::flash('message', $message);
+            return redirect('auth/login')->with('message1', $message);
         }
 
         $user->confirmado = 1;
@@ -31,7 +33,9 @@ class RegistrationController extends Controller {
 
        // Flash::message('You have successfully verified your account.');
 
-        return view('usuarios.verificado')->with('holiwi');
+        $message    = 'El correo se ha verificado correctamente. ya puedes ingresar';
+        \Session::flash('message2', $message);
+        return redirect('auth/login')->with('message2', $message);
     }
 
 

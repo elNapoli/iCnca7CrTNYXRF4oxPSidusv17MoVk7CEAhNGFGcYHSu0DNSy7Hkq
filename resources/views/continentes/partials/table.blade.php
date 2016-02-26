@@ -11,21 +11,10 @@
                         <th>Acción</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach($continentes as  $item)
-                        <tr data-id="{{ $item->id }}">
 
-                            <td><a href="#!" class='model-open-edit' id="{{ $item->id }}" >{{$item->id}}</a></td>
-                            <td>{{$item->nombre}}</td>
-                           
-                            <td  align="center">
-                                  <a class="model-open-edit btn btn-primary btn-xs" id="{{ $item->id }}"><i class="fa fa-pencil"></i></a>
-                                  <a class="btn btn-danger btn-delete btn-xs" id="{{ $item->id }}"><i class="fa fa-trash-o "></i></a>
-                            </td>
-                        </tr>
-                    @endforeach 
-                </tbody>
             </table>
         </div><!-- /content-panel -->
     </div><!-- /col-md-12 -->
 </div><!-- /row -->
+
+

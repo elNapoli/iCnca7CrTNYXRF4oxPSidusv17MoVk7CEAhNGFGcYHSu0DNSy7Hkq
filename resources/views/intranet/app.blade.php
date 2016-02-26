@@ -42,11 +42,17 @@
   <section id="container" >
 
     @include('intranet.header')
+<<<<<<< HEAD
     @if(Auth::user()->tipo_usuario == 'administrador')
         @include('intranet.sidebar_left_admin')
     @elseif(Auth::user()->tipo_usuario == 'usuario')
         @include('intranet.sidebar_left_user')
     @endif
+=======
+
+    @include('intranet.sidebar_left_admin')
+
+>>>>>>> 6f4d30ffe221d111d844105158fd314e34146b4a
     <section id="main-content">
         <section class="wrapper">
 

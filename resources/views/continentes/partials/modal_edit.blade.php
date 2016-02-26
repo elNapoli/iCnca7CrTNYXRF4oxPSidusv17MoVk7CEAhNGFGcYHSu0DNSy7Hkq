@@ -12,7 +12,7 @@
                        
                         <div class="panel-body">
                             <div class="row" id="boyd-modal">
-                                <div id="message-modal"></div>
+                                <div id="message-modal-edit"></div>
                                 {!! Form::open(['url'=>'continentes/edit/', 'method'=>'POST','id'=>'form-edit-continente'])!!}
 
 

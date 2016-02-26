@@ -112,6 +112,7 @@
 	                success : function(json) {
 	                    $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
                     	$('#modal_edit_continente').modal('hide'); 
+		            	dt.ajax.reload();            
 
 	                  //  dt.reload();            
 	          

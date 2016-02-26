@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\PaisesRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Pais;
@@ -14,11 +15,17 @@ class PaisesController extends Controller {
 	 */
 	public function getIndex()
 	{
-		$paises = Pais::with('continenteR')->orderBy("id")->get();
-	
-		return view('paises.index',compact('paises'));
-	}
+		$continentes = Continente::lists('nombre','id');
 
+	
+		return view('paises.index',compact('continentes'));
+	}
+	public function getAllPaises(){
+
+		$paises = Pais::with('continenteR')->orderBy("id")->get();
+		$arra = array('data'=>$paises->toArray());
+		return json_encode($arra);
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -38,19 +45,15 @@ class PaisesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function postStore(Request $request)
+	public function postStore(PaisesRequest $request)
 	{
-		 $this->validate($request, [
-        'nombre'     => 'required|alpha|unique:pais,nombre',
-        'continente' => 'required',
-    	]);
+
 		 
 		$continente = Pais::create($request->all());
 		$message    = 'El país '.$request->get('nombre').'se almacenó correctamente';
-		\Session::flash('message', $message);
-
-		//return redirect()->route('paises.index');
-		return redirect('paises');
+		return response()->json([
+				'message'=> $message
+				]);
 
 	}
 
@@ -67,11 +70,10 @@ class PaisesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function getEdit($id)
+	public function postEdit($id)
 	{
-		$pais = Pais::findOrFail($id);
-		$continentes = Continente::lists('nombre','id');
-        return view('paises.edit',compact('continentes','pais'));
+		$pais = Pais::with('continenteR')->findOrFail($id);
+		return $pais->toJson();
 	}
 
 	/**
@@ -80,23 +82,19 @@ class PaisesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function putUpdate($id, Request $request)
+	public function putUpdate($id, PaisesRequest $request)
 	{	
-		//dd('required|unique:pais,nombre,'.$id);
-		//dd($request->all());
-		$this->validate($request, [
-        'nombre'     => 'required|unique:pais,nombre,'.$id,
-        'continente' => 'required',
-    	]);
+
 
 		$pais = Pais::findOrFail($id);
 
 		//dd($pais->toArray());
 		$pais->fill($request->all());
         $pais->save();
-        \Session::flash('message', 'El país se editó correctamente');
-      //  return redirect()->route('paises.index');
-		return redirect('paises');
+        $message    = 'El país '.$request->get('nombre').'se almacenó correctamente';
+		return response()->json([
+				'message'=> $message
+				]);
 
 	}
 
@@ -112,20 +110,9 @@ class PaisesController extends Controller {
 		$pais = Pais::findOrFail($id);
  		$pais->delete();
  		$message = ' El pais '.$pais->nombre.' Fue eliminado';
- 	//	dd($request->all());
-		if($request->ajax()){
-		//	return($message);
-			return response()->json([
+		return response()->json([
 				'message'=> $message
 				]);
-		}
-		
-		
-		\Session::flash('message', $message);
-
-
-		//return redirect()->route('paises.index');
-		return redirect('paises');
 
 	}
 

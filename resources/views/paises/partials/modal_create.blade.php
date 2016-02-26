@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="modal_crear_continente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_crear_pais" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,10 +13,10 @@
                         <div class="panel-body">
                             <div class="row" id="boyd-modal">
                                 <div id="message-modal"></div>
-                                {!! Form::open(['url'=>'continentes/store/', 'method'=>'POST','id'=>'form-save-continente'])!!}
+                                {!! Form::open(['url'=>'paises/store/', 'method'=>'POST','id'=>'form-save-pais'])!!}
 
 
-                                    @include('continentes.partials.fields')
+                                    @include('paises.partials.fields')
                                 {!!Form::close()!!}
 
 
@@ -36,7 +36,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnCreateContinente">Guardar continente</button>
+                <button type="button" class="btn btn-primary" id="btnCreatePais">Guardar país</button>
             </div>
         </div>
         <!-- /.modal-content -->

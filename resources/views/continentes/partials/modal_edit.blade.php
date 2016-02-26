@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Crear continente</h4>
+                <h4 class="modal-title" id="myModalLabel">Editar continente</h4>
             </div>
              <div class="row">
                 <div class="col-lg-12">
@@ -36,7 +36,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnUpdateContinente">Guardar carrera</button>
+                <button type="button" class="btn btn-primary" id="btnUpdateContinente">Guardar continente</button>
             </div>
         </div>
         <!-- /.modal-content -->

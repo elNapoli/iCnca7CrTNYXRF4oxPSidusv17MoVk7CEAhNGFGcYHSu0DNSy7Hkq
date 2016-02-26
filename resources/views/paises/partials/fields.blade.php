@@ -6,5 +6,7 @@
     {!!  Form::label('nombre', ' Nombre del País ')!!}
     {!! Form::text('nombre',null,array('class' => 'form-control','placeholder'=>'Ej: Chile'))!!}
 </div>  
+{!!Form::hidden('id','',array('id'=>'id'));!!}
+
 
 

@@ -13,7 +13,8 @@
                     @if($procedencia == 'NO UACH')
                           <tr>
                             <td><strong>FORMULARIO DE POSTULACION</strong></td>
-                            <td align="center"><a href="{{ url('pdf/invoice')}}" class="model-open-edit btn btn-warning btn-xs"><i class="fa  fa-search "></i></a><a href="{{ url('pdf/invoice-download')}}" class="model-open-edit btn btn-success btn-xs"><i class="fa  fa-download  "></i></a></td>
+                            <td align="center">
+                                <a href="{{ url('pdf/invoice')}}" class="model-open-edit btn btn-warning btn-xs"><i class="fa  fa-search "></i></a><a href="{{ url('pdf/invoice-download')}}" class="model-open-edit btn btn-success btn-xs"><i class="fa  fa-download  "></i></a></td>
                           </tr>
                           <tr>
                             <td><strong>CINDA</strong></td>

@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('Dashboard') Postulación @endsection
 
@@ -21,6 +21,8 @@
 {!! Breadcrumbs::render('home') !!}
 @endsection
 @section('scripts')
+    {!! Html::Script('js/funciones.js') !!}
+
 	<script>
 		 $(document).on('ready',function(){
 
@@ -30,6 +32,9 @@
 
 	            'searching':false,
 	            'paging':false,
+			 	"language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
+                "bProcessing": true,
+
 	            "ajax": $('#getUrlCursosNoUach').val(),
 
 	            "columns": [
@@ -81,11 +86,14 @@
 	                },
 	                { "data": null,
 	                    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-	                        var html = "<a href='#!'  class='addCurso'> Agregar</a>";
+                        $(nTd).attr('align','center');
+
+	                        var html = "<a href='#!'  class='addCurso btn btn-primary btn-xs'> <i class='fa fa-plus'></i></a>";
 
 	                        if(sData.semestre != ''){
 
-	                            html = "<a href='#!' id='"+oData.id+"' class='btn-delete' > eliminar</a>";
+	                            html = "<a href='#!' id='"+oData.id+"' class='btn btn-danger btn-delete btn-xs' > "+
+	                            "<i class='fa fa-trash-o'></i></a>";
 	                        }              
 	                        $(nTd).html(html);
 

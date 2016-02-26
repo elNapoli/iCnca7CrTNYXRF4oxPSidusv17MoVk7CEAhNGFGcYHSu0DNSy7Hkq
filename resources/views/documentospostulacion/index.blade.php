@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('content')
 <div class="panel panel-green">
@@ -33,11 +33,10 @@ $(document).ready(function (){
 
 //Opciones tablas
         $('#tableDocumentos').DataTable( {
-        "aoColumns" : [
-              { "sWidth": "80%"},
-              { "sWidth": "10%"},
-              { "sWidth": "10%"},
-                        ],
+          "bProcessing": true,
+          'searching':false,
+          'paging':false,
+
            "autoWidth": false,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"

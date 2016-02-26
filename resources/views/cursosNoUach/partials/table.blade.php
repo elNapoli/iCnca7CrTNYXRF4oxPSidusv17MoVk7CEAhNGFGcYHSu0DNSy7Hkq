@@ -1,4 +1,4 @@
-<div class="col-lg-10">
+<div class="col-lg-12">
     <div class="panel panel-green">
         <div class="panel-heading text-center">
             Cursos <br>

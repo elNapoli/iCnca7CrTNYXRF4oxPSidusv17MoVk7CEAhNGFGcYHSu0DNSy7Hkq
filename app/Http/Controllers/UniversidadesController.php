@@ -37,7 +37,20 @@ class UniversidadesController extends Controller {
 	{
  		return view('universidades.index');
 	}
+	public function postCampusByUniversidad(Request $request){
 
+
+	
+		if($request->ajax()){
+			return  CampusSede::where('universidad',$request->get('idBuscar'))->orderBy('nombre')->get()->toJson();
+
+		}
+		else
+		{
+
+			return "no ajax";
+		}
+	}
 
 	public function postUniversidadByPais(Request $request){
 

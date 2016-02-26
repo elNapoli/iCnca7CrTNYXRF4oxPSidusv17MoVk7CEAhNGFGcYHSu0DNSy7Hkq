@@ -1,5 +1,4 @@
 function selectByTabs(ruta_input,idSelect,token_prueba,url,idSelectDestino){
-           
     //idTab: Selector padre(ej:div)- idSelect: Elemento en cuestion(Ej: pais)
 var idTab = $(ruta_input);
 var idSelect = idSelect;

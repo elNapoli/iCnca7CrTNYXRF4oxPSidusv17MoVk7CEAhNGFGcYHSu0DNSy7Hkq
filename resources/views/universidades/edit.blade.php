@@ -15,7 +15,7 @@
                 <br>
             </div>
             <hr>
-            {!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=> 'formUniversidadStore'])!!}
+            {!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=> 'formUniversidadStore','class'=>'form-horizontal style-form'])!!}
                 <div class="row">
                     <div class="col-lg-6">
                             @include('universidades.partials.tabs_head')
@@ -166,7 +166,7 @@
         });
     $(".tab-content").on("click", ".btn-delete", function(event){
         event.preventDefault(); // jquery evento prevent default (e)
-        if(confirm("Press a button!\nEither OK or Cancel.")){
+        if(confirm("Desea eliminar el campus seleccionado?")){
           var tab   = $(this).parents('li');
           var id    = $(this).attr('id'); //captura el id de la fila seleccionada
           var form  = $('#form-delete'); //traigo la id

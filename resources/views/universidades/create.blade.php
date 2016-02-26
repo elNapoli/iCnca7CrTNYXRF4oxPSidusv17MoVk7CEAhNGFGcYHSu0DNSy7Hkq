@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('Dashboard') Universidad @endsection
 
@@ -6,21 +6,38 @@
 
 
                       
-                          
-   
+                    <div class="message"></div>      
+              <!-- BASIC FORM ELELEMNTS -->
 
-<div class="col-md-1" ></div>
-    <div class="col-md-7" >
+                          {!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=>'form-save'])!!}
+<div class="padreMayor">
+  
+                
+            <div class="row mt">
+              <div class="col-lg-12">
+                  <div class="form-panel">
+                      <h4 class="mb"><i class="fa fa-angle-right"></i> Datos principales de Universidad</h4>
+                          <div class="form-horizontal style-form">
+                            
+                          {!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
+                              
+                          {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
+                          {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
 
-		@include('partials.errorAjax')
+                          @include('universidades.partials.tabs_head')
+                          </div>
+                 
+                  </div>
+              </div><!-- col-lg-12-->       
+            </div><!-- /row -->
 
-		{!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=>'form-save'])!!}
-		
-		@include('universidades.partials.tabs')
 
+         @include('universidades.partials.tabs')
+
+</div>
+                          {!!Form::close()!!}
 		<a href="#!" id="add_universidad" class="btn btn-default">Guardar</a>
-		{!!Form::close()!!}
-	</div>
+
         {!!Form::hidden('urlUniversidadIndex',url('universidades'),array('id'=>'urlUniversidadIndex'));!!}
 
 
@@ -30,26 +47,13 @@
 
 
 @section('scripts')
+    {!! Html::Script('js/funciones.js') !!}
+
  <script type="text/javascript">
   $(document).ready(function(){
 
-        $('.alert').hide();
-        
-
-        
-        $('#continente').on('change',function(e){
-        e.preventDefault();
-
-        getListForSelect($('#getUrlPaisContinente').val(), $('#getToken').val(), $("#continente").val(), 'pais');    
-        });
-
-
-        
-        $('#pais').on('change',function(e){
-        e.preventDefault();
-
-        getListForSelect($('#getUrCiudadContinente').val(), $('#getToken').val(), $("#pais").val(), 'ciudad');    
-        });
+        selectByTabs(".padreMayor",'#continente','#_token','#getUrlPaisByContinente','#pais');   
+        selectByTabs(".padreMayor",'#pais','#_token','#getUrCiudadContinente','#ciudad');   
         $('#add_universidad').on('click', function(e){
 
             var form = $('#form-save');
@@ -76,14 +80,14 @@
                 },
 
                   error : function(xhr, status) {
-                    html += "<p> Porfavor corregir los siguientes errores </p>";
-                    alert($('#fax').css('class'));
-                    for(var key in xhr.responseJSON)
-                    {
-                        html += "<li>" + xhr.responseJSON[key][0] + "</li>";
-                    }
-                    $(".alert-success").hide()
-                    $(".alert-danger").html(html).show();
+                    responseJSON =  JSON.parse(xhr.responseText);
+
+                      var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                          for(var key in responseJSON)
+                          {
+                              html += "<li>" + responseJSON[key][0] + "</li>";
+                          }
+                          $('.message').html(html+'</div>');
                   },
               });  
 

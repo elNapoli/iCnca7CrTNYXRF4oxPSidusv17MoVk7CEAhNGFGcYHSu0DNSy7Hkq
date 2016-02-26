@@ -2,20 +2,21 @@
     <div class="col-md-6">
         <div class="form-group">
 
-<fieldset disabled>
+
 
             <div class="form-group">
                 {!!  Form::label('universidad', ' Universidad ')!!}
-                {!! Form::text('universidad',null,array('class' => 'form-control'));!!}
+                {!!  Form::select('universidad', [null=>'Seleccione una Universidad']+$universidades,null,array('class' => 'continente form-control'))!!}
+
             </div>
 
 
             <div class="form-group">
                 {!!  Form::label('campus_sede', ' Campus o Sede')!!}
-                {!! Form::text('campus_sede',null,array('class' => 'form-control'));!!}
+                {!!  Form::select('campus_sede', [null=>'Seleccione un campus'],null,array('class' => 'continente form-control'))!!}
             </div>
 
-</fieldset>
+
 
         </div> 
     </div>

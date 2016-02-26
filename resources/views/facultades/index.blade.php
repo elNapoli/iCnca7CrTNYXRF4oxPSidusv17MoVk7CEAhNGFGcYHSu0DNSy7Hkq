@@ -2,9 +2,8 @@
 
 @section('content')
 
-		  <div class="panel-heading"><a class="btn-info btn" href="{{ url('facultades/create')}}">Crear facultad</a></div>
 
-
+<div class="message"></div>
 
 			@include('facultades.partials.table')
 
@@ -14,6 +13,7 @@
 {!!Form::hidden('getUrlFacultades', url('facultades/facultades'),array('id'=>'getUrlFacultades'));!!}
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 {!!Form::hidden('getUrlFacultadUpdate', url('facultades/update'),array('id'=>'getUrlFacultadUpdate'));!!}
+{!!Form::hidden('urlCampusByUniversidad', url('universidades/campus-by-universidad'),array('id'=>'urlCampusByUniversidad'));!!}
 
 
 
@@ -22,9 +22,12 @@
 
 
 @section('scripts')
+    {!! Html::Script('js/funciones.js') !!}
 
 	<script type="text/javascript">
 		$(document).ready(function() {
+        
+        selectByTabs("form",'#universidad','#getToken','#urlCampusByUniversidad','#campus_sede');   
 
 	var dt = $('#tableFacultad').DataTable( {
 			 
@@ -57,9 +60,43 @@
 			       
 			        ]
 			    } );
+        $('#btnCreatefacultad').on('click',function(){
+            var data = $('#form-save-facultad').serialize();
 
+            $.ajax({
+                // En data puedes utilizar un objeto JSON, un array o un query string
+               data:data,
+                //Cambiar a type: POST si necesario
+                type: "post",
+                // Formato de datos que se espera en la respuesta
+                dataType: "json",
+                // URL a la que se enviará la solicitud Ajax
+                url:$('#form-save-facultad').attr('action') ,
+                success : function(json) {
+
+                    $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+                    $('#modal_crear_facultad').modal('hide'); 
+                    dt.ajax.reload();            
+          
+                },
+
+                error : function(xhr, status) {
+                    responseJSON =  JSON.parse(xhr.responseText);
+
+                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                        for(var key in responseJSON)
+                        {
+                            html += "<li>" + responseJSON[key][0] + "</li>";
+                        }
+                        $('#message-modal').html(html+'</div>');
+
+
+                },
+            }); 
+
+            });
 	$('table').on('click','.model-open-edit', function(e){
-			$('#modal_edit_facultad').modal('show');
+
             var data = $('#form-edit').serialize()
         //    alert($('#id'))
             $.ajax({

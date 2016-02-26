@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\FacultadRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Facultad;
@@ -14,8 +15,9 @@ class FacultadesController extends Controller {
 
 
 	public function getIndex(){
+		$universidades = Universidad::orderBy('nombre')->lists('nombre','id');
 	
-		return view('facultades.index');
+		return view('facultades.index',compact('universidades'));
 	}
 
 	public function getFacultades()
@@ -47,17 +49,16 @@ class FacultadesController extends Controller {
 	}
 
 
-	public function postStore(Request $request)
+	public function postStore(FacultadRequest $request)
 	{
 
 
 		 
 		$continente = facultad::create($request->all());
 		$message    = 'Facultad '.$request->get('nombre').' se almacenó correctamente';
-		\Session::flash('message', $message);
-
-		//return redirect()->route('continentes.index');
-		return redirect('facultades');
+		return response()->json([
+						'message'=> $message
+						]);
 	}
 
 	public function postFacultadesByCampus(Request $request){

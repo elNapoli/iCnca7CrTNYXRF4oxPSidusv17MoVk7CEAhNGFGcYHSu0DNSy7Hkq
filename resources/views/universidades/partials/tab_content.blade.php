@@ -37,8 +37,6 @@
 
 
     @endif
-    {!!Form::hidden('getUrlPaisContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisContinente'));!!}
-    {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
     {!!Form::hidden('getUrlGuardarCampus', url('universidades/store-campus'),array('id'=>'getUrlGuardarCampus'));!!}
 
     {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}

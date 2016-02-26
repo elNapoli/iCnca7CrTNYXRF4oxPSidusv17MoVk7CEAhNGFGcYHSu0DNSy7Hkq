@@ -17,7 +17,9 @@ class DepartamentosController extends Controller {
 	 */
 	public function getIndex()
 	{
-		return view('departamentos.index');
+
+		$pais = Pais::lists('nombre','id');
+		return view('departamentos.index',compact('pais'));
 	}
 
 	public function getDepartamentos()
@@ -121,10 +123,10 @@ class DepartamentosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function getEdit($id)
+	public function postEdit($id)
 	{
-		$departamento = Departamento::findOrFail($id);
-        return view('departamentos.edit',compact('departamento'));
+		$departamento = Departamento::where('departamento.id',$id)->with('campusSedeR')->first();
+        return $departamento->toJson();
 	}
 
 	/**
@@ -136,10 +138,15 @@ class DepartamentosController extends Controller {
 	public function putUpdate($id,Request $request)
 	{
 		$departamento = Departamento::findOrFail($id);
-		$departamento->fill($request->all());
+		$departamento->sitio_web = $request->sitio_web;
+		$departamento->nombre_encargado = $request->nombre_encargado;
+		$departamento->telefono = $request->telefono;
+		$departamento->email = $request->email;
         $departamento->save();
-        \Session::flash('message', 'El departamento se editó correctamente');
-		return redirect('departamentos');
+		return response()->json([
+								'codigo' => 1,
+								'message'=> 'EL departamento se editó correctamente'
+								]);
         //return redirect()->route('beneficios.index');
 	}
 
@@ -154,7 +161,7 @@ class DepartamentosController extends Controller {
 		//abort(500);
 		$departamento = Departamento::findOrFail($request->get('id'));
  		$departamento->delete();
- 		$message = ' El departamento '.$departamento->id.' Fue eliminado';
+ 		$message = ' El departamento '.$departamento->tipo.' del campus '.$departamento->campusSedeR->nombre.' Fue eliminado';
  	//	dd($request->all());
 		return response()->json([
 			'message'=> $message

@@ -43,7 +43,7 @@
 
     @include('intranet.header')
 
-    @include('intranet.sidebar_left_user')
+    @include('intranet.sidebar_left_admin')
 
     <section id="main-content">
         <section class="wrapper">

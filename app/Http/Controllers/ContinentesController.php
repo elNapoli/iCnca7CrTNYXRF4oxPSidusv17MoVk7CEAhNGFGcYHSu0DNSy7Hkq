@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\ContinenteRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Continente;
@@ -14,9 +15,16 @@ class ContinentesController extends Controller {
 	 */
 	public function getIndex()
 	{
-		$continentes = Continente::all();
+		
 
-		return view('continentes.index', compact('continentes'));
+		return view('continentes.index');
+	}
+
+	public function getAllContinente(){
+
+		$continentes = Continente::all();
+		$arra = array('data'=>$continentes->toArray());
+		return json_encode($arra);
 	}
 
 	/**
@@ -34,12 +42,8 @@ class ContinentesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function postStore(Request $request)
+	public function postStore(ContinenteRequest $request)
 	{
-
-		 $this->validate($request, [
-        'nombre' => 'required|alpha|unique:continente,nombre',
-    	]);
 		 
 		$continente = Continente::create($request->all());
 		$message    = 'El continente '.$request->get('nombre').'se almacenó correctamente';
@@ -73,12 +77,8 @@ class ContinentesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function putUpdate($id,Request $request)
+	public function putUpdate($id,ContinenteRequest $request)
 	{
-	
-		$this->validate($request, [
-        'nombre' => 'required|alpha|unique:continente,nombre,'.$id,
-    	]);
 
 		$continente = Continente::findOrFail($id);
 		$continente->fill($request->all());

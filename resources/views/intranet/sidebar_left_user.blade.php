@@ -36,30 +36,22 @@
                 </div>
                 <div id="menus_pre_no_uach" style='display:none'>
                   
-                  <li><a  href="#">UACH AWEONAO! XD</a></li>
+                  <li><a  href="{{url('cursos-no-uach')}}">Solicitud de cursos</a></li>
+                  <li><a  href="{{url('inscripcion-cursos')}}">Inscripción de cursos</a></li>
 
                 </div>
                   
               </ul>
           </li>
 
-          <li class="sub-menu">
-              <a href="javascript:;" >
-                  <i class="fa fa-cogs"></i>
-                  <span>Postulaciones</span>
-              </a>
-              <ul class="sub">
-                  <li><a  href="#">item1</a></li>
-                  <li><a  href="#">item2</a></li>
-              </ul>
-          </li>
+
           <li class="sub-menu">
               <a href="javascript:;" >
                   <i class="fa fa-book"></i>
                   <span>Documentos</span>
               </a>
               <ul class="sub">
-                  <li><a  href="#">item 1</a></li>
+                  <li><a  href="{{url('docs')}}">Formularios</a></li>
                   <li><a  href="#">item 2</a></li>
               </ul>
           </li>
@@ -84,16 +76,6 @@
               </ul>
           </li>
 
-          <li class="sub-menu">
-              <a href="javascript:;" >
-                  <i class=" fa fa-bar-chart-o"></i>
-                  <span>Estadísticas</span>
-              </a>
-              <ul class="sub">
-                  <li><a  href="morris.html">Morris</a></li>
-                  <li><a  href="chartjs.html">Chartjs</a></li>
-              </ul>
-          </li>
 
       </ul>
       <!-- sidebar menu end-->

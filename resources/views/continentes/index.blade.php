@@ -134,6 +134,7 @@
 			});
 			$('#btnCreateContinente').on('click',function(){
 		    var data = $('#form-save-continente').serialize();
+		    alert(data);
 
 		    $.ajax({
 		        // En data puedes utilizar un objeto JSON, un array o un query string

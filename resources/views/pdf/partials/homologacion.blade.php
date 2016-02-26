@@ -22,32 +22,44 @@
         <tbody>
           <tr>
             <th colspan="14" class="no">Nombre</th>
-            <th colspan="52" class="desc"></th>
+            <th colspan="52" class="desc">{{$p->nombre.' '.$p->apellido_paterno.' '.$p->apellido_materno}}</th>
             <th colspan="10" class="no">Rut</th>
-            <th colspan="24" class="desc"></th>
+            <th colspan="24" class="desc">             
+             @foreach($p->documentoIdentidadR as $item)
+                @if($item->tipo == 'ci')
+                  {{$item->numero}}
+                @endif
+              @endforeach</th>
           </tr>
           <tr>
             <th colspan="14" class="no">E-mail</th>
-            <th colspan="52" class="desc"></th>
+            <th colspan="52" class="desc">{{$p->pregradosR->preUachsR->email_institucional}}</th>
             <th colspan="10" class="no">Teléfono</th>
-            <th colspan="24" class="desc"></th>
+            <th colspan="24" class="desc">{{$p->telefono}}</th>
           </tr>
           <tr>
             <th colspan="14" class="no">Carrera</th>
-            <th colspan="52" class="desc"></th>
+            <th colspan="52" class="desc">{{$p->pregradosR->preUachsR->preUEstudioActualesR->carreraR->nombre}}</th>
             <th colspan="10" class="no">PGA</th>
-            <th colspan="24" class="desc"></th>
+            <th colspan="24" class="desc">
+              {{$p->pregradosR->preUachsR->homologacionesR[$p->pregradosR->preUachsR->homologacionesR->count()-1]->pga}}</th>
           </tr>
           <tr>
             <th colspan="22" class="no">Institucion de destino</th>
-            <th colspan="38" class="desc"></th>
+            <th colspan="38" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->universidadR->nombre}}</th>
             <th colspan="16" class="no">País de destino</th>
-            <th colspan="24" class="desc"></th>
+            <th colspan="24" class="desc">{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->ciudadR->paisR->nombre}}</th>
           </tr>
         </tbody>
       </table>
       <div id="stmnt_h">
-      <p>  &nbsp &nbsp &nbsp  Sr/a. <strong>[VARIABLE]</strong> Director/a de la Escuela de <strong>[VARIABLE]</strong> de la facultad de <strong>[VARIABLE]</strong> certifica que el/la alumno/a <strong>[VARIABLE]</strong> realizará una pasantía en la Universidad <strong>[VARIABLE]</strong> por <strong>[VARIABLE]</strong> semestre(s) a partir de <strong>[VARIABLE]</strong> hasta <strong>[VARIABLE]</strong>.</p>
+      <p>  &nbsp &nbsp &nbsp  Sr/a. <strong>{{$p->pregradosR->preUachsR->preUEstudioActualesR->carreraR->director}}</strong> Director/a de la Escuela de <strong>{{$p->pregradosR->preUachsR->preUEstudioActualesR->carreraR->facultadR->nombre}}</strong> de la facultad <strong>{{$p->pregradosR->preUachsR->preUEstudioActualesR->carreraR->nombre}}</strong> certifica que el/la alumno/a <strong>{{$p->nombre.' '.$p->apellido_paterno.' '.$p->apellido_materno}}</strong> realizará una pasantía en la Universidad <strong>{{$p->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->universidadR->nombre}}</strong> por <strong>
+           @if($p->pregradosR->prePostulacionUniversidadesR->semestre == 'semestre 1' or $p->pregradosR->prePostulacionUniversidadesR->semestre == 'semestre 2') 1
+           @elseif($p->pregradosR->prePostulacionUniversidadesR->semestre == 'ambos') 2
+           @elseif($p->pregradosR->prePostulacionUniversidadesR->semestre == 'otro')
+                  el periodo contemplado entre {{$p->pregradosR->prePostulacionUniversidadesR->desde}} y {{$p->pregradosR->prePostulacionUniversidadesR->hasta}}
+          @endif
+         </strong> semestres(s) correspondiente al año <strong>{{$p->pregradosR->prePostulacionUniversidadesR->anio}}</strong>.</p>
 
       <p> &nbsp &nbsp &nbsp Cabe destacar que la Escuela ha decidido homologar las siguientes asignaturas una vez 
 			que el estudiante 
@@ -75,14 +87,17 @@
             <th colspan="8" class="no">Codigo</th>
             <th colspan="35" class="no">Asignatura</th>
           </tr>
+          @foreach($p->pregradosR->preUachsR->homologacionesR[$p->pregradosR->preUachsR->homologacionesR
+      ->count()-1]->asignaturaHomologadaR as $item)
           <tr>
             <th colspan="7" class="desc">S1</th>
             <th colspan="7" class="desc">S2</th>
-            <th colspan="8" class="desc">codigo</th>
-            <th colspan="35" class="desc">ACA VA UN @FPOREACH</th>
-            <th colspan="8" class="desc">codigo</th>
-            <th colspan="35" class="desc">asignatura</th>
+            <th colspan="8" class="desc">{{$item->asignatura}}</th>
+            <th colspan="35" class="desc">{{$item->asignaturaR->nombre}}</th>
+            <th colspan="8" class="desc">{{$item->codigo_asignatura_intercambio}}</th>
+            <th colspan="35" class="desc">{{$item->nombre_asignatura_intercambio}}</th>
           </tr>
+          @endforeach
          </tbody>
       </table>
           <div id="cab_h">FIRMAS</div>

@@ -29,6 +29,13 @@ class BeneficiosController extends Controller {
 		return view('beneficios.create');
 	}
 
+	public function getBeneficios()
+	{
+		$beneficios = Beneficio::all();
+		$arra = array('data'=>$beneficios->toArray());
+		return json_encode($arra);
+	}
+
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -42,11 +49,11 @@ class BeneficiosController extends Controller {
     	]);
 		 
 		$beneficio = Beneficio::create($request->all());
-		$message    = 'El beneficio '.$request->get('nombre').'se almacenó correctamente';
-		\Session::flash('message', $message);
-
-		//return redirect()->route('beneficios.index');
-		return redirect('beneficios');
+		$message    = 'El beneficio '.$request->get('nombre').' se almacenó correctamente';
+		return response()->json([
+								'codigo' => 1,
+								'message' => $message
+								]);
 	}
 
 	/**
@@ -62,10 +69,10 @@ class BeneficiosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function getEdit($id)
+	public function postEdit($id)
 	{
 		$beneficio = Beneficio::findOrFail($id);
-        return view('beneficios.edit',compact('beneficio'));
+        return $beneficio->toJson();
 	}
 
 	/**
@@ -82,10 +89,12 @@ class BeneficiosController extends Controller {
     	]);
 
 		$beneficio = Beneficio::findOrFail($id);
-		$beneficio->fill($request->all());
+		$beneficio->nombre = $request->nombre;
         $beneficio->save();
-        \Session::flash('message', 'El Beneficio se Editó correctamente');
-		return redirect('beneficios');
+		return response()->json([
+								'codigo' => 1,
+								'message'=> 'EL beneficio se editó correctamente'
+								]);
         //return redirect()->route('beneficios.index');
 	}
 
@@ -95,10 +104,10 @@ class BeneficiosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function deleteDestroy($id,Request $request)
+	public function postDestroy(Request $request)
 	{
 		//abort(500);
-		$beneficio = Beneficio::findOrFail($id);
+		$beneficio = Beneficio::findOrFail($request->get('id'));
  		$beneficio->delete();
  		$message = ' El beneficio '.$beneficio->nombre.' Fue eliminado';
  	//	dd($request->all());

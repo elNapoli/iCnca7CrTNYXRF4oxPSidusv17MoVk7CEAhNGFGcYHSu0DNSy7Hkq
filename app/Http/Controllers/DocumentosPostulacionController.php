@@ -26,7 +26,8 @@ class DocumentosPostulacionController extends Controller {
 		$post = Postulante::where('user_id',$auth->id())->get(); //objeto post con informacion extra
 		$postulante = Postulante::findOrFail($post[0]->id); //individualizo al postulante
 
-		dd($postulante->pregradosR->preUachsR->preURespnsablesR);
+		dd($postulante->pregradosR->preUachsR->homologacionesR[$postulante->pregradosR->preUachsR->homologacionesR
+			->count()-1]->asignaturaHomologadaR);
 			foreach($postulante->documentoIdentidadR as $item)
 			{
 			}

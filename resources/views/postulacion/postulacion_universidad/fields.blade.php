@@ -1,8 +1,33 @@
 <div class="panel-body" id='postulacion_universidad' style='display:none'>
 
         <div class="col-lg-6">
+                {!!  Form::label('financiamiento', 'Financiamiento ')!!}
+                  
+            <div class="input-group input-prepend dropdown" id='FinanciamientoDDList'>
+                      
+              <span class="input-group-addon" data-toggle='dropdown'><a href="" class='dropdown-display'>{{$parametros['financiamiento_nombre']}}</a> <i class='caret'></i></span>
+              {!! Form::text('descripcion',$parametros['descripcion'],array('id'=>'descripcion','class' => 'form-control','placeholder'=>'descripción'));!!}
+                {!!Form::hidden('financiamiento', $parametros['financiamiento'],array('id'=>'financiamiento','class'=>'dropdown-field'));!!}
+              
 
-
+              <ul class='dropdown-menu' style=" z-index: 1000;">
+                  <li>
+                    <a href="#" data-value="1">Padres</a>
+                  </li>
+                  <li>
+                    <a href="#" data-value="2">Universidad</a>
+                  </li>
+                  <li>
+                    <a href="#" data-value="3">Yo</a>
+                  </li>
+                  <li>
+                    <a href="#" data-value="4">Beca</a>
+                  </li>
+                  <li>
+                    <a href="#" data-value="5">Otro</a>
+                  </li>
+              </ul>
+            </div>
             <div class="form-group">
                 {!! Form::label('semestre', 'Semestre:') !!}
                 <div class="radio">
@@ -54,33 +79,7 @@
                 {!! Form::number('anio',null,array('min'=>'2015','class' => 'form-control','placeholder'=>'Ej: 2015'));!!}
             </div>
       
-                {!!  Form::label('financiamiento', 'Financiamiento ')!!}
-                  
-            <div class="input-group input-prepend dropdown" id='FinanciamientoDDList'>
-                      
-              <span class="input-group-addon" data-toggle='dropdown'><a href="" class='dropdown-display'>{{$parametros['financiamiento_nombre']}}</a> <i class='caret'></i></span>
-              {!! Form::text('descripcion',$parametros['descripcion'],array('id'=>'descripcion','class' => 'form-control','placeholder'=>'descripción'));!!}
-                {!!Form::hidden('financiamiento', $parametros['financiamiento'],array('id'=>'financiamiento','class'=>'dropdown-field'));!!}
-              
 
-              <ul class='dropdown-menu' style=" z-index: 1000;">
-                  <li>
-                    <a href="#" data-value="1">Padres</a>
-                  </li>
-                  <li>
-                    <a href="#" data-value="2">Universidad</a>
-                  </li>
-                  <li>
-                    <a href="#" data-value="3">Yo</a>
-                  </li>
-                  <li>
-                    <a href="#" data-value="4">Beca</a>
-                  </li>
-                  <li>
-                    <a href="#" data-value="5">Otro</a>
-                  </li>
-              </ul>
-            </div>
 
         </div>
         <div class="col-lg-6">

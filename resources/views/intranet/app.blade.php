@@ -42,9 +42,11 @@
   <section id="container" >
 
     @include('intranet.header')
-
-    @include('intranet.sidebar_left_user')
-
+    @if(Auth::user()->tipo_usuario == 'administrador')
+        @include('intranet.sidebar_left_admin')
+    @elseif(Auth::user()->tipo_usuario == 'usuario')
+        @include('intranet.sidebar_left_user')
+    @endif
     <section id="main-content">
         <section class="wrapper">
 

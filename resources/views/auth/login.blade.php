@@ -28,13 +28,13 @@
             @endif
 
         <div class="form-group ">
-            {!! Form::text('email',null,array('class' => 'form-control','id'=>'email','placeholder'=>'E-mail'));!!}
+            {!! Form::text('email',null,array('class' => 'form-control input_con_icono','id'=>'email','placeholder'=>'E-mail'));!!}
 
             <i class="glyphicon glyphicon-user"></i>
         </div>
         
         <div class="form-group log-status">
-            {!! Form::password('password',array('class' => 'form-control','id'=>'password','placeholder'=>'Contraseña'));!!}
+            {!! Form::password('password',array('class' => 'form-control input_con_icono','id'=>'password','placeholder'=>'Contraseña'));!!}
 
             <i class="glyphicon glyphicon-lock"></i>
         </div>

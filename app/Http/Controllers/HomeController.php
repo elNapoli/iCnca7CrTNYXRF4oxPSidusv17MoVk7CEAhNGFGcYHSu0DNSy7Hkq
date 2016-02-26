@@ -35,7 +35,7 @@ class HomeController extends Controller {
 	}
 	public function postValidarEntradaContactoExtranjero(Guard $auth){
 		$postulante = Postulante::where('user_id',$auth->id());
-		$codigo =  $postulante->get()->count();
+		$codigo =  $postulante->first()->documentoIdentidadR()->where('tipo', 'p')->get()->count();
 		$mensaje = 'Usted no ha ingresado su pasaporte, porfavor dirijase a postulación, una ves realizada esta acción podrá acceder a este apartado';
 		if($codigo != 0){
 

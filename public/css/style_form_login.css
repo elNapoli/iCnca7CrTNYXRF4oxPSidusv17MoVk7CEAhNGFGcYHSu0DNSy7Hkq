@@ -48,7 +48,15 @@ h1{
   text-align:center;
   font-faimly:icon;
 }
-
+.reset-form{
+  width:450px;
+  padding:5px 30px 35px;
+  background:rgba(235,235,205,0.7);
+  border-radius:4px;
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;
+  margin:50px 100px;
+}
 .login-form{
   width:350px;
   padding:5px 30px 35px;

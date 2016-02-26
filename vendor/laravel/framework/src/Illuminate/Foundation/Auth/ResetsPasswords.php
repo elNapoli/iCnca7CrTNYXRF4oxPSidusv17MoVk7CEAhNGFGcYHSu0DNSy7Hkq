@@ -1,5 +1,6 @@
 <?php namespace Illuminate\Foundation\Auth;
 use Illuminate\Http\Request;
+use App\User;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -34,16 +35,28 @@ trait ResetsPasswords {
 	public function postEmail(Request $request)
 	{
 		$this->validate($request, ['email' => 'required|email']);
-		$response = $this->passwords->sendResetLink($request->only('email'), function($m)
+		$user = User::where('email',$request->get('email'))->first();
+		if($user == null)
 		{
-			$m->subject($this->getEmailSubject());
-		});
-		switch ($response)
+				return response()->json([
+				'codigo' => 0,
+				'message'=> 'El correo no existe. Favor verificar'
+				]);
+		}
+		else
 		{
-			case PasswordBroker::RESET_LINK_SENT:
-				return redirect()->back()->with('status', trans($response));
-			case PasswordBroker::INVALID_USER:
-				return redirect()->back()->withErrors(['email' => trans($response)]);
+				$response = $this->passwords->sendResetLink($request->only('email'), function($m)
+					{
+					$m->subject($this->getEmailSubject());
+					});
+
+				return response()->json([
+								'codigo' => 1,
+								'message'=> 'Se ha enviado un correo con las indicaciones. Favor revisar'
+								]);
+
+
+
 		}
 	}
 	/**
@@ -53,7 +66,7 @@ trait ResetsPasswords {
 	 */
 	protected function getEmailSubject()
 	{
-		return isset($this->subject) ? $this->subject : 'Your Password Reset Link';
+		return isset($this->subject) ? $this->subject : 'Cambio de contraseña';
 	}
 	/**
 	 * Display the password reset view for the given token.
@@ -94,7 +107,9 @@ trait ResetsPasswords {
 		switch ($response)
 		{
 			case PasswordBroker::PASSWORD_RESET:
-				return view('auth.login'); //falta el mensaje que le diga que esta listo 
+				 $message    = 'La contraseña se ha reseteado exitosamente';
+        		\Session::flash('message3', $message);
+        		return redirect('auth/login')->with('message3', $message); 
 			default:
 				return redirect()->back()
 							->withInput($request->only('email'))

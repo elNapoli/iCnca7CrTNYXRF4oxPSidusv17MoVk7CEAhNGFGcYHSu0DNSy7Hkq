@@ -1,15 +1,16 @@
-@extends('layout.unregister.app_un')
+@extends('internet.app')
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Reset Password</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
+<div class="row">
+    <div class="col-lg-12">
+
+
+    <div class="reset-form">
+        <h1>Cambiar contraseña</h1>
+        <div class="message"></div>
+
+        						@if (count($errors) > 0)
 						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
 									<li>{{ $error }}</li>
@@ -17,43 +18,50 @@
 							</ul>
 						</div>
 					@endif
+        <HR width="100%" align="center ">
 
 					<form class="form-horizontal" role="form" method="POST" action="/password/reset">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<input type="hidden" name="token" value="{{ $token }}">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
+        <div class="form-group ">
+            {!! Form::text('email',null,array('class' => 'form-control','id'=>'email','placeholder'=>'E-mail'));!!}
+
+            <i class="glyphicon glyphicon-user"></i>
+        </div>
+        
+        <div class="form-group log-status">
+            {!! Form::password('password',array('class' => 'form-control','id'=>'password','placeholder'=>'Contraseña'));!!}
+
+            <i class="glyphicon glyphicon-lock"></i>
+        </div>
+          
+        <div class="form-group log-status">
+            {!! Form::password('password_confirmation',array('class' => 'form-control','id'=>'password_confirmation','placeholder'=>'Confirmar Contraseña'));!!}
+
+            <i class="glyphicon glyphicon-lock"></i>
+        </div>
+
+
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
+								<button type="submit" class="btn btn-primary btn-block">
 									Reset Password
 								</button>
-							</div>
+
 						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+
+
+
+    </div>
+    </div>
 </div>
+
+
+@endsection
+
+
+@section('styles')
+    {!! Html::Style('css/style_form_login.css')!!}
+
 @endsection

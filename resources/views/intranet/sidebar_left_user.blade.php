@@ -21,43 +21,24 @@
           </li>
           
           <li class="sub-menu">
-              <a href="javascript:;" >
-                  <i class="fa fa-desktop"></i>
-                  <span>Pa</span>
+              <a href="javascript:;" id="formularios_anexos" >
+                  <i class="fa fa-list-alt "></i>
+                  <span>Formularios anexos</span>
               </a>
-              <ul class="sub">
-                  <li><a  href="{{url('continentes/')}}">Continentes</a></li>
-                    <li>
-                        <a href="{{ url('paises/') }}">Paises</a>
-                    </li>
-                    <li>
-                        <a href="{{ url('ciudades/') }}">Ciudades</a>
-                    </li>
-                    <li>
-                        <a href="{{ url('universidades/') }}">Universidades</a>
-                    </li>
+              <ul class="sub" id='ul_form_anexos'>
+                <div id="menus_pre_uach" style='display:none'>
+                  
+                  <li><a  href="{{url('homologacion')}}">Homologación de cursos</a></li>
+                  <li><a  href="{{url('representante-uach')}}">Representante</a></li>
+                  <li><a  href="{{url('confirmacion-llegada')}}">Confirmación de llegada</a></li>
+                  <li><a  href="{{url('contacto-en-extranjero')}}" id='link_contacto_extranjero'>Contacto en el extranjero</a></li>
 
-                    <li>
-                        <a href="{{ url('departamentos/') }}">Departamentos</a>
-                    </li>
+                </div>
+                <div id="menus_pre_no_uach" style='display:none'>
+                  
+                  <li><a  href="#">UACH AWEONAO! XD</a></li>
 
-                    <li>
-                        <a href="{{ url('beneficios/') }}">Beneficios universitarios</a>
-                    </li>
-
-                    <li>
-                        <a href="{{ url('facultades/') }}">Facultades</a>
-                    </li>
-                    <li>
-                        <a href="{{ url('carreras/') }}">Carreras</a>
-                    </li>
-
-                    <li>
-                        <a href="{{ url('asignaturas/') }}">Asignaturas</a>
-                    </li>
-                    <li>
-                        <a href="{{ url('admin/usuarios/') }}">Usuarios</a>
-                    </li>
+                </div>
                   
               </ul>
           </li>

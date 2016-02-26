@@ -1,27 +1,31 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('Dashboard') Postulación @endsection
 
 @section('content')
 @include('representanteUach.partials.modal_create')
 @include('representanteUach.partials.modal_edit')
-<div class="row">
-      <!-- Default panel contents -->
-    <div class="col-md-12" >
 
-        <div class="panel panel-default">
-
-      		<div class="panel-heading"></div>
       		<div class="message"></div>
-		
-  {!! Form::model($parametros, ['url'=>['confirmacion-llegada/store-and-update'], 'method'=>'post','id'=>'form-save-confirmacion']) !!}
-         
-         @include('confirmacionLlegada.partials.fields')
-     
-  {!!Form::close()!!}
 
-        </div>
-    </div>
+	            <!-- BASIC FORM ELELEMNTS -->
+            <div class="row mt">
+                <div class="col-lg-12">
+                  <div class="form-panel">
+                      <h4 class="mb"><i class="fa fa-angle-right"></i> Datos de Universidad de Destino</h4>
+  {!! Form::model($parametros, ['url'=>['confirmacion-llegada/store-and-update'], 'method'=>'post','class'=>'form-horizontal style-form','id'=>'form-save-confirmacion']) !!}
+
+                    
+         @include('confirmacionLlegada.partials.fields')
+                    
+                   
+  {!!Form::close()!!}
+                  </div>
+                </div><!-- col-lg-12-->         
+            </div><!-- /row --> 
+
+         
+
 
 
 </div>

@@ -49,7 +49,7 @@
         <section class="wrapper">
 
             <div class="row">
-                <div class="col-lg-9 main-chart">
+                <div class="col-lg-12 main-chart">
                 <h3><i class="fa fa-angle-right"></i> Home!</h3>
                 <hr>
                 @yield('content')
@@ -57,7 +57,6 @@
                 </div><!-- /col-lg-9 END SECTION MIDDLE -->
               
          
-                @include('intranet.sidebar_right')
           
             </div>
         </section>
@@ -66,6 +65,11 @@
       <!--main content end-->
       <!--footer start-->
       @include('intranet.footer')
+      @include('partials.loading')
+    {!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
+    {!!Form::hidden('urlGenerarMenus',url('home/generar-menus'),array('id'=>'urlGenerarMenus'));!!}
+    {!!Form::hidden('urlValidarDocumento',url('home/validar-entrada-contacto-extranjero/'),array('id'=>'urlValidarDocumento'));!!}
+
       <!--footer end-->
   </section>
 
@@ -96,7 +100,86 @@
 
     @yield('scripts')
   <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).on('ready',function () {
+            $('#link_contacto_extranjero').on('click',function(e){
+
+                $.ajax({
+                  // En data puedes utilizar un objeto JSON, un array o un query string
+                    data: {_token: $('#_token').val()},
+                    async : false,
+                     
+                    //Cambiar a type: POST si necesario
+                    type: 'post',
+                    // Formato de datos que se espera en la respuesta
+                    dataType: "json",
+                    // URL a la que se enviará la solicitud Ajax
+                    url:$('#urlValidarDocumento').val() ,
+                    success : function(json) {   
+                      if(json.codigo == 0){
+                        e.preventDefault();
+
+                            alert(json.message)
+                      }
+            
+                        
+                    },
+
+                    error : function(xhr, status) {
+                        alert(status);
+                  
+                    },                   
+
+                });
+
+            });
+            $('#formularios_anexos').on('click',function(){
+
+                $.ajax({
+                  // En data puedes utilizar un objeto JSON, un array o un query string
+                    data: {_token: $('#_token').val()},
+                    async : false,
+                     
+                    //Cambiar a type: POST si necesario
+                    type: 'post',
+                    // Formato de datos que se espera en la respuesta
+                    dataType: "json",
+                    // URL a la que se enviará la solicitud Ajax
+                    url:$('#urlGenerarMenus').val() ,
+                    success : function(json) {   
+                        
+                        if(json.codigo_error == 1){
+
+                            if(json.tipo_estudio === 'Pregrado'){
+
+                                if(json.procedencia === 'UACH'){
+
+                                    $('#menus_pre_uach').show();
+
+                                }
+                                else{
+                                    $('#menus_pre_no_uach').show();
+
+                                }
+                            }else{
+
+
+                            }
+                        }
+                        else{
+
+                            alert('usted no ha realizado la postulación')
+                        }
+            
+                        
+                    },
+
+                    error : function(xhr, status) {
+                        alert(status);
+                  
+                    },                   
+
+                });
+            });
         var unique_id = $.gritter.add({
             // (string | mandatory) the heading of the notification
             title: 'Bienvenido test!',

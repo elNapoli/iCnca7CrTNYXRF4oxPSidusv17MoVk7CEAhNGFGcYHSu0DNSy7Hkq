@@ -1,15 +1,11 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('Dashboard') Postulación @endsection
 
 @section('content')
 @include('representanteUach.partials.modal_create')
 @include('representanteUach.partials.modal_edit')
-<div class="row">
-      <!-- Default panel contents -->
-    <div class="col-md-12" >
 
-        <div class="panel panel-default">
 
       		<div class="panel-heading"><a class="btn-info btn" id='openModalRepresentante' href="#!">Crear representante</a></div>
       		<div class="message"></div>
@@ -20,11 +16,6 @@
 			{!!Form::hidden('getUrlRepresentanteDestroy',url('representante-uach/destroy'),array('id'=>'getUrlRepresentanteDestroy'));!!}
 			{!!Form::hidden('getUrlRepresentanteEdit',url('representante-uach/edit'),array('id'=>'getUrlRepresentanteEdit'));!!}
 			{!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
-
-        </div>
-    </div>
-
-</div>
 @endsection
 
 @section('breadcrumbs')
@@ -105,6 +96,8 @@
 
 				'searching':false,
 				'paging':false,
+                "bProcessing": true,
+				
 		        "ajax": $('#getUrlRepresentanteByUser').val(),
 		        "language": {
 		            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
@@ -120,14 +113,22 @@
 		            { "data": "direccion" },
 		            { "data": null,
 		                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-		                    $(nTd).html("<a href='#!' id ='"+oData.id+"' class='model-open-edit'> Edit</a>"+
-		                                "<a href='#!' class='btn-delete' id='"+oData.id+"'> Del</a>"
+   							$(nTd).attr('align','center');
+
+		                    $(nTd).html("<a href='#!' id ='"+oData.id+"' class='model-open-edit btn btn-primary btn-xs'>"+
+		                    	" <i class='fa fa-pencil'></i></a>"+
+		                                "<a href='#!' class='btn btn-danger btn-delete btn-xs' id='"+
+		                                oData.id+"'>  <i class='fa fa-trash-o'></i></a>"
 		                        );
 
 		                }
 		            }
 		        ],
 		    });
+
+
+
+
 
 	     	$('table').on('click','.btn-delete', function(e){
 	            if(confirm("Press a button!\nEither OK or Cancel."))

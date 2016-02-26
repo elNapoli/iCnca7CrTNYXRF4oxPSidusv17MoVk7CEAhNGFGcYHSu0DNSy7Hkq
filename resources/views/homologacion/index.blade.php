@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('Dashboard') Cursos Homologados @endsection
 
@@ -47,7 +47,7 @@
 
 {!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
 
-
+@include('partials.loading')
 
 @endsection
 
@@ -117,11 +117,13 @@
                 },
                 { "data": null,
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                        var html = "<a href='#!'  class='addCurso model-open-edit'> Agregar</a>";
+                        $(nTd).attr('align','center');
 
+                        var html = "<a href='#!'  class='addCurso  btn btn-primary btn-xs'> <i class='fa fa-plus'></i></a>";
                         if(sData.periodo != ''){
 
-                            html = "<a href='#!' id='"+oData.id+"' class='btn-delete' > eliminar</a>";
+                            html = "<a href='#!' id='"+oData.id+"' class='btn btn-danger btn-delete btn-xs' > "+
+                            "<i class='fa fa-trash-o'></i></a>";
                         }               
                         $(nTd).html(html);
 
@@ -130,7 +132,7 @@
                    
             ],
         });
-
+                    
 
         $('#tableCursosHomologados').on('click','.btn-delete',function(){
 
@@ -148,6 +150,12 @@
                 dataType: "json",
                 // URL a la que se enviará la solicitud Ajax
                 url:$('#getUrlDestroyCursoHomologado').val() ,
+                beforeSend:function() {
+                        $('#loading').show();
+                    },
+                    complete: function(){
+                        $('#loading').hide();
+                    },
                 success : function(json) {   
                     $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');  
                     dt.ajax.reload();              
@@ -190,6 +198,12 @@
                 dataType: "json",
                 // URL a la que se enviará la solicitud Ajax
                 url:$('#getUrlStoreCursoHomologado').val() ,
+                beforeSend:function() {
+                        $('#loading').show();
+                },
+                complete: function(){
+                    $('#loading').hide();
+                },
                 success : function(json) {   
        
                         dt.ajax.reload();              
@@ -198,6 +212,7 @@
                 },
 
                 error : function(xhr, status) {
+                    console.log(xhr);
                     var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
                         for(var key in xhr.responseJSON)
                         {
@@ -228,8 +243,14 @@
                 dataType: "json",
                 // URL a la que se enviará la solicitud Ajax
                 url:$('#getUrlAsignaturaByCodigo').val() ,
+                beforeSend:function() {
+                    $('#loading').show();
+                },
+                complete: function(){
+                    $('#loading').hide();
+                },
                 success : function(json) {   
-       console.log(row);
+
                     dt.cell( row, 0 ).data( json.periodo );
 
                     dt.cell( row, 2 ).data( json.nombre );

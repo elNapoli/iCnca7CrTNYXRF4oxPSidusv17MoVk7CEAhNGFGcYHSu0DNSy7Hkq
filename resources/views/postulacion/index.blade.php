@@ -5,7 +5,7 @@
 @section('content')
     @include('documentoIdentidad.modal_documento_identidad')
     {!!Form::hidden('getUrlIndexStep',url('postulacion/index-step'),array('id'=>'getUrlIndexStep'));!!}
-
+<div id="reno">hola</div>
     <div id="wizard">
         <div id="message"></div>
         <h3>Datos personales</h3>

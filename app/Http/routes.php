@@ -12,11 +12,6 @@
 */
 
 Route::get('/', 'WelcomeController@index');
-
-Route::get('home', 'HomeController@index');
- Route::get('/asd', function() {
-        dd('loaded');
-    });
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
@@ -40,7 +35,7 @@ Route::controllers([
 
 	'pdf' => 'PdfController',
 	'docs' => 'DocumentosPostulacionController',
-
+	'home'=>'HomeController',
 
 	'declaracion' => 'DeclaracionController',
 	'homologacion' => 'CursosHomologadosController',

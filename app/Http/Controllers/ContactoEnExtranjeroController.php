@@ -13,7 +13,9 @@ class ContactoEnExtranjeroController extends Controller {
 	
 	public function getIndex(Guard $auth){
 		$postulante = Postulante::where('user_id',$auth->id())->first();
-
+		try {
+			
+			
 		$parametros = array(
 					'postulante' => $postulante->id,
 					'nombre_estudiante' => $postulante->nombre." ".$postulante->apellido_paterno." ".$postulante->apellido_materno,
@@ -25,6 +27,9 @@ class ContactoEnExtranjeroController extends Controller {
 				
 				
 			);
+		} catch (Exception $e) {
+			dd('ctm');
+		}
 
 		$contactoExtranjero = ContactoExtranjero::where('postulante',$postulante->id);
 		if($contactoExtranjero->get()->count() != 0){
@@ -54,5 +59,7 @@ class ContactoEnExtranjeroController extends Controller {
 				]);
 
 	}
+
+
 
 }

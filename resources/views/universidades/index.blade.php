@@ -5,9 +5,11 @@
 @section('content')
 
 
+
           <div class="panel-heading"><a class="btn-info btn" href="{{ url('universidades/create') }}">Crear universidad</a></div>
 
           <!-- Table -->
+          <div class="message"></div>
             @include('universidades.partials.table')
 
 
@@ -32,7 +34,6 @@
  
 $(document).ready(function() {
 
-    $('.alert-ajax').hide();
 
     crearTablaUniversidad('#tableUniversidad',$('#getUrl').val());
 
@@ -40,7 +41,7 @@ $(document).ready(function() {
     $("#tableUniversidad").on("click", '.btn-delete', function(event){
 
         event.preventDefault(); // jquery evento prevent default (e)
-        if(confirm("Press a button!\nEither OK or Cancel.")){
+        if(confirm("Desea eliminar el registro seleccionado?")){
           var row   = $(this).parents('tr');
           var id    = $(this).attr('id'); //captura el id de la fila seleccionada
           var form  = $('#form-delete'); //traigo la id
@@ -59,15 +60,12 @@ $(document).ready(function() {
               // URL a la que se enviará la solicitud Ajax
               url:url ,
               success : function(json) {
-                $(".alert-success").html("El registro fue guardado exitosamente").show();
-                $(".alert-danger").hide();
-              row.fadeOut(); //solo se elimina cuando se completa transaccion
+                $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+                row.fadeOut(); //solo se elimina cuando se completa transaccion
             },
 
               error : function(xhr, status) {
-                alert('El usuario no fue eliminado');
-              row.show();
-                  console.log('Disculpe, existió un problema '+token);
+                alert('La universidad seleccionada no se pudo eliminar');
               },
           });   
         }

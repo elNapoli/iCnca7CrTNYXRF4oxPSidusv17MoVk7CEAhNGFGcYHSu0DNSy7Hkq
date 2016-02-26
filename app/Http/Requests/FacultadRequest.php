@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class CreateCiudadRequest extends Request {
+class FacultadRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -11,7 +11,7 @@ class CreateCiudadRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return  true;
+		return true;
 	}
 
 	/**
@@ -22,10 +22,9 @@ class CreateCiudadRequest extends Request {
 	public function rules()
 	{
 		return [
-			'continente' =>'required',
-			'pais'=>'required',
+			'campus_sede' =>'required',
 			'nombre'=>'required',
-			'codigo_postal'=>'required|alpha_num|unique:ciudad,codigo_postal',
+			'telefono'=>'required',
 		];
 	}
 

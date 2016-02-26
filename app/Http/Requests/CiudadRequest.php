@@ -1,23 +1,17 @@
 <?php namespace App\Http\Requests;
 
-use Illuminate\Routing\Route;
 use App\Http\Requests\Request;
 
-class EditCiudadRequest extends Request {
+class CiudadRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
 	 *
 	 * @return bool
 	 */
-	public function __construct(Route $route){
-
-		$this->route = $route;
-
-	}
 	public function authorize()
 	{
-		return true;
+		return  true;
 	}
 
 	/**
@@ -27,13 +21,21 @@ class EditCiudadRequest extends Request {
 	 */
 	public function rules()
 	{
-		//dd($this->route->getParameter('one'));
+		if($this->method() === 'PUT'){
+		return [
+					'continente' =>'required',
+					'pais'=>'required',
+					'nombre'=>'required',
+					'codigo_postal'=>'required|unique:ciudad,codigo_postal,'.$this->get('id_ciudad'),
 
+				];
+
+		}
 		return [
 			'continente' =>'required',
 			'pais'=>'required',
 			'nombre'=>'required',
-			'codigo_postal'=>'required|alpha_num|unique:ciudad,codigo_postal,'.$this->route->getParameter('one'),
+			'codigo_postal'=>'required|unique:ciudad,codigo_postal',
 		];
 	}
 

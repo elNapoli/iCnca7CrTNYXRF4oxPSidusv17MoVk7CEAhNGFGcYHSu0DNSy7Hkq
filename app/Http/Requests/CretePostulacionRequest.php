@@ -101,7 +101,10 @@ class CretePostulacionRequest extends Request {
         return [
                 //
                 'email_personal.unique' => 'Ya existe un postulante con ese mail.',
-                'numero.unique' => 'Ya existe un postulante registrado con el número de documento.'
+                'numero.unique' => 'Ya existe un postulante registrado con el número de documento.',
+                'telefono_2.required' => 'El Teléfono personal es  obligatorio',
+                'ciudad_2.required' => 'La ciudad actual es  obligatoria',
+                'direccion_2.required' => 'La dirección actual es  obligatorio',
             ];
     }
 }

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\DeclaracionRequest;
 use App\Http\Requests;
 use App\Postulante;
 use App\Declaracion;
@@ -33,7 +34,7 @@ class DeclaracionController extends Controller {
 
 		}
 	}
-	public function postStore(Request $request,Guard $auth){
+	public function postStore(DeclaracionRequest $request,Guard $auth){
 
 
 		$declaracion = new Declaracion();
@@ -46,7 +47,7 @@ class DeclaracionController extends Controller {
 
 	}
 
-	public function putUpdate(Request $request,Guard $auth){
+	public function putUpdate(DeclaracionRequest $request,Guard $auth){
 
 		$declaracion = Declaracion::find($request->get('postulante'));
 		$declaracion->fill($request->all());

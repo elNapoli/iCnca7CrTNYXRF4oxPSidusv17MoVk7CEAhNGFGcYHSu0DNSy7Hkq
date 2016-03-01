@@ -75,9 +75,11 @@
 
                 error : function(xhr, status) {
                     var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                    for(var key in xhr.responseJSON)
+                    responseJSON =  JSON.parse(xhr.responseText);
+
+                    for(var key in responseJSON)
                     {
-                        html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                        html += "<li>" + responseJSON[key][0] + "</li>";
                     }
                     $('#message').html(html+'</div>');
                     //$("html, body").animate({ scrollTop: 0 }, 600);
@@ -336,9 +338,11 @@
 
                             error : function(xhr, status) {
                                 var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                                for(var key in xhr.responseJSON)
+                                responseJSON =  JSON.parse(xhr.responseText);
+
+                                for(var key in responseJSON)
                                 {
-                                    html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                                    html += "<li>" + responseJSON[key][0] + "</li>";
                                 }
                                 $('#message').html(html+'</div>');
                                 //$("html, body").animate({ scrollTop: 0 }, 600);
@@ -399,9 +403,11 @@
 
                                 error : function(xhr, status) {
                                     var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                                    for(var key in xhr.responseJSON)
+                                    responseJSON =  JSON.parse(xhr.responseText);
+
+                                    for(var key in responseJSON)
                                     {
-                                        html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                                        html += "<li>" + responseJSON[key][0] + "</li>";
                                     }
                                     $('#message').html(html+'</div>');
                                     //$("html, body").animate({ scrollTop: 0 }, 600);

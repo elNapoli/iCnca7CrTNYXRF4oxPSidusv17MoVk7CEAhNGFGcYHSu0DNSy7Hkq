@@ -42,4 +42,13 @@ class EstudioActualRequest extends Request {
 		}
 	}
 
+    public function messages()
+    {
+
+        return [
+                'anio_ingreso.required' => 'EL año de ingreso es obligatorio.',
+
+            ];
+    }
+
 }

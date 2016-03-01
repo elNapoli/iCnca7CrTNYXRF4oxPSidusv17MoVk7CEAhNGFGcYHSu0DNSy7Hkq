@@ -16,7 +16,7 @@ class PrePostulacionUniversidadTableSeeder extends Seeder
     {
         $faker    = Faker::create();
         $pregrado = Pregrado::all();
-        $semestre = array('semestre 1', 'semestre 2', 'ambos','otro'); 
+        $semestre = array('semestre_1', 'semestre_2', 'semestre_3','semestre_4','otro'); 
         $samples_temp = [];
 
         foreach ($pregrado as $item)

@@ -7,7 +7,7 @@
 @include('representanteUach.partials.modal_edit')
 
 
-      		<div class="panel-heading"><a class="btn-info btn" id='openModalRepresentante' href="#!">Crear representante</a></div>
+      		<div class="panel-heading"><a class="btn-info btn" id='openModalRepresentante' href="#!">Crear responsable</a></div>
       		<div class="message"></div>
 
           <!-- Table -->
@@ -45,9 +45,10 @@
 
 	                error : function(xhr, status) {
 	                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                        for(var key in xhr.responseJSON)
+	                    responseJSON =  JSON.parse(xhr.responseText);
+                        for(var key in responseJSON)
                         {
-                            html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                            html += "<li>" + responseJSON[key][0] + "</li>";
                         }
                         $('#message-modal').html(html+'</div>');
 	              
@@ -81,9 +82,10 @@
 
 	                error : function(xhr, status) {
 	                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                        for(var key in xhr.responseJSON)
+	                    responseJSON =  JSON.parse(xhr.responseText);
+                        for(var key in responseJSON)
                         {
-                            html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                            html += "<li>" + responseJSON[key][0] + "</li>";
                         }
                         $('#modal_edit_representante #message-modal').html(html+'</div>');
 	              

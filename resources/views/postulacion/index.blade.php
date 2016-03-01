@@ -45,7 +45,6 @@
     {!! Html::Script('plugins/bootstrap/js/bootstrap-select.js')!!}
     {!! Html::Script('js/datepicker-es.js')!!}
     {!! Html::Script('js/function_financiamiento.js')!!}
-    {!! Html::Script('js/function_documento_identidad.js')!!}
     {!! Html::Script('js/funciones.js') !!}
 
     <script>

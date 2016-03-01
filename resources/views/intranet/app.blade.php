@@ -40,6 +40,7 @@
 
 
   <section id="container" >
+    @include('documentoIdentidad.modal_documento_identidad')
 
     @include('intranet.header') 
     @if(Auth::user()->tipo_usuario == 'administrador')
@@ -97,6 +98,7 @@
 
     {!! Html::Script('plugins/dataTables/media/js/jquery.dataTables.min.js') !!}
     {!! Html::Script('plugins/dataTables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') !!}
+    {!! Html::Script('js/function_documento_identidad.js')!!}
     
    
 
@@ -120,8 +122,9 @@
                     success : function(json) {   
                       if(json.codigo == 0){
                         e.preventDefault();
+                            initDocumentoIdentidad();
 
-                            alert(json.message)
+                            $('#modal_documento_identidad').modal('show');
                       }
             
                         

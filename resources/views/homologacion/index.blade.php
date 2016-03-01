@@ -58,6 +58,7 @@
 
 
     $(document).ready(function() {
+         $('[data-toggle="tooltip"]').tooltip(); 
         var dt = $('#tableCursosHomologados').DataTable( {
 
             'searching':false,

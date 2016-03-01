@@ -5,7 +5,8 @@
 @section('content')
     @include('documentoIdentidad.modal_documento_identidad')
     {!!Form::hidden('getUrlIndexStep',url('postulacion/index-step'),array('id'=>'getUrlIndexStep'));!!}
-<div id="reno">hola</div>
+
+
     <div id="wizard">
         <div id="message"></div>
         <h3>Datos personales</h3>
@@ -49,7 +50,10 @@
 
     <script>
         $(document).on('ready',function() {
-            
+
+
+
+
             var indexStep = $.ajax({
                                   
                 async : false,
@@ -435,6 +439,18 @@
                     else{return true;}                              
                 }   
             });
+            $('div#wizard ').on('mouseenter','[data-toggle="tooltip"]',function(){
+               
+
+                $(this).tooltip(); 
+                
+            });
+
+
+
+
+
+
 
             $('section#wizard-p-2').on('click',' #FinanciamientoDDList',function(){
 
@@ -536,6 +552,7 @@
             selectByTabs("section#wizard-p-2",'#pais','#_token','#getCampusByPais','#campus_sede');
             selectByTabs("section#wizard-p-2",'#campus_sede','#_token','#getUrlFacultadByCampus','#facultad');
             selectByTabs("section#wizard-p-2",'#facultad','#_token','#getUrlCarreraByFacultad','#carrera');
+
             $('section#wizard-p-2').on('focus','#desde',function(){
 
                $( this ).datepicker({

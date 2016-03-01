@@ -13,9 +13,8 @@
         <div class="form-group">
 
         {!!  Form::label('ranking', 'Ranking de su promoción');!!}
-        {!! Form::text('ranking',null,array('class' => 'form-control','placeholder'=>'Ej: 60'));!!}
+        {!! Form::text('ranking',null,array('data-toggle'=>'tooltip','title'=>'El ranking puede ser consultado en su escuela','class' => 'form-control','placeholder'=>'Ej: 60'));!!}
         </div>
-
       </div>
     </div>
 

@@ -159,11 +159,11 @@
 
                                 if(json.procedencia === 'UACH'){
 
-                                    $('#menus_pre_uach').show();
+                                    $('#menus_pre_uach').show( "blind", 2000  );
 
                                 }
                                 else{
-                                    $('#menus_pre_no_uach').show();
+                                    $('#menus_pre_no_uach').show( "blind", 2000  );
 
                                 }
                             }else{

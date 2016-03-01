@@ -46,7 +46,9 @@ class EstudioActualRequest extends Request {
     {
 
         return [
-                'anio_ingreso.required' => 'EL año de ingreso es obligatorio.',
+                'area.required' => 'El área de estudio es un campo obligatorio.',
+                'anio_ingreso.required' => 'El año de ingreso es obligatorio.',
+                'anios_cursados.required' => 'El año en el que esta cursando es obligatorio.',
 
             ];
     }

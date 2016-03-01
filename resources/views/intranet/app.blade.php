@@ -68,7 +68,6 @@
 
       <!--main content end-->
       <!--footer start-->
-      @include('intranet.footer')
       @include('partials.loading')
     {!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
     {!!Form::hidden('urlGenerarMenus',url('home/generar-menus'),array('id'=>'urlGenerarMenus'));!!}

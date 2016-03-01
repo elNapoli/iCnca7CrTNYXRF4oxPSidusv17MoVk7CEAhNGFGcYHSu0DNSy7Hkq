@@ -4,56 +4,47 @@
 
 @section('content')
 
+{!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=> 'formUniversidadStore','class'=>'form-horizontal style-form'])!!}
+<!-- BASIC FORM ELELEMNTS -->
+<div class="row mt">
+  <div class="col-lg-12">
+      <div class="form-panel">
+          <h4 class="mb"><i class="fa fa-angle-right"></i>Datos de la universidad</h4>
+          <div class="form-horizontal style-form" method="get">
+                @include('universidades.partials.tabs_head')
+         <a href="#!" id="open-modal-add-campus" class="btn btn-default" data-toggle="modal" data-target="#modal_campus_universidad"> Agregar Campus</a>
+
+          </div>
+      </div>
+  </div><!-- col-lg-12-->       
+</div><!-- /row -->
 
                       
-@include('universidades.partials.modal')
+
+
 <div class="row mt">
-    <div class="col-lg-12">
-        <section class="content-panel">
-            <div class="panel-heading">
-                <div class="pull-left"><h5><i class="fa fa-tasks"></i> Datos de la universidad</h5></div>
-                <br>
-            </div>
-            <hr>
-            {!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=> 'formUniversidadStore','class'=>'form-horizontal style-form'])!!}
-                <div class="row">
-                    <div class="col-lg-6">
-                            @include('universidades.partials.tabs_head')
-                        
+  <div class="col-lg-12">
+      <div class="form-panel">
+          <h4 class="mb"><i class="fa fa-angle-right"></i>Campus y sedes</h4>
+          <form class="form-horizontal style-form" method="get">
 
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-9">
-                        
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <a href="#!" id="agregarCiudadModal" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#modal_campus_universidad"> Agregar Campus</a>
-                            </div>
+            @include('universidades.partials.fields')
+              {!!Form::hidden('getUrlPaisContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisContinente'));!!}
+              {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
 
-                            @include('universidades.partials.tabs')
+          </form>
+      </div>
+  </div><!-- col-lg-12-->       
+</div><!-- /row -->
 
-                            <div class=" add-task-row">
-                                <a class="btn btn-success btn-sm pull-left" href="#!" id="editarUniversidad">Guardar los cambios</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            {!!Form::close()!!}
-        </section>
-    </div><!-- /col-md-12-->
-</div>
+{!!Form::close()!!}
 
 
 
 
 
 
-
-{!! Form::open(['url'=>['universidades/destroy-campus',':USER_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
-
-{!! Form::close()!!}
+@include('universidades.partials.modal')
   {!!Form::hidden('urlCampusDestroy', url('universidades/destroy-campus'),array('id'=>'urlCampusDestroy'));!!}
   {!!Form::hidden('urlUniversidadUpdate', url('universidades/update'),array('id'=>'urlUniversidadUpdate'));!!}
 
@@ -74,18 +65,16 @@
 
   $(document).ready(function(){
 
-
     $(".alert").hide();
+    selectByTabs(".form-horizontal",'#continente','#_token','#getUrlPaisContinente','#pais');   
+    selectByTabs(".form-horizontal",'#pais','#_token','#getUrCiudadContinente','.miCiudad');   
     traerInfoUniversidad('infoUniversidad',
                         $('#getUrlGuardarCampus').val(),
-                        $('#getUrlPaisContinente').val(),
-                        $('#getUrCiudadContinente').val(),
-                        $('#getToken').val());
+                        '#getUrlPaisContinente',
+                        '#getUrCiudadContinente',
+                        '#getToken');
 
-        $('#continente').on('change',function(e){
-        e.preventDefault();
-        getListForSelect($('#getUrlPaisContinente').val(), $('#getToken').val(), $("#continente").val(), 'pais');    
-        });
+
 
 
         $('#editarUniversidad').on('click',function(e){
@@ -142,14 +131,9 @@
         });
 
 
-        $('#pais').on('change',function(e){
-        e.preventDefault();
-
-        getListForSelect($('#getUrCiudadContinente').val(), $('#getToken').val(), $("#pais").val(), 'ciudad','miCiudad');    
-        });
 
      // solo para probar 
-       $('#agregarCiudadModal').click(function (e) {
+       $('#open-modal-add-campus').click(function (e) {
                getListForSelect($('#getUrCiudadContinente').val(), $('#getToken').val(), $("#pais").val(), 'ciudad','putaputa');   
 
        });
@@ -169,7 +153,6 @@
         if(confirm("Desea eliminar el campus seleccionado?")){
           var tab   = $(this).parents('li');
           var id    = $(this).attr('id'); //captura el id de la fila seleccionada
-          var form  = $('#form-delete'); //traigo la id
           var url   = $('#urlCampusDestroy').val()+'/'+id; //remplazo el placeholder USER_ID con la id
           var data  = form.serialize();
           

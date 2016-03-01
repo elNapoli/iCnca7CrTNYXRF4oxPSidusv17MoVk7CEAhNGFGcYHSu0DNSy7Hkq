@@ -141,7 +141,7 @@ var ruta = $(ruta+' select'+idSelectDestino);
     },
 
         error : function(xhr, status) {
-            console.log('Disculpe, existió un problema '+token);
+            console.log('Disculpe, existió un problema en selectByTabsSinAccion '+token);
         },
     });
 
@@ -281,7 +281,7 @@ function formatoTablaUniversidad( d ) {
             '<td>'+entry.telefono+'</td>'+
             '<td>'+entry.fax+'</td>'+
             '<td><a href="'+entry.sitio_web+'">'+entry.sitio_web+'</a></td>'+
-            '<td> <a href="/ciudades/edit/'+entry.ciudad.id+'">'+entry.ciudad_r.nombre+'</a></td>'+
+            '<td> '+entry.ciudad_r.nombre+'</td>'+
         '</tr>';
 });
       finaln = finaln+'</table>';
@@ -372,12 +372,15 @@ function createInput(label,placeholder,id,value){
 
 
 
+
+
                 
     return '<div class="form-group">'+
 
-            '<label for="'+id+'"> '+label+' </label>'+
-
-            '<input class="form-control" value="'+value+'" placeholder="'+placeholder+'" name="'+id+'" type="text" id="'+id+'">'+
+                '<label class="col-sm-2 col-sm-2 control-label" for="'+id+'"> '+label+' </label>'+
+                '<div class="col-sm-10">'+
+                    '<input class="form-control" value="'+value+'" placeholder="'+placeholder+'" name="'+id+'" type="text" id="'+id+'">'+
+                '</div>'+
             '</div>';
 
     
@@ -404,11 +407,14 @@ function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
                         input2+
                         input3+
                         input4+'<div class="form-group">'+
-                                    '<label for="ciudad"> Nombre ciudad </label>'+
-                                    '<select id="ciudad'+arrayCampus.id+'" class="miCiudad form-control">'+
-                                    '<option selected="selected" value="">Seleccione un país</option>'+
-                                    '</select>'+input5+
-                                '</div>';
+                                    '<label class="col-sm-2 col-sm-2 control-label" for="ciudad"> Nombre ciudad </label>'+
+                                    '<div class="col-sm-10">'+
+                                        '<select id="ciudad'+arrayCampus.id+'" class="miCiudad form-control">'+
+                                        '<option selected="selected" value="">Seleccione unA ciudad</option>'+
+                                        '</select>'+
+                                    '</div>'+
+                                '</div>'+
+                        input5;
 
     content = content +'<a href="#!" class="btn-delete" id="'+arrayCampus.id+'">Eliminar campus</a></form></div>';
 
@@ -418,13 +424,15 @@ function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
     //console.log(subCatObj.ciudad_r.pais);
     $("#ciudad"+arrayCampus.id).find('option').removeAttr("selected");
 
-            //$("#ciudad"+subCatObj.id).val('3')
-    getListForSelect(urlConsultaSelect, 
+    selectByTabsSinAccion(".form-horizontal",token,urlConsultaSelect,'#ciudad'+arrayCampus.id,arrayCampus.pais,arrayCampus.ciudad);
+
+
+  /*  getListForSelect(urlConsultaSelect, 
                     token, 
                     arrayCampus.pais, 
                     'ciudad'+arrayCampus.id,
                     "",
-                    arrayCampus.ciudad) 
+                    arrayCampus.ciudad) */
 
 }
 
@@ -460,8 +468,9 @@ function traerInfoUniversidad(idInput,urlStoreCampus, urlConsultaSelectPais,urlC
     var campusSedes = jsonUniversidad.campus_sedes_r;
     var idContinente = campusSedes[0].ciudad_r.pais_r.continente;
     var idPais = campusSedes[0].ciudad_r.pais_r.id;
-    $("#continente option[value='"+idContinente+"']").attr("selected","selected");
-    getListForSelect(urlConsultaSelectPais, token, idContinente, 'pais','',idPais); 
+
+    selectByTabsSinAccion(".form-horizontal",token,urlConsultaSelectPais,'#pais',idContinente,idPais);
+
 
     $('#nombre_universidad').val( jsonUniversidad.nombre);
     crearTabByUniversidad(campusSedes,urlStoreCampus,urlConsultaSelectCiudad,token);
@@ -506,10 +515,7 @@ function CrearTabPorCampus(urlStoreCampus,token,form,idPais,ciudadByPais){
               crearTab(campusSede,urlStoreCampus,ciudadByPais,token);
               i = false;
             }
-            $(".alert-success").html("El registro fue guardado exitosamente").show();
-            $(".alert-danger").hide();
-            //reseteo el formulario
-            $('#holamundo').trigger("reset");
+           // $('#holamundo').trigger("reset");
 
             $('#modal_campus_universidad').modal('hide');
 
@@ -520,9 +526,11 @@ function CrearTabPorCampus(urlStoreCampus,token,form,idPais,ciudadByPais){
 
         error : function(xhr, status) {
             html += "<p> Porfavor corregir los siguientes errores </p>";
-            for(var key in xhr.responseJSON)
+            responseJSON =  JSON.parse(xhr.responseText);
+
+            for(var key in responseJSON)
             {
-                html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                html += "<li>" + responseJSON[key][0] + "</li>";
             }
             $(".alert-success").hide()
             $(".alert-danger").html(html).show();

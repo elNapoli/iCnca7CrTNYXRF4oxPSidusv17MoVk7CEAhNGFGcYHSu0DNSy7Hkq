@@ -9,34 +9,34 @@
                     <div class="message"></div>      
               <!-- BASIC FORM ELELEMNTS -->
 
-                          {!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=>'form-save'])!!}
-<div class="padreMayor">
+
   
+    
+<div class="row mt">
+  <div class="col-lg-12">
+      <div class="form-panel">
+          <h4 class="mb"><i class="fa fa-angle-right"></i> Datos principales de Universidad</h4>
+              <div class="form-horizontal style-form">
+              {!! Form::open(['url'=>'universidades/store', 'method'=>'POST','id'=>'form-save'])!!}
                 
-            <div class="row mt">
-              <div class="col-lg-12">
-                  <div class="form-panel">
-                      <h4 class="mb"><i class="fa fa-angle-right"></i> Datos principales de Universidad</h4>
-                          <div class="form-horizontal style-form">
-                            
-                          {!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
-                              
-                          {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
-                          {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
+              {!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
+                  
+              {!!Form::hidden('getUrlPaisByContinente', url('ciudades/pais-by-continente'),array('id'=>'getUrlPaisByContinente'));!!}
+              {!!Form::hidden('getUrCiudadContinente', url('ciudades/ciudad-by-pais'),array('id'=>'getUrCiudadContinente'));!!}
 
-                          @include('universidades.partials.tabs_head')
-                          </div>
-                 
-                  </div>
-              </div><!-- col-lg-12-->       
-            </div><!-- /row -->
+              @include('universidades.partials.fields_universidad')
+              @include('universidades.partials.fields_campus')
+
+              {!!Form::close()!!}
+              </div>
+     
+      </div>
+  </div><!-- col-lg-12-->       
+</div><!-- /row -->
 
 
-         @include('universidades.partials.tabs')
 
-</div>
-                          {!!Form::close()!!}
-		<a href="#!" id="add_universidad" class="btn btn-default">Guardar</a>
+
 
         {!!Form::hidden('urlUniversidadIndex',url('universidades'),array('id'=>'urlUniversidadIndex'));!!}
 
@@ -52,8 +52,8 @@
  <script type="text/javascript">
   $(document).ready(function(){
 
-        selectByTabs(".padreMayor",'#continente','#_token','#getUrlPaisByContinente','#pais');   
-        selectByTabs(".padreMayor",'#pais','#_token','#getUrCiudadContinente','#ciudad');   
+        selectByTabs(".form-horizontal",'#continente','#_token','#getUrlPaisByContinente','#pais');   
+        selectByTabs(".form-horizontal",'#pais','#_token','#getUrCiudadContinente','.miCiudad');   
         $('#add_universidad').on('click', function(e){
 
             var form = $('#form-save');

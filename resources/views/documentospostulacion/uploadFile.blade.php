@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('Dashboard') Departamentos @endsection
 
@@ -40,7 +40,7 @@ var footerTemplate = '<div class="file-thumbnail-footer">\n' +
 '</div>';
  
 $('#input-706').fileinput({
-    uploadUrl: 'docs/upload',
+    uploadUrl: ' storage-files',
     uploadAsync: false,
     maxFileCount: 5,
      language: 'es',

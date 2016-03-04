@@ -22,11 +22,18 @@ class UsuariosController extends Controller {
 		$this->middleware('is_admin');
 	}
 
-	public function index()
+	public function getIndex()
 	{
 
  		$users = User::all();
         return view('admin.indexadmin',compact('users'));
+	}
+
+	public function getUser()
+	{
+		$usuarios = User::all();
+		$arra = array('data'=>$usuarios->toArray());
+		return json_encode($arra);
 	}
 
 	/**
@@ -88,11 +95,6 @@ class UsuariosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
-	{
-		$user = User::findOrFail($id);
-        return view('admin.edit',compact('user'));
-	}
 
 	/**
 	 * Update the specified resource in storage.
@@ -100,14 +102,21 @@ class UsuariosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(EditUserRequest $request,$id)
+	public function putUpdate(Request $request,$id)
 	{
 		$user = User::findOrFail($id);
 		$user->fill($request->all());
         $user->save();
 
-        return redirect()->route('admin.usuarios.index');
+		return response()->json([
+								'message'=> 'EL usuario '.$user->name.' '.$user->apellido_paterno.' '.$user->apellido_materno.' se editó correctamente'
+								]);
     }
+	public function postEdit($id)
+	{
+		$user = User::findOrFail($id);
+        return $user->toJson();
+	}
 
 	/**
 	 * Remove the specified resource from storage.
@@ -115,7 +124,7 @@ class UsuariosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id, Request $request)
+	public function postDestroy($id, Request $request)
 	{
 		$user = User::findOrFail($id);
 		$user->delete();

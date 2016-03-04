@@ -102,6 +102,7 @@
 
         $('table').on('click','.model-open-edit', function(e){
             var data = $('#form-edit-departamento').serialize();
+            alert(data)
             $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
                 data:data,

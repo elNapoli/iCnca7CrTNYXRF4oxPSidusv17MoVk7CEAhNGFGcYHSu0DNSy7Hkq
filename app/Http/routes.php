@@ -45,17 +45,20 @@ Route::controllers([
 	'solicitud-curso' => 'SolicitudCursoController',
 	'cursos-no-uach' => 'CursosNoUachController',
 	'inscripcion-cursos' => 'InscripcionCursosController',
+	'admin' => 'Admin\UsuariosController',
 
 
 ]);
 
-Route::group(['prefix'=>'admin', 'middleware' => ['auth','is_admin'], 'namespace' => 'Admin'],function(){
+/*Route::group(['prefix'=>'admin', 'middleware' => ['auth','is_admin'], 'namespace' => 'Admin'],function(){
 	//Route::get('homeAdmin', 'HomeAdminController@index');
 
 	//Route::resource('users','UsersController');
+	Route::get('user', 'UsuariosController@getUser');
+	Route::get('edit', 'UsuariosController@postEdit');
 	Route::resource('usuarios','UsuariosController');
 
-});
+}); */
 
 Route::group(['prefix'=>'usr', 'namespace' => 'Usuarios'],function(){
 	Route::get('register/verify/{confirmationCode}', 'RegistrationController@confirm'); // vincula el enlace de verificacion

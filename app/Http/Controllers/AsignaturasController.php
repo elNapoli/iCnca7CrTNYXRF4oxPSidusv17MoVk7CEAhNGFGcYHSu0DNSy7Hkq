@@ -18,7 +18,8 @@ class AsignaturasController extends Controller {
 	 */
 	public function getIndex()
 	{
-		return view('asignaturas.index');
+		$universidades = Universidad::lists('nombre','id');
+		return view('asignaturas.index',compact('universidades'));
 	}
 	public function getAsignaturas()
 	{
@@ -102,31 +103,31 @@ class AsignaturasController extends Controller {
         'anio' => 'required',
         'carrera' => 'required',
     	]);
-
 		$asignatura = Asignatura::create($request->all());
-		$message    = 'La asignatura "'.$request->get('nombre').'" se almacenó correctamente';
-		\Session::flash('message', $message);
+		$message    = 'La asignatura "'.$request->get('nombre').'" codigo "'.$request->get('codigo').'" se almacenó correctamente';
 
 		//return redirect()->route('beneficios.index');
-		return redirect('asignaturas');
+		return response()->json([
+				'message'=> $message
+				]);
 	}
 
 	public function postDestroy(Request $request)
 	{
 		//abort(500);
 		$asignatura = Asignatura::where('asignatura.codigo','=',$request->id);
+ 		$message = ' la asignatura perteneciente al codigo: '.$request->id.' fue eliminada';
  		$asignatura->delete();
- 		$message = ' la asignatura fue eliminada';
  	//	dd($request->all());
 		return response()->json([
 			'message'=> $message
 			]);
 	}
 
-	public function getEdit($codigo)
+	public function postEdit($codigo)
 	{
-		$asignatura = Asignatura::where('asignatura.codigo','=',$codigo)->first();
-        return view('asignaturas.edit',compact('asignatura'));
+		$asignatura = Asignatura::where('asignatura.codigo','=',$codigo)->with('carreraR.facultadR.campusSedesR.universidadR')->first();
+        return $asignatura->toJson();
 	}	
 
 	public function putUpdate($codigo,Request $request)
@@ -138,11 +139,15 @@ class AsignaturasController extends Controller {
         'anio' => 'required',
     	]);
 
-		$asignatura = Asignatura::where('asignatura.codigo','=',$codigo)->first();
-		$asignatura->fill($request->all());
+		$asignatura = Asignatura::findOrFail($codigo); //paso los datos que se pueden modificar. ya que el 
+		$asignatura->codigo = $request->codigo;		//request entrega el nombre de la carrera en vez del
+		$asignatura->nombre = $request->nombre;		//id
+		$asignatura->nivel = $request->nivel;
+		$asignatura->anio = $request->anio;
         $asignatura->save();
-        \Session::flash('message', 'La asignatura se editó correctamente');
-		return redirect('asignaturas');
+		return response()->json([
+								'message'=> 'la asignatura perteneciente al codigo: '.$request->codigo.'  fue editada correctamente'
+								]);
         //return redirect()->route('beneficios.index');
 	}
 

@@ -49,7 +49,7 @@
                         <a href="{{ url('asignaturas/') }}">Asignaturas</a>
                     </li>
                     <li>
-                        <a href="{{ url('admin/usuarios/') }}">Usuarios</a>
+                        <a href="{{ url('admin') }}">Usuarios</a>
                     </li>
                   
               </ul>

@@ -1,10 +1,13 @@
 @extends('intranet.app')
 
 @section('content')
+                <h3><i class="fa fa-angle-right"></i> Facultades!</h3>
+                <hr>
 
+        <div class="panel panel-default">
+                <div class="panel-heading"><a class="btn btn-info" data-toggle="modal" data-target="#modal_crear_facultad" href="#!">Crear facultad</a></div>
 
-<div class="message"></div>
-
+            <div class="message"></div>
 			@include('facultades.partials.table')
 
 
@@ -75,8 +78,8 @@
                 success : function(json) {
 
                     $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
-                    $('#modal_crear_facultad').modal('hide'); 
                     dt.ajax.reload();            
+                    $('#modal_crear_facultad').modal('hide'); 
           
                 },
 

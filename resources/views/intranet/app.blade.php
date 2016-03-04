@@ -54,8 +54,6 @@
 
             <div class="row">
                 <div class="col-lg-12 main-chart">
-                <h3><i class="fa fa-angle-right"></i> Home!</h3>
-                <hr>
                 @yield('content')
 
                 </div><!-- /col-lg-9 END SECTION MIDDLE -->

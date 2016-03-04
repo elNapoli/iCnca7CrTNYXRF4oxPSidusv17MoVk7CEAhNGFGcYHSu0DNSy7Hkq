@@ -2,28 +2,29 @@
     <div class='col-lg-12'>
     <div class="col-md-6">
 
-
-        <div class="form-group">
+            <fieldset disabled>
+            <div class="form-group">
                 {!!  Form::label('universidad', ' Universidad ')!!}
-                {!!  Form::select('universidad', [null=>'Seleccione Universidad']+$universidades,null,array('class' => 'form-control'))!!}
+                {!! Form::text('universidad',null,array('class' => 'form-control','placeholder'=>'Ej: INFO123'));!!}
+
             </div>
 
 
             <div class="form-group">
                 {!!  Form::label('campus_sede', ' Campus o Sede')!!}
-                {!!  Form::select('campus_sede', [null=>'Seleccione campus o sede'],null,array('class' => 'form-control'))!!}
+                {!! Form::text('campus_sede',null,array('class' => 'form-control','placeholder'=>'Ej: INFO123'));!!}
+
             </div>
 
             <div class="form-group">
                 {!!  Form::label('facultad', ' Facultad')!!}
-                {!!  Form::select('facultad', [null=>'Seleccione facultad'],null,array('class' => 'form-control'))!!}
+                {!! Form::text('facultad',null,array('class' => 'form-control','placeholder'=>'Ej: INFO123'));!!}
             </div>
-
             <div class="form-group">
-                {!!  Form::label('carrera', ' Carrera')!!}
-                {!!  Form::select('carrera', [null=>'Seleccione carrera'],null,array('class' => 'form-control'))!!}
+                {!!  Form::label('carrera', ' Carrera ');!!}
+                {!! Form::text('carrera',null,array('class' => 'form-control','placeholder'=>'Ej: INFO123'));!!}
             </div>
-
+            </fieldset>
         </div> 
 
     <div class="col-md-6">
@@ -37,6 +38,7 @@
             <div class="form-group">
                 {!!  Form::label('nombre', ' Nombre asignatura ');!!}
                 {!! Form::text('nombre',null,array('class' => 'form-control','placeholder'=>'Ej: Proyecto de tesis'));!!}
+                {!!Form::hidden('codigo','',array('id'=>'codigo'));!!}
             </div>
                 
                 <div class="form-group">

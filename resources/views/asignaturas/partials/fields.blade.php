@@ -4,7 +4,7 @@
 
             <div class="form-group">
                 {!!  Form::label('universidad', ' Universidad ')!!}
-                {!!  Form::select('universidad', [null=>'Seleccione Universidad']+$universidad,null,array('class' => 'form-control'))!!}
+                {!!  Form::select('universidad', [null=>'Seleccione Universidad'],null,array('class' => 'form-control'))!!}
             </div>
 
 

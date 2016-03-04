@@ -42,6 +42,7 @@ var footerTemplate = '<div class="file-thumbnail-footer">\n' +
 $('#input-706').fileinput({
     uploadUrl: ' storage-files',
     uploadAsync: false,
+    minFileCount: 1,
     maxFileCount: 5,
      language: 'es',
     allowedFileExtensions:['pdf','jpg','png'],
@@ -71,8 +72,9 @@ $('#input-706').fileinput({
         }
     ],
     //uploadExtraData:{_token:$('#_token').val()}
-    uploadExtraData: function() {  // callback example
+    uploadExtraData:function(previewId, index) {  // callback example
         var out = {}, key, i = 0; j = 0;
+        out['index'] = index;
         $('.kv-input:visible').each(function() {
             $el = $(this);
             if($el.hasClass('kv-new')){

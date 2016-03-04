@@ -45,7 +45,7 @@ return [
 
 		'local' => [
 			'driver' => 'local',
-			'root'   => storage_path().'/documentos',
+			'root'   => public_path().'/documentos/',
 		],
 
 		's3' => [

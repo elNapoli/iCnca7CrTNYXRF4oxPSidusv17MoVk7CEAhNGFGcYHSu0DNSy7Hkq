@@ -52,7 +52,7 @@
               </a>
               <ul class="sub">
                   <li><a  href="{{url('docs')}}">Formularios</a></li>
-                  <li><a  href="#">Subir documentos</a></li>
+                  <li><a  href="{{url('docs/upload')}}">Subir documentos</a></li>
               </ul>
           </li>
           <li class="sub-menu">

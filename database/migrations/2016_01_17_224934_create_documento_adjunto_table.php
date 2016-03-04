@@ -15,7 +15,7 @@ class CreateDocumentoAdjuntoTable extends Migration
         Schema::create('documento_adjunto', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',45);
-            $table->string('path',45)->unique();
+            $table->string('path',255)->unique();
 
             //foreign key to postulante
             $table->integer('postulante')->unsigned();

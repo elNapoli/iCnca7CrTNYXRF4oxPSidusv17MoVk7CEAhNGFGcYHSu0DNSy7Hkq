@@ -9,7 +9,8 @@ class DocumentoAdjunto extends Model
     protected $table = 'documento_adjunto';
     public $timestamps = false;
     protected $fillable = ['nombre',
-    					   'path'];
+    					   'path',
+                           'postulante'];
 
  
 

@@ -10,5 +10,4 @@
 
     @include('universidades.partials.tab_content')
 
-</ul>
 </div>

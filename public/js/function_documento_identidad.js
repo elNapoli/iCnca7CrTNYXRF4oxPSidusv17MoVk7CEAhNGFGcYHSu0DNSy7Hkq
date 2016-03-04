@@ -1,7 +1,9 @@
 function initDocumentoIdentidad(){
 
-	
-
+	if ( $.fn.dataTable.isDataTable( '#tableDocumentoIdentidad' ) ) {
+	    var dt  = $('#tableDocumentoIdentidad').DataTable().ajax.reload();
+	}
+	else {
 	var dt = $('#tableDocumentoIdentidad').DataTable( {
 
 
@@ -24,6 +26,7 @@ function initDocumentoIdentidad(){
     } );
 
 
+
 	 $('#tableDocumentoIdentidad tbody').on( 'click', 'tr', function () {
 	 	$('#numero').val( dt.row( this ).data().numero);
 	 	$('#tipo').val( dt.row( this ).data().tipo);
@@ -36,6 +39,7 @@ function initDocumentoIdentidad(){
 	        }
     	});
 	 $('#tableDocumentoIdentidad').on('click','.delete_documento_identidad',function(){
+
 	    $.ajax({
 	        // En data puedes utilizar un objeto JSON, un array o un query string
 	        data:{id:$(this).attr('id'),_token:$('#_token').val()},
@@ -54,10 +58,11 @@ function initDocumentoIdentidad(){
 	        },
 
 	        error : function(xhr, status) {
+	        	responseJSON =  JSON.parse(xhr.responseText);
 	            var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-	                        for(var key in xhr.responseJSON)
+	                        for(var key in responseJSON)
 	                        {
-	                            html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+	                            html += "<li>" + responseJSON[key][0] + "</li>";
 	                        }
 	                        $('#msg-modal').html(html+'</div>');
 
@@ -88,10 +93,11 @@ function initDocumentoIdentidad(){
 	        },
 
 	        error : function(xhr, status) {
+	        	responseJSON =  JSON.parse(xhr.responseText);
 	            var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-	                        for(var key in xhr.responseJSON)
+	                        for(var key in responseJSON)
 	                        {
-	                            html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+	                            html += "<li>" + responseJSON[key][0] + "</li>";
 	                        }
 	                        $('#msg-modal').html(html+'</div>');
 
@@ -102,4 +108,14 @@ function initDocumentoIdentidad(){
 
 
 	 });
+
+
+
+
+	}
+
+
+
+
+
 }

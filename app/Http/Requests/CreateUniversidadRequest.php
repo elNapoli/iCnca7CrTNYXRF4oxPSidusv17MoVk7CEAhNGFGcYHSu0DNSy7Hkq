@@ -27,9 +27,17 @@ class CreateUniversidadRequest extends Request {
 			'nombre_universidad' =>'required',
 			'nombre' =>'required',
 			'telefono'=>'required',
-			'sitio_web'=>'active_url',
 			'ciudad'=>'required',
+			'direccion'=>'required',
+			'pais'=>'required',
 		];
 	}
+    public function messages()
+    {
 
+        return [
+                //
+                'nombre_universidad.required' => 'El nombre de la universidad es obligatorio',
+            ];
+    }
 }

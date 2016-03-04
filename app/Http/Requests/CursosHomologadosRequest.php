@@ -29,4 +29,16 @@ class CursosHomologadosRequest extends Request {
 		];
 	}
 
+    public function messages()
+    {
+
+        return [
+                //
+                'codigo_1.required' => 'El código de la asignatura de la universidad de origen es obligatorio',
+                'codigo_2.required' => 'El código de la asignatura de la universidad de destino es obligatorio',
+                'nombre_asignatura_2.required' => 'El nombre de la asignatura de la universidad de destino es obligatorio',
+
+            ];
+    }
+
 }

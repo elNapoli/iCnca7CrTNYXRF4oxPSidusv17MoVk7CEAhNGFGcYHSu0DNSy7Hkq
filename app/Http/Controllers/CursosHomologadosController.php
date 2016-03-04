@@ -28,7 +28,7 @@ class CursosHomologadosController extends Controller {
 								'email' => $postulante->email_personal,						   
 								'carrera' => $postulante->pregradosR->prePostulacionUniversidadesR->carreraR->nombre,						   
 								'universidad_destino' => $universidad_destino,						   
-								'rut' => '',						   
+								'rut' => $postulante->documentoIdentidadR()->first()->numero,						   
 														   
 								'telefono' => $postulante->telefono,					   
 								'pais_destino' => $postulante->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->ciudadR->paisR->nombre,					   

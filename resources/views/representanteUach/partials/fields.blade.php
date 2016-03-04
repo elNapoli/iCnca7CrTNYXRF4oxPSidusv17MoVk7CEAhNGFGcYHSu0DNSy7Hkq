@@ -2,7 +2,7 @@
 
 <div class="form-group">
   	{!!  Form::label('tipo', ' Tipo ')!!}
-	{!!  Form::select('tipo', [null=>'Seleccione un tipo','contacto'=>'Contacto','representante'=>'Representante legal'],null,array('class' => 'form-control'))!!}
+	{!!  Form::select('tipo', [null=>'Seleccione un tipo','contacto'=>'Contacto de emergencia','representante'=>'Representante legal'],null,array('class' => 'form-control'))!!}
 </div>
 <div class="form-group">
 

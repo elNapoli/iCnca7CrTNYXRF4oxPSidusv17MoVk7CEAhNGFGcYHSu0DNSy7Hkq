@@ -58,10 +58,15 @@
 
 
     $(document).ready(function() {
+         $('[data-toggle="tooltip"]').tooltip(); 
         var dt = $('#tableCursosHomologados').DataTable( {
 
             'searching':false,
             'paging':false,
+            "bProcessing": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            },
             "ajax": $('#getUlrCursosHomologados').val(),
 
 
@@ -98,6 +103,7 @@
                 { "data": null,
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                         $(nTd).html(sData.codigo_2);
+                        $(nTd).attr('style','border-left: 3px solid black');
                         if(sData.periodo === ''){
                             
                             $(nTd).html('<input type="text" value="'+oData.codigo_2+'" id="codigo_asignatura_2-'+iRow+'" name="codigo_asignatura_2-'+iRow+'" class="form-control">');
@@ -213,10 +219,12 @@
 
                 error : function(xhr, status) {
                     console.log(xhr);
+                    responseJSON =  JSON.parse(xhr.responseText);
+
                     var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                        for(var key in xhr.responseJSON)
+                        for(var key in responseJSON)
                         {
-                            html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                            html += "<li>" + responseJSON[key][0] + "</li>";
                         }
                         $('.message').html(html+'</div>');
               

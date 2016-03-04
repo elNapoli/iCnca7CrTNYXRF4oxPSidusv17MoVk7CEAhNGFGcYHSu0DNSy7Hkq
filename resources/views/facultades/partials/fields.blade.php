@@ -28,6 +28,7 @@
                 {!!  Form::label('nombre', ' Nombre facultad ');!!}
                 {!! Form::text('nombre',null,array('class' => 'form-control','placeholder'=>'Ej: Facultad de ingenieria'));!!}
             </div>
+            {!!Form::hidden('id_facultad',null,array('id'=>'id_facultad'));!!}
 
             <div class="form-group">
                 {!!  Form::label('telefono', ' Telefono ');!!}

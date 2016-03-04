@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
@@ -45,7 +46,11 @@ Route::controllers([
 	'solicitud-curso' => 'SolicitudCursoController',
 	'cursos-no-uach' => 'CursosNoUachController',
 	'inscripcion-cursos' => 'InscripcionCursosController',
+
 	'admin' => 'Admin\UsuariosController',
+
+	'subir-archivos' => 'DocumentosAdjuntosController',
+
 
 
 ]);

@@ -24,7 +24,6 @@ class CreateCampusRequest extends Request {
 		return [
 			'nombre' =>'required',
 			'telefono'=>'required',
-			'sitio_web'=>'active_url',
 			'ciudad'=>'required',
 		];
 	}

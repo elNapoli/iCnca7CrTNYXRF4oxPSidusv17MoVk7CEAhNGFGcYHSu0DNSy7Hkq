@@ -29,7 +29,7 @@
                 <div id="menus_pre_uach" style='display:none'>
                   
                   <li><a  href="{{url('homologacion')}}">Homologación de cursos</a></li>
-                  <li><a  href="{{url('representante-uach')}}">Representante</a></li>
+                  <li><a  href="{{url('representante-uach')}}">Responsables en Chile</a></li>
                   <li><a  href="{{url('confirmacion-llegada')}}">Confirmación de llegada</a></li>
                   <li><a  href="{{url('contacto-en-extranjero')}}" id='link_contacto_extranjero'>Contacto en el extranjero</a></li>
 
@@ -52,7 +52,7 @@
               </a>
               <ul class="sub">
                   <li><a  href="{{url('docs')}}">Formularios</a></li>
-                  <li><a  href="#">item 2</a></li>
+                  <li><a  href="{{url('docs/upload')}}">Subir documentos</a></li>
               </ul>
           </li>
           <li class="sub-menu">

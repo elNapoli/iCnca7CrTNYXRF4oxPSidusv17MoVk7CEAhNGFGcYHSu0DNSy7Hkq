@@ -16,7 +16,7 @@ class CreatePrePostulacionUniversidadTable extends Migration
             $table->increments('id');
             $table->integer('postulante')->unsigned();
             $table->integer('anio');
-            $table->enum('semestre', ['semestre 1', 'semestre 2','ambos','otro']);
+            $table->enum('semestre', ['semestre_1', 'semestre_2','semestre_3','semestre_4','otro']);
             $table->date('desde');
             $table->date('hasta');
 

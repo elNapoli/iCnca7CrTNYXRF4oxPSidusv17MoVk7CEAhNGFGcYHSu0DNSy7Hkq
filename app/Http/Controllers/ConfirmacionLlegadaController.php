@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Guard;
+use App\Http\Requests\ConfirmacionLlegadaRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\PrePostulacionUniversidad;
@@ -35,7 +36,7 @@ class ConfirmacionLlegadaController extends Controller {
 		return view('confirmacionLlegada.index',compact('parametros'));
 	}
 
-	public function postStoreAndUpdate(Request $Request){
+	public function postStoreAndUpdate(ConfirmacionLlegadaRequest $Request){
 		
 		$confirmacion = ConfirmacionLlegada::firstOrNew(['postulante' => $Request->get('postulante')]);
 		$confirmacion->fill($Request->all());

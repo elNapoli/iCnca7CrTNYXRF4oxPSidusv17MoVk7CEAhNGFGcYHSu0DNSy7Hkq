@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class PrePostulacionUniversidadRequest extends Request {
+class DocumentoIdentidadRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -21,28 +21,20 @@ class PrePostulacionUniversidadRequest extends Request {
 	 */
 	public function rules()
 	{
-		$descripcion = '';
-		if($this->get('financiamiento')==='4' or $this->get('financiamiento')==='5'){
-
-		$descripcion = 'required';
-		}
 		return [
-			'anio'=>'required',
-			'semestre'=>'required',
-			'financiamiento'=>'required',
-			'descripcion'=> $descripcion,
-			'carrera'=>'required',
+			'numero' =>'required',
+			'tipo'=>'required',
 		];
 	}
-
-
 
     public function messages()
     {
 
         return [
                 //
-                'anio.required' => 'El campo año es obligatorio.',
+                'numero.required' => 'El número del documento es un campo obligatorio',
+                'tipo.required' => 'El tipo de documento es un campo obligatorio',
             ];
     }
+
 }

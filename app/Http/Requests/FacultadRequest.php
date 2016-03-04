@@ -28,4 +28,13 @@ class FacultadRequest extends Request {
 		];
 	}
 
+    public function messages()
+    {
+
+        return [
+                'campus_sede.required' => 'EL campo Campus/sede es obligatorio.',
+
+            ];
+    }
+
 }

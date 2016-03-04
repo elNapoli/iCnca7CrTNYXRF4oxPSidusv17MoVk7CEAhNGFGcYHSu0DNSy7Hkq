@@ -5,7 +5,8 @@
 @section('content')
     @include('documentoIdentidad.modal_documento_identidad')
     {!!Form::hidden('getUrlIndexStep',url('postulacion/index-step'),array('id'=>'getUrlIndexStep'));!!}
-<div id="reno">hola</div>
+
+
     <div id="wizard">
         <div id="message"></div>
         <h3>Datos personales</h3>
@@ -45,12 +46,14 @@
     {!! Html::Script('plugins/bootstrap/js/bootstrap-select.js')!!}
     {!! Html::Script('js/datepicker-es.js')!!}
     {!! Html::Script('js/function_financiamiento.js')!!}
-    {!! Html::Script('js/function_documento_identidad.js')!!}
     {!! Html::Script('js/funciones.js') !!}
 
     <script>
         $(document).on('ready',function() {
-            
+
+
+
+
             var indexStep = $.ajax({
                                   
                 async : false,
@@ -75,9 +78,11 @@
 
                 error : function(xhr, status) {
                     var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                    for(var key in xhr.responseJSON)
+                    responseJSON =  JSON.parse(xhr.responseText);
+
+                    for(var key in responseJSON)
                     {
-                        html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                        html += "<li>" + responseJSON[key][0] + "</li>";
                     }
                     $('#message').html(html+'</div>');
                     //$("html, body").animate({ scrollTop: 0 }, 600);
@@ -308,47 +313,50 @@
              
 
 
-                       
-                    var respuestaAjax = $.ajax({
-                          // En data puedes utilizar un objeto JSON, un array o un query string
-                            data: data,
-                            async : false,
+                    if(data != ''){
+                        var respuestaAjax = $.ajax({
+                              // En data puedes utilizar un objeto JSON, un array o un query string
+                                data: data,
+                                async : false,
+                                 
+                                //Cambiar a type: POST si necesario
+                                type: $(".current").find('#form-postulacion-active').attr('method'),
+                                // Formato de datos que se espera en la respuesta
+                                dataType: "json",
+                                // URL a la que se enviará la solicitud Ajax
+                                url:url ,
+                                beforeSend:function() {
+                                    $('#loading').show();
+                                },
+                                complete: function(){
+                                    $('#loading').hide();
+                                },
+                                success : function(json) {   
+                                    //alert("ho");
+                                    $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');
+                                   // $("html, body").animate({ scrollTop: 0 }, 600);
                              
-                            //Cambiar a type: POST si necesario
-                            type: $(".current").find('#form-postulacion-active').attr('method'),
-                            // Formato de datos que se espera en la respuesta
-                            dataType: "json",
-                            // URL a la que se enviará la solicitud Ajax
-                            url:url ,
-                            beforeSend:function() {
-                                $('#loading').show();
-                            },
-                            complete: function(){
-                                $('#loading').hide();
-                            },
-                            success : function(json) {   
-                                //alert("ho");
-                                $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');
-                               // $("html, body").animate({ scrollTop: 0 }, 600);
-                         
+                                    
+                                },
+
+                                error : function(xhr, status) {
+                                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                                    responseJSON =  JSON.parse(xhr.responseText);
+
+                                    for(var key in responseJSON)
+                                    {
+                                        html += "<li>" + responseJSON[key][0] + "</li>";
+                                    }
+                                    $('#message').html(html+'</div>');
+                                    //$("html, body").animate({ scrollTop: 0 }, 600);
+                              
+                                },
                                 
-                            },
+                   
 
-                            error : function(xhr, status) {
-                                var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                                for(var key in xhr.responseJSON)
-                                {
-                                    html += "<li>" + xhr.responseJSON[key][0] + "</li>";
-                                }
-                                $('#message').html(html+'</div>');
-                                //$("html, body").animate({ scrollTop: 0 }, 600);
-                          
-                            },
-                            
-               
+                            });
 
-                        });
-
+                        }   
                     if(respuestaAjax.status == 200){
           
 
@@ -399,9 +407,11 @@
 
                                 error : function(xhr, status) {
                                     var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                                    for(var key in xhr.responseJSON)
+                                    responseJSON =  JSON.parse(xhr.responseText);
+
+                                    for(var key in responseJSON)
                                     {
-                                        html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                                        html += "<li>" + responseJSON[key][0] + "</li>";
                                     }
                                     $('#message').html(html+'</div>');
                                     //$("html, body").animate({ scrollTop: 0 }, 600);
@@ -429,6 +439,18 @@
                     else{return true;}                              
                 }   
             });
+            $('div#wizard ').on('mouseenter','[data-toggle="tooltip"]',function(){
+               
+
+                $(this).tooltip(); 
+                
+            });
+
+
+
+
+
+
 
             $('section#wizard-p-2').on('click',' #FinanciamientoDDList',function(){
 
@@ -530,6 +552,7 @@
             selectByTabs("section#wizard-p-2",'#pais','#_token','#getCampusByPais','#campus_sede');
             selectByTabs("section#wizard-p-2",'#campus_sede','#_token','#getUrlFacultadByCampus','#facultad');
             selectByTabs("section#wizard-p-2",'#facultad','#_token','#getUrlCarreraByFacultad','#carrera');
+
             $('section#wizard-p-2').on('focus','#desde',function(){
 
                $( this ).datepicker({

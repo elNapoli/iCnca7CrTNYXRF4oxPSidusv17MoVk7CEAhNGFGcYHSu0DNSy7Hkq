@@ -16,6 +16,7 @@
 {!!Form::hidden('getUrlFacultades', url('facultades/facultades'),array('id'=>'getUrlFacultades'));!!}
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 {!!Form::hidden('getUrlFacultadUpdate', url('facultades/update'),array('id'=>'getUrlFacultadUpdate'));!!}
+{!!Form::hidden('getUrlFacultadDestroy', url('facultades/destroy'),array('id'=>'getUrlFacultadDestroy'));!!}
 {!!Form::hidden('urlCampusByUniversidad', url('universidades/campus-by-universidad'),array('id'=>'urlCampusByUniversidad'));!!}
 
 
@@ -113,10 +114,14 @@
                 url:$('#form-edit').attr('action')+'/'+$(this).attr('id') ,
                 success : function(json) {
                       //  console.log(json);
+
                     $('div#boyd-modal div div input#nombre').val(json.nombre);
                     $('div#boyd-modal div div input#telefono').val(json.telefono);
-                    $('div#boyd-modal div div input#campus_sede').val(json.campus_sedes_r.nombre);
-                    $('div#boyd-modal div div input#universidad').val(json.campus_sedes_r.universidad_r.nombre);
+                    $('div#boyd-modal div div input#id_facultad').val(json.id);
+                    $('div#boyd-modal div div select#universidad').val(json.campus_sedes_r.universidad_r.id);
+
+                    selectByTabsSinAccion("div#boyd-modal div div",'#getToken','#urlCampusByUniversidad','#campus_sede',json.campus_sedes_r.universidad_r.id,json.campus_sedes_r.id);
+
                     $('#modal_edit_facultad').modal('show'); 
           
 
@@ -132,10 +137,46 @@
             
         });
 
+
+        $('table').on('click','.btn-delete', function(e){
+
+                e.preventDefault(); // jquery evento prevent default (e)
+                if(confirm("Desea eliminar el registro seleccionado.?")){
+                    
+                    var id    = $(this).attr('id') //captura el id de la fila seleccionada
+
+                    var url   = $('#getUrlFacultadDestroy').val()+'/'+id; //remplazo el placeholder USER_ID con la id
+
+
+
+                
+                    $.ajax({
+                        // En data puedes utilizar un objeto JSON, un array o un query string
+                        data:{_token:$('#getToken').val()},
+                        //Cambiar a type: POST si necesario
+                        type: "post",
+                        // Formato de datos que se espera en la respuesta
+                        dataType: "json",
+                        // URL a la que se enviará la solicitud Ajax
+                        url:url ,
+                        success : function(json) {
+                            $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');                
+                            dt.ajax.reload();
+                        },
+
+                        error : function(xhr, status) {
+                            alert('El continente no fue eliminado');
+
+                        },
+                    });     
+                }
+
+            });
+
         $('#btnEditfacultad').on('click', function(e){
 
+
             var data = $('#form-edit').serialize();
-            alert(data)
             $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
                data:data,
@@ -144,21 +185,22 @@
                 // Formato de datos que se espera en la respuesta
                 dataType: "json",
                 // URL a la que se enviará la solicitud Ajax
-                url:$('#getUrlFacultadUpdate').val()+'/'+$('#id').val(),
+                url:$('#getUrlFacultadUpdate').val(),
                 success : function(json) {
                     $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
-                    $('#modal_edit_carrera').modal('hide'); 
+                    $('#modal_edit_facultad').modal('hide'); 
                     dt.ajax.reload();            
           
                 },
 
                 error : function(xhr, status) {
+                    responseJSON =  JSON.parse(xhr.responseText);
                     var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                        for(var key in xhr.responseJSON)
+                        for(var key in responseJSON)
                         {
-                            html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                            html += "<li>" + responseJSON[key][0] + "</li>";
                         }
-                        $('#message-modal').html(html+'</div>');
+                        $('#message-modal-edit').html(html+'</div>');
 
 
                 },

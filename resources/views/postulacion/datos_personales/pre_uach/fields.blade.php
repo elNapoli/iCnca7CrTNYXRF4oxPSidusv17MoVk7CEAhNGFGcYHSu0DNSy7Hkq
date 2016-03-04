@@ -16,11 +16,11 @@
     </div>
 
     <div class="form-group">
-        {!!  Form::label('telefono_2', 'Teléfono ')!!}
+        {!!  Form::label('telefono_2', 'Teléfono personal ')!!}
         {!! Form::text('telefono_2',null,array('class' => 'form-control','placeholder'=>'+56912345678'));!!}
     </div>
     <div class="form-group">
-        {!!  Form::label('ciudad_2', ' Nombre de la ciudad ')!!}
+        {!!  Form::label('ciudad_2', ' Nombre de la ciudad actual')!!}
         {!!  Form::select('ciudad_2', [null=>'Seleccione ciudad']+$ciudades,null,array('class' => 'form-control ciudad'))!!}
     </div>
     <div class="form-group">

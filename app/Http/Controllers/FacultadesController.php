@@ -90,15 +90,26 @@ class FacultadesController extends Controller {
 			return  "no Ajax";
 		}
 	}
+	public function postDestroy($id){
+		$facultad = Facultad::findOrFail($id);
+ 		$facultad->delete();
+ 		$message = ' El continente '.$facultad->nombre.' Fue eliminada';
+ 	//	dd($request->all());
 
-	public function postUpdate(Request $request)
+		//	return($message);
+		return response()->json([
+				'message'=> $message
+				]);
+		
+
+	}
+	public function postUpdate(FacultadRequest $request)
 	{
-		dd($request->id);
-		$facultad = Facultad::findOrFail($request->get('id'));
+		$facultad = Facultad::findOrFail($request->get('id_facultad'));
 		$facultad->fill($request->all());
         $facultad->save();
 		return response()->json([
-						'message'=> 'Se guardó la facultad Correctamente'
+						'message'=> 'Se editó la facultad Correctamente'
 						]);
 	}
 

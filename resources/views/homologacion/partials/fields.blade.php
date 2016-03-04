@@ -65,7 +65,7 @@
             {!!  Form::label('pga', 'PGA: ',array('class'=>'col-lg-4 control-label'));!!}
 
             <div class="col-lg-8">
-            {!! Form::text('pga',null,array('class' => 'form-control'));!!}
+            {!! Form::text('pga',null,array('data-toggle'=>'tooltip','title'=>'Promedio General Acumulado','class' => 'form-control'));!!}
 
             </div>
           </div>

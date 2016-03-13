@@ -4,10 +4,12 @@
 
 @section('content')
 
+                <h3><i class="fa fa-angle-right"></i> Carreras!</h3>
+                <hr>
+                <div class="panel panel-default">
 
 
-
-		   <a href="#!" id="agregarCiudadModal" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#modal_crear_carrera"> Agregar carrera</a>
+		    <div class="panel-heading"><a href="#!" id="agregarCiudadModal" class="btn btn-info btn-outline" data-toggle="modal" data-target="#modal_crear_carrera"> Agregar carrera</a></div>
 
           <div class="message"></div>
 			@include('carreras.partials.table')
@@ -38,10 +40,12 @@
         initCarrera();
 		var dt = $('#tableCarreras').DataTable( {
 
-
+        "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
+        "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
+        "bProcessing": true,
+ 
         "ajax": $('#getUrlCarreras').val(),
 
-        "bProcessing": true,
 
         "columns": [
            
@@ -55,8 +59,7 @@
             { "data": "email" },
             { "data": null,
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                    $(nTd).html("<a href='#!' id ='"+oData.id+"' class='model-open-edit'> Edit</a>"+
-                                "<a href='#!' class='btn-delete' id='"+oData.id+"'> Del</a>"
+                    $(nTd).html("<a href='#!' id ='"+oData.id+"' class='model-open-edit btn btn-primary btn-xs'> <i class='fa fa-pencil'></i></a>"+"<a href='#!' class='btn btn-danger btn-delete btn-xs' id='"+oData.id+"'>  <i class='fa fa-trash-o'></i></a>"
                         );
 
                 }
@@ -104,7 +107,7 @@
 
 
         $('table').on('click','.btn-delete', function(e){
-            if(confirm("Press a button!\nEither OK or Cancel."))
+            if(confirm("Esta seguro que desea eliminar el registro seleccionado?."))
             {
                 
                 $.ajax({
@@ -118,8 +121,10 @@
                     url:$('#getUrlCarreraDestroy').val() ,
                     success : function(json) {
                         $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
-                        $('#modal_edit_carrera').modal('hide'); 
-                        dt.ajax.reload();              
+                        $('#message').modal('hide'); 
+
+                            $("html, body").animate({ scrollTop: 0 }, 600);         
+                            dt.ajax.reload();            
               
                     },
 
@@ -148,23 +153,63 @@
                 url:$('#getUrlCarreraUpdate').val() ,
                 success : function(json) {
                     $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
-                    $('#modal_edit_carrera').modal('hide'); 
-                    dt.ajax.reload();            
+                    $('#modal_edit_carrera').modal('hide');
+
+                            $("html, body").animate({ scrollTop: 0 }, 600);         
+                            dt.ajax.reload();             
           
                 },
 
                 error : function(xhr, status) {
+                    responseJSON =  JSON.parse(xhr.responseText);
+
                     var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                        for(var key in xhr.responseJSON)
+                        for(var key in responseJSON)
                         {
-                            html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                            html += "<li>" + responseJSON[key][0] + "</li>";
                         }
-                        $('#message-modal').html(html+'</div>');
+                        $('#message-modal-edit').html(html+'</div>');
 
 
                 },
             }); 
         });
+
+        $('#btnCreateCarrera').on('click',function(){
+            var data = $('#form-save-carrera').serialize();
+
+            $.ajax({
+                // En data puedes utilizar un objeto JSON, un array o un query string
+               data:data,
+                //Cambiar a type: POST si necesario
+                type: "post",
+                // Formato de datos que se espera en la respuesta
+                dataType: "json",
+                // URL a la que se enviará la solicitud Ajax
+                url:$('#form-save-carrera').attr('action') ,
+                success : function(json) {
+
+                    $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+                    $('#modal_crear_carrera').modal('hide'); 
+                    dt.ajax.reload();            
+          
+                },
+
+                error : function(xhr, status) {
+                    responseJSON =  JSON.parse(xhr.responseText);
+
+                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                        for(var key in responseJSON)
+                        {
+                            html += "<li>" + responseJSON[key][0] + "</li>";
+                        }
+                        $('#message-modal-create').html(html+'</div>');
+
+
+                },
+            }); 
+
+            });
 
 
 

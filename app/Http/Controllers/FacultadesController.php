@@ -93,7 +93,7 @@ class FacultadesController extends Controller {
 	public function postDestroy($id){
 		$facultad = Facultad::findOrFail($id);
  		$facultad->delete();
- 		$message = ' El continente '.$facultad->nombre.' Fue eliminada';
+ 		$message = ' La facultad '.$facultad->nombre.' Fue eliminada';
  	//	dd($request->all());
 
 		//	return($message);
@@ -109,7 +109,7 @@ class FacultadesController extends Controller {
 		$facultad->fill($request->all());
         $facultad->save();
 		return response()->json([
-						'message'=> 'Se editó la facultad Correctamente'
+						'message'=> 'La facultad '.$request->nombre.' Correctamente'
 						]);
 	}
 

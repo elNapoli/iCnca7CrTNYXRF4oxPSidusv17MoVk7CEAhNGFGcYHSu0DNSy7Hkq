@@ -5,6 +5,13 @@
 @section('content')
 @include('paises.partials.modal_create')
 @include('paises.partials.modal_edit')
+
+
+                <h3><i class="fa fa-angle-right"></i> Paises!</h3>
+                <hr>
+                <div class="panel panel-default">
+				<div class="panel-heading"><a class="btn btn-info" data-toggle="modal" data-target="#modal_crear_pais" href="#!">Crear país</a></div>
+
 		<div class="message"></div>
 
 			@include('paises.partials.table')
@@ -29,17 +36,12 @@
 		$(document).ready(function() {
 
 		    var dt = $('#tablePais').DataTable( {
-				"bProcessing": true,
-		        "language": {
-		            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-		        },
+        	"lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
+        	"language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
+        	"bProcessing": true,
 		        "ajax": $('#urlAllPaises').val(),
 		        "columns": [
-			           { "data": "id",
-                        "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html('<a href="#!" id="'+oData.id+'" class="model-open-edit">'+oData.id+'</a>');
-                            }
-                        },
+
 			            { "data":"nombre" },
 			            { "data":"continente_r.nombre" },
 			            { "data": null,
@@ -116,11 +118,14 @@
 					    url:url ,
 					    success : function(json) {
 					    	$('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   				
-							dt.ajax.reload();
+                            $("html, body").animate({ scrollTop: 0 }, 600);         
+                            dt.ajax.reload();
 						},
 
 					    error : function(xhr, status) {
-					    	alert('El país no fue eliminado');
+					    	$('.message').html('<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>El país seleccionado no ha podido ser eliminado debido a que pertenece a postulaciones actuales.</div>');   				
+                            $("html, body").animate({ scrollTop: 0 }, 600);         
+                            dt.ajax.reload(); 
 							
 					    },
 					});		
@@ -145,8 +150,11 @@
 	                url:$('#UrlPaisUpdate').val()+'/'+$('#id').val(),
 	                success : function(json) {
 	                    $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
-                    	$('#modal_edit_continente').modal('hide'); 
-		            	dt.ajax.reload();            
+                    	$('#modal_edit_pais').modal('hide');
+                    	
+                            $("html, body").animate({ scrollTop: 0 }, 600);         
+                            dt.ajax.reload();            
+                         
 
 	                  //  dt.reload();            
 	          

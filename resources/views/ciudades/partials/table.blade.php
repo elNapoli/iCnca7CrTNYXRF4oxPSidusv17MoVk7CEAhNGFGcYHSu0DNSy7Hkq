@@ -2,8 +2,6 @@
     <div class="col-lg-12">
         <div class="content-panel">
             <table id="tableCiudad" class="table table-striped table-bordered table-hover">
-                <a class="btn btn-primary" data-toggle="modal" data-target="#modal_crear_ciudad" href="#!">Crear ciudad</a>
-                              <hr>
                     <thead>
                         <tr>
                             <th> #</th>

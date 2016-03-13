@@ -4,9 +4,14 @@
 
 @section('content')
 
-		<div class="panel-heading"><a class="btn btn-info" data-toggle="modal" data-target="#modal_crear_beneficio" href="#!">Crear Beneficio</a></div>
+                <h3><i class="fa fa-angle-right"></i> Beneficios!</h3>
+<div class="col-lg-8">
+	<hr>
+<div class="panel panel-default">
+          <div class="panel-heading"><a class="btn btn-info" data-toggle="modal" data-target="#modal_crear_beneficio" href="#!">Crear Beneficio</a></div>
 
 		  <!-- Table -->
+		  <div class="message"></div>
 			@include('beneficios.partials.table')
 
 
@@ -102,13 +107,12 @@
 	                // URL a la que se enviará la solicitud Ajax
 	                url:$('#urlBeneficioUpdate').val()+'/'+$('#id').val(),
 	                success : function(json) {
-                            var html = '<div class="alert alert-success fade in">'+
-                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
-                            json.message+'</p></div>';
-                            
-                            $('#message-modal-edit').html(html);
+                    $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+                    $('#modal_edit_beneficio').modal('hide');
 
-	                 	dt.ajax.reload();          
+                            $("html, body").animate({ scrollTop: 0 }, 600);         
+                            dt.ajax.reload(); 
+                    dt.ajax.reload();        
 	          
 	                },
 
@@ -140,13 +144,9 @@
 		        // URL a la que se enviará la solicitud Ajax
 		        url:$('#form-save-beneficio').attr('action') ,
 		        success : function(json) {
-                            var html = '<div class="alert alert-success fade in">'+
-                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
-                            json.message+'</p></div>';
-                            
-                            $('#message-modal-create').html(html);
-
-	                 	dt.ajax.reload(); 
+ 		            $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+		            $('#modal_crear_beneficio').modal('hide'); 
+		            dt.ajax.reload();  
 		        },
 
 		        error : function(xhr, status) {
@@ -157,7 +157,7 @@
 		                {
 		                    html += "<li>" + responseJSON[key][0] + "</li>";
 		                }
-		                $('#message-modal').html(html+'</div>');
+		                $('#message-modal-create').html(html+'</div>');
 
 
 		        },
@@ -177,8 +177,13 @@
                     dataType: "json",
                     // URL a la que se enviará la solicitud Ajax
                     url:$('#urlBeneficioDestroy').val() ,
-					    success : function(json) {
-					    	alert(json.message);				
+ 					    success : function(json) {
+					  	var html = '<div class="alert alert-success fade in">'+
+                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            json.message+'</p></div>';
+                            
+                            $('.message').html(html);
+                            $("html, body").animate({ scrollTop: 0 }, 600);			
 							dt.ajax.reload();
 						},
 

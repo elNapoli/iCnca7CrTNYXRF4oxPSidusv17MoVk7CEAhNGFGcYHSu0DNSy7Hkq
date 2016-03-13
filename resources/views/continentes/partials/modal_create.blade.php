@@ -12,7 +12,7 @@
                        
                         <div class="panel-body">
                             <div class="row" id="boyd-modal">
-                                <div id="message-modal"></div>
+                                <div id="message-modal-create"></div>
                                 {!! Form::open(['url'=>'continentes/store/', 'method'=>'POST','id'=>'form-save-continente'])!!}
 
 

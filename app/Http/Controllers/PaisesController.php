@@ -82,16 +82,23 @@ class PaisesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function putUpdate($id, PaisesRequest $request)
+	public function putUpdate(Request $request)
 	{	
+		//validacion aparte del requestpais ya que este objeto ha sido seleccionado por tabla. por ende existe
+		//y no se esta creando uno nuevo como para verificar unicidad del nombre.
+		//de modo que se verificaran reglas de campo vacio solamente (esto en medida del error anterior em eñ cual
+		//al presionar editar sin cambios mostraba error de que el pais ya existia)
+		
+		$this->validate($request, [
+        'nombre' => 'required|string',
+        'continente' => 'required',
+    	]);
 
+		$pais = Pais::findOrFail($request->get('id'));
 
-		$pais = Pais::findOrFail($id);
-
-		//dd($pais->toArray());
 		$pais->fill($request->all());
         $pais->save();
-        $message    = 'El país '.$request->get('nombre').'se almacenó correctamente';
+        $message    = 'El país '.$request->get('nombre').' se editó correctamente';
 		return response()->json([
 				'message'=> $message
 				]);

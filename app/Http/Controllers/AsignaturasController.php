@@ -97,7 +97,7 @@ class AsignaturasController extends Controller {
 	{
 
 		$this->validate($request, [
-        'codigo' => 'required',
+        'codigo' => 'required|unique:asignatura,codigo',
         'nombre' => 'required|string',
         'nivel' => 'required',
         'anio' => 'required',
@@ -116,7 +116,7 @@ class AsignaturasController extends Controller {
 	{
 		//abort(500);
 		$asignatura = Asignatura::where('asignatura.codigo','=',$request->id);
- 		$message = ' la asignatura perteneciente al codigo: '.$request->id.' fue eliminada';
+ 		$message = ' La asignatura perteneciente al codigo: '.$request->id.' fue eliminada';
  		$asignatura->delete();
  	//	dd($request->all());
 		return response()->json([

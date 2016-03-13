@@ -74,10 +74,11 @@ class DepartamentosController extends Controller {
 		$departamento->save();
 		//$departamento = Departamento::create($request->all());
 		$message    = 'El departamento '.$request->get('tipo').' se almacenó correctamente';
-		\Session::flash('message', $message);
+	
 
-		//return redirect()->route('beneficios.index');
-		return redirect('departamentos');
+		return response()->json([
+			'message'=> $message
+			]);
 	}
 
 		public function postUniversidadByPais(Request $request){
@@ -137,6 +138,14 @@ class DepartamentosController extends Controller {
 	 */
 	public function putUpdate($id,Request $request)
 	{
+		$this->validate($request, [
+        'tipo' => 'required|string',
+        'nombre_encargado' => 'required|string',
+        'telefono' => 'required',
+        'email' => 'required',
+        'campus_sede' => 'required',
+    	]);
+
 		$departamento = Departamento::findOrFail($id);
 		$departamento->sitio_web = $request->sitio_web;
 		$departamento->nombre_encargado = $request->nombre_encargado;

@@ -299,10 +299,9 @@ function crearTablaUniversidad(idTabla,url){
 
 
         "ajax": url,
-        "bProcessing": true,
-        "language": {
-                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-                },
+                    "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
+                     "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
+                    "bProcessing": true,
 
         "columns": [
             {

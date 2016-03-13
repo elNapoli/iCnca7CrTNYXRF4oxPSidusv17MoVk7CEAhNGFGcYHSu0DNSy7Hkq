@@ -46,7 +46,7 @@ class ContinentesController extends Controller {
 	{
 		 
 		$continente = Continente::create($request->all());
-		$message    = 'El continente '.$request->get('nombre').'se almacenó correctamente';
+		$message    = 'El continente '.$request->get('nombre').' se almacenó correctamente';
 		return response()->json([
 				'message'=> $message
 				]);
@@ -83,7 +83,7 @@ class ContinentesController extends Controller {
 		$continente = Continente::findOrFail($id);
 		$continente->fill($request->all());
         $continente->save();
-        $message    = 'El continente '.$request->get('nombre').'se ha actualizado correctamente';
+        $message    = 'El continente '.$request->get('nombre').' se ha actualizado correctamente';
 		return response()->json([
 				'message'=> $message
 				]);

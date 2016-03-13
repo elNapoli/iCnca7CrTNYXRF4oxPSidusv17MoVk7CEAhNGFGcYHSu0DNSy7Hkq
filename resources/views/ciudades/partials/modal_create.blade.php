@@ -12,7 +12,7 @@
                        
                         <div class="panel-body">
                             <div class="row" id="boyd-modal">
-                                <div id="message-modal"></div>
+                                <div id="message-modal-create"></div>
                                 {!! Form::open(['url'=>'ciudades/store/', 'method'=>'POST','id'=>'form-save-ciudad'])!!}
 
 
@@ -35,8 +35,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnCreateCiudad">Guardar ciudad</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-info" id="btnCreateCiudad">Guardar ciudad</button>
             </div>
         </div>
         <!-- /.modal-content -->

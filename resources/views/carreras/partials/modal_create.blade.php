@@ -12,8 +12,8 @@
                        
                         <div class="panel-body">
                             <div class="row" id="boyd-modal">
-                                <div id="message-modal"></div>
-                                {!! Form::open(['url'=>'carreras/store', 'method'=>'POST','id'=>'form-save'])!!}
+                                <div id="message-modal-create"></div>
+                                {!! Form::open(['url'=>'carreras/store', 'method'=>'POST','id'=>'form-save-carrera'])!!}
 
 
                                     @include('carreras.partials.fields')
@@ -35,8 +35,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnAddCarrera">Guardar carrera</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-info" id="btnCreateCarrera">Guardar carrera</button>
             </div>
         </div>
         <!-- /.modal-content -->

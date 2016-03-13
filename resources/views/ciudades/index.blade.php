@@ -4,6 +4,11 @@
 
 @section('content')
 
+                <h3><i class="fa fa-angle-right"></i> Ciudades!</h3>
+    	<hr>
+		<div class="panel panel-default">
+                <div class="panel-heading"><a class="btn btn-info" data-toggle="modal" data-target="#modal_crear_ciudad" href="#!">Crear ciudad</a></div>
+
 		<div class="message"></div>
 
 		  <!-- Table -->
@@ -29,10 +34,11 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var dt = $('#tableCiudad').DataTable( {
-				"bProcessing": true,
-		        "language": {
-		            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-		        },
+
+        "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
+        "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
+        "bProcessing": true,
+
 		        "ajax": $('#urlAllCiudades').val(),
 		        "columns": [
 			           { "data": "ciudadID",
@@ -81,15 +87,15 @@
 		  
 		        },
 
-		        error : function(xhr, status) {
-		        	responseJSON =  JSON.parse(xhr.responseText);
+               error : function(xhr, status) {
+                    responseJSON =  JSON.parse(xhr.responseText);
 
-		            var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-		                for(var key in responseJSON)
-		                {
-		                    html += "<li>" + responseJSON[key][0] + "</li>";
-		                }
-		                $('#message-modal').html(html+'</div>');
+                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                        for(var key in responseJSON)
+                        {
+                            html += "<li>" + responseJSON[key][0] + "</li>";
+                        }
+                        $('#message-modal-create').html(html+'</div>');
 
 
 		        },
@@ -120,11 +126,14 @@
 					    url:url ,
 					    success : function(json) {
 					    	$('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   				
-							dt.ajax.reload();
+                            $("html, body").animate({ scrollTop: 0 }, 600);         
+                            dt.ajax.reload();  
 						},
 
 					    error : function(xhr, status) {
-					    	alert('La ciudad no fue eliminado');
+					    	$('.message').html('<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>La ciudad seleccionada no ha podido ser eliminada debido a que pertenece a postulaciones actuales.</div>');   				
+                            $("html, body").animate({ scrollTop: 0 }, 600);         
+                            dt.ajax.reload();  
 
 					    },
 					});		
@@ -185,21 +194,22 @@
                     success : function(json) {
                         $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
                         $('#modal_edit_ciudad').modal('hide'); 
-                        dt.ajax.reload();            
+                            $("html, body").animate({ scrollTop: 0 }, 600);         
+                            dt.ajax.reload();            
 
                       //  dt.reload();            
               
                     },
 
-                    error : function(xhr, status) {
-                        responseJSON =  JSON.parse(xhr.responseText);
+               error : function(xhr, status) {
+                    responseJSON =  JSON.parse(xhr.responseText);
 
-                        var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                            for(var key in responseJSON)
-                            {
-                                html += "<li>" + responseJSON[key][0] + "</li>";
-                            }
-                            $('#message-modal-edit').html(html+'</div>');
+                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                        for(var key in responseJSON)
+                        {
+                            html += "<li>" + responseJSON[key][0] + "</li>";
+                        }
+                        $('#message-modal-create').html(html+'</div>');
 
 
                     },

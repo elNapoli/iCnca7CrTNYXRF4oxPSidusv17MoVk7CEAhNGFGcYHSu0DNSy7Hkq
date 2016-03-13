@@ -5,6 +5,12 @@
 @section('content')
 
 
+                <h3><i class="fa fa-angle-right"></i> Continentes!</h3>
+                <div class="col-lg-8">
+                <hr>
+                <div class="panel panel-default">
+            <div class="panel-heading"><a class="btn btn-info" data-toggle="modal" data-target="#modal_crear_continente" href="#!">Crear continente</a></div>
+
 		<div class="message"></div>
 
 
@@ -134,7 +140,6 @@
 			});
 			$('#btnCreateContinente').on('click',function(){
 		    var data = $('#form-save-continente').serialize();
-		    alert(data);
 
 		    $.ajax({
 		        // En data puedes utilizar un objeto JSON, un array o un query string
@@ -153,15 +158,15 @@
 		  
 		        },
 
-		        error : function(xhr, status) {
-		        	responseJSON =  JSON.parse(xhr.responseText);
+	                error : function(xhr, status) {
+                    responseJSON =  JSON.parse(xhr.responseText);
 
-		            var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-		                for(var key in responseJSON)
-		                {
-		                    html += "<li>" + responseJSON[key][0] + "</li>";
-		                }
-		                $('#message-modal').html(html+'</div>');
+                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                        for(var key in responseJSON)
+                        {
+                            html += "<li>" + responseJSON[key][0] + "</li>";
+                        }
+                        $('#message-modal-create').html(html+'</div>');
 
 
 		        },

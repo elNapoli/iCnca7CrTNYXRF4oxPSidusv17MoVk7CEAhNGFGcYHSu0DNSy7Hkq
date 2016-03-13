@@ -1,5 +1,5 @@
 <div class="row mt">
-    <div class="col-lg-8">
+    <div class="col-lg-12">
         <div class="content-panel">
             <table id="tableBeneficio" class="table table-striped table-bordered table-hover">
            <thead>

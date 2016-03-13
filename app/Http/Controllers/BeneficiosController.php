@@ -93,7 +93,7 @@ class BeneficiosController extends Controller {
         $beneficio->save();
 		return response()->json([
 								'codigo' => 1,
-								'message'=> 'EL beneficio se editó correctamente'
+								'message'=> 'EL beneficio '.$request->nombre.' se editó correctamente'
 								]);
         //return redirect()->route('beneficios.index');
 	}

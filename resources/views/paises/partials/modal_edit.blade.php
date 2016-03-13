@@ -35,8 +35,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a  href='#' class="btn btn-primary" id="btnUpdatePais">Guardar país</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <a  href='#' class="btn btn-info" id="btnUpdatePais">Guardar país</a>
             </div>
         </div>
         <!-- /.modal-content -->

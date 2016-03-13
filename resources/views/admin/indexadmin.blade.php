@@ -6,7 +6,7 @@
                 <h3><i class="fa fa-angle-right"></i> Usuarios!</h3>
                 <hr>
 
-
+		  <div class="message"></div>	
 			@include('admin.partials.table')
 
 
@@ -104,13 +104,12 @@ var dt = $('#tableUsuarios').DataTable( {
 	                // URL a la que se enviará la solicitud Ajax
 	                url:$('#urlUsuarioUpdate').val()+'/'+$('#id').val(),
 	                success : function(json) {
-                            var html = '<div class="alert alert-success fade in">'+
-                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
-                            json.message+'</p></div>';
-                            
-                            $('#message-modal-edit').html(html);
+                    $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+                    $('#modal_edit_user').modal('hide');
 
-	                 	dt.ajax.reload();           
+                            $("html, body").animate({ scrollTop: 0 }, 600);         
+                            dt.ajax.reload(); 
+                    dt.ajax.reload();           
 	          
 	                },
 

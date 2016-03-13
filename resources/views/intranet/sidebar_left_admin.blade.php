@@ -19,7 +19,7 @@
                   <span>Panel de control</span>
               </a>
               <ul class="sub">
-                  <li><a  href="{{url('continentes/')}}">Continentes</a></li>
+                  <!--<li><a  href="{{url('continentes/')}}">Continentes</a></li> se elimina crud por ser una tabla integra del proyecto. se entrega con valores y no se permite modificacion alguna -->
                     <li>
                         <a href="{{ url('paises/') }}">Paises</a>
                     </li>

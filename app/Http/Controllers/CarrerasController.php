@@ -93,7 +93,7 @@ class CarrerasController extends Controller {
 		$carrera->fill($request->all());
         $carrera->save();
 		return response()->json([
-						'message'=> 'se Guardó la carrera Correctamente'
+						'message'=> 'La carrera '.$request->nombre.' se editó correctamente'
 						]);
 	}
 

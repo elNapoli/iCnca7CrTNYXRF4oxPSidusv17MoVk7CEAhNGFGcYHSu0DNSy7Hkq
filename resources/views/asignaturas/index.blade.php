@@ -92,7 +92,7 @@
                     // URL a la que se enviará la solicitud Ajax
                     url:$('#urlAsignaturaDestroy').val() ,
 					    success : function(json) {
-					  	var html = '<div class="alert alert-danger fade in">'+
+					  	var html = '<div class="alert alert-success fade in">'+
                             '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
                             json.message+'</p></div>';
                             
@@ -205,7 +205,8 @@
 
 		            $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
 		            $('#modal_crear_asignatura').modal('hide'); 
-		            dt.ajax.reload();            
+                            $("html, body").animate({ scrollTop: 0 }, 600);			
+							dt.ajax.reload();          
 		  
 		        },
 

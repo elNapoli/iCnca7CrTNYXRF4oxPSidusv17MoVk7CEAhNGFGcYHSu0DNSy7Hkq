@@ -92,7 +92,9 @@
                         {
                             html += "<li>" + responseJSON[key][0] + "</li>";
                         }
-                        $('#message-modal').html(html+'</div>');
+                        $('#message-modal-create').html(html+'</div>');
+
+
 
 
                 },
@@ -161,7 +163,9 @@
                         url:url ,
                         success : function(json) {
                             $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');                
-                            dt.ajax.reload();
+                            $("html, body").animate({ scrollTop: 0 }, 600);         
+                            dt.ajax.reload(); 
+                    dt.ajax.reload();    
                         },
 
                         error : function(xhr, status) {
@@ -188,8 +192,11 @@
                 url:$('#getUrlFacultadUpdate').val(),
                 success : function(json) {
                     $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
-                    $('#modal_edit_facultad').modal('hide'); 
-                    dt.ajax.reload();            
+                    $('#modal_edit_facultad').modal('hide');
+
+                            $("html, body").animate({ scrollTop: 0 }, 600);         
+                            dt.ajax.reload(); 
+                    dt.ajax.reload();          
           
                 },
 

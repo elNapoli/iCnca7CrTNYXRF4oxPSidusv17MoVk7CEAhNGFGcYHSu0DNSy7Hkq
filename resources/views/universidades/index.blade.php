@@ -4,8 +4,10 @@
 
 @section('content')
 
+                <h3><i class="fa fa-angle-right"></i> Universidades!</h3>
+                <hr>
 
-
+    <div class="panel panel-default">
           <div class="panel-heading"><a class="btn-info btn" href="{{ url('universidades/create') }}">Crear universidad</a></div>
 
           <!-- Table -->
@@ -60,8 +62,13 @@ $(document).ready(function() {
               // URL a la que se enviará la solicitud Ajax
               url:url ,
               success : function(json) {
-                $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
-                row.fadeOut(); //solo se elimina cuando se completa transaccion
+                var html = '<div class="alert alert-success fade in">'+
+                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            json.message+'</p></div>';
+                            
+                            $('.message').html(html);
+                            $("html, body").animate({ scrollTop: 0 }, 600);     
+              dt.ajax.reload();
             },
 
               error : function(xhr, status) {

@@ -4,10 +4,14 @@
 
 @section('content')
 
+                <h3><i class="fa fa-angle-right"></i> Departamentos!</h3>
+                <hr>
+                <div class="panel panel-default">
 
 		  <div class="panel-heading"><a class="btn btn-info" data-toggle="modal" data-target="#modal_crear_departamento" href="#!">Crear departamento</a></div>
 
 		  <!-- Table -->
+		  <div class="message"></div>
 			@include('departamentos.partials.table')
 
 
@@ -18,6 +22,8 @@
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 {!!Form::hidden('getUrlDepartamentos', url('departamentos/departamentos'),array('id'=>'getUrlDepartamentos'));!!}
 {!!Form::hidden('urlDepartamentoUpdate', url('departamentos/update'),array('id'=>'urlDepartamentoUpdate'));!!}
+{!!Form::hidden('getUrlUniversidadByPais', url('departamentos/universidad-by-pais'),array('id'=>'getUrlUniversidadByPais'));!!}
+{!!Form::hidden('getUrlCampusSedeByuniversidad', url('departamentos/campus-sede-by-universidad'),array('id'=>'getUrlCampusSedeByuniversidad'));!!}
 
 @include('departamentos.partials.modal_create')
 @include('departamentos.partials.modal_edit')
@@ -30,12 +36,13 @@
 @endsection
 
 @section('scripts')
+	{!! Html::Script('js/funciones.js') !!}
 	<script type="text/javascript">
 		$(document).ready(function() {
 
 				var dt = $('#tableDepartamentos').DataTable( {
 			 
-			 		"lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "All"]],
+			 		"lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
 					 "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
                     "bProcessing": true,
                     "scrollX": true,
@@ -43,7 +50,6 @@
 
 
 			        "columns": [
-			            { "data":"id" },
 			            { "data":"tipo" },
 			            { "data":"sitio_web" },
 			            { "data":"nombre_encargado" },
@@ -79,20 +85,21 @@
 		        success : function(json) {
 
 		            $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
-		            $('#departamento').modal('hide'); 
-		            dt.ajax.reload();            
+		            $('#modal_crear_departamento').modal('hide'); 
+                            $("html, body").animate({ scrollTop: 0 }, 600);			
+							dt.ajax.reload();           
 		  
 		        },
 
-		        error : function(xhr, status) {
-		        	responseJSON =  JSON.parse(xhr.responseText);
+               error : function(xhr, status) {
+                    responseJSON =  JSON.parse(xhr.responseText);
 
-		            var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-		                for(var key in responseJSON)
-		                {
-		                    html += "<li>" + responseJSON[key][0] + "</li>";
-		                }
-		                $('#message-modal').html(html+'</div>');
+                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                        for(var key in responseJSON)
+                        {
+                            html += "<li>" + responseJSON[key][0] + "</li>";
+                        }
+                        $('#message-modal-create').html(html+'</div>');
 
 
 		        },
@@ -102,7 +109,6 @@
 
         $('table').on('click','.model-open-edit', function(e){
             var data = $('#form-edit-departamento').serialize();
-            alert(data)
             $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
                 data:data,
@@ -151,13 +157,12 @@
 	                // URL a la que se enviará la solicitud Ajax
 	                url:$('#urlDepartamentoUpdate').val()+'/'+$('#id').val(),
 	                success : function(json) {
-                            var html = '<div class="alert alert-success fade in">'+
-                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
-                            json.message+'</p></div>';
-                            
-                            $('#message-modal-edit').html(html);
+                      $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+                    $('#modal_edit_departamento').modal('hide');
 
-	                 	dt.ajax.reload();           
+                            $("html, body").animate({ scrollTop: 0 }, 600);         
+                            dt.ajax.reload(); 
+                    dt.ajax.reload();           
 	          
 	                },
 
@@ -188,9 +193,12 @@
                     dataType: "json",
                     // URL a la que se enviará la solicitud Ajax
                     url:$('#urlDepartamentosDestroy').val() ,
-					    success : function(json) {
-					    	alert(json.message);				
-							dt.ajax.reload();
+                    success : function(json) {
+                        $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+                        $('#message').modal('hide'); 
+
+                            $("html, body").animate({ scrollTop: 0 }, 600);         
+                            dt.ajax.reload();   
 						},
 
 					    error : function(xhr, status) {
@@ -203,6 +211,9 @@
             }
             
         });
+
+    selectByTabs('div#boyd-modal','#pais','#getToken','#getUrlUniversidadByPais','#universidad');
+    selectByTabs("div#boyd-modal",'#universidad','#getToken','#getUrlCampusSedeByuniversidad','#campus_sede');
 
 
 		} );

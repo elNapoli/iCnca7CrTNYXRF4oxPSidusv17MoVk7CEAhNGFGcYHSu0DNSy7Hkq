@@ -1,10 +1,9 @@
 <div class="row mt">
-    <div class="col-lg-13">
+    <div class="col-lg-12">
         <div class="content-panel">
             <table id="tableDepartamentos" class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
-                             <th>#</th>
                             <th>Tipo</th>
                             <th>Web</th>
                             <th>Encargado</th>

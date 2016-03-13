@@ -46,7 +46,7 @@ class DocumentosPostulacionController extends Controller {
  
 
 
-        return view('documentosPostulacion.uploadFile');
+        return view('documentospostulacion.uploadFile');
     }
 	public function getIndex(Guard $auth)
 	{

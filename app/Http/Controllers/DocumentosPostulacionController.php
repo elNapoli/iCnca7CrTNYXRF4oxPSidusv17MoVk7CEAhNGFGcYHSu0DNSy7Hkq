@@ -62,7 +62,19 @@ class DocumentosPostulacionController extends Controller {
 		}
 
 	}
+    public function getAllFiles(Guard $auth){
 
+        $postulante = Postulante::where('user_id',$auth->id())->first(); 
+
+        $documentos = DocumentoAdjunto::where('postulante', $postulante->id)->get();
+        return $documentos->toJson();
+    }
+
+
+    public function postFileDestroy(){
+
+        return "hola";
+    }
 	public function postStorageFiles(Request $request,Guard $auth){
      /*   $postulante = Postulante::where('user_id',$auth->id())->first();
 

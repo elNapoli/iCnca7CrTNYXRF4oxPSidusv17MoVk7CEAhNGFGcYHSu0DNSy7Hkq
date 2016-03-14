@@ -13,7 +13,7 @@
   <img height="110" width="100" padding: 0.5em; style="float: right; padding-right: 1.5em;" src="https://ww4.aievolution.com/nca1501/files/images/My%20Profile.png">
 
   <br>
-  <div style="left; width: 55%; background: #1A8202 no-repeat margin-right: 200px; left: 34.4607px; font-size: 18.2353px; color: #fff; font-family: sans-courier; transform: scaleX(0.983209);" data-canvas-width="131.75000000000003">Universidad Austral de Chile
+  <div style="left; width: 55%; background: #2E3F1B no-repeat margin-right: 200px; left: 34.4607px; font-size: 18.2353px; color: #fff; font-family: sans-courier; transform: scaleX(0.983209);" data-canvas-width="131.75000000000003">Universidad Austral de Chile
     <br>Dirección de Estudios de Pregrado<br>Unidad de Movilidad Estudiantil<br>Vicerrectoria Academica</div>
     <br>
     <br>

@@ -3,7 +3,9 @@
   color:red;
 }
 #cab{
-	background-color: #1A8202;
+	background-color: #2E3F1B;
+  opacity: 0.9;
+  font:sans-serif;
 	text-align: center;
 	color: #fff;
   border-top: 1px solid #000000;
@@ -105,6 +107,8 @@
 } 
 
 #tipos .t1{
+  font:sans-serif;
+  font-size: 13.2353px;
   border: 1px solid #000000;
 }
 #tipos .t2{
@@ -150,11 +154,14 @@ table td h3{
 
 table .no {
   color: #000000;
-  font-size: 1em;
+  font:sans-serif;
+  font-size: 13.2353px;
   background: #E9E9E9;
 }
 
 table .desc {
+  font:sans-serif;
+  font-size: 13.2353px;
   text-align: center;
   background: #FFFFFF;
 }

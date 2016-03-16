@@ -22,7 +22,7 @@ class AddPostgradoFk extends Migration
             $table  ->foreign('financiamiento','postgrado_financiamiento_foreign')
                     ->references('id')
                     ->on('financiamiento')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
 
         });

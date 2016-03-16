@@ -24,7 +24,7 @@ class AddPostulanteFk extends Migration
             $table  ->foreign('user_id','postulante_users_foreign')
                     ->references('id')
                     ->on('users')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION ');
 
         });

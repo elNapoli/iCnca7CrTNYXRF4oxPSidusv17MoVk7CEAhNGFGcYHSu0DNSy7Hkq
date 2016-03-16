@@ -208,9 +208,25 @@ class UniversidadesController extends Controller {
 	{
 		//abort(500);
 		$universidad = Universidad::findOrFail($id);
- 		$universidad->delete();
- 		$message = ' La universidad '.$universidad->nombre.' Fue eliminado';
  	//	dd($request->all());
+ 		try {
+		    $universidad->delete();
+		    $message =  array('0','0',' La universidad '.$universidad->nombre.' fue eliminada.');
+		} 
+		catch (\Illuminate\Database\QueryException $e) {
+		    $message[0] =   $e->errorInfo[0];
+		    $message[1] =   $e->errorInfo[1];
+		    if($message[1] == 1451 ){
+
+		   		$message[2] =   'No se puede eliminar el registro seleccionado, ya que existen registros que dependen de éste.';
+		    }
+		    else{
+				$message[2] =   $e->errorInfo[2];
+
+		    }
+		}
+
+
 		if($request->ajax()){
 		//	return($message);
 			return response()->json([
@@ -227,12 +243,28 @@ class UniversidadesController extends Controller {
 
 	}
 
-	public function deleteDestroyCampus($id, Request $request)
+	public function postDestroyCampus(Request $request)
 	{
-		//abort(500);
-		$universidad = CampusSede::findOrFail($id);
- 		$universidad->delete();
- 		$message = ' El campus '.$universidad->nombre.' Fue eliminado';
+		//dd($request->get('id'));
+		
+
+		try {
+			$universidad = CampusSede::findOrFail($request->get('id'));
+		    $universidad->delete();
+		    $message =  array('0','0',' El campus '.$universidad->nombre.' Fue eliminado');
+		} 
+		catch (\Illuminate\Database\QueryException $e) {
+		    $message[0] =   $e->errorInfo[0];
+		    $message[1] =   $e->errorInfo[1];
+		    if($message[1] == 1451 ){
+
+		   		$message[2] =   'No se puede eliminar el registro seleccionado, ya que existen registros que dependen de éste.';
+		    }
+		    else{
+				$message[2] =   $e->errorInfo[2];
+
+		    }
+		}
  	//	dd($request->all());
 		if($request->ajax()){
 		//	return($message);

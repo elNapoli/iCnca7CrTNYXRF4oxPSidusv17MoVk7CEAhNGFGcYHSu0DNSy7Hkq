@@ -21,7 +21,7 @@
   
         </section>
         <h3>Información de intercambio</h3>
-        <section data-mode="async" data-ajax="true" data-url="{{url('prepostulacionuniversidad/create-or-edit')}}">
+        <section style='height:500px' data-mode="async" data-ajax="true" data-url="{{url('prepostulacionuniversidad/create-or-edit')}}">
             
               
         </section>

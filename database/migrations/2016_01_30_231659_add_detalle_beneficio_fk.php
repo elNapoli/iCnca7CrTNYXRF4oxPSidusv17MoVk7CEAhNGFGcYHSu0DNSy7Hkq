@@ -22,7 +22,7 @@ class AddDetalleBeneficioFk extends Migration {
             $table  ->foreign('beneficio','detalle_beneficio_beneficio_foreign')
                     ->references('id')
                     ->on('beneficio')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
 
         });

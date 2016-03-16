@@ -62,17 +62,22 @@ $(document).ready(function() {
               // URL a la que se enviará la solicitud Ajax
               url:url ,
               success : function(json) {
-                var html = '<div class="alert alert-success fade in">'+
-                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
-                            json.message+'</p></div>';
-                            
-                            $('.message').html(html);
-                            $("html, body").animate({ scrollTop: 0 }, 600);     
-              dt.ajax.reload();
+                if(json.message[0] == 0){
+
+                  $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message[2]+'</div>');          
+                            $("html, body").animate({ scrollTop: 0 }, 600);    
+                            row.hide();
+                }
+                else{
+
+                  var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>código: '+json.message[1]+', '+json.message[2]+' </p></div>';
+                    $('.message').html(html);
+                    $("html, body").animate({ scrollTop: 0 },600); 
+                }   
             },
 
               error : function(xhr, status) {
-                alert('La universidad seleccionada no se pudo eliminar');
+                alert(status);
               },
           });   
         }

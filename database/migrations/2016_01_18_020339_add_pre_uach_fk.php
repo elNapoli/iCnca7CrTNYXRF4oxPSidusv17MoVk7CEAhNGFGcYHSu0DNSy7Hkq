@@ -22,8 +22,8 @@ class AddPreUachFk extends Migration
              $table  ->foreign('ciudad','pre_uach_ciudad_foreign')
                     ->references('id')
                     ->on('ciudad')
-                    ->onDelete('CASCADE')
-                    ->onUpdate('no action');
+                    ->onDelete('NO ACTION')
+                    ->onUpdate('NO ACTION');
 
 
         });

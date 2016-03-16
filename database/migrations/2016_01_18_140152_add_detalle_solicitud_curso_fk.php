@@ -22,7 +22,7 @@ class AddDetalleSolicitudCursoFk extends Migration
             $table  ->foreign('asignatura','detalle_solicitud_curso_asignatura_foreign')
                     ->references('codigo')
                     ->on('asignatura')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');      
 
         });

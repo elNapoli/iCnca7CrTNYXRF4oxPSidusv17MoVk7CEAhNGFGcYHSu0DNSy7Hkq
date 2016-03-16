@@ -22,7 +22,7 @@ class AddPreNuEstudioActualFk extends Migration
             $table  ->foreign('campus_sede','pre_nu_estudio_actual_campus_sede_foreign')
                     ->references('id')
                     ->on('campus_sede')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
 
 

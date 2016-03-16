@@ -18,6 +18,21 @@ body {
     margin: 0px !important;
     font-size:13px;
 }
+.remove-tab{
+
+  position: absolute;
+  top: 3px;
+  height: 1px;
+right: 5px;
+font-size: 7px;
+
+}
+
+.remove-tab:hover {
+    cursor: pointer;
+    color: red;
+}
+
 
 ul li {
     list-style: none;

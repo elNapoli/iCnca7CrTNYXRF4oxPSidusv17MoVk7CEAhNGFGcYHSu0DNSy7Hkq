@@ -22,14 +22,14 @@ class AddPrePostulacionUniversidadFk extends Migration
             $table  ->foreign('financiamiento','pre_postulacion_universidad_financiamiento_foreign')
                     ->references('id')
                     ->on('financiamiento')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
 
 
             $table  ->foreign('carrera','pre_postulacion_universidad_carrera_foreign')
                     ->references('id')
                     ->on('carrera')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
 
 

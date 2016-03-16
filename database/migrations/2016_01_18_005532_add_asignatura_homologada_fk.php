@@ -16,14 +16,14 @@ class AddAsignaturaHomologadaFk extends Migration
             $table  ->foreign('homologacion','asignatura_homologada_homologacion_foreign')
                     ->references('id')
                     ->on('homologacion')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
 
 
             $table  ->foreign('asignatura','asignatura_homologada_asignatura_foreing')
                     ->references('codigo')
                     ->on('asignatura')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
 
 

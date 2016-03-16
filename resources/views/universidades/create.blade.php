@@ -72,8 +72,7 @@
                   // URL a la que se enviará la solicitud Ajax
                   url:url ,
                   success : function(json) {   
-                    $(".alert-success").html("El registro fue guardado exitosamente").show();
-                    $(".alert-danger").hide();
+
 
                     window.location.href = $('#urlUniversidadIndex').val();
 
@@ -88,6 +87,7 @@
                               html += "<li>" + responseJSON[key][0] + "</li>";
                           }
                           $('.message').html(html+'</div>');
+                          $("html, body").animate({ scrollTop: 0 }, 600);  
                   },
               });  
 

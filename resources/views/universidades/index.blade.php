@@ -11,7 +11,23 @@
           <div class="panel-heading"><a class="btn-info btn" href="{{ url('universidades/create') }}">Crear universidad</a></div>
 
           <!-- Table -->
-          <div class="message"></div>
+          <div class="message">
+           
+
+          <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+         
+            @if(Session::has('message'))
+              {{Session::get('message')}}
+            @endif
+
+
+          </div>
+
+
+           
+           
+          </div>  
             @include('universidades.partials.table')
 
 

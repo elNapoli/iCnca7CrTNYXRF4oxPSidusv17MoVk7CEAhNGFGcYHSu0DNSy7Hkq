@@ -175,6 +175,7 @@
                   $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message[2]+'</div>');          
                             $("html, body").animate({ scrollTop: 0 }, 600);    
                             $('#tabHead'+id).remove();
+                            $('span#'+id).remove();
                 $('#tab'+id).remove();
                 }
                 else{

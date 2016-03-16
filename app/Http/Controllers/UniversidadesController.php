@@ -245,11 +245,11 @@ class UniversidadesController extends Controller {
 
 	public function postDestroyCampus(Request $request)
 	{
-		//abort(500);
-		$universidad = CampusSede::findOrFail($request->get('id'));
+		//dd($request->get('id'));
 		
 
 		try {
+			$universidad = CampusSede::findOrFail($request->get('id'));
 		    $universidad->delete();
 		    $message =  array('0','0',' El campus '.$universidad->nombre.' Fue eliminado');
 		} 

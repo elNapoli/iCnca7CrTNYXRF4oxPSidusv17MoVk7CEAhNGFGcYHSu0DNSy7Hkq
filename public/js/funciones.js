@@ -386,7 +386,7 @@ function createInput(label,placeholder,id,value){
 }
 
 function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
-                   
+    //           console.log(arrayCampus);    
     // create the tab
     $('<li><a id ="tabHead'+arrayCampus.id+'" href="#tab'+arrayCampus.id+'" data-toggle="tab">Campus: '+arrayCampus.nombre+'</a><span id="'+arrayCampus.id+'" class="btn-delete remove-tab glyphicon-remove glyphicon">  </span></li>').appendTo('#tabs');
                         

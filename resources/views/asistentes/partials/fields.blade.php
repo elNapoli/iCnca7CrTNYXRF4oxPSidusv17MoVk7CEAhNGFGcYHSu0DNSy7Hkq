@@ -7,6 +7,7 @@
 
     <button id='add_b' type="button" class="btn btn-success btn-block">Agregar</button>
                <br>
+               <div id="message2"></div>
     @include('asistentes.partials.table_2')
 
 </div> 

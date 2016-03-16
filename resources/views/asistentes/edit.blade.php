@@ -1,13 +1,17 @@
 @extends('intranet.app')
 
 @section('content')
+                <h3><i class="fa fa-angle-right"></i> Asistentes \ Editar registro </h3>
+                <hr>
 
+<div class="row">
 
 
 <div class="col-md-0" ></div>
 <div class="col-md-12" >
 
 	@include('partials.error')
+	<div class="message"></div>
 
 	{!! Form::model($asistentes, ['url'=>['asistentes/update',$asistentes->id], 'method'=>'PUT', 'id'=>'form_edit']) !!}
 	{!!Form::hidden('asistente',$asistentes->id,array('id'=>'asistente'));!!}
@@ -51,8 +55,9 @@
 
 		var dt = $('#tableDetalleBeneficio').DataTable( {
  
- 		"lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "All"]],
-		 "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
+			 		"lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "All"]],
+					 "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
+                    "bProcessing": true,
 
         "ajax": $('#urlBeneficioByAsistente').val()+'/'+$('#asistente').val(),
 
@@ -84,7 +89,7 @@
 	$('#add_b').on('click',function(e){ //boton para añadir beneficios en edit
 		e.preventDefault(); // jquery evento prevent default (e)
 
-		if(confirm("Esta seguro que desea añador este beneficio!\nEither OK or Cancel.")){
+		if(confirm("Esta seguro que desea añadir este beneficio!\nEither OK or Cancel.")){
 		
 					var id_a	= $('#asistente').val();//$('#asistente').val();
 					var beneficio    = $('#beneficio').val(); //captura el id del select 
@@ -105,7 +110,12 @@
 					    // URL a la que se enviará la solicitud Ajax
 					    url:url ,
 					    success : function(json) {
-					    	alert(json.message);				
+					  	var html = '<div class="alert alert-success fade in">'+
+                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            json.message+'</p></div>';
+                            
+                            $('#message2').html(html);
+                            $("html, body").animate({ scrollTop: 0 }, 600);			
 							dt.ajax.reload();
 						},
 
@@ -145,7 +155,12 @@
 					    // URL a la que se enviará la solicitud Ajax
 					    url:url ,
 					    success : function(json) {
-					    	alert(json.message);				
+					  	var html = '<div class="alert alert-success fade in">'+
+                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            json.message+'</p></div>';
+                            
+                            $('#message2').html(html);
+                            $("html, body").animate({ scrollTop: 0 }, 600);			
 							dt.ajax.reload();
 						},
 

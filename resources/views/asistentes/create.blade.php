@@ -3,7 +3,10 @@
 @section('Dashboard') Asistente @endsection
 
 @section('content')
+                <h3><i class="fa fa-angle-right"></i> Asistentes \ Crear registro </h3>
+                <hr>
 
+<div class="row">
 
 
 <div class="col-md-1" ></div>

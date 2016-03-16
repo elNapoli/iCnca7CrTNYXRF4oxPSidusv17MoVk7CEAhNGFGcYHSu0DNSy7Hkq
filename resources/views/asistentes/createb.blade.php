@@ -1,14 +1,17 @@
-@extends('layout.app')
+@extends('intranet.app')
 
 @section('Dashboard') Asistente @endsection
 
 @section('content')
 
+                <h3><i class="fa fa-angle-right"></i> Asistentes \ Crear registro \ Añadir beneficios</h3>
+                <hr>
 
+<div class="row">
 
 <div class="col-md-1" ></div>
-    <div class="col-md-5" >
-
+    <div class="col-md-6" >
+	<div class="message"></div>
 		@include('partials.error')
 
 		{!! Form::open(['url'=>'detalle/add', 'method'=>'POST'])!!}
@@ -56,13 +59,13 @@ var dt2 = $('#tableDetalleBeneficio3').DataTable( {
             { "data": "beneficio_r.nombre" },
             { "data": null,
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                	$(nTd).attr('align','center');
                     $(nTd).html(
-                                "<a href='#!' class='btn-delete' id='"+oData.id_a+'.'+oData.beneficio+"'> Del</a>"
+                                "<a href='#!' class='btn btn-danger btn-delete btn-xs' id='"+oData.id_a+'.'+oData.beneficio+"'> <i class='fa fa-trash-o'></i></a>"
                         );
 
                 }
             }
-       
         ],
         "order": [[1, 'asc']]
     } );
@@ -99,7 +102,12 @@ var dt2 = $('#tableDetalleBeneficio3').DataTable( {
 					    // URL a la que se enviará la solicitud Ajax
 					    url:url ,
 					    success : function(json) {
-					    	alert(json.message);				
+					  	var html = '<div class="alert alert-success fade in">'+
+                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            json.message+'</p></div>';
+                            
+                            $('.message').html(html);
+                            $("html, body").animate({ scrollTop: 0 }, 600);			
 							dt2.ajax.reload();
 						},
 

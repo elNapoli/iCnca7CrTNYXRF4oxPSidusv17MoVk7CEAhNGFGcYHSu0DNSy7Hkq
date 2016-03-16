@@ -20,12 +20,8 @@ class AsistentesController extends Controller {
 
 	public function getPrueba()
 	{
-//		$var = Postulante::with('pregradosR.preUachsR.asistentesR.detalleBeneficioR.beneficioR')->has('pregradosR.preUachsR.asistentesR.detalleBeneficioR.beneficioR')->get();
-		//$var = Postulante::with('pregradosR')->get();
-//		$arra = array('data'=>$var->toArray());
-//		return $var->toJson();
-		//return json_encode($arra);
-		return view('asistentes.prueba');
+	$asistentes = Asistente::with('preUachsR.pregradoR.postulanteR')->get();
+	dd($asistentes->toArray());
 	}
 
 	public function getIndex()
@@ -40,6 +36,14 @@ class AsistentesController extends Controller {
 	 *
 	 * @return Response
 	 */
+
+	public function getAsistentes()
+	{
+		$asistentes = Asistente::with('preUachsR.pregradoR.postulanteR')->get();
+		$arra = array('data'=>$asistentes->toArray());
+		return json_encode($arra);
+	}
+
 	public function getCreate()
 	{
 		$post = Postulante::has('pregradosR.preUachsR')->whereNotIn('postulante.id',function($query){
@@ -129,10 +133,10 @@ class AsistentesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function deleteDestroy($id,Request $request)
+	public function postDestroy(Request $request)
 	{
 		//abort(500);
-		$beneficio = Asistente::findOrFail($id);
+		$beneficio = Asistente::findOrFail($request->id);
  		$beneficio->delete();
  		$message = ' El beneficio '.$beneficio->nombre.' Fue eliminado';
  	//	dd($request->all());

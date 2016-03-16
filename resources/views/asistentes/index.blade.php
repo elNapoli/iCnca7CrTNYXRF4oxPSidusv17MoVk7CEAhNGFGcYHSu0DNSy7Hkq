@@ -1,13 +1,14 @@
 @extends('intranet.app')
 
-@section('Dashboard') Asistente @endsection
-
 @section('content')
+
+                <h3><i class="fa fa-angle-right"></i> Asistentes!</h3>
+                <hr>
 
 <div class="row">
 	  <!-- Default panel contents -->
-    <div class="col-md-1" ></div>
-    <div class="col-md-8" >
+    <div class="col-md-0" ></div>
+    <div class="col-md-12" >
 
 		<div class="panel panel-default">
 
@@ -15,6 +16,7 @@
 		  <div class="panel-heading"><a class="btn-info btn" href="{{ url('asistentes/create')}}">Crear asistente</a></div>
 
 		  <!-- Table -->
+		  <div class="message"></div>
 			@include('asistentes.partials.table')
 
 
@@ -32,7 +34,8 @@
 
 {!! Form::close()!!}
 	{!!Form::hidden('urlAsistenteDestroy', url('asistentes/destroy'),array('id'=>'urlAsistenteDestroy'));!!}
-
+{!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
+{!!Form::hidden('getUrlAsistentes', url('asistentes/asistentes'),array('id'=>'getUrlAsistentes'));!!}
 
 @endsection
 
@@ -42,50 +45,69 @@
 @endsection
 
 @section('scripts')
+{!! Html::Script('js/funciones.js') !!}
 	<script type="text/javascript">
 		$(document).ready(function() {
 
-		$('#tableAsistente').DataTable( {
-		        "language": {
-		            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-		        }
-		    } );
+		var dt = $('#tableAsistente').DataTable( {
+			 
+			 		"lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
+					 "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
+                    "bProcessing": true,
+                    
+			        "ajax": $('#getUrlAsistentes').val(),
 
-		$('.btn-delete').click(function(e){ //vincula la funcion del boton al ser presionado
-				e.preventDefault(); // jquery evento prevent default (e)
-				if(confirm("Press a button!\nEither OK or Cancel.")){
-					
-					var row   = $(this).parents('tr');
-					var id    = row.data('id'); //captura el id de la fila seleccionada
-					var form  = $('#form-delete'); //traigo la id
-					var url   = $('#urlAsistenteDestroy').val()+'/'+id; //remplazo el placeholder USER_ID con la id
-					var data  = form.serialize();
+			        "columns": [
+			            { "data":"nombre" },
+			            { "data":"pre_uachs_r.pregrado_r.postulante_r.nombre"},
+			            { "data":"pre_uachs_r.pregrado_r.postulante_r.apellido_paterno"},
+			            { "data": null,
+			                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                $(nTd).attr('align','center');
+                                
+			                    $(nTd).html("<a href='asistentes/edit/"+oData.id+"' class='model-open-edit btn btn-primary btn-xs'> <i class='fa fa-pencil'></i></a>"+
+			                                "<a href='#!' class='btn btn-danger btn-delete btn-xs' id='"+oData.id+"'>  <i class='fa fa-trash-o'></i></a>"
+			                        );
 
+			                }
+			            }
+			       
+			        ]
+			    } );
 
-				
-					$.ajax({
-					    // En data puedes utilizar un objeto JSON, un array o un query string
-					   data:data,
-					    //Cambiar a type: POST si necesario
-					    type: "post",
-					    // Formato de datos que se espera en la respuesta
-					    dataType: "json",
-					    // URL a la que se enviará la solicitud Ajax
-					    url:url ,
+        $('table').on('click','.btn-delete', function(e){
+            if(confirm("Esta seguro que desea eliminar el registro seleccionado?."))
+            {
+                $.ajax({
+                    // En data puedes utilizar un objeto JSON, un array o un query string
+                    data:{_token :$('#getToken').val(), id: $(this).attr('id')},
+                    //Cambiar a type: POST si necesario
+                    type: "post",
+                    // Formato de datos que se espera en la respuesta
+                    dataType: "json",
+                    // URL a la que se enviará la solicitud Ajax
+                    url:$('#urlAsistenteDestroy').val() ,
 					    success : function(json) {
-					    	alert(json.message);				
-							row.fadeOut(); //solo se elimina cuando se completa transaccion
+					  	var html = '<div class="alert alert-success fade in">'+
+                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            json.message+'</p></div>';
+                            
+                            $('.message').html(html);
+                            $("html, body").animate({ scrollTop: 0 }, 600);			
+							dt.ajax.reload();
 						},
 
 					    error : function(xhr, status) {
 					    	alert('El usuario no fue eliminado');
-							row.show();
-					        console.log('Disculpe, existió un problema '+token);
+							
+					        console.log('Disculpe, existió un problema ');
 					    },
-					});		
-				}
+                }); 
+            
+            }
+            
+        });
 
-			});
 
 
 });

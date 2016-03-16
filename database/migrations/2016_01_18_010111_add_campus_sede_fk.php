@@ -22,7 +22,7 @@ class AddCampusSedeFk extends Migration
             $table  ->foreign('ciudad','campus_sede_ciudad_foreign')
                     ->references('id')
                     ->on('ciudad')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
 
         });

@@ -81,6 +81,7 @@
                         'width':'120px',
                         'url': 'file-destroy',
                         'key':subCatObj.id,
+                        'token': 'adsf',
                     });
 
                     inicialTag.push({

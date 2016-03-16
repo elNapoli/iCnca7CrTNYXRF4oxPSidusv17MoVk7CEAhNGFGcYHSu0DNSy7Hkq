@@ -22,7 +22,7 @@ class AddPreUEstudioActualFk extends Migration
             $table  ->foreign('carrera','pre_u_estudio_actual_carrera_foreign')
                     ->references('id')
                     ->on('carrera')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('no action');
 
 

@@ -12,8 +12,8 @@
       <div class="col-xs-6">
         <div class="form-group">
 
-        {!!  Form::label('ranking', 'Ranking de su promoción');!!}
-        {!! Form::text('ranking',null,array('data-toggle'=>'tooltip','title'=>'El ranking puede ser consultado en su escuela','class' => 'form-control','placeholder'=>'Ej: 60'));!!}
+        {!!  Form::label('ranking', 'Ranking de su promoción');!!} <i onmouseover="this.style.cursor='pointer';" class="fa fa-question-circle" data-toggle='tooltip' title='El ranking puede ser consultado en su escuela'></i>
+        {!! Form::text('ranking',null,array('class' => 'form-control','placeholder'=>'Ej: 60'));!!}
         </div>
       </div>
     </div>

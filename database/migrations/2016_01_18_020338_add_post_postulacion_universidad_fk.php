@@ -22,7 +22,7 @@ class AddPostPostulacionUniversidadFk extends Migration
             $table  ->foreign('campus_sede','post_postulacion_universidad_campus_sede_foreign')
                     ->references('id')
                     ->on('campus_sede')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
 
 

@@ -22,7 +22,7 @@ class AddOtraMaestriaFk extends Migration
             $table  ->foreign('facultad','otra_maestria_maestria_facultad_foreign')
                     ->references('id')
                     ->on('facultad')
-                    ->onDelete('CASCADE')
+                    ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
 
         });

@@ -388,7 +388,7 @@ function createInput(label,placeholder,id,value){
 function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
                    
     // create the tab
-    $('<li><a id ="tabHead'+arrayCampus.id+'" href="#tab'+arrayCampus.id+'" data-toggle="tab">Campus: '+arrayCampus.nombre+'</a></li>').appendTo('#tabs');
+    $('<li><a id ="tabHead'+arrayCampus.id+'" href="#tab'+arrayCampus.id+'" data-toggle="tab">Campus: '+arrayCampus.nombre+'</a><span id="'+arrayCampus.id+'" class="btn-delete remove-tab glyphicon-remove glyphicon">  </span></li>').appendTo('#tabs');
                         
     // create the tab content
     var content ='<div class="tab-pane" id="tab'+arrayCampus.id+'">';
@@ -415,7 +415,7 @@ function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
                                 '</div>'+
                         input5;
 
-    content = content +'<a href="#!" class="btn-delete" id="'+arrayCampus.id+'">Eliminar campus</a></form></div>';
+    content = content +'<a href="#!" id="'+arrayCampus.id+'" class="btn-edit-campus btn btn-primary" >Editar campus</a></form></div>';
 
 
 
@@ -470,7 +470,7 @@ function traerInfoUniversidad(idInput,urlStoreCampus, urlConsultaSelectPais,urlC
 
     selectByTabsSinAccion(".form-horizontal",token,urlConsultaSelectPais,'#pais',idContinente,idPais);
 
-
+    $('#continente').val( jsonUniversidad.campus_sedes_r[0].ciudad_r.pais_r.continente_r.id);
     $('#nombre_universidad').val( jsonUniversidad.nombre);
     crearTabByUniversidad(campusSedes,urlStoreCampus,urlConsultaSelectCiudad,token);
 

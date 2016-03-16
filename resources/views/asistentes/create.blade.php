@@ -25,19 +25,19 @@
     {!!  Form::label('postulate', ' Postulante ');!!}
     {!!  Form::select('postulante', [null=>'Seleccione un beneficio']+$post,null,array('class' => 'form-control','id'=>'post'))!!}
 
-
+<!--
     {!!  Form::label('indicaciones', ' Indicaciones ');!!}
     {!! Form::textarea('indicaciones',null,array('class' => 'form-control','placeholder'=>'Ingrese indicaciones', 'rows'=>'3'));!!}
-
+-->
 
     </div>  
 
 
 
-		<button type="submit" class="btn btn-default">Guardar y Continuar</button>
-		{!!Form::close()!!}
-	</div>
-
+        <a href="{{{ url('asistentes') }}}" class="btn btn-default">Cancelar</a>
+        <button type="submit" class="btn btn-info">Guardar y Continuar</button>
+        {!!Form::close()!!}
+    </div>
 
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 @endsection

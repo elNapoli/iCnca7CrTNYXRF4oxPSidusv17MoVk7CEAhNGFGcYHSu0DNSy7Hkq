@@ -1,3 +1,4 @@
+
 @extends('intranet.app')
 
 @section('content')
@@ -11,7 +12,6 @@
 <div class="col-md-12" >
 
 	@include('partials.error')
-	<div class="message"></div>
 
 	{!! Form::model($asistentes, ['url'=>['asistentes/update',$asistentes->id], 'method'=>'PUT', 'id'=>'form_edit']) !!}
 	{!!Form::hidden('asistente',$asistentes->id,array('id'=>'asistente'));!!}

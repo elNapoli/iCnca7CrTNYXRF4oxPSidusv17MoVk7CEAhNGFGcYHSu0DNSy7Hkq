@@ -67,7 +67,6 @@ class AsistentesController extends Controller {
 		$this->validate($request, [
         'nombre' => 'required|string|unique:beneficio,nombre',
         'postulante' =>'required',
-        'indicaciones' => 'required',
     	]);
 
 		$asistente = Asistente::create($request->all());

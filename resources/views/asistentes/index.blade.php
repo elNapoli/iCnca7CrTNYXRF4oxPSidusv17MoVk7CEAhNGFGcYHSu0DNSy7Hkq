@@ -12,11 +12,16 @@
 
 		<div class="panel panel-default">
 
-			@include('partials.success')
 		  <div class="panel-heading"><a class="btn-info btn" href="{{ url('asistentes/create')}}">Crear asistente</a></div>
 
 		  <!-- Table -->
 		  <div class="message"></div>
+            @if(Session::has('message')) 
+            <div class="alert alert-danger fade in">
+                <button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>
+                               {{Session::get('message')}}         </p></div>
+            @endif
+
 			@include('asistentes.partials.table')
 
 
@@ -76,6 +81,7 @@
 			    } );
 
         $('table').on('click','.btn-delete', function(e){
+            $('.alert').hide();
             if(confirm("Esta seguro que desea eliminar el registro seleccionado?."))
             {
                 $.ajax({
@@ -89,9 +95,8 @@
                     url:$('#urlAsistenteDestroy').val() ,
 					    success : function(json) {
 					  	var html = '<div class="alert alert-success fade in">'+
-                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            '<button type="button" class="close close-alert" data-dismiss="success" aria-hidden="true">×</button><p>'+
                             json.message+'</p></div>';
-                            
                             $('.message').html(html);
                             $("html, body").animate({ scrollTop: 0 }, 600);			
 							dt.ajax.reload();

@@ -8,9 +8,8 @@
                 <hr>
 
 <div class="row">
-
-<div class="col-md-1" ></div>
-    <div class="col-md-6" >
+<div class="col-md-6">
+<div class="form-group">
 	<div class="message"></div>
 		@include('partials.error')
 
@@ -30,8 +29,19 @@
 	{!!Form::hidden('urlBeneficioAdd', url('detalles/add'),array('id'=>'urlBeneficioAdd'));!!}
 	{!!Form::hidden('urlBeneficioByAsistente', url('asistentes/detalle'),array('id'=>'urlBeneficioByAsistente'));!!}
 		{!!Form::close()!!}
+
+		</div> 
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-group">
+	{!!  Form::label('indicaciones', ' Indicaciones ');!!}
+    {!! Form::textarea('indicaciones',null,array('class' => 'form-control','placeholder'=>'Ingrese indicaciones', 'rows'=>'3'));!!}
 		<button href="{{ url('asistentes/index')}}"type="button" class="btn btn-success btn-block">Finalizar</button>
 	</div>
+		</div>
+	</div>
+
 
 	{!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 

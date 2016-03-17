@@ -1394,6 +1394,7 @@
             return xhrobj;
         },
         ajaxSubmit: function (fnBefore, fnSuccess, fnComplete, fnError, previewId, index) {
+
             var self = this, settings;
             self.raise('filepreajax', [previewId, index]);
             self.uploadExtra(previewId, index);

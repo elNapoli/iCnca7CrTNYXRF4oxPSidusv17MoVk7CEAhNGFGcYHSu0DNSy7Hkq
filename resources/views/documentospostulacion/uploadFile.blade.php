@@ -81,7 +81,7 @@
                         'width':'120px',
                         'url': 'file-destroy',
                         'key':subCatObj.id,
-                        'token': 'adsf',
+                        'extra': {'_token':$('#_token').val()},
                     });
 
                     inicialTag.push({
@@ -115,8 +115,8 @@
 // the custom tags are in braces
     var footerTemplate = '<div class="file-thumbnail-footer">\n' +
     '   <div style="margin:5px 0">\n' +
-    '       <input class="kv-input kv-new form-control input-sm {TAG_CSS_NEW}" value="{caption}" placeholder="Enter caption...">\n' +
-    '       <input class="kv-input kv-init form-control input-sm {TAG_CSS_INIT}" value="{TAG_VALUE}" placeholder="Enter caption...">\n' +
+    '       <input class="kv-input kv-new form-control input-sm {TAG_CSS_NEW}" value="" placeholder="Ingrese el nombre">\n' +
+    '       <input class="kv-input kv-init form-control input-sm {TAG_CSS_INIT}" value="{TAG_VALUE}" disabled placeholder="Enter caption...">\n' +
     '   </div>\n' +
     '   {actions}\n' +
     '</div>';

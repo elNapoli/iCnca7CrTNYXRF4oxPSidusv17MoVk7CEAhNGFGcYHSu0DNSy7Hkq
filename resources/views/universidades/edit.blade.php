@@ -152,7 +152,7 @@
 
 
         });
-    $("li").on("click", ".btn-delete", function(event){
+    $("ul#tabs").on("click", ".btn-delete", function(event){
         event.preventDefault(); // jquery evento prevent default (e)
         if(confirm("Desea eliminar el campus seleccionado?")){
           var tab   = $(this).parents('li');

@@ -70,9 +70,16 @@ class DocumentosPostulacionController extends Controller {
     }
 
 
-    public function postFileDestroy(){
+    public function postFileDestroy(Request $request){
+        $documentoP = DocumentoAdjunto::findOrFail($request->get('key'));
+        \Storage::delete($documentoP->path);
 
-        return "hola";
+
+        $documentoP->delete();
+
+        return response()->json([
+                        'message'=> 'El documento se ha eliminado exitosamente.'
+                        ]);
     }
 	public function postStorageFiles(Request $request,Guard $auth){
      /*   $postulante = Postulante::where('user_id',$auth->id())->first();

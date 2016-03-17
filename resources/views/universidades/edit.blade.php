@@ -143,15 +143,16 @@
 			 $('#btnAdd').click(function (e) {
 
           var urlStoreCampus = $('#getUrlGuardarCampus').val();
-          var token =  $('#getToken').val();
+          var token =  '#getToken';
           var form = $('#holamundo');
           var idPais = $('#pais').val();
-          var ciudadByPais = $('#getUrCiudadContinente').val()
+          var ciudadByPais = '#getUrCiudadContinente';
           CrearTabPorCampus(urlStoreCampus,token,form,idPais,ciudadByPais);
 
 
+
         });
-    $("li").on("click", ".btn-delete", function(event){
+    $("ul#tabs").on("click", ".btn-delete", function(event){
         event.preventDefault(); // jquery evento prevent default (e)
         if(confirm("Desea eliminar el campus seleccionado?")){
           var tab   = $(this).parents('li');

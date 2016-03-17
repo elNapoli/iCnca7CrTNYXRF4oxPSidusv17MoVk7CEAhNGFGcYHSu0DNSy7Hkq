@@ -82,6 +82,7 @@ function selectByTabsSinAccion(ruta,token,url,idSelectDestino,option1,option2){
 var idTab = $(ruta);
 //var idSelect = idSelect;
 var token = $(token).val();
+
 var urlE = $(url).val();
 var ruta = $(ruta+' select'+idSelectDestino);
     $.ajax({
@@ -106,7 +107,6 @@ var ruta = $(ruta+' select'+idSelectDestino);
         success : function(json) {
             ruta.empty();
             ruta.append("<option value=''>Seleccione la "+idSelectDestino+"</option>");
-
             if(url ==="#getCampusByPais"){
                 $.each(json, function(index, subCatObj){
                 ruta.append(" <optgroup label='"+subCatObj.nombre+"'>");
@@ -399,8 +399,6 @@ function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
     var input5 = createInput('Dirección','Ej: santiago #656','direccion'+arrayCampus.id, arrayCampus.direccion);
 
 
-
-
     content = content +'<form method="POST" action="'+urlStoreCampus+'" accept-charset="UTF-8">'+
                         input1+
                         input2+
@@ -423,7 +421,6 @@ function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
     //console.log(subCatObj.ciudad_r.pais);
     $("#ciudad"+arrayCampus.id).find('option').removeAttr("selected");
 
-    selectByTabsSinAccion(".form-horizontal",token,urlConsultaSelect,'#ciudad'+arrayCampus.id,arrayCampus.pais,arrayCampus.ciudad);
 
 
   /*  getListForSelect(urlConsultaSelect, 
@@ -511,8 +508,14 @@ function CrearTabPorCampus(urlStoreCampus,token,form,idPais,ciudadByPais){
               campusSede.sitio_web = subCatObj.sitio_web;
               campusSede.pais = idPais;
               campusSede.ciudad = subCatObj.ciudad;
+              campusSede.direccion = subCatObj.direccion;
+
               crearTab(campusSede,urlStoreCampus,ciudadByPais,token);
-              i = false;
+
+
+            selectByTabsSinAccion("div#tab"+campusSede.id,token,ciudadByPais,'#ciudad'+campusSede.id,campusSede.pais,campusSede.ciudad);
+            //  selectByTabsSinAccion('div#tab'+campusSede.id ,token,ciudadByPais,'#ciudad'+campusSede.id,campusSede.pais,campusSede.ciudad);
+            i = false;
             }
            // $('#holamundo').trigger("reset");
 

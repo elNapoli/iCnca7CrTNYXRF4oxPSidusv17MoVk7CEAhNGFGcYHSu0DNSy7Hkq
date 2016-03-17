@@ -67,8 +67,9 @@
             { "data": "beneficio_r.nombre" },
             { "data": null,
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                	$(nTd).attr('align','center');
                     $(nTd).html(
-                                "<a href='#!' class='btn-delete' id='"+oData.id_a+'.'+oData.beneficio+"'> Del</a>"
+                                "<a href='#!' class='btn btn-danger btn-delete btn-xs' id='"+oData.id_a+'.'+oData.beneficio+"'> <i class='fa fa-trash-o'></i></a>"
                         );
 
                 }
@@ -110,6 +111,7 @@
 					    // URL a la que se enviará la solicitud Ajax
 					    url:url ,
 					    success : function(json) {
+					    if(json.tipo == 0){
 					  	var html = '<div class="alert alert-success fade in">'+
                             '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
                             json.message+'</p></div>';
@@ -117,6 +119,17 @@
                             $('#message2').html(html);
                             $("html, body").animate({ scrollTop: 0 }, 600);			
 							dt.ajax.reload();
+					    	
+					    }
+					    else{
+					  	var html = '<div class="alert alert-danger fade in">'+
+                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            json.message+'</p></div>';
+                            
+                            $('#message2').html(html);
+                            $("html, body").animate({ scrollTop: 0 }, 600);			
+							dt.ajax.reload();					    	
+					    }
 						},
 
 					    error : function(xhr, status) {

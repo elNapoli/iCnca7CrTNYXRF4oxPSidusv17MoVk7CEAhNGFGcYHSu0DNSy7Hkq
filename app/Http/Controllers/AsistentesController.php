@@ -61,6 +61,22 @@ class AsistentesController extends Controller {
 	 *
 	 * @return Response
 	 */
+
+	public function postIndicacion(Request $request){
+		$this->validate($request, [
+        'indicaciones' => 'required',
+    	]);
+
+		$asistente = Asistente::findOrFail($request->id);
+		$asistente->indicaciones = $request->indicaciones;
+		$asistente->save();
+			\Session::flash('message', 'El registro se creo correctamente');
+			return response()->json([
+				'message'=> 'El registro se creo correctamente'
+				]);
+	}
+
+
 	public function postStore(Request $request)
 	{
 		$beneficios = Beneficio::lists('nombre','id');
@@ -68,13 +84,13 @@ class AsistentesController extends Controller {
         'nombre' => 'required|string|unique:beneficio,nombre',
         'postulante' =>'required',
     	]);
-
+    	$postulante = $request->postulante;
 		$asistente = Asistente::create($request->all());
 		$message    = 'El registro '.$request->get('nombre').' se almacenó correctamente';
 		\Session::flash('message', $message);
 
 		//return redirect()->route('beneficios.index');
-		return view('asistentes/createb',compact('beneficios','asistente'));
+		return view('asistentes/createb',compact('beneficios','asistente','postulante'));
 	}
 
 	/**
@@ -137,7 +153,7 @@ class AsistentesController extends Controller {
 		//abort(500);
 		$beneficio = Asistente::findOrFail($request->id);
  		$beneficio->delete();
- 		$message = ' El beneficio '.$beneficio->nombre.' Fue eliminado';
+ 		$message = ' El registro  '.$beneficio->nombre.' fue eliminado';
  	//	dd($request->all());
 		if($request->ajax()){
 		//	return($message);

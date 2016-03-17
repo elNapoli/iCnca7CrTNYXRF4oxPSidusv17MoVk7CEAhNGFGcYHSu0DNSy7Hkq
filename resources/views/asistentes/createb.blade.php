@@ -25,8 +25,11 @@
     @include('asistentes.partials.table_3')
 
 {!!Form::hidden('asistente',$asistente->id,array('id'=>'asistente'));!!}
+{!!Form::hidden('postulante',$postulante,array('id'=>'postulante'));!!}
+
     	{!!Form::hidden('urlBeneficioDestroy', url('detalles/destroy'),array('id'=>'urlBeneficioDestroy'));!!}
 	{!!Form::hidden('urlBeneficioAdd', url('detalles/add'),array('id'=>'urlBeneficioAdd'));!!}
+	{!!Form::hidden('urlIndicacionAdd', url('asistentes/indicacion'),array('id'=>'urlIndicacionAdd'));!!}
 	{!!Form::hidden('urlBeneficioByAsistente', url('asistentes/detalle'),array('id'=>'urlBeneficioByAsistente'));!!}
 		{!!Form::close()!!}
 
@@ -35,9 +38,10 @@
 </div>
 <div class="col-md-6">
 <div class="form-group">
+	<div id="message_ind"></div>
 	{!!  Form::label('indicaciones', ' Indicaciones ');!!}
-    {!! Form::textarea('indicaciones',null,array('class' => 'form-control','placeholder'=>'Ingrese indicaciones', 'rows'=>'3'));!!}
-		<button href="{{ url('asistentes/index')}}"type="button" class="btn btn-success btn-block">Finalizar</button>
+    {!! Form::textarea('indicaciones',null,array('id' => 'txt_ind' ,'class' => 'form-control','placeholder'=>'Ingrese indicaciones', 'rows'=>'3'));!!}
+		<button id="add_ind" type="button" class="btn btn-success btn-block">Finalizar</button>
 	</div>
 		</div>
 	</div>
@@ -112,6 +116,7 @@ var dt2 = $('#tableDetalleBeneficio3').DataTable( {
 					    // URL a la que se enviará la solicitud Ajax
 					    url:url ,
 					    success : function(json) {
+					    if(json.tipo == 0){
 					  	var html = '<div class="alert alert-success fade in">'+
                             '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
                             json.message+'</p></div>';
@@ -119,6 +124,17 @@ var dt2 = $('#tableDetalleBeneficio3').DataTable( {
                             $('.message').html(html);
                             $("html, body").animate({ scrollTop: 0 }, 600);			
 							dt2.ajax.reload();
+					    	
+					    }
+					    else{
+					  	var html = '<div class="alert alert-danger fade in">'+
+                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            json.message+'</p></div>';
+                            
+                            $('.message').html(html);
+                            $("html, body").animate({ scrollTop: 0 }, 600);			
+							dt2.ajax.reload();					    	
+					    }
 						},
 
 					    error : function(xhr, status) {
@@ -127,6 +143,43 @@ var dt2 = $('#tableDetalleBeneficio3').DataTable( {
 					    },
 					});		
 				}
+
+	});
+
+$('#add_ind').on('click',function(e){ //boton para añadir beneficios en edit
+		e.preventDefault(); // jquery evento prevent default (e)
+		
+					var id_a	= $('#asistente').val();//$('#asistente').val();
+					var ind		= $('#txt_ind').val();
+					var url   = $('#urlIndicacionAdd').val(); //remplazo el placeholder USER_ID con la id
+					var data  = {id:id_a,indicaciones:ind,_token:$('#getToken').val()}
+
+
+
+					$.ajax({
+					    // En data puedes utilizar un objeto JSON, un array o un query string
+					   data:data,
+					    //Cambiar a type: POST si necesario
+					    type: "post",
+					    // Formato de datos que se espera en la respuesta
+					    dataType: "json",
+					    // URL a la que se enviará la solicitud Ajax
+					    url:url ,
+					    success : function(json) {
+					  	 	window.location.href = '/asistentes';				
+						},
+
+					    error : function(xhr, status) {
+		        		responseJSON =  JSON.parse(xhr.responseText);
+
+	                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>';
+	                        for(var key in responseJSON)
+	                        {
+	                            html += "<li>" + responseJSON[key][0] + "</li>";
+	                        }
+	                        $('#message_ind').html(html+'</div>');
+					    },
+					});		
 
 	});
 
@@ -143,10 +196,6 @@ var dt2 = $('#tableDetalleBeneficio3').DataTable( {
 					var url   = $('#urlBeneficioDestroy').val(); //remplazo el placeholder USER_ID con la id
 					var data  = {id_a:id_a,id_b:id_b,_token:$('#getToken').val()}
 
-
-						console.log(id_a);
-						console.log(id_b);
-
 					$.ajax({
 					    // En data puedes utilizar un objeto JSON, un array o un query string
 					   data:data,
@@ -157,7 +206,12 @@ var dt2 = $('#tableDetalleBeneficio3').DataTable( {
 					    // URL a la que se enviará la solicitud Ajax
 					    url:url ,
 					    success : function(json) {
-					    	alert(json.message);				
+					  	var html = '<div class="alert alert-success fade in">'+
+                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            json.message+'</p></div>';
+                            
+                            $('.message').html(html);
+                            $("html, body").animate({ scrollTop: 0 }, 600);			
 							dt2.ajax.reload();
 						},
 

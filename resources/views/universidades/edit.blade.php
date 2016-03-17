@@ -143,11 +143,12 @@
 			 $('#btnAdd').click(function (e) {
 
           var urlStoreCampus = $('#getUrlGuardarCampus').val();
-          var token =  $('#getToken').val();
+          var token =  '#getToken';
           var form = $('#holamundo');
           var idPais = $('#pais').val();
-          var ciudadByPais = $('#getUrCiudadContinente').val()
+          var ciudadByPais = '#getUrCiudadContinente';
           CrearTabPorCampus(urlStoreCampus,token,form,idPais,ciudadByPais);
+
 
 
         });

@@ -2,12 +2,14 @@
 
 namespace Yajra\Datatables\Processors;
 
+use Illuminate\Support\Arr;
 use Yajra\Datatables\Helper;
 
 /**
- * Class DataProcessor
+ * Class DataProcessor.
  *
  * @package Yajra\Datatables
+ * @author  Arjay Angeles <aqangeles@gmail.com>
  */
 class DataProcessor
 {
@@ -115,7 +117,7 @@ class DataProcessor
     {
         foreach ($this->editColumns as $key => $value) {
             $value['content']     = Helper::compileContent($value['content'], $data, $row);
-            $data[$value['name']] = $value['content'];
+            Arr::set($data, $value['name'], $value['content']);
         }
 
         return $data;

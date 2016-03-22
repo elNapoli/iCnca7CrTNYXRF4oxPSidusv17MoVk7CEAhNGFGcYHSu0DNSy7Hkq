@@ -2,22 +2,19 @@
 
 namespace Yajra\Datatables\Engines;
 
-/**
- * Laravel Datatables Query Builder Engine
- *
- * @package  Laravel
- * @category Package
- * @author   Arjay Angeles <aqangeles@gmail.com>
- */
-
 use Closure;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Str;
-use Yajra\Datatables\Contracts\DataTableEngineContract;
 use Yajra\Datatables\Helper;
 use Yajra\Datatables\Request;
 
-class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
+/**
+ * Class QueryBuilderEngine.
+ *
+ * @package Yajra\Datatables\Engines
+ * @author  Arjay Angeles <aqangeles@gmail.com>
+ */
+class QueryBuilderEngine extends BaseEngine
 {
     /**
      * @param \Illuminate\Database\Query\Builder $builder
@@ -50,7 +47,11 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
     }
 
     /**
-     * @inheritdoc
+     * Set auto filter off and run your own filter.
+     * Overrides global search
+     *
+     * @param \Closure $callback
+     * @return $this
      */
     public function filter(Closure $callback)
     {
@@ -60,7 +61,11 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
     }
 
     /**
-     * @inheritdoc
+     * Organizes works
+     *
+     * @param bool $mDataSupport
+     * @param bool $orderFirst
+     * @return \Illuminate\Http\JsonResponse
      */
     public function make($mDataSupport = false, $orderFirst = false)
     {
@@ -68,7 +73,9 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
     }
 
     /**
-     * @inheritdoc
+     * Count total items.
+     *
+     * @return integer
      */
     public function totalCount()
     {
@@ -101,41 +108,57 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
      */
     public function filtering()
     {
-        $eagerLoads = $this->getEagerLoads();
-
         $this->query->where(
-            function ($query) use ($eagerLoads) {
-                $keyword = $this->setupKeyword($this->request->keyword());
-                foreach ($this->request->searchableColumnIndex() as $index) {
-                    $columnName = $this->setupColumnName($index);
+            function ($query) {
+                $globalKeyword = $this->setupKeyword($this->request->keyword());
+                $queryBuilder  = $this->getQueryBuilder($query);
 
+                foreach ($this->request->searchableColumnIndex() as $index) {
+                    $columnName = $this->getColumnName($index);
+                    if ($this->isBlacklisted($columnName)) {
+                        continue;
+                    }
+
+                    // check if custom column filtering is applied
                     if (isset($this->columnDef['filter'][$columnName])) {
-                        $method     = Helper::getOrMethod($this->columnDef['filter'][$columnName]['method']);
-                        $parameters = $this->columnDef['filter'][$columnName]['parameters'];
-                        $this->compileColumnQuery(
-                            $this->getQueryBuilder($query),
-                            $method,
-                            $parameters,
-                            $columnName,
-                            $keyword
-                        );
+                        $columnDef = $this->columnDef['filter'][$columnName];
+                        // check if global search should be applied for the specific column
+                        $applyGlobalSearch = count($columnDef['parameters']) == 0 || end($columnDef['parameters']) !== false;
+                        if (! $applyGlobalSearch) {
+                            continue;
+                        }
+
+                        if ($columnDef['method'] instanceof Closure) {
+                            $whereQuery = $queryBuilder->newQuery();
+                            call_user_func_array($columnDef['method'], [$whereQuery, $this->request->keyword()]);
+                            $queryBuilder->addNestedWhereQuery($whereQuery, 'or');
+                        } else {
+                            $this->compileColumnQuery(
+                                $queryBuilder,
+                                Helper::getOrMethod($columnDef['method']),
+                                $columnDef['parameters'],
+                                $columnName,
+                                $this->request->keyword()
+                            );
+                        }
                     } else {
                         if (count(explode('.', $columnName)) > 1) {
+                            $eagerLoads     = $this->getEagerLoads();
                             $parts          = explode('.', $columnName);
                             $relationColumn = array_pop($parts);
                             $relation       = implode('.', $parts);
                             if (in_array($relation, $eagerLoads)) {
                                 $this->compileRelationSearch(
-                                    $this->getQueryBuilder($query),
+                                    $queryBuilder,
                                     $relation,
                                     $relationColumn,
-                                    $keyword
+                                    $globalKeyword
                                 );
                             } else {
-                                $this->compileGlobalSearch($this->getQueryBuilder($query), $columnName, $keyword);
+                                $this->compileGlobalSearch($queryBuilder, $columnName, $globalKeyword);
                             }
                         } else {
-                            $this->compileGlobalSearch($this->getQueryBuilder($query), $columnName, $keyword);
+                            $this->compileGlobalSearch($queryBuilder, $columnName, $globalKeyword);
                         }
                     }
 
@@ -146,24 +169,10 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
     }
 
     /**
-     * Get eager loads keys if eloquent.
-     *
-     * @return array
-     */
-    private function getEagerLoads()
-    {
-        if ($this->query_type == 'eloquent') {
-            return array_keys($this->query->getEagerLoads());
-        }
-
-        return [];
-    }
-
-    /**
      * Perform filter column on selected field.
      *
      * @param mixed $query
-     * @param string $method
+     * @param string|Closure $method
      * @param mixed $parameters
      * @param string $column
      * @param string $keyword
@@ -205,6 +214,20 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
     }
 
     /**
+     * Get eager loads keys if eloquent.
+     *
+     * @return array
+     */
+    protected function getEagerLoads()
+    {
+        if ($this->query_type == 'eloquent') {
+            return array_keys($this->query->getEagerLoads());
+        }
+
+        return [];
+    }
+
+    /**
      * Add relation query on global search.
      *
      * @param mixed $query
@@ -216,8 +239,9 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
     {
         $myQuery = clone $this->query;
         $myQuery->orWhereHas($relation, function ($q) use ($column, $keyword, $query) {
-            $q->where($column, 'like', $keyword);
-            $sql = $q->toSql();
+            $sql = $q->select($this->connection->raw('count(1)'))
+                     ->where($column, 'like', $keyword)
+                     ->toSql();
             $sql = "($sql) >= 1";
             $query->orWhereRaw($sql, [$keyword]);
         });
@@ -232,14 +256,18 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
      */
     protected function compileGlobalSearch($query, $column, $keyword)
     {
-        $column = $this->castColumn($column);
-        $sql    = $column . ' LIKE ?';
-        if ($this->isCaseInsensitive()) {
-            $sql     = 'LOWER(' . $column . ') LIKE ?';
-            $keyword = Str::lower($keyword);
-        }
+        if ($this->isSmartSearch()) {
+            $column = $this->castColumn($column);
+            $sql    = $column . ' LIKE ?';
+            if ($this->isCaseInsensitive()) {
+                $sql     = 'LOWER(' . $column . ') LIKE ?';
+                $keyword = Str::lower($keyword);
+            }
 
-        $query->orWhereRaw($sql, [$keyword]);
+            $query->orWhereRaw($sql, [$keyword]);
+        } else { // exact match
+            $query->orWhereRaw("$column like ?", [$keyword]);
+        }
     }
 
     /**
@@ -265,28 +293,57 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
      */
     public function columnSearch()
     {
-        $columns = $this->request->get('columns');
-        for ($i = 0, $c = count($columns); $i < $c; $i++) {
-            if ($this->request->isColumnSearchable($i)) {
-                $column  = $this->setupColumnName($i);
-                $keyword = $this->getSearchKeyword($i);
+        $columns = $this->request->get('columns', []);
 
-                if (isset($this->columnDef['filter'][$column])) {
-                    $method     = $this->columnDef['filter'][$column]['method'];
-                    $parameters = $this->columnDef['filter'][$column]['parameters'];
-                    $this->compileColumnQuery($this->getQueryBuilder(), $method, $parameters, $column, $keyword);
+        foreach ($columns as $index => $column) {
+            if (! $this->request->isColumnSearchable($index)) {
+                continue;
+            }
+
+            $column = $this->getColumnName($index);
+
+            if (isset($this->columnDef['filter'][$column])) {
+                $columnDef = $this->columnDef['filter'][$column];
+                // get a raw keyword (without wildcards)
+                $keyword = $this->getSearchKeyword($index, true);
+                $builder = $this->getQueryBuilder();
+
+                if ($columnDef['method'] instanceof Closure) {
+                    $whereQuery = $builder->newQuery();
+                    call_user_func_array($columnDef['method'], [$whereQuery, $keyword]);
+                    $builder->addNestedWhereQuery($whereQuery);
                 } else {
-                    $column = $this->castColumn($column);
-                    if ($this->isCaseInsensitive()) {
-                        $this->compileColumnSearch($i, $column, $keyword, true);
-                    } else {
-                        $col = strstr($column, '(') ? $this->connection->raw($column) : $column;
-                        $this->compileColumnSearch($i, $col, $keyword, false);
+                    $this->compileColumnQuery(
+                        $builder,
+                        $columnDef['method'],
+                        $columnDef['parameters'],
+                        $column,
+                        $keyword
+                    );
+                }
+            } else {
+                if (count(explode('.', $column)) > 1) {
+                    $eagerLoads     = $this->getEagerLoads();
+                    $parts          = explode('.', $column);
+                    $relationColumn = array_pop($parts);
+                    $relation       = implode('.', $parts);
+                    if (in_array($relation, $eagerLoads)) {
+                        $column = $this->joinEagerLoadedColumn($relation, $relationColumn);
                     }
                 }
 
-                $this->isFilterApplied = true;
+                $column          = $this->castColumn($column);
+                $keyword         = $this->getSearchKeyword($index);
+                $caseInsensitive = $this->isCaseInsensitive();
+
+                if (! $caseInsensitive) {
+                    $column = strstr($column, '(') ? $this->connection->raw($column) : $column;
+                }
+
+                $this->compileColumnSearch($index, $column, $keyword, $caseInsensitive);
             }
+
+            $this->isFilterApplied = true;
         }
     }
 
@@ -294,15 +351,17 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
      * Get proper keyword to use for search.
      *
      * @param int $i
+     * @param bool $raw
      * @return string
      */
-    private function getSearchKeyword($i)
+    private function getSearchKeyword($i, $raw = false)
     {
-        if ($this->request->isRegex($i)) {
-            return $this->request->columnKeyword($i);
+        $keyword = $this->request->columnKeyword($i);
+        if ($raw || $this->request->isRegex($i)) {
+            return $keyword;
         }
 
-        return $this->setupKeyword($this->request->columnKeyword($i));
+        return $this->setupKeyword($keyword);
     }
 
     /**
@@ -317,10 +376,12 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
     {
         if ($this->request->isRegex($i)) {
             $this->regexColumnSearch($column, $keyword, $caseSensitive);
-        } else {
+        } elseif ($this->isSmartSearch()) {
             $sql     = $caseSensitive ? $column . ' LIKE ?' : 'LOWER(' . $column . ') LIKE ?';
             $keyword = $caseSensitive ? $keyword : Str::lower($keyword);
             $this->query->whereRaw($sql, [$keyword]);
+        } else { // exact match
+            $this->query->whereRaw("$column LIKE ?", [$keyword]);
         }
     }
 
@@ -356,49 +417,70 @@ class QueryBuilderEngine extends BaseEngine implements DataTableEngineContract
         }
 
         foreach ($this->request->orderableColumns() as $orderable) {
-            $column = $this->setupOrderColumn($orderable);
+            $column = $this->getColumnName($orderable['column'], true);
+
+            if ($this->isBlacklisted($column)) {
+                continue;
+            }
+
             if (isset($this->columnDef['order'][$column])) {
                 $method     = $this->columnDef['order'][$column]['method'];
                 $parameters = $this->columnDef['order'][$column]['parameters'];
                 $this->compileColumnQuery(
-                    $this->getQueryBuilder(), $method, $parameters, $column, $orderable['direction']
+                    $this->getQueryBuilder(),
+                    $method,
+                    $parameters,
+                    $column,
+                    $orderable['direction']
                 );
             } else {
-                /**
-                 * If we perform a select("*"), the ORDER BY clause will look like this:
-                 * ORDER BY * ASC
-                 * which causes a query exception
-                 * The temporary fix is modify `*` column to `id` column
-                 */
-                if ($column === '*') {
-                    $column = 'id';
+                if (count(explode('.', $column)) > 1) {
+                    $eagerLoads     = $this->getEagerLoads();
+                    $parts          = explode('.', $column);
+                    $relationColumn = array_pop($parts);
+                    $relation       = implode('.', $parts);
+
+                    if (in_array($relation, $eagerLoads)) {
+                        $column = $this->joinEagerLoadedColumn($relation, $relationColumn);
+                    }
                 }
+
                 $this->getQueryBuilder()->orderBy($column, $orderable['direction']);
             }
         }
     }
 
     /**
-     * Get order by column name.
+     * Join eager loaded relation and get the related column name.
      *
-     * @param array $orderable
+     * @param string $relation
+     * @param string $relationColumn
      * @return string
      */
-    private function setupOrderColumn(array $orderable)
+    protected function joinEagerLoadedColumn($relation, $relationColumn)
     {
-        $r_column = $this->request->input('columns')[$orderable['column']];
-        $column   = isset($r_column['name']) ? $r_column['name'] : $r_column['data'];
-        if ($column >= 0) {
-            $column = $this->setupColumnName($orderable['column'], true);
+        $table   = $this->query->getRelation($relation)->getRelated()->getTable();
+        $foreign = $this->query->getRelation($relation)->getQualifiedForeignKey();
+        $other   = $this->query->getRelation($relation)->getQualifiedOtherKeyName();
+        $column  = $table . '.' . $relationColumn;
 
-            return $column;
+        $joins = [];
+        foreach ((array) $this->getQueryBuilder()->joins as $key => $join) {
+            $joins[] = $join->table;
+        }
+
+        if (! in_array($table, $joins)) {
+            $this->getQueryBuilder()
+                 ->leftJoin($table, $foreign, '=', $other);
         }
 
         return $column;
     }
 
     /**
-     * @inheritdoc
+     * Perform pagination
+     *
+     * @return void
      */
     public function paging()
     {

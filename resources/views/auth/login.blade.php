@@ -1,6 +1,5 @@
 @extends('internet.app')
 
-@endsection
 
 @section('content')
 

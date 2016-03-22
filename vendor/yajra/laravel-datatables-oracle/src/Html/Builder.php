@@ -11,9 +11,10 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 /**
- * Class Builder
+ * Class Builder.
  *
  * @package Yajra\Datatables\Html
+ * @author  Arjay Angeles <aqangeles@gmail.com>
  */
 class Builder
 {
@@ -66,6 +67,29 @@ class Builder
      * @var array
      */
     protected $attributes = [];
+
+    /**
+     * Lists of valid DataTables Callbacks.
+     *
+     * @link https://datatables.net/reference/option/.
+     * @var array
+     */
+    protected $validCallbacks = [
+        'createdRow',
+        'drawCallback',
+        'footerCallback',
+        'formatNumber',
+        'headerCallback',
+        'infoCallback',
+        'initComplete',
+        'preDrawCallback',
+        'rowCallback',
+        'stateLoadCallback',
+        'stateLoaded',
+        'stateLoadParams',
+        'stateSaveCallback',
+        'stateSaveParams',
+    ];
 
     /**
      * @param Repository $config
@@ -126,30 +150,111 @@ class Builder
     }
 
     /**
-     * Generate datatable js parameters.
+     * Generate DataTables js parameters.
      *
      * @param  array $attributes
      * @return string
      */
     public function parameterize($attributes = [])
     {
-        $parameters       = (new Parameters($attributes))->toArray();
-        $column_functions = [];
+        $parameters = (new Parameters($attributes))->toArray();
 
+        list($columnFunctions, $parameters) = $this->encodeColumnFunctions($parameters);
+        list($callbackFunctions, $parameters) = $this->encodeCallbackFunctions($parameters);
+
+        $json = json_encode($parameters);
+
+        $json = $this->decodeColumnFunctions($columnFunctions, $json);
+        $json = $this->decodeCallbackFunctions($callbackFunctions, $json);
+
+        return $json;
+    }
+
+    /**
+     * Encode columns render function.
+     *
+     * @param array $parameters
+     * @return array
+     */
+    protected function encodeColumnFunctions(array $parameters)
+    {
+        $columnFunctions = [];
         foreach ($parameters['columns'] as $i => $column) {
             unset($parameters['columns'][$i]['exportable']);
             unset($parameters['columns'][$i]['printable']);
 
             if (isset($column['render'])) {
-                $column_functions[$i]                = $column['render'];
+                $columnFunctions[$i]                 = $column['render'];
                 $parameters['columns'][$i]['render'] = "#column_function.{$i}#";
             }
         }
 
-        $json = json_encode($parameters);
+        return [$columnFunctions, $parameters];
+    }
 
-        foreach ($column_functions as $i => $function) {
+    /**
+     * Encode DataTables callbacks function.
+     *
+     * @param array $parameters
+     * @return array
+     */
+    protected function encodeCallbackFunctions(array $parameters)
+    {
+        $callbackFunctions = [];
+        foreach ($parameters as $key => $callback) {
+            if (in_array($key, $this->validCallbacks)) {
+                $callbackFunctions[$key] = $this->compileCallback($callback);
+                $parameters[$key]        = "#callback_function.{$key}#";
+            }
+        }
+
+        return [$callbackFunctions, $parameters];
+    }
+
+    /**
+     * Compile DataTable callback value.
+     *
+     * @param mixed $callback
+     * @return mixed|string
+     */
+    private function compileCallback($callback)
+    {
+        if (is_callable($callback)) {
+            return value($callback);
+        } elseif ($this->view->exists($callback)) {
+            return $this->view->make($callback)->render();
+        }
+
+        return $callback;
+    }
+
+    /**
+     * Decode columns render functions.
+     *
+     * @param array $columnFunctions
+     * @param string $json
+     * @return string
+     */
+    protected function decodeColumnFunctions(array $columnFunctions, $json)
+    {
+        foreach ($columnFunctions as $i => $function) {
             $json = str_replace("\"#column_function.{$i}#\"", $function, $json);
+        }
+
+        return $json;
+    }
+
+    /**
+     * Decode DataTables callbacks function.
+     *
+     * @param array $callbackFunctions
+     * @param string $json
+     * @return string
+     */
+    protected function decodeCallbackFunctions(array $callbackFunctions, $json)
+    {
+        foreach ($callbackFunctions as $i => $function) {
+            $json = str_replace("\"#callback_function.{$i}#\"", $function, $json);
         }
 
         return $json;
@@ -202,17 +307,21 @@ class Builder
     public function columns(array $columns)
     {
         foreach ($columns as $key => $value) {
-            if (is_array($value)) {
-                $attributes = array_merge(['name' => $key, 'data' => $key], $this->setTitle($key, $value));
-            } else {
-                $attributes = [
-                    'name'  => $value,
-                    'data'  => $value,
-                    'title' => $this->getQualifiedTitle($value),
-                ];
-            }
+            if (! is_a($value, Column::class)) {
+                if (is_array($value)) {
+                    $attributes = array_merge(['name' => $key, 'data' => $key], $this->setTitle($key, $value));
+                } else {
+                    $attributes = [
+                        'name'  => $value,
+                        'data'  => $value,
+                        'title' => $this->getQualifiedTitle($value),
+                    ];
+                }
 
-            $this->collection->push(new Column($attributes));
+                $this->collection->push(new Column($attributes));
+            } else {
+                $this->collection->push($value);
+            }
         }
 
         return $this;
@@ -253,19 +362,17 @@ class Builder
      */
     public function addCheckbox(array $attributes = [])
     {
-        $attributes = array_merge(
-            [
-                'defaultContent' => '<input type="checkbox" ' . $this->html->attributes($attributes) . '/>',
-                'title'          => $this->form->checkbox('', '', false, ['id' => 'dataTablesCheckbox']),
-                'data'           => 'checkbox',
-                'name'           => 'checkbox',
-                'orderable'      => false,
-                'searchable'     => false,
-                'exportable'     => false,
-                'printable'      => true,
-                'width'          => '10px',
-            ], $attributes
-        );
+        $attributes = array_merge([
+            'defaultContent' => '<input type="checkbox" ' . $this->html->attributes($attributes) . '/>',
+            'title'          => $this->form->checkbox('', '', false, ['id' => 'dataTablesCheckbox']),
+            'data'           => 'checkbox',
+            'name'           => 'checkbox',
+            'orderable'      => false,
+            'searchable'     => false,
+            'exportable'     => false,
+            'printable'      => true,
+            'width'          => '10px',
+        ], $attributes);
         $this->collection->push(new Column($attributes));
 
         return $this;
@@ -279,19 +386,17 @@ class Builder
      */
     public function addAction(array $attributes = [])
     {
-        $attributes = array_merge(
-            [
-                'defaultContent' => '',
-                'data'           => 'action',
-                'name'           => 'action',
-                'title'          => 'Action',
-                'render'         => null,
-                'orderable'      => false,
-                'searchable'     => false,
-                'exportable'     => false,
-                'printable'      => true,
-            ], $attributes
-        );
+        $attributes = array_merge([
+            'defaultContent' => '',
+            'data'           => 'action',
+            'name'           => 'action',
+            'title'          => 'Action',
+            'render'         => null,
+            'orderable'      => false,
+            'searchable'     => false,
+            'exportable'     => false,
+            'printable'      => true,
+        ], $attributes);
         $this->collection->push(new Column($attributes));
 
         return $this;

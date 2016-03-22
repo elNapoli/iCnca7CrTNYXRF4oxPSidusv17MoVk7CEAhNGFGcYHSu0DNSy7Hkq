@@ -6,7 +6,11 @@ use Exception;
 use Illuminate\Http\Request as IlluminateRequest;
 
 /**
+ * Class Request.
+ *
  * @property array columns
+ * @package Yajra\Datatables
+ * @author  Arjay Angeles <aqangeles@gmail.com>
  */
 class Request extends IlluminateRequest
 {
@@ -152,7 +156,9 @@ class Request extends IlluminateRequest
      */
     public function columnName($i)
     {
-        return $this->get('columns')[$i]['name'];
+        $column = $this->get('columns')[$i];
+
+        return isset($column['name']) && $column['name'] <> '' ? $column['name'] : $column['data'];
     }
 
     /**

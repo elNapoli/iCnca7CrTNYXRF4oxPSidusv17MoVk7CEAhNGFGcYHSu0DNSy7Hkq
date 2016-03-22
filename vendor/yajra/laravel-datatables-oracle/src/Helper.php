@@ -8,6 +8,12 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
 
+/**
+ * Class Helper.
+ *
+ * @package Yajra\Datatables
+ * @author  Arjay Angeles <aqangeles@gmail.com>
+ */
 class Helper
 {
     /**
@@ -238,7 +244,7 @@ class Helper
             if ($value instanceof DateTime) {
                 $row[$key] = $value->format('Y-m-d H:i:s');
             } else {
-                if (is_string($value)) {
+                if (is_object($value)) {
                     $row[$key] = (string) $value;
                 } else {
                     $row[$key] = $value;

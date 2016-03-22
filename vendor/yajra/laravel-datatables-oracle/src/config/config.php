@@ -1,10 +1,8 @@
 <?php
 
 return [
-
-    'oracle_sql' => false,
-
     'search' => [
+        'smart'            => true,
         'case_insensitive' => true,
         'use_wildcards'    => false,
     ],

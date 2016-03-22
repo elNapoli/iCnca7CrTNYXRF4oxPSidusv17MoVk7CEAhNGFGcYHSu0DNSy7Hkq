@@ -1,0 +1,345 @@
+.forum {
+  color: rgba(0, 0, 0, 0.6);
+}
+.forum .header .btn-success {
+  background-color: rgba(55, 84, 181, 0.8);
+  border-color: rgba(31, 48, 103, 0.8);
+  font-weight: bold;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.forum .header .modal {
+  color: #555;
+}
+.forum .header .modal .modal-header {
+  background: rgba(55, 84, 181, 0.8);
+  color: #fff;
+}
+.forum .header .modal input.form-control {
+  height: 45px;
+}
+.forum .header .modal select.form-control {
+  height: 45px;
+}
+.forum .header .modal .btn {
+  padding: 10px 30px;
+}
+.forum .header .modal .btn-success {
+  background: rgba(55, 84, 181, 0.8);
+}
+.forum .header form .form-group .form-control {
+  border-radius: 5px;
+}
+.forum .body .conversations p.no-conversations {
+  text-align: center;
+  margin: 50px;
+  font-size: 1.3em;
+}
+.forum .body .conversations p.no-conversations small a {
+  cursor: pointer;
+  font-size: .9em;
+}
+.forum .body .conversations p.no-conversations small a:hover {
+  color: rgba(55, 84, 181, 0.8) !important;
+}
+.forum .body .conversations ul {
+  padding: 0px;
+  list-style: none;
+}
+.forum .body .conversations ul li {
+  background: #fffeff !important;
+  border: 1px solid rgba(250, 250, 250, 0.9);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+.forum .body .conversations ul li:hover {
+  background: #fdfdfd !important;
+  border: 1px solid rgba(201, 210, 239, 0.8);
+}
+.forum .body .conversations ul li .avatar {
+  width: 60px;
+}
+.forum .body .conversations ul li a {
+  color: rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+}
+.forum .body .conversations ul li a h3 {
+  font-size: 1.4em;
+  margin: 10px 10px 5px -10px;
+  overflow: hidden;
+}
+.forum .body .conversations ul li a h3:hover {
+  color: rgba(55, 84, 181, 0.8);
+  font-weight: bold;
+}
+.forum .body .conversations ul li span {
+  color: rgba(10, 10, 10, 0.4);
+  font-size: .9em;
+  margin-left: -10px;
+}
+.forum .body .conversations ul li span a {
+  text-decoration: none;
+  color: rgba(55, 84, 181, 0.8);
+}
+.forum .body .conversations ul li div.topic {
+  text-align: center;
+  margin-top: 15px;
+  float: right;
+  color: rgba(10, 10, 10, 0.3);
+}
+.forum .body .conversations ul li div.topic i {
+  font-size: .8em;
+  background: rgba(55, 84, 181, 0.8);
+  color: #FFF;
+  padding: 8px;
+  border-radius: 50px;
+}
+.forum .body .conversations ul li .replies-counter {
+  float: right;
+  margin-right: -20px !important;
+}
+.forum .body .conversations ul li .replies-counter h1 {
+  width: 80px;
+  position: relative;
+  margin: 0px;
+  text-align: center;
+  font-size: 2.8em;
+}
+.forum .body .conversations ul li .replies-counter p {
+  width: 80px;
+  text-align: center;
+  margin: 0px;
+}
+.forum .body .items .item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+.forum .body .items .item .bubble {
+  padding: 0px;
+  width: 100%;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  background: #FFDFD;
+}
+.forum .body .items .item .bubble .header {
+  padding: 20px 30px;
+  border-bottom: 1px solid #CCCCCC;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: #f8f8f8;
+}
+.forum .body .items .item .bubble .header h3 {
+  margin: 0px;
+  font-size: 1.3em;
+  color: rgba(55, 84, 181, 0.8);
+  font-weight: bold;
+  overflow: hidden;
+}
+.forum .body .items .item .bubble .header .avatar {
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin: -15px 20px -15px -15px;
+}
+.forum .body .items .item .bubble .header span {
+  float: right;
+  color: rgba(0, 0, 0, 0.3);
+}
+.forum .body .items .item .bubble .question {
+  padding: 30px 40px;
+  border: 1px solid rgba(49, 75, 161, 0.8);
+  border-bottom: 0px;
+  background: rgba(55, 84, 181, 0.8) !important;
+}
+.forum .body .items .item .bubble .question .avatar {
+  margin: -15px 20px -15px -15px;
+}
+.forum .body .items .item .bubble .question h3 {
+  color: #FFF;
+}
+.forum .body .items .item .bubble .body {
+  padding: 20px 30px;
+  font-size: 1.1em;
+}
+.forum .body .items .item .bubble .body .name {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.1em;
+}
+.forum .body .items .item .bubble .body .content {
+  margin: 20px 0px;
+}
+.forum .body .items .item .bubble .body .content pre {
+  margin: 0 -31px 10px !important;
+  padding: 20px;
+  background: #2D3037;
+  color: lightgoldenrodyellow;
+  border-radius: 0px;
+  font-size: .9em;
+}
+.forum .body .items .item .bubble .body .time {
+  color: rgba(0, 0, 0, 0.2);
+  font-style: italic;
+  float: right;
+}
+.forum .body .items .item .bubble .footer {
+  padding: 8px 30px;
+  border-top: 1px solid #CCCCCC;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background: #f8f8f8;
+}
+.forum .body .items .item .bubble .footer form button {
+  opacity: .5;
+  margin: 0px;
+  background: transparent;
+  border: none;
+  font-size: 1.5em;
+}
+.forum .body .items .item .bubble .footer form button:hover {
+  color: rgba(55, 84, 181, 0.8);
+}
+.forum .body .items .item .bubble .footer form .best-answer {
+  float: right;
+  margin-top: -30px;
+}
+.forum .body .items .item .bubble .footer form .best-answer:hover {
+  color: green;
+}
+.forum .body .items .item .bubble .footer form .text-like-count {
+  margin-top: -23px;
+  margin-left: 35px;
+}
+.forum .body .items .item .bubble .footer form .has-like {
+  color: rgba(55, 84, 181, 0.8);
+  opacity: 1;
+}
+.forum .body .items .item .bubble .best-answer {
+  margin-top: -20px;
+  margin-right: -20px;
+  float: right;
+  padding: 5px 5px;
+  border: 1px solid #CCC;
+  border-radius: 50%;
+  background: #FFF;
+}
+.forum .body .items .item .bubble .best-answer i {
+  margin-top: -2px;
+  background: seagreen;
+  padding: 8px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.5em;
+}
+.forum .body .items .item form {
+  width: 100%;
+  background: transparent;
+}
+.forum .body .items .item form textarea {
+  resize: none;
+}
+.forum .body .items .item form .btn {
+  padding: 10px 30px;
+}
+.forum .body .items .item form .btn-primary {
+  background: rgba(55, 84, 181, 0.8);
+}
+.forum .body .items .divsor {
+  float: left;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.2em;
+  margin: 10px 10px 20px 20px;
+}
+.forum .body .items .pagination {
+  border-radius: 4px;
+  margin-top: 0px;
+}
+.forum .body .items .pagination li:first-child > span {
+  margin-left: 0;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.forum .body .items .pagination li:last-child > span {
+  margin-left: 0;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.forum .body .items .pagination li.active span {
+  background: rgba(55, 84, 181, 0.8);
+  border-color: rgba(123, 144, 215, 0.8);
+}
+.forum .body .topics ul {
+  list-style: none;
+  padding: 0px;
+}
+.forum .body .topics ul li {
+  width: 100%;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-bottom: 3px;
+  padding: 0px;
+  text-align: left;
+}
+.forum .body .topics ul li span {
+  float: left;
+  padding: 5px 10px 10px 5px;
+  width: 100% !important;
+  font-weight: bold;
+}
+.forum .body .topics ul li span i {
+  background: rgba(55, 84, 181, 0.8);
+  color: #FFF;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 50px;
+}
+.forum .body .topics ul li span:hover {
+  background: #fdfdfd !important;
+  border: 1px solid rgba(201, 210, 239, 0.8);
+  border-radius: 5px;
+}
+.forum .pagination {
+  float: right;
+  border-radius: 4px;
+  margin-top: 0px;
+}
+.forum .pagination li:first-child > span {
+  margin-left: 0;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.forum .pagination li:last-child > span {
+  margin-left: 0;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.forum .pagination li.active span {
+  background: rgba(55, 84, 181, 0.8);
+  border-color: rgba(123, 144, 215, 0.8);
+}
+.forum a .avatar {
+  width: 60px;
+  height: 60px;
+  padding: 3px;
+}
+div.forum-notification {
+  position: fixed;
+  min-width: 300px;
+  bottom: 20px;
+  right: 20px;
+  padding: 20px;
+  color: #333;
+  border: 1px solid rgba(55, 84, 181, 0.8);
+  border-radius: 10px;
+  background: rgba(162, 177, 227, 0.8);
+  display: none;
+}
+div.forum-notification a {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=forum.css.map */

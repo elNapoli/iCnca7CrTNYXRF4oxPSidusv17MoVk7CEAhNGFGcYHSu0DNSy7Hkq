@@ -46,7 +46,7 @@ Excel::create('Laravel Excel', function($excel) {
 Require this package in your `composer.json` and update composer. This will download the package and PHPExcel of PHPOffice.
 
 ```php
-"maatwebsite/excel": "~2.0.0"
+"maatwebsite/excel": "~2.1.0"
 ```
 
 After updating composer, add the ServiceProvider to the providers array in `config/app.php`
@@ -70,7 +70,7 @@ $excel = App::make('excel');
 To publish the config settings in Laravel 5 use:
 
 ```php
-php artisan vendor:publish
+php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider"
 ```
 
 This will add an `excel.php` config file to your config folder.

@@ -2,19 +2,16 @@
 
 namespace Yajra\Datatables\Engines;
 
-/**
- * Laravel Datatables Eloquent Engine
- *
- * @package  Laravel
- * @category Package
- * @author   Arjay Angeles <aqangeles@gmail.com>
- */
-
 use Illuminate\Database\Eloquent\Builder;
-use Yajra\Datatables\Contracts\DataTableEngineContract;
 use Yajra\Datatables\Request;
 
-class EloquentEngine extends QueryBuilderEngine implements DataTableEngineContract
+/**
+ * Class EloquentEngine.
+ *
+ * @package Yajra\Datatables\Engines
+ * @author  Arjay Angeles <aqangeles@gmail.com>
+ */
+class EloquentEngine extends QueryBuilderEngine
 {
     /**
      * @param mixed $model
@@ -22,7 +19,10 @@ class EloquentEngine extends QueryBuilderEngine implements DataTableEngineContra
      */
     public function __construct($model, Request $request)
     {
-        $this->query = $model instanceof Builder ? $model : $model->getQuery();
-        $this->init($request, $this->query->getQuery(), 'eloquent');
+        $builder = $model instanceof Builder ? $model : $model->getQuery();
+        parent::__construct($builder->getQuery(), $request);
+
+        $this->query      = $builder;
+        $this->query_type = 'eloquent';
     }
 }

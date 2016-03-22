@@ -1,0 +1,24 @@
+{
+    "name": "easy-slug/easy-slug",
+    "description": "Laravel Package for creating a slug",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Viraj Khatavkar",
+            "email": "viraj.2438@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "phpunit/phpunit": "^4.7"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "EasySlug\\EasySlug": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

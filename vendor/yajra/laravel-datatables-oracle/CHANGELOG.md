@@ -8,6 +8,84 @@
 
 ##Change Log
 
+###v6.10.1 - 2016-03-22
+    - Fix eager loading column search. PR #469.
+    - Fix issue #443.
+
+###v6.10.0 - 2016-03-19
+    - Add feature to enable/disable smart search via config or during runtime. Fix #423
+    - See PR #452 for details.
+
+###v6.9.4 - 2016-03-18
+    - Use full namespace in app() helper.
+    - PR #465, credits to @ligne13.
+
+###v6.9.3 - 2016-03-17
+    - Adds an option to pass parameters to column render.
+    - Allows passing instance of Column into Builder columns.
+    - Fix security issue as reported in #460.
+    - Credits to @vladkucherov for this changes.
+
+###v6.9.2 - 2016-03-16
+    - Pull-up isOracleSQL and fix condition using oci8.
+    
+###v6.9.1 - 2016-03-11
+    - Add default array value when getting columns. Fix #448
+    
+###v6.9.0 - 2016-03-11
+    - Re-implement facade.
+    - Add blacklist and whitelist feature.
+    - Fix string casting for object values.
+    - Add missing doc block for getSearchKeyword.
+    - Fix eloquent engine missing parent constructor.
+    - Add/Update class doc blocks.
+    
+###v6.8.0 - 2016-03-11
+    - Added Closure support for filterColumn method.
+    - PR #440. Credits to @codewizz.
+
+###v6.7.3 - 2016-03-02
+    - Fix eager load multiple column sorting where other columns are being ignored when join statement already exists.
+    - Refactor redundant else order by statement.
+    - Call eager loads only when required when filtering and ordering.
+    - Extract eager loaded column join statement handler.
+
+###v6.7.2 - 2016-02-28
+    - Fix collection engine sorting and sorting function.
+    - Fix #413 and #415. 
+
+###v6.7.1 - 2016-02-26
+    - Fix multiple column sorting when using eager loaded models. Fix #410 
+
+###v6.7.0 - 2016-02-26
+    - Add support for sorting on eager loaded models. 
+    - PR #409 - Credits to @ikerasLT.
+
+###v6.6.1 - 2016-02-20
+    - Fix eager loading search (SQLSTATE[21000]: Cardinality violation:). Issue #403.
+
+###v6.6.0 - 2016-02-20
+    - Add totalCount on contact and remove excess new line.
+    - Remove unnecessary abstract function on BaseEngine since we have a contract.
+    - Remove engine implementation of contract since BaseEngine already requires it.
+    - Improve column name detection for filtering and sorting.
+    - Dynamically determine if oracle depending on connection used.
+    - Automatic detection of primary key when using Eloquent engine.
+    - Use primary key when column name could not be resolve.
+    - Update DataTable service doc blocks and refactor render method.
+
+###v6.5.1 - 2016-02-19
+    - Fix ordering column name detection. Issue #339.
+    - Refactor Builder parameterize method.
+
+###v6.5.0 - 2016-02-18
+    - Add support for DataTables valid callbacks.
+    - Fix issue #387 & #401.
+
+###v6.4.5 - 2016-02-18
+    - Allow edit columns for nested arrays. PR #399 - credits to @ramilexe
+    - Fix flag for case insensitive search. PR #400 - credits to @ansient 
+    
 ###v6.4.4 - 2016-02-13
     - Fix filtering in nested columns of Collections. PR #392
     

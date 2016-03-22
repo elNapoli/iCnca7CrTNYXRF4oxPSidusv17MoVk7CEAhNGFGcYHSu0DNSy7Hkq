@@ -148,6 +148,7 @@ return [
 		'Collective\Html\HtmlServiceProvider',
 		Yajra\Datatables\DatatablesServiceProvider::class,
 		DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+		Socieboy\Forum\Providers\ForumServiceProvider::class,
 
 	],
 

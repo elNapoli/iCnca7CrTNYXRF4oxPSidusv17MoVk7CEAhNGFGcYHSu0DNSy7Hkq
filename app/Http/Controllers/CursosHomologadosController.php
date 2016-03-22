@@ -20,7 +20,7 @@ class CursosHomologadosController extends Controller {
 		$asignatura = Asignatura::where('carrera',$carrera_id)->first();
 		$universidad_destino= $postulante->pregradosR->prePostulacionUniversidadesR->carreraR->facultadR->campusSedesR->universidadR->nombre;
 		//dd(($asignatura->toArray()));
-		$asignaturas = Asignatura::where('carrera',$carrera_id)->orderBy('codigo')->lists('codigo','codigo');
+		$asignaturas = Asignatura::where('carrera',$carrera_id)->orderBy('codigo')->lists('codigo','codigo')->all();
 
 
 		$parametros = array(
@@ -43,7 +43,7 @@ class CursosHomologadosController extends Controller {
 	public function getCursosHomologados(Guard $auth){
 		$postulante = Postulante::where('user_id',$auth->id())->first();
 		$carrera_id = $postulante->pregradosR->preUachsR->preUEstudioActualesR->carrera;
-		$asignaturas = Asignatura::where('carrera',$carrera_id)->orderBy('codigo')->lists('codigo','codigo');
+		$asignaturas = Asignatura::where('carrera',$carrera_id)->orderBy('codigo')->lists('codigo','codigo')->all();
 		$num_homologacion = Homologacion::where('postulante',$postulante->id)->get()->count();
 		if($num_homologacion != 0){
 

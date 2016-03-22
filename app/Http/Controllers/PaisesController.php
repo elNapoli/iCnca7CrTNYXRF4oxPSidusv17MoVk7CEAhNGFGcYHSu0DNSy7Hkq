@@ -15,7 +15,7 @@ class PaisesController extends Controller {
 	 */
 	public function getIndex()
 	{
-		$continentes = Continente::lists('nombre','id');
+		$continentes = Continente::lists('nombre','id')->all();
 
 	
 		return view('paises.index',compact('continentes'));
@@ -33,7 +33,7 @@ class PaisesController extends Controller {
 	 */
 	public function getCreate()
 	{	
-		$continentes = Continente::lists('nombre','id');
+		$continentes = Continente::lists('nombre','id')->all();
 
 
 

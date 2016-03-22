@@ -34,7 +34,7 @@ class EstudioActualController extends Controller {
 
 	}
 	public function getCreateOrEdit(Guard $auth){
-		$continentes = Continente::lists('nombre','id');
+		$continentes = Continente::lists('nombre','id')->all();
 		$postulante = Postulante::where('user_id',\Auth::id())->first();
 		$parametros = array(
 							'tipo_estudio' => $postulante->tipo_estudio,

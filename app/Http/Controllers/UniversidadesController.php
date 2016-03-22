@@ -137,7 +137,7 @@ class UniversidadesController extends Controller {
 	 */
 	public function getCreate()
 	{
-		$continentes = Continente::lists('nombre','id');
+		$continentes = Continente::lists('nombre','id')->all();
 		return view('universidades.create',compact('continentes'));
 	}
 
@@ -150,7 +150,7 @@ class UniversidadesController extends Controller {
 	public function getEdit($id)
 	{
 
-		$continentes = Continente::lists('nombre','id');
+		$continentes = Continente::lists('nombre','id')->all();
 		$idUniversidad = $id;
 		//dd(Universidad::where('id',$id)->with('campusSedesR.ciudadR.paisR.continenteR')->get()->toArray());
 		$infoUniversidad = Universidad::where('id',$id)->with('campusSedesR.ciudadR.paisR.continenteR')->get()->toJson();

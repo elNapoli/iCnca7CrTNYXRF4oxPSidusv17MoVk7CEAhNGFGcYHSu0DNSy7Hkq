@@ -15,7 +15,7 @@ class FacultadesController extends Controller {
 
 
 	public function getIndex(){
-		$universidades = Universidad::orderBy('nombre')->lists('nombre','id');
+		$universidades = Universidad::orderBy('nombre')->lists('nombre','id')->all();
 	
 		return view('facultades.index',compact('universidades'));
 	}
@@ -29,7 +29,7 @@ class FacultadesController extends Controller {
 
 	public function getCreate(){
 	
-		$universidades = Universidad::lists('nombre','id');
+		$universidades = Universidad::lists('nombre','id')->all();
 
 		return view('facultades.create',compact('universidades'));
 	}

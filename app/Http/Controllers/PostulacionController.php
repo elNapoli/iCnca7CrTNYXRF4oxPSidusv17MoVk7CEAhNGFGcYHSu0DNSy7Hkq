@@ -27,7 +27,7 @@ class PostulacionController extends Controller {
 	 */
 	public function getIndex()
 	{
-		$continentes = Continente::lists('nombre','id');
+		$continentes = Continente::lists('nombre','id')->all();
 
 		return view('postulacion.index',compact('continentes'));
 	}
@@ -52,7 +52,7 @@ class PostulacionController extends Controller {
 
 	public function getCreateOrEdit(Guard $auth){
 		$postulante = Postulante::with('ciudadR.paisR')->where('user_id',$auth->id())->first();
-		$continentes = Continente::lists('nombre','id');	
+		$continentes = Continente::lists('nombre','id')->all();	
 	
 		//dd($postulante->toArray());
 		$documentoIdentidad = 0;
@@ -60,8 +60,8 @@ class PostulacionController extends Controller {
 		$paises = array(null=>'Seleccione un país');
 		$ciudades = array(null=>'seleccione una ciudad');
 		if($postulante){
-			$paises = Pais::where('continente',$postulante->ciudadR->paisR->continente)->orderBy('nombre')->lists('nombre','id');
-			$ciudades = Ciudad::where('pais',$postulante->ciudadR->paisR->id)->orderBy('nombre')->lists('nombre','id');
+			$paises = Pais::where('continente',$postulante->ciudadR->paisR->continente)->orderBy('nombre')->lists('nombre','id')->all();
+			$ciudades = Ciudad::where('pais',$postulante->ciudadR->paisR->id)->orderBy('nombre')->lists('nombre','id')->all();
 			$status	 = 1;
 			$postulante->documentoIdentidades;
 			$parametros = array(
@@ -180,7 +180,7 @@ class PostulacionController extends Controller {
 	}
 
 	public function getPrueba(){
-		$continentes = Continente::lists('nombre','id');
+		$continentes = Continente::lists('nombre','id')->all();
 
 		return view('postulacion.prueba',compact('continentes'));
 	

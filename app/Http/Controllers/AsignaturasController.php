@@ -18,7 +18,7 @@ class AsignaturasController extends Controller {
 	 */
 	public function getIndex()
 	{
-		$universidades = Universidad::lists('nombre','id');
+		$universidades = Universidad::lists('nombre','id')->all();
 		return view('asignaturas.index',compact('universidades'));
 	}
 	public function getAsignaturas()
@@ -51,7 +51,7 @@ class AsignaturasController extends Controller {
 
 	public function getCreate()
 	{
-		$universidad = Universidad::lists('nombre','id');
+		$universidad = Universidad::lists('nombre','id')->all();
 		return view('asignaturas.create',compact('universidad'));
 	}
 

@@ -53,7 +53,7 @@ class CiudadesController extends Controller {
 
 		//$ciudades = Ciudad::;
 
-		$continentes = Continente::lists('nombre','id');
+		$continentes = Continente::lists('nombre','id')->all();
 
 		return view('ciudades.index',compact('continentes'));
 	}
@@ -65,7 +65,7 @@ class CiudadesController extends Controller {
 	 */
 	public function getCreate()
 	{
-		$continentes = Continente::lists('nombre','id');
+		$continentes = Continente::lists('nombre','id')->all();
 		return view('ciudades.create',compact('continentes'));
 
 	}

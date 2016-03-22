@@ -79,7 +79,7 @@ class AsistentesController extends Controller {
 
 	public function postStore(Request $request)
 	{
-		$beneficios = Beneficio::lists('nombre','id');
+		$beneficios = Beneficio::lists('nombre','id')->all();
 		$this->validate($request, [
         'nombre' => 'required|string|unique:beneficio,nombre',
         'postulante' =>'required',
@@ -112,7 +112,7 @@ class AsistentesController extends Controller {
 		$post = Postulante::findOrFail($asistentes->postulante);
 		//dd($asistentes->toArray());
 		$detalle = DetalleBeneficio::where('id_a','=',$asistentes->id)->get();
-		$beneficios = Beneficio::lists('nombre','id');
+		$beneficios = Beneficio::lists('nombre','id')->all();
         return view('asistentes.edit',compact('asistentes','detalle','post','beneficios'));
 	}
 	public function getDetalle($id)

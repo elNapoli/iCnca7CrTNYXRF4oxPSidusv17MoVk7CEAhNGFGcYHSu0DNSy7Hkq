@@ -38,7 +38,7 @@ class CarrerasController extends Controller {
 	}
 	public function getIndex()
 	{
-		$continentes = Continente::lists('nombre','id');
+		$continentes = Continente::lists('nombre','id')->all();
 
 
 

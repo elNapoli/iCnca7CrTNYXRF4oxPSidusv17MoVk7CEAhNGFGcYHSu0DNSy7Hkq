@@ -18,7 +18,7 @@ class DepartamentosController extends Controller {
 	public function getIndex()
 	{
 
-		$pais = Pais::lists('nombre','id');
+		$pais = Pais::lists('nombre','id')->all();
 		return view('departamentos.index',compact('pais'));
 	}
 
@@ -36,7 +36,7 @@ class DepartamentosController extends Controller {
 	 */
 	public function getCreate()
 	{
-		$pais = Pais::lists('nombre','id');
+		$pais = Pais::lists('nombre','id')->all();
 		return view('departamentos.create',compact('pais'));
 	}
 

@@ -24,7 +24,8 @@ return [
      */
 
     'topics' => [
-        'general' => ['name' => 'General', 'icon' => 'fa fa-tags', 'color' => 'rgb(78, 137, 218)']
+        'general' => ['name' => 'General', 'icon' => 'glyphicon glyphicon-tags', 'color' => 'rgb(78, 137, 218)'],
+        'Carreras' => ['name' => 'Carreras', 'icon' => 'glyphicon glyphicon-tags', 'color' => 'rgb(78, 137, 218)']
     ],
 
 
@@ -60,7 +61,7 @@ return [
          * Place this key to true to use your own avatars.
          */
 
-        'avatar'        => false,
+        'avatar'        => true,
 
         /**
          * Need avatars on your forum.
@@ -74,7 +75,7 @@ return [
          * Set this to false to use your own avatars on the users table
          */
 
-        'gravatar' => true,
+        'gravatar' => false,
 
 
 
@@ -82,7 +83,7 @@ return [
          * Require links to user profile
          */
 
-        'profile' => false,
+        'profile' => true ,
 
         /**
          * Route name to user profile.
@@ -110,17 +111,21 @@ return [
      * By default we use icons from bootstrap
      */
     'icons' => [
+        'tags'              => 'glyphicon glyphicon-tags',
         'like'              => 'glyphicon glyphicon-thumbs-up',
         'correct-answer'    => 'glyphicon glyphicon-ok',
+        'edit'              => 'glyphicon glyphicon-pencil',
+        'delete'            => 'glyphicon glyphicon-trash',
+        'home'              => 'glyphicon glyphicon-home',
     ],
 
     /**
      * Send an email to the conversation owner each time someone left a reply
      */
-
+    'fire' => true,
     'emails' => [
 
-        'fire' => false,
+        'fire' => true,
 
         /**
          * Set the email from

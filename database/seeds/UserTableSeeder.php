@@ -25,6 +25,7 @@ class UserTableSeeder extends Seeder
         $user->codigo_confirmacion  = str_random();
         $user->tipo_usuario         = 'administrador';
         $user->email                = 'verificacion.mov.uach@gmail.com';
+        $user->avatar             = 'avatar.jpg';
         $user->password             = 'movilidad321';
             
         $user->save();
@@ -41,6 +42,7 @@ class UserTableSeeder extends Seeder
                 'codigo_confirmacion'=> str_random(),
                 'tipo_usuario'=> 'usuario',
                 'email'=>$faker->unique->email ,
+                'avatar'=>'avatar.jpg',
                 'password'=>bcrypt('secret') 
             ];
 

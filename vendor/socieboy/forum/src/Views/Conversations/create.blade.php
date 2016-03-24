@@ -8,7 +8,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Start a Conversation</h4>
+                <h4 class="modal-title" id="myModalLabel">{{ trans('Forum::messages.new-conversation') }}</h4>
             </div>
 
             <form action="{{ route('forum.conversation.store') }}" method="POST">

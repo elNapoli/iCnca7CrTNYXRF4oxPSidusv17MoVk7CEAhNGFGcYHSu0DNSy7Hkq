@@ -1,6 +1,6 @@
 @extends($template)
 @section($content)
-
+holla
 
     <div class="forum" id="socieboy">
 

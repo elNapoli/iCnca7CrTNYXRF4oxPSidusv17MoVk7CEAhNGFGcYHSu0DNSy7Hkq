@@ -1,10 +1,10 @@
 @extends('Forum::Template.master')
 @section('forum-content')
 
-<div class="col-md-12">
 
 
-    <div class="row items">
+
+    <div class="row mt  items">
 
                 @include('Forum::Conversations.Partials.question')
 
@@ -29,16 +29,15 @@
                     {!! $replies->render() !!}
                 </div>
 
-                @if(auth()->check())
+             
 
-                    @include('Forum::Replies.form')
-
-                @endif
-
-            </div>
+                @include('Forum::Replies.form')
+                
 
 
-</div>
+    </div>
+
+
 
 
 

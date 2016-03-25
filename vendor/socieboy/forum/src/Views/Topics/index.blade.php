@@ -26,7 +26,7 @@
     <a href="#!" data-toggle="modal" data-target="#create-topic-modal">
     <li>
         <span>
-            <i class="glyphicon glyphicon-tags"></i>
+            <i class="glyphicon glyphicon-plus"></i>
             Nueva categoria
         </span>
     </li>

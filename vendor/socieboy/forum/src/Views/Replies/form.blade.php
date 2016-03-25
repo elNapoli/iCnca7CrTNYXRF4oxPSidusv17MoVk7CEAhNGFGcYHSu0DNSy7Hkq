@@ -7,8 +7,10 @@
             <input type="hidden" name="conversation_id" value="{{ $conversation->id }}"/>
 
             <div class="form-group @if($errors->has('message')) has-error @endif">
-
-                <textarea name="message" class="form-control" cols="30" rows="10"></textarea>
+                <div class="col-lg-12">
+                    
+                <textarea name="message" class="form-control"  rows="10"></textarea>
+                </div>
 
                 @if($errors->has('message'))
                     <p class="help-block">

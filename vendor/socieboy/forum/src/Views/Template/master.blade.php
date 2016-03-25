@@ -14,10 +14,10 @@
                             
                             <h4 class="mb">@include('Forum::Partials.top-bar')</h4>
                         </div>
-                      <form class="form-horizontal style-form" method="get">
+                      <div class="form-horizontal style-form">
                           @yield('forum-content')
                                                  
-                      </form>
+                      </div>
                   </div>
                 </div><!-- col-lg-12-->         
             </div><!-- /row -->

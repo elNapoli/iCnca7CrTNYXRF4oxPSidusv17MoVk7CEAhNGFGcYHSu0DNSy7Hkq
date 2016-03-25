@@ -79,14 +79,12 @@
                   <li><a  href="#">item 2</a></li>
               </ul>
           </li>
-          <li class="sub-menu">
-              <a href="javascript:;" >
+          <li class="menu">
+              <a href="{{ url('forum') }}" >
                   <i class="fa fa-wechat  "></i>
                   <span>Foros</span>
               </a>
-              <ul class="sub">
-                  <li><a  href="#">Form item1</a></li>
-              </ul>
+              
           </li>
 
           <li class="sub-menu">

@@ -3,6 +3,7 @@
 namespace Socieboy\Forum\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Topic;
 use Socieboy\Forum\Entities\Conversations\ConversationRepo;
 use Socieboy\Forum\Jobs\Conversations\CreateConversationThread;
 use Socieboy\Forum\Jobs\StartConversationJob;
@@ -36,10 +37,11 @@ class ConversationController extends Controller
     public function show($slug)
     {
         $conversation = $this->conversationRepo->findBySlug($slug);
+        $topic = Topic::all();
 
         $replies = $conversation->replies()->orderBy('created_at', 'DESC')->paginate(4);
 
-        return view('Forum::Conversations.show', compact('conversation', 'replies'));
+        return view('Forum::Conversations.show', compact('conversation', 'replies','topic'));
     }
 
     /**

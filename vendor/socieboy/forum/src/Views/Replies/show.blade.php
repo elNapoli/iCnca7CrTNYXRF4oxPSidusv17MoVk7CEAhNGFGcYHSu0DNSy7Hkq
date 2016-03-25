@@ -4,7 +4,7 @@
 
         <div class="bubble reply">
 
-            <div class="header">
+            <div class="headerQ">
                 <span class="hidden-xs time">{{ $reply->created_at->diffForHumans() }}</span>
                 @include('Forum::Partials.avatar', ['user' => $reply->user])
                 <h3 class="name">{{ $reply->user->{config('forum.user.username')} }}</h3>

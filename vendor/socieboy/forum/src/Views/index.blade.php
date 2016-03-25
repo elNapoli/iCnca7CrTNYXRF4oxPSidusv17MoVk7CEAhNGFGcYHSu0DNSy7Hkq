@@ -1,36 +1,37 @@
 @extends('Forum::Template.master')
 @section('forum-content')
 
-<div class="hidden-xs hidden-sm col-md-3 topics">
+<div class="row mt">  
+    <div class="col-lg-9 conversations">
 
-     @include('Forum::Topics.index')
+        <ul>
 
-</div>
+            @forelse($conversations as $conversation)
 
-<div class="col-md-9 conversations">
+                @include('Forum::Conversations.Partials.conversation')
 
-    <ul>
+            @empty
 
-        @forelse($conversations as $conversation)
+                @include('Forum::Partials.no-conversations')
 
-            @include('Forum::Conversations.Partials.conversation')
+            @endforelse
 
-        @empty
-
-            @include('Forum::Partials.no-conversations')
-
-        @endforelse
-
-    </ul>
+        </ul>
 
 
-</div>
+    </div>
+    <div class="col-lg-3 topics">
 
-<div class="col-md-12">
+         @include('Forum::Topics.index')
 
-    {!! $conversations->render() !!}
+    </div>
 
-</div>
+    <div class="col-lg-offset-1 col-lg-11">
+
+        {!! $conversations->render() !!}
+
+    </div>
+</div>                    
 
 
 @stop

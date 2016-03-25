@@ -6,7 +6,7 @@ return [
      * Define the path to your master view on your "resources/view" folder.
      */
 
-    'template'  => 'app',
+    'template'  => 'intranet/app',
 
 
     /*
@@ -24,8 +24,8 @@ return [
      */
 
     'topics' => [
-        'general' => ['name' => 'General', 'icon' => 'glyphicon glyphicon-tags', 'color' => 'rgb(78, 137, 218)'],
-        'Carreras' => ['name' => 'Carreras', 'icon' => 'glyphicon glyphicon-tags', 'color' => 'rgb(78, 137, 218)']
+        '1' => ['name' => 'General', 'icon' => 'glyphicon glyphicon-tags', 'color' => '#CC0000'],
+        '2' => ['name' => 'Carreras', 'icon' => 'glyphicon glyphicon-tags', 'color' => '#33CC00']
     ],
 
 

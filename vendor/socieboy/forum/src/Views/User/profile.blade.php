@@ -6,8 +6,8 @@
     @include('Forum::Partials.avatar')
 
     <h3>{{ $user->{config('forum.user.username')} }}</h3>
-    <p>Member since {{ $user->created_at->diffForHumans() }}</p>
-    <a href="{{ route('forum') }}">Back to the forum</a>
+    <p>Miembro desde {{ $user->created_at->diffForHumans() }}</p>
+    <a href="{{ route('forum') }}">Regresar al foro</a>
 </div>
 
 @stop

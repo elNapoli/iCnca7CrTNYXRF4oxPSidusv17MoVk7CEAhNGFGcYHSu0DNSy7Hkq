@@ -3,6 +3,7 @@
 namespace Socieboy\Forum\Controllers;
 
 use \App\Http\Controllers\Controller;
+use App\Topic;
 use Illuminate\Http\Request;
 use Socieboy\Forum\Entities\Conversations\ConversationRepo;
 
@@ -31,8 +32,10 @@ class ForumController extends Controller
     public function index()
     {
         $conversations = $this->conversationRepo->latest()->paginate(10);
-
-        return view('Forum::index', compact('conversations'));
+        $topic = Topic::all();
+            
+            
+        return view('Forum::index', compact('conversations','topic'));
     }
 
     /**
@@ -45,8 +48,9 @@ class ForumController extends Controller
     public function topic($topic_id)
     {
         $conversations = $this->conversationRepo->topic($topic_id);
+        $topic = Topic::all();
 
-        return view('Forum::index', compact('conversations'));
+        return view('Forum::index', compact('conversations','topic'));
     }
 
 
@@ -60,6 +64,13 @@ class ForumController extends Controller
         $conversations = $this->conversationRepo->search($request->all());
 
         return view('Forum::index', compact('conversations'));
+    }
+
+    public function storeTopic(Request $request){
+        $asistente = Topic::create($request->all());
+        return redirect()->route('forum');
+
+
     }
 
 

@@ -21,6 +21,7 @@
     {!! Html::Style('plugins/dataTables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')!!}
   
     {!! Html::Style('plugins/jquery-ui/jquery-ui.css')!!}
+    <link href="{{ asset('css/forum.css') }}" rel="stylesheet">
     
     <!-- Custom styles for this template -->
     {!! Html::Style('plugins/theme_intranet/css/style.css')!!}

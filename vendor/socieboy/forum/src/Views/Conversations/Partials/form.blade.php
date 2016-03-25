@@ -10,8 +10,8 @@
     <label for="title">{{ trans('Forum::messages.topic') }}</label>
     <select name="topic_id" class="form-control">
 
-        @foreach(config('forum.topics') as $key => $topic)
-            <option value="{{ $key }}">{{ $topic['name'] }}</option>
+        @foreach($topic as $key => $topic)
+            <option value="{{ $topic['id'] }}">{{ $topic['nombre'] }}</option>
         @endforeach
 
     </select>
@@ -20,6 +20,6 @@
 
 <div class="form-group @if($errors->has('message')) has-error @endif">
     <label for="message">{{ trans('Forum::messages.message') }}</label>
-    <textarea class="form-control"  cols="30" rows="14" style="resize:none" name="message"></textarea>
+    <textarea class="form-control"  cols="30" rows="10" style="resize:none" name="message"></textarea>
     @if($errors->has('title')) <p class="help-block">{{ $errors->first('message') }}</p> @endif
 </div>

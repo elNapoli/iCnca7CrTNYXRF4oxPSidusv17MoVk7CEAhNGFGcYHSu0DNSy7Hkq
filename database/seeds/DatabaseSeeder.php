@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
 
 
        //###########################################
-       $this->call(UserTableSeeder::class);
+ /*      $this->call(UserTableSeeder::class);
        $this->call(ContinenteTableSeeder::class);
        $this->call(PaisTableSeeder::class);
        $this->call(CiudadTableSeeder::class);
@@ -85,8 +85,16 @@ class DatabaseSeeder extends Seeder
         $this->call(PreNuInscripcionCursoTableSeeder::class);
         $this->call(PreUEstudioActualTableSeeder::class);
         $this->call(PostPostulacionUniverisidadTableSeeder::class);
-        // hasta aca optimicé! 
+*/
+        $this->call(TopicTableSeeder::class);
+        $this->call(ConversationsTableSeeder::class);
+        $this->call(RepliesTableSeeder::class);
+
+
+
         
+
+
 
 
 

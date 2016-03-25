@@ -30,23 +30,23 @@
 .forum .header form .form-group .form-control {
   border-radius: 5px;
 }
-.forum .body .conversations p.no-conversations {
+.conversations p.no-conversations {
   text-align: center;
   margin: 50px;
   font-size: 1.3em;
 }
-.forum .body .conversations p.no-conversations small a {
+.conversations p.no-conversations small a {
   cursor: pointer;
   font-size: .9em;
 }
-.forum .body .conversations p.no-conversations small a:hover {
+.conversations p.no-conversations small a:hover {
   color: rgba(55, 84, 181, 0.8) !important;
 }
 .forum .body .conversations ul {
   padding: 0px;
   list-style: none;
 }
-.forum .body .conversations ul li {
+.conversations ul li {
   background: #fffeff !important;
   border: 1px solid rgba(250, 250, 250, 0.9);
   padding: 10px;
@@ -54,125 +54,125 @@
   margin-bottom: 5px;
   overflow: hidden;
 }
-.forum .body .conversations ul li:hover {
+.conversations ul li:hover {
   background: #fdfdfd !important;
   border: 1px solid rgba(201, 210, 239, 0.8);
 }
-.forum .body .conversations ul li .avatar {
+.conversations ul li .avatar {
   width: 60px;
 }
-.forum .body .conversations ul li a {
+.conversations ul li a {
   color: rgba(0, 0, 0, 0.6);
   text-decoration: none;
 }
-.forum .body .conversations ul li a h3 {
+.conversations ul li a h3 {
   font-size: 1.4em;
   margin: 10px 10px 5px -10px;
   overflow: hidden;
 }
-.forum .body .conversations ul li a h3:hover {
+.conversations ul li a h3:hover {
   color: rgba(55, 84, 181, 0.8);
   font-weight: bold;
 }
-.forum .body .conversations ul li span {
+.conversations ul li span {
   color: rgba(10, 10, 10, 0.4);
   font-size: .9em;
   margin-left: -10px;
 }
-.forum .body .conversations ul li span a {
+.conversations ul li span a {
   text-decoration: none;
   color: rgba(55, 84, 181, 0.8);
 }
-.forum .body .conversations ul li div.topic {
+div.topic2 {
   text-align: center;
   margin-top: 15px;
   float: right;
   color: rgba(10, 10, 10, 0.3);
 }
-.forum .body .conversations ul li div.topic i {
+div.topic2 i {
   font-size: .8em;
   background: rgba(55, 84, 181, 0.8);
   color: #FFF;
   padding: 8px;
   border-radius: 50px;
 }
-.forum .body .conversations ul li .replies-counter {
+.conversations ul li .replies-counter {
   float: right;
   margin-right: -20px !important;
 }
-.forum .body .conversations ul li .replies-counter h1 {
+.conversations ul li .replies-counter h1 {
   width: 80px;
   position: relative;
   margin: 0px;
   text-align: center;
   font-size: 2.8em;
 }
-.forum .body .conversations ul li .replies-counter p {
+.conversations ul li .replies-counter p {
   width: 80px;
   text-align: center;
   margin: 0px;
 }
-.forum .body .items .item {
+.items .item {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 20px;
 }
-.forum .body .items .item .bubble {
+.items .item .bubble {
   padding: 0px;
   width: 100%;
   border: 1px solid #CCCCCC;
   border-radius: 5px;
   background: #FFDFD;
 }
-.forum .body .items .item .bubble .header {
+.items .item .bubble .headerQ {
   padding: 20px 30px;
   border-bottom: 1px solid #CCCCCC;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   background: #f8f8f8;
 }
-.forum .body .items .item .bubble .header h3 {
+.items .item .bubble .headerQ h3 {
   margin: 0px;
   font-size: 1.3em;
   color: rgba(55, 84, 181, 0.8);
   font-weight: bold;
   overflow: hidden;
 }
-.forum .body .items .item .bubble .header .avatar {
+.items .item .bubble .headerQ .avatar {
   float: left;
   width: 50px;
   height: 50px;
   margin: -15px 20px -15px -15px;
 }
-.forum .body .items .item .bubble .header span {
+.items .item .bubble .headerQ span {
   float: right;
   color: rgba(0, 0, 0, 0.3);
 }
-.forum .body .items .item .bubble .question {
+.items .item .bubble .question {
   padding: 30px 40px;
   border: 1px solid rgba(49, 75, 161, 0.8);
   border-bottom: 0px;
   background: rgba(55, 84, 181, 0.8) !important;
 }
-.forum .body .items .item .bubble .question .avatar {
+.items .item .bubble .question .avatar {
   margin: -15px 20px -15px -15px;
 }
-.forum .body .items .item .bubble .question h3 {
+.items .item .bubble .question h3 {
   color: #FFF;
 }
-.forum .body .items .item .bubble .body {
+.items .item .bubble .body {
   padding: 20px 30px;
   font-size: 1.1em;
 }
-.forum .body .items .item .bubble .body .name {
+.items .item .bubble .body .name {
   color: rgba(0, 0, 0, 0.5);
   font-size: 1.1em;
 }
-.forum .body .items .item .bubble .body .content {
+.items .item .bubble .body .content {
   margin: 20px 0px;
 }
-.forum .body .items .item .bubble .body .content pre {
+.items .item .bubble .body .content pre {
   margin: 0 -31px 10px !important;
   padding: 20px;
   background: #2D3037;
@@ -180,44 +180,44 @@
   border-radius: 0px;
   font-size: .9em;
 }
-.forum .body .items .item .bubble .body .time {
+.items .item .bubble .body .time {
   color: rgba(0, 0, 0, 0.2);
   font-style: italic;
   float: right;
 }
-.forum .body .items .item .bubble .footer {
+.items .item .bubble .footer {
   padding: 8px 30px;
   border-top: 1px solid #CCCCCC;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   background: #f8f8f8;
 }
-.forum .body .items .item .bubble .footer form button {
+.items .item .bubble .footer form button {
   opacity: .5;
   margin: 0px;
   background: transparent;
   border: none;
   font-size: 1.5em;
 }
-.forum .body .items .item .bubble .footer form button:hover {
+.items .item .bubble .footer form button:hover {
   color: rgba(55, 84, 181, 0.8);
 }
-.forum .body .items .item .bubble .footer form .best-answer {
+.items .item .bubble .footer form .best-answer {
   float: right;
   margin-top: -30px;
 }
-.forum .body .items .item .bubble .footer form .best-answer:hover {
+.items .item .bubble .footer form .best-answer:hover {
   color: green;
 }
-.forum .body .items .item .bubble .footer form .text-like-count {
+.items .item .bubble .footer form .text-like-count {
   margin-top: -23px;
   margin-left: 35px;
 }
-.forum .body .items .item .bubble .footer form .has-like {
+.items .item .bubble .footer form .has-like {
   color: rgba(55, 84, 181, 0.8);
   opacity: 1;
 }
-.forum .body .items .item .bubble .best-answer {
+.items .item .bubble .best-answer {
   margin-top: -20px;
   margin-right: -20px;
   float: right;
@@ -226,7 +226,7 @@
   border-radius: 50%;
   background: #FFF;
 }
-.forum .body .items .item .bubble .best-answer i {
+.items .item .bubble .best-answer i {
   margin-top: -2px;
   background: seagreen;
   padding: 8px;
@@ -234,49 +234,49 @@
   color: #fff;
   font-size: 1.5em;
 }
-.forum .body .items .item form {
+.items .item form {
   width: 100%;
   background: transparent;
 }
-.forum .body .items .item form textarea {
+.items .item form textarea {
   resize: none;
 }
-.forum .body .items .item form .btn {
+.items .item form .btn {
   padding: 10px 30px;
 }
-.forum .body .items .item form .btn-primary {
+.items .item form .btn-primary {
   background: rgba(55, 84, 181, 0.8);
 }
-.forum .body .items .divsor {
+.items .divsor {
   float: left;
   width: 100%;
   color: rgba(0, 0, 0, 0.5);
   font-size: 1.2em;
   margin: 10px 10px 20px 20px;
 }
-.forum .body .items .pagination {
+.items .pagination {
   border-radius: 4px;
   margin-top: 0px;
 }
-.forum .body .items .pagination li:first-child > span {
+.items .pagination li:first-child > span {
   margin-left: 0;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
 }
-.forum .body .items .pagination li:last-child > span {
+.items .pagination li:last-child > span {
   margin-left: 0;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
 }
-.forum .body .items .pagination li.active span {
+.items .pagination li.active span {
   background: rgba(55, 84, 181, 0.8);
   border-color: rgba(123, 144, 215, 0.8);
 }
-.forum .body .topics ul {
+.topics ul {
   list-style: none;
   padding: 0px;
 }
-.forum .body .topics ul li {
+.topics ul li {
   width: 100%;
   cursor: pointer;
   font-size: 1.1em;
@@ -284,20 +284,20 @@
   padding: 0px;
   text-align: left;
 }
-.forum .body .topics ul li span {
+.topics ul li span {
   float: left;
   padding: 5px 10px 10px 5px;
   width: 100% !important;
   font-weight: bold;
 }
-.forum .body .topics ul li span i {
+.topics ul li span i {
   background: rgba(55, 84, 181, 0.8);
   color: #FFF;
   margin-right: 10px;
   padding: 10px;
   border-radius: 50px;
 }
-.forum .body .topics ul li span:hover {
+.topics ul li span:hover {
   background: #fdfdfd !important;
   border: 1px solid rgba(201, 210, 239, 0.8);
   border-radius: 5px;

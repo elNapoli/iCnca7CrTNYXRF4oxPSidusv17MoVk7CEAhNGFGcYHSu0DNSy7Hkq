@@ -26,6 +26,10 @@ Route::group(['prefix' => 'forum', 'namespace' => 'Socieboy\Forum\Controllers'],
             'as' => 'forum.search',
             'uses' => 'ForumController@search'
         ]);
+        post('/store-topic', [
+            'as' => 'forum.store-topic',
+            'uses' => 'ForumController@storeTopic'
+        ]);
 
     /**
      *  Route POST to store a new conversation

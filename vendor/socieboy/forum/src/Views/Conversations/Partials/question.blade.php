@@ -2,7 +2,7 @@
 
     <div class="bubble">
 
-        <div class="header question">
+        <div class="headerQ question">
 
             @include('Forum::Partials.avatar', ['user' => $conversation->user])
 

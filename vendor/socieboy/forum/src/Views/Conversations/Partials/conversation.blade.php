@@ -7,11 +7,9 @@
     </div>
 
     <div class="col-xs-10 col-sm-8">
-
-        <div class="hidden-xs topic">
-
-            <i  class="{{ $conversation->topicIcon }}"
-                style="background: {{ $conversation->topicColor }}">
+        <div class="hidden-xs topic2">
+            <i  class="glyphicon glyphicon-tags"
+                style="background: {{ $conversation->topicR->color }}">
             </i>
 
             {{--{{ $conversation->topic}}--}}

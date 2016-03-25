@@ -26,6 +26,10 @@ class Conversation extends Model
     {
         return $this->belongsTo(config('forum.user.model'));
     }
+    public function topicR(){
+        return $this->belongsTo('App\Topic','topic_id','id');
+   
+    }
 
     /**
      * Return replies on this conversation.

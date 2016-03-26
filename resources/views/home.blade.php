@@ -17,13 +17,13 @@
     <!--script for this page-->
     {!! Html::Script('plugins/theme_intranet/js/sparkline-chart.js') !!}
     {!! Html::Script('plugins/theme_intranet/js/zabuto_calendar.js') !!}
-    {!! Html::Script('plugins/jquery-ui/jquery-ui.js') !!}> 
+    {!! Html::Script('plugins/jquery-ui/jquery-ui.js') !!} 
 
     {!! Html::Script('plugins/dataTables/media/js/jquery.dataTables.min.js') !!}
     {!! Html::Script('plugins/dataTables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') !!}
     {!! Html::Script('js/function_documento_identidad.js')!!}
 
-    @yield('scripts')
+    @section('scripts')
   <script type="text/javascript">
         var unique_id = $.gritter.add({
             // (string | mandatory) the heading of the notification
@@ -31,7 +31,7 @@
             // (string | mandatory) the text inside the notification
             text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Free version for <a href="http://blacktie.co" target="_blank" style="color:#ffd777">BlackTie.co</a>.',
             // (string | optional) the image to display on the left
-            image: 'plugins/theme_intranet/img/ui-sam.jpg',
+            image: ' {{Auth::user()->avatar}}',
             // (bool | optional) if you want it to fade out on its own or just sit there
             sticky: false,
             // (int | optional) the time you want it to be alive for before fading out
@@ -40,3 +40,5 @@
             class_name: 'my-sticky-class'
         });
   </script>
+
+  @endsection

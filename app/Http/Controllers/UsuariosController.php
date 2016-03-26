@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserRequest;
+use Illuminate\Contracts\Auth\Guard;
 use App\Http\Requests\EditUserRequest;
 use Illuminate\Http\Request;
 
@@ -137,5 +138,40 @@ class UsuariosController extends Controller {
 
 		return redirect()->route('admin.usuarios.index');
 	}
+
+	public function profile(Guard $auth){
+
+		$usuario = User::find($auth->id());
+		return view('usuarios.profile', compact('usuario'));
+	}
+
+	public function updateProfile(Request $request, Guard $auth){
+
+        $pathUser = 'profile_picture';
+		\Storage::makeDirectory($pathUser);
+		$user = User::findOrFail($auth->id());
+		$user->fill($request->all());
+
+		if($request->has('avatar')){
+
+
+
+	        $Documento = $request->file('avatar');
+	 		$nombre = \Hash::make($Documento->getClientOriginalName());
+	        $nombre = str_replace('/', 'Y', $nombre);
+	        $nombre = $nombre.'.'.$Documento->guessExtension();
+
+	 		$fullPath = $pathUser.'/'.$nombre;
+	        \Storage::disk('local')->put($fullPath,  \File::get($Documento));
+
+
+			$user->avatar = 'documentos/'.$fullPath;
+		}
+        $user->save();
+
+		return redirect('home');
+
+	}
+
 
 }

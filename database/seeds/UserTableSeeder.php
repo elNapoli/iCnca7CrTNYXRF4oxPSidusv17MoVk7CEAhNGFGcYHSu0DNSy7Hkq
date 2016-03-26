@@ -20,7 +20,6 @@ class UserTableSeeder extends Seeder
 
         $user->name                 = 'AdminMov';
         $user->apellido_paterno     = 'Ap admin';
-        $user->apellido_materno     = 'Am admin';
         $user->confirmado           = 1;
         $user->codigo_confirmacion  = str_random();
         $user->tipo_usuario         = 'administrador';
@@ -37,7 +36,6 @@ class UserTableSeeder extends Seeder
             $samples_temp[] = [
                 'name' => $faker->firstName,
                 'apellido_paterno'=> $faker->lastName,
-                'apellido_materno'=>$faker->lastName ,
                 'confirmado'=>$faker->numberBetween($min = 0, $max = 1) ,
                 'codigo_confirmacion'=> str_random(),
                 'tipo_usuario'=> 'usuario',

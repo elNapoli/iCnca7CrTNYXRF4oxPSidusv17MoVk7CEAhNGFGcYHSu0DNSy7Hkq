@@ -1,19 +1,4 @@
-<aside>
-  <div id="sidebar"  class="nav-collapse ">
-      <!-- sidebar menu start-->
-      <ul class="sidebar-menu" id="nav-accordion">
-      
-          <p class="centered"><a href="profile.html"><img src="{{url('plugins/theme_intranet/img/ui-sam.jpg')}}" class="img-circle" width="60"></a></p>
-          <h5 class="centered">{{Auth::user()->name.' '.Auth::user()->apellido_paterno}}</h5>
-            
-          <li class="mt">
-              <a class="active" href="{{ url('/') }}">
-                  <i class="fa fa-dashboard"></i>
-                  <span>Dashboard</span>
-              </a>
-          </li>
-
-          <li class="mt">
+<li class="mt">
               <a href="{{ url('postulacion') }}">
                   <i class="fa fa-bookmark "></i>
                   <span>Realizar postulación</span>
@@ -78,5 +63,3 @@
 
       </ul>
       <!-- sidebar menu end-->
-  </div>
-</aside>

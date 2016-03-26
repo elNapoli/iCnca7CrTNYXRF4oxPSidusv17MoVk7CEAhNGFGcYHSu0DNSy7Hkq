@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::get('profile', 'UsuariosController@profile');
+Route::post('update-profile', 'UsuariosController@updateProfile');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

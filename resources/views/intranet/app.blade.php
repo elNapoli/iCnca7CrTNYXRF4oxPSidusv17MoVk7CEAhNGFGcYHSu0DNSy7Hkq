@@ -44,11 +44,7 @@
     @include('documentoIdentidad.modal_documento_identidad')
 
     @include('intranet.header') 
-    @if(Auth::user()->tipo_usuario == 'administrador')
-        @include('intranet.sidebar_left_admin')
-    @elseif(Auth::user()->tipo_usuario == 'usuario')
-        @include('intranet.sidebar_left_user')
-    @endif
+    @include('intranet.sidebar_left')
 
 
     <section id="main-content">

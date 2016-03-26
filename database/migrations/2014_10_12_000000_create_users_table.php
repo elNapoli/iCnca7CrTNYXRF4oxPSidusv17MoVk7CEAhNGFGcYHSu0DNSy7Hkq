@@ -17,7 +17,6 @@ class CreateUsersTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('apellido_paterno');
-			$table->string('apellido_materno');
 			$table->boolean('confirmado');
 			$table->string('codigo_confirmacion',30)->nullable();
 			$table->enum('tipo_usuario',['usuario','administrador'])->default('usuario');

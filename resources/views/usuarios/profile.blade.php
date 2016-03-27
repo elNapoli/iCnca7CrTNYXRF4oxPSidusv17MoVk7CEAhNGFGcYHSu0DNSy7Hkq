@@ -17,9 +17,11 @@
                         {!! Form::model($usuario,['url'=>['update-profile'], 'method'=>'post','class'=>'text-center form-horizontal style-form','enctype'=>'multipart/form-data']) !!}
 
                           <div class="kv-avatar center-block" style="width:200px; margin-bottom:50px;">
-                              <input id="avatar" name="avatar" type="file" class="file-loading">
+                              <input id="avatar"  name="avatar" type="file" class="file-loading">
                           </div>
                       <div id="kv-avatar-errors" class="center-block" style="display:none"></div>
+                            {!!Form::hidden('delImgProfile','false',array('id'=>'delImgProfile'));!!}
+
                           @include('usuarios.partials.fields')
                         {!! Form::close()!!}
                   </div>
@@ -54,23 +56,36 @@
     {!! Html::Script('plugins/bootstrap-fileinput/js/fileinput.js')!!}
     {!! Html::Script('plugins/bootstrap-fileinput/js/fileinput_locale_es.js')!!}
     <script>
-    $("#avatar").fileinput({
-        overwriteInitial: true,
-        maxFileSize: 1500,
-        showClose: false,
-        showCaption: false,
-        browseLabel: '',
-        removeLabel: '',
-        browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
-        removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
-        removeTitle: 'Cancel or reset changes',
-        language:'es',
-        elErrorContainer: '#kv-avatar-errors',
-        msgErrorClass: 'alert alert-block alert-danger',
-        defaultPreviewContent: '<img src="{{Auth::user()->avatar}}" alt="Your Avatar" style="width:160px">',
-        layoutTemplates: {main2: '{preview}  {remove} {browse}'},
-        allowedFileExtensions: ["jpg", "png", "gif"]
-    });
+    $(document).on('ready',function(){
+
+   
+
+        $("#avatar").fileinput({
+            overwriteInitial: true,
+            maxFileSize: 1500,
+            showClose: false,
+            showRemove: true,
+            showCaption: false,
+            browseLabel: '',
+            removeLabel: '',
+            browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
+            removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+            removeTitle: 'Cancel or reset changes',
+            language:'es',
+            initialPreview:'<img src="{{Auth::user()->avatar}}" alt="Your Avatar" style="width:160px">',
+            elErrorContainer: '#kv-avatar-errors',
+            msgErrorClass: 'alert alert-block alert-danger',
+            defaultPreviewContent: '<img src="avatar.jpg" alt="Your Avatar" style="width:160px">',
+            layoutTemplates: {main2: '{preview}  {remove} {browse}'},
+            allowedFileExtensions: ["jpg", "png", "gif"],
+
+        });
+
+        $('.fileinput-remove').on('click',function(){
+
+            $('#delImgProfile').val('true');
+        })
+    })
     </script>
 
 @endsection

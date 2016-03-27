@@ -4,7 +4,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserRequest;
 use Illuminate\Contracts\Auth\Guard;
-use App\Http\Requests\EditUserRequest;
+use App\Http\Requests\EstudioActualRequest;
 use Illuminate\Http\Request;
 
 use App\User;
@@ -151,8 +151,8 @@ class UsuariosController extends Controller {
 		\Storage::makeDirectory($pathUser);
 		$user = User::findOrFail($auth->id());
 		$user->fill($request->all());
+		if($request->hasFile('avatar')){
 
-		if($request->has('avatar')){
 
 
 
@@ -166,6 +166,14 @@ class UsuariosController extends Controller {
 
 
 			$user->avatar = 'documentos/'.$fullPath;
+
+		}
+		else{
+
+			if($request->get('delImgProfile') === 'true'){
+				$user->avatar = 'avatar.jpg';
+
+			}
 		}
         $user->save();
 

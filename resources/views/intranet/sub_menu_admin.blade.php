@@ -45,15 +45,12 @@
               </ul>
           </li>
 
-          <li class="sub-menu">
-              <a href="javascript:;" >
-                  <i class="fa fa-cogs"></i>
-                  <span>Postulaciones</span>
+          <li class="menu">
+              <a href="{{ url('postulacion/view-admin') }}" >
+                  <i class="fa fa-wechat  "></i>
+                  <span>Postulantes</span>
               </a>
-              <ul class="sub">
-                  <li><a  href="#">item1</a></li>
-                  <li><a  href="#">item2</a></li>
-              </ul>
+              
           </li>
           <li class="sub-menu">
               <a href="javascript:;" >

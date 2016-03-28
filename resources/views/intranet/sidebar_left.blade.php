@@ -3,7 +3,7 @@
       <!-- sidebar menu start-->
       <ul class="sidebar-menu" id="nav-accordion">
       
-          <p class="centered"><a href="{{url('profile')}}"><img src="{{Auth::user()->avatar}}" class="img-circle" width="60"></a></p>
+          <p class="centered"><a href="{{url('profile')}}"><img src="{{url(Auth::user()->avatar)}}" class="img-circle" width="60"></a></p>
           <h5 class="centered">{{Auth::user()->name.' '.Auth::user()->apellido_paterno}}</h5>
             
           <li class="mt">

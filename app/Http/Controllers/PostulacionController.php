@@ -112,6 +112,11 @@ class PostulacionController extends Controller {
 		}
 
 	}
+
+	public function getViewAdmin(){
+
+		return view('postulacion.view_admin.index');
+	}
 	public function postStore(CretePostulacionRequest $request,Guard $auth){
 
 		//guardo el usuario en la tabla postulante.

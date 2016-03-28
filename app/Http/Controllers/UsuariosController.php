@@ -147,6 +147,7 @@ class UsuariosController extends Controller {
 
 	public function updateProfile(Request $request, Guard $auth){
 
+		dd($request);
         $pathUser = 'profile_picture';
 		\Storage::makeDirectory($pathUser);
 		$user = User::findOrFail($auth->id());

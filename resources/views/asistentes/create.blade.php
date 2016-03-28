@@ -52,6 +52,7 @@
     $(document).ready(function(){
 
     $('#post').on('change',function(e){ 
+        alert('asd');
         var id = $(this).val() //paso la id del select por referencia
     });
         

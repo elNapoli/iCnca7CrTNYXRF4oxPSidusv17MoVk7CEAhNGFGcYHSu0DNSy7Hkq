@@ -5,14 +5,20 @@
 @section('content')
                 <h3><i class="fa fa-angle-right"></i> Alojamientos!</h3>
                 <hr>
+<div class="panel panel-default">
+          <div class="panel-heading"><a class="btn btn-info" data-toggle="modal" data-target="#modal_crear_alojamiento" href="#!">Crear Alojamiento</a></div>
 
 		  <div class="message"></div>
 		  @include('alojamientos.partials.table')
 		  
 {!!Form::hidden('urlAlojamientoDestroy', url('alojamientos/destroy'),array('id'=>'urlAlojamientoDestroy'));!!}
+{!!Form::hidden('urlAlojamientoUpdate', url('alojamientos/update'),array('id'=>'urlAlojamientoUpdate'));!!}
 {!!Form::hidden('getUrlAlojamiento', url('alojamientos/alojamiento'),array('id'=>'getUrlAlojamiento'));!!}
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 
+
+@include('alojamientos.partials.modal_create')
+@include('alojamientos.partials.modal_edit')
 @endsection
 
 @section('scripts')
@@ -84,7 +90,7 @@ var dt = $('#tableAlojamientos').DataTable( {
         });
 
         $('table').on('click','.model-open-edit', function(e){
-            var data = $('#form-edit-usuario').serialize();
+            var data = $('#form-edit-alojamiento').serialize();
             $.ajax({
                 // En data puedes utilizar un objeto JSON, un array o un query string
                 data:data,
@@ -93,16 +99,19 @@ var dt = $('#tableAlojamientos').DataTable( {
                 // Formato de datos que se espera en la respuesta
                 dataType: "json",
                 // URL a la que se enviará la solicitud Ajax
-                url:$('#form-edit-usuario').attr('action')+'/'+$(this).attr('id') ,
+                url:$('#form-edit-alojamiento').attr('action')+'/'+$(this).attr('id') ,
                 success : function(json) {
 
-					$('div#boyd-modal div div input#name').val(json.name);
-					$('div#boyd-modal div div input#apellido_paterno').val(json.apellido_paterno);
-					$('div#boyd-modal div div input#apellido_materno').val(json.apellido_materno);
-					$('div#boyd-modal div div input#email').val(json.email);
+
+					$('div#boyd-modal select#tipo').val(json.tipo);
+					$('div#boyd-modal div div input#direccion').val(json.direccion);
+					$('div#boyd-modal div div input#telefono').val(json.telefono);
+					$('div#boyd-modal div div input#precio').val(json.precio);
+
 					$('div#boyd-modal div div input#id').val(json.id);
 
-                    $('#modal_edit_user').modal('show'); 
+
+                    $('#modal_edit_alojamiento').modal('show'); 
 
 
           
@@ -118,8 +127,45 @@ var dt = $('#tableAlojamientos').DataTable( {
             
         });
 
-			$('#btnUpdateUsuario').on('click',function(){
-	            var data = $('#form-edit-usuario').serialize();
+		$('#btnCreateAlojamiento').on('click',function(){
+		    var data = $('#form-save-alojamiento').serialize();
+
+		    $.ajax({
+		        // En data puedes utilizar un objeto JSON, un array o un query string
+		       data:data,
+		        //Cambiar a type: POST si necesario
+		        type: "post",
+		        // Formato de datos que se espera en la respuesta
+		        dataType: "json",
+		        // URL a la que se enviará la solicitud Ajax
+		        url:$('#form-save-alojamiento').attr('action') ,
+		        success : function(json) {
+
+		            $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+		            $('#modal_crear_alojamiento').modal('hide'); 
+                            $("html, body").animate({ scrollTop: 0 }, 600);			
+							dt.ajax.reload();          
+		  
+		        },
+
+		        error : function(xhr, status) {
+		        	responseJSON =  JSON.parse(xhr.responseText);
+
+		            var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+		                for(var key in responseJSON)
+		                {
+		                    html += "<li>" + responseJSON[key][0] + "</li>";
+		                }
+		                $('#message-modal-create').html(html+'</div>');
+
+
+		        },
+		    }); 
+
+			});
+
+			$('#btnUpdateAlojamiento').on('click',function(){
+	            var data = $('#form-edit-alojamiento').serialize();
 	            $.ajax({
 	                // En data puedes utilizar un objeto JSON, un array o un query string
 	               data:data,
@@ -128,14 +174,13 @@ var dt = $('#tableAlojamientos').DataTable( {
 	                // Formato de datos que se espera en la respuesta
 	                dataType: "json",
 	                // URL a la que se enviará la solicitud Ajax
-	                url:$('#urlUsuarioUpdate').val()+'/'+$('#id').val(),
+	                url:$('#urlAlojamientoUpdate').val()+'/'+$('#id').val(),
 	                success : function(json) {
                     $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
-                    $('#modal_edit_user').modal('hide');
+                    $('#modal_edit_alojamiento').modal('hide');
 
                             $("html, body").animate({ scrollTop: 0 }, 600);         
-                            dt.ajax.reload(); 
-                    dt.ajax.reload();           
+                            dt.ajax.reload();           
 	          
 	                },
 

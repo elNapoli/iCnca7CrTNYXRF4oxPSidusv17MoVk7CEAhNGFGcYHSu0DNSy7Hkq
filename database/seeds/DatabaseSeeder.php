@@ -90,10 +90,16 @@ class DatabaseSeeder extends Seeder
         $this->call(ConversationsTableSeeder::class);
         $this->call(RepliesTableSeeder::class);
 
-
-
         
 
+        //###########################################
+        //Segunda etapa
+        //###########################################
+        
+        $this->call(AlojamientoTableSeeder::class);
+        $this->call(NoticiaTableSeeder::class);
+        $this->call(TestimonioTableSeeder::class);
+        $this->call(CorreoTableSeeder::class);
 
 
 

@@ -15,7 +15,7 @@ class CreateAlojamientoTable extends Migration
         Schema::create('alojamiento', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->enum('tipo', ['Casa', 'Cabaña','Departamento','Pension']);
+            $table->enum('tipo', ['Cabaña','Casa','Departamento','Hostal','Pension','Pieza']);
             $table->string('direccion',100);
             $table->string('precio',100);
             $table->string('telefono',20);

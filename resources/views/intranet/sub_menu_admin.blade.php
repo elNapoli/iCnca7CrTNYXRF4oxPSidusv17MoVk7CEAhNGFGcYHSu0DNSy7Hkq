@@ -52,6 +52,15 @@
               </a>
               
           </li>
+
+          <li class="menu">
+              <a href="{{ url('alojamientos/') }}" >
+                  <i class="fa fa-home fa-fw"></i>
+                  <span>Alojamientos</span>
+              </a>
+              
+          </li>
+
           <li class="sub-menu">
               <a href="javascript:;" >
                   <i class="fa fa-book"></i>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-   
+@include('usuarios.partials.modal_password')
     <!-- the avatar markup -->
 
     <!-- your server code `avatar_upload.php` will receive `$_FILES['avatar']` on form submission -->
@@ -14,12 +14,13 @@
                   <div class="form-panel">
                       <h4 class="mb"><i class="fa fa-angle-right"></i> Datos personales</h4>
       
-                        {!! Form::model($usuario,['url'=>['update-profile'], 'method'=>'post','class'=>'text-center form-horizontal style-form','enctype'=>'multipart/form-data']) !!}
-
-                          <div class="kv-avatar center-block" style="width:200px; margin-bottom:50px;">
+                        {!! Form::model($usuario,['url'=>['update-profile'], 'method'=>'post','class'=>'form-horizontal style-form','enctype'=>'multipart/form-data']) !!}
+                          <div class="kv-avatar text-center center-block" style="width:200px; margin-bottom:50px;">
                               <input id="avatar"  name="avatar" type="file" class="file-loading">
                           </div>
                       <div id="kv-avatar-errors" class="center-block" style="display:none"></div>
+                      <div class="message"></div>
+                          @include('partials.error')
                             {!!Form::hidden('delImgProfile','false',array('id'=>'delImgProfile'));!!}
 
                           @include('usuarios.partials.fields')
@@ -84,7 +85,39 @@
         $('.fileinput-remove').on('click',function(){
 
             $('#delImgProfile').val('true');
-        })
+        });
+
+        $('#btnChangePassword').on('click', function(){
+
+                var data = $('#form-change-password').serialize();
+                $.ajax({
+                    // En data puedes utilizar un objeto JSON, un array o un query string
+                    data:data,
+                    //Cambiar a type: POST si necesario
+                    type: "post",
+                    // Formato de datos que se espera en la respuesta
+                    dataType: "json",
+                    // URL a la que se enviará la solicitud Ajax
+                    url:$('#form-change-password').attr('action') ,
+                    success : function(json) {
+                        $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+                    $('#moda_cambiar_contrasenia').modal('hide');            
+              
+                    },
+
+                    error : function(xhr, status) {
+                        responseJSON =  JSON.parse(xhr.responseText);
+                    var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                        for(var key in responseJSON)
+                        {
+                            html += "<li>" + responseJSON[key][0] + "</li>";
+                        }
+                        $('.message-modal-change-password').html(html+'</div>');
+
+
+                    },
+                }); 
+        });
     })
     </script>
 

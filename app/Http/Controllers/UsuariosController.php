@@ -2,6 +2,8 @@
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PasswordRequest;
+use App\Http\Requests\UserRequest;
 use App\Http\Requests\CreateUserRequest;
 use Illuminate\Contracts\Auth\Guard;
 use App\Http\Requests\EstudioActualRequest;
@@ -145,9 +147,8 @@ class UsuariosController extends Controller {
 		return view('usuarios.profile', compact('usuario'));
 	}
 
-	public function updateProfile(Request $request, Guard $auth){
+	public function updateProfile(UserRequest $request, Guard $auth){
 
-		dd($request);
         $pathUser = 'profile_picture';
 		\Storage::makeDirectory($pathUser);
 		$user = User::findOrFail($auth->id());
@@ -179,6 +180,18 @@ class UsuariosController extends Controller {
         $user->save();
 
 		return redirect('home');
+
+	}
+
+	public function changePassword(PasswordRequest $request, Guard $auth){
+
+		
+		$user = User::findOrFail($auth->id());
+		$user->password = $request->get('password');
+		$user->save();
+		return response()->json([
+				'message'=> 'Su clave ha sido modificada exitosamente.'
+				]);
 
 	}
 

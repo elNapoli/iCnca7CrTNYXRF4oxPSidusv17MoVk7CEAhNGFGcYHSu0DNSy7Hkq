@@ -180,7 +180,13 @@ class EstudioActualController extends Controller {
 
 		else{
 
-
+			if($postulante->postgradosR->procedencia == 'UACH'){
+				
+			}
+			else{
+				
+				
+			}
 		}
 
 		return response()->json([

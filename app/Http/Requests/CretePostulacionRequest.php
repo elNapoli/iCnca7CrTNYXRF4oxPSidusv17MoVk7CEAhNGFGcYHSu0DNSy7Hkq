@@ -34,6 +34,7 @@ class CretePostulacionRequest extends Request {
 		if($postulante){
 			//dd('existe');
 			$email_personal = ",".$postulante->id;
+			$numero = ",".$postulante->id;
 			$email_institucional = ",".$postulante->id.',postulante';
 
 
@@ -50,7 +51,7 @@ class CretePostulacionRequest extends Request {
 				'apellido_materno'=>'required',
 				'nombre'=>'required',
 				'tipo'=>'required',
-				'numero'=>'required',
+				'numero'=>'required|unique:documento_identidad,numero'.$numero,
 				'fecha_nacimiento'=>'required',
 				'sexo'=>'required',
 				'email_personal'=>'required|unique:postulante,email_personal'.$email_personal,
@@ -78,7 +79,7 @@ class CretePostulacionRequest extends Request {
 				'apellido_materno'=>'required',
 				'nombre'=>'required',
 				'tipo'=>'required',
-				'numero'=>'required',
+				'numero'=>'required|unique:documento_identidad,numero'.$numero,
 				'fecha_nacimiento'=>'required',
 				'sexo'=>'required',
 				'email_personal'=>'required|unique:postulante,email_personal'.$email_personal,

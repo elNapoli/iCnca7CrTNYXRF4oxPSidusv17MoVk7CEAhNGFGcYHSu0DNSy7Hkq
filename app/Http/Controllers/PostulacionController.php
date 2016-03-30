@@ -228,13 +228,30 @@ class PostulacionController extends Controller {
 					$arrayFinal[] = array('parametro' => 'RANKING', 'valor'=>$postulante->pregradosR->preUachsR->preUEstudioActualesR->ranking, 'peso'=>'1');
 					$arrayFinal[] = array('parametro' => 'BENEFICIOS', 'valor'=>$postulante->pregradosR->preUachsR->preUEstudioActualesR->beneficios, 'peso'=>'1');
 				}
+			}
+			else{
+				if($postulante->pregradosR->preNoUachsR->preNuEstudioActualesR){
 
+					$arrayFinal[] = array('parametro' => 'PAIS', 'valor'=>$postulante->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->universidadR->paisR->nombre, 'peso'=>'1');
+					$arrayFinal[] = array('parametro' => 'NOMBRE UNIVERSIDAD', 'valor'=>$postulante->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->universidadR->nombre, 'peso'=>'1');
+					$arrayFinal[] = array('parametro' => 'NOMBRE DEL CAMPUS', 'valor'=>$postulante->pregradosR->preNoUachsR->preNuEstudioActualesR->campusSedeR->nombre, 'peso'=>'1');
+					$arrayFinal[] = array('parametro' => 'ÁREA DE ESTUDIO', 'valor'=>$postulante->pregradosR->preNoUachsR->preNuEstudioActualesR->area, 'peso'=>'1');
+					$arrayFinal[] = array('parametro' => 'AÑOS CURSADOS', 'valor'=>$postulante->pregradosR->preNoUachsR->preNuEstudioActualesR->anios_cursados, 'peso'=>'1');
 
+				}
 
 
 			}
 		}
 		else{
+			if($postulante->postgradosR->procedencia == 'UACH'){
+
+			}
+			else{
+
+				
+			}
+
 
 
 		}
@@ -292,6 +309,8 @@ class PostulacionController extends Controller {
 		}
 		else{
 
+			$arrayFinal[] = array('parametro' => 'PROCEDENCIA', 'valor'=>$postulante->postgradosR->procedencia, 'peso'=>'1');
+			$arrayFinal[] = array('parametro' => 'TÍTULO PROFESIONAL', 'valor'=>$postulante->postgradosR->titulo_profesional, 'peso'=>'1');
 
 		}
 

@@ -14,7 +14,7 @@ class AlojamientoTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $alojamiento = array('Casa', 'Cabaña','Departamento','Pension');
+        $alojamiento = array('Cabaña','Casa','Departamento','Hostal','Pension','Pieza');
         $samples_temp = [];
 
         for($i = 0; $i < 50; $i++)

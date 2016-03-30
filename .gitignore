@@ -1,4 +1,4 @@
-vendor/routes.php
+bootstrap/cache/routes.php
 node_modules
 # Laravel 5 & Lumen specific
 .env.*.php

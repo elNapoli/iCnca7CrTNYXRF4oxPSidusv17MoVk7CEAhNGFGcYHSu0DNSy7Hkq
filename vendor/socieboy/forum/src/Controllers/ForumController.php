@@ -62,8 +62,9 @@ class ForumController extends Controller
     public function search(Request $request)
     {
         $conversations = $this->conversationRepo->search($request->all());
+        $topic = Topic::all();
 
-        return view('Forum::index', compact('conversations'));
+        return view('Forum::index', compact('conversations','topic'));
     }
 
     public function storeTopic(Request $request){

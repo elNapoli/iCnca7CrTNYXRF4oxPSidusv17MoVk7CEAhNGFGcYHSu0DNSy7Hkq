@@ -23,14 +23,17 @@
             </li>
         </a>
     @endforeach
-    <a href="#!" data-toggle="modal" data-target="#create-topic-modal">
-    <li>
-        <span>
-            <i class="glyphicon glyphicon-plus"></i>
-            Nueva categoria
-        </span>
-    </li>
-    </a>
+    @if(Auth::user()->tipo_usuario == 'administrador')
+       
+        <a href="#!" data-toggle="modal" data-target="#create-topic-modal">
+        <li>
+            <span>
+                <i class="glyphicon glyphicon-plus"></i>
+                Nueva categoria
+            </span>
+        </li>
+        </a>
+    @endif
 
 </ul>
 

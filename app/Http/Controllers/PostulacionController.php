@@ -12,6 +12,7 @@ use App\PreUEstudioActual;
 use App\PreNuEstudioActual;
 use App\Postgrado;
 use App\Pais;
+use App\User;
 use App\Ciudad;
 use App\Pregrado;
 use App\Facultad;
@@ -189,6 +190,134 @@ class PostulacionController extends Controller {
 
 		return view('postulacion.prueba',compact('continentes'));
 	
+	}
+
+	public function getDatosPersonales($postulante){
+
+		$postulante = Postulante::find($postulante);
+		$arrayFinal = [];
+
+		$arrayFinal[] = array('parametro' => 'APELLIDO PATERNO', 'valor'=>$postulante->apellido_paterno, 'peso'=>'1');
+		$arrayFinal[] = array('parametro' => 'APELLIDO MATERNO', 'valor'=>$postulante->apellido_materno, 'peso'=>'2');
+		$arrayFinal[] = array('parametro' => 'NOMBRE', 'valor'=>$postulante->nombre, 'peso'=>'3');
+		$arrayFinal[] = array('parametro' => 'FECHA DE NACIMIENTO', 'valor'=>$postulante->fecha_nacimiento, 'peso'=>'4');
+		$arrayFinal[] = array('parametro' => 'E-MAIL PERSONAL', 'valor'=>$postulante->email_personal, 'peso'=>'5');
+		$arrayFinal[] = array('parametro' => 'TELÉFONO CASA', 'valor'=>$postulante->telefono, 'peso'=>'6');
+		$arrayFinal[] = array('parametro' => 'PAÍS', 'valor'=>$postulante->ciudadR->paisR->nombre, 'peso'=>'7');
+		$arrayFinal[] = array('parametro' => 'CIUDAD DE PROCEDENCIA', 'valor'=>$postulante->ciudadR->nombre, 'peso'=>'7');
+		$arrayFinal[] = array('parametro' => 'DIRECCIÓN DE PROCEDENCIA', 'valor'=>$postulante->direccion, 'peso'=>'8');
+		$arrayFinal[] = array('parametro' => 'NACIONALIDAD', 'valor'=>$postulante->nacionalidad, 'peso'=>'9');
+		$arrayFinal[] = array('parametro' => 'LUGAR DE NACIMIENTO', 'valor'=>$postulante->lugar_nacimiento, 'peso'=>'10');
+		$arrayFinal[] = array('parametro' => 'TIPO DE ESTUDIOS', 'valor'=>$postulante->tipo_estudio, 'peso'=>'11');
+
+		$arra = array('data'=>$arrayFinal);
+		return json_encode($arra);
+
+	}
+	public function getEstudiosActuales($postulante){
+		$postulante = Postulante::find($postulante);
+		$arrayFinal = [];
+		if($postulante->tipo_estudio === 'Pregrado'){
+			if($postulante->pregradosR->procedencia == 'UACH'){
+
+				if($postulante->pregradosR->preUachsR->preUEstudioActualesR){
+
+					$arrayFinal[] = array('parametro' => 'FACULTAD', 'valor'=>$postulante->pregradosR->preUachsR->preUEstudioActualesR->carreraR->facultadR->nombre, 'peso'=>'1');
+					$arrayFinal[] = array('parametro' => 'CARRERA', 'valor'=>$postulante->pregradosR->preUachsR->preUEstudioActualesR->carreraR->nombre, 'peso'=>'1');
+					$arrayFinal[] = array('parametro' => 'AÑO DE INGRESO', 'valor'=>$postulante->pregradosR->preUachsR->preUEstudioActualesR->anio_ingreso, 'peso'=>'1');
+					$arrayFinal[] = array('parametro' => 'RANKING', 'valor'=>$postulante->pregradosR->preUachsR->preUEstudioActualesR->ranking, 'peso'=>'1');
+					$arrayFinal[] = array('parametro' => 'BENEFICIOS', 'valor'=>$postulante->pregradosR->preUachsR->preUEstudioActualesR->beneficios, 'peso'=>'1');
+				}
+
+
+
+
+			}
+		}
+		else{
+
+
+		}
+		$arra = array('data'=>$arrayFinal);
+		return json_encode($arra);
+
+	}
+
+	public function getInformacionIntercambio($postulante){
+		$postulante = Postulante::find($postulante);
+		$arrayFinal = [];
+		if($postulante->tipo_estudio === 'Pregrado'){
+			if($postulante->pregradosR->prePostulacionUniversidadesR){
+
+
+				$arrayFinal[] = array('parametro' => 'AÑO', 'valor'=>$postulante->pregradosR->prePostulacionUniversidadesR->anio, 'peso'=>'1');
+				$arrayFinal[] = array('parametro' => 'SEMESTRE', 'valor'=>$postulante->pregradosR->prePostulacionUniversidadesR->semestre, 'peso'=>'1');
+				$arrayFinal[] = array('parametro' => 'DESDE', 'valor'=>$postulante->pregradosR->prePostulacionUniversidadesR->desde, 'peso'=>'1');
+				$arrayFinal[] = array('parametro' => 'HASTA', 'valor'=>$postulante->pregradosR->prePostulacionUniversidadesR->hasta, 'peso'=>'1');
+				$arrayFinal[] = array('parametro' => 'CARRERA', 'valor'=>$postulante->pregradosR->prePostulacionUniversidadesR->carreraR->nombre, 'peso'=>'1');
+			}	
+
+		}
+		else{
+
+
+		}
+
+		$arra = array('data'=>$arrayFinal);
+		return json_encode($arra);
+
+	}
+	public function getDatosProcedencia($postulante){
+
+		$postulante = Postulante::find($postulante);
+		$arrayFinal = [];
+		if($postulante->tipo_estudio === 'Pregrado'){
+			if($postulante->pregradosR->procedencia == 'UACH'){
+
+				$arrayFinal[] = array('parametro' => 'PROCEDENCIA', 'valor'=>$postulante->pregradosR->procedencia, 'peso'=>'1');
+				$arrayFinal[] = array('parametro' => 'E-MAIL INSTITUCIONAL', 'valor'=>$postulante->pregradosR->preUachsR->email_institucional, 'peso'=>'1');
+				$arrayFinal[] = array('parametro' => 'GRUPO SANGUÍNEO', 'valor'=>$postulante->pregradosR->preUachsR->grupo_sanguineo, 'peso'=>'1');
+				$arrayFinal[] = array('parametro' => 'ENFERMEDADES', 'valor'=>$postulante->pregradosR->preUachsR->enfermedades, 'peso'=>'1');
+				$arrayFinal[] = array('parametro' => 'TELÉFONO PERSONAL ', 'valor'=>$postulante->pregradosR->preUachsR->telefono, 'peso'=>'1');
+				$arrayFinal[] = array('parametro' => 'CIUDAD ACTUAL', 'valor'=>$postulante->pregradosR->preUachsR->direccion, 'peso'=>'1');
+				$arrayFinal[] = array('parametro' => 'DIRECCIÓN ACTUAL', 'valor'=>$postulante->pregradosR->preUachsR->ciudadR->nombre, 'peso'=>'1');
+
+			}
+			else{
+
+				$arrayFinal[] = array('parametro' => 'PROCEDENCIA', 'valor'=>$postulante->pregradosR->procedencia, 'peso'=>'1');
+
+			}
+
+		}
+		else{
+
+
+		}
+
+		$arra = array('data'=>$arrayFinal);
+		return json_encode($arra);
+
+
+	}
+	public function postSearchPostulante(Request $request){
+		
+		$documento = DocumentoIdentidad::where('numero',$request->get('rut'))->first();
+		if ($documento==null){
+		    return response()->json([
+                        'existe' => '0'
+                        ]);
+		} else {
+		    return response()->json([
+		    			'existe' => '1',
+                        'user'=> $documento->Postulante->usuarioR,
+                        'documentos'=> $documento->Postulante->documentoAdjuntos,
+                        'postulante'=> $documento->Postulante->id
+                        ]);
+		}
+		
+
+
 	}
 	public function putUpdate(CretePostulacionRequest $request,Guard $auth){
 

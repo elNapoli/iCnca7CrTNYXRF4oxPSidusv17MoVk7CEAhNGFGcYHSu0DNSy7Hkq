@@ -4,33 +4,49 @@
 
 @section('content')
     @include('documentoIdentidad.modal_documento_identidad')
+
+                <!-- BASIC FORM ELELEMNTS -->
+            <div class="row mt">
+                <div class="col-lg-12">
+                  <div class="form-panel">
+                    <div id="wizard">
+                        <div id="message"></div>
+                        <h3>Datos personales</h3>
+                        <section data-mode="async" data-ajax="true" data-url="{{url('postulacion/create-or-edit')}}">
+
+
+
+                        </section>
+                        <h3>Estudios actuales</h3>
+                       
+                        <section data-mode="async" data-ajax="true" data-url="{{url('estudo-actual/create-or-edit')}}">
+                  
+                        </section>
+                        <h3>Información de intercambio</h3>
+                        <section style='height:500px' data-mode="async" data-ajax="true" data-url="{{url('prepostulacionuniversidad/create-or-edit')}}">
+                            
+                              
+                        </section>
+                        <h3>Declaración</h3>
+                        <section data-mode="async" data-ajax="true" data-url="{{url('declaracion/create-or-edit')}}">
+
+
+                        </section>
+                    </div>
+                  </div>
+                </div><!-- col-lg-12-->         
+            </div><!-- /row -->
+
+
+
+
+
+
+
     {!!Form::hidden('getUrlIndexStep',url('postulacion/index-step'),array('id'=>'getUrlIndexStep'));!!}
 
 
-    <div id="wizard">
-        <div id="message"></div>
-        <h3>Datos personales</h3>
-        <section data-mode="async" data-ajax="true" data-url="{{url('postulacion/create-or-edit')}}">
 
-
-
-        </section>
-        <h3>Estudios actuales</h3>
-       
-        <section data-mode="async" data-ajax="true" data-url="{{url('estudo-actual/create-or-edit')}}">
-  
-        </section>
-        <h3>Información de intercambio</h3>
-        <section style='height:500px' data-mode="async" data-ajax="true" data-url="{{url('prepostulacionuniversidad/create-or-edit')}}">
-            
-              
-        </section>
-        <h3>Declaración</h3>
-        <section data-mode="async" data-ajax="true" data-url="{{url('declaracion/create-or-edit')}}">
-
-
-        </section>
-    </div>
 
 @include('partials.loading')
 @endsection

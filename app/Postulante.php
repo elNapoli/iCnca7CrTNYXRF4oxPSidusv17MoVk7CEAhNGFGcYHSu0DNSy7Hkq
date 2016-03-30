@@ -20,12 +20,17 @@ class Postulante extends Model
                             'email_personal',
                             'ciudad',
                             'tipo_estudio',
+                            'user_id',
                             'direccion'];
 
     // un Postulante esta en una ciudad
     public function ciudadR()
     {
         return $this->belongsTo('App\Ciudad','ciudad');
+    }
+    public function usuarioR()
+    {
+        return $this->belongsTo('App\User','user_id');
     }
 
     public function postgradosR()

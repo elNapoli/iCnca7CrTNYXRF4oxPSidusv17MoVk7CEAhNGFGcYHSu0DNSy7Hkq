@@ -33,6 +33,7 @@ Route::controllers([
 	'asignaturas' => 'AsignaturasController',
 	'documentos-identidad' => 'DocumentoIdentidadController',
 	'alojamientos' => 'AlojamientosController',
+	'noticias' => 'NoticiasController',
 
 	'prepostulacionuniversidad' => 'PrePostulacionUniversidadController',
 	'carreras' => 'CarrerasController',

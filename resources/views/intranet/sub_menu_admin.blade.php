@@ -61,15 +61,11 @@
               
           </li>
 
-          <li class="sub-menu">
-              <a href="javascript:;" >
-                  <i class="fa fa-book"></i>
-                  <span>Documentos</span>
+          <li class="menu">
+              <a href="{{ url('noticias/') }}" >
+                  <i class="fa fa-list-alt"></i>
+                  <span>Noticias</span>
               </a>
-              <ul class="sub">
-                  <li><a  href="#">item 1</a></li>
-                  <li><a  href="#">item 2</a></li>
-              </ul>
           </li>
           <li class="menu">
               <a href="{{ url('forum') }}" >

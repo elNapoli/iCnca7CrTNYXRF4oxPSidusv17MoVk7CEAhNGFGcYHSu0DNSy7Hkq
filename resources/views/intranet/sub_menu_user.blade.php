@@ -48,6 +48,14 @@
               
           </li>
 
+          <li class="menu">
+              <a href="{{ url('testimonios') }}" >
+                  <i class="fa fa-paper-plane-o  "></i>
+                  <span>Testimonio</span>
+              </a>
+              
+          </li>
+
 
           <li class="sub-menu">
               <a href="javascript:;" >

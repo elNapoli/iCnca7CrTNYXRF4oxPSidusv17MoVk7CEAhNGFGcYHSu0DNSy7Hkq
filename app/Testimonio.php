@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class testimonio extends Model
 {
     protected $table = 'testimonio'; //primary id
-    public $timestamps = false;
     protected $fillable = ['postulante',
                            'cuerpo', 
                            'foto', 

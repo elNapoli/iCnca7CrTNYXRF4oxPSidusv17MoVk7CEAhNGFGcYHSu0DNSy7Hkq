@@ -21,6 +21,8 @@ class CreateTestimonioTable extends Migration
             $table->string('cuerpo');
             $table->string('foto',100); //path
             $table->string('video',100);//path
+            $table->timestamps();
+            
         });
     }
 

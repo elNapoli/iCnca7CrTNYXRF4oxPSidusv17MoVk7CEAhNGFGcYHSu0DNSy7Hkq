@@ -53,6 +53,7 @@ Route::controllers([
 
 	'admin' => 'Admin\UsuariosController',
 
+	'testimonios' => 'TestimonioController',
 	'subir-archivos' => 'DocumentosAdjuntosController',
 
 

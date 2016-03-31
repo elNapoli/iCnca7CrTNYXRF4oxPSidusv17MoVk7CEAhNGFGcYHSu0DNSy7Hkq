@@ -21,4 +21,10 @@ class TestimonioController extends Controller
 
         return view('testimonio.create');
     }
+
+    public function postDebug(Request $request){
+
+        $editor = $request->get('editor1');
+        return view('testimonio.debug',compact('editor'));
+    }
 }

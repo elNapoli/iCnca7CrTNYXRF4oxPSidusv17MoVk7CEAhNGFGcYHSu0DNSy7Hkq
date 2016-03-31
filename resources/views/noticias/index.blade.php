@@ -6,7 +6,7 @@
 
 
 	<div class="panel panel-default">
-<div class="panel-heading"><a class="btn btn-info" data-toggle="modal" data-target="#modal_crear_beneficio" href="#!">Crear Noticia</a></div>
+<div class="panel-heading"><a class="btn btn-info" href="{{url('noticias/crear')}}">Crear Noticia</a></div>
 
 
 		  <!-- Table -->

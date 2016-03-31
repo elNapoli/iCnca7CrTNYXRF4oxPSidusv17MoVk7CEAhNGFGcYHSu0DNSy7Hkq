@@ -21,6 +21,11 @@ class NoticiasController extends Controller {
 		//return view('beneficios.index', compact('beneficios'));
 	}
 
+	public function getCrear()
+	{
+		return view('noticias.create');
+		//return view('beneficios.index', compact('beneficios'));
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *

@@ -24,7 +24,28 @@ class TestimonioController extends Controller
 
     public function postDebug(Request $request){
 
-        $editor = $request->get('editor1');
+        $editor = $request->get('content');
         return view('testimonio.debug',compact('editor'));
     }
+
+    public function postUploadImage(Request $request){
+        $pathUser = 'testimonios';
+        \Storage::makeDirectory($pathUser);
+
+        $Documento = $request->file('file');
+        $nombre = $Documento->getClientOriginalName();
+
+        $fullPath = $pathUser.'/'.$nombre;
+
+        \Storage::disk('local')->put($fullPath,  \File::get($Documento));
+
+
+        return response()->json([
+                'link'=>'/documentos/'.$fullPath
+                ]);
+
+    }
+
+        
+
 }

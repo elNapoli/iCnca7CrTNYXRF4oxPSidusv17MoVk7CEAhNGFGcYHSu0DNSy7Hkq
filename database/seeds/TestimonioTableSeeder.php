@@ -22,9 +22,7 @@ class TestimonioTableSeeder extends Seeder
 
                 $samples_temp[] = [
                     'postulante' => $item->id,
-                    'cuerpo'=>  $faker->text($maxNbChars = 200),
-                    'video'=>  'path/video',
-                    'foto'=> 'path/foto'
+                    'cuerpo'=>  $faker->text($maxNbChars = 200)
                 ];  
 
 

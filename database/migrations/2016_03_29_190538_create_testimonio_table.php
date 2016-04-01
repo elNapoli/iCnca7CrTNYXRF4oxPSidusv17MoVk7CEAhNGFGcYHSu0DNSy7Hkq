@@ -18,9 +18,7 @@ class CreateTestimonioTable extends Migration
 
             //Foreign Key to POSTULANTE
             $table->integer('postulante')->unsigned();
-            $table->string('cuerpo');
-            $table->string('foto',100); //path
-            $table->string('video',100);//path
+            $table->longText('cuerpo');
             $table->timestamps();
             
         });

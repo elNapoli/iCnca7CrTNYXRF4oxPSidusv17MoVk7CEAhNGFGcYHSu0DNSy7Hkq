@@ -22,15 +22,27 @@
 @endsection
 
 @section('content')
-    {!! Form::open(['url'=>'testimonios/debug', 'method'=>'POST','id'=>'form-change-password'])!!}
 
 
-    <textarea id="edit" name="content"></textarea>
+<div class="row mt">
+    <div class="col-lg-12">
+      <div class="form-panel">
+          <h4 class="mb"><i class="fa fa-angle-right"></i> Escriba su testimonio</h4>
+
+             {!! Form::open(['url'=>'testimonios/store', 'method'=>'POST','id'=>'form-change-password'])!!}
+
+
+        <textarea id="edit" name="content"></textarea>
 
 
 
-<button type="submit"> hola</button>
-                        {!! Form::close()!!}
+        <button type="submit"> hola</button>
+    {!! Form::close()!!}
+      </div>
+    </div><!-- col-lg-12-->         
+</div><!-- /row -->
+
+
 
 
 @endsection
@@ -40,12 +52,6 @@
 
 
     {!! Html::Script('plugins/froala/js/froala_editor.min.js')!!}
-
-  <!-- Include Code Mirror. -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
-
-
 
 
     {!! Html::Script('plugins/froala/js/plugins/align.min.js')!!}
@@ -81,10 +87,14 @@
 
 $('#edit').froalaEditor({
 
+        language: 'es',
+        imageDefaultDisplay: 'inline',
+
+        imageManagerDeleteURL: 'destroy-img',
+        imageManagerLoadURL: 'img',
+
+
         imageUploadURL: 'upload-image/"',
-        //imageDefaultDisplay: 'inline',
-        imageManagerLoadURL: 'http://example.com/load_images',
-        imageManagerLoadMethod: 'POST',
         imageUploadParams: {
           _token: '{{ csrf_token() }}'
         },

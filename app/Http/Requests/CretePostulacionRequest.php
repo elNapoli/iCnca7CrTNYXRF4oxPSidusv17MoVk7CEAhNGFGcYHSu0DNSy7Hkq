@@ -79,7 +79,7 @@ class CretePostulacionRequest extends Request {
 				'apellido_materno'=>'required',
 				'nombre'=>'required',
 				'tipo'=>'required',
-				'numero'=>'required|unique:documento_identidad,numero'.$numero,
+				'numero'=>'required|unique:documento_identidad,numero',
 				'fecha_nacimiento'=>'required',
 				'sexo'=>'required',
 				'email_personal'=>'required|unique:postulante,email_personal'.$email_personal,

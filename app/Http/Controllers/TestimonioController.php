@@ -15,9 +15,20 @@ class TestimonioController extends Controller
     //
 
 
-    public function getIndex(){
+    public function getIndex(Guard $auth){
+        $postulante = Postulante::where('user_id',$auth->id())->first();
+
+        $testimonio = Testimonio::where('postulante',$postulante->id)->first();
+        if($testimonio){
+
+            $editor = $testimonio->cuerpo;
+            return view('testimonio.view',compact('editor'));
+        }
+        else{
+
 
         return view('testimonio.index');
+        }
     }
 
     public function getCreate(){
@@ -66,7 +77,7 @@ class TestimonioController extends Controller
         $testimonio->cuerpo = $editor;
 
         $testimonio->save();
-        return view('testimonio.view',compact('editor'));
+        return  redirect('testimonios');
 
     }
 
@@ -99,6 +110,31 @@ class TestimonioController extends Controller
         $documentoP->delete();
 
     }
+    public function getEdit( Guard $auth){
+        $postulante = Postulante::where('user_id',$auth->id())->first();
+
+        $testimonio = Testimonio::where('postulante',$postulante->id)->first();
+        $id = $testimonio->id;
+        $editor = $testimonio->cuerpo;
+            return view('testimonio.edit',compact('editor','id'));
+    }
+
+
+    public function getUpdate($id, Request $request){
+
+        $documentoP = Testimonio::findOrFail($id);
+        $documentoP->cuerpo = $request->get('content');
+        $documentoP->save();
+        return  redirect('testimonios');
+
+
+
+
+
+
+    }
+
+
 
         
 

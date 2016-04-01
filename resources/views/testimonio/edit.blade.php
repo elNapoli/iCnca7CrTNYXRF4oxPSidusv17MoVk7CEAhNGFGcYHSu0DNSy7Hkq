@@ -28,11 +28,16 @@
     <div class="col-lg-12">
       <div class="form-panel">
             <h4 class="mb"><i class="fa fa-angle-right"></i> Escriba su testimonio</h4>
-            {!! Form::open(['url'=>'testimonios/store', 'method'=>'POST','class'=>'form-horizontal style-form'])!!}
+            {!! Form::open(['url'=> array('testimonios/update',$id), 'method'=>'get','class'=>'form-horizontal style-form'])!!}
               <div class="form-group">
                 <div class="col-lg-12">
                     
-                    <textarea id="edit" name="content"></textarea>
+                    <textarea id="edit" name="content">
+               {!!
+
+                                   ( html_entity_decode($editor))
+                                !!}
+                    </textarea>
                 </div>
                   
               </div>

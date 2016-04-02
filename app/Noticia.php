@@ -17,9 +17,9 @@ class noticia extends Model
 
 
     //Una Noticia pertenece a un unico USER
-    public function carreraR()
+    public function usuarioR()
     {
-    	return $this->belongsTo('App\Users','user'); //Id local
+    	return $this->belongsTo('App\User','user'); //Id local
     }
 
 }

@@ -18,10 +18,11 @@ class NoticiaTableSeeder extends Seeder
         $User =  User::all();
         $samples_temp = [];
 
-        foreach ($User as $item) {
+        for($i = 0; $i < 50; $i++)
+        {  
 
                 $samples_temp[] = [
-                    'user' => $item->id,
+                    'user' => 1,
                     'cuerpo'=>  $faker->text($maxNbChars = 200),
                     'titulo'=>  $faker->sentence($nbWords = 4, $variableNbWords = true),
                     'resumen'=>  $faker->paragraph($nbSentences = 3, $variableNbSentences = true),

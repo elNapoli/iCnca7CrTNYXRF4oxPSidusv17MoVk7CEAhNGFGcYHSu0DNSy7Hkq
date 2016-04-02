@@ -9,20 +9,20 @@
 	<div class="panel-body">
 <div class="form-group">
 
-    {!!  Form::label('nombre', ' Titulo de la noticia ');!!}
-    {!! Form::text('nombre',null,array('class' => 'form-control','placeholder'=>'Ej: Ingeniería Civil en Informática'));!!}
+    {!!  Form::label('titulo', ' Titulo de la noticia ');!!}
+    {!! Form::text('titulo',null,array('class' => 'form-control','placeholder'=>'Ej: Ingrese el titulo de su noticia'));!!}
 </div>  
 
 <div class="form-group">
 
-    {!!  Form::label('director', 'Director de carrera ');!!}
-    {!! Form::text('director',null,array('class' => 'form-control','placeholder'=>'Ej:Jorge Maturana'));!!}
+    {!!  Form::label('resumen', 'Resumen ');!!}
+    {!! Form::textarea('resumen',null,array('class' => 'form-control','placeholder'=>null,'rows'=>'3'));!!}
 </div>  
 
 <div class="form-group">
 
-    {!!  Form::label('email', 'E-mail director ');!!}
-    {!! Form::text('email',null,array('class' => 'form-control','placeholder'=>'Ej: j.maturana@uach.cl'));!!}
+    {!!  Form::label('cuerpo', 'Cuerpo');!!}
+    {!! Form::textarea('cuerpo',null,array('class' => 'form-control','placeholder'=>null));!!}
 </div>  
 {!!Form::hidden('id','',array('id'=>'id'));!!}
 </div>  

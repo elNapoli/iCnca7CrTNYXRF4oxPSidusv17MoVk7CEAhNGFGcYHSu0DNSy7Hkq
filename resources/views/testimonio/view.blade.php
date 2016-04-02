@@ -31,10 +31,5 @@
 
 @endsection
 
-@section('scripts')
-
-<script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
-
-@endsection
 
 

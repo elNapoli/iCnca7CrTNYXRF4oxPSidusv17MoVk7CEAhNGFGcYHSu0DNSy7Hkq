@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
 use App\Http\Requests;
-use App\postulante;
+use App\Postulante;
 use App\DocumentoAdjunto;
 use App\Testimonio;
 use App\Http\Controllers\Controller;

@@ -8,7 +8,7 @@
                 <!-- BASIC FORM ELELEMNTS -->
             <div class="row mt">
                 <div class="col-lg-12">
-                  <div class="form-panel">
+                  <div class="form-pnel">
                     <div id="wizard">
                         <div id="message"></div>
                         <h3>Datos personales</h3>

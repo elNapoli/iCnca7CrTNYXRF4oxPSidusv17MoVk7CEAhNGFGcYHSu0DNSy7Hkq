@@ -6,8 +6,7 @@
                     <tr>
                          <th>#</th>
                         <th>Nombre</th>
-                        <th>A. paterno</th>
-                        <th>A. materno</th>
+                        <th>Apellidos</th>
                         <th>E-mail</th>
                         <th>Tipo</th>
                         <th>Confirmado</th>

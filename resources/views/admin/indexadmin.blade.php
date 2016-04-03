@@ -40,10 +40,25 @@ var dt = $('#tableUsuarios').DataTable( {
 			            { "data":"id" },
 			            { "data":"name" },
 			            { "data":"apellido_paterno" },
-			            { "data":"apellido_materno" },
 			            { "data":"email" },
 			            { "data":"tipo_usuario" }, //consultar como consultar un data especifico para saber que mostrar en confirmado 
-			            { "data":"confirmado" },
+                        { "data": null,
+                            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                $(nTd).attr('align','center');
+                                var html = '';
+                                if(oData.confirmado == 0){
+
+                                    html =  "<i style='color:red;' class='fa fa-times'></i>";
+                                }
+                                else{
+                                    html =  "<i style='color:green;' class='fa fa-check'></i>";
+
+
+                                }
+                                $(nTd).html(html);
+
+                            }
+                        },
 			            { "data": null,
 			                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                                 $(nTd).attr('align','center');

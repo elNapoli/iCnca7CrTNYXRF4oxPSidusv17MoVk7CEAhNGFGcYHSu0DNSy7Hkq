@@ -45,12 +45,16 @@
               </ul>
           </li>
 
-          <li class="menu">
-              <a href="{{ url('postulacion/view-admin') }}" >
-                  <i class="fa fa-wechat  "></i>
+
+          <li class="sub-menu">
+              <a href="javascript:;" >
+                  <i class=" fa fa-briefcase "></i>
                   <span>Postulantes</span>
               </a>
-              
+              <ul class="sub">
+                  <li><a  href="{{ url('postulacion/view-admin') }}">Buscar postulante</a></li>
+                  <li><a  href="{{ url('postulacion/nomina') }}">Generar nómina</a></li>
+              </ul>
           </li>
 
           <li class="menu">

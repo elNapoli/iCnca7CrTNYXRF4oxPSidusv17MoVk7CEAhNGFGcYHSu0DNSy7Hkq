@@ -101,6 +101,7 @@ return array(
     'CreateLikesTable' => $baseDir . '/database/migrations/2016_03_22_201549_create_likes_table.php',
     'CreateMaestriaActualTable' => $baseDir . '/database/migrations/2016_01_18_142108_create_maestria_actual_table.php',
     'CreateMaestriaPostulacionTable' => $baseDir . '/database/migrations/2016_01_17_224937_create_maestria_postulacion_table.php',
+    'CreateNoticiasImgTable' => $baseDir . '/database/migrations/2016_04_05_221252_create_noticias_img_table.php',
     'CreateNoticiasTable' => $baseDir . '/database/migrations/2016_03_29_190542_create_noticias_table.php',
     'CreateOtraMaestriaTable' => $baseDir . '/database/migrations/2016_01_17_224938_create_otra_maestria_table.php',
     'CreatePaisTable' => $baseDir . '/database/migrations/2016_01_17_224938_create_pais_table.php',

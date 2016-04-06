@@ -1,9 +1,12 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use Illuminate\Contracts\Auth\Guard;
+use App\DocumentoAdjunto;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Noticia;
+use App\NoticiasImg;
 use App\User;
 
 class NoticiasController extends Controller {
@@ -24,8 +27,59 @@ class NoticiasController extends Controller {
 	public function getCrear()
 	{
 		return view('noticias.create');
-		//return view('beneficios.index', compact('beneficios'));
 	}
+
+	public function postUploadImage(Request $request, Guard $auth)
+	{
+        $pathUser = 'noticias';
+        \Storage::makeDirectory($pathUser);
+
+        $Documento = $request->file('file');
+        $nombre = $Documento->getClientOriginalName();
+
+        $fullPath = $pathUser.'/'.$nombre;
+        $noticiaImg = NoticiasImg::firstOrNew(['path' => $fullPath]);
+
+        $noticiaImg->nombre = $nombre;
+        $noticiaImg->autor = $auth->id();
+        $noticiaImg->save();
+        \Storage::disk('local')->put($fullPath,  \File::get($Documento));
+
+
+        return response()->json([
+                'link'=>'/documentos/'.$fullPath
+                ]);
+
+    }
+
+    public function getDestroyImg(Request $request){
+        $noticiaImg = NoticiasImg::findOrFail($request->get('id'));
+        \Storage::delete($noticiaImg->path);
+
+
+        $noticiaImg->delete();
+
+    }
+
+    public function getImg(Guard $auth){
+        $noticiaImg = NoticiasImg::where('autor',$auth->id())
+                                        ->where('path', 'like', 'noticias%')
+                                        ->get();
+        $arrayFinal = [];
+
+        foreach ($noticiaImg as $item) {
+            # code...
+            $arrayFinal[] = array(
+                    'url'=>'/documentos/'.$item->path,
+                    'thumb'=>'/documentos/'.$item->path,
+                    'tag'=> $item->nombre,
+                    'id' => $item->id
+                );
+        }
+       
+        return json_encode($arrayFinal);
+
+    }
 	/**
 	 * Show the form for creating a new resource.
 	 *

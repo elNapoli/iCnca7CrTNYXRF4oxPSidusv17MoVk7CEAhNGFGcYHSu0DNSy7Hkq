@@ -93,8 +93,9 @@
                                   <div class="panel-heading">
                                     <h3 class="panel-title">Adjuntar carta de aceptación </h3>
                                   </div>
+                                    
                                   <div class="panel-body" id='docBody'>
-                                      <input id="cartaF" name="cartaF" type="file" multiple=true class="file-loading">
+                                      <input id="cartaF" name="cartaF" type="file" class="file-loading">
 
                                   </div>
                                 </div>
@@ -135,14 +136,16 @@
             $("#cartaF").fileinput({
 
                 maxFileSize: 1500,
+                    uploadUrl: ' storage-files',
                 showClose: false,
                 showRemove: true,
                 showCaption: false,
+                showUpload: true,
                 browseLabel: '',
                 removeLabel: '',
+                uploadLabel: '',
                 language:'es',
                 initialPreview:'<img src="{{Auth::user()->avatar}}" alt="Your Avatar" style="width:160px">',
-                layoutTemplates: {main2: '{preview}  {remove} {browse}'},
                 allowedFileExtensions: ["pdf"],
                 previewFileIcon: '<i class="fa fa-file"></i>',
                 previewFileType:'pdf',

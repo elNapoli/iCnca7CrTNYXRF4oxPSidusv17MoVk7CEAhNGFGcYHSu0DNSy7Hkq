@@ -24,10 +24,10 @@ class PaisTableSeeder extends Seeder
         $pais->save();
         $samples_temp = [];
 
-        for($i = 0; $i < 200; $i++)
+        for($i = 0; $i < 70; $i++)
         {  
             $samples_temp[] = [
-                'nombre' => $faker->country,
+                'nombre' => $faker->unique->country,
                 'continente'=> $faker->numberBetween($min = 1, $max = 6)
             ];
 

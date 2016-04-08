@@ -31,7 +31,7 @@ class Ciudad extends Model
 
     public function postulante()
     {
-        return $this->hasMany('App\Postulante','id'); //Campo en tabla foranea
+        return $this->hasMany('App\Postulante','ciudad','id'); //Campo en tabla foranea
     }
 
 
@@ -70,5 +70,10 @@ class Ciudad extends Model
         }
     //name($request->get('name'))->paginate(4)
 
+    }
+
+    public function getChildrenAttribute(){
+
+        return$this->postulante->count();
     }
 }

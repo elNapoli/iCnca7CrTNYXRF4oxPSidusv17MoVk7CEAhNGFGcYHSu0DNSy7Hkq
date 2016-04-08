@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Faker\Factory as Faker;
 
 class Pais extends Model
 {
@@ -26,4 +27,38 @@ class Pais extends Model
     {
         return $this->hasMany('App\Universidad','id'); // nombre del campo en la otra tabla 
     }
+    public function getChildrenAttribute(){
+
+        return$this->ciudades->count();
+    }
+
+
+    public function postulantesR(){
+
+        return $this->hasManyThrough('App\Postulante', 'App\Ciudad', 'pais', 'ciudad');
+    }
+
+
+    public static function gCiudadByPais(){
+
+        $faker     = Faker::create();
+        $paises = Pais::all()->take(40);
+        $total = [];
+
+        foreach ($paises as $key => $value) {
+            $temp = $value->ciudades->count();
+
+
+            $total[] = array(
+                'label'=> $value->nombre,
+                'value'=>$temp,
+                'color' => $faker->hexcolor);
+
+        }
+
+        return $total;
+    }
+
+
+
 }

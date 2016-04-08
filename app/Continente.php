@@ -42,14 +42,11 @@ class Continente extends Model
                 # code...
                 $sum+= $value2->postulantesR->count();
             }
-            $total[] = array(
-                'label'=> $value->nombre,
-                'value'=>$sum,
-                'color' => $faker->hexcolor);
+            $total[] =$sum;
 
         }
 
-
+ array_unshift($total,'Continentes');
         return $total;
     }
 

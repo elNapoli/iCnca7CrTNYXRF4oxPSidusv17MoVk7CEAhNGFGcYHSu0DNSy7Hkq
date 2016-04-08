@@ -4,6 +4,8 @@
 
 @section('content')
 
+@section('content')
+
   <!-- BASIC FORM ELELEMNTS -->
             <div class="row mt">
               <div class="col-lg-12">
@@ -53,7 +55,7 @@
                           <div class="form-group">
                               <a href="#!" id='btn_graficar' class="btn btn-primary">graficar</a>
                           </div>
-<div id="pieChart"></div>
+    <div id="chart"></div>
 
                       </div>
                   </div>
@@ -64,140 +66,87 @@
 
 
 @endsection
+@endsection
 
 @section('styles')
+
+    {!! Html::Style('d3/lib/c3/c3.css')!!}
 
 
 @endsection
 
 @section('scripts')
-
     {!! Html::Script('d3/d3.js')!!}
-
-<script src="https://raw.githubusercontent.com/benkeen/d3pie/0.1.8/d3pie/d3pie.min.js"></script>
-
-<script>
-
-  $(document).on('ready',function(){
+    {!! Html::Script('d3/lib/c3/c3.js')!!}
+ <script>
 
 
-var data = [
-  { label: "0", value: 1 }
-];
-var pie = new d3pie("pieChart", {
-  "header": {
-    "title": {
-      "text": "Lots of Programming Languages",
-      "fontSize": 24,
-      "font": "open sans"
-    },
-    "subtitle": {
-      "text": "A full pie chart to show off label collision detection and resolution.",
-      "color": "#999999",
-      "fontSize": 12,
-      "font": "open sans"
-    },
-    "titleSubtitlePadding": 9
-  },
-  "footer": {
-    "color": "#999999",
-    "fontSize": 10,
-    "font": "open sans",
-    "location": "bottom-left"
-  },
-  "size": {
-    "canvasWidth": 590,
-    "pieOuterRadius": "90%"
-  },
-data: {
-    content: data
-  },
-  'tooltips': {
-    enabled: true,
-    type: "placeholder",
-    string: "{label}: {percentage}% ({value})",
-    placeholderParser: function(index, data) {
-      data.label = data.label;
-      data.percentage = data.percentage.toFixed(2);
-      data.value = data.value.toFixed(5);
-    }
-  },
-  "labels": {
-    "outer": {
-      "pieDistance": 32
-    },
-    "inner": {
-      "hideWhenLessThanPercentage": 3
-    },
-    "mainLabel": {
-      "fontSize": 11
-    },
-    "percentage": {
-      "color": "#ffffff",
-      "decimalPlaces": 0
-    },
-    "value": {
-      "color": "#adadad",
-      "fontSize": 11
-    },
-    "lines": {
-      "enabled": true
-    },
-    "truncation": {
-      "enabled": true
-    }
-  },
-  "effects": {
-    "pullOutSegmentOnClick": {
-      "effect": "linear",
-      "speed": 400,
-      "size": 8
-    }
-  },
-  "misc": {
-    "gradient": {
-      "enabled": true,
-      "percentage": 100
-    }
-  }
-});
 
-  $('#btn_graficar').on('click',function(){
+        var generate = function () { return c3.generate({
+            data: {
+                columns: [],
+                type: 'bar',
+                groups: []
+                },
+                axis: {
+                    x: {
+                        type: 'category',
+                    },
+                    rotated: false,
+                    },
+            }); 
+        }, 
 
-    $.ajax({
-            type: 'POST',
-            async:false,
-            url: '/estadisticas/graficar',
-            data:{
-              '_token':$('#_token').val(),
-              'filtro1' : $('#filtro_1').val(),
-              'filtro2' : $('#filtro_2').val()
-            },
-            dataType: "json",
-            success: function (json) {
-                var datos = [];
-                 $.each(json.content, function(index, subCatObj){
+        chart = generate();
 
-                    datos.push({
-                      label: subCatObj.label,
-                      value: subCatObj.value,
-                      color: subCatObj.color
-                    });
+      $('#btn_graficar').on('click',function(){
 
-                 });
+            $.ajax({
+                    type: 'POST',
+                    async:false,
+                    url: '/estadisticas/graficar',
+                    data:{
+                      '_token':$('#_token').val(),
+                      'filtro1' : $('#filtro_1').val(),
+                      'filtro2' : $('#filtro_2').val()
+                    },
+                    dataType: "json",
+                    success: function (json) {
 
-
-                pie.updateProp("header.title.text", $('#filtro_2 :selected').text()+ ' por '+ $('#filtro_1 :selected').text());
-                pie.updateProp("data.content", datos);
-            
-             
-            },
-            error: function (xhr, status, err) {
-                alert(status);
-            }
+chart.load({        
+                columns:[['data4', 100, 50, 150, -200, 300, -100]]
+            });
+               console.log(json.content)
+                     
+                    },
+                    error: function (xhr, status, err) {
+                        alert(status);
+                    }
+            });
         });
-  });
-});
-</script>
+
+
+
+        function update1() {
+            chart.groups([['data1', 'data2', 'data3']])
+        chart.categories(['perro', 'cat2', 'cat3', 'cat4', 'cat5', 'cat6']);
+        }
+
+        function update2() {
+            chart.load({
+                columns: [['data4', 100, 50, 150, -200, 300, -100]]
+            });
+        }
+
+        function update3() {
+            chart.groups([['data1', 'data2', 'data3', 'data4']])
+        }
+
+
+
+
+    </script>
+
+
 @endsection
 

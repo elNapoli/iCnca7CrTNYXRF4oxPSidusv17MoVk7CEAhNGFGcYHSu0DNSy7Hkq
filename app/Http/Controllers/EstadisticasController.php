@@ -32,7 +32,7 @@ class EstadisticasController extends Controller {
 
 
 
-        return view('estadisticas.grafico_01');
+        return view('estadisticas.grafico_05');
     }
 
     public function postGraficar(Request $request){
@@ -68,12 +68,12 @@ class EstadisticasController extends Controller {
                 switch ($request->get('filtro2')) {
                     case '3':
                         # code...
-                        $continente = Pais::gCiudadByPais();
+                        $continente = Pais::gCiudadesByPais();
                         break;
 
                     case '11':
                         # code...
-                        $continente = Continente::gPostulantesByContinente();
+                        $continente = Pais::gPostulantesByPais();
                         break;  
                     case '3':
                         # code...

@@ -39,14 +39,34 @@ class Pais extends Model
     }
 
 
-    public static function gCiudadByPais(){
+    public static function gCiudadesByPais(){
 
         $faker     = Faker::create();
-        $paises = Pais::all()->take(40);
+        $paises = Pais::all();
         $total = [];
 
         foreach ($paises as $key => $value) {
             $temp = $value->ciudades->count();
+
+
+            $total[] = array(
+                'label'=> $value->nombre,
+                'value'=>$temp,
+                'color' => $faker->hexcolor);
+
+        }
+
+        return $total;
+    }
+
+    public static function gPostulantesByPais(){
+
+        $faker     = Faker::create();
+        $paises = Pais::all();
+        $total = [];
+
+        foreach ($paises as $key => $value) {
+            $temp = $value->postulantesR->count();
 
 
             $total[] = array(

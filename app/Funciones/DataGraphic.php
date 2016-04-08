@@ -32,7 +32,7 @@ class DataGraphic
                 $table = 'postulante';
                 $children = 0;
                 break;
-            case 'postulante':
+            case 'postulanfffte':
                 $temp = Pais::where('continente',$id)->get();
                 $table = 'postulante';
                 $children = 0;

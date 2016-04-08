@@ -25,92 +25,9 @@ class Continente extends Model
         return $this->hasManyThrough('App\Universidad', 'App\Pais', 'continente', 'pais');
     }
 
+    public function getChildrenAttribute(){
 
-
-    public static function gPostulantesByContinente(){
-
-        $faker     = Faker::create();
-        $continente = Continente::all();
-        $total = [];
-
-        foreach ($continente as $key => $value) {
-            # code...
-            $temp = $value->Pais;
-
-            $sum = 0;
-            foreach ($temp as $key2 => $value2) {
-                # code...
-                $sum+= $value2->postulantesR->count();
-            }
-            $total[] =$sum;
-
-        }
-
- array_unshift($total,'Continentes');
-        return $total;
-    }
-
-    public static function gUniversidadesByContinente(){
-
-        $faker     = Faker::create();
-        $continente = Continente::all();
-        $total = [];
-
-        foreach ($continente as $key => $value) {
-            $temp = $value->universidadesR->count();
-
-
-            $total[] = array(
-                'label'=> $value->nombre,
-                'value'=>$temp,
-                'color' => $faker->hexcolor);
-
-        }
-
-
-        return $total;
-    }
-
-    public static function gPaisesByContinente(){
-        $faker     = Faker::create();
-        $continente = Continente::all();
-        $total = [];
-
-        foreach ($continente as $key => $value) {
-            $temp = $value->Pais->count();
-
-
-            $total[] = array(
-                'label'=> $value->nombre,
-                'value'=>$temp,
-                'color' => $faker->hexcolor);
-
-        }
-
-
-        return $total;
-
-    }
-
-    public static function gCiudadesByContinente(){
-        $faker     = Faker::create();
-        $continente = Continente::all();
-        $total = [];
-
-        foreach ($continente as $key => $value) {
-            $temp = $value->ciudadesR->count();
-
-
-            $total[] = array(
-                'label'=> $value->nombre,
-                'value'=>$temp,
-                'color' => $faker->hexcolor);
-
-        }
-
-
-        return $total;
-
+        return$this->Pais->count();
     }
 
 

@@ -27,7 +27,7 @@ class EstadisticasController extends Controller {
         $algo = new DataGraphic();
         $arrayFinal = array('name'=> 'continente',
                             'children'=> $algo->recursiva('continente','1',1));
-       //dd(json_encode($arrayFinal));
+     //  dd(json_encode($arrayFinal));
 
 
 

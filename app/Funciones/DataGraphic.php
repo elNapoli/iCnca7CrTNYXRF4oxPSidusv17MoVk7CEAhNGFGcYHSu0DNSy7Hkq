@@ -28,13 +28,13 @@ class DataGraphic
 
                 break;
             case 'ciudad':
-                $temp = Pais::where('continente',$id)->get();
-                $table = 'postulante';
+                $temp = Ciudad::where('pais',$id)->get();
+                $table = 'genero';
                 $children = 0;
                 break;
-            case 'postulanfffte':
-                $temp = Pais::where('continente',$id)->get();
-                $table = 'postulante';
+            case 'genero':
+                $temp = Ciudad::where('pais',$id)->get();
+                $table = 'tipo_estudi';
                 $children = 0;
                 break;
                 
@@ -44,22 +44,27 @@ class DataGraphic
         foreach ($temp as $key => $valor) {
          //   dd($valor->children);
   
-            if($valor->children and $children){
+            if($valor->children){
 
-                $arrayFinal[] = array(
+
+                if($children){
+                    $arrayFinal[] = array(
                                 'name'=>$valor->nombre,
                                 'size'=>$valor->children,
                                 'children' =>  $this->recursiva($table,$valor->id,$children)
                                 );
-            }
-            else{
-                if($valor->children){
-
+                }
+                else{
                     $arrayFinal[] = array(
                                 'name'=>$valor->nombre,
                                 'size'=>$valor->children
                                 );
+
                 }
+              
+            }
+            else{
+                break;
 
             }
         }

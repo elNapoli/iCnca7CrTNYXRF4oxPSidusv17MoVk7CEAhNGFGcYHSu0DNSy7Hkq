@@ -76,4 +76,7 @@ class Ciudad extends Model
 
         return$this->postulante->count();
     }
+
+    
+    
 }

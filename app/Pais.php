@@ -29,7 +29,7 @@ class Pais extends Model
     }
     public function getChildrenAttribute(){
 
-        return$this->ciudades->count();
+        return$this->postulantesR->count();
     }
 
 

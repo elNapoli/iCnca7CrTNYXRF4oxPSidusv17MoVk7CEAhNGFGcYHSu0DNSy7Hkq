@@ -50,8 +50,4 @@ class Postulante extends Model
 
 
 
-
-
-
-
 }

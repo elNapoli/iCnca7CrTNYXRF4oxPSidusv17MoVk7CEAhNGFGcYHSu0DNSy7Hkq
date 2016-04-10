@@ -27,7 +27,14 @@ class Continente extends Model
 
     public function getChildrenAttribute(){
 
-        return$this->Pais->count();
+        $temp = $this->Pais;
+        $sum = 0;
+        foreach ($temp as $key => $value) {
+            # code...
+            $sum += $value->children;
+        }
+
+        return $sum;
     }
 
 

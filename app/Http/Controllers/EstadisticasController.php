@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Continente;
 use App\Pais;
 use App\Ciudad;
+use App\Postulante;
 use App\Funciones\DataGraphic;
 
 
@@ -18,16 +19,24 @@ class EstadisticasController extends Controller {
 	 */
 	public function getIndex()
 	{
+
+                $algo = new DataGraphic();
+
+        $arrayFinal = array('name'=> 'Postulantes',
+                            'size' => Postulante::all()->count(),
+                            'children'=> $algo->recursiva('continente','1',1));
+
+       dd(json_encode($arrayFinal));
+        dd(Ciudad::where('id',1)->first());
+
 	return view('estadisticas.index');
 	}
 
     public function getPrueba(){
 
 
-        $algo = new DataGraphic();
-        $arrayFinal = array('name'=> 'continente',
-                            'children'=> $algo->recursiva('continente','1',1));
-     //  dd(json_encode($arrayFinal));
+
+      //  dd(Ciudad::where('id','1')->first()->postulante()->where('sexo','f')->count());
 
 
 

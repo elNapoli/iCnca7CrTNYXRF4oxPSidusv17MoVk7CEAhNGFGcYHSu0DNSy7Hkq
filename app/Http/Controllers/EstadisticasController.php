@@ -26,6 +26,8 @@ class EstadisticasController extends Controller {
                             'size' => Postulante::all()->count(),
                             'children'=> $algo->recursiva('continente','1',1));
 
+
+       // dd(Postulante::where('ciudad',1)->where('sexo','m')->get()->toArray());
        dd(json_encode($arrayFinal));
         dd(Ciudad::where('id',1)->first());
 

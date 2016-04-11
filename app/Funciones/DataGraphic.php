@@ -3,7 +3,6 @@ use App\Continente;
 use App\Pais;
 use App\Ciudad;
 use App\Postulante;
-
 class DataGraphic
 {
     /**
@@ -11,10 +10,8 @@ class DataGraphic
      *
      * @return void
      */
-    public function recursiva($table,$id,$children)
+    public function recursiva($table,$id,$final)
     {   
-
-
         $temp = array();
         switch ($table) {
             case 'continente':
@@ -25,18 +22,14 @@ class DataGraphic
             case 'pais':
                 $temp = Pais::where('continente',$id)->get();
                 $table = 'ciudad';
-
                 break;
             case 'ciudad':
                 $temp = Ciudad::where('pais',$id)->get();
                 $table = 'genero';
-                $children = 0;
+                $final = 0;
                 break;
-            case 'genero':
-                $temp = Ciudad::where('pais',$id)->get();
-                $table = 'tipo_estudi';
-                $children = 0;
-                break;
+                
+       
                 
         }
         $arrayFinal = [];
@@ -45,14 +38,13 @@ class DataGraphic
          //   dd($valor->children);
   
             if($valor->children){
-
-
-                if($children){
+                if($final){
                     $arrayFinal[] = array(
                                 'name'=>$valor->nombre,
                                 'size'=>$valor->children,
-                                'children' =>  $this->recursiva($table,$valor->id,$children)
+                                'children' =>  $this->recursiva($table,$valor->id,$final)
                                 );
+
                 }
                 else{
                     $arrayFinal[] = array(
@@ -61,12 +53,9 @@ class DataGraphic
                                 );
 
                 }
-              
+          
             }
-            else{
-                break;
-
-            }
+           
         }
         return $arrayFinal;
     }

@@ -77,6 +77,17 @@ class Ciudad extends Model
         return$this->postulante->count();
     }
 
-    
+
+    public function getChildrenMAttribute(){
+
+        return $this->postulante->where('sexo','m')->count();
+    }   
+
+    public function getChildrenFAttribute(){
+
+        return $this->postulante->where('sexo','f')->count();
+    }
+
+
     
 }

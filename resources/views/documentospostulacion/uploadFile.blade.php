@@ -3,18 +3,39 @@
 @section('Dashboard') Departamentos @endsection
 
 @section('content')
+
 <!-- BASIC FORM ELELEMNTS -->
-            <div class="row mt">
-                <div class="col-lg-12">
-                  <div class="form-panel">
-                      <h4 class="mb"><i class="fa fa-angle-right"></i> Porfavor adjuntar los siguientes documentos</h4>
-                      <form class="form-horizontal style-form" method="get">
-                         
-<input id="input-706" name="documentosAdjuntos[]" type="file" multiple=true class="file-loading">
-                      </form>
-                  </div>
-                </div><!-- col-lg-12-->         
-            </div><!-- /row -->
+<div class="row mt">
+    <div class="col-lg-12">
+        <div class="form-panel">
+            <div id="accordion">
+                <h3>Información:Documentos que debe adjuntar</h3>
+                    <div>
+                        <fieldset disabled>
+                                        
+                            @include('documentospostulacion.partials.table_doc')
+                        </fieldset>
+                  
+                    </div>
+                          
+                    <h3>Subir documentos</h3>
+                    
+                    <div>
+                             
+                      
+                    <input id="input-706" name="documentosAdjuntos[]" type="file" multiple=true class="file-loading">
+                    
+                    </div>
+                      
+            </div>
+
+        </div>
+    </div><!-- col-lg-12-->         
+</div><!-- /row -->
+
+
+
+
  
 {!!Form::hidden('_token', csrf_token(),array('id'=>'_token'));!!}
 {!!Form::hidden('getUrlFiles', url('docs/all-files'),array('id'=>'getUrlFiles'));!!}
@@ -121,12 +142,30 @@
     }
 
     $(document).on('ready',function(){
-
+ $( "#accordion" ).accordion({
+     collapsible: true,
+       active: 2,
+                heightStyle: "content",
+                autoHeight: false,
+                clearStyle: true, 
+            });
 // custom footer template for the scenario
 // the custom tags are in braces
     var footerTemplate = '<div class="file-thumbnail-footer">\n' +
     '   <div style="margin:5px 0">\n' +
-    '       <input class="kv-input kv-new form-control input-sm {TAG_CSS_NEW}" value="" placeholder="Ingrese el nombre">\n' +
+    '<select name="" id="" class="kv-input kv-new form-control input-sm {TAG_CSS_NEW}">'+
+                        '<option value="">Seleccione documento</option>'+
+                        '<option value="Formulario de postulación">Formulario de postulación</option>'+
+                        '<option value="Concentración de Notas">Concentración de Notas</option>'+
+                        '<option value="Certificado de competencias Lengüísticas">Certificado de competencias Lengüísticas</option>'+
+                        '<option value="Carta de motivación">Carta de motivación</option>'+
+                        '<option value="Currículum vitae">Currículum vitae</option>'+
+                        '<option value="Ranking académico">Ranking académico</option>'+
+                        '<option value="Homologación">Homologación</option>'+
+                        '<option value="Declaración jurada">Declaración jurada</option>'+
+                        '<option value="Certificado de salud">Certificado de salud</option>'+
+                        '<option value="Carta de aceptación universidad de destino">Carta de aceptación universidad de destino</option>'+
+                    '</select>   '+
     '       <input class="kv-input kv-init form-control input-sm {TAG_CSS_INIT}" value="{TAG_VALUE}" disabled placeholder="Enter caption...">\n' +
     '   </div>\n' +
     '   {actions}\n' +

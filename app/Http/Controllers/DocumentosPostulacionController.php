@@ -40,12 +40,27 @@ class DocumentosPostulacionController extends Controller {
     public function getUpload(Guard $auth){
 
         $postulante = Postulante::where('user_id',$auth->id())->first();
-
+        
         $documentos = DocumentoAdjunto::where('postulante',$postulante->id)->get();
- 
+        $nombresDoc['Sin nombre'] = '0';
+        $nombresDoc['Formulario de postulación'] = '0';
+        $nombresDoc['Concentración de Notas'] = '0';
+        $nombresDoc['Certificado de competencias Lengüísticas'] = '0';
+        $nombresDoc['Carta de motivación'] = '0';
+        $nombresDoc['Currículum vitae'] = '0';
+        $nombresDoc['Ranking académico'] = '0';
+        $nombresDoc['Homologación'] = '0';
+        $nombresDoc['Declaración jurada'] = '0';
+        $nombresDoc['Certificado de salud'] = '0';
+        $nombresDoc['Carta de aceptación universidad de destino'] = '0';
 
 
-        return view('documentospostulacion.uploadFile');
+        foreach ($documentos as $item) {
+            # code...
+            $nombresDoc[$item->nombre] = '1';
+        }
+
+        return view('documentospostulacion.uploadFile',compact('nombresDoc'));
     }
 	public function getIndex(Guard $auth)
 	{

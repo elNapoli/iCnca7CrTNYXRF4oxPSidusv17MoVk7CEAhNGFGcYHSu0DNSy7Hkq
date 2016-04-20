@@ -53,7 +53,7 @@
                       <h4 class="mb"><i class="fa fa-angle-right"></i> Ficha del postulante</h4>
                       <form class="form-horizontal style-form" method="get">
                         <div class="row">
-                            <div class="col-lg-8">
+                            <div class="col-lg-7">
                                 <div id="accordion">
                                   <h3>Datos personales</h3>
                                   <div>
@@ -72,7 +72,7 @@
                       
                                 </div>
                                 </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-5">
 
 
                                 <div class="panel panel-default">
@@ -81,6 +81,22 @@
                                   </div>
                                   <div class="panel-body" id='docBody'>
                                    Ningún dato disponible en esta tabla
+                                  </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-5">
+
+
+                                <div class="panel panel-default">
+                                  <div class="panel-heading">
+                                    <h3 class="panel-title">Adjuntar carta de aceptación </h3>
+                                  </div>
+                                    
+                                  <div class="panel-body" id='docBody'>
+                                      <input id="cartaF" name="cartaF" type="file" class="file-loading">
+
                                   </div>
                                 </div>
 
@@ -99,19 +115,45 @@
 @endsection
 
 @section('styles')
-<!-- some CSS styling changes and overrides -->
+
+    {!! Html::Style('plugins/bootstrap-fileinput/css/fileinput.css')!!}
+
+@endsection
 
 
 @section('scripts')
-
+    {!! Html::Script('plugins/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js')!!}
+    {!! Html::Script('plugins/bootstrap-fileinput/js/fileinput.js')!!}
+    {!! Html::Script('plugins/bootstrap-fileinput/js/fileinput_locale_es.js')!!}
     <script>
         $(document).on('ready',function(){
-
 
             $( "#accordion" ).accordion({
                 heightStyle: "content",
                 autoHeight: false,
                 clearStyle: true, 
+            });
+            $("#cartaF").fileinput({
+
+                maxFileSize: 1500,
+                    uploadUrl: ' storage-files',
+                showClose: false,
+                showRemove: true,
+                showCaption: false,
+                showUpload: true,
+                browseLabel: '',
+                removeLabel: '',
+                uploadLabel: '',
+                language:'es',
+                initialPreview:'<img src="{{Auth::user()->avatar}}" alt="Your Avatar" style="width:160px">',
+                allowedFileExtensions: ["pdf"],
+                previewFileIcon: '<i class="fa fa-file"></i>',
+                previewFileType:'pdf',
+                allowedPreviewTypes: null, 
+                previewFileIconSettings: {
+                    'pdf': '<i class="fa fa-file-pdf-o text-danger"></i>',
+                },
+
             });
 
                 var tableDatosPersonales = $('#tableDatosPersonales').DataTable( {

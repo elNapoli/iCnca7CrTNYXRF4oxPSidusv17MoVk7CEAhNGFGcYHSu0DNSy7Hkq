@@ -7,6 +7,7 @@ use App\Continente;
 use Illuminate\Contracts\Auth\Guard;
 use App\Postulante;
 use App\PreUach;
+use App\CampusSede;
 use App\PreNoUach;
 use App\PreUEstudioActual;
 use App\PreNuEstudioActual;
@@ -50,6 +51,19 @@ class PostulacionController extends Controller {
 				]);
 	}
 
+	public function getNomina()
+	{
+		$campus = CampusSede::where('universidad','1')->get()->lists('nombre','id')->toArray();
+		return view('postulacion.view_admin.nomina',compact('campus'));
+	}
+
+	public function postGenerarNomina(Request $request){	
+		
+		$temp = PreUach::nomina($request->get('campusSede'),$request->get('facultad'))->get()->toArray();
+		$arra = array('data'=>$temp);
+		return json_encode($arra);
+
+	}
 
 	public function getCreateOrEdit(Guard $auth){
 		$postulante = Postulante::with('ciudadR.paisR')->where('user_id',$auth->id())->first();

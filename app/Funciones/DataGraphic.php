@@ -3,6 +3,10 @@ use App\Continente;
 use App\Pais;
 use App\Ciudad;
 use App\Postulante;
+use App\Genero;
+use App\TipoEstudio;
+use App\Pregrado;
+use App\Procedencia;
 class DataGraphic
 {
     /**
@@ -10,7 +14,7 @@ class DataGraphic
      *
      * @return void
      */
-    public function recursiva($table,$id,$final,$tipo)
+    public function recursiva($table,$id,$tipo,$sexo)
     {   
         $temp = array();
         switch ($table) {
@@ -26,38 +30,48 @@ class DataGraphic
             case 'ciudad':
                 $temp = Ciudad::where('pais',$id)->get();
                 $table = 'genero';
-                break;
+                $sexo = "m";
 
+                break;
             case 'genero':
-                $temp = Ciudad::where('id',$id)->get();
-                $tipo = 'F';
+                $temp = Genero::all();
+                $table = 'tipo_estudio';
+                $sexo = "f";
+                break;
+            case 'tipo_estudio':
+                $temp = TipoEstudio::all();
+                $table = 'procedencia';
+                break;
+            case 'procedencia':
+
+                $temp = Procedencia::all();
                 $table = 'fin';
                 break;
-            
 
-
-           
-
-       
-                
         }
         $arrayFinal = [];
        // $temp = Pais::all();
+
         foreach ($temp as $key => $valor) {
-         //   dd($valor->children);
-
-            switch ($tipo) {
-                case 'F': //Femenino
-                    # code...
-                    $children = $valor->children_f;
-                    $nombre ='Femenino';
-                    if(!$children){
-                        $children = $valor->children_m;
-                        $nombre ='Masculino';
-
-                    }
+            $padre = $valor->id;
+            switch ($table) {
+                case 'tipo_estudio':
+                    $children = $valor->postulanteR->where("ciudad",$id)->count();
+                    $nombre = $valor->nombre;
+                    $padre = $id;
+                    $sexo = $valor->id;
                     break;
-                
+                case 'procedencia':
+                    $children = $valor->postulanteR->where("ciudad",$id)->where("sexo",$sexo)->count();
+                    //dd($valor->postulanteR->where("ciudad",1)->where("sexo",$sexo));
+                    $tipo = $valor->id;
+                    $nombre = $valor->nombre;
+                    $sexo = $sexo;
+                    $padre = $id;
+                    break;
+                case 'fisn':
+
+                    break;
                 default:
                     # code...
                     $children = $valor->children;
@@ -65,33 +79,12 @@ class DataGraphic
                     break;
             }
 
-
             if($children){
-                if($final){
                     $arrayFinal[] = array(
                                 'name'=> $nombre,
                                 'size'=> $children,
-                                'children' =>  $this->recursiva($table,$valor->id,$final,$tipo)
-                                );
-                    if($nombre === 'Femenino' and $valor->children_m){
-                        $arrayFinal[] = array(
-                                'name'=> 'Masculino',
-                                'size'=> $valor->children_m,
-                                'children' =>  $this->recursiva($table,$valor->id,$final,$tipo)
-                                );
-
-                    }
-
-
-
-                }
-                else{
-                    $arrayFinal[] = array(
-                                'name'=>$valor->nombre,
-                                'size'=>$valor->children
-                                );
-
-                }
+                                'children' =>  $this->recursiva($table,$padre,$tipo,$sexo)
+                                );               
           
             }
            

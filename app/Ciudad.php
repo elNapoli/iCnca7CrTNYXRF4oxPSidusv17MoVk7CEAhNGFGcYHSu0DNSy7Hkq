@@ -89,5 +89,14 @@ class Ciudad extends Model
     }
 
 
+    public function scopeTipoEstudio($query, $id, $genero, $tipo){
+
+        return $query
+                    ->where('id', $id)->first()
+                    ->postulante
+                    ->where('sexo',$genero)
+                    ->where('tipo_estudio',$tipo);
+    }
+
     
 }

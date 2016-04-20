@@ -22,7 +22,7 @@ class Postulante extends Model
                             'tipo_estudio',
                             'direccion'];
 
-    // un Postulante esta en una ciudad
+
     public function ciudadR()
     {
         return $this->belongsTo('App\Ciudad','ciudad');

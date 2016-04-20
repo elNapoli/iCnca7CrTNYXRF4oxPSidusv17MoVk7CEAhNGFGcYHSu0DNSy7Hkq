@@ -1,31 +1,62 @@
 <div id="menu_3">
     <ul>        
         <li class="nivel1">
-            <a href="http://www.uach.cl/internacional/principal/portada"   >Portada</a>
+            <a href="{{url('/')}}"   >Inicio</a>
             {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
 
         </li>
         
         <li class="nivel1">
-            <a href="http://www.uach.cl/internacional/principal/acerca-de-la-uach" >Acerca de la UACh</a>       
+            <a href="#!" >Áreas de interes</a>       
             {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
 
                 <ul>
-                    <li><a href="http://www.uach.cl/internacional/principal/acerca-de-la-uach/areas-de-interes">Áreas de Interés</a>
+                    <li><a href="{{url('internet/alojamiento')}}">Alojamiento</a>
                     </li>
-                    <li><a href="http://www.uach.cl/internacional/principal/acerca-de-la-uach/centros" >Centros</a>
+                    <li><a href="{{url('internet/visa')}}">Visa</a>
                     </li>
-                    <li><a href="http://deportes.uach.cl/" >Centro de Deportes y Recreación</a>
+                    <li><a href="http://deportes.uach.cl/" >Convenios vigentes</a>
                     </li>
-                    <li><a href="http://www.uach.cl/organizacion/vicerrectoria-academica/unidades/conservatorio-de-musica" >Conservatorio de Música</a>
+                    <li><a href="http://www.minrel.gov.cl/" >Información de consulados</a>
                     </li>
-                    <li><a href="http://jardinbotanicouach.cl/" >Jardín Botánico</a>
+                    <li><a href="http://www.policia.cl/extranjeria/portada.htm" >Policía internacional</a>
                     </li>
-                    <li><a href="https://www.youtube.com/watch?v=BdJE_i6_-4Q&feature=youtu.be" >Vive la UACh</a>
+                    <li><a href="http://www.sernatur.cl/" >Sernatur</a>
                     </li>
-                    <li><a href="https://vimeo.com/142668628" >Valdivia</a>
+                    <li><a href="http://www.mineduc.cl/" >Ministerio de educación</a>
                     </li>
               </ul>
+
+
+        </li>
+
+
+        <li class="nivel1">
+            <a href="#!" >Nosotros</a>       
+            {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
+
+                <ul>
+                    <li><a href="{{url('internet/mision')}}">Misión</a>
+                    <li><a href="{{url('internet/vision')}}" >Visión</a>
+                    </li>
+                    <li><a href="{{url('internet/contacto')}}" >Contacto</a>
+                    </li>
+
+              </ul>
+
+              
+        </li>
+
+
+        <li class="nivel1">
+            <a href="{{url('internet/testimonios')}}"   >Testimonios</a>
+            {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
+
+        </li>
+        <li class="nivel1">
+            <a href="{{url('internet/galeria')}}"   >Galeria</a>
+            {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
+
         </li>
 
         <li class="nivel1">

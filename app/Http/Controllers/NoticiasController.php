@@ -90,11 +90,6 @@ class NoticiasController extends Controller {
 
     	$id_noticia = $id;
     	$noticia = Noticia::findOrFail($id);
-    	$fullstring = $noticia->cuerpo;
-    	$parsed = $this->get_string_between($fullstring, 'src="', '"');
-
-    	dd($parsed);		
-
     	$titulo = $noticia->titulo;
     	$resumen = $noticia->resumen;
     	$cuerpo = $noticia->cuerpo;

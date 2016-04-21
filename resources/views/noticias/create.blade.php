@@ -3,7 +3,9 @@
 @section('Dashboard') Beneficios @endsection
 
 @section('content')
-
+<div>
+{!! Form::open(['url'=>'noticias/store', 'method'=>'POST','class'=>'form-horizontal style-form'])!!}
+</div>
 
 
 

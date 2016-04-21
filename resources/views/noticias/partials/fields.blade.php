@@ -25,6 +25,11 @@
 
     {!!  Form::label('cuerpo_noticia', 'Cuerpo');!!}
     {!! Form::textarea('cuerpo_noticia',null,array('class' => 'form-control','placeholder'=>null, 'id'=>'cuerpo_noticia'));!!}
+    <br>
+     <button type="submit" class="btn-primary btn"> Guardar Noticia</button>
 </div>  
 {!!Form::hidden('id','',array('id'=>'id'));!!}
 </div>  
+
+                    
+                   

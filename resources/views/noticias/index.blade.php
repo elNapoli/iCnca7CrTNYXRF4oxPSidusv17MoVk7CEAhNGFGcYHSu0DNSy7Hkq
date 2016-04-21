@@ -11,6 +11,12 @@
 
 		  <!-- Table -->
 		  <div class="message"></div>
+		  @if(Session::has('message1')) 
+            <div class="alert alert-success fade in">
+                <button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>
+                               {{Session::get('message1')}}         </p></div>
+           @endif
+
 		  @include('noticias.partials.table')
 
 

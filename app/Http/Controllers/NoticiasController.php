@@ -61,6 +61,22 @@ class NoticiasController extends Controller {
 
     }
 
+    public function postStore(Request $request, Guard $auth){
+        
+       	$noticia = new Noticia();
+        
+        $noticia->user = $auth->id();
+        $noticia->titulo = $request->get('titulo');
+        $noticia->resumen = $request->get('resumen');
+        $noticia->cuerpo = $request->get('cuerpo_noticia');
+
+        $noticia->save();
+        $message    = 'La noticia ha sido creada con éxito';
+        \Session::flash('message1', $message);
+        return redirect('/noticias')->with('message1', $message);
+
+    }
+
     public function getImg(Guard $auth){
         $noticiaImg = NoticiasImg::where('autor',$auth->id())
                                         ->where('path', 'like', 'noticias%')

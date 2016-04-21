@@ -41,7 +41,7 @@
                    
                     @yield('portada')
                     <div id="cont">
-                        <div class="container">
+                        <div class="container" style="min-height:380px">
                             @yield('content')
                            
                         </div>

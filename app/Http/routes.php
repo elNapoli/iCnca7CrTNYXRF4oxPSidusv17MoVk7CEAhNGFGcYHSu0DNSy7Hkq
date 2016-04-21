@@ -53,6 +53,7 @@ Route::controllers([
 	'inscripcion-cursos' => 'InscripcionCursosController',
 
 	'admin' => 'Admin\UsuariosController',
+	'internet' => 'InternetController',
 
 	'testimonios' => 'TestimonioController',
 	'subir-archivos' => 'DocumentosAdjuntosController',

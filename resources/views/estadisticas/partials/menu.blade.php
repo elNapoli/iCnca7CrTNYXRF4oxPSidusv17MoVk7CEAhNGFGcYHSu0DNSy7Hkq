@@ -13,7 +13,6 @@
 <div class="col-lg-3">
 <div class="form-group">
   <br>
-<button type="button" class="btn btn-info" id="graf">Graficar</button>
 </div>
 </div>
 

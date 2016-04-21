@@ -89,17 +89,12 @@
                   <li><a  href="chartjs.html">item 2</a></li>
               </ul>
           </li>
-
-          <li class="sub-menu">
-              <a href="javascript:;" >
-                  <i class=" fa fa-bar-chart-o"></i>
-                  <span>Estadísticas</span>
+          <li class="menu">
+              <a href="{{ url('estadisticas/') }}" >
+                  <i class="fa fa-bar-chart-o"></i>
+                  <span>Estadisticas</span>
               </a>
-              <ul class="sub">
-                  <li><a  href="morris.html">Morris</a></li>
-                  <li><a  href="chartjs.html">Chartjs</a></li>
-              </ul>
+              
           </li>
-
       </ul>
       <!-- sidebar menu end-->

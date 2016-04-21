@@ -13,6 +13,8 @@
 </div>
 
 <div id="test"></div>
+<div id="test1"></div>
+<div id="test2"></div>
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 @endsection
 
@@ -35,118 +37,304 @@ var y = d3.scale.sqrt()
 
 var color = d3.scale.category20c();
 
-var svg = d3.select('#test').append("svg")
-    .attr("width", width)
-    .attr("height", height+12)
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
 
-var partition = d3.layout.partition()
-    .sort(null)
-    .value(function(d) { return d.size; });
-
-var arc = d3.svg.arc()
-    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
-    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
-    .innerRadius(function(d) { return Math.max(0, y(d.y)); })
-    .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
-
-  var tooltip = d3.select("#test")
-    .append("div")
-    .attr("class", "tooltip")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("opacity", 0);
-
-  function format_number(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-
-
-  function format_name(d) {
-    var name = d.name;
-        return  '<b>' + name + '</b><br> (' + format_number(d.value) + ')';
-  }
-
-d3.json("/flare.json", function(error, root) {
-
-
-  var path = svg.selectAll("path")
-      .data(partition.nodes(root))
-    .enter().append("path")
-      .attr("d", arc)
-      .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
-      .on("click", click)
-       .on("mouseover", function(d) {
-          tooltip.html(function() {
-              if(d.name == 'continente'){
-                  var name = d.name+': cantidad total (por calcular)';
-              }
-              else{
-                  var name = d.name+': '+d.size;
-              }
-              return name;
-         });
-          return tooltip.transition()
-            .duration(50)
-            .style("opacity", 0.9);
-        })
-        .on("mousemove", function(d) {
-          return tooltip
-            .style("top", (d3.event.pageY-80)+"px")
-            .style("left", (d3.event.pageX-200)+"px");
-        })
-        .on("mouseout", function(){return tooltip.style("opacity", 0);});
-
- 
-
-
-  function click(d) {
-    path.transition()
-      .duration(750)
-      .attrTween("d", arcTween(d));
-  }
-});
-
-d3.select(self.frameElement).style("height", height + "px");
-
-// Interpolate the scales!
-function arcTween(d) {
-  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
-      yd = d3.interpolate(y.domain(), [d.y, 1]),
-      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
-  return function(d, i) {
-    return i
-        ? function(t) { return arc(d); }
-        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
-  };
-}
 ////////////////////////////////////////
-        $('#graf').on('click',function(e){
-                alert('En construccion xD!');
-        });
 
         $('#principal').on('change',function(e){
             if($(this).val() == 1){
+
+                $('#test1').hide('slow');
+                $('#test2').hide('slow');
+                var svg = d3.select('#test').append("svg")
+                    .attr("width", width)
+                    .attr("height", height+12)
+                  .append("g")
+                    .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
+
+                var partition = d3.layout.partition()
+                    .sort(null)
+                    .value(function(d) { return d.size; });
+
+                var arc = d3.svg.arc()
+                    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+                    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+                    .innerRadius(function(d) { return Math.max(0, y(d.y)); })
+                    .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+
+                  var tooltip = d3.select("#test")
+                    .append("div")
+                    .attr("class", "tooltip")
+                    .style("position", "absolute")
+                    .style("z-index", "10")
+                    .style("opacity", 0);
+
+                  function format_number(x) {
+                    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                  }
+
+
+                  function format_name(d) {
+                    var name = d.name;
+                        return  '<b>' + name + '</b><br> (' + format_number(d.value) + ')';
+                  }
+
+                d3.json("/flare.json", function(error, root) {
+
+
+                  var path = svg.selectAll("path")
+                      .data(partition.nodes(root))
+                    .enter().append("path")
+                      .attr("d", arc)
+                      .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+                      .on("click", click)
+                       .on("mouseover", function(d) {
+                          tooltip.html(function() {
+                              if(d.name == 'continente'){
+                                  var name = d.name+': cantidad total (por calcular)';
+                              }
+                              else{
+                                  var name = d.name+': '+d.size;
+                              }
+                              return name;
+                         });
+                          return tooltip.transition()
+                            .duration(10)
+                            .style("opacity", 0.9);
+                        })
+                        .on("mousemove", function(d) {
+                          return tooltip
+                            .style("top", (d3.event.pageY-80)+"px")
+                            .style("left", (d3.event.pageX-200)+"px")
+                            .style("border-style", "solid")
+                            .style("border-color", "black")
+                            .style("background-color", "black")
+                            .style("color", "white")
+                            .style("font-size", "30px");
+                        })
+                        .on("mouseout", function(){return tooltip.style("opacity", 0);});
+
+                 
+
+
+                  function click(d) {
+                    path.transition()
+                      .duration(750)
+                      .attrTween("d", arcTween(d));
+                  }
+                });
+
+                d3.select(self.frameElement).style("height", height + "px");
+
+                // Interpolate the scales!
+                function arcTween(d) {
+                  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+                      yd = d3.interpolate(y.domain(), [d.y, 1]),
+                      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+                  return function(d, i) {
+                    return i
+                        ? function(t) { return arc(d); }
+                        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
+                  };
+                }
                 $('#test').show('slow');
-                $('#op_univ').hide('fast');
-                $('#op_post').show('slow');
-                $('#graf').attr('disabled',false);
             }
             else if($(this).val() == 2){
-                $('#test').show('fast');
-                $('#op_post').hide('fast');
-                $('#op_univ').show('slow');
-                $('#graf').attr('disabled',false);
+                $('#test').hide('slow');
+                $('#test2').hide('slow');
+                var svg = d3.select('#test1').append("svg")
+                    .attr("width", width)
+                    .attr("height", height+12)
+                  .append("g")
+                    .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
 
+                var partition = d3.layout.partition()
+                    .sort(null)
+                    .value(function(d) { return d.size; });
+
+                var arc = d3.svg.arc()
+                    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+                    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+                    .innerRadius(function(d) { return Math.max(0, y(d.y)); })
+                    .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+
+                  var tooltip = d3.select("#test1")
+                    .append("div")
+                    .attr("class", "tooltip")
+                    .style("position", "absolute")
+                    .style("z-index", "10")
+                    .style("opacity", 0);
+
+                  function format_number(x) {
+                    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                  }
+
+
+                  function format_name(d) {
+                    var name = d.name;
+                        return  '<b>' + name + '</b><br> (' + format_number(d.value) + ')';
+                  }
+
+                d3.json("/flare1.json", function(error, root) {
+
+
+                  var path = svg.selectAll("path")
+                      .data(partition.nodes(root))
+                    .enter().append("path")
+                      .attr("d", arc)
+                      .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+                      .on("click", click)
+                       .on("mouseover", function(d) {
+                          tooltip.html(function() {
+                              if(d.name == 'continente'){
+                                  var name = d.name+': cantidad total (por calcular)';
+                              }
+                              else{
+                                  var name = d.name+': '+d.size;
+                              }
+                              return name;
+                         });
+                          return tooltip.transition()
+                            .duration(10)
+                            .style("opacity", 0.9);
+                        })
+                        .on("mousemove", function(d) {
+                          return tooltip
+                            .style("top", (d3.event.pageY-80)+"px")
+                            .style("left", (d3.event.pageX-200)+"px")
+                            .style("border-style", "solid")
+                            .style("border-color", "black")
+                            .style("background-color", "black")
+                            .style("color", "white")
+                            .style("font-size", "30px");
+                        })
+                        .on("mouseout", function(){return tooltip.style("opacity", 0);});
+
+                 
+
+
+                  function click(d) {
+                    path.transition()
+                      .duration(750)
+                      .attrTween("d", arcTween(d));
+                  }
+                });
+
+                d3.select(self.frameElement).style("height", height + "px");
+
+                // Interpolate the scales!
+                function arcTween(d) {
+                  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+                      yd = d3.interpolate(y.domain(), [d.y, 1]),
+                      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+                  return function(d, i) {
+                    return i
+                        ? function(t) { return arc(d); }
+                        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
+                  };
+                }
+                $('#test1').show('slow');
+            }
+            else if($(this).val() == 3){
+                $('#test').hide('slow');
+                $('#test1').hide('slow');
+                var svg = d3.select('#test2').append("svg")
+                    .attr("width", width)
+                    .attr("height", height+12)
+                  .append("g")
+                    .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
+
+                var partition = d3.layout.partition()
+                    .sort(null)
+                    .value(function(d) { return d.size; });
+
+                var arc = d3.svg.arc()
+                    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+                    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+                    .innerRadius(function(d) { return Math.max(0, y(d.y)); })
+                    .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+
+                  var tooltip = d3.select("#test2")
+                    .append("div")
+                    .attr("class", "tooltip")
+                    .style("position", "absolute")
+                    .style("z-index", "10")
+                    .style("opacity", 0);
+
+                  function format_number(x) {
+                    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                  }
+
+
+                  function format_name(d) {
+                    var name = d.name;
+                        return  '<b>' + name + '</b><br> (' + format_number(d.value) + ')';
+                  }
+
+                d3.json("/flare2.json", function(error, root) {
+
+
+                  var path = svg.selectAll("path")
+                      .data(partition.nodes(root))
+                    .enter().append("path")
+                      .attr("d", arc)
+                      .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+                      .on("click", click)
+                       .on("mouseover", function(d) {
+                          tooltip.html(function() {
+                              if(d.name == 'continente'){
+                                  var name = d.name+': cantidad total (por calcular)';
+                              }
+                              else{
+                                  var name = d.name+': '+d.size;
+                              }
+                              return name;
+                         });
+                          return tooltip.transition()
+                            .duration(10)
+                            .style("opacity", 0.9);
+                        })
+                        .on("mousemove", function(d) {
+                          return tooltip
+                            .style("top", (d3.event.pageY-80)+"px")
+                            .style("left", (d3.event.pageX-200)+"px")
+                            .style("border-style", "solid")
+                            .style("border-color", "black")
+                            .style("background-color", "black")
+                            .style("color", "white")
+                            .style("font-size", "30px");
+                        })
+                        .on("mouseout", function(){return tooltip.style("opacity", 0);});
+
+                 
+
+
+                  function click(d) {
+                    path.transition()
+                      .duration(750)
+                      .attrTween("d", arcTween(d));
+                  }
+                });
+
+                d3.select(self.frameElement).style("height", height + "px");
+
+                // Interpolate the scales!
+                function arcTween(d) {
+                  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+                      yd = d3.interpolate(y.domain(), [d.y, 1]),
+                      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+                  return function(d, i) {
+                    return i
+                        ? function(t) { return arc(d); }
+                        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
+                  };
+                }
+                $('#test2').show('slow');
             }
             else if($(this).val() == 0){
-                $('#op_post').hide('slow');
-                $('#op_univ').hide('slow');
                 $('#test').hide('slow');
-                $('#graf').attr('disabled',true);
-
-            }
+                $('#test1').hide('slow');
+                $('#test2').hide('slow');
+              }
             //var id = $(this).val() //paso la id del select por referencia
          });
     });

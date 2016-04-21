@@ -16,7 +16,7 @@ class EstadisticasController extends Controller {
 		$valores = array('state'=> 2,'freq' => array('low' => 1, 'mid' => 2, 'high' => 3, 'avg' => 12));
 		$indices = json_encode(array('low','mid','high','avg'));
 		$val_json = json_encode($valores);
-		return view('estadisticas.index',compact('val_json','indices'));
+		return view('estadisticas.index2',compact('val_json','indices'));
 	}
 
 

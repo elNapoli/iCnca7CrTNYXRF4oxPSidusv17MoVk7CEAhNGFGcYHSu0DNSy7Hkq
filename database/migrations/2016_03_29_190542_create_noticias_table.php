@@ -18,7 +18,7 @@ class CreateNoticiasTable extends Migration
 
             //Foreign Key to USUARIOS
             $table->integer('user')->unsigned(); 
-            $table->string('cuerpo'); 
+            $table->longText('cuerpo'); 
             $table->string('resumen'); 
             $table->string('titulo',100);
             $table->string('foto',100); //path

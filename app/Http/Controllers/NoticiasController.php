@@ -70,8 +70,45 @@ class NoticiasController extends Controller {
         $noticia->resumen = $request->get('resumen');
         $noticia->cuerpo = $request->get('cuerpo_noticia');
 
+        if (str_contains($noticia->cuerpo,'<img')){ //verifico que tenga imagen. de ser asi la identifico y la guardo en path
+			$fullstring = $noticia->cuerpo;
+    		$parsed = $this->get_string_between($fullstring, 'src="', '"');
+    		$noticia->foto = $parsed;
+        }
+        else{
+        	$noticia->foto = 'path';
+        }
+
         $noticia->save();
         $message    = 'La noticia ha sido creada con éxito';
+        \Session::flash('message1', $message);
+        return redirect('/noticias')->with('message1', $message);
+
+    }
+
+    public function getEdit($id){
+
+    	$id_noticia = $id;
+    	$noticia = Noticia::findOrFail($id);
+    	$fullstring = $noticia->cuerpo;
+    	$parsed = $this->get_string_between($fullstring, 'src="', '"');
+
+    	dd($parsed);		
+
+    	$titulo = $noticia->titulo;
+    	$resumen = $noticia->resumen;
+    	$cuerpo = $noticia->cuerpo;
+        return view('noticias.edit',compact('titulo','resumen','cuerpo','id_noticia'));
+    }
+
+	public function getUpdate($id, Request $request){
+
+        $noticia = Noticia::findOrFail($id);
+        $noticia->titulo = $request->get('titulo');
+        $noticia->resumen = $request->get('resumen');
+        $noticia->cuerpo = $request->get('cuerpo_noticia');
+        $noticia->save();
+        $message    = 'La noticia ha sido editada con éxito';
         \Session::flash('message1', $message);
         return redirect('/noticias')->with('message1', $message);
 
@@ -96,6 +133,16 @@ class NoticiasController extends Controller {
         return json_encode($arrayFinal);
 
     }
+
+function get_string_between($string, $start, $end){
+    $string = ' ' . $string;
+    $ini = strpos($string, $start);
+    if ($ini == 0) return '';
+    $ini += strlen($start);
+    $len = strpos($string, $end, $ini) - $ini;
+    return substr($string, $ini, $len);
+}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *

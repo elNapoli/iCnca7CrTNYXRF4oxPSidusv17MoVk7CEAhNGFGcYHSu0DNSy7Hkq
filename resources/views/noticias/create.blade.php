@@ -99,6 +99,7 @@ $('#cuerpo_noticia').froalaEditor({
 
         fullPage: 'true',
         language: 'es',
+        placeholderText: 'Escriba el cuerpo de su noticia aqui...',
         imageDefaultDisplay: 'inline',
 
         imageManagerDeleteURL: 'destroy-img',

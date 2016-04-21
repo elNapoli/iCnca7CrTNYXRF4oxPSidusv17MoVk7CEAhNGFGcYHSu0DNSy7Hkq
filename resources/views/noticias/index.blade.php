@@ -40,6 +40,7 @@
                     
 			    } );
 
+
         $('table').on('click','.btn-delete', function(e){
         	var row = $(this).parents('tr');
             if(confirm("Esta seguro que desea eliminar el registro seleccionado?."))

@@ -11,14 +11,18 @@
                 <tbody>
                     @foreach($noticias as $item)
                     <tr>
-                        <td><img src="http://cdn.abclocal.go.com/content/kfsn/images/cms/26184_1280x720.jpg" alt="..." height="200" width="300" hspace="0"></td>
+                        @if($item->foto == 'path' or $item->foto == '')
+                            <td><img src="http://cdn.abclocal.go.com/content/kfsn/images/cms/26184_1280x720.jpg" alt="..." height="200" width="300" hspace="0"></td>
+                        @else
+                            <td><img src="{{$item->foto}}" alt="..." height="200" width="300" hspace="0"></td>
+                        @endif
                         <td> 
                         <div class="caption">
                             <br>
                             <p>Creado por : {{$item->usuarioR->name}}</p>
                             <h3>{{$item->titulo}}</h3>
                             <p>{{$item->resumen}}</p>
-                        <p><a href="#" class="btn btn-info" role="button">Editar</a> <a href="#" class="btn btn-danger btn-delete" id="{{$item->id}}" role="button">Eliminar</a></p>
+                        <p><a href="noticias/edit/{{$item->id}}" class="btn btn-info" id="{{$item->id}}" role="button">Editar</a> <a href="#" class="btn btn-danger btn-delete" id="{{$item->id}}" role="button">Eliminar</a></p>
                         </div>
                         </td>
                     </tr>

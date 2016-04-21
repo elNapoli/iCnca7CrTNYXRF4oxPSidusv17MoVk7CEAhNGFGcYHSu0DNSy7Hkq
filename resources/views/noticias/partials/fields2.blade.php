@@ -6,12 +6,12 @@
 
 
     {!!  Form::label('titulo', ' Titulo de la noticia ');!!}
-    {!! Form::text('titulo',null,array('class' => 'form-control','placeholder'=>'Ej: Ingrese el titulo de su noticia'));!!}
+    {!! Form::text('titulo',$titulo,array('class' => 'form-control','placeholder'=>'Ej: Ingrese el titulo de su noticia'));!!}
 </div>  
 <div class="form-group">
 
     {!!  Form::label('resumen', 'Resumen ');!!}
-    {!! Form::textarea('resumen',null,array('class' => 'form-control','placeholder'=>null,'rows'=>'3'));!!}
+    {!! Form::textarea('resumen',$resumen,array('class' => 'form-control','placeholder'=>null,'rows'=>'3'));!!}
 </div>  
 
 </div> 
@@ -24,9 +24,9 @@
 <div class="form-group">
 
     {!!  Form::label('cuerpo_noticia', 'Cuerpo');!!}
-    {!! Form::textarea('cuerpo_noticia',null,array('class' => 'form-control','placeholder'=>null, 'id'=>'cuerpo_noticia'));!!}
+    {!! Form::textarea('cuerpo_noticia',$cuerpo,array('class' => 'form-control','placeholder'=>null, 'id'=>'cuerpo_noticia'));!!}
     <br>
-     <button type="submit" class="btn-primary btn"> Guardar Noticia</button>
+     <button type="submit" class="btn-primary btn"> Editar Noticia</button>
      <a href="/noticias" class="btn-danger btn"> Cancelar</a>
 </div>  
 {!!Form::hidden('id','',array('id'=>'id'));!!}

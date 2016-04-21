@@ -34,6 +34,7 @@ Route::controllers([
 	'documentos-identidad' => 'DocumentoIdentidadController',
 	'alojamientos' => 'AlojamientosController',
 	'noticias' => 'NoticiasController',
+	'estadisticas' => 'EstadisticasController',
 
 	'prepostulacionuniversidad' => 'PrePostulacionUniversidadController',
 	'carreras' => 'CarrerasController',

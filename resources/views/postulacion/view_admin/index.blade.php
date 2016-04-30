@@ -93,17 +93,15 @@
 																	<div class="panel-heading">
 																		<h3 class="panel-title">Adjuntar carta de aceptación </h3>
 																	</div>
-																		
+																		<div id="kv-documentos-errors"></div>
 																	<div class="panel-body" id='docBody'>
-																		<fieldset id="panelArchivos" disabled>
 																			<label>Carta de aceptación</label>
-																			<input id="cartaF1" name="cartaF" type="file" class="file-loading">
+																			<input id="cartaF1" name="cartaF1" type="file" class="file-loading" disabled >
 																			<hr>
 																			<label>Resoluón de pregrado</label>
-																			<input id="cartaF2" name="cartaF" type="file" class="file-loading">
+																			<input id="cartaF2" name="cartaF2" type="file" class="file-loading" disabled>
 																			
 																
-																		</fieldset>
 
 																	</div>
 																</div>
@@ -258,10 +256,12 @@
 												if(json.existe == '0'){
 														$('#existAlert').html('<p>El rut o pasaporte que esta buscando no existe!.</p>');
 														$('#existAlert').show();
+														
 												}
 												else{
 														$('#existAlert').hide();
-														$("#panelArchivos").removeAttr('disabled');
+														$("#cartaF1").fileinput("enable");
+														$("#cartaF2").fileinput("enable");
 														$("#id_postulante").val(json.postulante);
 
 
@@ -269,7 +269,43 @@
 												 var bodyDoc  = '<ul>';
 
 												 $.each( json.documentos, function( key, value ) {
-														bodyDoc = bodyDoc + '<a href="/documentos/'+value.path+'"><li>'+value.nombre+'</li></a>';
+												 	if(value.nombre =="carta de aceptación"){
+												 		$("#cartaF1").fileinput("disable");
+														$("#cartaF1").fileinput("refresh", {
+															showUpload: false,
+															showBrowse: false,
+															initialCaption: "Carta aceptación.pdf",
+															layoutTemplates: {main1: '<div class="row"><div class="col-lg-9"><div tabindex="-1" class="form-control col-lg-1 file-caption {class}">\n' +
+													        '<div class="file-caption-name"></div>\n' +
+													        '</div></div> {remove} <a href="/documentos/'+value.path+'"class="btn btn-default" >' +
+													    '<i class="fa fa-eye "></i>' +
+													    '</a>{browse}</div>'},
+														});
+
+
+												 	}
+												 	
+												 	else{
+												 		if(value.nombre =="Resolución de pregrado"){
+													 		$("#cartaF2").fileinput("disable");
+															$("#cartaF2").fileinput("refresh", {
+																showUpload: false,
+																showBrowse: false,
+																initialCaption: "Carta aceptación.pdf",
+																layoutTemplates: {main1: '<div class="row"><div class="col-lg-9"><div tabindex="-1" class="form-control col-lg-1 file-caption {class}">\n' +
+														        '<div class="file-caption-name"></div>\n' +
+														        '</div></div> {remove} <a href="/documentos/'+value.path+'"class="btn btn-default" >' +
+														    '<i class="fa fa-eye "></i>' +
+														    '</a>{browse}</div>'},
+															});
+													 	}
+													 	else{
+													 		
+												 		bodyDoc = bodyDoc + '<a href="/documentos/'+value.path+'"><li>'+value.nombre+'</li></a>';
+													 	}
+
+												 	}
+														
 												});
 												bodyDoc = bodyDoc + '</ul>';
 
@@ -299,9 +335,15 @@ $("#cartaF1").fileinput({
     uploadUrl: "/subir-archivos/upload-doc-admin", // server upload action
     uploadAsync: true,
     showPreview:false,
+    showRemove: false,
+    showBrowse:false,
+    elErrorContainer: '#kv-documentos-errors',
+    msgErrorClass: 'alert alert-block alert-danger',
     browseLabel:"",
     uploadLabel:"",
     removeLabel:"",
+    showCaption:true,
+
 	 allowedFileExtensions:['pdf'],
 	 uploadExtraData:function(){
 
@@ -318,9 +360,14 @@ $("#cartaF2").fileinput({
     uploadUrl: "/subir-archivos/upload-doc-admin", // server upload action
     uploadAsync: true,
     showPreview:false,
+    showRemove: false,
+    showBrowse:false,
+    elErrorContainer: '#kv-documentos-errors',
+    msgErrorClass: 'alert alert-block alert-danger',
     browseLabel:"",
     uploadLabel:"",
     removeLabel:"",
+    showCaption:true,
 	 allowedFileExtensions:['pdf'],
 	 uploadExtraData:function(){
 

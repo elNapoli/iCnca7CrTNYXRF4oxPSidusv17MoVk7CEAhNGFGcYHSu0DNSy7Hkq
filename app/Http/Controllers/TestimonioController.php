@@ -36,6 +36,15 @@ class TestimonioController extends Controller
         return view('testimonio.create');
     }
 
+    public function getView($id){
+
+        $testimonio = Testimonio::find($id);
+        $editor = $testimonio->cuerpo;
+        return view('testimonio.view',compact('editor'));
+
+
+    }
+
     public function postDebug(Request $request){
 
         $editor = $request->get('content');
@@ -123,8 +132,14 @@ class TestimonioController extends Controller
     public function getUpdate($id, Request $request){
 
         $documentoP = Testimonio::findOrFail($id);
-        $documentoP->cuerpo = $request->get('content');
+        $documentoP->fill($request->all());
         $documentoP->save();
+        if($request->ajax()){
+        //  return($message);
+            return response()->json([
+                'message'=> "todo okey"
+                ]);
+        }
         return  redirect('testimonios');
 
 
@@ -133,6 +148,27 @@ class TestimonioController extends Controller
 
 
     }
+
+
+    public function getValidacion(){
+
+
+        return view("testimonio.validacion");
+
+    }
+
+    public function getTestimonios(){
+
+        $testimonios = Testimonio::with('postulanteR')->get();
+
+
+
+        $arra = array('data'=>$testimonios->toArray());
+        return json_encode($arra);
+
+    }
+
+
 
 
 

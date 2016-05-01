@@ -32,7 +32,7 @@
               <div class="form-group">
                 <div class="col-lg-12">
                     
-                    <textarea id="edit" name="content">
+                    <textarea id="edit" name="cuerpo">
                {!!
 
                                    ( html_entity_decode($editor))

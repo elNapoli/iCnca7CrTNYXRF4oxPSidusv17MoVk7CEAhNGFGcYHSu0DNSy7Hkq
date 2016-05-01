@@ -43,4 +43,38 @@ class DocumentosAdjuntosController extends Controller {
     }
 
 
+    public function postUploadDocAdmin(Request $request){
+
+        $pathUser = 'postulante_'.$request->get("id_postulante")."/admin";
+        \Storage::makeDirectory($pathUser);
+
+        if($request->hasFile("cartaF1")){
+
+            $archivo = $request->file('cartaF1');
+            $temp = "carta de aceptación";
+
+        }
+        else{
+            $archivo = $request->file('cartaF2');
+            $temp = "Resolución de pregrado";
+
+        }
+
+
+        $nombre = \Hash::make($archivo->getClientOriginalName());
+        $nombre = str_replace('/', 'Y', $nombre);
+        $nombre = $nombre.'.'.$archivo->guessExtension();
+
+        $fullPath = $pathUser.'/'.$nombre;
+
+        $docAdjunto = DocumentoAdjunto::firstOrNew(['path' => $fullPath]);;
+        $docAdjunto->nombre = $temp;
+        $docAdjunto->postulante = $request->get("id_postulante");
+        $docAdjunto->save();
+        \Storage::disk('local')->put($fullPath,  \File::get($archivo));
+
+
+    }
+
+
 }

@@ -210,10 +210,21 @@ class PostulacionController extends Controller {
 
 		$postulante = Postulante::find($postulante);
 		$arrayFinal = [];
+		$rut ='';
+		$pasaporte = '';
+		if($postulante->documentoIdentidadR->where('tipo','ci')->first()){
 
+			$rut = $postulante->documentoIdentidadR->where('tipo','ci')->first()->numero;
+		}
+		if($postulante->documentoIdentidadR->where('tipo','p')->first()){
+
+			$pasaporte = $postulante->documentoIdentidadR->where('tipo','p')->first()->numero;
+		}
 		$arrayFinal[] = array('parametro' => 'APELLIDO PATERNO', 'valor'=>$postulante->apellido_paterno, 'peso'=>'1');
 		$arrayFinal[] = array('parametro' => 'APELLIDO MATERNO', 'valor'=>$postulante->apellido_materno, 'peso'=>'2');
 		$arrayFinal[] = array('parametro' => 'NOMBRE', 'valor'=>$postulante->nombre, 'peso'=>'3');
+		$arrayFinal[] = array('parametro' => 'RUT', 'valor'=> $rut, 'peso'=>'3');
+		$arrayFinal[] = array('parametro' => 'PASAPORTE', 'valor'=>$pasaporte, 'peso'=>'3');
 		$arrayFinal[] = array('parametro' => 'FECHA DE NACIMIENTO', 'valor'=>$postulante->fecha_nacimiento, 'peso'=>'4');
 		$arrayFinal[] = array('parametro' => 'E-MAIL PERSONAL', 'valor'=>$postulante->email_personal, 'peso'=>'5');
 		$arrayFinal[] = array('parametro' => 'TELÉFONO CASA', 'valor'=>$postulante->telefono, 'peso'=>'6');

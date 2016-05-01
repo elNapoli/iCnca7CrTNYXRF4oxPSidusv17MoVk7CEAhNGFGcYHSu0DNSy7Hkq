@@ -19,6 +19,7 @@ class CreateTestimonioTable extends Migration
             //Foreign Key to POSTULANTE
             $table->integer('postulante')->unsigned();
             $table->longText('cuerpo');
+            $table->boolean('validado');
             $table->timestamps();
             
         });

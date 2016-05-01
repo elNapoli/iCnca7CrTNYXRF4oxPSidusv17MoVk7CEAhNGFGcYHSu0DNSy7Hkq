@@ -54,6 +54,7 @@
               <ul class="sub">
                   <li><a  href="{{ url('postulacion/view-admin') }}">Buscar postulante</a></li>
                   <li><a  href="{{ url('postulacion/nomina') }}">Generar nómina</a></li>
+                  <li><a  href="{{ url('testimonios/validacion') }}">Validar testimonios</a></li>
               </ul>
           </li>
 

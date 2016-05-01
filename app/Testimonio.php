@@ -9,8 +9,7 @@ class testimonio extends Model
     protected $table = 'testimonio'; //primary id
     protected $fillable = ['postulante',
                            'cuerpo', 
-                           'foto', 
-                           'video']; 
+                           'validado']; 
 
 
 

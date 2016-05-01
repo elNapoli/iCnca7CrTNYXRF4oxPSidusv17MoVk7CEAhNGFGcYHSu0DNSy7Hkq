@@ -6,6 +6,7 @@
                     <tr>
                         <th width="250">Fotografia</th>
                         <th>Información</th>
+                        <th>Mostrar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,6 +25,15 @@
                             <p>{{$item->resumen}}</p>
                         <p><a href="noticias/edit/{{$item->id}}" class="btn btn-info" id="{{$item->id}}" role="button">Editar</a> <a href="#" class="btn btn-danger btn-delete" id="{{$item->id}}" role="button">Eliminar</a></p>
                         </div>
+                        </td>
+                        <td style= 'vertical-align:middle'>
+                            <div style= 'text-align:center'>
+                                <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 
+                                        </label>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     @endforeach

@@ -26,7 +26,8 @@ class NoticiaTableSeeder extends Seeder
                     'cuerpo'=>  $faker->text($maxNbChars = 200),
                     'titulo'=>  $faker->sentence($nbWords = 4, $variableNbWords = true),
                     'resumen'=>  $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
-                    'foto'=> 'path'
+                    'foto'=> 'path',
+                    'carousel' => 'no'
                 ];  
 
 

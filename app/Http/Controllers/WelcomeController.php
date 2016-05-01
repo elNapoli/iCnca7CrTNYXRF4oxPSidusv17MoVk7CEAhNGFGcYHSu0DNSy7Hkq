@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Noticia;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -30,6 +32,7 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
+		$noticias = Noticia::where('carousel','si')->get();
 		return view('welcome.index');
 	}
 

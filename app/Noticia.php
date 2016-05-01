@@ -12,7 +12,8 @@ class noticia extends Model
                            'cuerpo',
                            'resumen',
                            'titulo',
-                           'foto']; 
+                           'foto',
+                           'carousel']; 
 
 
 

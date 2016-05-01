@@ -22,6 +22,7 @@ class CreateNoticiasTable extends Migration
             $table->string('resumen'); 
             $table->string('titulo',100);
             $table->string('foto',100); //path
+            $table->enum('carousel',['si','no']);
             $table->timestamps();
         });
     }

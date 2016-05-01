@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Testimonio;
 
 class InternetController extends Controller
 {
@@ -48,7 +49,10 @@ class InternetController extends Controller
     }
     public function getTestimonios(){
 
-        return view('guest.testimonios');
+        
+        $testimonios = Testimonio::with('postulanteR')->where('validado',1)->paginate(7);
+    
+        return view('guest.testimonios',compact('testimonios'));
 
     }
 

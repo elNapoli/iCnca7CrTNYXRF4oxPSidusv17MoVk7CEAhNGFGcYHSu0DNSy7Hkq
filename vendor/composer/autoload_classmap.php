@@ -103,6 +103,7 @@ return array(
     'CreateMaestriaPostulacionTable' => $baseDir . '/database/migrations/2016_01_17_224937_create_maestria_postulacion_table.php',
     'CreateNoticiasImgTable' => $baseDir . '/database/migrations/2016_04_05_221252_create_noticias_img_table.php',
     'CreateNoticiasTable' => $baseDir . '/database/migrations/2016_03_29_190542_create_noticias_table.php',
+    'CreateNotificacionesTable' => $baseDir . '/database/migrations/2016_04_30_215735_create_notificaciones_table.php',
     'CreateOtraMaestriaTable' => $baseDir . '/database/migrations/2016_01_17_224938_create_otra_maestria_table.php',
     'CreatePaisTable' => $baseDir . '/database/migrations/2016_01_17_224938_create_pais_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',

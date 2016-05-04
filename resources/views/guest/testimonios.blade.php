@@ -8,7 +8,7 @@
 
 @foreach($testimonios as $item)
 <div class="div_testimonio">
-	<a href ="asdfasdf"><h3> {{$item->postulanteR->nombre}} {{$item->postulanteR->apellido_paterno}} {{$item->postulanteR->apellido_materno}},</h3></a>
+	<a href ="view-testimonio/{{$item->id}}""><h4> {{$item->postulanteR->nombre}} {{$item->postulanteR->apellido_paterno}} {{$item->postulanteR->apellido_materno}}, estudiante de {{$item->postulanteR->tipo_estudio}} de la carrera "{{$item->carrera}}"</h4></a>
 </div>
 @endforeach
 

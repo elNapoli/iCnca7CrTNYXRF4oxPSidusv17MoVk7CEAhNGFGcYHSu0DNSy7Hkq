@@ -8,7 +8,7 @@ class Universidad extends Model
 {
     protected $table     = 'universidad';
     public $timestamps   = false;
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'convenio'];
 
     public function conveniosR()
     {
@@ -24,6 +24,10 @@ class Universidad extends Model
     public function paisR()
     {
         return $this->belongsTo('App\Pais','pais');
+    }
+    public function getChildrenUniversidadAttribute(){
+
+        return $this->campusSedesR->count();
     }
 
 

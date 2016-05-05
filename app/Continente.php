@@ -37,5 +37,11 @@ class Continente extends Model
         return $sum;
     }
 
+    public function getChildrenUniversidadAttribute(){
+
+        return $this->universidadesR->count();
+    }
+
+
 
 }

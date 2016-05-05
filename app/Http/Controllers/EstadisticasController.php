@@ -9,6 +9,7 @@ use App\Ciudad;
 use App\Procedencia;
 use App\Genero;
 use App\Postulante;
+use App\Universidad;
 use App\Funciones\DataGraphic;
 
 
@@ -24,16 +25,18 @@ class EstadisticasController extends Controller {
 
                 $algo = new DataGraphic();
 
-        $arrayFinal = array('name'=> 'Postulantes',
+      /*  $arrayFinal = array('name'=> 'Postulantes',
                             'size' => Postulante::all()->count(),
                             'children'=> $algo->recursiva('continente','1','asdf','m'));
-
-        //dd(Ciudad::where('id',1)->first()->children_h);
-       // dd(Postulante::where('ciudad',1)->where('sexo','m')->get()->toArray());
-    //    dd(Genero::where('id','m')->first()->postulanteR->where("ciudad",1)->first()->ciudad);
-
        dd(json_encode($arrayFinal));
-        dd(Ciudad::TipoEstudio(1,'m','Postgrado')->count());
+*/      
+       $arrayFinal = array('name'=> 'Universidades',
+                            'size' => Universidad::all()->count(),
+                            'children'=> $algo->recursiva_universidad('continente','1'));
+
+        dd(json_encode($arrayFinal));
+
+
 
 
 	return view('estadisticas.index');

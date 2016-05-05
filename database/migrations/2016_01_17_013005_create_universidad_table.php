@@ -15,6 +15,7 @@ class CreateUniversidadTable extends Migration
         Schema::create('universidad', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre', 45);
+            $table->boolean('convenio')->default('0');
             $table->integer('pais')->unsigned();
 
         });

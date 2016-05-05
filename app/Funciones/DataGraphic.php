@@ -7,6 +7,7 @@ use App\Genero;
 use App\TipoEstudio;
 use App\Pregrado;
 use App\Procedencia;
+use App\Universidad;
 class DataGraphic
 {
     /**
@@ -84,6 +85,47 @@ class DataGraphic
                                 'name'=> $nombre,
                                 'size'=> $children,
                                 'children' =>  $this->recursiva($table,$padre,$tipo,$sexo)
+                                );               
+          
+            }
+           
+        }
+        return $arrayFinal;
+    }
+
+
+
+
+    public function recursiva_universidad($table,$id){   
+        $temp = array();
+        switch ($table) {
+            case 'continente':
+                $temp = Continente::all();
+                $table = 'pais';
+                # code...
+                break;
+            case 'pais':
+                $temp = Pais::where('continente',$id)->get();
+                $table = 'universidad';
+                # code...
+                break;
+            case 'universidad':
+                $temp = Universidad::where('pais',$id)->get();
+                $table = 'campus';
+                # code...
+                break;
+        }
+        $arrayFinal = [];
+       // $temp = Pais::all();
+
+        foreach ($temp as $key => $valor) {
+            $padre = $valor->id;
+            $children = $valor->childrenUniversidad;
+            if($children){
+                    $arrayFinal[] = array(
+                                'name'=> $valor->nombre,
+                                'size'=> $children,
+                                'children' =>  $this->recursiva_universidad($table,$padre)
                                 );               
           
             }

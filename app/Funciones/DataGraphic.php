@@ -8,6 +8,7 @@ use App\TipoEstudio;
 use App\Pregrado;
 use App\Procedencia;
 use App\Universidad;
+use Illuminate\Support\Collection ;
 class DataGraphic
 {
     /**
@@ -96,7 +97,7 @@ class DataGraphic
 
 
 
-    public function recursiva_universidad($table,$id){   
+    public function recursiva_universidad($table,$id,$nombre){   
         $temp = array();
         switch ($table) {
             case 'continente':
@@ -106,26 +107,101 @@ class DataGraphic
                 break;
             case 'pais':
                 $temp = Pais::where('continente',$id)->get();
-                $table = 'universidad';
+                $table = 'Convenio';
                 # code...
                 break;
-            case 'universidad':
-                $temp = Universidad::where('pais',$id)->get();
-                $table = 'campus';
+            case 'Convenio':
+                $temp  = Collection::make([["nombre"=>"Si"],["nombre"=>"No"]]);
+                $table = 'Universidad';
                 # code...
                 break;
+            case 'Universidad':
+                $temp  = Universidad::where('pais',$id)->where('convenio',$nombre)->get();
+                $table = 'fin';
+              
+                # code...
+                break;
+            
         }
         $arrayFinal = [];
        // $temp = Pais::all();
 
         foreach ($temp as $key => $valor) {
-            $padre = $valor->id;
-            $children = $valor->childrenUniversidad;
+            switch ($table) {
+                case 'Universidad':
+                    $nombre = $temp->toArray()[$key]["nombre"];
+                    # code...
+                    $padre = $id;
+                    $children  = Universidad::where('pais',$padre)->where('convenio',$nombre)->count();
+                    break;
+                
+                default:
+                    # code...
+                    $padre = $valor->id;
+                    $nombre = $valor->nombre;
+                    $children = $valor->childrenUniversidad;
+                    break;
+            }
+            
             if($children){
                     $arrayFinal[] = array(
-                                'name'=> $valor->nombre,
+                                'name'=> $nombre,
                                 'size'=> $children,
-                                'children' =>  $this->recursiva_universidad($table,$padre)
+                                'children' =>  $this->recursiva_universidad($table,$padre,$nombre)
+                                );               
+          
+            }
+           
+        }
+        return $arrayFinal;
+    }
+
+    public function recursiva_estudio($table,$id){   
+        $temp = array();
+        switch ($table) {
+            case 'tipo_estudio':
+                $temp = TipoEstudio::all();
+                $table = 'procedencia';
+                break;
+            case 'procedencia':
+                $temp = Procedencia::all();
+                $table = 'fin';
+           
+                break;
+            
+            
+        }
+        $arrayFinal = [];
+       // $temp = Pais::all();
+
+        foreach ($temp as $key => $valor) {
+            switch ($id) {
+                case 'Postgrado':
+                    # code...
+
+                    $padre = $valor->id;
+                    $nombre = $valor->nombre;
+                    $children = $valor->postgradoR->count();
+                    break;
+                case 'Pregrado':
+                    # code...
+                    $padre = $valor->id;
+                    $nombre = $valor->nombre;
+                    $children = $valor->pregradoR->count();
+                    break;
+                
+                default:
+                    $padre = $valor->id;
+                    $nombre = $valor->nombre;
+                    $children = $valor->postulanteR->count();
+                    break;
+            }
+            
+            if($children){
+                    $arrayFinal[] = array(
+                                'name'=> $nombre,
+                                'size'=> $children,
+                                'children' =>  $this->recursiva_estudio($table,$padre)
                                 );               
           
             }

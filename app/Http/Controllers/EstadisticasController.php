@@ -23,16 +23,24 @@ class EstadisticasController extends Controller {
 	public function getIndex()
 	{
 
-                $algo = new DataGraphic();
+        $algo = new DataGraphic();
+       /*
 
-      /*  $arrayFinal = array('name'=> 'Postulantes',
+        $arrayFinal = array('name'=> 'Postulantes',
                             'size' => Postulante::all()->count(),
                             'children'=> $algo->recursiva('continente','1','asdf','m'));
-       dd(json_encode($arrayFinal));
-*/      
-       $arrayFinal = array('name'=> 'Universidades',
+        dd(json_encode($arrayFinal));
+      
+        $arrayFinal = array('name'=> 'Universidades',
                             'size' => Universidad::all()->count(),
-                            'children'=> $algo->recursiva_universidad('continente','1'));
+                            'children'=> $algo->recursiva_universidad('continente','1','inicial'));
+
+        dd(json_encode($arrayFinal));
+        */
+
+        $arrayFinal = array('name'=> 'Postulantes',
+                            'size' => Postulante::all()->count(),
+                            'children'=> $algo->recursiva_estudio('tipo_estudio','1'));
 
         dd(json_encode($arrayFinal));
 

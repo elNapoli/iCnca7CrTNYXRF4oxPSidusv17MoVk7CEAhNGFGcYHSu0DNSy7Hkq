@@ -28,7 +28,7 @@ class ConvenioTableSeeder extends Seeder
                 'universidad'=> $convenio
             ];
             $u = Universidad::find($convenio);
-            $u->convenio = 1;
+            $u->convenio = 'Si';
             $u->save();
         }
         Convenio::insert($samples_temp);

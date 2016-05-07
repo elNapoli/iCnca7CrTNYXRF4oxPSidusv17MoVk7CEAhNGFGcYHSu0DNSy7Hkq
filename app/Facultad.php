@@ -24,5 +24,9 @@ class Facultad extends Model
     	return $this->hasMany('App\Carrera','id'); //Id local
     }
 
+    public function pregradosR(){
+        return $this->hasManyThrough('App\PrePostulacionUniversidad', 'App\Carrera', 'facultad', 'carrera');
+    }
+
 
 }

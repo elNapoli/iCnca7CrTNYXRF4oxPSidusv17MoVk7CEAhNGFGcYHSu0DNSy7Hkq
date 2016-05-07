@@ -7,6 +7,10 @@ use App\Genero;
 use App\TipoEstudio;
 use App\Pregrado;
 use App\Procedencia;
+use App\AnioIntercambio;
+use App\PrePostulacionUniversidad;
+use App\Postgrado;
+use App\Facultad;
 use App\Universidad;
 use Illuminate\Support\Collection ;
 class DataGraphic
@@ -156,7 +160,25 @@ class DataGraphic
         return $arrayFinal;
     }
 
-    public function recursiva_estudio($table,$id){   
+    public function recursiva_estudio($table,$id, $procedencia, $tEstudio){   
+
+
+
+
+       // dd(Facultad::find(13)->pregradosR->count());
+        //dd(Universidad::find(1)->facultadR()->count());
+        $universidad = Universidad::find(1)->facultadR;
+        //dd($universidad);
+        $sum = 0;
+        foreach ($universidad as $key => $value) {
+            # code...
+            $sum = $sum+ $value->pregradosR->count();
+        }
+        dd($sum);
+
+
+        
+
         $temp = array();
         switch ($table) {
             case 'tipo_estudio':
@@ -165,8 +187,16 @@ class DataGraphic
                 break;
             case 'procedencia':
                 $temp = Procedencia::all();
+                $table = 'año';
+                break;
+            case 'año':
+                $temp = AnioIntercambio::all();
+                $table = 'universidad';
+                break;
+            case 'universidad':
+                $temp = Universidad::all();
+               // dd(Carrera::find(1)->facultadR->campusSedesR->universidadR);
                 $table = 'fin';
-           
                 break;
             
             
@@ -175,33 +205,44 @@ class DataGraphic
        // $temp = Pais::all();
 
         foreach ($temp as $key => $valor) {
-            switch ($id) {
-                case 'Postgrado':
-                    # code...
 
-                    $padre = $valor->id;
-                    $nombre = $valor->nombre;
-                    $children = $valor->postgradoR->count();
-                    break;
-                case 'Pregrado':
+            switch ($table) {
+                case 'año':
                     # code...
                     $padre = $valor->id;
                     $nombre = $valor->nombre;
-                    $children = $valor->pregradoR->count();
+                    $tEstudio = $nombre;
+                    $procedencia = $id;
+                    $children = $valor->childrenEstudio($id);
+                    break;
+                case 'universidad':
+                    $padre = $valor->id;
+                    $nombre = $valor->nombre;
+                    if($procedencia === 'Pregrado'){
+
+                        $children = Pregrado::childrenEstudio($padre,$tEstudio)->count();
+                    }
+                    else{
+                        $children = Postgrado::childrenEstudio($padre,$tEstudio)->count();
+
+
+                    }
                     break;
                 
                 default:
+                    # code...
                     $padre = $valor->id;
                     $nombre = $valor->nombre;
-                    $children = $valor->postulanteR->count();
+                    $children = $valor->childrenEstudio;
                     break;
             }
+            
             
             if($children){
                     $arrayFinal[] = array(
                                 'name'=> $nombre,
                                 'size'=> $children,
-                                'children' =>  $this->recursiva_estudio($table,$padre)
+                                'children' =>  $this->recursiva_estudio($table,$padre,$procedencia, $tEstudio)
                                 );               
           
             }

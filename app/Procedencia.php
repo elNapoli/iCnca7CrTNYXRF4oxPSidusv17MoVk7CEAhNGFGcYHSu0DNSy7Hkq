@@ -19,6 +19,18 @@ class Procedencia extends Model {
         return $this->hasMany('App\Postgrado','procedencia','id'); //Campo en tabla foranea
     }
 
+    public function childrenEstudio($tipoEstudio){
+
+        if($tipoEstudio === 'Pregrado'){
+            return $this->pregradoR->count();
+        }
+        else{
+            return $this->postgradoR->count();
+
+        }
+
+    }
+
 
 
 }

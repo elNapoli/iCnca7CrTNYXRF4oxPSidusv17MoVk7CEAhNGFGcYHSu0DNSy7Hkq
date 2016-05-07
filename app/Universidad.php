@@ -30,6 +30,10 @@ class Universidad extends Model
         return $this->campusSedesR->count();
     }
 
+    public function facultadR(){
+        return $this->hasManyThrough('App\Facultad', 'App\CampusSede', 'universidad', 'campus_sede');
+    }
+
 
 
 

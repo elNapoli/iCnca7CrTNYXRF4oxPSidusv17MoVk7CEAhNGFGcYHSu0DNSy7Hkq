@@ -15,4 +15,10 @@ class TipoEstudio extends Model {
         return $this->hasMany('App\Postulante','tipo_estudio','id'); //Campo en tabla foranea
     }
 
+    public function getChildrenEstudioAttribute(){
+
+    	return $this->postulanteR->count();
+
+    }
+
 }

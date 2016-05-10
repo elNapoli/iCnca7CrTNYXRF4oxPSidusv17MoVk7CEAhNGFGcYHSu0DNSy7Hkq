@@ -6,6 +6,7 @@ use App\Postulante;
 use App\Genero;
 use App\TipoEstudio;
 use App\Pregrado;
+use App\Carrera;
 use App\Procedencia;
 use App\AnioIntercambio;
 use App\PrePostulacionUniversidad;
@@ -160,25 +161,10 @@ class DataGraphic
         return $arrayFinal;
     }
 
-    public function recursiva_estudio($table,$id, $procedencia, $tEstudio){   
+    public function recursiva_estudio($table,$id, $procedencia, $tEstudio, $anio){   
 
-
-
-
-       // dd(Facultad::find(13)->pregradosR->count());
-        //dd(Universidad::find(1)->facultadR()->count());
-        $universidad = Universidad::find(1)->facultadR;
-        //dd($universidad);
-        $sum = 0;
-        foreach ($universidad as $key => $value) {
-            # code...
-            $sum = $sum+ $value->pregradosR->count();
-        }
-        dd($sum);
-
-
-        
-
+       // dd(Universidad::find(1)->probando(1990, 'NO UACH')->get()->count());
+       
         $temp = array();
         switch ($table) {
             case 'tipo_estudio':
@@ -194,10 +180,20 @@ class DataGraphic
                 $table = 'universidad';
                 break;
             case 'universidad':
-                $temp = Universidad::all();
-               // dd(Carrera::find(1)->facultadR->campusSedesR->universidadR);
+                $temp = Universidad::universidades($id, $procedencia)->get();
+                $table = 'facultad';
+                break;
+            case 'facultad':
+                $temp = Universidad::find($id)->facultadR;
+                $table = 'carrera';
+                break;
+            case 'carrera':
+                $temp = Facultad::find($id)->carrerasR;
+
                 $table = 'fin';
                 break;
+         /*
+                */
             
             
         }
@@ -207,7 +203,7 @@ class DataGraphic
         foreach ($temp as $key => $valor) {
 
             switch ($table) {
-                case 'año':
+                case 'año': // calculo cuantos postulantes son uach  y cuantos postulants son no uach
                     # code...
                     $padre = $valor->id;
                     $nombre = $valor->nombre;
@@ -215,7 +211,7 @@ class DataGraphic
                     $procedencia = $id;
                     $children = $valor->childrenEstudio($id);
                     break;
-                case 'universidad':
+                case 'universidad': // calculo cuantos postulants por año existen 
                     $padre = $valor->id;
                     $nombre = $valor->nombre;
                     if($procedencia === 'Pregrado'){
@@ -228,8 +224,40 @@ class DataGraphic
 
                     }
                     break;
-                
-                default:
+                case 'facultad':
+                    $padre = $valor->id;
+                    $nombre = $valor->nombre;
+                    //$children = $valor->childrenEstudio($id, $tEstudio);
+                    $anio = $id;
+                    $children  = Universidad::postulantes($id,$tEstudio,$valor->id, $procedencia)->count();
+                    break;
+                case 'carrera':
+                    $padre = $valor->id;
+                    $nombre = $valor->nombre;
+                    //$children = $valor->childrenEstudio($id, $tEstudio);
+                    $children = 0;
+                    if($procedencia === 'Pregrado'){
+
+                        $children  = $valor->postulantes($anio,$tEstudio);
+                        
+                    }
+                    
+                    
+                    break;
+                case 'fin':
+                    $padre = $valor->id;
+                    $nombre = $valor->nombre;
+                    //$children = $valor->childrenEstudio($id, $tEstudio);
+                    $children = 0;
+                    if($procedencia === 'Pregrado'){
+
+                        $children  = $valor->postulantes($anio,$tEstudio);
+
+                    }
+                    
+                    
+                    break;
+                default: // aca calculo el numero de postulantes que son pregrados  y pregrados 
                     # code...
                     $padre = $valor->id;
                     $nombre = $valor->nombre;
@@ -242,7 +270,7 @@ class DataGraphic
                     $arrayFinal[] = array(
                                 'name'=> $nombre,
                                 'size'=> $children,
-                                'children' =>  $this->recursiva_estudio($table,$padre,$procedencia, $tEstudio)
+                                'children' =>  $this->recursiva_estudio($table,$padre,$procedencia, $tEstudio, $anio)
                                 );               
           
             }

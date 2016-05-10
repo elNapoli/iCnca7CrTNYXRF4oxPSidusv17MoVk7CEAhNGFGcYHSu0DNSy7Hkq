@@ -40,7 +40,7 @@ class EstadisticasController extends Controller {
 
         $arrayFinal = array('name'=> 'Postulantes',
                             'size' => Postulante::all()->count(),
-                            'children'=> $algo->recursiva_estudio('tipo_estudio','1','inicio','inicio'));
+                            'children'=> $algo->recursiva_estudio('tipo_estudio','1','inicio','inicio','inicio'));
 
         dd(json_encode($arrayFinal));
 

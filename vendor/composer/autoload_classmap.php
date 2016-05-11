@@ -48,11 +48,8 @@ return array(
     'AddTestimonioFk' => $baseDir . '/database/migrations/2016_03_29_191605_add_testimonio_fk.php',
     'AddUniversidadFk' => $baseDir . '/database/migrations/2016_02_01_215920_add_universidad_fk.php',
     'Adobe_Font_Metrics' => $vendorDir . '/phenx/php-font-lib/classes/Adobe_Font_Metrics.php',
-<<<<<<< HEAD
     'AlojamientoTableSeeder' => $baseDir . '/database/seeds/AlojamientoTableSeeder.php',
-=======
     'AnioIntercambioTableSeeder' => $baseDir . '/database/seeds/AnioIntercambioTableSeeder.php',
->>>>>>> l51
     'AsignaturaHomologadaTableSeeder' => $baseDir . '/database/seeds/AsignaturaHomologadaTableSeeder.php',
     'AsignaturaTableSeeder' => $baseDir . '/database/seeds/AsignaturaTableSeeder.php',
     'AsistenteTableSeeder' => $baseDir . '/database/seeds/AsistenteTableSeeder.php',
@@ -127,14 +124,11 @@ return array(
     'CreatePreUResponsableTable' => $baseDir . '/database/migrations/2016_01_17_224945_create_pre_u_responsable_table.php',
     'CreatePreUachTable' => $baseDir . '/database/migrations/2016_01_17_224943_create_pre_uach_table.php',
     'CreatePregradoTable' => $baseDir . '/database/migrations/2016_01_17_224940_create_pregrado_table.php',
-<<<<<<< HEAD
+    'CreateProcedenciasTable' => $baseDir . '/database/migrations/2016_04_19_221829_create_procedencias_table.php',
     'CreateRepliesTable' => $baseDir . '/database/migrations/2016_03_22_201548_create_replies_table.php',
     'CreateTestimonioTable' => $baseDir . '/database/migrations/2016_03_29_190538_create_testimonio_table.php',
-    'CreateTopicTable' => $baseDir . '/database/migrations/2016_03_21_212544_create_topic_table.php',
-=======
-    'CreateProcedenciasTable' => $baseDir . '/database/migrations/2016_04_19_221829_create_procedencias_table.php',
     'CreateTipoEstudioTable' => $baseDir . '/database/migrations/2016_04_15_013224_create_tipo_estudio_table.php',
->>>>>>> l51
+    'CreateTopicTable' => $baseDir . '/database/migrations/2016_03_21_212544_create_topic_table.php',
     'CreateUniversidadTable' => $baseDir . '/database/migrations/2016_01_17_013005_create_universidad_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DOMPDF' => $vendorDir . '/dompdf/dompdf/include/dompdf.cls.php',
@@ -665,13 +659,10 @@ return array(
     'PreUResponsableTableSeeder' => $baseDir . '/database/seeds/PreUResponsableTableSeeder.php',
     'PregradoTableSeeder' => $baseDir . '/database/seeds/PregradoTableSeeder.php',
     'ProcedenciaPregradoTableSeeder' => $baseDir . '/database/seeds/ProcedenciaPregradoTableSeeder.php',
-<<<<<<< HEAD
+    'ProcedenciasTableSeeder' => $baseDir . '/database/seeds/ProcedenciasTableSeeder.php',
     'Pusher' => $vendorDir . '/pusher/pusher-php-server/lib/Pusher.php',
     'PusherException' => $vendorDir . '/pusher/pusher-php-server/lib/Pusher.php',
     'PusherInstance' => $vendorDir . '/pusher/pusher-php-server/lib/Pusher.php',
-=======
-    'ProcedenciasTableSeeder' => $baseDir . '/database/seeds/ProcedenciasTableSeeder.php',
->>>>>>> l51
     'Renderer' => $vendorDir . '/dompdf/dompdf/include/renderer.cls.php',
     'RepliesTableSeeder' => $baseDir . '/database/seeds/RepliesTableSeeder.php',
     'SebastianBergmann\\Comparator\\ArrayComparator' => $vendorDir . '/sebastian/comparator/src/ArrayComparator.php',
@@ -732,11 +723,8 @@ return array(
     'Text_Frame_Reflower' => $vendorDir . '/dompdf/dompdf/include/text_frame_reflower.cls.php',
     'Text_Renderer' => $vendorDir . '/dompdf/dompdf/include/text_renderer.cls.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
-<<<<<<< HEAD
-    'TopicTableSeeder' => $baseDir . '/database/seeds/TopicTableSeeder.php',
-=======
     'TipoEstudioSeeder' => $baseDir . '/database/seeds/TipoEstudioSeeder.php',
->>>>>>> l51
+    'TopicTableSeeder' => $baseDir . '/database/seeds/TopicTableSeeder.php',
     'UniversidadTableSeeder' => $baseDir . '/database/seeds/UniversidadTableSeeder.php',
     'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
 );

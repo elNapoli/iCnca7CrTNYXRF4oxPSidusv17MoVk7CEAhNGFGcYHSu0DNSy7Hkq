@@ -85,13 +85,12 @@ class DatabaseSeeder extends Seeder
         $this->call(PreNuInscripcionCursoTableSeeder::class);
         $this->call(PreUEstudioActualTableSeeder::class);
         $this->call(PostPostulacionUniverisidadTableSeeder::class);
-<<<<<<< HEAD
 
         $this->call(TopicTableSeeder::class);
         $this->call(ConversationsTableSeeder::class);
         $this->call(RepliesTableSeeder::class);
 
-=======
+
         // hasta aca optimicé! 
 
         $this->call(GeneroTableSeeder::class);
@@ -100,7 +99,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AnioIntercambioTableSeeder::class);
         
         
->>>>>>> l51
         
 
         //###########################################

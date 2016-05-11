@@ -32,11 +32,8 @@ Route::controllers([
 	'detalles' => 'DetalleBeneficioController',
 	'asignaturas' => 'AsignaturasController',
 	'documentos-identidad' => 'DocumentoIdentidadController',
-<<<<<<< HEAD
 	'alojamientos' => 'AlojamientosController',
 	'noticias' => 'NoticiasController',
-=======
->>>>>>> l51
 	'estadisticas' => 'EstadisticasController',
 
 	'prepostulacionuniversidad' => 'PrePostulacionUniversidadController',

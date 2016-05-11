@@ -15,12 +15,11 @@ class PaisesController extends Controller {
 	 */
 	public function getIndex()
 	{
-<<<<<<< HEAD
 		$continentes = Continente::lists('nombre','id')->all();
-=======
+
 		$continentes = Continente::lists('nombre','id');
 		dd($continentes);
->>>>>>> l51
+
 
 	
 		return view('paises.index',compact('continentes'));

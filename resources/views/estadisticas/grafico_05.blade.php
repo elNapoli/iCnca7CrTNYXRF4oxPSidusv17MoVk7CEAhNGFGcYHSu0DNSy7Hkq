@@ -26,7 +26,7 @@ path {
 @endsection
 
 @section('scripts')
-    {!! Html::Script('d3/d3.js')!!}
+    {!! Html::Script('/plugins/d3/d3.js')!!}
  
 <script>
 

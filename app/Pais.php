@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Faker\Factory as Faker;
 
 class Pais extends Model
 {
@@ -24,6 +25,25 @@ class Pais extends Model
 
      public function universidadesR()
     {
-        return $this->hasMany('App\Universidad','id'); // nombre del campo en la otra tabla 
+        return $this->hasMany('App\Universidad','pais','id'); // nombre del campo en la otra tabla 
     }
+    public function getChildrenAttribute(){
+
+        return$this->postulantesR->count();
+    }
+
+
+    public function postulantesR(){
+
+        return $this->hasManyThrough('App\Postulante', 'App\Ciudad', 'pais', 'ciudad');
+    }
+
+    public function getChildrenUniversidadAttribute(){
+
+        return $this->universidadesR->count();
+    }
+
+
+
+
 }

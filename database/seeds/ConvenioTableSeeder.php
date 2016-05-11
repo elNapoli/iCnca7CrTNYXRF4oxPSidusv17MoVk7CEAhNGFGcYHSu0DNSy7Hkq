@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Convenio;
+use App\Universidad;
 
 class ConvenioTableSeeder extends Seeder
 {
@@ -20,11 +21,15 @@ class ConvenioTableSeeder extends Seeder
 
         for($i = 0; $i < 20; $i++)
         {
+            $convenio = $faker->numberBetween($min = 1, $max = 99) ;
             $samples_temp[] = [
                 'nombre' => $faker->name,
                 'bilateral'=> $bi[$tempBi],
-                'universidad'=>$faker->numberBetween($min = 1, $max = 99) 
+                'universidad'=> $convenio
             ];
+            $u = Universidad::find($convenio);
+            $u->convenio = 'Si';
+            $u->save();
         }
         Convenio::insert($samples_temp);
 

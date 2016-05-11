@@ -48,7 +48,11 @@ return array(
     'AddTestimonioFk' => $baseDir . '/database/migrations/2016_03_29_191605_add_testimonio_fk.php',
     'AddUniversidadFk' => $baseDir . '/database/migrations/2016_02_01_215920_add_universidad_fk.php',
     'Adobe_Font_Metrics' => $vendorDir . '/phenx/php-font-lib/classes/Adobe_Font_Metrics.php',
+<<<<<<< HEAD
     'AlojamientoTableSeeder' => $baseDir . '/database/seeds/AlojamientoTableSeeder.php',
+=======
+    'AnioIntercambioTableSeeder' => $baseDir . '/database/seeds/AnioIntercambioTableSeeder.php',
+>>>>>>> l51
     'AsignaturaHomologadaTableSeeder' => $baseDir . '/database/seeds/AsignaturaHomologadaTableSeeder.php',
     'AsignaturaTableSeeder' => $baseDir . '/database/seeds/AsignaturaTableSeeder.php',
     'AsistenteTableSeeder' => $baseDir . '/database/seeds/AsistenteTableSeeder.php',
@@ -78,6 +82,7 @@ return array(
     'CreateAsignaturaHomologadaTable' => $baseDir . '/database/migrations/2016_01_17_224928_create_asignatura_homologada_table.php',
     'CreateAsignaturaTable' => $baseDir . '/database/migrations/2016_01_17_224927_create_asignatura_table.php',
     'CreateAsistenteTable' => $baseDir . '/database/migrations/2016_01_17_224928_create_asistente_table.php',
+    'CreateAñoIntercambioTable' => $baseDir . '/database/migrations/2016_05_06_121829_create_año_intercambio_table.php',
     'CreateBeneficioTable' => $baseDir . '/database/migrations/2016_01_17_224929_create_beneficio_table.php',
     'CreateCampusSedeTable' => $baseDir . '/database/migrations/2016_01_17_224931_create_campus_sede_table.php',
     'CreateCarreraTable' => $baseDir . '/database/migrations/2016_01_17_224931_create_carrera_table.php',
@@ -97,6 +102,7 @@ return array(
     'CreateDocumentoIdentidadTable' => $baseDir . '/database/migrations/2016_01_17_224933_create_documento_identidad_table.php',
     'CreateFacultadTable' => $baseDir . '/database/migrations/2016_01_17_224935_create_facultad_table.php',
     'CreateFinanciamientoTable' => $baseDir . '/database/migrations/2016_01_17_224936_create_financiamiento_table.php',
+    'CreateGeneroTable' => $baseDir . '/database/migrations/2016_04_11_213007_create_genero_table.php',
     'CreateHomologacionTable' => $baseDir . '/database/migrations/2016_01_17_224936_create_homologacion_table.php',
     'CreateLikesTable' => $baseDir . '/database/migrations/2016_03_22_201549_create_likes_table.php',
     'CreateMaestriaActualTable' => $baseDir . '/database/migrations/2016_01_18_142108_create_maestria_actual_table.php',
@@ -121,9 +127,14 @@ return array(
     'CreatePreUResponsableTable' => $baseDir . '/database/migrations/2016_01_17_224945_create_pre_u_responsable_table.php',
     'CreatePreUachTable' => $baseDir . '/database/migrations/2016_01_17_224943_create_pre_uach_table.php',
     'CreatePregradoTable' => $baseDir . '/database/migrations/2016_01_17_224940_create_pregrado_table.php',
+<<<<<<< HEAD
     'CreateRepliesTable' => $baseDir . '/database/migrations/2016_03_22_201548_create_replies_table.php',
     'CreateTestimonioTable' => $baseDir . '/database/migrations/2016_03_29_190538_create_testimonio_table.php',
     'CreateTopicTable' => $baseDir . '/database/migrations/2016_03_21_212544_create_topic_table.php',
+=======
+    'CreateProcedenciasTable' => $baseDir . '/database/migrations/2016_04_19_221829_create_procedencias_table.php',
+    'CreateTipoEstudioTable' => $baseDir . '/database/migrations/2016_04_15_013224_create_tipo_estudio_table.php',
+>>>>>>> l51
     'CreateUniversidadTable' => $baseDir . '/database/migrations/2016_01_17_013005_create_universidad_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DOMPDF' => $vendorDir . '/dompdf/dompdf/include/dompdf.cls.php',
@@ -186,6 +197,7 @@ return array(
     'Frame_Reflower' => $vendorDir . '/dompdf/dompdf/include/frame_reflower.cls.php',
     'Frame_Tree' => $vendorDir . '/dompdf/dompdf/include/frame_tree.cls.php',
     'GD_Adapter' => $vendorDir . '/dompdf/dompdf/include/gd_adapter.cls.php',
+    'GeneroTableSeeder' => $baseDir . '/database/seeds/GeneroTableSeeder.php',
     'HomologacionTableSeeder' => $baseDir . '/database/seeds/HomologacionTableSeeder.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
     'Image_Cache' => $vendorDir . '/dompdf/dompdf/include/image_cache.cls.php',
@@ -653,9 +665,13 @@ return array(
     'PreUResponsableTableSeeder' => $baseDir . '/database/seeds/PreUResponsableTableSeeder.php',
     'PregradoTableSeeder' => $baseDir . '/database/seeds/PregradoTableSeeder.php',
     'ProcedenciaPregradoTableSeeder' => $baseDir . '/database/seeds/ProcedenciaPregradoTableSeeder.php',
+<<<<<<< HEAD
     'Pusher' => $vendorDir . '/pusher/pusher-php-server/lib/Pusher.php',
     'PusherException' => $vendorDir . '/pusher/pusher-php-server/lib/Pusher.php',
     'PusherInstance' => $vendorDir . '/pusher/pusher-php-server/lib/Pusher.php',
+=======
+    'ProcedenciasTableSeeder' => $baseDir . '/database/seeds/ProcedenciasTableSeeder.php',
+>>>>>>> l51
     'Renderer' => $vendorDir . '/dompdf/dompdf/include/renderer.cls.php',
     'RepliesTableSeeder' => $baseDir . '/database/seeds/RepliesTableSeeder.php',
     'SebastianBergmann\\Comparator\\ArrayComparator' => $vendorDir . '/sebastian/comparator/src/ArrayComparator.php',
@@ -716,7 +732,11 @@ return array(
     'Text_Frame_Reflower' => $vendorDir . '/dompdf/dompdf/include/text_frame_reflower.cls.php',
     'Text_Renderer' => $vendorDir . '/dompdf/dompdf/include/text_renderer.cls.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+<<<<<<< HEAD
     'TopicTableSeeder' => $baseDir . '/database/seeds/TopicTableSeeder.php',
+=======
+    'TipoEstudioSeeder' => $baseDir . '/database/seeds/TipoEstudioSeeder.php',
+>>>>>>> l51
     'UniversidadTableSeeder' => $baseDir . '/database/seeds/UniversidadTableSeeder.php',
     'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
 );

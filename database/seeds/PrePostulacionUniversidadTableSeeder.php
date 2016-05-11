@@ -28,7 +28,7 @@ class PrePostulacionUniversidadTableSeeder extends Seeder
             if($semestre_temp === 'otro'){
                 $samples_temp[] = [
                     'postulante' =>  $item->postulante,
-                    'anio'=> $faker->year($max = 'now'),
+                    'anio'=> $faker->numberBetween($min = 1990, $max = 2016) ,
                     'semestre'=> $semestre_temp,
                     'desde'=>$desde ,
                     'hasta'=>$faker->dateTimeBetween($startDate = $desde, $endDate = 'now'),
@@ -40,7 +40,7 @@ class PrePostulacionUniversidadTableSeeder extends Seeder
 
                 $samples_temp[] = [
                     'postulante' =>  $item->postulante,
-                    'anio'=> $faker->year($max = 'now'),
+                    'anio'=> $faker->numberBetween($min = 1990, $max = 2016) ,
                     'semestre'=> $semestre_temp,
                     'desde'=>'' ,
                     'hasta'=>'',

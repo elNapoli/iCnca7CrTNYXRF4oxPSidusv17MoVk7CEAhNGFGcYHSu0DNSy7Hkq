@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> l51
 @extends('intranet.app')
 
 @section('Dashboard') Departamentos @endsection
@@ -10,12 +14,20 @@
                 <hr>
 
                 <div class="panel panel-default">
+<<<<<<< HEAD
                     <div class="panel-body">
 
+=======
+<div id="top">
+>>>>>>> l51
     <br>
     @include('estadisticas.partials.menu')
 </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> l51
 <div id="test"></div>
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 @endsection
@@ -25,12 +37,22 @@
     {!! Html::Script('js/funciones.js') !!}
 <script type="text/javascript">
     $(document).ready(function() {
+<<<<<<< HEAD
 var d = new Date();
 var n = d.getFullYear();
 var freqData=[
 {State:n-10,freq:{low:4786, mid:1319, high:249}}
 ,{State:n-9,freq:{low:1101, mid:412, high:674}}
 ,{State:n-8,freq:{low:101, mid:122, high:474}}
+=======
+
+var d = new Date();
+var n = d.getFullYear();
+
+var freqData=[
+{State:n-9,freq:{low:4786, mid:1319, high:249}}
+,{State:n-8,freq:{low:1101, mid:412, high:674}}
+>>>>>>> l51
 ,{State:n-7,freq:{low:932, mid:2149, high:418}}
 ,{State:n-6,freq:{low:832, mid:1152, high:1862}}
 ,{State:n-5,freq:{low:4481, mid:3304, high:948}}
@@ -40,7 +62,13 @@ var freqData=[
 ,{State:n-1,freq:{low:797, mid:1849, high:1534}}
 ,{State: n,freq:{low:162, mid:379, high:471}}
 ];
+<<<<<<< HEAD
 dashboard('#dashboard',freqData);
+=======
+
+dashboard('#dashboard',freqData);
+
+>>>>>>> l51
 function dashboard(id, fData){
     var barColor = 'steelblue';
     function segColor(c){ return {low:"#807dba", mid:"#e08214",high:"#41ab5d"}[c]; }
@@ -59,16 +87,32 @@ function dashboard(id, fData){
             .attr("width", hGDim.w + hGDim.l + hGDim.r)
             .attr("height", hGDim.h + hGDim.t + hGDim.b).append("g")
             .attr("transform", "translate(" + hGDim.l + "," + hGDim.t + ")");
+<<<<<<< HEAD
         // create function for x-axis mapping.
         var x = d3.scale.ordinal().rangeRoundBands([0, hGDim.w], 0.1)
                 .domain(fD.map(function(d) { return d[0]; }));
+=======
+
+        // create function for x-axis mapping.
+        var x = d3.scale.ordinal().rangeRoundBands([0, hGDim.w], 0.1)
+                .domain(fD.map(function(d) { return d[0]; }));
+
+>>>>>>> l51
         // Add x-axis to the histogram svg.
         hGsvg.append("g").attr("class", "x axis")
             .attr("transform", "translate(0," + hGDim.h + ")")
             .call(d3.svg.axis().scale(x).orient("bottom"));
+<<<<<<< HEAD
         // Create function for y-axis map.
         var y = d3.scale.linear().range([hGDim.h, 0])
                 .domain([0, d3.max(fD, function(d) { return d[1]; })]);
+=======
+
+        // Create function for y-axis map.
+        var y = d3.scale.linear().range([hGDim.h, 0])
+                .domain([0, d3.max(fD, function(d) { return d[1]; })]);
+
+>>>>>>> l51
         // Create bars for histogram to contain rectangles and freq labels.
         var bars = hGsvg.selectAll(".bar").data(fD).enter()
                 .append("g").attr("class", "bar");
@@ -118,6 +162,10 @@ function dashboard(id, fData){
                 .attr("y", function(d) {return y(d[1]); })
                 .attr("height", function(d) { return hGDim.h - y(d[1]); })
                 .attr("fill", color);
+<<<<<<< HEAD
+=======
+
+>>>>>>> l51
             // transition the frequency labels location and change value.
             bars.select("text").transition().duration(500)
                 .text(function(d){ return d3.format(",")(d[1])})
@@ -138,13 +186,24 @@ function dashboard(id, fData){
         
         // create function to draw the arcs of the pie slices.
         var arc = d3.svg.arc().outerRadius(pieDim.r - 10).innerRadius(0);
+<<<<<<< HEAD
         // create a function to compute the pie slice angles.
         var pie = d3.layout.pie().sort(null).value(function(d) { return d.freq; });
+=======
+
+        // create a function to compute the pie slice angles.
+        var pie = d3.layout.pie().sort(null).value(function(d) { return d.freq; });
+
+>>>>>>> l51
         // Draw the pie slices.
         piesvg.selectAll("path").data(pie(pD)).enter().append("path").attr("d", arc)
             .each(function(d) { this._current = d; })
             .style("fill", function(d) { return segColor(d.data.type); })
             .on("mouseover",mouseover).on("mouseout",mouseout);
+<<<<<<< HEAD
+=======
+
+>>>>>>> l51
         // create function to update pie-chart. This will be used by histogram.
         pC.update = function(nD){
             piesvg.selectAll("path").data(pie(nD)).transition().duration(500)
@@ -189,18 +248,37 @@ function dashboard(id, fData){
             
         // create the second column for each segment.
         tr.append("td").text(function(d){ return d.type;});
+<<<<<<< HEAD
         // create the third column for each segment.
         tr.append("td").attr("class",'legendFreq')
             .text(function(d){ return d3.format(",")(d.freq);});
         // create the fourth column for each segment.
         tr.append("td").attr("class",'legendPerc')
             .text(function(d){ return getLegend(d,lD);});
+=======
+
+        // create the third column for each segment.
+        tr.append("td").attr("class",'legendFreq')
+            .text(function(d){ return d3.format(",")(d.freq);});
+
+        // create the fourth column for each segment.
+        tr.append("td").attr("class",'legendPerc')
+            .text(function(d){ return getLegend(d,lD);});
+
+>>>>>>> l51
         // Utility function to be used to update the legend.
         leg.update = function(nD){
             // update the data attached to the row elements.
             var l = legend.select("tbody").selectAll("tr").data(nD);
+<<<<<<< HEAD
             // update the frequencies.
             l.select(".legendFreq").text(function(d){ return d3.format(",")(d.freq);});
+=======
+
+            // update the frequencies.
+            l.select(".legendFreq").text(function(d){ return d3.format(",")(d.freq);});
+
+>>>>>>> l51
             // update the percentage column.
             l.select(".legendPerc").text(function(d){ return getLegend(d,nD);});        
         }
@@ -208,6 +286,10 @@ function dashboard(id, fData){
         function getLegend(d,aD){ // Utility function to compute percentage.
             return d3.format("%")(d.freq/d3.sum(aD.map(function(v){ return v.freq; })));
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> l51
         return leg;
     }
     
@@ -218,10 +300,15 @@ function dashboard(id, fData){
     
     // calculate total frequency by state for all segment.
     var sF = fData.map(function(d){return [d.State,d.total];});
+<<<<<<< HEAD
+=======
+
+>>>>>>> l51
     var hG = histoGram(sF), // create the histogram.
         pC = pieChart(tF), // create the pie-chart.
         leg= legend(tF);  // create the legend.
 }
+<<<<<<< HEAD
 ////////////////////////////////////////
         $('#graf').on('click',function(e){
                 alert('En construccion xD!');
@@ -253,3 +340,17 @@ function dashboard(id, fData){
     });
     </script>
 @endsection
+=======
+
+////////////////////////////////////////
+
+        $('#principal').on('change',function(e){
+            alert($(this).val());
+            var id = $(this).val() //paso la id del select por referencia
+         });
+
+    });
+    </script>
+@endsection
+
+>>>>>>> l51

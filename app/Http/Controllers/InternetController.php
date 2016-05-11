@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Noticia;
+use App\User;
 
 class InternetController extends Controller
 {
@@ -18,7 +20,7 @@ class InternetController extends Controller
 
     public function getAlojamiento(){
 
-        return view('guest.Alojamiento');
+        return view('guest.alojamiento');
 
     }
 
@@ -52,6 +54,17 @@ class InternetController extends Controller
 
     }
 
+    public function getNoticias(){
 
+        $noticias = Noticia::all();
+        $user = User::all();
+        return view('guest.noticias.index', compact('noticias','user'));
+
+    }
+    public function getNoticiasView($id){
+
+        dd($id);//vincular con vista de noticias guest dependiendo de la id (retornar vista)
+
+    }
 
 }

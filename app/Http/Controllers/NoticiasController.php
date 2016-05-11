@@ -29,6 +29,12 @@ class NoticiasController extends Controller {
 		return view('noticias.create');
 	}
 
+	public function getPreviewCarousel()
+	{
+		$carousel = Noticia::where('carousel','si')->get();
+		return view('noticias.preview_carousel', compact('carousel'));
+	}
+
 	public function postUploadImage(Request $request, Guard $auth)
 	{
         $pathUser = 'noticias';
@@ -62,13 +68,21 @@ class NoticiasController extends Controller {
     }
 
     public function postStore(Request $request, Guard $auth){
-        
+
+    	
+    	$this->validate($request, [
+        'titulo' => 'required|string',
+        'resumen' => 'required|string',
+        'cuerpo_noticia' => 'required'
+    	]);
+      
        	$noticia = new Noticia();
         
         $noticia->user = $auth->id();
         $noticia->titulo = $request->get('titulo');
         $noticia->resumen = $request->get('resumen');
         $noticia->cuerpo = $request->get('cuerpo_noticia');
+        $noticia->carousel = 'no';
 
         if (str_contains($noticia->cuerpo,'<img')){ //verifico que tenga imagen. de ser asi la identifico y la guardo en path
 			$fullstring = $noticia->cuerpo;
@@ -90,6 +104,11 @@ class NoticiasController extends Controller {
 
     	$id_noticia = $id;
     	$noticia = Noticia::findOrFail($id);
+    	if($noticia->carousel == 'si'){
+    		$message = 'La noticia esta actualmente en el carousel, debe quitarla antes de editarla.';
+    		\Session::flash('message1', $message);
+			return redirect('noticias');
+    	}
     	$titulo = $noticia->titulo;
     	$resumen = $noticia->resumen;
     	$cuerpo = $noticia->cuerpo;
@@ -98,12 +117,72 @@ class NoticiasController extends Controller {
 
 	public function getUpdate($id, Request $request){
 
+
+    	$this->validate($request, [
+        'titulo' => 'required|string',
+        'resumen' => 'required|string',
+        'cuerpo_noticia' => 'required'
+    	]);
+
         $noticia = Noticia::findOrFail($id);
         $noticia->titulo = $request->get('titulo');
         $noticia->resumen = $request->get('resumen');
         $noticia->cuerpo = $request->get('cuerpo_noticia');
+
+        if (str_contains($noticia->cuerpo,'<img')){ //verifico que tenga imagen. de ser asi la identifico y la guardo en path
+			$fullstring = $noticia->cuerpo;
+    		$parsed = $this->get_string_between($fullstring, 'src="', '"');
+    		$noticia->foto = $parsed;
+        }
+        else{
+        	$noticia->foto = 'path';
+        }
+
         $noticia->save();
         $message    = 'La noticia ha sido editada con éxito';
+        \Session::flash('message1', $message);
+        return redirect('/noticias')->with('message1', $message);
+
+    }
+
+    public function postUpdateCarousel(Request $request){
+
+        $noticia = Noticia::findOrFail($request->id);
+    	$carousel = Noticia::where('carousel','si')->count(); //cuento los que ya estan en carousel
+    	if($request->check == 0){
+    		$noticia->carousel = 'no';
+    		$noticia->save();
+    		$message = "La noticia se ha quitado del carousel exitosamente";
+    		$alert = "success";
+    	}
+    	elseif($request->check == 1){
+	    	if($carousel < 5){
+	    		if($noticia->foto != 'path'){
+	    			$noticia->carousel = 'si';
+	    			$noticia->save();
+	    			$message = "La noticia ha sido agregada al carousel exitosamente";
+	    			$alert = 'success';
+	    		}
+	    		else{
+	    			$message = "La noticia seleccionada no posee una imagen para el carousel. favor verificar";
+	    			$alert = 'danger';
+	    		}
+	    	}
+	    	else{
+	    		$message = "Ya ha alcanzado el maximo de noticias en el carousel";
+	    		$alert = 'danger';
+
+	    	}
+    	}
+
+    	if($request->ajax()){
+		//	return($message);
+			return response()->json([
+				'message1'=> $message,
+				'alert' => $alert
+				]);
+		}
+
         \Session::flash('message1', $message);
         return redirect('/noticias')->with('message1', $message);
 

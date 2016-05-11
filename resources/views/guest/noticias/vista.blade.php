@@ -1,0 +1,1 @@
+@extends('internet.app2')

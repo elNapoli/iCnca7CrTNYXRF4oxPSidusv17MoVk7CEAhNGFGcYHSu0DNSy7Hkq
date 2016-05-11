@@ -6,11 +6,14 @@
 
 
 	<div class="panel panel-default">
-<div class="panel-heading"><a class="btn btn-info" href="{{url('noticias/crear')}}">Crear Noticia</a></div>
+<div class="panel-heading">
+    <a class="btn btn-info" href="{{url('noticias/crear')}}">Crear Noticia</a>
+    <a class="btn btn-success pull-right" href="{{url('noticias/preview-carousel')}}">Previsualizar carousel</a>
+</div>
 
 
 		  <!-- Table -->
-		  <div class="message"></div>
+		  <div class="message1"></div>
 		  @if(Session::has('message1')) 
             <div class="alert alert-success fade in">
                 <button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>
@@ -22,6 +25,7 @@
 
 
 {!!Form::hidden('urlNoticiaDestroy', url('noticias/destroy'),array('id'=>'urlNoticiaDestroy'));!!}
+{!!Form::hidden('urlNoticiaUpdateCarousel', url('noticias/update-carousel'),array('id'=>'urlNoticiaUpdateCarousel'));!!}
 {!!Form::hidden('getToken', csrf_token(),array('id'=>'getToken'));!!}
 
 
@@ -40,6 +44,34 @@
                     
 			    } );
 
+        $('#tableNoticias').on( 'change', 'input.micheck', function () {
+                async : false,
+                alert($(this).prop( 'checked' ));
+                $.ajax({
+                    // En data puedes utilizar un objeto JSON, un array o un query string
+                    data:{_token :$('#getToken').val(), id: $(this).attr('id'), check: $(this).prop( 'checked' ) ? 1 : 0 },
+                    //Cambiar a type: POST si necesario
+                    type: "post",
+                    // Formato de datos que se espera en la respuesta
+                    dataType: "json",
+                    // URL a la que se enviará la solicitud Ajax
+                    url:$('#urlNoticiaUpdateCarousel').val() ,
+                        success : function(json) {
+                        var html = '<div class="alert alert-'+json.alert+' fade in">'+
+                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            json.message1+'</p></div>';
+                            $('.message1').html(html);
+                            $("html, body").animate({ scrollTop: 0 }, 600); 
+
+                        },
+
+                        error : function(xhr, status) {
+                            alert('El usuario no fue eliminado');
+                            
+                            console.log('Disculpe, existió un problema ');
+                        },
+                });
+        });
 
         $('table').on('click','.btn-delete', function(e){
         	var row = $(this).parents('tr');

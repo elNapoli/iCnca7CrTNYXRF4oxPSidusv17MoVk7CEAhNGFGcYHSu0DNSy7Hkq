@@ -24,13 +24,10 @@ class DocumentosPostulacionController extends Controller {
 	
 	public function getPrueba(Guard $auth)
 	{
-		$post = Postulante::where('user_id',$auth->id())->get(); //objeto post con informacion extra
-		$postulante = Postulante::findOrFail($post[0]->id); //individualizo al postulante
+		//$post = Postulante::where('user_id',$auth->id())->get(); //objeto post con informacion extra
+		$universidad = universidad::all(); //individualizo al postulante
 
-		dd($postulante->pregradosR->prePostulacionUniversidadesR->semestre);
-			foreach($postulante->documentoIdentidadR as $item)
-			{
-			}
+		dd($universidad);
 
 
 

@@ -60,6 +60,12 @@
         </li>
 
         <li class="nivel1">
+            <a href="{{url('internet/noticias')}}"   >Noticias</a>
+            {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
+
+        </li>
+
+        <li class="nivel1">
             <a href="{{url('auth/login')}}"   >Iniciar sesión</a>
             {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
 

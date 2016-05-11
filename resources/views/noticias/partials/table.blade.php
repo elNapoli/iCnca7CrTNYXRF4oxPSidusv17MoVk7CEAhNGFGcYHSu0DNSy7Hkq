@@ -28,10 +28,11 @@
                         </td>
                         <td style= 'vertical-align:middle'>
                             <div style= 'text-align:center'>
-                                <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> 
-                                        </label>
+                                    @if($item->carousel == 'si')
+                                        <input type="checkbox" class="micheck" checked id="{{$item->id}}"> 
+                                    @else
+                                        <input type="checkbox" class="micheck" id="{{$item->id}}">
+                                    @endif
                                 </div>
                             </div>
                         </td>

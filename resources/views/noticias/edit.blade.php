@@ -11,6 +11,15 @@
 
 <div class="panel panel-default">
                       <div class="message"></div>
+@if($errors->any())
+    <div class="alert-danger alert">
+        <p> Porfavor corregir los siguientes errores </p>
+
+        @foreach($errors->all() as $error)
+            <li>{{  $error }}</li>
+        @endforeach
+    </div>
+@endif
 	<div class="panel-body">
 
 		@include('noticias.partials.fields2')
@@ -97,7 +106,6 @@ label {
 
 $('#cuerpo_noticia').froalaEditor({
 
-        fullPage: 'true',
         language: 'es',
         placeholderText: 'Escriba el cuerpo de su noticia aqui...',
         imageDefaultDisplay: 'inline',
@@ -106,7 +114,7 @@ $('#cuerpo_noticia').froalaEditor({
         imageManagerLoadURL: '/noticias/img',
 
 
-        imageUploadURL: 'upload-image/"',
+        imageUploadURL: '/noticias/upload-image/"',
         imageUploadParams: {
           _token: '{{ csrf_token() }}'
         },

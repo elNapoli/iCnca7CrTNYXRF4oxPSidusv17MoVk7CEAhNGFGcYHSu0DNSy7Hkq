@@ -31,12 +31,12 @@ class EstadisticasController extends Controller {
                             'children'=> $algo->recursiva('continente','1','asdf','m'));
         dd(json_encode($arrayFinal));
       
+        */
         $arrayFinal = array('name'=> 'Universidades',
                             'size' => Universidad::all()->count(),
                             'children'=> $algo->recursiva_universidad('continente','1','inicial'));
 
         dd(json_encode($arrayFinal));
-        */
 
         $arrayFinal = array('name'=> 'Postulantes',
                             'size' => Postulante::all()->count(),

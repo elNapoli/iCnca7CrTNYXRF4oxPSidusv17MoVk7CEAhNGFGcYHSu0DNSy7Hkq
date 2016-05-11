@@ -32,17 +32,22 @@ path {
 
 // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
 var b = {
-  w: 75, h: 30, s: 3, t: 10
+  w: 150, h: 30, s: 3, t: 10
 };
 
 // Mapping of step names to colors.
 var colors = {
-  "home": "#5687d1",
-  "product": "#7b615c",
-  "search": "#de783b",
-  "account": "#6ab975",
-  "other": "#a173d1",
-  "end": "#bbbbbb"
+  "Tipo de estudio": "#5687d1",
+  "Procedencia": "#7b615c",
+  "Año de intercambio": "#de783b",
+  "Universidad": "#6ab975",
+  "Facultad": "#a173d1",
+  "Continente": "#088A4B",
+  "País": "#0B610B",
+  "Ciudad": "#FF8000",
+  "Género": "#642EFE",
+  "Convenio": "#81F7BE",
+  "Carrera": "#bbbbbb"
 };
 
 var width = 960,
@@ -205,21 +210,20 @@ function updateBreadcrumbs(nodeArray, percentageString) {
   // Data join; key function combines name and depth (= position in sequence).
   var g = d3.select("#trail")
       .selectAll("g")
-      .data(nodeArray, function(d) { return d.name + d.depth; });
+      .data(nodeArray, function(d) { return d.breadCrum + d.depth; });
 
   // Add breadcrumb and label for entering nodes.
   var entering = g.enter().append("svg:g");
-
   entering.append("svg:polygon")
       .attr("points", breadcrumbPoints)
-      .style("fill", function(d) { return colors[d.name]; });
+      .style("fill", function(d) { return colors[d.breadCrum]; });
 
   entering.append("svg:text")
       .attr("x", (b.w + b.t) / 2)
       .attr("y", b.h / 2)
       .attr("dy", "0.35em")
       .attr("text-anchor", "middle")
-      .text(function(d) { return d.name; });
+      .text(function(d) { return d.breadCrum; });
 
   // Set position for entering and updating nodes.
   g.attr("transform", function(d, i) {

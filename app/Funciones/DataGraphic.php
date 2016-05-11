@@ -26,30 +26,37 @@ class DataGraphic
         $temp = array();
         switch ($table) {
             case 'continente':
+                $breadCrum = "Continente";
                 $temp = Continente::all();
                 $table = 'pais';
                 # code...
                 break;
             case 'pais':
+                $breadCrum = "País";
                 $temp = Pais::where('continente',$id)->get();
                 $table = 'ciudad';
                 break;
             case 'ciudad':
+                $breadCrum = "Ciudad";
                 $temp = Ciudad::where('pais',$id)->get();
                 $table = 'genero';
                 $sexo = "m";
 
                 break;
             case 'genero':
+                $breadCrum = "Género";
                 $temp = Genero::all();
                 $table = 'tipo_estudio';
                 $sexo = "f";
                 break;
             case 'tipo_estudio':
+                $breadCrum = "Tipo de estudio";
+
                 $temp = TipoEstudio::all();
                 $table = 'procedencia';
                 break;
             case 'procedencia':
+                $breadCrum = "Procedencia";
 
                 $temp = Procedencia::all();
                 $table = 'fin';
@@ -89,6 +96,7 @@ class DataGraphic
             if($children){
                     $arrayFinal[] = array(
                                 'name'=> $nombre,
+                                'breadCrum'=> $breadCrum,
                                 'size'=> $children,
                                 'children' =>  $this->recursiva($table,$padre,$tipo,$sexo)
                                 );               
@@ -106,21 +114,25 @@ class DataGraphic
         $temp = array();
         switch ($table) {
             case 'continente':
+                $breadCrum = "Continente";
                 $temp = Continente::all();
                 $table = 'pais';
                 # code...
                 break;
             case 'pais':
+                $breadCrum = "País";
                 $temp = Pais::where('continente',$id)->get();
                 $table = 'Convenio';
                 # code...
                 break;
             case 'Convenio':
+                $breadCrum = "Convenio";
                 $temp  = Collection::make([["nombre"=>"Si"],["nombre"=>"No"]]);
                 $table = 'Universidad';
                 # code...
                 break;
             case 'Universidad':
+                $breadCrum = "Universidad";
                 $temp  = Universidad::where('pais',$id)->where('convenio',$nombre)->get();
                 $table = 'fin';
               
@@ -151,6 +163,7 @@ class DataGraphic
             if($children){
                     $arrayFinal[] = array(
                                 'name'=> $nombre,
+                                'breadCrum'=> $breadCrum,
                                 'size'=> $children,
                                 'children' =>  $this->recursiva_universidad($table,$padre,$nombre)
                                 );               
@@ -170,25 +183,31 @@ class DataGraphic
             case 'tipo_estudio':
                 $temp = TipoEstudio::all();
                 $table = 'procedencia';
+                $breadCrum = "Tipo de estudio";
                 break;
             case 'procedencia':
                 $temp = Procedencia::all();
+                $breadCrum = "Procedencia";
                 $table = 'año';
                 break;
             case 'año':
                 $temp = AnioIntercambio::all();
+                $breadCrum = "Año de intercambio";
                 $table = 'universidad';
                 break;
             case 'universidad':
                 $temp = Universidad::universidades($id, $procedencia)->get();
+                $breadCrum = "Universidad";
                 $table = 'facultad';
                 break;
             case 'facultad':
                 $temp = Universidad::find($id)->facultadR;
+                $breadCrum = "Facultad";
                 $table = 'carrera';
                 break;
             case 'carrera':
                 $temp = Facultad::find($id)->carrerasR;
+                $breadCrum = "Carrera";
 
                 $table = 'fin';
                 break;
@@ -270,6 +289,7 @@ class DataGraphic
                     $arrayFinal[] = array(
                                 'name'=> $nombre,
                                 'size'=> $children,
+                                'breadCrum'=> $breadCrum,
                                 'children' =>  $this->recursiva_estudio($table,$padre,$procedencia, $tEstudio, $anio)
                                 );               
           

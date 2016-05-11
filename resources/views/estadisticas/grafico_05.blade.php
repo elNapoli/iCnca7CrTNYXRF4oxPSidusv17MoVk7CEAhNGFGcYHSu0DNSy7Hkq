@@ -47,7 +47,7 @@ var colors = {
 
 var width = 960,
     height = 700,
-    radius = (Math.min(width, height) / 2) - 10;
+    radius = (Math.min(width, height) / 2)-100 ;
 
 var formatNumber = d3.format(",d");
   var tooltip = d3.select("#test")
@@ -78,41 +78,29 @@ var arc = d3.svg.arc()
     .innerRadius(function(d) { return Math.max(0, y(d.y)); })
     .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
 
-var svg = d3.select("#test").append("svg")
+var svg = d3.select("#test").append("svg:svg")
     .attr("width", width)
     .attr("height", height)
-  .append("g")
+  .append("svg:g")
+  .attr("id", "micontenedor")
     .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
 
 d3.json("/flare.json", function(error, root) {
   if (error) throw error;
    initializeBreadcrumbTrail();
+
+    svg.append("svg:circle")
+      .attr("r", radius)
+      .style("opacity", 0);
+
+
   svg.selectAll("path")
       .data(partition.nodes(root))
     .enter().append("path")
       .attr("d", arc)
       .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
       .on("click", click)
-      .on("mouseover", function(d) {
-        var sequenceArray = getAncestors(d);
-        updateBreadcrumbs(sequenceArray, "");
-          // Fade all the segments.
-        d3.selectAll("path")
-            .style("opacity", 0.2);
-
-        // Then highlight only those that are an ancestor of the current segment.
-        d3.selectAll("path")
-            .filter(function(node) {
-                      return (sequenceArray.indexOf(node) >= 0);
-                    })
-            .style("opacity", 1);
-          tooltip.html(function() {
-               return d.name + " <spam style='color:red'>" + formatNumber(d.value)+"</spam>";
-         });
-          return tooltip.transition()
-            .duration(50)
-            .style("opacity", 0.7);
-        })
+      .on("mouseover", mouseover)
         .on("mousemove", function(d) {
           return tooltip
             .style("top", (d3.event.pageY-80)+"px")
@@ -121,6 +109,8 @@ d3.json("/flare.json", function(error, root) {
         .on("mouseout", function(){return tooltip.style("opacity", 0);})
 
 });
+  // Add the mouseleave handler to the bounding circle.
+  d3.select("#micontenedor").on("mouseleave", mouseleave);
 // Given a node in a partition layout, return an array of all of its ancestor
 // nodes, highest first, but excluding the root.
 function getAncestors(node) {
@@ -131,6 +121,56 @@ function getAncestors(node) {
     current = current.parent;
   }
   return path;
+}
+
+// Fade all but the current sequence, and show it in the breadcrumb trail.
+function mouseover(d) {
+
+
+
+
+          tooltip.html(function() {
+               return d.name + " <spam style='color:red'>" + formatNumber(d.value)+"</spam>";
+         });
+           tooltip.transition()
+            .duration(50)
+            .style("opacity", 0.7);
+        
+  var sequenceArray = getAncestors(d);
+  updateBreadcrumbs(sequenceArray, "");
+
+  // Fade all the segments.
+  d3.selectAll("path")
+      .style("opacity", 0.3);
+
+  // Then highlight only those that are an ancestor of the current segment.
+  svg.selectAll("path")
+      .filter(function(node) {
+                return (sequenceArray.indexOf(node) >= 0);
+              })
+      .style("opacity", 1);
+}
+// Restore everything to full opacity when moving off the visualization.
+function mouseleave(d) {
+
+  // Hide the breadcrumb trail
+  d3.select("#trail")
+      .style("visibility", "hidden");
+
+  // Deactivate all segments during transition.
+  d3.selectAll("path").on("mouseover", null);
+
+  // Transition each segment to full opacity and then reactivate it.
+  d3.selectAll("path")
+      .transition()
+      .duration(1000)
+      .style("opacity", 1)
+      .each("end", function() {
+              d3.select(this).on("mouseover", mouseover);
+            });
+
+  d3.select("#explanation")
+      .style("visibility", "hidden");
 }
 
 function initializeBreadcrumbTrail() {

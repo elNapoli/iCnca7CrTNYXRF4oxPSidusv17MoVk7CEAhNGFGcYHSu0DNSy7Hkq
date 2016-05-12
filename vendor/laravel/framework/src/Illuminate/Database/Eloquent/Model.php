@@ -1387,7 +1387,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     public function update(array $attributes = [])
     {
         if (! $this->exists) {
-            return $this->newQuery()->update($attributes);
+            return false;
         }
 
         return $this->fill($attributes)->save();
@@ -2266,11 +2266,11 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
 
         static::unguard();
 
-        $result = $callback();
-
-        static::reguard();
-
-        return $result;
+        try {
+            return $callback();
+        } finally {
+            static::reguard();
+        }
     }
 
     /**

@@ -15,7 +15,10 @@ class CreateMaestriaPostulacionTable extends Migration
         Schema::create('maestria_postulacion', function (Blueprint $table) {
             $table->increments('postulante');
             $table->string('tipo',45);
-            $table->string('duracion',15);
+            $table->integer('anio');
+            $table->enum('duracion', ['semestre_1', 'semestre_2','semestre_3','semestre_4','otro']);
+            $table->date('desde');
+            $table->date('hasta');
             
  
         });

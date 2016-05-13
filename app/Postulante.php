@@ -23,7 +23,7 @@ class Postulante extends Model
                             'user_id',
                             'direccion'];
 
-    // un Postulante esta en una ciudad
+
     public function ciudadR()
     {
         return $this->belongsTo('App\Ciudad','ciudad');
@@ -52,10 +52,6 @@ class Postulante extends Model
     {
         return $this->hasMany('App\DocumentoAdjunto','postulante');
     }
-
-
-
-
 
 
 

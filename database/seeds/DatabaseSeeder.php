@@ -90,6 +90,15 @@ class DatabaseSeeder extends Seeder
         $this->call(ConversationsTableSeeder::class);
         $this->call(RepliesTableSeeder::class);
 
+
+        // hasta aca optimicé! 
+
+        $this->call(GeneroTableSeeder::class);
+        $this->call(TipoEstudioSeeder::class);
+        $this->call(ProcedenciasTableSeeder::class);
+        $this->call(AnioIntercambioTableSeeder::class);
+        
+        
         
 
         //###########################################

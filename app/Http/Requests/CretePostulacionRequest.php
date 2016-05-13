@@ -45,7 +45,7 @@ class CretePostulacionRequest extends Request {
 		}
 
 		if($this->get('procedencia')==='UACH' and $this->get('tipo_estudio')==='Pregrado'){
-
+		
 			return [
 				'apellido_paterno' =>'required',
 				'apellido_materno'=>'required',
@@ -79,7 +79,7 @@ class CretePostulacionRequest extends Request {
 				'apellido_materno'=>'required',
 				'nombre'=>'required',
 				'tipo'=>'required',
-				'numero'=>'required|unique:documento_identidad,numero',
+				'numero'=>'required|unique:documento_identidad,numero'.$numero,
 				'fecha_nacimiento'=>'required',
 				'sexo'=>'required',
 				'email_personal'=>'required|unique:postulante,email_personal'.$email_personal,

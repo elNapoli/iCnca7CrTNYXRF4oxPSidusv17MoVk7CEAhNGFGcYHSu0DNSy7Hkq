@@ -30,4 +30,11 @@ class PrePostulacionUniversidad extends Model
     {
         return $this->hasMany('App\PreOtroFinanciamiento','pre_postulacion_universidad');
     }
+
+
+    public function getHolaAttribute(){
+
+        return 1;
+
+    }
 }

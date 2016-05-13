@@ -45,5 +45,13 @@ class Postgrado extends Model
         return $this->hasMany('App\MaestriaPostulacion','postulante');
     }
 
+    public function scopeChildrenEstudio($query,$anio, $procedencia){
+
+        return $query->whereHas('maestriaPostulaciones', function($q) use($anio) {
+                        $q->where('anio', $anio);
+                    })->where('procedencia',$procedencia)->get();
+
+    }
+
 
 }

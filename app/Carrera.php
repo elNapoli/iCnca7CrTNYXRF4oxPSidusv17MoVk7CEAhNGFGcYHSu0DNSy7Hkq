@@ -24,17 +24,26 @@ class Carrera extends Model
     //Una Asignatura es requerida en muchas Solicitudes de curso
     public function Asignatura()
     {
-        return $this->hasMany('App\Asignatura','codigo'); //Campo en tabla foranea
+        return $this->hasMany('App\Asignatura','carrera', 'id'); //Campo en tabla foranea
     }
 
     //Una Asignatura se (pendiente)
     public function PrePostUniversidad()
     {
-        return $this->hasMany('App\PrePostUniversidad','id'); //Campo en tabla foranea
+        return $this->hasMany('App\PrePostulacionUniversidad','carrera','id'); //Campo en tabla foranea
     }
 
     public function PreUEstudioActual()
     {
         return $this->hasMany('App\PreUEstudioActual','postulante'); //Campo en tabla foranea
+    }
+
+    public function postulantes($anio, $procedencia){
+
+
+        return $this->hasMany('App\PrePostulacionUniversidad','carrera','id')
+        ->where('pre_postulacion_universidad.anio',$anio)
+        ->join('pregrado','pregrado.postulante','=','pre_postulacion_universidad.postulante')
+        ->where('pregrado.procedencia',$procedencia)->count();
     }
 }

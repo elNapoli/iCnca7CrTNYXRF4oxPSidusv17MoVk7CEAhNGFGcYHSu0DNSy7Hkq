@@ -35,4 +35,13 @@ class Pregrado extends Model
     {
         return $this->belongsTo('App\PreUach','postulante','postulante');
     }
+
+    public function scopeChildrenEstudio($query,$anio, $procedencia){
+
+        return $query->whereHas('prePostulacionUniversidadesR', function($q) use($anio) {
+                        $q->where('anio', $anio);
+                    })->where('procedencia',$procedencia)->get();
+
+    }
+
 }

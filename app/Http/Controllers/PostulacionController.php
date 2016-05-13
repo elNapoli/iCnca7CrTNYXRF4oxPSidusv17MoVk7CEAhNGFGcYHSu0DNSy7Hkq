@@ -15,7 +15,7 @@ use App\Postgrado;
 use App\Pais;
 use App\User;
 use App\Ciudad;
-use App\Pregrado;
+use App\Pregrado;use Illuminate\Database\Eloquent\Collection;
 use App\Facultad;
 use App\DocumentoIdentidad;
 use Illuminate\Http\Request;
@@ -53,6 +53,11 @@ class PostulacionController extends Controller {
 
 	public function getNomina()
 	{
+        $cajas = new Collection;
+        $postulantes = Postulante::with('pregradosR')->with('postgradosR')->get();
+        //dd($postulantes->toArray());
+		$postulante1 = Postulante::with('ciudadR')->first();
+		//dd($postulante1->toArray());
 		$campus = CampusSede::where('universidad','1')->get()->lists('nombre','id')->toArray();
 		return view('postulacion.view_admin.nomina',compact('campus'));
 	}

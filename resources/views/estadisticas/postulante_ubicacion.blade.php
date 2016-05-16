@@ -1,17 +1,20 @@
-
 @extends('intranet.app')
 
 @section('content')
  <div class="panel panel-default">
                      <div class="panel-body">
  
-     @include('estadisticas.partials.menu')
 
   <div id="sequence"></div>
-  <div id="test">
-
+  <div id="test"></div>
+    <div id="explanation" style="visibility: hidden;">
+          <p id="p1"></p>
+          <span id="percentage"></span><br/>
+          <p id="p2"></p>
+          <span id="percentage2"></span><br/>
+        </div>
   </div>
- </div>
+ 
 @endsection
 
 
@@ -26,7 +29,19 @@ path {
   font-weight: 600;
   fill: #fff;
 }
+#explanation {
+  position: absolute;
+  top: 260px;
+  left: 805px;
+  width: 240px;
+  text-align: center;
+  color: #666;
+  z-index: 1;
+}
 
+#percentage, #percentage2 {
+  font-size: 3.5em;
+}
 </style>
 @endsection
 
@@ -34,10 +49,10 @@ path {
     {!! Html::Script('/plugins/d3/d3.js')!!}
  
 <script>
-
+var cant = {{$cant}};
 // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
 var b = {
-  w: 230, h: 60, s: 3, t: 10
+  w: 250, h: 60, s: 3, t: 10
 };
 
 // Mapping of step names to colors.
@@ -55,10 +70,10 @@ var colors = {
   "Carrera": "#bbbbbb"
 };
 
-var width2 = 960,
-    width = 960,
-    height = 700,
-    radius = (Math.min(width, height) / 2)-100 ;
+var width2 = 1060,
+    width = 860,
+    height = 600,
+    radius = (Math.min(width, height) / 2)-50 ;
 
 var formatNumber = d3.format(",d");
   var tooltip = d3.select("#test")
@@ -92,19 +107,22 @@ var arc = d3.svg.arc()
     .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
 
 var svg = d3.select("#test").append("svg:svg")
-    .attr("width", width)
+    .attr("width", 700)
     .attr("height", height)
-  .append("svg:g")
-  .attr("id", "micontenedor")
-    .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
+    .append("svg:g")
+    .attr("id", "micontenedor")
+    .attr("transform", "translate(" + width / 2.5 + "," + (height / 2) + ")");
+    
 
-d3.json("/flare.json", function(error, root) {
+d3.json("/json_postbygeo.json", function(error, root) {
   if (error) throw error;
    initializeBreadcrumbTrail();
 
     svg.append("svg:circle")
       .attr("r", radius)
       .style("opacity", 0);
+
+
 
 
   svg.selectAll("path")
@@ -136,10 +154,29 @@ function getAncestors(node) {
   return path;
 }
 
+
+
 // Fade all but the current sequence, and show it in the breadcrumb trail.
 function mouseover(d) {
 
+if(d.parent){
+ var percentage = (100 * d.value / cant ).toPrecision(3);
+  var percentageString = percentage + "%";
+  if (percentage < 0.1) {
+    percentageString = "< 0.1%";
+  }
 
+
+ var percentage2 = (100 * d.value / d.parent.value ).toPrecision(3);
+  var percentageString2 = percentage2 + "%";
+  if (percentage2 < 0.1) {
+    percentageString2 = "< 0.1%";
+  }    
+}
+else{
+    d3.select("#explanation")
+      .style("visibility", "hidden");
+}
 
 
           tooltip.html(function() {
@@ -152,8 +189,28 @@ function mouseover(d) {
   var sequenceArray = getAncestors(d);
   updateBreadcrumbs(sequenceArray, "");
 
+if(d.parent){
+    d3.select("#percentage")
+      .text(percentageString);
+
+    d3.select("#p1")
+        .text('De un total de '+cant+' postulantes '+d.value+' se encuentran en '+d.name+' y equivalen  respecto al total en un');
+
+    d3.select("#percentage2")
+      .text(percentageString2);  
+
+    d3.select("#p2")
+        .text('El porcentaje de postulantes en  '+d.name+' respecto a  '+d.parent.name+' equivalen   en un');
+
+    d3.select("#explanation")
+      .style("visibility", "");
+}
+else{
+    d3.select("#explanation")
+      .style("visibility", "hidden");
+}
   // Fade all the segments.
-  d3.selectAll("path")
+    d3.selectAll("path")
       .style("opacity", 0.3);
 
   // Then highlight only those that are an ancestor of the current segment.
@@ -176,7 +233,7 @@ function mouseleave(d) {
   // Transition each segment to full opacity and then reactivate it.
   d3.selectAll("path")
       .transition()
-      .duration(1000)
+      .duration(500)
       .style("opacity", 1)
       .each("end", function() {
               d3.select(this).on("mouseover", mouseover);
@@ -190,7 +247,7 @@ function initializeBreadcrumbTrail() {
   // Add the svg area.
   var trail = d3.select("#sequence").append("svg:svg")
       .attr("width", width2)
-      .attr("height", 60)
+      .attr("height", 122)
       .attr("id", "trail");
   // Add the label at the end, for the percentage.
   trail.append("svg:text")
@@ -206,7 +263,7 @@ function breadcrumbPoints(d, i) {
   points.push(b.w+ b.t + "," + (b.h / 2));
   points.push(b.w + "," + b.h);
   points.push("0," + b.h);
-  if (i > 0) { // Leftmost breadcrumb; don't include 6th vertex.
+  if (i > 0 &&  i != 4) { // Leftmost breadcrumb; don't include 6th vertex.
     points.push(b.t + "," + (b.h / 2));
   }
   return points.join(" ");
@@ -242,6 +299,9 @@ function updateBreadcrumbs(nodeArray, percentageString) {
 
   // Set position for entering and updating nodes.
   g.attr("transform", function(d, i) {
+    if(i>3){
+      return "translate(" + (i-4) * (b.w + b.s) + ", 62)";
+    }
     return "translate(" + i * (b.w + b.s) + ", 0)";
   });
 
@@ -276,21 +336,6 @@ function click(d) {
 
 d3.select(self.frameElement).style("height", height + "px");
 
-
-////////////////////////////
-    $('#principal').on('change',function(e){
-        if($(this).val() == 0){
-            $('#sequence').fadeOut(1000);
-            $('#test').fadeOut(1000);
-        }
-        else if($(this).val() == 1){
-            $('#sequence').fadeIn(1000);
-            $('#test').fadeIn(1000);
-        }
-        else if($(this).val() == 2){
-            alert('universidad');
-        }
-  });
 
 </script>
 @endsection

@@ -17,6 +17,9 @@ rect:hover {  fill:blue; }
   shape-rendering: crispEdges;
 }
 
+
+
+
 .x.axis path {  display: none; }
 .legend{
     margin-bottom:76px;

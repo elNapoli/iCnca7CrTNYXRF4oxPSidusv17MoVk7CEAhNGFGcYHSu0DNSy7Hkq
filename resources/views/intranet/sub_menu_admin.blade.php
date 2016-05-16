@@ -90,12 +90,16 @@
                   <li><a  href="chartjs.html">item 2</a></li>
               </ul>
           </li>
-          <li class="menu">
-              <a href="{{ url('estadisticas/') }}" >
-                  <i class="fa fa-bar-chart-o"></i>
+          <li class="sub-menu">
+              <a href="javascript:;" >
+                  <i class=" ffa fa-bar-chart-o"></i>
                   <span>Estadisticas</span>
               </a>
-              
+              <ul class="sub">
+                  <li><a  href="{{ url('estadisticas/post-by-geo') }}">Postulantes por geografia</a></li>
+                  <li><a  href="{{ url('estadisticas/post-by-study') }}">Postulantes por estudios</a></li>
+                  <li><a  href="{{ url('estadisticas/universidades') }}">Universidades</a></li>
+              </ul>
           </li>
       </ul>
       <!-- sidebar menu end-->

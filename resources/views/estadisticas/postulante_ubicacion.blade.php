@@ -211,7 +211,7 @@ else{
 }
   // Fade all the segments.
     d3.selectAll("path")
-      .style("opacity", 0.3);
+      .style("opacity", 0.1);
 
   // Then highlight only those that are an ancestor of the current segment.
   svg.selectAll("path")

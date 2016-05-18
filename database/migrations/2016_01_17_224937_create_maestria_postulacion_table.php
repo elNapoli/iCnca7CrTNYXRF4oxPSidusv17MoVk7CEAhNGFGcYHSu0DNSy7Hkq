@@ -19,6 +19,13 @@ class CreateMaestriaPostulacionTable extends Migration
             $table->enum('duracion', ['semestre_1', 'semestre_2','semestre_3','semestre_4','otro']);
             $table->date('desde');
             $table->date('hasta');
+             //foreing key to maestria_postulacion
+            $table->string('nombre_maestria',45);
+            $table->string('laboratorio',45);
+            $table->string('contacto_uach',45);
+            $table->string('instituto',45);
+            //$table->integer('facultad')->index();
+            $table->unsignedinteger("facultad")->index();
             
  
         });

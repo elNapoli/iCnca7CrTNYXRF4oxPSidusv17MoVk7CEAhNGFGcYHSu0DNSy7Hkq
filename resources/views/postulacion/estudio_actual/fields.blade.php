@@ -1,18 +1,25 @@
 <div class="panel-body" id="estudios_actuales" style='display:none'>
         <div class="col-lg-6">
             @include('postulacion.partials.fields')
-            @include('postulacion.estudio_actual.fields-info-procedencia')
+            @if($parametros['tipo_estudio'] === "Pregrado")
+                @include('postulacion.estudio_actual.fields-info-procedencia')
+            
 
-
+            @endif
         </div>
 
         <div class="col-lg-6">
           
-            
+            @if($parametros['tipo_estudio'] === "Pregrado")
+
 
 
             @include('postulacion.estudio_actual.pre_uach.fields')
             @include('postulacion.estudio_actual.pre_no_uach.fields')
+            @else
+                @include('postulacion.estudio_actual.postgrado.fields')
+            @endif
+
 
         </div>
    

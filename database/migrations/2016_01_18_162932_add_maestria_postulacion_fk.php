@@ -19,6 +19,13 @@ class AddMaestriaPostulacionFk extends Migration
                     ->onDelete('CASCADE')
                     ->onUpdate('NO ACTION');
 
+
+            $table  ->foreign('facultad','maestria_maestria_facultad_foreign')
+                    ->references('id')
+                    ->on('facultad')
+                    ->onDelete('NO ACTION')
+                    ->onUpdate('NO ACTION');
+
         });
     }
 
@@ -31,6 +38,7 @@ class AddMaestriaPostulacionFk extends Migration
     {
         Schema::table('maestria_postulacion', function(Blueprint $table) {
             $table->dropForeign('maestria_poestulacion_postgrado_foreign');
+            $table->dropForeign('maestria_maestria_facultad_foreign');
 
         });
     }

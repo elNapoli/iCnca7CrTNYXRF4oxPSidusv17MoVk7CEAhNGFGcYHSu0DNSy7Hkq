@@ -12,6 +12,7 @@ use App\Continente;
 use App\PreUach;
 use App\Carrera;
 use App\Universidad;
+use App\MaestriaActual;
 use App\PreNoUach;
 
 use Illuminate\Http\Request;
@@ -103,7 +104,24 @@ class EstudioActualController extends Controller {
 
 		}
 		else{
+			$nuevo = 1;
+			$estudioActual = MaestriaActual::where('postulante',$postulante->id)->first();
+			$parametros['continente'] = $estudioActual->campusSedeR->ciudadR->paisR->continente;
+			$parametros['pais'] = $estudioActual->campusSedeR->ciudadR->paisR->id;
+			$parametros['campus_sede'] = $estudioActual->campusSedeR->id;
+
 			$parametros['procedencia'] = $postulante->postgradosR->procedencia ;
+			$parametros['nombreD'] = $estudioActual->nombre_tutor_director ;
+			$parametros['emailD'] = $estudioActual->email_tutor_director ;
+			$parametros['cargoD'] = $estudioActual->cargo_tutor_director ;
+			$parametros['nombreS'] = $estudioActual->nombre_secretaria ;
+			$parametros['telefonoS'] = $estudioActual->telefono_secretaria ;
+			$parametros['area'] = $estudioActual->area ;
+			$parametros['programa'] = $estudioActual->tipo ;
+			$parametros['nombreP'] = $estudioActual->nombre ;
+
+
+
 
 		}
 
@@ -148,7 +166,21 @@ class EstudioActualController extends Controller {
 		}
 
 		else{
+			$estudioActual = MaestriaActual::findOrFail($request->get('postulante'));
+			$estudioActual->postulante = $request->get('postulante');
+			$estudioActual->nombre = $request->get('nombreP');
+			$estudioActual->tipo = $request->get('programa');
+			$estudioActual->nombre_tutor_director = $request->get('nombreD');
+			$estudioActual->cargo_tutor_director   = $request->get('cargoD');
+			$estudioActual->email_tutor_director = $request->get('emailD');
+			$estudioActual->telefono_secretaria = $request->get('telefonoS');
+			$estudioActual->nombre_secretaria = $request->get('nombreS');
+			$estudioActual->area = $request->get('area');
+			$estudioActual->campus_sede = $request->get('campus_sede');
 
+			$estudioActual->save();
+
+			$mensaje = 'Su maestria actual se actualizó correctamente.';
 
 		}
 
@@ -180,13 +212,24 @@ class EstudioActualController extends Controller {
 
 		else{
 
-			if($postulante->postgradosR->procedencia == 'UACH'){
-				
-			}
-			else{
-				
-				
-			}
+			$estudioActual = new MaestriaActual();
+			$estudioActual->postulante = $request->get('postulante');
+			$estudioActual->nombre = $request->get('nombreP');
+			$estudioActual->tipo = $request->get('programa');
+			$estudioActual->nombre_tutor_director = $request->get('nombreD');
+			$estudioActual->cargo_tutor_director   = $request->get('cargoD');
+			$estudioActual->email_tutor_director = $request->get('emailD');
+			$estudioActual->telefono_secretaria = $request->get('telefonoS');
+			$estudioActual->nombre_secretaria = $request->get('nombreS');
+			$estudioActual->area = $request->get('area');
+			$estudioActual->campus_sede = $request->get('campus_sede');
+
+			$estudioActual->save();
+
+			$mensaje = 'Su maestria actual se almacenó correctamente.';
+
+
+
 		}
 
 		return response()->json([

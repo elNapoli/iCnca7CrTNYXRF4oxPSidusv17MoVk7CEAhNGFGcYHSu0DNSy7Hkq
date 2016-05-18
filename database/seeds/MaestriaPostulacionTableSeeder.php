@@ -33,6 +33,11 @@ class MaestriaPostulacionTableSeeder extends Seeder
                     'duracion'=> $semestre_temp,
                     'desde'=>$desde ,
                     'hasta'=>$faker->dateTimeBetween($startDate = $desde, $endDate = 'now'),
+                    'nombre_maestria'=> $faker->sentence($nbWords = 6, $asText = false),
+                    'laboratorio'=>$faker->sentence($nbWords = 6, $asText = false),
+                    'contacto_uach'=>$faker->lastName.' '.$faker->firstName ,
+                    'instituto'=> $faker->sentence($nbWords = 6, $asText = false),
+                    'facultad'=> $faker->numberBetween($min = 1, $max = 100)
                 ];
 
             }
@@ -44,6 +49,11 @@ class MaestriaPostulacionTableSeeder extends Seeder
                     'duracion'=> $semestre_temp,
                     'desde'=>'' ,
                     'hasta'=>'',
+                    'nombre_maestria'=> $faker->sentence($nbWords = 6, $asText = false),
+                    'laboratorio'=>$faker->sentence($nbWords = 6, $asText = false),
+                    'contacto_uach'=>$faker->lastName.' '.$faker->firstName ,
+                    'instituto'=> $faker->sentence($nbWords = 6, $asText = false),
+                    'facultad'=> $faker->numberBetween($min = 1, $max = 100)
                 ];
 
             }

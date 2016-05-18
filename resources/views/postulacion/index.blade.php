@@ -112,7 +112,7 @@
                 headerTag: "h3",
                 bodyTag: "section",
           
-               // startIndex:indexStep.responseJSON.indexStep,
+                startIndex:JSON.parse(indexStep.responseText).indexStep,
 
                 transitionEffect: "slideLeft",
                 /* Labels */

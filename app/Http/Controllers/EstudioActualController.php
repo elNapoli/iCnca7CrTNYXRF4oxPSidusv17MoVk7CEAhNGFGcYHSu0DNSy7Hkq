@@ -104,22 +104,27 @@ class EstudioActualController extends Controller {
 
 		}
 		else{
-			$nuevo = 1;
-			$estudioActual = MaestriaActual::where('postulante',$postulante->id)->first();
-			$parametros['continente'] = $estudioActual->campusSedeR->ciudadR->paisR->continente;
-			$parametros['pais'] = $estudioActual->campusSedeR->ciudadR->paisR->id;
-			$parametros['campus_sede'] = $estudioActual->campusSedeR->id;
+				$parametros['procedencia'] = $postulante->postgradosR->procedencia ;
+			if($postulante->postgradosR->maestriaActuales->count()){
 
-			$parametros['procedencia'] = $postulante->postgradosR->procedencia ;
-			$parametros['nombreD'] = $estudioActual->nombre_tutor_director ;
-			$parametros['emailD'] = $estudioActual->email_tutor_director ;
-			$parametros['cargoD'] = $estudioActual->cargo_tutor_director ;
-			$parametros['nombreS'] = $estudioActual->nombre_secretaria ;
-			$parametros['telefonoS'] = $estudioActual->telefono_secretaria ;
-			$parametros['area'] = $estudioActual->area ;
-			$parametros['programa'] = $estudioActual->tipo ;
-			$parametros['nombreP'] = $estudioActual->nombre ;
 
+
+				$nuevo = 1;
+				$estudioActual = MaestriaActual::where('postulante',$postulante->id)->first();
+				$parametros['continente'] = $estudioActual->campusSedeR->ciudadR->paisR->continente;
+				$parametros['pais'] = $estudioActual->campusSedeR->ciudadR->paisR->id;
+				$parametros['campus_sede'] = $estudioActual->campusSedeR->id;
+
+				$parametros['nombreD'] = $estudioActual->nombre_tutor_director ;
+				$parametros['emailD'] = $estudioActual->email_tutor_director ;
+				$parametros['cargoD'] = $estudioActual->cargo_tutor_director ;
+				$parametros['nombreS'] = $estudioActual->nombre_secretaria ;
+				$parametros['telefonoS'] = $estudioActual->telefono_secretaria ;
+				$parametros['area'] = $estudioActual->area ;
+				$parametros['programa'] = $estudioActual->tipo ;
+				$parametros['nombreP'] = $estudioActual->nombre ;
+
+			}
 
 
 

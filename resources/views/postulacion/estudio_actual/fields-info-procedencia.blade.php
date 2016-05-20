@@ -40,7 +40,7 @@
 </div>
 
 
-@if($parametros['tipo_estudio'] === "Pregrado")
+@if($parametros['tipo_estudio'] === "Postgrado")
  <div class="form-group">
     {!!  Form::label('programa', 'Programa actual')!!}
     {!!  Form::select('programa', [null=>'Seleccione su programa actual','Magister'=>'Magíster','Doctorado'=>'Doctorado'],null,array('class' => 'form-control'))!!}

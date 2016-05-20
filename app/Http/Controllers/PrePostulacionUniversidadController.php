@@ -220,7 +220,49 @@ class PrePostulacionUniversidadController extends Controller {
 
 		else{
 
-			dd("jojo");
+			$postPostulacion = PostPostulacionUniversidad::find($postulante->id);
+
+			//dd();
+			if($postPostulacion->postOtroFinanciamientosR->count()){
+				if ($request->get('financiamiento') != '4'){
+
+					if($request->get('financiamiento') != '5'){
+
+							$otroFinanciamiento = PostOtroFinanciamiento::find($postPostulacion->postulante);
+							$otroFinanciamiento->delete();
+
+					}
+				} 
+			}
+			$postPostulacion->postulante = $postulante->id;
+			$postPostulacion->tipo = $request->get('programa');
+			$postPostulacion->anio = $request->get('anio');
+			$postPostulacion->duracion = $request->get('semestre');
+			$postPostulacion->desde = $request->get('desde');
+			$postPostulacion->hasta = $request->get('hasta');
+			$postPostulacion->area = $request->get('area');
+			$postPostulacion->nombre_maestria = $request->get('nombreP');
+			$postPostulacion->laboratorio = $request->get('nomLab');
+			$postPostulacion->contacto_uach = $request->get('contacto');
+			$postPostulacion->instituto = $request->get('instituto');
+			$postPostulacion->facultad = $request->get('facultad');
+			$postPostulacion->financiamiento = $request->get('financiamiento');
+			$postPostulacion->save();
+
+			if ($request->get('financiamiento') ==='4' or $request->get('financiamiento') ==='5')
+			{
+				$otroFinanciamiento = PostOtroFinanciamiento::firstOrNew(array('postulante'=>  $postulante->id));
+				//dd($otroFinanciamiento);
+			   	$otroFinanciamiento->descripcion = $request->get('descripcion');
+			   	$otroFinanciamiento->save();
+			}
+
+			return response()->json([
+					'message'=> 'Se han actualizado los datos de la pestaña referente a intercambio'
+					]);
+
+
+			
 		}
 
 	}

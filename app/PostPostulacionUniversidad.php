@@ -38,6 +38,11 @@ class PostPostulacionUniversidad extends Model
         return $this->belongsTo('App\Financiamiento','financiamiento');
     }
 
+    public function postOtroFinanciamientosR()
+    {
+        return $this->hasMany('App\PostOtroFinanciamiento','postulante','postulante');
+    }
+
     
 
 }

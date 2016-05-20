@@ -94,6 +94,7 @@
         </div>
         <div class="col-lg-6">
             @include('postulacion.partials.fields_2')
+            @include('postulacion.postulacion_universidad.postgrado.fields')
 
 
 

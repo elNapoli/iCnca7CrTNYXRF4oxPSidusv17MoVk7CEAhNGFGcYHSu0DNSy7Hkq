@@ -51,7 +51,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CampusSedeTableSeeder::class);
         $this->call(DepartamentoTableSeeder::class);
         $this->call(FacultadTableSeeder::class);
-       $this->call(MaestriaPostulacionTableSeeder::class);
         $this->call(CarreraTableSeeder::class);
         $this->call(AsignaturaTableSeeder::class); 
 

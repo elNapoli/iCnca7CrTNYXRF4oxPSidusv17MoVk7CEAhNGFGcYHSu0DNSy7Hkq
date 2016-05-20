@@ -9,7 +9,19 @@ class PostPostulacionUniversidad extends Model
     protected $table      = 'post_postulacion_universidad';
     public $timestamps    = false;
     protected $primaryKey = 'postulante';
-    protected $fillable   = ['campus_sede','celular','procedencia'];
+    protected $fillable   = [
+                            'celular',
+                            'tipo',
+                            'duracion',
+                            'anio',
+                            'area',
+                            'desde',
+                            'hasta',
+                            'nombre_maestria',
+                            'laboratorio',
+                            'contacto_uach',
+                            'instituto',
+                            'facultad'];
 
 
     // una postulación postgrado, solo puede  ser postulada a una universidad
@@ -17,10 +29,15 @@ class PostPostulacionUniversidad extends Model
     {
         return $this->belongsTo('App\Postgrado','postulante');
     }
+    public function facultadR()
+    {
+        return $this->belongsTo('App\Facultad','facultad');
+    }
+    public function financiamientoR()
+    {
+        return $this->belongsTo('App\Financiamiento','financiamiento');
+    }
 
     
-    public function campusSede()
-    {
-        return $this->belongsTo('App\CampusSede','campus_sede');
-    }
+
 }

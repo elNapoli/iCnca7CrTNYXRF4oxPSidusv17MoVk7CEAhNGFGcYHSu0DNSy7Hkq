@@ -26,13 +26,34 @@ class PrePostulacionUniversidadRequest extends Request {
 
 		$descripcion = 'required';
 		}
-		return [
-			'anio'=>'required',
-			'semestre'=>'required',
-			'financiamiento'=>'required',
-			'descripcion'=> $descripcion,
-			'carrera'=>'required',
-		];
+
+
+		if($this->get('tipo_estudio') === 'Pregrado'){
+
+
+			return [
+				'anio'=>'required',
+				'semestre'=>'required',
+				'financiamiento'=>'required',
+				'descripcion'=> $descripcion,
+				'carrera'=>'required',
+			];
+		}
+
+		else{
+
+			return [
+				'anio'=>'required',
+				'semestre'=>'required',
+				'financiamiento'=>'required',
+				'descripcion'=> $descripcion,
+				'nombreP'=>'required',
+				'programa'=>'required',
+				'instituto'=>'required',
+				'facultad'=>'required',
+			];
+
+		}
 	}
 
 
@@ -43,6 +64,8 @@ class PrePostulacionUniversidadRequest extends Request {
         return [
                 //
                 'anio.required' => 'El campo año es obligatorio.',
+                'nombreP.required' => 'El nombre del programa es un campo obligatorio.',
+                'programa.required' => 'El tipo de programa es un campo obligatorio.',
             ];
     }
 }

@@ -33,7 +33,8 @@ class MaestriaActualTableSeeder extends Seeder
                 'email_tutor_director'=> $faker->email,
                 'telefono_secretaria'=>$faker->phoneNumber,
                 'nombre_secretaria'=>$faker->lastName.' '.$faker->firstNameFemale, 
-                'area'=>$faker->sentence($nbWords = 6, $asText = false)
+                'area'=>$faker->sentence($nbWords = 6, $asText = false),
+                'campus_sede'=>$faker->numberBetween($min = 1, $max = 100) 
             ];
 		}
 

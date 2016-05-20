@@ -23,7 +23,7 @@
                   
                         </section>
                         <h3>Información de intercambio</h3>
-                        <section style='height:500px' data-mode="async" data-ajax="true" data-url="{{url('prepostulacionuniversidad/create-or-edit')}}">
+                        <section data-mode="async" data-ajax="true" data-url="{{url('prepostulacionuniversidad/create-or-edit')}}">
                             
                               
                         </section>
@@ -112,7 +112,7 @@
                 headerTag: "h3",
                 bodyTag: "section",
           
-               // startIndex:indexStep.responseJSON.indexStep,
+                startIndex:JSON.parse(indexStep.responseText).indexStep,
 
                 transitionEffect: "slideLeft",
                 /* Labels */

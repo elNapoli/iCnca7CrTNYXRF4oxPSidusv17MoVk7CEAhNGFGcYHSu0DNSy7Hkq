@@ -44,7 +44,6 @@ class DatabaseSeeder extends Seeder
 
        //###########################################
        $this->call(PregradoTableSeeder::class);
-       $this->call(MaestriaPostulacionTableSeeder::class);
        $this->call(MaestriaActualTableSeeder::class);
 
 
@@ -57,7 +56,6 @@ class DatabaseSeeder extends Seeder
 
 
        //###########################################
-        $this->call(OtraMaestriaTableSeeder::class);
         $this->call(ProcedenciaPregradoTableSeeder::class);
         $this->call(PreUResponsableTableSeeder::class);
 

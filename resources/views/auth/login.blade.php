@@ -111,12 +111,15 @@
 
                         }
 
-                        else if(json.codigo == 3){
-
-                            window.location.href = $('#urlAdmin').val();
-                        }
-                        else{
+                        else if(json.codigo == 1 || json.codigo == 2){
                             window.location.href = $('#urlUser').val();
+                        }
+                        else if(json.codigo == 3){
+                            var html = '<div class="alert alert-danger fade in">'+
+                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
+                            json.message+'</p></div>';
+                            
+                            $('.message').html(html);
                         }
                         
                     },

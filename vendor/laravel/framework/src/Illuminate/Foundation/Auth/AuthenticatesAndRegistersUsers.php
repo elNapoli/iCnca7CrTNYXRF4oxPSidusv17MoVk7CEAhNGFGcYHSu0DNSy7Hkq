@@ -99,7 +99,7 @@ trait AuthenticatesAndRegistersUsers
 		if ($user->confirmado == '0')
 		{
 			$codigo = 0;
-			$mensaje =  'Usted no ha validado su mail, porfavor  conrime su e-mail.';
+			$mensaje =  'Usted no ha validado su mail, porfavor confime su cuenta en el correo que le enviamos.';
 		}
 		elseif($user->confirmado == '1')
 		{
@@ -123,6 +123,11 @@ trait AuthenticatesAndRegistersUsers
 						'email' => $this->getFailedLoginMessage(),
 					]);*/
 		}
+		elseif($user->confirmado == '2'){
+			$codigo = 3;
+			$mensaje = "Su acceso ha sido revocado por un administrador. favor comunicarse a correo@prueba.cl";
+		}
+
 		return response()->json([
 				'codigo' => $codigo,
 				'message'=> $mensaje

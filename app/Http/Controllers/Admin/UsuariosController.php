@@ -104,13 +104,47 @@ class UsuariosController extends Controller {
 	 */
 	public function putUpdate(Request $request,$id)
 	{
+		//aca debe ir el correo actual del administrador
+		$correo_admin = 'test@gmail.com';
 		$user = User::findOrFail($id);
-		$user->fill($request->all());
-        $user->save();
-
-		return response()->json([
+		if($request->confirmado == 2 && $user->confirmado != 2){
+			\Mail::send('emails.ban',  array('destinatario' => $request->name, 'correo_admin' => $correo_admin), function($message) {
+            $message->to(\Request::get('email'), \Request::get('name'))
+                ->subject('OME: Acceso denegado');
+        	});
+        	$user->fill($request->all());
+        	$user->save();
+        	return response()->json([
+								'message'=> 'EL usuario '.$user->name.' '.$user->apellido_paterno.' ha sido baneado del acceso al portal. Se ha enviado un correo notificandole la situacion.'
+								]);
+		}
+		else if($request->confirmado == 1 && $user->confirmado != 1){
+			\Mail::send('emails.validado',  array('destinatario' => $request->name, 'correo_admin' => $correo_admin), function($message) {
+            $message->to(\Request::get('email'), \Request::get('name'))
+                ->subject('OME: Ya tienes acceso');
+        	});
+			$user->fill($request->all());
+        	$user->save();
+        	return response()->json([
+								'message'=> 'EL usuario '.$user->name.' '.$user->apellido_paterno.' ha sido validado para el acceso al portal. Se ha enviado un correo notificandole la situacion.'
+								]);
+		}
+		//para evitar incongruencias con el modulo que verifica correo.
+		else if($request->confirmado == 0 && $user->confirmado != 0){
+			return response()->json([
+								'message'=> 'No puede cambiar el estado de un usuario que ya ha validado el correo al estado "Por confirmar"... Los cambios no han sido guardados. Intente otra opción',
+								'fail' => 1
+								]);
+		}
+		else{
+			$user->fill($request->all());
+        	$user->save();
+			return response()->json([
 								'message'=> 'EL usuario '.$user->name.' '.$user->apellido_paterno.' '.$user->apellido_materno.' se editó correctamente'
 								]);
+		}
+
+
     }
 	public function postEdit($id)
 	{

@@ -1,15 +1,15 @@
 <div class="row mt">
     <div class="col-lg-12">
-        <div class="content-panel">
+        <div class="panel-body">
             <table id="tableUsuarios" class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
                          <th>#</th>
                         <th>Nombre</th>
-                        <th>Apellidos</th>
+                        <th>Apellido</th>
                         <th>E-mail</th>
                         <th>Tipo</th>
-                        <th>Confirmado</th>
+                        <th>Estado</th>
                         <th>Opciones</th>              
                     </tr>
                 </thead>

@@ -3,10 +3,17 @@
 @section('Dashboard') Panel Administrador @endsection
 
 @section('content')
-                <h3><i class="fa fa-angle-right"></i> Usuarios!</h3>
-                <hr>
 
-		  <div class="message"></div>	
+	<div class="panel panel-default">
+<div class="panel-heading">
+	<div class="alert alert-info"><p>Tipificación de estados : 
+	<i style='color:green;' class='fa fa-check'></i> Confirmado 
+	<i style='color:black;' class='fa fa-ellipsis-h'></i> Por confirmar 
+	<i style='color:red;' class='fa fa-times'></i> Acceso denegado</p>
+	</div>
+</div>
+
+		  <div class="message"></div>
 			@include('admin.partials.table')
 
 
@@ -30,7 +37,7 @@ $(document).ready(function (){
 //Opciones tablas
 var dt = $('#tableUsuarios').DataTable( {
 			 
-			 		"lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
+			 		"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 					 "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
                     "bProcessing": true,
                     
@@ -48,12 +55,13 @@ var dt = $('#tableUsuarios').DataTable( {
                                 var html = '';
                                 if(oData.confirmado == 0){
 
-                                    html =  "<i style='color:red;' class='fa fa-times'></i>";
+                                    html =  "<i style='color:black;' class='fa fa-ellipsis-h'></i>";
                                 }
-                                else{
+                                else if(oData.confirmado == 1){
                                     html =  "<i style='color:green;' class='fa fa-check'></i>";
-
-
+                                }
+                                else if(oData.confirmado == 2){
+                                    html =  "<i style='color:red;' class='fa fa-times'></i>";
                                 }
                                 $(nTd).html(html);
 
@@ -87,8 +95,8 @@ var dt = $('#tableUsuarios').DataTable( {
 
 					$('div#boyd-modal div div input#name').val(json.name);
 					$('div#boyd-modal div div input#apellido_paterno').val(json.apellido_paterno);
-					$('div#boyd-modal div div input#apellido_materno').val(json.apellido_materno);
 					$('div#boyd-modal div div input#email').val(json.email);
+					$('div#boyd-modal div div select#confirmado').val(json.confirmado);
 					$('div#boyd-modal div div input#id').val(json.id);
 
                     $('#modal_edit_user').modal('show'); 
@@ -119,12 +127,18 @@ var dt = $('#tableUsuarios').DataTable( {
 	                // URL a la que se enviará la solicitud Ajax
 	                url:$('#urlUsuarioUpdate').val()+'/'+$('#id').val(),
 	                success : function(json) {
-                    $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
-                    $('#modal_edit_user').modal('hide');
+	                	if (json.fail == 1){
+	                		$('#message-modal-edit').html('<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');           
+                            dt.ajax.reload(); 
+	                	}
+	                	else{
+	                		$('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+                    		$('#modal_edit_user').modal('hide');
 
                             $("html, body").animate({ scrollTop: 0 }, 600);         
-                            dt.ajax.reload(); 
-                    dt.ajax.reload();           
+                            dt.ajax.reload();   
+	                	}
+         
 	          
 	                },
 

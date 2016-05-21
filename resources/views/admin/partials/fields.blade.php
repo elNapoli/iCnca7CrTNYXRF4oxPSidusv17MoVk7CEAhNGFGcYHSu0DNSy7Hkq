@@ -5,16 +5,21 @@
     {!! Form::text('name',null,array('class' => 'form-control','placeholder'=>'Ej: Bruce'));!!}
 </div>
 <div class="form-group">
-    {!!  Form::label('apellido_paterno', ' Apellido paterno ');!!}
+    {!!  Form::label('apellido_paterno', ' Apellido ');!!}
     {!! Form::text('apellido_paterno',null,array('class' => 'form-control','placeholder'=>'Ej: Dickinson'));!!}
 </div> 
-<div class="form-group">
-    {!!  Form::label('apellido_materno', ' Apellido materno ');!!}
-    {!! Form::text('apellido_materno',null,array('class' => 'form-control','placeholder'=>'Ej: Mustaine'));!!}
-</div>
+
 <div class="form-group">
     {!!  Form::label('email', ' E-mail ');!!}
     {!! Form::text('email',null,array('class' => 'form-control','placeholder'=>'Ej: chuck@schuldiner.com'));!!}
     {!!Form::hidden('id','',array('id'=>'id'));!!}
 </div>     
+
+<div class="form-group">
+    {!!  Form::label('confirmado', ' Estado ')!!}
+    {!!  Form::select('confirmado', [null=>'Seleccione estado',
+                               0=>'Por confirmar',
+                               1=>'Confirmado',
+                               2=>'Acceso denegado'],null,array('class' => 'form-control'))!!}
+</div>
 </div>  

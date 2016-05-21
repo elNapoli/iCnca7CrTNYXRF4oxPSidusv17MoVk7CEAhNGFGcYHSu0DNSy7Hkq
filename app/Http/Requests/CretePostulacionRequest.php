@@ -31,6 +31,7 @@ class CretePostulacionRequest extends Request {
 		$email_personal = "";
 		$email_institucional = "";
 		$titulo_profesional = "";
+		$numero = "";
 		if($postulante){
 			//dd('existe');
 			$email_personal = ",".$postulante->id;

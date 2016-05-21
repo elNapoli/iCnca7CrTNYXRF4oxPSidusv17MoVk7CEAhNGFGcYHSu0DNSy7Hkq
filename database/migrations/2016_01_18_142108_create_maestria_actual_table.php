@@ -22,6 +22,10 @@ class CreateMaestriaActualTable extends Migration
             $table->string('telefono_secretaria',20);
             $table->string('nombre_secretaria',45);
             $table->string('area',45);
+            $table->unsignedInteger('campus_sede')->nullable();
+
+
+
 
 
         });

@@ -16,10 +16,10 @@ class OtraMaestria extends Model
                             'facultad'];
 
     // un Postulante esta en una ciudad
-    public function maestriPostulacion()
+  /*  public function maestriPostulacion()
     {
         return $this->belongsTo('App\MaestriaPostulacion','postulante');
-    }
+    }*/
 
     public function FACULTAD()
     {

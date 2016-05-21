@@ -230,6 +230,7 @@ class DataGraphic
                     $procedencia = $id;
                     $children = $valor->childrenEstudio($id);
                     break;
+dd('asdf');
                 case 'universidad': // calculo cuantos postulants por año existen 
                     $padre = $valor->id;
                     $nombre = $valor->nombre;

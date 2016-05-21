@@ -31,7 +31,8 @@
         "Collective\\Html\\HtmlServiceProvider",
         "Yajra\\Datatables\\DatatablesServiceProvider",
         "DaveJamesMiller\\Breadcrumbs\\ServiceProvider",
-        "Socieboy\\Forum\\Providers\\ForumServiceProvider"
+        "Socieboy\\Forum\\Providers\\ForumServiceProvider",
+        "Maatwebsite\\Excel\\ExcelServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -53,7 +54,8 @@
         "App\\Providers\\RouteServiceProvider",
         "Yajra\\Datatables\\DatatablesServiceProvider",
         "DaveJamesMiller\\Breadcrumbs\\ServiceProvider",
-        "Socieboy\\Forum\\Providers\\ForumServiceProvider"
+        "Socieboy\\Forum\\Providers\\ForumServiceProvider",
+        "Maatwebsite\\Excel\\ExcelServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",

@@ -40,3 +40,18 @@
 </div>
 
 
+@if($parametros['tipo_estudio'] === "Postgrado")
+ <div class="form-group">
+    {!!  Form::label('programa', 'Programa actual')!!}
+    {!!  Form::select('programa', [null=>'Seleccione su programa actual','Magister'=>'Magíster','Doctorado'=>'Doctorado'],null,array('class' => 'form-control'))!!}
+</div>
+
+<div class="form-group">
+    {!!  Form::label('nombreP', ' Nombre del programa ')!!}
+    {!! Form::text('nombreP',null,array('class' => 'form-control','placeholder'=>'Ej: Magíster en Biotecnología Bioquímica'))!!}
+</div>  
+
+
+@endif
+
+

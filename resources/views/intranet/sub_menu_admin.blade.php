@@ -99,6 +99,7 @@
                   <li><a  href="{{ url('estadisticas/post-by-geo') }}">Postulantes por geografia</a></li>
                   <li><a  href="{{ url('estadisticas/post-by-study') }}">Postulantes por estudios</a></li>
                   <li><a  href="{{ url('estadisticas/universidades') }}">Universidades</a></li>
+                  <li><a  href="{{ url('estadisticas/generar-excel') }}">Generar reporte estadístico</a></li>
               </ul>
           </li>
       </ul>

@@ -64,10 +64,11 @@ class Universidad extends Model
         }
         else{
             return $query->join('campus_sede','campus_sede.universidad','=','universidad.id')
-                ->join('post_postulacion_universidad','post_postulacion_universidad.campus_sede','=','campus_sede.id')
+                ->join('facultad','facultad.campus_sede','=','campus_sede.id')
+                            ->join('post_postulacion_universidad','post_postulacion_universidad.facultad','=','facultad.id')
+                            
                 ->join('postgrado','postgrado.postulante','=','post_postulacion_universidad.postulante')
-                ->join('maestria_postulacion','maestria_postulacion.postulante','=','postgrado.postulante')
-                ->where('maestria_postulacion.anio',$anio)
+                ->where('post_postulacion_universidad.anio',$anio)
                 ->where('universidad.id',$id)
                 ->where('postgrado.procedencia',$procedencia);
 
@@ -95,11 +96,11 @@ class Universidad extends Model
         }
         else{
             return $query->join('campus_sede','campus_sede.universidad','=','universidad.id')
-                            ->join('post_postulacion_universidad','post_postulacion_universidad.campus_sede','=','campus_sede.id')
+                            ->join('facultad','facultad.campus_sede','=','campus_sede.id')
+                            ->join('post_postulacion_universidad','post_postulacion_universidad.facultad','=','facultad.id')
                             ->join('postgrado','postgrado.postulante','=','post_postulacion_universidad.postulante')
-                            ->join('maestria_postulacion','maestria_postulacion.postulante','=','postgrado.postulante')
                             ->select('universidad.id','universidad.nombre')
-                            ->where('maestria_postulacion.anio',$anio)
+                            ->where('post_postulacion_universidad.anio',$anio)
                             ->groupBy('universidad.id');
 
         }

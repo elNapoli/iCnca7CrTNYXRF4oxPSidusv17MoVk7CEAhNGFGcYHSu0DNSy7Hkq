@@ -30,9 +30,9 @@ AnioIntercambio::find(1992)->pregradoR->toArray() es
 
         return $this->hasManyThrough('App\Pregrado', 'App\PrePostulacionUniversidad', 'anio', 'postulante');
 
-    }*/
     public function postgradoPostulaciones()
-	{
+    {
         return $this->hasMany('App\MaestriaPostulacion','anio','id'); // nombre del campo en la otra tabla 
     }
+    }*/
 }

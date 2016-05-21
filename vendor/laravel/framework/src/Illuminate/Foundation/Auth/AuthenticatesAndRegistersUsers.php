@@ -2,18 +2,12 @@
 
 namespace Illuminate\Foundation\Auth;
 
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\EditUserRequest;
-use Illuminate\Http\Request;
-use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Auth\Registrar;
-use App\User;
-
 trait AuthenticatesAndRegistersUsers
 {
     use AuthenticatesUsers, RegistersUsers {
         AuthenticatesUsers::redirectPath insteadof RegistersUsers;
     }
+<<<<<<< HEAD
 
     protected $auth;
 	/**
@@ -175,4 +169,6 @@ trait AuthenticatesAndRegistersUsers
 	{
 		return property_exists($this, 'loginPath') ? $this->loginPath : '/auth/login';
 	}
+=======
+>>>>>>> afc8cb05faa8df82c9fa06b8627c5b0b66ae323b
 }

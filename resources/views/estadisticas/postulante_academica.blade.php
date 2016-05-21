@@ -179,7 +179,7 @@ else{
 
 
           tooltip.html(function() {
-               return d.name + " <spam style='color:red'>" + formatNumber(d.value)+"</spam>";
+               return d.name + " <spam style='color:red'>" + formatNumber(d.size)+"</spam>";
          });
            tooltip.transition()
             .duration(50)

@@ -76,7 +76,8 @@ class InternetController extends Controller
     }
     public function getNoticiasView($id){
 
-        dd($id);//vincular con vista de noticias guest dependiendo de la id (retornar vista)
+        $noticia = Noticia::findOrFail($id);
+        return view('guest.noticias.vista', compact('noticia'));
 
     }
 

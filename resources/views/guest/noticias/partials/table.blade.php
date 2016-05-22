@@ -1,6 +1,10 @@
 
-            <table id="tableNoticias" class="table table-striped table-bordered table-hover">
+            <table id="tableNoticias" class="table cell-border table-hover">
                 <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach($noticias as $item)

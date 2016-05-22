@@ -4,11 +4,7 @@
 @section('content')
 
 		<div class="col-md-6" id="caja-seccion-titular">Noticias recientes</div>
-		<div class="col-md-6" id="caja-seccion-titular">Todas
-			<div id="search-div" class="form-group pull-right">
-    			<input id="search-input" type="text" class="search form-control" placeholder="What you looking for?">
-			</div>
-		</div>
+		<div class="col-md-6" id="caja-seccion-titular">Todas</div>
 
 		<div class="col-md-6" id="reciente">
 			<img id="img1" src="http://cdn.abclocal.go.com/content/kfsn/images/cms/26184_1280x720.jpg" alt="..."  hspace="0">
@@ -29,23 +25,13 @@
     font-weight: bold;
     height: 40px;
     line-height: 25px;
-    padding: 6px 0 0 6px;
+    padding: 3px 0 0 6px;
 }
 
 #reciente {
 	border: 1px solid #ccc;
 	padding: 6px;
 	height: 360px;
-}
-
-#search-div {
-	padding-right: 10px;
-
-}
-
-#search-input {
-	height: 25px;
-
 }
 
 #todas {
@@ -84,6 +70,10 @@
     font-size: 15px;
     text-align: center
 }
+
+.tableNoticias thead {
+  display: none;
+}
 </style>
 
 @section('scripts')
@@ -92,6 +82,24 @@
     {!! Html::Script('plugins/dataTables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') !!}
 	<script type="text/javascript">
 		$(document).ready(function() {
+
+		var dt = $('#tableNoticias').DataTable( {
+			 
+			 		"search" : true,
+			 		"scrollY":        "300px",
+        			"scrollCollapse": true,               
+					"bLengthChange": false,
+					"paging": false,
+					"bJQueryUI": false,
+					"bInfo": false,
+					"sDom": 'lfrtip',
+					"fnDrawCallback": function ( oSettings ) {
+                        $(oSettings.nTHead).hide();
+
+                    },
+					 "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"},
+                    
+			    } );
 
 		} );
 

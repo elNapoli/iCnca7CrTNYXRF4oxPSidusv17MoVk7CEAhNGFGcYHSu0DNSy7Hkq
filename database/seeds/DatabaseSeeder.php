@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
 
 
 
-/*
-*/
 
        //###########################################
+/*
+*/
        $this->call(UserTableSeeder::class);
        $this->call(ContinenteTableSeeder::class);
        $this->call(PaisTableSeeder::class);
@@ -29,8 +29,8 @@ class DatabaseSeeder extends Seeder
        $this->call(UniversidadTableSeeder::class);
 
        $this->call(CampusSedeTableSeeder::class);
-       /*
        $this->call(ConvenioTableSeeder::class);
+       /*
 
 
        //###########################################

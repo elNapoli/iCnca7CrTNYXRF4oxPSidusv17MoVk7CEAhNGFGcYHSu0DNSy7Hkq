@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Convenio;
 use App\Universidad;
+use App\Funciones\CvsToArray;
 
 class ConvenioTableSeeder extends Seeder
 {
@@ -14,24 +15,11 @@ class ConvenioTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
-        $bi = array('SI','NO');
-        $tempBi = array_rand($bi, 1);
-        $samples_temp = [];
-
-        for($i = 0; $i < 20; $i++)
-        {
-            $convenio = $faker->numberBetween($min = 1, $max = 99) ;
-            $samples_temp[] = [
-                'nombre' => $faker->name,
-                'bilateral'=> $bi[$tempBi],
-                'universidad'=> $convenio
-            ];
-            $u = Universidad::find($convenio);
-            $u->convenio = 'Si';
-            $u->save();
-        }
-        Convenio::insert($samples_temp);
+        $csvFile = public_path().'/archivos_cvs/convenio.csv';
+        $areas = new CvsToArray();
+        $areas = $areas->csv_to_array($csvFile);
+        //dd($areas);
+        Convenio::insert($areas);
 
     }
 }

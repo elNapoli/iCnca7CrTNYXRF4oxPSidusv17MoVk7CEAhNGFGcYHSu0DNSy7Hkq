@@ -37,7 +37,7 @@ class CiudadTableSeeder extends Seeder
             # code...
 
             $samples_temp[] = [
-                'nombre' => 'Ciudad 1',
+                'nombre' => 'Ciudad de '.$item->nombre,
                 'pais'=> $item->id,
                 'codigo_postal'=>$faker->postcode
             ];

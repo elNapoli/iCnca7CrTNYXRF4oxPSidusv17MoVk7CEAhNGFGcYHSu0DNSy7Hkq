@@ -68,9 +68,9 @@ class Continente extends Model
                         ->leftJoin('universidad as universida2','universida2.id','=','campus_sede.universidad')
                         ->leftJoin('postgrado','postgrado.postulante','=','postulante.id')
                         ->leftJoin('maestria_actual','maestria_actual.postulante','=','postulante.id')
-                        ->leftJoin('maestria_postulacion','maestria_postulacion.postulante','=','postulante.id')
                         ->leftJoin('post_postulacion_universidad','post_postulacion_universidad.postulante','=','postulante.id')
-                        ->leftJoin('campus_sede as campus5','campus5.id','=','post_postulacion_universidad.campus_sede')
+                        ->leftJoin('facultad as fafafa','fafafa.id','=','post_postulacion_universidad.facultad')
+                        ->leftJoin('campus_sede as campus5','campus5.id','=','fafafa.campus_sede')
                         ->leftJoin('universidad as universidad5','universidad5.id','=','campus5.universidad')
 
 
@@ -96,8 +96,8 @@ class Continente extends Model
                                 'postgrado.procedencia as proce','postgrado.titulo_profesional',
                                 'maestria_actual.nombre as nomTitulo','maestria_actual.nombre_tutor_director',
                                 'maestria_actual.cargo_tutor_director','maestria_actual.email_tutor_director','maestria_actual.telefono_secretaria',
-                                'maestria_actual.area as arrrr','maestria_postulacion.anio','maestria_postulacion.duracion','maestria_postulacion.desde as dede',
-                                'maestria_postulacion.hasta as haaas','maestria_postulacion.tipo','universidad5.nombre as uni5',
+                                'maestria_actual.area as arrrr','post_postulacion_universidad.anio','post_postulacion_universidad.duracion','post_postulacion_universidad.desde as dede',
+                                'post_postulacion_universidad.hasta as haaas','post_postulacion_universidad.tipo','universidad5.nombre as uni5',
                                 'campus5.nombre as campus5')
                         ->get();
 

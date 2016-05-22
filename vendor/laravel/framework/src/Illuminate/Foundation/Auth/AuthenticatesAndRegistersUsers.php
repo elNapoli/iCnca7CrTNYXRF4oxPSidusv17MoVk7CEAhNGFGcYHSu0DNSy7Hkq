@@ -1,14 +1,16 @@
 <?php
-
 namespace Illuminate\Foundation\Auth;
-
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\EditUserRequest;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Auth\Registrar;
+use App\User;
 trait AuthenticatesAndRegistersUsers
 {
     use AuthenticatesUsers, RegistersUsers {
         AuthenticatesUsers::redirectPath insteadof RegistersUsers;
     }
-<<<<<<< HEAD
-
     protected $auth;
 	/**
 	 * The registrar implementation.
@@ -38,7 +40,6 @@ trait AuthenticatesAndRegistersUsers
 			'name' => 'required',
 			'apellido_paterno' => 'required',
 			'password' => 'required|confirmed',
-
 		]);
 		//$this->auth->login($this->registrar->create($request->all()));
 		$user = new User($request->all());
@@ -54,7 +55,6 @@ trait AuthenticatesAndRegistersUsers
 		return response()->json([
 				'message'=> 'Gracias por registrarte! Porfavor verifica tu correo electronico.'
 				]);
-
 		//return redirect(property_exists($thios, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/')->with('message', $message);
 		//return redirect('/')->with('mensaje', $message);
 	}
@@ -89,7 +89,6 @@ trait AuthenticatesAndRegistersUsers
 				]);
 		
 		}
-
 		if ($user->confirmado == '0')
 		{
 			$codigo = 0;
@@ -110,7 +109,6 @@ trait AuthenticatesAndRegistersUsers
 					$mensaje =  'User';
 				}
 			}
-
 			/*	return redirect($this->loginPath())
 					->withInput($request->only('email', 'remember'))
 					->withErrors([
@@ -121,7 +119,6 @@ trait AuthenticatesAndRegistersUsers
 			$codigo = 3;
 			$mensaje = "Su acceso ha sido revocado por un administrador. favor comunicarse a correo@prueba.cl";
 		}
-
 		return response()->json([
 				'codigo' => $codigo,
 				'message'=> $mensaje
@@ -169,6 +166,4 @@ trait AuthenticatesAndRegistersUsers
 	{
 		return property_exists($this, 'loginPath') ? $this->loginPath : '/auth/login';
 	}
-=======
->>>>>>> afc8cb05faa8df82c9fa06b8627c5b0b66ae323b
 }

@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
 
 
 
-
+/*
+*/
 
        //###########################################
        $this->call(UserTableSeeder::class);
@@ -24,9 +25,11 @@ class DatabaseSeeder extends Seeder
        $this->call(PaisTableSeeder::class);
        $this->call(CiudadTableSeeder::class);
 
-
        //###########################################
        $this->call(UniversidadTableSeeder::class);
+
+       $this->call(CampusSedeTableSeeder::class);
+       /*
        $this->call(ConvenioTableSeeder::class);
 
 
@@ -48,7 +51,6 @@ class DatabaseSeeder extends Seeder
 
 
        //###########################################
-        $this->call(CampusSedeTableSeeder::class);
         $this->call(DepartamentoTableSeeder::class);
         $this->call(FacultadTableSeeder::class);
         $this->call(CarreraTableSeeder::class);
@@ -115,7 +117,7 @@ class DatabaseSeeder extends Seeder
 
 
 
-
+*/
 
 
 

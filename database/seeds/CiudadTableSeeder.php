@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Ciudad;
+use App\Pais;
 
 
 class CiudadTableSeeder extends Seeder
@@ -29,11 +30,15 @@ class CiudadTableSeeder extends Seeder
         $ciudad->save();
         $samples_temp = [];
         
-        for($i = 0; $i < 500; $i++)
-        {
+
+
+        $pais = Pais::all();
+        foreach ($pais as $item) {
+            # code...
+
             $samples_temp[] = [
-                'nombre' => $faker->city,
-                'pais'=> $faker->numberBetween($min = 1, $max = 40),
+                'nombre' => 'Ciudad 1',
+                'pais'=> $item->id,
                 'codigo_postal'=>$faker->postcode
             ];
         }

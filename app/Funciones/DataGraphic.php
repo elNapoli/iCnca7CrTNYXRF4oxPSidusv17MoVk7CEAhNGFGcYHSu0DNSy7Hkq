@@ -151,7 +151,11 @@ class DataGraphic
                     $padre = $id;
                     $children  = Universidad::where('pais',$padre)->where('convenio',$nombre)->count();
                     break;
-                
+                case 'fin':
+                    $padre = $valor->id;
+                    $nombre = $valor->nombre;
+                    $children = 1;
+                    break;
                 default:
                     # code...
                     $padre = $valor->id;

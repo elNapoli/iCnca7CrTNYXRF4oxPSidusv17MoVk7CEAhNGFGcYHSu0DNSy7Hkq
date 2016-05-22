@@ -4,6 +4,8 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Universidad;
 use App\Ciudad;
+use App\Funciones\CvsToArray;
+
 class UniversidadTableSeeder extends Seeder
 {
     /**
@@ -13,39 +15,11 @@ class UniversidadTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
-
-        $Universidad = new Universidad();
-
-        $Universidad->nombre     = 'Universidad Austral de Chile';
-        $Universidad->pais     = 1;
-
-
-        $Universidad->save();
-        $samples_temp = [];
-
-        for($i = 0; $i < 100; $i++)
-        {
-
-            
-           
-
-
-            $id_pais =$faker->numberBetween($min = 1, $max = 199);
-            $ciudad = Ciudad::where('pais',$id_pais)->get();
-    
-            while($ciudad->count() == 0){
-                $id_pais =$faker->numberBetween($min = 1, $max = 199);
-                $ciudad = Ciudad::where('pais',$id_pais)->get();
-            }
-
-            $samples_temp[] = [
-                'nombre' => $faker->name . ' University',
-                'pais'=> $id_pais
-            ];
-
-        }
-        Universidad::insert($samples_temp);
+        $csvFile = public_path().'/archivos_cvs/universidades.csv';
+        $areas = new CvsToArray();
+        $areas = $areas->csv_to_array($csvFile);
+        //dd($areas);
+        Universidad::insert($areas);
 
 
     }

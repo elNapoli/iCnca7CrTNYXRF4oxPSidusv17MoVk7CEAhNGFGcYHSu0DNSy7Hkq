@@ -17,23 +17,37 @@ class DatabaseSeeder extends Seeder
 
 
 
-
        //###########################################
+/*
+*/
        $this->call(UserTableSeeder::class);
        $this->call(ContinenteTableSeeder::class);
        $this->call(PaisTableSeeder::class);
-       $this->call(CiudadTableSeeder::class);
-
+       $this->call(CiudadTableSeeder::class); // deben entregarnos esta información.
 
        //###########################################
        $this->call(UniversidadTableSeeder::class);
+
+       $this->call(CampusSedeTableSeeder::class);
        $this->call(ConvenioTableSeeder::class);
 
+        //###########################################
+        $this->call(DepartamentoTableSeeder::class); // deben entregarnos esta información.
+        $this->call(FacultadTableSeeder::class);
+        $this->call(CarreraTableSeeder::class);
+        $this->call(AsignaturaTableSeeder::class); 
 
-       //###########################################
+        $this->call(GeneroTableSeeder::class);
+        $this->call(TipoEstudioSeeder::class);
+        $this->call(ProcedenciasTableSeeder::class);
+        $this->call(AnioIntercambioTableSeeder::class);
+
+       
+
+
+       //########################################### seed falsos 
        $this->call(PostulanteTableSeeder::class);
        $this->call(DocumentoIdentidadTableSeeder::class);
-     
        $this->call(DocumentoAdjuntoTableSeeder::class);
 
       //###########################################
@@ -47,12 +61,7 @@ class DatabaseSeeder extends Seeder
        $this->call(MaestriaActualTableSeeder::class);
 
 
-       //###########################################
-        $this->call(CampusSedeTableSeeder::class);
-        $this->call(DepartamentoTableSeeder::class);
-        $this->call(FacultadTableSeeder::class);
-        $this->call(CarreraTableSeeder::class);
-        $this->call(AsignaturaTableSeeder::class); 
+
 
 
        //###########################################
@@ -91,10 +100,6 @@ class DatabaseSeeder extends Seeder
 
         // hasta aca optimicé! 
 
-        $this->call(GeneroTableSeeder::class);
-        $this->call(TipoEstudioSeeder::class);
-        $this->call(ProcedenciasTableSeeder::class);
-        $this->call(AnioIntercambioTableSeeder::class);
         
         
         

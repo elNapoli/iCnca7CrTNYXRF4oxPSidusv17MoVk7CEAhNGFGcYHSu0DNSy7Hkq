@@ -19,20 +19,22 @@ class CarreraTableSeeder extends Seeder
 
         $samples_temp = [];
       
-        for($j= 1; $j< 500; $j++){
-           # code...
+        foreach ($facultad as $item) {
+            # code...
             $numCarrera = $faker->numberBetween($min = 1, $max = 10);
             for($i = 0; $i <$numCarrera; $i++)
             {
 
                 $samples_temp[] = [
-                    'facultad' => $j,
+                    'facultad' => $item->id,
                     'nombre'=> $faker->catchPhrase,
                     'director'=>$faker->firstName.' '.$faker->lastName ,
                     'email'=>$faker->unique->email
                 ];
             }
-       }
+
+
+        }
         Carrera::insert($samples_temp);
 
 

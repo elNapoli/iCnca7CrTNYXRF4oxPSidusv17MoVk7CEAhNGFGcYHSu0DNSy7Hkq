@@ -1,7 +1,8 @@
-nombre
-Africa
-America
-Asia
-Europa
-Oceania
-Antartida
+id,nombre
+1,África
+2,América del Norte
+3,Asia
+4,Europa
+5,Oceanía
+6,Antártida
+7,América del Sur

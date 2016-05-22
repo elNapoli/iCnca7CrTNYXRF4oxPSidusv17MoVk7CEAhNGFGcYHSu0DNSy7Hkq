@@ -14,8 +14,13 @@ class CreateConvenioTable extends Migration
     {
         Schema::create('convenio', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',45);
-            $table->enum('bilateral',['SI','NO']);
+            $table->string('nombre',250);
+            $table->string('vigencia',100);
+            $table->date('firmado');
+            $table->date('vencimiento');
+            $table->string('areas_cubre',45);
+            $table->string('observaciones',100);
+            $table->enum('bilateral',['SI','NO'])->default('NO');
 
             //Foreign Key to UNIVERSIDAD
             $table->unsignedInteger('UNIVERSIDAD')->index();

@@ -97,7 +97,7 @@ var color = d3.scale.category20c();
 
 var partition = d3.layout.partition()
     .sort(null)
-    .value(function(d) { return 1; });
+    .value(function(d) { return d.size; });
 
 
 var arc = d3.svg.arc()
@@ -160,14 +160,14 @@ function getAncestors(node) {
 function mouseover(d) {
 
 if(d.parent){
- var percentage = (100 * d.value / cant ).toPrecision(3);
+ var percentage = (100 * d.size / cant ).toPrecision(3);
   var percentageString = percentage + "%";
   if (percentage < 0.1) {
     percentageString = "< 0.1%";
   }
 
 
- var percentage2 = (100 * d.value / d.parent.value ).toPrecision(3);
+ var percentage2 = (100 * d.size / d.parent.size ).toPrecision(3);
   var percentageString2 = percentage2 + "%";
   if (percentage2 < 0.1) {
     percentageString2 = "< 0.1%";
@@ -194,7 +194,7 @@ if(d.parent){
       .text(percentageString);
 
     d3.select("#p1")
-        .text('De un total de '+cant+' universidades '+d.value+' se encuentran en '+d.name+' y equivalen  respecto al total en un');
+        .text('De un total de '+cant+' universidades '+d.size+' se encuentran en '+d.name+' y equivalen  respecto al total en un');
 
     d3.select("#percentage2")
       .text(percentageString2);  

@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Pais;
+use App\Funciones\CvsToArray;
+
 
 class PaisTableSeeder extends Seeder
 {
@@ -14,25 +16,10 @@ class PaisTableSeeder extends Seeder
 
     public function run()
     {
-        $faker = Faker::create();
-
-        $pais = new Pais();
-
-        $pais->nombre     = 'Chile';
-        $pais->continente = 2;
-
-        $pais->save();
-        $samples_temp = [];
-
-        for($i = 0; $i < 70; $i++)
-        {  
-            $samples_temp[] = [
-                'nombre' => $faker->unique->country,
-                'continente'=> $faker->numberBetween($min = 1, $max = 6)
-            ];
-
-        }
-         Pais::insert($samples_temp);
-
+        $csvFile = public_path().'/archivos_cvs/paises.csv';
+        $areas = new CvsToArray();
+        $areas = $areas->csv_to_array($csvFile);
+        //dd($areas);
+        Pais::insert($areas);
     }
 }

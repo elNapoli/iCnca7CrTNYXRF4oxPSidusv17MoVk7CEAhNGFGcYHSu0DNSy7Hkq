@@ -1,6 +1,12 @@
 <?php namespace App\Http\Controllers;
 
 use App\Noticia;
+use App\Funciones\CvsToArray;
+
+use App\Continente;
+use App\Pais;
+
+
 
 class WelcomeController extends Controller {
 
@@ -32,6 +38,11 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
+		$csvFile = public_path().'/archivos_cvs/paises.csv';
+		$areas = new CvsToArray();
+		$areas = $areas->csv_to_array($csvFile);
+		//dd($areas);
+		Pais::insert($areas);
 		$noticias = Noticia::where('carousel','si')->get();
 		return view('welcome.index',compact('noticias'));
 	}

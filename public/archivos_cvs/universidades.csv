@@ -1,0 +1,261 @@
+id,nombre,convenio,pais
+1,Universidad Austral de Chile,NO,1
+2,Deutscher Akademischer Austausch Dienst (DAAD),Si,10
+3,Albert-Ludwigs University Freiburg,Si,10
+4,Technische Universität Berlin,Si,10
+5,Europa-Universität Viadrina Frankfurt (Oder),Si,10
+6,Fachhochschule Kempten,Si,10
+7,Fachhochschule Münster,Si,10
+8,Technische Hochschule Deggendorf,Si,10
+9,"Friedrich Alexander University (FAU), Erlangen Nürnberg",Si,10
+10,Fachhochschule Worms (Fachhochschule Rheinland-pfalz) ,Si,10
+11,Fachhochschule Worms,Si,10
+12,Georg-August-Universität Göttingen ,Si,10
+13,Hochschule für Forstwirtschaft Rottenburg (University of Applied Forest Sciences Rottenburg),Si,10
+14,Hochschule Furtwangen (HFU),Si,10
+15,Hochschule Weihenstephan-Triesdorf,Si,10
+16,Hochschulrektorenkonferenz (HRK),Si,10
+17,Ludwig-Maximilians Universität München (LMU) ,Si,10
+18,Justus Liebig University Giessen (JLU),Si,10
+19,Rheinisch-Westphälische Technische Hochschule Aachen (RWTH Aachen) ,Si,10
+20,Stiftung Tierärztliche Hochschule Hannover (TiHo),Si,10
+21,Technische Hochschule Karlsruhe (KIT),Si,10
+22,Technische Universität München (TUM),Si,10
+23,Universität Regensburg,Si,10
+24,Universität Rostock ,Si,10
+25,Universität Witten/Herdecke ,Si,10
+26,Universität Heidelberg ,Si,10
+27,Westfälische-Wilhelms-Universität Münster,Si,10
+28,Bauhaus Universität Weimar ,Si,10
+29,Ernst-Abbe-University of Applied Sciences Jena,Si,10
+30,Christian-Albrechts-Universität zu Kiel,Si,10
+31,Alanus Hochschule (Universidad Alanus de Artes y Ciencias Sociales),Si,10
+32,Trier University of Applied Sciences,Si,10
+33,Alma Mater Studiorum-Universitá Di Bologna Representacion en Buenos Aires ,Si,2
+34,"Argentina: Universidad Nacional de la Pampa, Universidad de Cumahue, Universidad de la Patagonia",Si,2
+35,Consejo Nacional de Investigaciones Científicas y Técnicas ,Si,2
+36,Facultad Latinoamericana de Ciencias Ambientales ,Si,2
+37,Instituto Nacional de Tecnología Agropecuaria de Argentina ,Si,2
+38,Universidad Católica de Córdoba ,Si,2
+39,Universidad de Buenos Aires,Si,2
+40,Universidad del Salvador ,Si,2
+41,Universidad Nacional de Cuyo ,Si,2
+42,Universidad Nacional de la Patagonia San Juan Bosco ,Si,2
+43,Universidad Nacional de la Plata,Si,2
+44,Universidad Nacional de Río Cuarto ,Si,2
+45,Universidad Nacional de Santiago del Estero ,Si,2
+46,Universidad Nacional de Tres de Febrero ,Si,2
+47,Universidad Nacional del Centro de la Provincia de Buenos Aires ,Si,2
+48,Universidad Nacional del Comahue ,Si,2
+49,Universidad Nacional del Rosario ,Si,2
+50,Universidad Tecnológica Nacional de la República Argentina,Si,2
+51,Universidad Nacional de Mar del Plata,Si,2
+52,Universidad Nacional de Río Negro,Si,2
+53,University of Adelaide,Si,3
+54,University of Queensland,Si,3
+55,International Water Centre,Si,3
+56,Fachhochschule Salzburg,Si,4
+57,Universität für Bodenkultur Wien BOKU,Si,4
+58,Universität Innsbruck,Si,4
+59,Salzburg Universidad de Ciencias Aplicadas,Si,4
+60,Universiteit Gent/ Universidad de Gent ,Si,5
+61,Université Catholique de Louvain,Si,5
+62,Université de Liège,Si,5
+63,Universidad Mayor de San Simon y Programa Forestal Cordeco-Cotesu/IC ,Si,6
+64,Programa de Repoblamiento Forestal Cordeco-Cotesu/IC ,Si,6
+65,Universidad Autónoma Gabriel René Moreno ,Si,6
+66,Universidad Católica Boliviana San Pablo ,Si,6
+67,Facultad Metropolitana de Guaramirim,Si,7
+68,Instituto Euro-Americano de Educación y Motricidad Humana,Si,7
+69,Servicio Nacional de Aprendizaje Industrial ,Si,7
+70,Universidad Blumenau ,Si,7
+71,Universidad de Passo Fundo ,Si,7
+72,Universidad de Sao Paulo ,Si,7
+73,Universidad Estadual de Campinas,Si,7
+74,Universidad Federal de Río de Janeiro ,Si,7
+75,Universidad Federal de Santa Catarina ,Si,7
+76,Universidad Federal do Pará ,Si,7
+77,Universidad Paulista (UNIP),Si,7
+78,Universidade de Caxias Do Sul,Si,7
+79,Universidade Do Oeste de Santa Catarina - UNOESC,Si,7
+80,Universidade Federal de Santa Maria ,Si,7
+81,Universidade Federal do Paraná,Si,7
+82,Universidade Estadual Paulista (UNESP),Si,7
+83,Universidade Federal de Uberlandia,Si,7
+84,Universidade Federal de Sao Carlos ,Si,7
+85,Pontifícia Universidade Católica de São Paulo,Si,7
+86,"Centro Universitario Feevale, Brasil",Si,7
+87,Universidade Presbiteriana Mackenzie,Si,7
+88,Association of Universities and Colleges of Canada (AUCC),Si,8
+89,Université Laval ,Si,8
+90,University of Calgary ,Si,8
+91,University of Prince Edward Island (UPEI),Si,8
+92,University of Western Ontario (UWO),Si,8
+93,University of Saskatchewan,Si,8
+94,Université de Sherbrooke,Si,8
+95,University of Yunnan,Si,9
+96,Corporación Universitaria Autónoma de Occidente ,Si,11
+97,Corporación Universitaria Lasallista ,Si,11
+98,Escuela Colombiana de Ingenieria Julio Garavito ,Si,11
+99,Instituto Colombiano de Crédito Educativo y Estudios Técnicos en el Exterior Mariano Ospina Pérez,Si,11
+100,Universidad de Antioquia ,Si,11
+101,Universidad de Caldas,Si,11
+102,Universidad de Ciencias Aplicadas y Ambientales ,Si,11
+103,Universidad de Córdoba,Si,11
+104,Universidad de la Sabana ,Si,11
+105,Universidad de La Salle,Si,11
+106,"Universidad de Nariño, Colombia ",Si,11
+107,Universidad de San Buenaventura,Si,11
+108,Universidad del Cauca,Si,11
+109,Universidad EAFIT ,Si,11
+110,Universidad INCCA de Colombia ,Si,11
+111,Universidad Industrial de Santander ,Si,11
+112,Universidad Libre Colombia,Si,11
+113,Universidad Nacional de Colombia ,Si,11
+114,Universidad del Norte,Si,11
+115,Centro de Desarrollo del Espíritu Empresarial - Universidad ICESI CALI / COLOMBIA,Si,11
+116,Universidad Santo Tomás,Si,11
+117,Universidad Distrital Francisco José de Caldas,Si,11
+118,Universidad de Cheju ,Si,12
+119,Centro Agronómico Tropical de Investigación y Enseñanza (CATIE) ,Si,13
+120,Cátedra Latinoamericana de Decisiones Ambientales para el Cambio Global (CLADA) del Centro Agronómico Tropical de Investigación y Enseñanza (CATIE) ,Si,13
+121,Universidad Nacional de Costa Rica ,Si,13
+122,Universidad de Costa Rica ,Si,13
+123,Centro Nacional de Sanidad Agropecuaria (CENSA),Si,14
+124,Instituto Superior Politécnico José Antonio Echeverría,Si,14
+125,Escuela Superior Politécnica del Litoral del Ecuador ,Si,15
+126,Pontificia Universidad Católica del Ecuador - Escuela de Hoteleria y Turismo/ Facultad de Ciencias Humanas,Si,15
+127,Universidad Central del Ecuador ,Si,15
+128,Universidad de Cuenca ,Si,15
+129,Universidad del Azuay,Si,15
+130,Universidad Nacional de Loja ,Si,15
+131,Universidad Técnica Estatal de Quevedo,Si,15
+132,Pontificia Universidad Católica del Ecuador,Si,15
+133,Universidad Técnica Particular de Loja,Si,15
+134,"Centro de Investigaciones Energéticas, Medioambientales y Tecnológicas ",Si,16
+135,Escola Técnica Superior d'Arquitectura del Vallés de la Universitat Politécnica de Catalunya ,Si,16
+136,Escuela Andaluza de Salud Pública de España ,Si,16
+137,"Institut de Recerca I Tecnología Agroalimentaries (IRTA), Barcelona ",Si,16
+138,Instituto Vasco de Investigación y Desarrollo Agrario ,Si,16
+139,Red Iberoamericana de Estudios Jurídicos 1812 coordinada por la Universidad de Cádiz ,Si,16
+140,Universidad Carlos III de Madrid ,Si,16
+141,Universidad Complutense de Madrid,Si,16
+142,Universidad de Alcalá ,Si,16
+143,Universidad de Alicante ,Si,16
+144,Universidad de Cádiz ,Si,16
+145,Universidad de Castilla - La Mancha ,Si,16
+146,Universidad de Deusto ,Si,16
+147,Universidad de las Palmas de Gran Canaria ,Si,16
+148,Universidad de León,Si,16
+149,Universidad de Lleida ,Si,16
+150,Universidad de Málaga ,Si,16
+151,Universidad de Oviedo ,Si,16
+152,Universidad de Santiago de Compostela,Si,16
+153,Universidad de Sevilla ,Si,16
+154,Universidad de Valladolid ,Si,16
+155,Universidad de Vigo ,Si,16
+156,Universidad de Zaragoza ,Si,16
+157,Universidad Internacional de Andalucía ,Si,16
+158,Universidad Politécnica de Madrid ,Si,16
+159,Universidad Politécnica de Valencia,Si,16
+160,Universidad Pompeu Fabra ,Si,16
+161,Universidad Pontificia de Salamanca ,Si,16
+162,Universidades Españolas e Iberoamericanas ,Si,16
+163,Universitat Autónoma de Barcelona ,Si,16
+164,Universitat de Valencia ,Si,16
+165,Universitat Oberta de Catalunya ,Si,16
+166,Universidad Rey Juan Carlos,Si,16
+167,Universidad Autónoma de Madrid,Si,16
+168,Universidad de Jaén,Si,16
+169,Consejo Superior de Investigaciones Científicas (Agencia Estatal CSIC),Si,16
+170,Universidad de Granada,Si,16
+171,Centro de Estudios Políticos y Constitucionales,Si,16
+172,Asociación Universitaria Iberoamericana de Postgrado,Si,16
+173,Fundación Carolina,Si,16
+174,Universidad de Cantabria,Si,16
+175,Appalachian State University,Si,17
+176,Auburn University,Si,17
+177,Indiana University,Si,17
+178,Middlebury College ,Si,17
+179,North Carolina State University,Si,17
+180,Saint John's University ,Si,17
+181,"University of California, Davis Extension",Si,17
+182,University of Florida,Si,17
+183,University of Georgia ,Si,17
+184,"University of Minnesota, Veterinary Medicine School",Si,17
+185,University of Montana ,Si,17
+186,Virginia Polytechnic Institute and State University (Virginia TECH),Si,17
+187,Plymouth State University,Si,17
+188,Plymouth State University,Si,17
+189,The Public Health Research Institute Center,Si,17
+190,Washington State University ,Si,17
+191,University of Florida,Si,17
+192,Oregon Sate University,Si,17
+193,"Sección de Prensa y Cultura de la Embajada de Estados Unidos, Santiago ",Si,17
+194,Universidad de Filipinas Diliman,Si,18
+195,Tampere University of Technology,Si,19
+196,University of Eastern Finland,Si,19
+197,Universidad de Jyväskylä,Si,19
+198,Groupe Superieure de Commerce de Montpellier ,Si,20
+199,Instituto de Ciencias Políticas de Lille ,Si,20
+200,Montpellier SupAgro ,Si,20
+201,Consejo de Presidentes Universidades de Francia ,Si,20
+202,Universidad Pierre et Marie Currie ,Si,20
+203,Institute VetAgro Sup,Si,20
+204,Université de Paris Ouest Nanterre La Défense,Si,20
+205,Université Jean Moulin - Lyon 3 ,Si,20
+206,Centre National de la Recherche Scientifique/ Université Pierre et Marie Curie,Si,20
+207,Université de Rouen,Si,20
+208,Universidad de San Carlos ,Si,21
+209,Maastricht Hotel Management School,Si,22
+210,Secretaría de Agricultura y Ganadería ,Si,23
+211,Universidad de Sassari,Si,24
+212,Università di Pisa ,Si,24
+213,Sapienza Università di Roma,Si,24
+214,Università Politecnica delle Marche,Si,24
+215,Universidad de Padua,Si,24
+216,Università di Torino,Si,24
+217,Tokyo Medical and Dental University (TMDU),Si,25
+218,Riga Technical University ,Si,26
+219,Escuela Bancaria y Comercial de México,Si,27
+220,Instituto Tecnológico y de Estudios Superiores de Monterrey,Si,27
+221,Universidad Autonoma Chapingo ,Si,27
+222,Universidad Autónoma de Aguascalientes,Si,27
+223,Universidad Autónoma de Nuevo León ,Si,27
+224,Universidad Autónoma del Estado de México ,Si,27
+225,"Universidad Autónoma Metropolitana, Unidad Xochimilco",Si,27
+226,Universidad Autónoma de Yucatán,Si,27
+227,Universidad de Guadalajara,Si,27
+228,Universidad de las Américas - Puebla,Si,27
+229,Universidad Michoacana de San Nicolás de Hidalgo - Morelia ,Si,27
+230,Universidad Nacional Autónoma de México ,Si,27
+231,El Colegio de México,Si,27
+232,Universidad Autónoma de Baja California Sur,Si,27
+233,Instituto Tecnológico Superior de Zacapoatxla,Si,27
+234,Universidad Autónoma de Chihuahua,Si,27
+235,Ministerio del Ambiente y los Recursos Naturales ,Si,28
+236,Universitetet i Bergen,Si,29
+237,Massey University,Si,30
+238,Universidad Latinoamericana de Comercio Exterior ,Si,31
+239,Consejo de Gobernadores del Paraguay,Si,32
+240,Universidad Nacional de Asunción ,Si,32
+241,Universidad Católica de Perú ,Si,33
+242,Universidad de San Martin de Porres ,Si,33
+243,Universidad del Pacífico ,Si,33
+244,Universidad Nacional Pedro Ruiz Gallo ,Si,33
+245,Universidad Nacional Mayor de San Marcos ,Si,33
+246,Universidad Nacional Toribio Rodríguez de Mendoza de Amazonas,Si,33
+247,Universidad Católica Santo Toribio de Mongrovejo,Si,33
+248,Universidad Peruana Cayetano Heredia,Si,33
+249,Instituto Politécnico DO PORTO ,Si,34
+250,Sistema Universitario Ana G. Méndez (SUAGM) Puerto Rico,Si,35
+251,Universidad Metropolitana de Puerto Rico,Si,35
+252,Royal Botanic Garden Edinburgh,Si,36
+253,Kingston University London,Si,36
+254,The University of Sheffield,Si,36
+255,Universidad Mendel ,Si,37
+256,Right Livelihood College (RLC) of the Right Livelihood Foundation,Si,38
+257,"Ministerio de Ganadería, Agricultura y Pesca ",Si,39
+258,Universidad Católica del Uruguay ,Si,39
+259,"Universidad de La República, Uruguay ",Si,39
+260,Universidad Nacional Abierta (UNA) ,Si,40

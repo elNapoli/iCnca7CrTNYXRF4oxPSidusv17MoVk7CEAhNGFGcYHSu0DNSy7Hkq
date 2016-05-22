@@ -33,7 +33,7 @@ class CiudadTableSeeder extends Seeder
         {
             $samples_temp[] = [
                 'nombre' => $faker->city,
-                'pais'=> $faker->numberBetween($min = 1, $max = 70),
+                'pais'=> $faker->numberBetween($min = 1, $max = 40),
                 'codigo_postal'=>$faker->postcode
             ];
         }

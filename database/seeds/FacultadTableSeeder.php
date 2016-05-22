@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Facultad;
 use App\CampusSede;
+use App\Funciones\CvsToArray;
 
 
 class FacultadTableSeeder extends Seeder
@@ -16,7 +17,14 @@ class FacultadTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $CampusSede =  CampusSede::all();
+        $csvFile = public_path().'/archivos_cvs/facultades.csv';
+        $areas = new CvsToArray();
+        $areas = $areas->csv_to_array($csvFile);
+        //dd($areas);
+        Facultad::insert($areas);
+
+        // información falsa, una vez finalizado el proyecto hay que eliminar
+        $CampusSede =  CampusSede::where('id','>','3')->get();
         $samples_temp = [];
 
         foreach ($CampusSede as $item) {

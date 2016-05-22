@@ -32,7 +32,7 @@ class PostulanteTableSeeder extends Seeder
                 'lugar_nacimiento'=> $faker->country,
                 'telefono'=> $faker->phoneNumber,
                 'email_personal'=>$faker->unique->email ,
-                'ciudad'=>$faker->numberBetween($min = 1, $max = 500),
+                'ciudad'=>$faker->numberBetween($min = 1, $max = 42),
                 'direccion'=>$faker->address, 
                 'user_id'=>$faker->unique->numberBetween($min = 1, $max = 150), 
                 'fecha_nacimiento'=>$faker->dateTimeBetween($startDate = '-30 years', $endDate = '-20 years'),

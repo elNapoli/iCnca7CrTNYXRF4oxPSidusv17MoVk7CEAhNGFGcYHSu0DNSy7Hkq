@@ -40,7 +40,7 @@ class ProcedenciaPregradoTableSeeder extends Seeder
 		                'grupo_sanguineo'=>$faker->asciify('GS ***') ,
 		                'enfermedades'=> $faker->sentence($nbWords = 3, $variableNbWords = true) ,
 		                'telefono'=>$faker->phoneNumber,
-		                'ciudad'=> $faker->numberBetween($min = 1, $max = 500),
+		                'ciudad'=> $faker->numberBetween($min = 1, $max = 42),
 		                'direccion'=>$faker->address
 		            ];
 

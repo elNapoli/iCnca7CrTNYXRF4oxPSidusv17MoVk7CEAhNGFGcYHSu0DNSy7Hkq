@@ -38,11 +38,6 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		$csvFile = public_path().'/archivos_cvs/paises.csv';
-		$areas = new CvsToArray();
-		$areas = $areas->csv_to_array($csvFile);
-		//dd($areas);
-		Pais::insert($areas);
 		$noticias = Noticia::where('carousel','si')->get();
 		return view('welcome.index',compact('noticias'));
 	}

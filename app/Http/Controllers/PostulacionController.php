@@ -17,6 +17,7 @@ use App\User;
 use App\Ciudad;
 use App\Pregrado;use Illuminate\Database\Eloquent\Collection;
 use App\Facultad;
+use App\Universidad;
 use App\DocumentoIdentidad;
 use Illuminate\Http\Request;
 
@@ -53,18 +54,16 @@ class PostulacionController extends Controller {
 
 	public function getNomina()
 	{
-        $cajas = new Collection;
-        $postulantes = Postulante::with('pregradosR')->with('postgradosR')->get();
-        //dd($postulantes->toArray());
-		$postulante1 = Postulante::with('ciudadR')->first();
-		//dd($postulante1->toArray());
-		$campus = CampusSede::where('universidad','1')->get()->lists('nombre','id')->toArray();
-		return view('postulacion.view_admin.nomina',compact('campus'));
+		
+
+		$universidad = Universidad::all()->lists('nombre','id')->toArray();
+		return view('postulacion.view_admin.nomina',compact('universidad'));
 	}
 
 	public function postGenerarNomina(Request $request){	
 		
-		$temp = PreUach::nomina($request->get('campusSede'),$request->get('facultad'))->get()->toArray();
+		$temp = Postulante::nonima($request->get('universidad'),$request->get('campusSede'),
+		$request->get('facultad'),$request->get('carrera'),$request->get('procedencia'))->toArray();
 		$arra = array('data'=>$temp);
 		return json_encode($arra);
 

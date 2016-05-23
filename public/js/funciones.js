@@ -31,7 +31,7 @@ $.ajax({
     },
     success : function(json) {
         ruta.empty();
-        ruta.append("<option value=''>Seleccione la "+idSelectDestino+"</option>");
+        ruta.append("<option value='0'>Seleccione la "+idSelectDestino+"</option>");
 
         if(url ==="#getCampusByPais"){
             $.each(json, function(index, subCatObj){

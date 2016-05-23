@@ -37,8 +37,10 @@
 
 <script>
     $(document).on('ready',function(){
+        selectByTabs("form.form-horizontal",'#universidad','#_token','#getCampusByUniversidad','#campusSede');
 
         selectByTabs("form.form-horizontal",'#campusSede','#_token','#getUrlFacultadByCampus','#facultad');
+        selectByTabs("form.form-horizontal",'#facultad','#_token','#getCarreraByFacultad','#carrera');
 
         $('#fechaCursos').datepicker({
 
@@ -63,9 +65,12 @@
                 'data':function(d){
 
                 	var obj = {
+        'universidad':$('#universidad').val(),
 		  	'campusSede':$('#campusSede').val(),
 		    'facultad':$('#facultad').val(),
-		    //'fechaCursos':$('#fechaCursos').val(),
+        'anio_intercambio':$('#anio_intercambio').val(),
+        'semestre':$('#semestre').val(),
+        'procedencia':$('#procedencia').val(),
 		    '_token':$('#_token').val()
     	};
     	return obj;
@@ -75,20 +80,18 @@
                   { "data":"nombre" },
                   { "data":"apellido_paterno" },
                   { "data":"apellido_materno" },
-                  { "data":"telefono_1" },
-                  { "data":"telefono_2" },
+                  { "data":"fecha_nacimiento" },
+                  { "data":"telefono1" },
                   { "data":"email_personal" },
-                  { "data":"email_institucional" },
-                  { "data":"tipo_estudio" },
-                  { "data":"facultad" },
+                  { "data":"area" },
+                  { "data":"anios_cursados" },
+                  { "data":"campus1" },
+                  { "data":"universidad1" },
+                  { "data":"anio_ingreso" },
                   { "data":"carrera" },
-                  { "data":"pais" },
-                  { "data":"universidad_destino" },
-                  { "data":"facultad_destino" },
-                  { "data":"carrera_destino" },
-                  { "data":"semestre" },
-                  { "data":"desde" },
-                  { "data":"hasta" },
+                  { "data":"facultad" },
+                  { "data":"campus2" },
+                  { "data":"universidad2" },
                   
              
               ]

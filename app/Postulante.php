@@ -14,6 +14,8 @@ class Postulante extends Model
                             'nombre',
                             'sexo',
                             'nacionalidad',
+                            'nivel_de_español',
+                            'como_se_entero',
                             'fecha_nacimiento',
                             'lugar_nacimiento',
                             'telefono',

@@ -14,6 +14,8 @@ class PostulanteTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
+        $español = array('Bajo', 'Medio', 'Alto', 'Nativo');
+        $comoSeEntero = array('Internet', 'Noticia', 'Me contó un amigo', 'Correo electronico');
 
 
 		    //$tipoEstudio = array('PREGRADO','POSTGRADO');
@@ -29,6 +31,8 @@ class PostulanteTableSeeder extends Seeder
                 'apellido_paterno'=> $faker->lastName,
                 'apellido_materno'=>$faker->lastName ,
                 'nacionalidad'=>$faker->citySuffix,
+                'nivel_de_español'=>$faker->numberBetween($min = 1, $max = count($español)) ,
+                'como_se_entero'=>$faker->numberBetween($min = 1, $max = count($comoSeEntero)) ,
                 'lugar_nacimiento'=> $faker->country,
                 'telefono'=> $faker->phoneNumber,
                 'email_personal'=>$faker->unique->email ,

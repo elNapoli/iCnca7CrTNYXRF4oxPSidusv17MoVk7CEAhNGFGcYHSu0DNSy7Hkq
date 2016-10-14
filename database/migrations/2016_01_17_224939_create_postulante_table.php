@@ -21,6 +21,8 @@ class CreatePostulanteTable extends Migration
             $table->string('nacionalidad', 45);
             $table->date('fecha_nacimiento');
             $table->string('lugar_nacimiento', 45);
+            $table->enum('nivel_de_español', ['Bajo', 'Medio', 'Alto', 'Nativo']);
+            $table->enum('como_se_entero', ['Internet', 'Noticia', 'Me contó un amigo', 'Correo electronico']);
             $table->string('telefono',20);
             $table->string('email_personal', 45)->unique();
             $table->string('tipo_estudio',9);

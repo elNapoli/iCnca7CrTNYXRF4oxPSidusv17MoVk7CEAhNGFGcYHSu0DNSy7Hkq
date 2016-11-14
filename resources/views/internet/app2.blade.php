@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {!! Html::Style('plugins/uach/css/estilos_uach.css')!!}
         {!! Html::Style('css/bootstrap_uach.css')!!}
+        {!! Html::Style('plugins/theme_intranet/font-awesome/css/font-awesome.css')!!}
         {!! Html::Script('js/vendor/modernizr-2.8.3.min.js') !!}
         @yield('styles')
     </head>

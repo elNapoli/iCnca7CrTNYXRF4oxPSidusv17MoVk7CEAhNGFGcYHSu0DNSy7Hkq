@@ -21,6 +21,11 @@ class InternetController extends Controller
         return view('guest.galeria');
     }
 
+    public function getSelectLogin(){
+
+        return view('auth.select_login');
+    }
+
     public function getAlojamiento(){
 
         return view('guest.alojamiento');

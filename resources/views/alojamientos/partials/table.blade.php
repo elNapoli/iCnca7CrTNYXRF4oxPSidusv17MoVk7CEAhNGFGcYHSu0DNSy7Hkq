@@ -7,9 +7,11 @@
                          <th>#</th>
                         <th>Tipo</th>
                         <th>Direccion</th>
+                        <th>Contacto</th>
+                        <th>Descripción</th>
                         <th>Telefono</th>
                         <th>Precio</th>
-                        <th>Acciones</th>              
+                        <th>Acciones</th>
                     </tr>
                 </thead>
             </table>

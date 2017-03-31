@@ -10,6 +10,8 @@ class alojamiento extends Model
     public $timestamps = false;
     protected $fillable = ['tipo',
                            'direccion',
+                           'contacto',
+                           'descripcion',
                            'precio',
                            'telefono']; 
 

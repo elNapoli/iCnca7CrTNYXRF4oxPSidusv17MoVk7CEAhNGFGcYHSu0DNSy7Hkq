@@ -23,6 +23,8 @@ class AlojamientoTableSeeder extends Seeder
             $samples_temp[] = [
                 'tipo'=> $alojamiento[$tempAl],
                 'direccion' => $faker->address,
+                'contacto' => $faker->lastName,
+                'descripcion' => $faker->text($maxNbChars = 500),
                 'precio'=>$faker->numberBetween($min = 30000, $max = 200000),
                 'telefono' => $faker->phoneNumber 
             ];

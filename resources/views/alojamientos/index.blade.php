@@ -39,6 +39,8 @@ var dt = $('#tableAlojamientos').DataTable( {
 			            { "data":"id" },
 			            { "data":"tipo" },
 			            { "data":"direccion" },
+			            { "data":"contacto" },
+			            { "data":"descripcion" },
 			            { "data":"telefono" },
 			            { "data":"precio" },
 			            { "data": null,

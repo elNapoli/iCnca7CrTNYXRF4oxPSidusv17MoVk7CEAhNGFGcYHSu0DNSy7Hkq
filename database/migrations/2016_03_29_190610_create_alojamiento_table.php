@@ -17,6 +17,8 @@ class CreateAlojamientoTable extends Migration
             $table->increments('id');
             $table->enum('tipo', ['Cabaña','Casa','Departamento','Hostal','Pension','Pieza']);
             $table->string('direccion',100);
+            $table->string('contacto',100);
+            $table->string('descripcion',500);
             $table->string('precio',100);
             $table->string('telefono',20);
         });

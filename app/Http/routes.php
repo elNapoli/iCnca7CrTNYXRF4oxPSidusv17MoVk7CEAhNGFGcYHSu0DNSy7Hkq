@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::get('/setLang', 'WelcomeController@setLang');
 Route::get('profile', 'UsuariosController@profile');
 Route::post('change-password', 'UsuariosController@changePassword');
 Route::post('update-profile', 'UsuariosController@updateProfile');

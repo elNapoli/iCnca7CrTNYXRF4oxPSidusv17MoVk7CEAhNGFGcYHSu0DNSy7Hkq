@@ -5,12 +5,12 @@
         <a href="http://intranet.uach.cl">Intranet</a>
         <li class="dropdown lang">
    				<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-         			<span class="flag es">  </span>
+         			<span class="flag {{session('lang')}}">  </span>
                  	<b class="caret"></b>
        			</a>
           		<ul class="dropdown-menu menu-lang">
           			<li>
-          				<a href="#" hreflang="fr"><span class="flag en"></span></a>
+          				<a href="#" hreflang="fr" id="changeLang" data-lang="{{session('lang') =='es'? 'en':'es'}}"><span class="flag {{session('lang') =='es'? 'en':'es'}}"></span></a>
           			</li>
       			</ul>
     	</li>

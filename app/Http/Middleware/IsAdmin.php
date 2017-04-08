@@ -22,7 +22,8 @@ class IsAdmin {
 	public function handle($request, Closure $next)
 	{
 		$message = 'No posee los permisos de administrador. Ha sido desconectado.';
-		if ($this->auth->user()->tipo_usuario != 'administrador')
+
+		if ($this->auth->user() == null or $this->auth->user()->tipo_usuario != 'administrador' )
 		{
 
 			$this->auth->logout(); //sacamos al usuario por tratar de entrar a panel admin

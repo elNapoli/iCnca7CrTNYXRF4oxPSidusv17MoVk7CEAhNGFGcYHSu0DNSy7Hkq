@@ -22,7 +22,7 @@
             {!! Html::image($item->foto,'',array('class'=>'imagenCarrusel')) !!}
 	      
 	      	<div class="carousel-caption">
-				<h3>{{$item->titulo}}</h3>
+				<a href="internet/noticias-view/{{$item->id}}"><h3>{{$item->titulo}}</h3></a>
 		    	<p>{{$item->resumen}}</p>
 	      	</div>
 	    </div>

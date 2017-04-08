@@ -2,6 +2,7 @@
 
 use App\Noticia;
 use App\Funciones\CvsToArray;
+use Illuminate\Http\Request;
 
 use App\Continente;
 use App\Pais;
@@ -38,8 +39,17 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
+		
+		\App::setLocale(session('lang'));
+
 		$noticias = Noticia::where('carousel','si')->get();
 		return view('welcome.index',compact('noticias'));
+	}
+	public function setLang(Request $request){
+		\Session::set('lang', $request->get('lang'));
+		return redirect('/');
+
+
 	}
 
 }

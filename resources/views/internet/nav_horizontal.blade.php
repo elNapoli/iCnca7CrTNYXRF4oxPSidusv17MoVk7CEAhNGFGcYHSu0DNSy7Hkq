@@ -30,20 +30,20 @@
 <div id="menu_3">
     <ul>        
         <li class="nivel1">
-            <a href="{{url('/')}}"   >Portada</a>
+            <a href="{{url('/')}}"   >{{trans('welcome.home')}} </a>
             {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
 
         </li>
         
         <li class="nivel1">
-            <a href="#!" >¿Quiénes somos?</a>       
+            <a href="#!" >{{trans('welcome.aboutUs')}} </a>       
             {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
 
                 <ul>
-                    <li><a href="{{url('internet/mision')}}">Misión</a>
-                    <li><a href="{{url('internet/vision')}}" >Visión</a>
+                    <li><a href="{{url('internet/mision')}}">{{trans('welcome.mission')}}</a>
+                    <li><a href="{{url('internet/vision')}}" >{{trans('welcome.vision')}}</a>
                     </li>
-                    <li><a href="{{url('internet/contacto')}}" >Contacto</a>
+                    <li><a href="{{url('internet/contacto')}}" >{{trans('welcome.contact')}}</a>
                     </li>
 
               </ul>
@@ -52,14 +52,14 @@
         </li>
 
         <li class="nivel1">
-            <a href="#!" >Estudiantes</a>       
+            <a href="#!" >{{trans('welcome.students')}}</a>       
             {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
 
                 <ul>
-                    <li><a href="{{url('internet/mision')}}">Entrantes</a>
-                    <li><a href="{{url('internet/vision')}}" >Salientes</a>
+                    <li><a href="{{url('internet/mision')}}">{{trans('welcome.incoming')}}</a>
+                    <li><a href="{{url('internet/vision')}}" >{{trans('welcome.salient')}}</a>
                     </li>
-                    <li><a href="{{url('internet/testimonios')}}"   >Testimonios</a></li>
+                    <li><a href="{{url('internet/testimonios')}}"   >{{trans('welcome.testimonials')}}    </a></li>
 
               </ul>
 
@@ -69,19 +69,19 @@
 
 
         <li class="nivel1">
-            <a href="{{url('internet/testimonios')}}"   >Servicios estudiantiles</a>
+            <a href="{{url('internet/testimonios')}}"   >{{trans('welcome.testimonials')}}</a>
             {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
 
         </li>
         
         <li class="nivel1">
-            <a href="{{url('internet/noticias')}}"   >Noticias</a>
+            <a href="{{url('internet/noticias')}}"   >{{trans('welcome.news')}} </a>
             {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
 
         </li>
 
         <li class="nivel1">
-            <a href="{{url('internet/galeria')}}"   >Galeria</a>
+            <a href="{{url('internet/galeria')}}"   >{{trans('welcome.galery')}} </a>
             {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
 
         </li>
@@ -93,6 +93,6 @@
 
     </ul>
         <div class="log">
-            <a href="{{url('internet/select-login')}}"  class="btn btn-default btn-ms active " role="button"> Ingresar   <i class='fa fa-user'></i> </a>
+            <a href="{{url('internet/select-login')}}"  class="btn btn-default btn-ms active " role="button"> {{trans('welcome.signIn')}}    <i class='fa fa-user'></i> </a>
             </div>
 </div> 

@@ -88,7 +88,26 @@ a:hover, a:active {
 .clear {
     clear:both;
 }
+li.lang{
+    display: inline-block;
+}
+span{
+    background-image:   url('../img/flags16.png');
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+.menu-lang{
+    min-width: 16px !important;
+    left: -30px !important;
+}
+.en{
+    background-position: 0 -3664px;
 
+}
+.es{
+   background-position: 0 -1328px;
+}
 #top {
     width: 1010px; 
     margin: 0 auto; 
@@ -112,7 +131,6 @@ a:hover, a:active {
     color: #CCC; 
     height: 21px; 
     line-height: 21px; 
-    margin-right: 20px; 
     margin-top: -2px;
 }
 #top #menu_1 a {

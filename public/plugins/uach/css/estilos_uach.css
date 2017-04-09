@@ -91,7 +91,7 @@ a:hover, a:active {
 li.lang{
     display: inline-block;
 }
-span{
+span.flag{
     background-image:   url('../img/flags16.png');
     display: inline-block;
     height: 16px;

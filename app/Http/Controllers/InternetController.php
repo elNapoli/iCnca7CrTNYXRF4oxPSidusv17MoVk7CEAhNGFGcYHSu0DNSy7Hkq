@@ -26,6 +26,7 @@ class InternetController extends Controller
         return view('auth.select_login');
     }
 
+
     public function getAlojamiento(){
 
         return view('guest.alojamiento');
@@ -42,6 +43,13 @@ class InternetController extends Controller
 
 
     }
+
+    public function getServicios(){
+        return view('guest.servicios');
+
+
+    }
+
     public function getVision(){
         return view('guest.vision');
 

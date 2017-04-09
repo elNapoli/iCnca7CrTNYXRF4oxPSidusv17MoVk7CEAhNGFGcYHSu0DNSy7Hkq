@@ -69,7 +69,7 @@
 
 
         <li class="nivel1">
-            <a href="{{url('internet/testimonios')}}"   >{{trans('welcome.testimonials')}}</a>
+            <a href="{{url('internet/servicios')}}"   >{{trans('welcome.aditionalService')}}</a>
             {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
 
         </li>

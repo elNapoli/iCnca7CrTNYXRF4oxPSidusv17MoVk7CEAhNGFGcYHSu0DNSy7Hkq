@@ -3,17 +3,9 @@
         <a href="/inicio-uach/contacto">Contacto</a>&nbsp;| 
         <a href="/inicio-uach/mapa">Mapa del Sitio</a> |&nbsp;
         <a href="http://intranet.uach.cl">Intranet</a>
-        <li class="dropdown lang">
-   				<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-         			<span class="flag {{session('lang')}}">  </span>
-                 	<b class="caret"></b>
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" id='changeLang' data-lang='{{Session::get("lang") =="es"?"en":"es"}}' aria-expanded="false">
+         			<span class="flag {{Session::get('lang')}}">  </span>
        			</a>
-          		<ul class="dropdown-menu menu-lang">
-          			<li>
-          				<a href="#" hreflang="fr" id="changeLang" data-lang="{{session('lang') =='es'? 'en':'es'}}"><span class="flag {{session('lang') =='es'? 'en':'es'}}"></span></a>
-          			</li>
-      			</ul>
-    	</li>
 
     </div>
 

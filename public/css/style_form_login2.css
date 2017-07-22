@@ -1,0 +1,146 @@
+*{
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  font-family:arial;
+}
+hr{
+
+color: #727BA5;
+background-color: #C9C9C9;
+height: 1px;
+}
+
+.miRow{  color:#727BA5;
+
+      padding:5px 20px;
+}
+.pull-left {
+  float: left !important;
+}
+
+
+.pull-right {
+  float: right !important;
+}
+
+.der{
+float: right;
+}
+#loading {
+   width: 100%;
+   height: 100%;
+   top: 0px;
+   left: 0px;
+   position: fixed;
+   display: block;
+   opacity: 0.7;
+   background-color: #000;
+   z-index: 100000;
+   text-align: center;
+   display: none
+}
+
+.izq{
+float: left;
+
+}
+h1{
+  color: #727BA5;
+  text-align:center;
+  font-faimly:icon;
+}
+.reset-form{
+  width:450px;
+  padding:5px 30px 35px;
+  background:rgba(235,235,205,0.7);
+  border-radius:4px;
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;
+  margin:50px 100px;
+}
+.login-form{
+  width:350px;
+  padding:5px 30px 35px;
+  background: #C0C5D9;
+  border-radius:4px;
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;
+  margin:50px 100px;
+}
+#loading img{
+
+
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   margin-top: -75px;
+   margin-left: -75px;
+
+}
+.form-group{
+  position: relative;
+}
+.input_con_icono{
+
+  height:50px;
+  
+}
+.form-control{
+  border:none;
+  padding:5px 7px 5px 15px;
+  background:#fff;
+  color:#666;
+  border:2px solid #727BA5;
+  border-radius:4px;
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;
+}
+.form-control:focus, .form-control:focus + .glyphicon{
+  border-color:#3E4C88;
+  color:#3E4C88;
+}
+.form-group .glyphicon{
+  position: absolute;
+  right:15px;
+  top:17px;
+  color:#999;
+}
+.log-status.wrong-entry {
+  -webkit-animation: wrong-log 0.3s;
+  -moz-animation: wrong-log 0.3s;
+  -ms-animation: wrong-log 0.3s;
+  animation: wrong-log 0.3s;
+}
+.log-status.wrong-entry .form-control, .wrong-entry .form-control + .glyphicon {
+  border-color: #ed1c24;
+  color: #ed1c24;
+}
+
+.log-btn{
+  background:#0AC986;
+  dispaly:inline-block;
+  width:100%;
+  font-size:16px;
+  height:50px;
+  color:#fff;
+  text-decoration:none;
+  border:none;
+  border-radius:4px;
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;
+}
+
+.link{
+  text-decoration:none;
+  color:#727BA5;
+  display:block;
+  text-align:right;
+  font-size:12px;
+  margin-bottom:15px;
+}
+.link:hover{
+  text-decoration:underline;
+  color:#8C918F;
+}
+

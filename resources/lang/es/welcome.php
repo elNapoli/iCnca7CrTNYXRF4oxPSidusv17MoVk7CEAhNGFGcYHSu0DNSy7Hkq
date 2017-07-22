@@ -13,7 +13,7 @@ return [
     'incoming'   =>'Entrantes',
     'salient'    =>'Salientes',
     'testimonials'   =>'Tetimonios',
-    'aditionalService'   =>'Servicios adicionales',
+    'aditionalService'   =>'Servicios UACh',
     'news'   =>'Noticias',
     'galery'   =>'Galeria',
     'signIn'   =>'Ingresar',

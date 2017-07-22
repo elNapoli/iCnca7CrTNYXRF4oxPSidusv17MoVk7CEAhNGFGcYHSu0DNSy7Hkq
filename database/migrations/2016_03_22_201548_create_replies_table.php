@@ -16,18 +16,18 @@ class CreateRepliesTable extends Migration {
 
         Schema::create('replies', function (Blueprint $table) {
 
-            $table->engine = 'InnoDB';
+            //$table->engine = 'InnoDB';
             $table->increments('id');
 
             $table->text('message');
 
             $table->integer('conversation_id')->unsigned();
-            $table->foreign('conversation_id')
-                ->references('id')->on('conversations')->onDelete('cascade');
+            //$table->foreign('conversation_id')
+            //    ->references('id')->on('conversations')->onDelete('cascade');
             
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')
-                ->references('id')->on('users')->onDelete('cascade');
+            //$table->foreign('user_id')
+            //    ->references('id')->on('users')->onDelete('cascade');
 
             $table->boolean('correct_answer')->default(false);
             

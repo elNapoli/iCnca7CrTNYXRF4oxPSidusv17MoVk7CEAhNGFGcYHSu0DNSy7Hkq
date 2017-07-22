@@ -26,6 +26,10 @@ class InternetController extends Controller
         return view('auth.select_login');
     }
 
+    public function getPretestimonios(){
+
+        return view('guest.pretestimonios');
+    }
 
     public function getAlojamiento(){
 
@@ -35,6 +39,11 @@ class InternetController extends Controller
 
     public function getVisa(){
         return view('guest.visa');
+
+    }
+
+   public function getSalientes(){
+        return view('guest.salientes');
 
     }
 

@@ -3,8 +3,8 @@
 .log a{
     padding: 0px 0px 0px 15px;
     font-size: 1.4em;
-    position: relative;
-    left: 60px;
+    position: absolute;
+    right: 60px;
     bottom: 17px;
     font-family: sans-serif;
 }
@@ -57,9 +57,9 @@
 
                 <ul>
                     <li><a href="{{url('internet/mision')}}">{{trans('welcome.incoming')}}</a>
-                    <li><a href="{{url('internet/vision')}}" >{{trans('welcome.salient')}}</a>
+                    <li><a href="{{url('internet/salientes')}}" >{{trans('welcome.salient')}}</a>
                     </li>
-                    <li><a href="{{url('internet/testimonios')}}"   >{{trans('welcome.testimonials')}}    </a></li>
+                    <li><a href="{{url('internet/pretestimonios')}}"   >{{trans('welcome.testimonials')}}    </a></li>
 
               </ul>
 

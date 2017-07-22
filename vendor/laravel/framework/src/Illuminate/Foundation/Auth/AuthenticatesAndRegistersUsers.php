@@ -67,6 +67,7 @@ trait AuthenticatesAndRegistersUsers
 	{
 		return view('auth.login');
 	}
+
 	/**
 	 * Handle a login request to the application.
 	 *

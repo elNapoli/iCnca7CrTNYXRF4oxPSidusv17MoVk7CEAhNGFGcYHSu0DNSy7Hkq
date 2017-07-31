@@ -37,10 +37,15 @@ class Handler extends ExceptionHandler
      //   var_dump($e->getTrace()[10]['args']);exit();
     if ($e instanceof \Exception) {
 
-        \Mail::send('emails.exception', ['error' => $e,'traces'=>$e->getTrace()], function ($m) {
-            $m->to('l.caloguerea@gmail.com', 'Dear developers')->subject('Exception!');
-        });
+        if (env('APP_ENV') == 'production'){
 
+            //$emails = ['baldomero.napoli@gmail.com', 'l.caloguerea@gmail.com'];
+
+            \Mail::send('emails.exception', ['error' => $e,'traces'=>$e->getTrace()], function ($m) {
+                $m->to('l.caloguerea@gmail.com')->cc('baldomero.napoli@gmail.com')->subject('Exception!');
+            });
+
+        }
     }
 
         return parent::report($e);

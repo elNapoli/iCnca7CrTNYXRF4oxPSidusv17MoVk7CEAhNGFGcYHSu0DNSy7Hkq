@@ -36,17 +36,8 @@
         </li>
         
         <li class="nivel1">
-            <a href="#!" >{{trans('welcome.aboutUs')}} </a>       
+            <a href="{{url('internet/mision')}}" >{{trans('welcome.aboutUs')}} </a>       
             {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
-
-                <ul>
-                    <li><a href="{{url('internet/mision')}}">{{trans('welcome.mission')}}</a>
-                    <li><a href="{{url('internet/vision')}}" >{{trans('welcome.vision')}}</a>
-                    </li>
-                    <li><a href="{{url('internet/contacto')}}" >{{trans('welcome.contact')}}</a>
-                    </li>
-
-              </ul>
 
               
         </li>

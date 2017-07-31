@@ -74,7 +74,7 @@
             <ol class="traces list_exception">
             <li> in <a title="{{  $error->getFile()}} line {{ $error->getLine()}}"> {{  basename($error->getFile())}} line {{ $error->getLine()}}</a></li>
                @foreach ($traces as  $value)
-               		<li>at <abbr title="{{ array_key_exists('class', $value)? $value['class']:''}}">{{ array_key_exists('class', $value)? basename($value['class']):''}}</abbr>{{  array_key_exists('type', $value)?$value['type']:''}}{{  $value['function']}}('select * from `noticias` where `caroussel` = ?', <em>array</em>('si'), <em>object</em>(<abbr title="Closure">Closure</abbr>)) in <a title="/home/vagrant/www/OME/vendor/laravel/framework/src/Illuminate/Database/Connection.php line 611" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">Connection.php line 611</a></li>
+               		<li>at <abbr title="{{ array_key_exists('class', $value)? $value['class']:''}}">{{ array_key_exists('class', $value)? substr($value['class'], strrpos($value['class'], '\\')+1,strlen($value['class'])) :''}}</abbr>{{  array_key_exists('type', $value)?$value['type']:''}}{{  $value['function']}}('select * from `noticias` where `caroussel` = ?', <em>array</em>('si'), <em>object</em>(<abbr title="Closure">Closure</abbr>)) in <a title="/home/vagrant/www/OME/vendor/laravel/framework/src/Illuminate/Database/Connection.php line 611" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">Connection.php line 611</a></li>
 				@endforeach
 
             </ol>

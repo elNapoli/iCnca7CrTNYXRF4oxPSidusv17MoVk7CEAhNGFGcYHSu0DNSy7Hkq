@@ -116,7 +116,7 @@
         <img class="img-responsive" src="http://www.chaudharyfincap.com/images/login-admin.png" alt="">
         <div class="overlay">
            <h2>Administrador</h2>
-           <a class="info" href="{{url('auth/login')}}">Ingresa aquí</a>
+           <a class="info" href="{{url('auth/login-admin')}}">Ingresa aquí</a>
         </div>
 </div>
 </div>

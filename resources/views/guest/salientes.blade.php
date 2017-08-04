@@ -53,9 +53,10 @@ Al finalizar tu intercambio, te recomendamos confirmar con tu universidad de des
 <li>No haber transgredido el reglamento estudiantil de la Universidad Austral de Chile.</li>
 </ul>
 <br>
-<p id='indent'>Si has tomado la decisión y cumples con los requisitos, haz click <a id='link' href="/internet/workinprogress"><strong>aqui</strong></a> para ir al registro de postulantes.</p>
+<p id='indent'>Si has tomado la decisión y cumples con los requisitos, haz click <a class="link" href="#!" id="open_modal_register"><strong>aqui</strong></a> para ir al registro de postulantes.</p>
 </div>
 
+@include('auth.modal_register')
 
 @endsection
 
@@ -108,6 +109,50 @@ Al finalizar tu intercambio, te recomendamos confirmar con tu universidad de des
 @section('scripts')
     <script>
     $(document).ready(function(){
+
+$('#open_modal_register').on('click',function(){
+
+                $('#modal_register').modal('show');
+            });
+
+            $('#registrarse').on('click',function(){
+
+                $.ajax({
+                                  
+                    async : false,
+                    data:$('#form-register').serialize(),
+                    //Cambiar a type: POST si necesario
+                    type: 'POST',
+                    // Formato de datos que se espera en la respuesta
+                    dataType: "json",
+                    // URL a la que se enviará la solicitud Ajax
+                    url:$('#form-register').attr('action') ,
+                    beforeSend:function() {
+                        $('#loading').show();
+                    },
+                    complete: function(){
+                        $('#loading').hide();
+                    },
+                    success : function(json) {           
+                        $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+                            $('#modal_register').modal('hide'); 
+                    },
+
+                    error : function(xhr, status) {
+                        var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
+                            for(var key in xhr.responseJSON)
+                            {
+                                html += "<li>" + xhr.responseJSON[key][0] + "</li>";
+                            }
+                            $('.message_modal').html(html+'</div>');
+                  
+                    },
+                    
+
+
+                });
+            });
+      
     $('[data-toggle="popover"]').popover({title: "<p><strong>Modalidades</strong> </p>", content: "<p><strong>A: </strong>Intercambio por un semestre hasta un año.</p><p><strong>B: </strong>Doble licenciatura o titulación</p><p><strong>C: </strong>Prácticas.</p><p><strong>D: </strong>Estadías cortas de investigación.</p>", html: true, placement: "top",container: 'body'}).on("show.bs.popover", function() {
     return $(this).data("bs.popover").tip().css({
       maxWidth: "400px",

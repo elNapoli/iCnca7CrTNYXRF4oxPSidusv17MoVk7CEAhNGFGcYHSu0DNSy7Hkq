@@ -59,6 +59,12 @@ class InternetController extends Controller
 
     }
 
+    public function getWorkinprogress(){
+        return view('guest.workinprogress');
+
+
+    }
+
     public function getVision(){
         return view('guest.vision');
 

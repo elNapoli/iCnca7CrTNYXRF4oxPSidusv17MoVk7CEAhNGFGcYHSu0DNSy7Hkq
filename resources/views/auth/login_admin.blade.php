@@ -8,7 +8,7 @@
 
 
     <div class="login-form">
-        <h1>Postulante</h1>
+        <h1>Administrador</h1>
         <div class="message"></div>
         <HR width=100% align="center ">
 
@@ -41,7 +41,7 @@
 
 
           <div class="row miRow">
-            <div class="izq"><button class="button" id="irAdmin"style="vertical-align:middle"><span>Acceso admnin</span></button>
+          <div class="izq"><button class="button" id="irPostulante"style="vertical-align:middle"><span>Ir a postulante </span></button>
                 <div class="checkbox">
                     <label><input type="checkbox" name="remember" id="remember">Recordar</label>
                 </div>
@@ -51,7 +51,6 @@
         <HR width=100% align="center "> 
 
 
-        <div  class="izq"><a class="link" href="#!" id="open_modal_register">Registrarse</a></div>
         <div class="der"><a class="link" href="#!" id="open_modal_password">Recuperar contraseña</a></div>
 
 
@@ -67,7 +66,6 @@
 {!!Form::hidden('urlAdmin', url('picoIdea'),array('id'=>'urlAdmin'));!!}
 {!!Form::hidden('urlUser', url('home'),array('id'=>'urlUser'));!!}
 
-@include('auth.modal_register')
 @include('auth.modal_password')
 
 
@@ -125,9 +123,9 @@
     <script>
         $(document).on('ready',function(){
 
-            $('#irAdmin').on('click',function(){
-                window.location.href = 'login-admin';
-            });
+        	$('#irPostulante').on('click',function(){
+        		window.location.href = 'login';
+        	});
 
             $('#iniciarSesion').on('click',function(){
                 $.ajax({            
@@ -154,7 +152,6 @@
                             json.message+'</p></div>';
                             
                             $('.message').html(html);
-                            exit();
 
 
                         }
@@ -187,48 +184,8 @@
                 });
 
             });
-            $('#open_modal_register').on('click',function(){
-
-                $('#modal_register').modal('show');
-            });
-
-            $('#registrarse').on('click',function(){
-
-                $.ajax({
-                                  
-                    async : false,
-                    data:$('#form-register').serialize(),
-                    //Cambiar a type: POST si necesario
-                    type: 'POST',
-                    // Formato de datos que se espera en la respuesta
-                    dataType: "json",
-                    // URL a la que se enviará la solicitud Ajax
-                    url:$('#form-register').attr('action') ,
-                    beforeSend:function() {
-                        $('#loading').show();
-                    },
-                    complete: function(){
-                        $('#loading').hide();
-                    },
-                    success : function(json) {           
-                        $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
-                            $('#modal_register').modal('hide'); 
-                    },
-
-                    error : function(xhr, status) {
-                        var html = '<div class="alert alert-danger fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p> Porfavor corregir los siguientes errores:</p>';
-                            for(var key in xhr.responseJSON)
-                            {
-                                html += "<li>" + xhr.responseJSON[key][0] + "</li>";
-                            }
-                            $('.message_modal').html(html+'</div>');
-                  
-                    },
-                    
 
 
-                });
-            });
             $('#open_modal_password').on('click',function(){
                 $('#modal_password').modal('show');
 

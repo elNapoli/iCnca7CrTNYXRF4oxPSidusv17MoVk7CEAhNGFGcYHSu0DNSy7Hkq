@@ -43,6 +43,11 @@ class AuthController extends Controller {
 		return view('auth.login');
 	}
 
+	public function getLoginAdmin()
+	{
+		return view('auth.login_admin');
+	}
+
 	public function postRegister(Request $request)
 	{
 		$this->validate($request, [
@@ -69,6 +74,55 @@ class AuthController extends Controller {
 		//return redirect('/')->with('mensaje', $message);
 	}
 
+	public function postLoginAdmin(Request $request)
+	{
+		$this->validate($request, [
+			'email' => 'required|email', 'password' => 'required',
+		]);
+		$credentials = $request->only('email', 'password');
+		$user = User::where('email',$request->get('email'))->first();
+		$codigo = 0;
+		$mensaje = 'Contraseña incorrecta';
+		if($user == null){
+			return response()->json([
+				'codigo' => '0',
+				'message'=> 'El correo no existe en nuestros registros'
+				]);
+		
+		}
+		if ($user->confirmado == '0')
+		{
+			$codigo = 0;
+			$mensaje =  'Usted no ha validado su mail, porfavor confime su cuenta en el correo que le enviamos.';
+		}
+		elseif($user->confirmado == '1')
+		{
+			if ($user->tipo_usuario != 'administrador'){
+				$mensaje =  'Su cuenta es de tipo <strong>Postulante</strong>, porfavor utilice el portal correspondiente <a href="login"><strong>aqui</strong></a>';
+			}
+			elseif ($this->auth->attempt($credentials, $request->has('remember')))
+			{
+
+				$codigo = 1;
+				$mensaje =  'administrador';
+			}
+			/*	return redirect($this->loginPath())
+					->withInput($request->only('email', 'remember'))
+					->withErrors([
+						'email' => $this->getFailedLoginMessage(),
+					]);*/
+		}
+		elseif($user->confirmado == '2'){
+			$codigo = 3;
+			$mensaje = "Su acceso ha sido revocado por un administrador. favor comunicarse a correo@prueba.cl";
+		}
+		return response()->json([
+				'codigo' => $codigo,
+				'message'=> $mensaje
+				]);
+		
+	}
+
 	public function postLogin(Request $request)
 	{
 		$this->validate($request, [
@@ -92,18 +146,14 @@ class AuthController extends Controller {
 		}
 		elseif($user->confirmado == '1')
 		{
-			if ($this->auth->attempt($credentials, $request->has('remember')))
+			if ($user->tipo_usuario != 'usuario'){
+				$mensaje =  'Su cuenta es de tipo <strong>Administrador</strong>, porfavor utilice el portal correspondiente <a href="login-admin"><strong>aqui</strong></a>';
+			}
+			elseif ($this->auth->attempt($credentials, $request->has('remember')))
 			{
-				if ($user->tipo_usuario == 'administrador')
-				{
-					$codigo = 1;
-					$mensaje =  'Administrador';
-				}
-				else
-				{
-					$codigo = 2;
-					$mensaje =  'User';
-				}
+
+				$codigo = 2;
+				$mensaje =  'User';
 			}
 			/*	return redirect($this->loginPath())
 					->withInput($request->only('email', 'remember'))

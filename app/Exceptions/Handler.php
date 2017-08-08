@@ -36,8 +36,7 @@ class Handler extends ExceptionHandler
     {
      //   var_dump($e->getTrace()[10]['args']);exit();
     if ($e instanceof \Exception) {
-
-        if (env('APP_ENV') == 'production'){
+        if (env('APP_ENV') == 'production' and $e->getStatusCode() != 400){
 
             //$emails = ['baldomero.napoli@gmail.com', 'l.caloguerea@gmail.com'];
 

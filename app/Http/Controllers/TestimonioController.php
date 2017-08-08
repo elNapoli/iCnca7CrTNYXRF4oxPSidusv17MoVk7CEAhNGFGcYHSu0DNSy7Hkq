@@ -32,8 +32,7 @@ class TestimonioController extends Controller
 
         }
         else{
-            $message = "HOLA";
-            return view('errors.custom',compact('message'));
+            abort(400, trans('error.emptyPostulant'));
         }
         
     }

@@ -17,18 +17,25 @@ class TestimonioController extends Controller
 
     public function getIndex(Guard $auth){
         $postulante = Postulante::where('user_id',$auth->id())->first();
+        if($postulante ){
+            $testimonio = Testimonio::where('postulante',$postulante->id)->first();
+            if($testimonio){
 
-        $testimonio = Testimonio::where('postulante',$postulante->id)->first();
-        if($testimonio){
+                $editor = $testimonio->cuerpo;
+                return view('testimonio.view',compact('editor'));
+            }
+            else{
 
-            $editor = $testimonio->cuerpo;
-            return view('testimonio.view',compact('editor'));
+
+            return view('testimonio.index');
+            }
+
         }
         else{
-
-
-        return view('testimonio.index');
+            $message = "HOLA";
+            return view('errors.custom',compact('message'));
         }
+        
     }
 
     public function getCreate(){

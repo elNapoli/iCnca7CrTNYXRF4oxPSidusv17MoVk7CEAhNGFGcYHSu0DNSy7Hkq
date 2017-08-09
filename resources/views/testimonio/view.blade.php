@@ -9,7 +9,7 @@
                   <div class="form-panel">
                       <div class="form-horizontal style-form" method="get">
                           <div class="form-group">
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 fr-view">
                                 
                                 {!!
 

@@ -18,6 +18,8 @@
     {!! Html::Style('plugins/theme_intranet/js/gritter/css/jquery.gritter.css')!!}
     {!! Html::Style('plugins/theme_intranet/lineicons/style.css')!!}
     {!! Html::Style('css/style_form_login.css')!!}
+    {!! Html::Style('plugins/froala/css/froala_style.css')!!}
+
     {!! Html::Style('plugins/dataTables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')!!}
   
     {!! Html::Style('plugins/jquery-ui/jquery-ui.css')!!}

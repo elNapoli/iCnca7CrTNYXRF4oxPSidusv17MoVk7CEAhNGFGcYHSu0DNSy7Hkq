@@ -89,7 +89,7 @@ a, a:hover, a:focus {
 /*Theme Backgrounds*/
 
 .bg-theme {
-	background-color: #B9E2C2;
+	background-color: #D30000;
 }
 
 .bg-theme02 {
@@ -225,18 +225,18 @@ hr {
 }
 
 .bg-theme {
-	background-color: #B9E2C2;
+	background-color: #D30000;
 }
 
 ul.top-menu > li > .logout {
-	color: #f2f2f2;
+	color: #fff;
 	font-size: 12px;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
-	border: 1px solid #64c3c2 !important;
+	border: 1px solid #fff !important;
 	padding: 5px 15px;
 	margin-right: 15px;
-	background: #B9E2C2;
+	background: #D30000;
 	margin-top: 15px;
 }
 
@@ -247,11 +247,11 @@ ul.top-menu > li > .logout {
     width: 210px;
     height: 100%;
     position: fixed;
-    background: #666666;
+    background: #E2E0E3;
 }
 
 #sidebar h5 {
-	color: #f2f2f2;
+	color: #2D852F;
 	font-weight: 700;
 }
 
@@ -310,7 +310,8 @@ ul.sidebar-menu {
 }
 
 ul.sidebar-menu li ul.sub li{
-    background: #666666;
+    text-indent: 30px;
+    background: #E2E0E3;
     margin-bottom: 0;
     margin-left: 0;
     margin-right: 0;
@@ -331,12 +332,12 @@ ul.sidebar-menu li ul.sub li a {
     -o-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease;
-    color: #aeb2b7;
+    color: #2D852F;
 }
 
 ul.sidebar-menu li ul.sub li a:hover {
 	color: white;
-	background: transparent;
+	background: #2D852F;
 }
 
 ul.sidebar-menu li ul.sub li.active a {
@@ -365,7 +366,7 @@ ul.sidebar-menu li a span{
 }
 
 ul.sidebar-menu li a{
-    color: #aeb2b7;
+    color: #2D852F;
     text-decoration: none;
     display: block;
     padding: 15px 0 15px 10px;
@@ -379,7 +380,7 @@ ul.sidebar-menu li a{
 }
 
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
-    background: #B9E2C2;
+    background: #2D852F;
     color: #fff;
     display: block;
 
@@ -428,7 +429,7 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: #2E3F1B;
+    background: #2D852F;
     border-bottom: 1px solid #058F82;
 }
 
@@ -440,6 +441,9 @@ ul.sidebar-menu li a.active i {
     padding-bottom: 15px;
     padding-top: 0px;
     width: 100%;
+    background-image: url('hola.jpg');
+    background-repeat: no-repeat;
+    min-height: 600px;
 }
 
 a.logo {
@@ -483,11 +487,11 @@ a.logo span {
 }
 
 ul.top-menu > li > a {
-    color: #666666;
+    color: #fff;
     font-size: 16px;
     border-radius: 4px;
     -webkit-border-radius: 4px;
-    border:1px solid #666666 !important;
+    border:1px solid #fff !important;
     padding: 2px 6px;
     margin-right: 15px;
 }
@@ -1397,7 +1401,7 @@ PANELS CONFIGURATIONS
 	left: 35px;
 }
 .badge-popular {
-	background: #3498db;
+	background: red;
 	width: 70px;
 	height: 70px;
 	line-height: 70px;

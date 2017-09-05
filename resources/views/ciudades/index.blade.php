@@ -3,9 +3,12 @@
 @section('Dashboard') Ciudades @endsection
 
 @section('content')
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> 
 
-                <h3><i class="fa fa-angle-right"></i> Ciudades!</h3>
-    	<hr>
+                <div id="subsectionTitle">
+                    <h1 id="sSh1">Ciudades</h1>
+                </div>
+
 		<div class="panel panel-default">
                 <div class="panel-heading"><a class="btn btn-info" data-toggle="modal" data-target="#modal_crear_ciudad" href="#!">{{trans('city.create')}}</a></div>
 
@@ -27,6 +30,28 @@
 
 
 @endsection
+
+<style type="text/css">
+    
+#subsectionTitle{
+    background-image: url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-32.jpg);
+    padding-top: 1px;
+    padding-bottom: 110px;
+    background-size: 100%;
+    background-position: center;
+
+    height: 100px;
+    box-shadow: 0px 1px 10px #5E5E5E;
+}
+
+#sSh1{
+    color: #efefef;
+        font-size: 5vw;
+        font-family: montserrat;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+
+</style>
 
 @section('scripts')
     {!! Html::Script('js/funciones.js') !!}

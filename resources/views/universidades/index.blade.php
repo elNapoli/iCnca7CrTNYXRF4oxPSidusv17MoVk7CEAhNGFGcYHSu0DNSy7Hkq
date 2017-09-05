@@ -4,8 +4,13 @@
 
 @section('content')
 
-                <h3><i class="fa fa-angle-right"></i> Universidades!</h3>
-                <hr>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> 
+
+
+
+                <div id="subsectionTitle">
+            <h1 id="sSh1">Universidades</h1>
+        </div>
 
     <div class="panel panel-default">
           <div class="panel-heading"><a class="btn-info btn" href="{{ url('universidades/create') }}">Crear universidad</a></div>
@@ -38,6 +43,28 @@
 
 
 @endsection
+
+<style type="text/css">
+  
+#subsectionTitle{
+  background-image: url(https://wallpaperscraft.ru/image/staraya_biblioteka_dizayn_interer_domashnyaya_biblioteka_11139_3840x1200.jpg);
+  padding-top: 1px;
+  padding-bottom: 110px;
+  background-size: 100%;
+    background-position: center;
+
+    height: 100px;
+    box-shadow: 0px 1px 10px #5E5E5E;
+}
+
+#sSh1{
+    color: #efefef;
+        font-size: 5vw;
+        font-family: montserrat;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+
+</style>
 
 @section('breadcrumbs')
 {!! Breadcrumbs::render('home') !!}

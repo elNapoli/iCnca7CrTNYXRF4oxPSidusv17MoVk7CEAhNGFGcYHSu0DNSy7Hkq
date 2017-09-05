@@ -7,8 +7,14 @@
 @include('paises.partials.modal_edit')
 
 
-                <h3><i class="fa fa-angle-right"></i> Paises!</h3>
-                <hr>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> 
+
+
+
+                <div id="subsectionTitle">
+  					<h1 id="sSh1">Países</h1>
+				</div>
+
                 <div class="panel panel-default">
 				<div class="panel-heading"><a class="btn btn-info" data-toggle="modal" data-target="#modal_crear_pais" href="#!">Crear país</a></div>
 
@@ -29,6 +35,27 @@
 
 @endsection
 
+<style type="text/css">
+	
+#subsectionTitle{
+	background-image: url(http://sf.co.ua/16/01/wallpaper-420ba.jpg);
+	padding-top: 1px;
+	padding-bottom: 110px;
+	background-size: 100%;
+    background-position: center;
+
+    height: 100px;
+    box-shadow: 0px 1px 10px #5E5E5E;
+}
+
+#sSh1{
+    color: #efefef;
+        font-size: 5vw;
+        font-family: montserrat;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+
+</style>
 
 
 @section('scripts')

@@ -1,6 +1,6 @@
 <div class="row mt">
     <div class="col-lg-12">
-        <div class="content-panel">
+        <div class="panel-body">
             <table id="tableCiudad" class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>

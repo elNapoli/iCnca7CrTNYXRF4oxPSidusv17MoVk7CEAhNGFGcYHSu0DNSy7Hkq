@@ -13,7 +13,7 @@
         </div>
 
     <div class="panel panel-default">
-          <div class="panel-heading"><a class="btn-info btn" href="{{ url('universidades/create') }}">Crear universidad</a></div>
+          <div class="panel-heading"><a class="button button1" href="{{ url('universidades/create') }}">Crear universidad</a></div>
 
           <!-- Table -->
           <div class="message">
@@ -48,8 +48,6 @@
   
 #subsectionTitle{
   background-image: url(https://wallpaperscraft.ru/image/staraya_biblioteka_dizayn_interer_domashnyaya_biblioteka_11139_3840x1200.jpg);
-  padding-top: 1px;
-  padding-bottom: 110px;
   background-size: 100%;
     background-position: center;
 
@@ -58,11 +56,42 @@
 }
 
 #sSh1{
+  text-align: left;
+  padding-left: 100px;
     color: #efefef;
-        font-size: 5vw;
-        font-family: montserrat;
-        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding-top: 10px;
+    font-size: 5em;
+    font-family: montserrat;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   }
+
+  .button {
+    right: 100px;
+    top: 58px;
+    position: absolute;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+  .button1 {
+    background-color: #2d852f; 
+    color: white; 
+
+}
+
+.button1:hover {
+    background-color: #e2e0e3;
+    color: #2d852f;
+}
 
 </style>
 

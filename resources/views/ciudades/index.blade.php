@@ -10,7 +10,7 @@
                 </div>
 
 		<div class="panel panel-default">
-                <div class="panel-heading"><a class="btn btn-info" data-toggle="modal" data-target="#modal_crear_ciudad" href="#!">{{trans('city.create')}}</a></div>
+                <div class="panel-heading"><a class="button button1" data-toggle="modal" data-target="#modal_crear_ciudad" href="#!">{{trans('city.create')}}</a></div>
 
 		<div class="message"></div>
 
@@ -35,9 +35,7 @@
     
 #subsectionTitle{
     background-image: url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-32.jpg);
-    padding-top: 1px;
-    padding-bottom: 110px;
-    background-size: 100%;
+  background-size: 100%;
     background-position: center;
 
     height: 100px;
@@ -45,11 +43,42 @@
 }
 
 #sSh1{
+    text-align: left;
+    padding-left: 100px;
     color: #efefef;
-        font-size: 5vw;
-        font-family: montserrat;
-        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding-top: 10px;
+    font-size: 5em;
+    font-family: montserrat;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   }
+
+  .button {
+    right: 100px;
+    top: 58px;
+    position: absolute;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+  .button1 {
+    background-color: #2d852f; 
+    color: white; 
+
+}
+
+.button1:hover {
+    background-color: #e2e0e3;
+    color: #2d852f;
+}
 
 </style>
 

@@ -17,8 +17,7 @@ class PaisesController extends Controller {
 	{
 		$continentes = Continente::lists('nombre','id')->all();
 
-		$continentes = Continente::lists('nombre','id');
-		dd($continentes);
+		//$continentes = Continente::lists('nombre','id');
 
 
 	

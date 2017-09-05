@@ -3,6 +3,7 @@
 
 @section('content')
 
+		<div id="barra_age"></div>
 		<div class="col-md-6" id="caja-seccion-titular">Noticias recientes</div>
 		<div class="col-md-6" id="caja-seccion-titular">Todas</div>
 
@@ -17,7 +18,7 @@
 <style type="text/css">
 
 #caja-seccion-titular {
-    background-image: url("http://noticias.uach.cl/paginas/verde/imagenes/fondo-tit-verde.jpg");
+	background-color: #ccc;
     color: #fff;
     display: block;
     font-family: Arial,Helvetica,sans-serif;
@@ -26,6 +27,7 @@
     height: 40px;
     line-height: 25px;
     padding: 3px 0 0 6px;
+    text-align: center;
 }
 
 #reciente {
@@ -35,6 +37,7 @@
 }
 
 #todas {
+	background-color: transparent;
 	border: 1px solid #ccc;
 	padding: 6px;
 	overflow-x: hidden;
@@ -74,6 +77,12 @@
 .tableNoticias thead {
   display: none;
 }
+
+#barra_age {
+	background-color: green;
+    height: 4px;
+}
+
 </style>
 
 @section('scripts')

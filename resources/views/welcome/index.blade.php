@@ -12,17 +12,17 @@
 </div>  
 
 <div class="row">
-	<div class="col-lg-6">
+	<div class="col-lg-4">
 
+	@include('welcome.partials.noticias')
 	
-	@include('welcome.partials.foro')
 
 
 	</div>
 
-	<div class="col-lg-6">
-	@include('welcome.partials.noticias')
-
+	<div class="col-lg-8">
+	
+	@include('welcome.partials.foro')
 
 
 	</div>

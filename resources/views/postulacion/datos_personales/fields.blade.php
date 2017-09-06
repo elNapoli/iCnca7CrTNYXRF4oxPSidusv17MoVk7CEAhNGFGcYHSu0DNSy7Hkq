@@ -110,16 +110,16 @@
                 {!!  Form::label('como_se_entero', 'Como se enteró de nosotros? ')!!}
                 {!!  Form::select('como_se_entero', [null=>'Seleccione una opción','Internet'=>'Internet',
                             'Noticia'=>'Noticia',
-                            'Me contó un amig'=>'Me contó un amigo',
+                            'Me contó un amigo'=>'Me contó un amigo',
                             'Correo electronico'=>'Correo electronico'],null,array('class' => 'form-control'))!!}
             </div>
 
             <div class="form-group">
                 {!!  Form::label('nivel_de_español', 'Cual es su nivel de español? ')!!}
-                {!!  Form::select('nivel_de_español', [null=>'Seleccione nivel','1'=>'Bajo',
-                            '2'=>'medio',
-                            '3'=>'Alto',
-                            '4'=>'Nativo'],null,array('class' => 'form-control'))!!}
+                {!!  Form::select('nivel_de_español', [null=>'Seleccione nivel','Bajo'=>'Bajo',
+                            'Medio'=>'Medio',
+                            'Alto'=>'Alto',
+                            'Nativo'=>'Nativo'],null,array('class' => 'form-control'))!!}
             </div>
 
             <div class="form-horizontal">

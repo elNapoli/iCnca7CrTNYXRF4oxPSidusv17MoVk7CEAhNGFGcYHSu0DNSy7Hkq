@@ -60,7 +60,7 @@ class EstudioActualController extends Controller {
 			$parametros['procedencia'] = $postulante->pregradosR->procedencia ;
 
 
-		//	dd(PreUach::with('preUEstudioActualesR')->get()->postulante);
+				//	dd(PreUach::with('preUEstudioActualesR')->get()->postulante);
 
 			if($postulante->pregradosR->procedencia === 'UACH'){
 
@@ -68,9 +68,8 @@ class EstudioActualController extends Controller {
 
 					$nuevo = 1;
 					$estudioActual = PreUEstudioActual::where('postulante',$postulante->id)->first();
-
-					$parametros['continente']   = $estudioActual->carreraR->facultadR->campusSedesR->ciudadR->paisR->continente;
-					$parametros['pais']         = $estudioActual->carreraR->facultadR->campusSedesR->ciudadR->paisR->id;
+					$parametros['continente']   = $estudioActual->carreraR->facultadR->campusSedesR->universidadR->paisR->continente;
+					$parametros['pais']         = $estudioActual->carreraR->facultadR->campusSedesR->universidadR->paisR->id;
 					$parametros['campus_sede']  = $estudioActual->carreraR->facultadR->campusSedesR->id;
 					$parametros['facultad']     = $estudioActual->carreraR->facultadR->id;
 					$parametros['carrera']      = $estudioActual->carrera;
@@ -91,8 +90,8 @@ class EstudioActualController extends Controller {
 					$nuevo = 1;
 					$estudioActual = PreNuEstudioActual::where('postulante',$postulante->id)->first();
 
-					$parametros['continente']     = $estudioActual->campusSedeR->ciudadR->paisR->continente;
-					$parametros['pais']           = $estudioActual->campusSedeR->ciudadR->paisR->id;
+					$parametros['continente']     = $estudioActual->campusSedeR->universidadR->paisR->continente;
+					$parametros['pais']           = $estudioActual->campusSedeR->universidadR->paisR->id;
 					$parametros['campus_sede']    = $estudioActual->campusSedeR->id;
 					$parametros['area']           = $estudioActual->area;
 					$parametros['anios_cursados'] = $estudioActual->anios_cursados;
@@ -111,8 +110,8 @@ class EstudioActualController extends Controller {
 
 				$nuevo = 1;
 				$estudioActual = MaestriaActual::where('postulante',$postulante->id)->first();
-				$parametros['continente'] = $estudioActual->campusSedeR->ciudadR->paisR->continente;
-				$parametros['pais'] = $estudioActual->campusSedeR->ciudadR->paisR->id;
+				$parametros['continente'] = $estudioActual->campusSedeR->universidadR->paisR->continente;
+				$parametros['pais'] = $estudioActual->campusSedeR->universidadR->paisR->id;
 				$parametros['campus_sede'] = $estudioActual->campusSedeR->id;
 
 				$parametros['nombreD'] = $estudioActual->nombre_tutor_director ;

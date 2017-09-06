@@ -16,7 +16,7 @@ class DeclaracionController extends Controller {
 		$postulante = Postulante::where('user_id',$auth->id())->first();
 		$declaracion = Declaracion::find( $postulante->id);
 		
-		if($postulante->pregradosR->procedencia === 'UACH'){
+		if($postulante->pregradosR AND $postulante->pregradosR->procedencia === 'UACH'){
 
 
 			if($declaracion){

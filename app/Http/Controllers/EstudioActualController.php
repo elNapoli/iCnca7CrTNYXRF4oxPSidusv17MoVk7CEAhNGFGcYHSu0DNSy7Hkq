@@ -110,8 +110,8 @@ class EstudioActualController extends Controller {
 
 				$nuevo = 1;
 				$estudioActual = MaestriaActual::where('postulante',$postulante->id)->first();
-				$parametros['continente'] = $estudioActual->campusSedeR->ciudadR->paisR->continente;
-				$parametros['pais'] = $estudioActual->campusSedeR->ciudadR->paisR->id;
+				$parametros['continente'] = $estudioActual->campusSedeR->universidadR->paisR->continente;
+				$parametros['pais'] = $estudioActual->campusSedeR->universidadR->paisR->continente;
 				$parametros['campus_sede'] = $estudioActual->campusSedeR->id;
 
 				$parametros['nombreD'] = $estudioActual->nombre_tutor_director ;

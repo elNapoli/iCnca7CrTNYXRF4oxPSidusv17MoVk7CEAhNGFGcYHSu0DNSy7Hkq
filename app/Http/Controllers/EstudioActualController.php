@@ -60,7 +60,7 @@ class EstudioActualController extends Controller {
 			$parametros['procedencia'] = $postulante->pregradosR->procedencia ;
 
 
-		//	dd(PreUach::with('preUEstudioActualesR')->get()->postulante);
+				//	dd(PreUach::with('preUEstudioActualesR')->get()->postulante);
 
 			if($postulante->pregradosR->procedencia === 'UACH'){
 
@@ -111,7 +111,7 @@ class EstudioActualController extends Controller {
 				$nuevo = 1;
 				$estudioActual = MaestriaActual::where('postulante',$postulante->id)->first();
 				$parametros['continente'] = $estudioActual->campusSedeR->universidadR->paisR->continente;
-				$parametros['pais'] = $estudioActual->campusSedeR->universidadR->paisR->continente;
+				$parametros['pais'] = $estudioActual->campusSedeR->universidadR->paisR->id;
 				$parametros['campus_sede'] = $estudioActual->campusSedeR->id;
 
 				$parametros['nombreD'] = $estudioActual->nombre_tutor_director ;

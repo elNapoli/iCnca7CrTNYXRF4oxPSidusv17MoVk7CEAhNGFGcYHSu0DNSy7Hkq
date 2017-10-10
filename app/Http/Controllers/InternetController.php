@@ -47,6 +47,11 @@ class InternetController extends Controller
 
     }
 
+   public function getEntrantes(){
+        return view('guest.entrantes');
+
+    }
+
     public function getMision(){
         return view('guest.mision');
 

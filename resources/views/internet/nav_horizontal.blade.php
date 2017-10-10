@@ -47,7 +47,7 @@
             {!! HTML::image('/plugins/uach/img/pix_menu3.jpg','',array('class'=>'pix_menu3')) !!}
 
                 <ul>
-                    <li><a href="{{url('internet/mision')}}">{{trans('welcome.incoming')}}</a>
+                    <li><a href="{{url('internet/entrantes')}}">{{trans('welcome.incoming')}}</a>
                     <li><a href="{{url('internet/salientes')}}" >{{trans('welcome.salient')}}</a>
                     </li>
                     <li><a href="{{url('internet/pretestimonios')}}"   >{{trans('welcome.testimonials')}}    </a></li>

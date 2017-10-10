@@ -5,16 +5,25 @@
 
 <div class="col-md-11">
 <br>
-<h2 id='sect'>Alumnos UACh</h2>
+
+<button class="accordion">Alumnos UACh</button>
+<div class="panel2">
+<br>
 <p align='justify'>Si eres alumno regular de una carrera de Pregrado o Postgrado de la Universidad Austral de Chile, te invitamos a no perder de vista esta oportunidad de intercambio. Infórmate de cuáles son los  procedimientos, fechas de postulación, las posibilidades de becas y toda  la información necesaria para que puedas postular a un semestre o un año en alguna universidad del país o  del extranjero. “Vívelo, que  no te lo cuenten” ¡Infórmate y postula!</p>
 <br>
+</div>
 
 
-<h2 id='sect'>PROCESOS Y GUÍA DE POSTULACIÓN</h2>
+<button class="accordion">Procesos y guía de postulación</button>
+<div class="panel2">
+<br>
 <p align='justify'>La postulación a un Programa de Intercambio Académico es un proceso que conlleva muchas etapas antes de postular, es importante que te informes de todos los requisitos y  procedimientos para acceder a un intercambio estudiantil.  Es por esto que te recomendamos seguir la planeación siguiente.</p>
 <br>
+</div>
 
-<h2 id='sect'>PLANEACIÓN</h2>
+<button class="accordion">Planeación</button>
+<div class="panel2">
+<br>
 <ul style="list-style-type: disc; padding-left: 1em;">
 
 <li><p align='justify'>Planificar por lo menos con un año de anticipación la postulación. Es importante que tomes una buena decisión de cuándo es el mejor momento  para realizar el intercambio.</p></li>
@@ -42,8 +51,11 @@ En esta etapa, el alumno deberá también informarse acerca de las pautas de con
 Al finalizar tu intercambio, te recomendamos confirmar con tu universidad de destino el proceso requerido para el envío a la OME de tu certificado de notas. Una vez que la OME reciba el certificado oficial del intercambio, lo hará  llegar a la respectiva Escuela para que se proceda al proceso de convalidación.</p><p id='indent' align='justify'>La duración máxima que puedes estar en un intercambio académico es de un año. Puedes solicitar extensión de tu intercambio estando en el extranjero, pero debes ponerte en contacto con la OME para formalizar o solicitar tu extensión de acuerdo a los procedimientos y plazos estipulados.</p></li>
 </ul>
 <br>
+</div>
 
-<h2 id='sect'>REQUISITOS</h2>
+<button class="accordion">Requisitos</button>
+<div class="panel2">
+<br>
 <ul style="list-style-type: disc; padding-left: 1em;">
 <li>Tener matrícula vigente al momento de postular.</li>
 <li>Haber aprobado los dos primeros años de carrera completamente.</li>
@@ -54,6 +66,7 @@ Al finalizar tu intercambio, te recomendamos confirmar con tu universidad de des
 </ul>
 <br>
 <p id='indent'>Si has tomado la decisión y cumples con los requisitos, haz click <a class="link" href="#!" id="open_modal_register"><strong>aqui</strong></a> para ir al registro de postulantes.</p>
+</div>
 </div>
 
 @include('auth.modal_register')
@@ -103,6 +116,52 @@ Al finalizar tu intercambio, te recomendamos confirmar con tu universidad de des
 	color:#ab0034;
 }
 
+
+ /* Style the buttons that are used to open and close the accordion panel */
+button.accordion {
+    font-size: 22px;
+    font-family: sans-serif;
+    background-color: #d6d6d6;
+    padding: 5px 30px;
+    color: #666;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion.active, button.accordion:hover {
+    background-color: #666;
+    color: white;
+
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.panel2 {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    margin-bottom: 5px;
+}
+
+button.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    padding: 5px;
+
+}
+
+button.accordion.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+    color: white;
+}
 
 </style>
 
@@ -180,6 +239,21 @@ $('#open_modal_register').on('click',function(){
       padding: "0px"
     });
   });
+
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].onclick = function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight){
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      }
+    }
 
 });
     </script>

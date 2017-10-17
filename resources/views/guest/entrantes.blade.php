@@ -38,7 +38,7 @@
   
   <div class="table">
     
-    <div class="row header">
+    <div class="row2 header">
       <div class="cell">
         Grade
       </div>
@@ -47,7 +47,7 @@
       </div>
     </div>
     
-    <div class="row">
+    <div class="row2">
       <div class="cell">
         1.00 - 3.90
       </div>
@@ -56,7 +56,7 @@
       </div>
     </div>
     
-    <div class="row">
+    <div class="row2">
       <div class="cell">
         4.00 - 4.90
       </div>
@@ -65,7 +65,7 @@
       </div>
     </div>
     
-    <div class="row">
+    <div class="row2">
       <div class="cell">
         6.00 - 7.00
       </div>
@@ -74,7 +74,7 @@
       </div>
     </div>
     
-    <div class="row">
+    <div class="row2">
       <div class="cell">
         <strong>A - </strong> This kind of grade does not add point to the final average
       </div>
@@ -83,7 +83,7 @@
       </div>
     </div>
     
-    <div class="row">
+    <div class="row2">
       <div class="cell">
         <strong>R - </strong> This kind of grade does not add point to the final average
       </div>
@@ -126,7 +126,7 @@
   
   <div class="table">
     
-    <div class="row header">
+    <div class="row2 header">
       <div class="cell">
         Idioma
       </div>
@@ -135,7 +135,7 @@
       </div>
     </div>
     
-    <div class="row">
+    <div class="row2">
       <div class="cell">
         Alemán
       </div>
@@ -144,7 +144,7 @@
       </div>
     </div>
     
-    <div class="row">
+    <div class="row2">
       <div class="cell">
         Francés
       </div>
@@ -153,7 +153,7 @@
       </div>
     </div>
     
-    <div class="row">
+    <div class="row2">
       <div class="cell">
         Japonés
       </div>
@@ -162,7 +162,7 @@
       </div>
     </div>
     
-    <div class="row">
+    <div class="row2">
       <div class="cell">
         Árabe
       </div>
@@ -171,7 +171,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row2">
       <div class="cell">
        Chino mandarín
       </div>
@@ -181,32 +181,272 @@
     </div>    
 
   </div>
-  </div>
+</div>
 
 </div>
 
-<button class="accordion">Cursos de Deportes y Recreación</button>
+<button class="accordion">Cursos de Deportes y Talleres</button>
 <div class="panel2">
 <br>
 
+<p align='justify'><strong>El centro de Deportes y recreación</strong>, te invita a inscribirte en algún curso de deporte en el que puedas participar durante el semestre.  Para mayor información revisa el siguiente enlace:
+<a href="http://deportes.uach.cl/facultativos-y-optativos/"><strong>Cursos</strong></a></p>
 
+<p align='justify'><strong>La Dirección de Asuntos estudiantiles</strong>, te invita a inscribirte en los talleres que puedes escoger, revisando este enlace: <a href="http://dae.uach.cl/extracurricular/talleres.php"><strong>Talleres</strong></a></p>
 
+<br>
 </div>
 
-<button class="accordion">Requisitos</button>
+<button class="accordion">Modalidades de estudio</button>
 <div class="panel2">
 <br>
+
+<p align='justify'><strong>Estudiantes Nacionales e Internacionales<br></strong><br>Modalidad A: Intercambio por un semestre hasta un año.<br>Modalidad B: Doble licenciatura o titulación. <a href="http://www.uach.cl/internacional/principal/doble-graduacion/programas-doble-graduacion-pregrado "><strong>Más información</strong></a><br>Modalidad C: Prácticas.<br>Modalidad D: Estadías cortas de investigación.</p>
+
+<br>
+</div>
+
+<button class="accordion">Convenios vigentes</button>
+<div class="panel2">
+<br>
+  
 <ul style="list-style-type: disc; padding-left: 1em;">
-<li>Tener matrícula vigente al momento de postular.</li>
-<li>Haber aprobado los dos primeros años de carrera completamente.</li>
-<li>No haber reprobado asignaturas el semestre anterior a la postulación.</li>
-<li>Poseer el nivel de idioma requerido por la universidad de destino.</li>
-<li>Demostrar solvencia económica para realizar el intercambio (becas u otros ingresos).</li>
-<li>No haber transgredido el reglamento estudiantil de la Universidad Austral de Chile.</li>
+
+<li><p align='justify'><a href="https://www.uach.cl/uach/_file/5-conv-educacion-superior-5810c7682cd02.pdf"><strong>Nacionales</strong></a></p></li> 
+
+<li><p align='justify'><a href="http://www.uach.cl/internacional/principal/convenios
+CINDA http://cinda.pucp.edu.pe"><strong>Internacionales</strong></a></p></li> 
+
+</ul>
+
+<br>
+</div>
+
+<button class="accordion">Postulación</button>
+<div class="panel2">
+<br>
+
+<p align='justify'><strong>Requisitos de postulación.</strong></p>
+
+
+<ul style="list-style-type: disc; padding-left: 1em;">
+
+<li><p align='justify'>Estar matriculado en alguna universidad Chilena o extranjera.</p></li>
+<li><p align='justify'>Tener nivel B1 de español o certificación similar en caso de no ser el español su lengua nativa. B2 altamente recomendable.</p></li>
+<li><p align='justify'>Ser nominado por Relaciones Internacionales/movilidad Estudiantil de su universidad de origen a través de este correo electrónico <a id="linkHome" href="mailto:movilidadestudiantil@uach.cl"><strong>movilidadestudiantil@uach.cl</strong></a></p></li>
+
+</ul>
+
+<p align='justify'><strong>Fechas de postulación.</strong></p>
+<p align='justify'>15 de Abril: Para estudios en agosto de cada año.</p>
+<p align='justify'>15 de Octubre: Para realizar estudios en marzo de cada año.</p>
+
+<p align='justify'><strong>Postulación.</strong></p>
+<p align='justify'>Si cumples con los requisitos y ya has sido nominado por tu universidad de origen, debes registrarte en la plataforma online. <a class="link" href="#!" id="open_modal_register"><strong>Registrate aqui</strong></a></p>
+<p align='justify'><strong>Dentro de esta plataforma deberás:</strong></p>
+
+<ul style="list-style-type: disc; padding-left: 1em;">
+
+<li><p align='justify'>Deberás registrarte, creando un usuario y contraseña.</p></li>
+<li><p align='justify'>Completar los datos solicitados.</p></li>
+<li><p align='justify'>Subir a la plataforma los siguientes documentos: Certificado de Notas, Currículo Vitae,   Certificado Médico, Carta de motivación, certificado de idiomas, 1 foto tamaño  pasaporte.</p></li>
+<li><p align='justify'>Enviar postulación.</p></li>
+
+</ul>
+
+<br>
+</div>
+
+<button class="accordion">Antes de viajar a Chile</button>
+<div class="panel2">
+<br>
+  
+<p align='justify'>Para que puedas ingresar a Chile y a nuestra Casa de Estudios, debes considerar los siguientes trámites y documentos:</p>
+
+<p align='justify'><strong>Visa de estudiante</strong></p>
+
+<p align='justify'>Para matricularse en la Universidad Austral de Chile, necesitas obtener en tu país de residencia la visa de estudiante.  Este trámite se realiza en el consulado o embajada más cercana  a tu  país de origen.</p>
+
+ <div class="alert2">
+  <STRONG>IMPORTANTE!: </STRONG>Estudiantes con visa de turista <strong>NO PODRÁN SER REGISTRADOS</strong> en la Universidad Austral de Chile.
+</div> 
+
+<ul style="list-style-type: disc; padding-left: 1em;">
+
+<li><p align='justify'><a href="http://www.minrel.gob.cl/prontus_minrel/site/artic/20080619/pags/20080619154024.php#T4"><strong>Información sobre visas</strong></a></p></li>
+<li><p align='justify'><a href="http://chile.gob.cl/es/consulados/"><strong>Consulados de Chile en el mundo</strong></a></p></li>
+
+</ul>
+
+<br>
+</div>
+
+<button class="accordion">Seguro de salud</button>
+<div class="panel2">
+<br>
+  
+<p align='justify'>Todo estudiante de intercambio debe presentar seguro de salud al momento de matricularse. Este seguro debe considerar:</p>
+
+<ul style="list-style-type: decimal; padding-left: 1em;">
+
+<li><p align='justify'>La duración completa de tu intercambio (mencionando fechas).</p></li> 
+<li><p align='justify'>Cobertura en caso de accidente.</p></li> 
+<li><p align='justify'>Cobertura en caso de hospitalización.</p></li> 
+<li><p align='justify'>Prestadores en Valdivia/Puerto Montt/Coyhaique u Osorno (ciudad de destino).</p></li> 
+<li><p align='justify'>Repatriación.</p></li> 
+
+
+</ul>
+
+<br>
+</div>
+
+<button class="accordion">Costo de vida</button>
+<div class="panel2">
+<br>
+  
+<p align='justify'>Para vivir en nuestro país debes considerar contar con recursos financieros que te permitan pagar los siguientes costos de vida en el sur de Chile.</p>
+
+<ul style="list-style-type: disc; padding-left: 1em;">
+
+<li><p align='justify'><strong>Alojamiento: </strong>$150.000 - $250.000.- pesos chilenos por mes. (Nuestra oficina te dará orientación al respecto una vez que estés aceptado en la UACh)</p></li> 
+<li><p align='justify'><strong>Comidas: </strong>$100.000 - $200.000.-  pesos chilenos por mes.</p></li> 
+<li><p align='justify'><strong>Transporte en la ciudad: </strong>$50.000.- pesos chilenos por mes.</p></li> 
+
+</ul>
+
+<br>
+</div>
+
+<button class="accordion">Llegada a Chile</button>
+<div class="panel2">
+<br>
+  
+<p align='justify'>Ahora que ya has decidido venir a la Universidad Austral de Chile,  te recomendamos las siguientes líneas aéreas desde Santiago Al sur de Chile:</p>
+
+<ul style="list-style-type: disc; padding-left: 1em;">
+
+<li><p align='justify'><a href="http://www.skyairline.cl"><strong>SkyAirline</strong></a></p></li>
+<li><p align='justify'><a href="http://www.latam.com"><strong>Latam</strong></a></p></li>
+
+</ul>
+
+<p align='justify'>Otra alternativa es viajar por vía terrestre, para esto, te recomendamos
+las siguientes empresas de buses:</p>
+
+<ul style="list-style-type: disc; padding-left: 1em;">
+
+<li><p align='justify'><a href="http://www.turbus.cl"><strong>Turbus</strong></a></p></li>
+<li><p align='justify'><a href="http://www.jac.com"><strong>JAC</strong></a></p></li>
+<li><p align='justify'><a href="http://www.pulman.com"><strong>Pullman Bus</strong></a></p></li>
+<li><p align='justify'><a href="http://www.condorbus.com"><strong>Condor Bus</strong></a></p></li>
+<li><p align='justify'><a href="http://www.busnorte.com"><strong>Bus Norte</strong></a></p></li>
+
+</ul>
+
+
+<br>
+</div>
+
+<button class="accordion">Trámites legales</button>
+<div class="panel2">
+<br>
+
+<p align='justify'>Al llegar a la ciudad de tu destino, nuestra oficina te acompañará a realizar los siguientes trámites legales:</p>
+
+<ul style="list-style-type: disc; padding-left: 1em;">
+
+<li>
+  <p align='justify'><strong>Policia Internacional</strong></p>
+  <p align='justify'>Aquí debes avisar oficialmente de tu llegada a tu ciudad de destino.
+Debes llevar la siguiente documentación:  copia de tu pasaporte y timbre de entrada al país.</p>
+</li>
+<li>
+  <p align='justify'><strong>Registro Civil e Identificación</strong></p>
+  <p align='justify'>Aquí debes solicitar tu nueva cédula chilena.</p>
+  <p align='justify'>Luego de haber visitado Policía Internacional, debes ir a la oficina de Registro Civil e Identificación con la copia de la página principal de tu pasaporte, de la visa de estudiante, del timbre de entrada al país y el documento entregado en Policía internacional.</p>
+</li>
+
+
+</ul>
+
+<br>
+</div>
+
+<button class="accordion">Matrícula</button>
+<div class="panel2">
+<br>
+
+<p align='justify'>Una vez que ya has pasado por <strong>Policía Internacional</strong> y por la oficina de <strong>Registro Civil e Identificación</strong>, puedes visitarnos en la oficina Nº 5 de <strong>Movilidad Estudiantil</strong>, 2º piso, Vicerrectoría Académica, Campus Isla Teja, Valdivia</p>
+
+<p align='justify'>Recuerda que en nuestra primera reunión, debes traer contigo los siguientes documentos:</p>
+
+<ul style="list-style-type: disc; padding-left: 3em;">
+
+<li><p align='justify'>Copias comprobante emisión cédula de identidad (Emitida en Chile).</p></li>
+<li><p align='justify'>Copias certificado de seguro de salud.</p></li>
+<li><p align='justify'>Foto digital.</p></li>
+<li><p align='justify'>Copias de la página principal del pasaporte.</p></li>
+<li><p align='justify'>Copias de la visa de estudiante estampada en su pasaporte.</p></li>
+
+
 </ul>
 <br>
-<p id='indent'>Si has tomado la decisión y cumples con los requisitos, haz click <a class="link" href="#!" id="open_modal_register"><strong>aqui</strong></a> para ir al registro de postulantes.</p>s
+
+<p align='justify'><strong>Una Vez Matriculado</strong> tendrás los siguientes privilegios:</p>
+
+<ul style="list-style-type: disc; padding-left: 3em;">
+
+<li><p align='justify'>Credencial universitaria.</p></li>
+<li><p align='justify'>Acceso internet en todos los campus.</p></li>
+<li><p align='justify'>Acceso Siveduc (Plataforma virtual del estudiante).</p></li>
+<li><p align='justify'>Acceso  a los servicios estudiantiles (ver más abajo).</p></li>
+
+</ul>
+
+<br>
 </div>
+
+<button class="accordion">Días de Orientación/Bienvenida</button>
+<div class="panel2">
+<br>
+
+<p align='justify'>El objetivo de esta actividad es apoyar al estudiante en el ingreso a la universidad en aspectos académicos y administrativos por la tanto esta actividad es <strong>OBLIGATORIA</strong>.</p>
+<p align='justify'>Dentro de estos días se consideran las siguientes actividades:</p>
+
+<ul style="list-style-type: disc; padding-left: 3em;">
+
+<li><p align='justify'>Recepción oficial de bienvenida a la UACh.</p></li>
+<li><p align='justify'>Tour UACh.</p></li>
+<li><p align='justify'>Tour Valdivia.</p></li>
+<li><p align='justify'>Taller biblioteca.</p></li>
+<li><p align='justify'>Taller Siveduc.</p></li>
+<li><p align='justify'>Charla de deportes.</p></li>
+<li><p align='justify'>Taller de inscripción de ramos, entre otras actividades.</p></li>
+
+</ul>
+
+<br>
+</div>
+
+<button class="accordion">Finalizada la estadía</button>
+<div class="panel2">
+<br>
+
+<p align='justify'>Una vez que has terminada tu actividad académica, la Oficina de Movilidad Estudiantil, te entregará el <strong>CERTIFICADO DE NOTAS</strong> de las asignaturas cursadas en la UACh.
+El estudiante debe tener en cuenta que los certificados pueden ser entregados en las siguientes fechas:</p>
+
+<ul style="list-style-type: disc; padding-left: 3em;">
+
+<li><p align='justify'>I semestre: Durante el mes de Agosto o principios de Septiembre.</p></li>
+<li><p align='justify'>II semestre: Durante el mes de Enero o Marzo.</p></li>
+
+
+</ul>
+
+<br>
+</div>
+
 </div>
 
 @include('auth.modal_register')
@@ -214,6 +454,16 @@
 @endsection
 
 <style type="text/css">
+
+.alert2 {
+    font-size: 12px;
+    font-family: sans-serif;
+    padding: 12px 10px 10px;
+    background-color: #ff9800; /* Red */
+    color: white;
+    margin-bottom: 20px;
+}
+
 
 /*#solido {
 
@@ -231,9 +481,9 @@
 }
 
 #sect{
-	font-size:22px;
-	font-family: sans-serif;
-	box-sizing: border-box;
+  font-size:22px;
+  font-family: sans-serif;
+  box-sizing: border-box;
     background-color: #d6d6d6;
     color: #666;
     display: inline-block;
@@ -253,7 +503,7 @@
 }
 
 #link{
-	color:#ab0034;
+  color:#ab0034;
 }
 
 
@@ -304,13 +554,11 @@ button.accordion.active:after {
 }
 
 /*css tabla*/
-
 .wrapper {
   margin: 0 auto;
   padding: 10px 40px;
   max-width: 800px;
 }
-
 .table {
   margin: 0 0 40px 0;
   width: 100%;
@@ -322,32 +570,30 @@ button.accordion.active:after {
     display: block;
   }
 }
-
-.row {
+.row2 {
   display: table-row;
   background: #f6f6f6;
 }
-.row:nth-of-type(odd) {
+.row2:nth-of-type(odd) {
   background: #e9e9e9;
 }
-.row.header {
+.row2.header {
   font-weight: 900;
   color: #666;
   background: #d6d6d6;
 }
-.row.green {
+.row2.green {
   background: #27ae60;
 }
-.row.blue {
+.row2.blue {
   background: #2980b9;
 }
 @media screen and (max-width: 580px) {
-  .row {
+  .row2 {
     padding: 8px 0;
     display: block;
   }
 }
-
 .cell {
   padding: 6px 12px;
   display: table-cell;

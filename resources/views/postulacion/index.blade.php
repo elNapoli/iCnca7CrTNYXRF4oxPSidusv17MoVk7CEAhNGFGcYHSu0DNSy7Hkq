@@ -4,7 +4,8 @@
 
 @section('content')
     @include('documentoIdentidad.modal_documento_identidad')
-
+    @include('paises.partials.modal_create')
+    
                 <!-- BASIC FORM ELELEMNTS -->
             <div class="row mt">
                 <div class="col-lg-12">

@@ -20,6 +20,7 @@
     {!!  Form::select('confirmado', [null=>'Seleccione estado',
                                0=>'Por confirmar',
                                1=>'Confirmado',
-                               2=>'Acceso denegado'],null,array('class' => 'form-control'))!!}
+                               2=>'Acceso denegado',
+                               3=>'Acceso restituido'],null,array('class' => 'form-control'))!!}
 </div>
 </div>  

@@ -101,6 +101,7 @@
 
 
     @yield('scripts')
+    @yield('scriptsModals')
   <script type="text/javascript">
         $(document).on('ready',function () {
             $('#link_contacto_extranjero').on('click',function(e){

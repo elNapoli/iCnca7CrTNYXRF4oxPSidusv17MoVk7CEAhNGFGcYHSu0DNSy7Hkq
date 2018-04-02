@@ -131,7 +131,7 @@
                                              <td width="20"></td>
                                              <td width="174" height="60" align="middle">
                                                 <div class="imgpop">
-                                                   <p style="font-family: Cabin; color:white; font-size: 32px; width: 560px">RECUPERAR CONTRASEÑA</p>
+                                                   <p style="font-family: Cabin; color:white; font-size: 32px; width: 560px">DESBLOQUEADO/A </p>
                                                 </div>
                                              </td>
                                           </tr>
@@ -188,7 +188,7 @@
                                                       <!-- image -->
                                                       <tr>
                                                          <td width="200" height="150" align="center" class="devicewidth">
-                                                            <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/232467-200.png" alt="" border="0" width="100" height="100" style="display:block; border:none; outline:none; text-decoration:none;" class="col2img">
+                                                            <img src="https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/lock-unlocked-circle-filled-512.png" alt="" border="0" width="100" height="100" style="display:block; border:none; outline:none; text-decoration:none;" class="col2img">
                                                          </td>
                                                       </tr>
                                                       <!-- /image -->
@@ -216,7 +216,7 @@
                                                       <!-- content -->
                                                       <tr>
                                                          <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #7a6e67; text-align:left; line-height: 24px;" class="padding-right15">
-                                                            <strong>Hemos recibido una solicitud de nuestro portal para cambiar la contraseña asociada a tu cuenta. Porfavor sigue el siguiente enlace para completar el cambio</strong>
+                                                            <strong>Se ha vuelto a habilitar por única vez su perfil en la plataforma de postulación en línea, recuerde las condiciones de uso.</strong>
                                                          </td>
                                                          </td>
                                                       </tr>
@@ -334,68 +334,6 @@
    </tbody>
 </table>
 <!-- end of fulltext -->
-<!-- end of fulltext -->
-<table width="100%" bgcolor="#d8d8d8" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="left-image">
-   <tbody>
-      <tr>
-         <td>
-            <table width="560" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
-               <tbody>
-                  <tr>
-                     <td width="100%">
-                        <table bgcolor="#ffffff" width="560" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
-                           <tbody>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td height="0" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                              </tr>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td>
-                                    <table width="520" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidthinner">
-                                       <tbody>
-                                          <!-- image -->
-
-                                          <!-- /image -->
-                                          <!-- Spacing -->
-                                          <tr>
-                                             <td width="100%" height="5" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                                          </tr>
-                                          <!-- /Spacing -->
-                                          <tr>
-                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #2d2a26; text-align:center; line-height: 28px;">
-                                                <a href="{{ url('password/reset/'.$token) }}"><button class="button" id="irAdmin"style="vertical-align:middle"><span>Cambiar contraseña</span></button></a>
-                                             </td>
-                                          </tr>
-                                          <!-- Spacing -->
-                                          <tr>
-                                             <td width="100%" height="5" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                                          </tr>
-                                          <!-- /Spacing -->
-                                       </tbody>
-                                    </table>
-                                 </td>
-                              </tr>
-                              <!-- Spacing -->
-                              <tr>
-                                 <td height="0" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                              </tr>
-                              <!-- Spacing -->
-                              <!-- Spacing -->
-                              <tr>
-                                 <td height="5" bgcolor="#2d2a26" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                              </tr>
-                              <!-- Spacing -->
-                           </tbody>
-                        </table>
-                     </td>
-                  </tr>
-               </tbody>
-            </table>
-         </td>
-      </tr>
-   </tbody>
-</table>
 <!-- Start of footer -->
 <table width="100%" bgcolor="#d8d8d8" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="footer">
    <tbody>
@@ -474,5 +412,50 @@
 </table>
 <!-- End of footer -->
    </body>
+
+   <style>
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: blue;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  font-family: Cabin;
+  padding: 6px 12px;
+  width: 300px;
+  height: 50px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0px;
+
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
 
    </html>

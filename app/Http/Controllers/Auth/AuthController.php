@@ -57,6 +57,7 @@ class AuthController extends Controller {
 			'password' => 'required|confirmed',
 		]);
 		//$this->auth->login($this->registrar->create($request->all()));
+
 		$user = new User($request->all());
 		$user->codigo_confirmacion = str_random(); //genero el codigo de confirmacion
 		$confirmation_code = $user->codigo_confirmacion; //creo variables por referencia para el Mail::

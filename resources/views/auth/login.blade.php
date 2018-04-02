@@ -252,20 +252,8 @@
                         $('#loading').hide();
                     },
                     success : function(json) {
-                    if(json.codigo == 0){
-                            var html = '<div class="alert alert-danger fade in">'+
-                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
-                            json.message+'</p></div>';
-                            
-                            $('.message_modal_password').html(html);
-                        }
-                    else if(json.codigo == 1){
-                            var html = '<div class="alert alert-success fade in">'+
-                            '<button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button><p>'+
-                            json.message+'</p></div>';
-                            
-                            $('.message_modal_password').html(html);
-                        }          
+                                           $('.message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>'+json.message+'</div>');   
+                            $('#modal_password').modal('hide'); 
                     },
 
                     error : function(xhr, status) {

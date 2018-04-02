@@ -7,9 +7,10 @@
 	<div class="panel panel-default">
 <div class="panel-heading">
 	<div class="alert alert-info"><p>Tipificación de estados : 
-	<i style='color:green;' class='fa fa-check'></i> Confirmado 
-	<i style='color:black;' class='fa fa-ellipsis-h'></i> Por confirmar 
-	<i style='color:red;' class='fa fa-times'></i> Acceso denegado</p>
+	<i style='color:green;' class='fa fa-check'></i> Confirmado |
+	<i style='color:black;' class='fa fa-ellipsis-h'></i> Por confirmar |
+	<i style='color:red;' class='fa fa-times'></i> Acceso denegado |
+	<i style='color:blue;' class='fa fa-unlock-alt'></i> Acceso restituido</p>
 	</div>
 </div>
 
@@ -62,6 +63,9 @@ var dt = $('#tableUsuarios').DataTable( {
                                 }
                                 else if(oData.confirmado == 2){
                                     html =  "<i style='color:red;' class='fa fa-times'></i>";
+                                }
+                                else if(oData.confirmado == 3){
+                                    html =  "<i style='color:blue;' class='fa fa-unlock-alt'></i>";
                                 }
                                 $(nTd).html(html);
 

@@ -27,9 +27,19 @@ class RegistrationController extends Controller {
             return redirect('auth/login')->with('message1', $message);
         }
 
+        $dest = $user->name;
+        $email = $user->email;
+
+        \Mail::send('emails.validado',  array('destinatario' => $dest, 'email' => $email), function($message) use($email) {
+            $message->to($email)
+                ->subject('Validación');
+
+        });
+
         $user->confirmado = 1;
         $user->codigo_confirmacion = null;
         $user->save();
+
 
        // Flash::message('You have successfully verified your account.');
 

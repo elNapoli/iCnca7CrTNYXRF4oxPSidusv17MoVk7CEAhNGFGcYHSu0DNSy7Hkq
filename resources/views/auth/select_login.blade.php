@@ -20,7 +20,7 @@
 	width: 300px;
   position: absolute;
   overflow: hidden;
-  top: 0;
+  top: -10px;
   left: 0;
 }
 
@@ -46,7 +46,7 @@
   position: relative;
   font-size: 17px;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .hovereffect a.info {
@@ -100,10 +100,12 @@
 }
 
 </style>
+<br>
+<br>
 
 <div class="col-lg-6">
     <div class="hovereffect">
-        <img class="img-responsive" src="http://www.acd.ae/wp-content/uploads/2015/05/students.png" alt="">
+        <img class="img-responsive" src="/img/Estudiantes.jpg" alt="">
         <div class="overlay">
            <h2>Postulante</h2>
            <a class="info" href="{{url('auth/login')}}">Ingresa aquí</a>
@@ -113,7 +115,7 @@
 
 <div class="col-lg-6">
     <div class="hovereffect">
-        <img class="img-responsive" src="http://www.chaudharyfincap.com/images/login-admin.png" alt="">
+        <img class="img-responsive" src="https://www.picxclicx.com/wp-content/uploads/2016/07/00840_Teal-and-Yellow-Office-Desk-30_LR_DSC00134.jpg" alt="">
         <div class="overlay">
            <h2>Administrador</h2>
            <a class="info" href="{{url('auth/login-admin')}}">Ingresa aquí</a>

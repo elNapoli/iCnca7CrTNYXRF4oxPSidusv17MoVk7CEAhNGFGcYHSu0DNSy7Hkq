@@ -7,6 +7,12 @@
                 <h4 class="modal-title" id="myModalLabel">Regístrate</h4>
             </div>
             <div class="modal-body">
+            <div class="modal-header">
+            <p style=";border-radius: 25px; border: 2px solid #35DDA8; padding: 20px;">La OME te da la bienvenida a la plataforma de postulación, si eres alumno UACh,
+                del extranjero o nacional, y deseas postular al programa de Intercambio de la
+                Universidad Austral de Chile, regístrate, crea tu usuario y contraseña e inicia el
+                proceso de postulación en línea. Recuerda que antes debes infórmate acerca de cada
+                proceso, sus requisitos y fechas de postulación.</p></div>
 
                <div class="panel-body">
                     {!! Form::open(['url'=>'auth/register', 'method'=>'POST','id'=>'form-register'])!!}

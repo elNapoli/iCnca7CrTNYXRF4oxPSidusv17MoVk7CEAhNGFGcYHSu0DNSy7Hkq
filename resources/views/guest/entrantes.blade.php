@@ -5,6 +5,9 @@
 
 <div class="col-md-11">
 <br>
+
+<div class= "shape">ENTRANTES</div>
+
 <p align='justify'>El Programa Internacional de Movilidad se sostiene principalmente en los acuerdos firmados con instituciones de educación Superior nacionales y extranjeras. A través de estos acuerdos, los estudiantes pueden acceder a nuestra institución con el beneficio de la liberación de costo de matrícula y arancel de carrera. Para mayor información sobre convenios  haga click <a href="http://www.uach.cl/internacional/principal/convenios"><strong>aqui</strong></a> para consultas escriba al correo electrónico <a id="linkHome" href="mailto:movilidadestudiantil@uach.cl"><strong>movilidadestudiantil@uach.cl</strong></a></p>
 <br>
 
@@ -454,6 +457,28 @@ El estudiante debe tener en cuenta que los certificados pueden ser entregados en
 @endsection
 
 <style type="text/css">
+
+/*CSS figura titulo de sección*/
+.shape{
+  text-align:center;
+  background-color:rgba(102, 102, 102, 1);
+  width:200px;
+  height:60px;
+  line-height:60px;
+  color:white;
+  margin-bottom:20px;
+  position:relative;
+}
+.shape:before{
+  content:"";
+  width:0px;
+  height:0px;
+  border-top:60px solid rgba(102, 102, 102, 1);
+  border-right:60px solid transparent;
+  position:absolute;
+  left:100%;
+  top:0px;
+}
 
 .alert2 {
     font-size: 12px;

@@ -23,7 +23,7 @@
 	<h2 id='sect'>Oficina de movilidad estudiantil</h2>
 
 	<br>
-	<p>La Oficina de Movilidad Estudiantil, (OME) está conformada por la Coordinadora, Sra. Marta Rojas G. y  la Encargada de Eestudiantes de intercambio (entrantes y salientes), Srta. Macarena Agüero B., a quienes puedes contactar en el correo electrónico movilidadestudiantil@uach.cl. Ubicada en el Campus Teja, Vicerrectoría Académica, 2º piso, oficina Nº4 y 5.</p>
+	<p>La Oficina de Movilidad Estudiantil, (OME) está conformada por la Coordinadora, Sra. Marta Rojas G. y la Encargada de Eestudiantes de intercambio (entrantes y salientes), Srta. Macarena Agüero B., a quienes puedes contactar en el correo electrónico movilidadestudiantil@uach.cl. Estamos Ubicadados en el Campus Teja, Vicerrectoría Académica, 2º piso, oficina Nº 4 y 5.</p>
 
 </div>
 <div class="col-md-4">

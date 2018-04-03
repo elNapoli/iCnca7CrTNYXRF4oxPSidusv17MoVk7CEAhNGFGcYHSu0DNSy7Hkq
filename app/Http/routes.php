@@ -16,6 +16,7 @@ Route::get('/setLang', 'WelcomeController@setLang');
 Route::get('profile', 'UsuariosController@profile');
 Route::post('change-password', 'UsuariosController@changePassword');
 Route::post('update-profile', 'UsuariosController@updateProfile');
+Route::get('/gmaps', ['as ' => 'gmaps', 'uses' => 'GmapsController@index']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

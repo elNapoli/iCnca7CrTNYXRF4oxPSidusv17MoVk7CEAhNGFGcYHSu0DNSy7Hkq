@@ -376,6 +376,9 @@ Debes llevar la siguiente documentación:  copia de tu pasaporte y timbre de ent
 <br>
 </div>
 
+<br>
+<div class= "shape">UNA VEZ EN LA UACH</div>
+
 <button class="accordion">Matrícula</button>
 <div class="panel2">
 <br>
@@ -449,7 +452,12 @@ El estudiante debe tener en cuenta que los certificados pueden ser entregados en
 
 <br>
 </div>
-
+<div class="welcomeImage">
+<br>
+<div class= "shape-top-img" style= "position: absolute"><strong>BIENVENID@S A LA UACH</strong></div>
+<div class= "shape-bot-img" style= "position: absolute; bottom: 0px; right: 0px"><strong>TE ESPERAMOS!!</strong></div>
+<img src="/img/welcome_incoming.jpg">
+</div>
 </div>
 
 @include('auth.modal_register')
@@ -458,13 +466,21 @@ El estudiante debe tener en cuenta que los certificados pueden ser entregados en
 
 <style type="text/css">
 
+.welcomeImage{
+  position: relative;
+}
+
+img{
+  max-width: 100%;
+}
+
 /*CSS figura titulo de sección*/
 .shape{
   text-align:center;
   background-color:rgba(102, 102, 102, 1);
   width:200px;
-  height:60px;
-  line-height:60px;
+  height:40px;
+  line-height:40px;
   color:white;
   margin-bottom:20px;
   position:relative;
@@ -473,10 +489,51 @@ El estudiante debe tener en cuenta que los certificados pueden ser entregados en
   content:"";
   width:0px;
   height:0px;
-  border-top:60px solid rgba(102, 102, 102, 1);
-  border-right:60px solid transparent;
+  border-top:40px solid rgba(102, 102, 102, 1);
+  border-right:40px solid transparent;
   position:absolute;
   left:100%;
+  top:0px;
+}
+
+.shape-top-img{
+  text-align:center;
+  background-color:#5caa19;
+  width:200px;
+  height:30px;
+  line-height:30px;
+  color:white;
+  margin-bottom:20px;
+  position:relative;
+}
+.shape-top-img:before{
+  content:"";
+  width:0px;
+  height:0px;
+  border-top:30px solid #5caa19;
+  border-right:30px solid transparent;
+  position:absolute;
+  left:100%;
+  top:0px;
+}
+
+.shape-bot-img{
+  text-align:center;
+  background-color:#5caa19;
+  width:200px;
+  height:30px;
+  line-height:30px;
+  color:white;
+  position:relative;
+}
+.shape-bot-img:before{
+  content:"";
+  width:0px;
+  height:0px;
+  border-bottom:30px solid #5caa19;
+  border-left:30px solid transparent;
+  position:absolute;
+  right :100%;
   top:0px;
 }
 

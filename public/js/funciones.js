@@ -82,7 +82,6 @@ $.ajax({
 
 
 function selectByTabsSinAccion(ruta,token,url,idSelectDestino,option1,option2){
-    alert("hola ctm")
 var idTab = $(ruta);
 //var idSelect = idSelect;
 var token = $(token).val();

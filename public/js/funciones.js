@@ -77,7 +77,15 @@ $.ajax({
 }
 
 
+function toggleHidden(status){
+    if(status == 'on')
+        $( "#descripcion" ).addClass( "hidden_on" );
+    else{
+        $( "#descripcion" ).removeClass( "hidden_on" );
 
+    }
+
+}
 function selectByTabsSinAccion(ruta,token,url,idSelectDestino,option1,option2){
 var idTab = $(ruta);
 //var idSelect = idSelect;

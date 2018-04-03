@@ -58,26 +58,26 @@
                 {!!  Form::label('financiamiento', 'Financiamiento ')!!}
             <div class="input-group input-prepend dropdown" id='FinanciamientoDDList'>
                       
-              <span class="input-group-addon" data-toggle='dropdown'><a href="" class='dropdown-display'>{{$parametros['financiamiento_nombre']}}</a> <i class='caret'></i></span>
-              {!! Form::text('descripcion',$parametros['descripcion'],array('id'=>'descripcion','class' => 'form-control','placeholder'=>'descripción'));!!}
+              <span class="input-group-addon" data-toggle='dropdown' style="border: 1px solid #c2c2c2;"><a href="" class='dropdown-display'>{{$parametros['financiamiento_nombre']}}</a> <i class='caret'></i></span>
+              {!! Form::text('descripcion',$parametros['descripcion'],array('id'=>'descripcion','class' => 'form-control hidden_on','placeholder'=>'descripción'));!!}
                 {!!Form::hidden('financiamiento', $parametros['financiamiento'],array('id'=>'financiamiento','class'=>'dropdown-field'));!!}
               
 
               <ul class='dropdown-menu' style=" z-index: 1000;">
                   <li>
-                    <a href="#" data-value="1">Padres</a>
+                    <a href="#"  onClick="toggleHidden('on')" data-value="1">Padres</a>
                   </li>
                   <li>
-                    <a href="#" data-value="2">Universidad</a>
+                    <a href="#" onClick="toggleHidden('on')" data-value="2">Universidad</a>
                   </li>
                   <li>
-                    <a href="#" data-value="3">Yo</a>
+                    <a href="#" onClick="toggleHidden('on')" data-value="3">Yo</a>
                   </li>
                   <li>
-                    <a href="#" data-value="4">Beca</a>
+                    <a href="#" onClick="toggleHidden('on')" data-value="4">Beca</a>
                   </li>
                   <li>
-                    <a href="#" data-value="5">Otro</a>
+                    <a href="#" onClick="toggleHidden('off')" data-value="5">Otro</a>
                   </li>
               </ul>
             </div>
@@ -121,3 +121,14 @@
 {!!Form::hidden('id',$parametros['id'],array('id'=>'id'));!!}
 
 </div>
+
+<style type="text/css">
+    .hidden_on{
+
+        visibility: hidden;
+    }
+    .hidden_off{
+
+        visibility: visible;
+    }
+</style>

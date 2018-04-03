@@ -634,6 +634,15 @@
     {!! Html::Style('plugins/jquery-steps/css/jquery.steps.css')!!}
     {!! Html::Style('plugins/bootstrap/css/bootstrap-select.css')!!}
 
+<style type="text/css">
+ .span_universidad{
+
+    color:red;
+ }
+
+</style>
+
+
 
 
 @endsection

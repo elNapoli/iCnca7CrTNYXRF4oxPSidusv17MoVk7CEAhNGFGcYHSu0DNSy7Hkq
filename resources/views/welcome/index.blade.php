@@ -20,12 +20,19 @@
 
 	</div>
 
-	<div class="col-lg-8">
+	<div class="col-lg-7">
 	
 	@include('welcome.partials.foro')
 
 
 	</div>
+
+	<div class="col-lg-1">
+
+	@include('welcome.partials.social')
+
+	</div>
+
 </div>
 @endsection
 

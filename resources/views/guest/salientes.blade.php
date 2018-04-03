@@ -6,6 +6,8 @@
 <div class="col-md-11">
 <br>
 
+<div class= "shape">SALIENTES</div>
+
 <button class="accordion">Alumnos UACh</button>
 <div class="panel2">
 <br>
@@ -66,7 +68,168 @@ Al finalizar tu intercambio, te recomendamos confirmar con tu universidad de des
 </ul>
 <br>
 <p id='indent'>Si has tomado la decisión y cumples con los requisitos, haz click <a class="link" href="#!" id="open_modal_register"><strong>aqui</strong></a> para ir al registro de postulantes.</p>
+<br>
 </div>
+
+<button class="accordion">Convenios</button>
+<div class="panel2">
+<br>
+<p align='justify'>Los convenios firmados por la Universidad Austral de Chile son un reflejo de las colaboraciones iniciadas por académicos y una garantía del desarrollo de éstas a nivel de todas las facultades UACh. Los convenios transcienden, desde el ámbito de las buenas relaciones de trabajo entre académicos, hacia los programas de movilidad estudiantil de pre y postgrado, proyectos de investigación conjuntos, modificación y mejoramiento de la oferta curricular, oferta de becas y actividades conjuntas de extensión y relaciones con la comunidad.</p>
+<p>Te invitamos a revisar los diferentes convenios:</p>
+
+<ul style="list-style-type: disc; padding-left: 1em;">
+
+<li><p align='justify'><a href="https://www.uach.cl/uach/_file/5-conv-educacion-superior-5810c7682cd02.pdf"><strong>Nacionales</strong></a></p></li> 
+
+<li><p align='justify'><a href="http://www.uach.cl/internacional/principal/convenios
+CINDA http://cinda.pucp.edu.pe"><strong>Internacionales</strong></a></p></li> 
+
+</ul>
+<br>
+</div>
+
+<button class="accordion">Becas</button>
+<div class="panel2">
+<br>
+<p align='justify'>Nuestra universidad ofrece junto con instituciones externas las siguientes becas completas y parciales para estudiantes destacados académicamente, interesados en realizar un intercambio académico en el extranjero:</p>
+<p>Te invitamos a revisar los diferentes convenios:</p>
+
+<ul style="list-style-type: disc; padding-left: 1em;">
+
+<li><p align='justify'><a href="http://www.uach.cl/internacional/principal/becas/becas-pregrado"><strong>Becas Pregrado</strong></a></p></li> 
+
+<li><p align='justify'><a href="http://www.uach.cl/internacional/principal/becas/becas-postgrado"><strong>Becas Postgrado</strong></a></p></li> 
+
+</ul>
+<br>
+</div>
+
+<button class="accordion">Costos</button>
+<div class="panel2">
+
+<br>
+  
+<p align='justify'>Al momento de optar por llevar a cabo un intercambio estudiantil en el extranjero debes considerar los siguientes costos:</p>
+
+<br>
+<ul style="list-style-type: decimal; padding-left: 1em;">
+
+<li><p align='justify'>Pasaporte.</p></li> 
+<li><p align='justify'>Visa de estudiante según el país que corresponda.</p></li> 
+<li><p align='justify'>Viajes  a Santiago para obtener la visa de estudiante.</p></li> 
+<li><p align='justify'>Gastos administrativos (notarias) en caso de legalización de documentos y/o declaraciones juradas.</p></li> 
+<li><p align='justify'>Seguro de salud internacional.</p></li> 
+<li><p align='justify'>Pasajes ida y vuelta desde Chile al lugar del intercambio.</p></li>
+<li><p align='justify'>Alojamiento.</p></li>
+<li><p align='justify'>Alimentación.</p></li>
+<li><p align='justify'>Materiales de estudio en la universidad extranjera.</p></li>
+<li><p align='justify'>Recreación.</p></li>
+<li><p align='justify'>Cualquier imprevisto que pudiese surgir.</p></li>
+
+
+</ul>
+<br>
+
+<p align='justify'>Cabe destacar que hay becas disponibles para estudiantes con excelencia académica, estas becas ayudan a costear en gran parte de los gastos que un intercambio implica. </p>
+<br>
+</div>
+
+<button class="accordion">Antes de partir</button>
+<div class="panel2">
+
+<br>
+<p align='justify'>Antes de comenzar tu viaje debes hacer entrega de los siguientes documentos en la oficina de movilidad estudiantil: </p>
+
+<br>
+<ul style="list-style-type: decimal; padding-left: 1em;">
+
+<li><p align='justify'>Acuerdo de Homologación.</p></li> 
+<li><p align='justify'>Formulario de antecedentes y compromisos.</p></li> 
+<li><p align='justify'>Mantención de Beneficios.</p></li> 
+
+</ul>
+
+ <div class="alert2">
+  <STRONG>IMPORTANTE!: </STRONG>Los documentos aquí solicitados deben ser llenados en la plataforma OME, estos documentos podrán ser visualizados y descargados para un posterior envío.
+</div>
+
+<br>
+</div>
+
+<button class="accordion">Obtención visa de estudiante</button>
+<div class="panel2">
+
+<br>
+<p align='justify'>Para realizar un intercambio académico en el extranjero, en la mayoría de los casos necesitarás obtener una visa de estudiante y tramitarla en la capital de nuestro país. Para obtenerla debes: </p>
+
+<br>
+<ul style="list-style-type: decimal; padding-left: 1em;">
+
+<li><p align='justify'>Recibir la carta de aceptación original de la universidad extranjera.</p></li> 
+<li><p align='justify'>Seguir los pasos que indica cada embajada/consulado del país de destino.</p></li> 
+</ul>
+
+<br>
+<p align='justify'>Para mayor orientación sobre los documentos a entregar en cada consulado extranjero, puedes dirigirte a la OME y revisar los siguientes documentos: </p>
+
+<p>(documentos word)</p>
+<br>
+</div>
+
+<button class="accordion">Seguro médico internacional</button>
+<div class="panel2">
+
+<br>
+<p align='justify'>Para que puedas salir del país debes comprar un seguro internacional que deberá estar vigente desde tu fecha de salida y hasta el regreso al país.  Además debe considerar la repatriación y hospitalización en caso de enfermedad o accidente. </p>
+<p align='justify'>Cabe destacar que en muchos casos cada universidad extranjera tiene sus propios requisitos en relación al seguro  internacional, por lo que antes de realizar la compra hay que informarse de lo que cada universidad de destino solicita.</p>
+<p align='justify'>El costo final del seguro internacional variará según duración del intercambio, país  y universidad de destino. Para mayor información diríjase a la OME.</p>
+<br>
+
+</div>
+
+<button class="accordion">Una vez en la universidad de destino</button>
+<div class="panel2">
+
+<br>
+<p align='justify'>Al momento de tu llegada al lugar de destino, deberás confirmar tu llegada al correo electrónico <a id="linkHome" href="mailto:movilidadestudiantil@uach.cl"><strong>movilidadestudiantil@uach.cl</strong></a>, adjuntando los siguientes documentos:</p>
+<br>
+
+<ul style="list-style-type: decimal; padding-left: 1em;">
+
+<li><p align='justify'>Datos de contacto en el extranjero.</p></li> 
+<li><p align='justify'>Confirmación de llegada.</p></li> 
+<li><p align='justify'>Una vez que selecciones las asignaturas, corrobora que coincida con el formulario de acuerdo de homologación, en caso de modificaciones, informar a la OME y a la Dirección de Escuela para solicitar el cambio de materias.
+</ul>
+ <div class="alert2">
+  <STRONG>IMPORTANTE!: </STRONG>Los documentos aquí solicitados deben ser llenados en la plataforma OME, estos documentos podrán ser visualizados y descargados para un posterior envío.
+</div>
+<br>
+
+</div>
+
+
+<button class="accordion">Regresando a la UACh</button>
+<div class="panel2">
+
+<br>
+<p align='justify'>Todo estudiante al momento de terminar su intercambio, debe encargarse de hacer llegar el certificado de notas otorgado por la universidad extranjera/nacional  a la unidad de Movilidad Estudiantil y a su Escuela para que de esta manera se comiencen los trámites de convalidación.</p>
+<p align='justify'>En caso de realizar un intercambio por más de un semestre, debes encargarte de hacernos llegar el certificado de notas al final de cada período para los fines pertinentes.</p>
+
+ <div class="alert2">
+  <STRONG>IMPORTANTE!: </STRONG>El atraso del envío de ésta información o el no envío es de exclusiva responsabilidad del estudiante. El no cumplir con este trámite puede perjudicarte con los beneficios (Becas y Créditos) al no tener avances académicos en tu malla de estudios UACh.
+</div>
+
+<br>
+</div>
+
+<button class="accordion">Testimonios de intercambio</button>
+<div class="panel2">
+
+<br>
+<p align='justify'>No hay mejor motivación que conocer las experiencias de tus compañeros que ya vivieron el Intercambio. Esperamos tu testimonio al final de tu estadía para compartirlo en nuestra página web.</p>
+<p align='justify'>Revisa las experiencias de los estudiantes <a href="./testimonios"><strong>aqui</strong></a>.</p>
+</div>
+
 </div>
 
 @include('auth.modal_register')
@@ -74,6 +237,27 @@ Al finalizar tu intercambio, te recomendamos confirmar con tu universidad de des
 @endsection
 
 <style type="text/css">
+
+.shape{
+  text-align:center;
+  background-color:rgba(102, 102, 102, 1);
+  width:200px;
+  height:40px;
+  line-height:40px;
+  color:white;
+  margin-bottom:20px;
+  position:relative;
+}
+.shape:before{
+  content:"";
+  width:0px;
+  height:0px;
+  border-top:40px solid rgba(102, 102, 102, 1);
+  border-right:40px solid transparent;
+  position:absolute;
+  left:100%;
+  top:0px;
+}
 
 /*#solido {
 
@@ -114,6 +298,15 @@ Al finalizar tu intercambio, te recomendamos confirmar con tu universidad de des
 
 #link{
 	color:#ab0034;
+}
+
+.alert2 {
+    font-size: 12px;
+    font-family: sans-serif;
+    padding: 12px 10px 10px;
+    background-color: #ff9800; /* Red */
+    color: white;
+    margin-bottom: 20px;
 }
 
 

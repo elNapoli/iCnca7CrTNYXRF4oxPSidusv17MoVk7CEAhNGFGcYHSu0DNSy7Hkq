@@ -18,5 +18,7 @@ return [
     'galery'   =>'Galery',
     'signIn'   =>'Sign In',
     'students'   =>'Students',
+    'services'  => 'Servicios',
+    'maps'  =>  'Mapas',
 
 ];

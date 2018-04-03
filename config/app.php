@@ -148,7 +148,7 @@ return [
 		'Collective\Html\HtmlServiceProvider',
 		Yajra\Datatables\DatatablesServiceProvider::class,
 		DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
-		Socieboy\Forum\Providers\ForumServiceProvider::class,
+		Socieboy\Forum\Providers\ForumServiceProvider::class, 	
 		'Maatwebsite\Excel\ExcelServiceProvider',
 
 	],
@@ -204,6 +204,7 @@ return [
 
       	'PDF' => 'Barryvdh\DomPDF\Facade',
       	'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+
 
 
 

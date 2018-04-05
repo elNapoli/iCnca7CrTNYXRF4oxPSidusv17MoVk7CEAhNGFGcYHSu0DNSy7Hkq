@@ -9,7 +9,6 @@ var ruta = $(ruta_input+' select'+idSelectDestino); //idSelectDestino: es el id 
 var token = $(token_prueba).val();
 //alert($('div#wizard input#getToken').val());
 var urlE = $(url).val();
-console.log($("#span_universidad-"+ruta_input[ruta_input.length-1]))
 if (idSelect == "#campus_sede"){
     $("#span_universidad-"+ruta_input[ruta_input.length-1]).text($("option:selected", this).data("title"));
 

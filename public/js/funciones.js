@@ -132,7 +132,10 @@ var ruta = $(ruta+' select'+idSelectDestino);
             }
 
             ruta.val(option2);
-            $("#span_universidad-"+ruta_span).text($("option:selected", ruta).data("title"));
+            if (idSelectDestino == "#campus_sede"){
+                $("#span_universidad-"+ruta_span).text($("option:selected", ruta).data("title"));
+            }
+            
 
     },
 
@@ -460,7 +463,6 @@ function traerInfoUniversidad(idInput,urlStoreCampus, urlConsultaSelectPais,urlC
     var campusSedes = jsonUniversidad.campus_sedes_r;
     var idContinente = campusSedes[0].ciudad_r.pais_r.continente;
     var idPais = campusSedes[0].ciudad_r.pais_r.id;
-
     selectByTabsSinAccion(".form-horizontal",token,urlConsultaSelectPais,'#pais',idContinente,idPais);
 
     $('#continente').val( jsonUniversidad.campus_sedes_r[0].ciudad_r.pais_r.continente_r.id);

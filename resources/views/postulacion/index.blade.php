@@ -235,7 +235,7 @@
                                         // Formato de datos que se espera en la respuesta
                                         dataType: "json",
                                         // URL a la que se enviará la solicitud Ajax
-                                        url:$('#getUrlCoordinadorCampus').val() ,
+                                        url:"$('#getUrlCoordinadorCampus').val()" ,
                                         beforeSend:function() {
                                             $('#loading').show();
                                         },
@@ -261,7 +261,7 @@
                             
                                 }
                                 $('section#wizard-p-1').on('change','#campus_sede',function(){
-                              
+                                    $("#span_universidad-1").text($("option:selected", this).data("title"));
                                     var idCampusSede = $(this).val();
                                     $.ajax({
                                       // En data puedes utilizar un objeto JSON, un array o un query string
@@ -273,7 +273,7 @@
                                         // Formato de datos que se espera en la respuesta
                                         dataType: "json",
                                         // URL a la que se enviará la solicitud Ajax
-                                        url:$('#getUrlCoordinadorCampus').val() ,
+                                        url:"$('#getUrlCoordinadorCampus').val() ",
                                         beforeSend:function() {
                                             $('#loading').show();
                                         },

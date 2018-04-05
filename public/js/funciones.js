@@ -5,11 +5,14 @@ var idSelect = idSelect;
 //var idSelectDestino = '#'+idSelectDestino;
               //Ruta: es esa mierda que hay que buscar entre los selectores <div>
 idTab.on('change',idSelect,function(e){  
-
 var ruta = $(ruta_input+' select'+idSelectDestino); //idSelectDestino: es el id del objeto donde se carga la respuesta ajax
 var token = $(token_prueba).val();
 //alert($('div#wizard input#getToken').val());
 var urlE = $(url).val();
+if (idSelect == "#campus_sede"){
+    $("#span_universidad-"+ruta_input[ruta_input.length-1]).text($("option:selected", this).data("title"));
+
+}
 $.ajax({
     // En data puedes utilizar un objeto JSON, un array o un query string
    data: {
@@ -39,8 +42,7 @@ $.ajax({
                 
 
                 $.each(subCatObj.campus_sedes_r, function(index2, subCatObj2){
-
-                    ruta.append("<option value="+subCatObj2.id+">"+subCatObj2.nombre+"</option>");
+                    ruta.append("<option data-title='"+subCatObj.nombre+"' value="+subCatObj2.id+">"+subCatObj2.nombre+"</option>");
 
                 });
 
@@ -90,7 +92,7 @@ function selectByTabsSinAccion(ruta,token,url,idSelectDestino,option1,option2){
 var idTab = $(ruta);
 //var idSelect = idSelect;
 var token = $(token).val();
-
+var ruta_span = ruta[ruta.length-1];
 var urlE = $(url).val();
 var ruta = $(ruta+' select'+idSelectDestino);
     $.ajax({
@@ -122,7 +124,7 @@ var ruta = $(ruta+' select'+idSelectDestino);
 
                     $.each(subCatObj.campus_sedes_r, function(index2, subCatObj2){
 
-                        ruta.append("<option value="+subCatObj2.id+">"+subCatObj2.nombre+"</option>");
+                        ruta.append("<option data-title='"+subCatObj.nombre+"'  value="+subCatObj2.id+">"+subCatObj2.nombre+"</option>");
 
                     });
 
@@ -131,20 +133,16 @@ var ruta = $(ruta+' select'+idSelectDestino);
             }
             else{
                 $.each(json, function(index, subCatObj){
-                     ruta.append("<option value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
+                     ruta.append("<option data-title='"+subCatObj.nombre+"' value="+subCatObj.id+">"+subCatObj.nombre+"</option>");
                  });
                 
             }
 
             ruta.val(option2);
-
-
-
-
+            if (idSelectDestino == "#campus_sede"){
+                $("#span_universidad-"+ruta_span).text($("option:selected", ruta).data("title"));
+            }
             
-
-
-
 
     },
 
@@ -472,7 +470,6 @@ function traerInfoUniversidad(idInput,urlStoreCampus, urlConsultaSelectPais,urlC
     var campusSedes = jsonUniversidad.campus_sedes_r;
     var idContinente = campusSedes[0].ciudad_r.pais_r.continente;
     var idPais = campusSedes[0].ciudad_r.pais_r.id;
-
     selectByTabsSinAccion(".form-horizontal",token,urlConsultaSelectPais,'#pais',idContinente,idPais);
 
     $('#continente').val( jsonUniversidad.campus_sedes_r[0].ciudad_r.pais_r.continente_r.id);

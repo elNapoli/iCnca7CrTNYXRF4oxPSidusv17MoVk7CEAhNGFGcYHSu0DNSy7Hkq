@@ -80,16 +80,7 @@
               
           </li>
 
-          <li class="sub-menu">
-              <a href="javascript:;" >
-                  <i class=" fa fa-briefcase "></i>
-                  <span>Anexos</span>
-              </a>
-              <ul class="sub">
-                  <li><a  href="morris.html">item 1</a></li>
-                  <li><a  href="chartjs.html">item 2</a></li>
-              </ul>
-          </li>
+
           <li class="sub-menu">
               <a href="javascript:;" >
                   <i class=" ffa fa-bar-chart-o"></i>

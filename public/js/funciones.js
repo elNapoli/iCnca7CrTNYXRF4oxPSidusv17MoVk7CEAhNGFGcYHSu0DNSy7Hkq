@@ -34,7 +34,7 @@ $.ajax({
     },
     success : function(json) {
         ruta.empty();
-        ruta.append("<option value='0'>Seleccione la "+idSelectDestino+"</option>");
+        ruta.append("<option value='0'>Seleccione "+idSelectDestino+"</option>");
 
         if(url ==="#getCampusByPais"){
             $.each(json, function(index, subCatObj){
@@ -116,7 +116,7 @@ var ruta = $(ruta+' select'+idSelectDestino);
         },
         success : function(json) {
             ruta.empty();
-            ruta.append("<option value=''>Seleccione la "+idSelectDestino+"</option>");
+            ruta.append("<option value=''>Seleccione "+idSelectDestino+"</option>");
             if(url ==="#getCampusByPais"){
                 $.each(json, function(index, subCatObj){
                 ruta.append(" <optgroup label='"+subCatObj.nombre+"'>");
@@ -413,7 +413,7 @@ function crearTab(arrayCampus,urlStoreCampus,urlConsultaSelect,token){
                                     '<label class="col-sm-2 col-sm-2 control-label" for="ciudad"> Nombre ciudad </label>'+
                                     '<div class="col-sm-10">'+
                                         '<select id="ciudad'+arrayCampus.id+'" class="miCiudad form-control">'+
-                                        '<option selected="selected" value="">Seleccione unA ciudad</option>'+
+                                        '<option selected="selected" value="">Seleccione una ciudad</option>'+
                                         '</select>'+
                                     '</div>'+
                                 '</div>'+

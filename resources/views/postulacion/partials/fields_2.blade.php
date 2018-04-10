@@ -5,7 +5,7 @@
 </div>
 
     {!!  Form::label('pais', ' Nombre país ')!!}
-<div class="input-group">
+<div class="input-group" style="margin-bottom: 15px;">
     {!!  Form::select('pais', [null=>'Seleccione un país'],null,array('class' => 'universidad form-control'))!!}
   <span class="input-group-btn">
     <a href="#!" class="btn btn-default" type="button" data-toggle="modal" data-target="#modal_crear_pais" type="button"  tabindex="-1"><span class="fa  fa-plus-circle " aria-hidden="true"></span></a>
@@ -15,6 +15,7 @@
 
 
     {!!  Form::label('campus_sede', 'Seleccione la universidad  ')!!}
+        <span class="span_universidad" id="span_universidad-2">No ha seleccionado la universidad</span>
 <div class="form-group">
     {!!  Form::select('campus_sede', [null=>'Seleccione la universidad'],null,array('class' => 'form-control'))!!}
 

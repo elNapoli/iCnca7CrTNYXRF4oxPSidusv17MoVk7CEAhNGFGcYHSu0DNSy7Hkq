@@ -104,7 +104,7 @@
 <br>
 </div>
 
-<button class="accordion">Programas de pregrado-magister y doctorado</button>
+<button class="accordion">Programas de Pregrado, Magíster y Doctorado</button>
 <div class="panel2">
 <br>
 
@@ -455,7 +455,7 @@ El estudiante debe tener en cuenta que los certificados pueden ser entregados en
 <div class="welcomeImage">
 <br>
 <div class= "shape-top-img" style= "position: absolute"><strong>BIENVENID@S A LA UACH</strong></div>
-<div class= "shape-bot-img" style= "position: absolute; bottom: 0px; right: 0px"><strong>TE ESPERAMOS!!</strong></div>
+<div class= "shape-bot-img" style= "position: absolute; bottom: 0px; right: 0px"><strong>¡TE ESPERAMOS!</strong></div>
 <img src="/img/welcome_incoming.jpg">
 </div>
 </div>

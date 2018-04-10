@@ -170,9 +170,8 @@ CINDA http://cinda.pucp.edu.pe"><strong>Internacionales</strong></a></p></li>
 </ul>
 
 <br>
-<p align='justify'>Para mayor orientación sobre los documentos a entregar en cada consulado extranjero, puedes dirigirte a la OME y revisar los siguientes documentos: </p>
+<p align='justify'>Para mayor orientación sobre los documentos a entregar en cada consulado extranjero, puedes dirigirte a la OME y revisar los documentos.</p>
 
-<p>(documentos word)</p>
 <br>
 </div>
 

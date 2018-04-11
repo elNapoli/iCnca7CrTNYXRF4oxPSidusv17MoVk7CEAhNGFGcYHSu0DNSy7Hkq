@@ -190,7 +190,7 @@ CINDA http://cinda.pucp.edu.pe"><strong>Internacionales</strong></a></p></li>
 <div class="panel2">
 
 <br>
-<p align='justify'>Al momento de tu llegada al lugar de destino, deberás confirmar tu llegada al correo electrónico <a id="linkHome" href="mailto:movilidadestudiantil@uach.cl"><strong>movilidadestudiantil@uach.cl</strong></a>, adjuntando los siguientes documentos:</p>
+<p align='justify'>Al momento de tu llegada al lugar de destino, deberás confirmar tu llegada al correo electrónico <a id="link" href="mailto:movilidadestudiantil@uach.cl"><strong>movilidadestudiantil@uach.cl</strong></a>, adjuntando los siguientes documentos:</p>
 <br>
 
 <ul style="list-style-type: decimal; padding-left: 1em;">
@@ -235,127 +235,7 @@ CINDA http://cinda.pucp.edu.pe"><strong>Internacionales</strong></a></p></li>
 
 @endsection
 
-<style type="text/css">
-
-.shape{
-  text-align:center;
-  background-color:rgba(102, 102, 102, 1);
-  width:200px;
-  height:40px;
-  line-height:40px;
-  color:white;
-  margin-bottom:20px;
-  position:relative;
-}
-.shape:before{
-  content:"";
-  width:0px;
-  height:0px;
-  border-top:40px solid rgba(102, 102, 102, 1);
-  border-right:40px solid transparent;
-  position:absolute;
-  left:100%;
-  top:0px;
-}
-
-/*#solido {
-
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    padding-bottom: 20px;
-
-
-}*/
-
-#indent{
-    text-indent:30px;
-}
-
-#sect{
-	font-size:22px;
-	font-family: sans-serif;
-	box-sizing: border-box;
-    background-color: #d6d6d6;
-    color: #666;
-    display: inline-block;
-    padding: 5px 30px;
-    display: block;
-
-}
-
-#lat-derecho {
-    background-color: #d6d6d6;
-    color: #666;
-    font-size: 12px;
-    margin-top: 0px;
-    margin-bottom: 20px;
-    padding: 10px 15px;
-    width: 190px;
-}
-
-#link{
-	color:#ab0034;
-}
-
-.alert2 {
-    font-size: 12px;
-    font-family: sans-serif;
-    padding: 12px 10px 10px;
-    background-color: #ff9800; /* Red */
-    color: white;
-    margin-bottom: 20px;
-}
-
-
- /* Style the buttons that are used to open and close the accordion panel */
-button.accordion {
-    font-size: 22px;
-    font-family: sans-serif;
-    background-color: #d6d6d6;
-    padding: 5px 30px;
-    color: #666;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-button.accordion.active, button.accordion:hover {
-    background-color: #666;
-    color: white;
-
-}
-
-/* Style the accordion panel. Note: hidden by default */
-div.panel2 {
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    margin-bottom: 5px;
-}
-
-button.accordion:after {
-    content: '\02795'; /* Unicode character for "plus" sign (+) */
-    font-size: 13px;
-    color: white;
-    float: right;
-    padding: 5px;
-
-}
-
-button.accordion.active:after {
-    content: "\2796"; /* Unicode character for "minus" sign (-) */
-    color: white;
-}
-
-</style>
+@include('guest.partials.style')
 
 @section('scripts')
     <script>

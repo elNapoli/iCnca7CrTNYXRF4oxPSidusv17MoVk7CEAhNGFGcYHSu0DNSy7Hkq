@@ -4,13 +4,13 @@
 <div class="panel-asd"></div>
 <div class="panel-body">
 <a target="_blank" href="https://www.facebook.com/movilidadestudiantil.uach/">
-   <img src="/img/Mail/Facebook-logo.png">
+   <img id="social" src="/img/Mail/Facebook-logo.png">
  </a>
 <a target="_blank" href="https://twitter.com/ME_UACh">
-   <img src="/img/Mail/Twitter_logo.png">
+   <img id="social" src="/img/Mail/Twitter_logo.png">
  </a>
  <a id="linkHome" href="mailto:movilidadestudiantil@uach.cl">
-   <img src="/img/Mail/Welcome_mail_help.png">
+   <img id="social" src="/img/Mail/Welcome_mail_help.png">
  </a>
   </div>
 
@@ -38,7 +38,7 @@
     height: 4px;
 }
 
-img{
+#social{
 	max-width: 100%;
 	margin-top: 16px;
 	margin-bottom: 15px;

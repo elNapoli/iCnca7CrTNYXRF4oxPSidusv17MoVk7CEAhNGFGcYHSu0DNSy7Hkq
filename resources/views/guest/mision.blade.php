@@ -78,8 +78,8 @@
 	font-size:22px;
 	font-family: sans-serif;
 	box-sizing: border-box;
-    background-color: #d6d6d6;
-    color: #666;
+    background-color: #5caa19;
+    color: white;
     display: inline-block;
     padding: 5px 30px;
     display: block;
